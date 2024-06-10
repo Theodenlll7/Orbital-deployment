@@ -1,7 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://wsq75v2incod"]
+[gd_scene load_steps=3 format=3 uid="uid://wsq75v2incod"]
 
 [ext_resource type="PackedScene" uid="uid://ca6wvyqc106cg" path="res://Character/Movement/movement.tscn" id="1_cbxbj"]
+[ext_resource type="PackedScene" uid="uid://nx3qomksniva" path="res://MainHouse/main_house.tscn" id="2_h31li"]
 
 [node name="World" type="Node2D"]
 
 [node name="MainCharacter2D" parent="." instance=ExtResource("1_cbxbj")]
+
+[node name="MainHouse" parent="." instance=ExtResource("2_h31li")]
