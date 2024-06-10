@@ -1,0 +1,62 @@
+[gd_scene load_steps=3 format=3 uid="uid://ojq878xsw3xy"]
+
+[ext_resource type="Script" path="res://GameManager/DayAndNightCycle/daynightcycle.gd" id="1_3apxp"]
+[ext_resource type="Texture2D" uid="uid://dpydxaes0rb46" path="res://GameManager/DayAndNightCycle/daynightcycle-ui.png" id="2_3ab8h"]
+
+[node name="DayNightCycleUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -585.0
+offset_top = -275.0
+offset_right = -585.0
+offset_bottom = -275.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_3apxp")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_3ab8h")
+
+[node name="CenterContainerDay" type="CenterContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="DayLabelBackground" type="Label" parent="CenterContainerDay"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Day 13"
+
+[node name="DayLabel" type="Label" parent="CenterContainerDay/DayLabelBackground"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = -19.0
+offset_top = -8.0
+offset_right = 21.0
+offset_bottom = 15.0
+
+[node name="CenterContainerTime" type="CenterContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TimeLabelBackground" type="Label" parent="CenterContainerTime"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="TimeLabel" type="Label" parent="CenterContainerTime/TimeLabelBackground"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = -19.0
+offset_top = -8.0
+offset_right = 21.0
+offset_bottom = 15.0
+
+[node name="Arrow" type="TextureRect" parent="CenterContainerTime"]
+unique_name_in_owner = true
+layout_mode = 2
