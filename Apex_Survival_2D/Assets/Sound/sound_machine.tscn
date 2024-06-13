@@ -1,0 +1,22 @@
+[gd_scene load_steps=6 format=3 uid="uid://bc5ojm504qtkq"]
+
+[ext_resource type="Script" path="res://Sound/soundMachine.gd" id="1_0x077"]
+[ext_resource type="AudioStream" uid="uid://dvj7g6d8r1oak" path="res://Assets/Sound/nature-soundscape.ogg" id="2_1tsac"]
+[ext_resource type="AudioStream" uid="uid://btxwlma6rpkv4" path="res://Assets/Sound/creepy-soundscape.ogg" id="3_v2123"]
+[ext_resource type="AudioStream" uid="uid://bciu0hkw1ilxr" path="res://Assets/Sound/howlingwolf.ogg" id="4_6x7nq"]
+[ext_resource type="AudioStream" uid="uid://r5nn6j7sgryi" path="res://Assets/Sound/morningcrow.ogg" id="5_jn72i"]
+
+[node name="SoundMachine" type="Node"]
+script = ExtResource("1_0x077")
+
+[node name="DaySound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_1tsac")
+
+[node name="NightSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_v2123")
+
+[node name="NightStart" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_6x7nq")
+
+[node name="DayStart" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_jn72i")

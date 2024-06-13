@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://ca6wvyqc106cg"]
+[gd_scene load_steps=8 format=3 uid="uid://ca6wvyqc106cg"]
 
 [ext_resource type="Script" path="res://Character/MainCharacter2D.gd" id="1_feldl"]
 [ext_resource type="Texture2D" uid="uid://ccoe78uc8jt31" path="res://Character/Icons/icon.svg" id="2_can6x"]
 [ext_resource type="PackedScene" uid="uid://ojq878xsw3xy" path="res://GameManager/DayAndNightCycle/day_night_cycle_ui.tscn" id="3_178o2"]
 [ext_resource type="Script" path="res://GameManager/DayAndNightCycle/Scripts/daynightcycle_connect.gd" id="3_bimrk"]
 [ext_resource type="PackedScene" uid="uid://m5nmmnnc8ejh" path="res://GameManager/DayAndNightCycle/sky.tscn" id="4_gjggf"]
+[ext_resource type="PackedScene" uid="uid://bc5ojm504qtkq" path="res://Assets/Sound/sound_machine.tscn" id="6_bbqoe"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4p80h"]
 size = Vector2(58, 57)
@@ -35,3 +36,5 @@ offset_right = 254.0
 offset_bottom = 1.0
 
 [node name="Sky" parent="Night_Day" instance=ExtResource("4_gjggf")]
+
+[node name="SoundMachine" parent="Night_Day" instance=ExtResource("6_bbqoe")]
