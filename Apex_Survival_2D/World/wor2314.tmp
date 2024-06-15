@@ -13,6 +13,11 @@ tile_set = ExtResource("1_3oo8v")
 format = 2
 layer_1/tile_data = PackedInt32Array()
 script = ExtResource("2_0rs0l")
+width = null
+height = null
+object_placement_probability = null
+min_Path_Length = null
+max_Path_Length = null
 
 [node name="MainCharacter2D" parent="." instance=ExtResource("1_cbxbj")]
 

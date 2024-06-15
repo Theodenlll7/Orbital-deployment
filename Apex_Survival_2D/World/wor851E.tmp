@@ -11,7 +11,6 @@
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource("1_3oo8v")
 format = 2
-layer_1/tile_data = PackedInt32Array()
 script = ExtResource("2_0rs0l")
 
 [node name="MainCharacter2D" parent="." instance=ExtResource("1_cbxbj")]

@@ -1,17 +1,16 @@
 [gd_scene load_steps=6 format=3 uid="uid://wsq75v2incod"]
 
-[ext_resource type="TileSet" uid="uid://cbl0f0firsl3j" path="res://Assets/Tiles/MapGen/Ground2.tres" id="1_3oo8v"]
 [ext_resource type="PackedScene" uid="uid://ca6wvyqc106cg" path="res://Character/Movement/movement.tscn" id="1_cbxbj"]
 [ext_resource type="Script" path="res://MapGeneration/SetMapSize/MapGenSetSize.gd" id="2_0rs0l"]
 [ext_resource type="PackedScene" uid="uid://nx3qomksniva" path="res://MainHouse/main_house.tscn" id="2_h31li"]
 [ext_resource type="Script" path="res://GameManager/GameLoop/gameLoop.gd" id="3_aqmb8"]
+[ext_resource type="TileSet" uid="uid://bhyapb5qb0igm" path="res://Assets/Tiles/MapGen/Ground.tres" id="4_8tbtn"]
 
 [node name="World" type="Node2D"]
 
 [node name="TileMap" type="TileMap" parent="."]
-tile_set = ExtResource("1_3oo8v")
+tile_set = ExtResource("4_8tbtn")
 format = 2
-layer_1/tile_data = PackedInt32Array()
 script = ExtResource("2_0rs0l")
 
 [node name="MainCharacter2D" parent="." instance=ExtResource("1_cbxbj")]
