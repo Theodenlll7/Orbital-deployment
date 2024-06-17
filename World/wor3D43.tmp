@@ -1,5 +1,9 @@
 [gd_scene load_steps=6 format=3 uid="uid://wsq75v2incod"]
 
+<<<<<<< HEAD:World/wor3D43.tmp
+[ext_resource type="TileSet" uid="uid://cbl0f0firsl3j" path="res://Assets/Tiles/MapGen/Ground2.tres" id="1_3oo8v"]
+=======
+>>>>>>> 9751ed29a732dfaf68e75437af50e1a5b59628ca:Apex_Survival_2D/World/wor3D43.tmp
 [ext_resource type="PackedScene" uid="uid://ca6wvyqc106cg" path="res://Character/Movement/movement.tscn" id="1_cbxbj"]
 [ext_resource type="Script" path="res://MapGeneration/SetMapSize/MapGenSetSize.gd" id="2_0rs0l"]
 [ext_resource type="PackedScene" uid="uid://nx3qomksniva" path="res://MainHouse/main_house.tscn" id="2_h31li"]
@@ -9,8 +13,19 @@
 [node name="World" type="Node2D"]
 
 [node name="TileMap" type="TileMap" parent="."]
+<<<<<<< HEAD:World/wor3D43.tmp
+<<<<<<<< HEAD:World/wor3D43.tmp
 tile_set = ExtResource("4_8tbtn")
 format = 2
+========
+tile_set = ExtResource("1_3oo8v")
+format = 2
+layer_1/tile_data = PackedInt32Array()
+>>>>>>>> 9751ed29a732dfaf68e75437af50e1a5b59628ca:Apex_Survival_2D/World/world.tscn
+=======
+tile_set = ExtResource("4_8tbtn")
+format = 2
+>>>>>>> 9751ed29a732dfaf68e75437af50e1a5b59628ca:Apex_Survival_2D/World/wor3D43.tmp
 script = ExtResource("2_0rs0l")
 
 [node name="MainCharacter2D" parent="." instance=ExtResource("1_cbxbj")]
