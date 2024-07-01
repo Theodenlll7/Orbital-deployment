@@ -4,7 +4,7 @@ extends Node2D
 @export var height = 200
 @export var spawnArea_size = 20
 @export var randomObjectChance = 0.01
-@export var randomHouseChance = 0.0001
+@export var randomDungeon = 0.0001
 var center_offset = Vector2(-width / 2, -height / 2)
 const LAND_CAP = 0.2
 
@@ -23,11 +23,12 @@ var chests = []
 @export var path_cells = []
 @export var Tree_cells = []
 
-@export var Map_Edge = []
+@export var map_Edge_cells = []
+@export var random_Object_cells = []
+@export var dungeon_cells = []
 
 #Cell info
 @export var cell_size = Vector2(16, 16)
-
 
 # Noise
 var moisture = FastNoiseLite.new()
@@ -35,20 +36,8 @@ var temperature = FastNoiseLite.new()
 var altitude = FastNoiseLite.new()
 var noise = FastNoiseLite.new()
 
-# Tiles
-var tile_outline = Vector2(10, 4)
-
-var land_objects = [Vector2(7,0), Vector2(8,0), Vector2(9,0), Vector2(7,1), Vector2(6,3),
- Vector2(7,3),Vector2(8,3),Vector2(9,3),Vector2(8,4),Vector2(9,4),Vector2(7,6),Vector2(9,6),
-Vector2(10,6),
-]
-
-var water_objects = [Vector2(7,4), Vector2(11,3), Vector2(7,0), Vector2(12,6),Vector2(6,6)
-]
-
 #Objects
 var chest= preload("res://Interaction/Prefabs/chest.tscn")
-var dungeon= preload("res://Interaction/Prefabs/dungeon.tscn")
 
 func _ready():
 	randomize()
@@ -56,10 +45,9 @@ func _ready():
 	noise.seed = randi()
 	altitude.frequency = 0.01
 
-	generate_tiles()
-	generate_path()
+	generate_cells()
 
-func generate_tiles():
+func generate_cells():
 	var center_x = width / 2
 	var center_y = height / 2
 	for x in range(width):
@@ -70,10 +58,11 @@ func generate_tiles():
 			var alt = altitude.get_noise_2d(map_x, map_y)
 			var moist = moisture.get_noise_2d(map_x, map_y)
 			var temp = temperature.get_noise_2d(map_x, map_y)
+			
 			water_cells.append(Vector2i(map_x, map_y))
 			
 			if x == 0 or x == width-1 or y == 0 or y == height-1:
-				set_cell(0, Vector2i(map_x, map_y), 0, tile_outline)
+				map_Edge_cells.append(Vector2i(map_x, map_y))
 			else:
 				var distance_to_center = Vector2(map_x, map_y).length()
 				if distance_to_center <= spawnArea_size:
@@ -82,51 +71,17 @@ func generate_tiles():
 					if alt < LAND_CAP:
 						ground_cells.append(Vector2i(map_x, map_y))
 						if randf() < randomObjectChance:
-							placeRandomObject(land_objects,Vector2i(map_x, map_y))
+							random_Object_cells.append(Vector2i(map_x, map_y))
 						if between(temp, 0.2, 0.6):
 							dont_place_here.append(Vector2i(map_x, map_y))
 							Tree_cells.append(Vector2i(map_x, map_y))
-						elif randf()< randomHouseChance: 
-							placeHouse(Vector2(map_x, map_y))
+						elif randf()< randomDungeon: 
+							dungeon_cells.append(Vector2i(map_x, map_y))
 					#elif between(alt, 0.2, 0.25):
 						#shallow_water_cells.append(Vector2i(map_x, map_y))
 					#elif between(alt, 0.25, 0.8):
 						#if between(moist, 0, 0.4) and between(temp, 0.2, 0.6):
 							#dirt_cells.append(Vector2i(map_x, map_y))
-
-	
-	set_cells_terrain_connect(1, ground_cells, 0, 0)
-	set_cells_terrain_connect(2, Tree_cells, 0, 4)
-	set_cells_terrain_connect(0, water_cells, 0, 2)
-	
-	#set_cells_terrain_connect(1, dirt_cells, 0, 1)
-	#set_cells_terrain_connect(1, shallow_water_cells, 0, 3)
-	
-func place_mountain(center):
-	place_Object(1, center)
-	
-func placeHouse(location: Vector2):
-		# Instantiate the house scene
-	var dungeon_instance = dungeon.instantiate()
-	
-	# Position the house at the given location
-	dungeon_instance.position = tile_to_world(location) + cell_size / 2
-	
-	# Set the z_index or any other necessary properties
-	dungeon_instance.z_index = 1
-	
-	# Add the house to the current scene
-	add_child(dungeon_instance)
-	
-func generate_path():
-	path_cells.append(Vector2i(0,0))
-	path_cells.append(Vector2i(1,0))
-	path_cells.append(Vector2i(2,0))
-	path_cells.append(Vector2i(3,0))
-	path_cells.append(Vector2i(3,1))
-	path_cells.append(Vector2i(3,2))
-	path_cells.append(Vector2i(4,2))			
-	set_cells_terrain_path(2,path_cells,0,3)
 
 func spawn_chests():
 	if len(chests) >=max_chest_count:
@@ -162,16 +117,6 @@ func spawn_chests():
 	print("after spawn ", chests.size(), "chests:")
 
 
-func placeRandomObject(list, position):
-	var random_index = randi() % list.size()-1
-	
-	set_cell(2, position, 0, list[random_index])
-
-func placeObjects(list, positionOfObjects):
-	for position in positionOfObjects:
-		var random_index = randi() % list.size()-1
-		set_cell(0, position, 0, list[random_index])
-
 func between(val, start, end):
 	if start <=val and val <end:
 		return true
@@ -188,22 +133,3 @@ func _on_chest_picked_up(chest_instance):
 func tile_to_world(tile_pos: Vector2i) -> Vector2:
 	return Vector2(tile_pos.x * cell_size.x, tile_pos.y * cell_size.y)
 		
-func place_Object(ObjectID, TR_corner_pos):
-	var columns = 0
-	var rows = 0
-	var start = null
-	
-	match ObjectID:
-		1: #Mountain
-			start = Vector2(0,0)
-			columns = 11
-			rows = 13
-		2: 
-			start = Vector2(13,2)
-			columns = 7
-			rows = 12
-			
-	for x in range(columns):
-		for y in range(rows):
-			var tile_position = Vector2(start.x + x, start.y + y)
-			set_cell(2, Vector2i(TR_corner_pos.x + x, TR_corner_pos.y + y), 11, tile_position)  

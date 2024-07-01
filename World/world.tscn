@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://wsq75v2incod"]
+[gd_scene load_steps=9 format=3 uid="uid://wsq75v2incod"]
 
 [ext_resource type="PackedScene" uid="uid://ca6wvyqc106cg" path="res://Character/Movement/movement.tscn" id="1_cbxbj"]
 [ext_resource type="PackedScene" uid="uid://nx3qomksniva" path="res://MainHouse/main_house.tscn" id="2_h31li"]
@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://dgcxqingnrpqp" path="res://MapGeneration/MapGeneration.tscn" id="4_ci0vr"]
 [ext_resource type="Texture2D" uid="uid://c217n0824g1w6" path="res://Assets/Tiles/MasterSimple.png" id="5_r6ugs"]
 [ext_resource type="Script" path="res://MapGeneration/MapGeneration.gd" id="5_xrdx4"]
-[ext_resource type="PackedScene" uid="uid://hmlfraf7gi8r" path="res://Interaction/Prefabs/chest.tscn" id="7_f0rob"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qcbsb"]
 texture = ExtResource("5_r6ugs")
@@ -423,6 +422,3 @@ script = ExtResource("5_xrdx4")
 
 [node name="GameLoop" type="Node2D" parent="."]
 script = ExtResource("3_aqmb8")
-
-[node name="InteractionArea" parent="." instance=ExtResource("7_f0rob")]
-position = Vector2(-148, 97)

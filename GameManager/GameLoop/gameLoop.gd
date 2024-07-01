@@ -16,7 +16,7 @@ func _on_day_changed(day: int) -> void:
 	print("Day has changed to:", day)
 	# Add your game logic here
 	_update_game_state(day)
-
+	GenerateMapVariables.spawn_chests()
 
 func _update_game_state(day: int) -> void:
 	# Implement game state updates for the new day

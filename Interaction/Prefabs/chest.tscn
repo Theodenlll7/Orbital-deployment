@@ -8,6 +8,7 @@
 size = Vector2(68, 60)
 
 [node name="InteractionArea" type="Area2D"]
+scale = Vector2(0.438692, 0.464521)
 collision_layer = 0
 script = ExtResource("1_20ang")
 
