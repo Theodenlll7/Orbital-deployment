@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://hmlfraf7gi8r"]
+
+[ext_resource type="Script" path="res://Interaction/Interactionarea/Interactionarea.gd" id="1_20ang"]
+[ext_resource type="Texture2D" uid="uid://dw8ushp17jgx5" path="res://Assets/Sprites/treasure.png" id="2_tppna"]
+[ext_resource type="AudioStream" uid="uid://dqve6tvcfrdyr" path="res://Assets/Sound/ObjectSound/chest/short-success-sound-glockenspiel-treasure-video-game-6346.mp3" id="3_ev86h"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7y6fe"]
+size = Vector2(68, 60)
+
+[node name="InteractionArea" type="Area2D"]
+collision_layer = 0
+script = ExtResource("1_20ang")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.133899, 0.11699)
+texture = ExtResource("2_tppna")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 0)
+shape = SubResource("RectangleShape2D_7y6fe")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_ev86h")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.01
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

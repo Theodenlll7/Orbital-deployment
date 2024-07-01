@@ -17,6 +17,7 @@ func _on_day_changed(day: int) -> void:
 	# Add your game logic here
 	_update_game_state(day)
 
+
 func _update_game_state(day: int) -> void:
 	# Implement game state updates for the new day
 	print("Updating game state for day:", day)
