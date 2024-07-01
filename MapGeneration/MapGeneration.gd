@@ -15,7 +15,7 @@ var water_objects = [Vector2(7,4), Vector2(11,3), Vector2(7,0), Vector2(12,6),Ve
 ]
 
 #Objects that spawn at start (dont need respawn)
-var dungeon= preload("res://Interaction/Prefabs/dungeon.tscn")
+var dungeon= preload("res://Interaction/Prefabs/dungeonEntrance.tscn")
 
 func _ready():
 	generate_tiles()
@@ -42,7 +42,7 @@ func placeRandomObject(list, pos):
 	
 func placeDungeon(pos):
 	var dungeon_instance = dungeon.instantiate()
-	dungeon_instance.position = pos
+	dungeon_instance.position = map_to_local(pos)
 	dungeon_instance.z_index = 1
 	add_child(dungeon_instance)
 	

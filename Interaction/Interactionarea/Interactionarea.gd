@@ -8,8 +8,8 @@ class_name InteractionArea
 @export var dungeon_scene_path: String = "res://MapGeneration/Dungeon/dungeon.tscn" 
 
 var interact: Callable = func():
-	if type == "Dungeon":
-		print("Youve Entered A dungeon")
+	if type == "DungeonEntrance":
+		print("Youve Entered A dungeon: Go to Interaction/interactionarea.gd to make som functionallity for this")
 	else:
 		play_open_sound()
 		emit_signal("chest_picked_up", self)
