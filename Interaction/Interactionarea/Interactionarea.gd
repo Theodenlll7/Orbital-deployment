@@ -14,7 +14,7 @@ var interact: Callable = func():
 			print("Interaction/interactionarea.gd")
 			play_open_sound()
 			emit_signal("chest_picked_up", self)
-			destroy_after_delay()
+			queue_free()
 	
 signal chest_picked_up
 
@@ -25,13 +25,7 @@ func _on_body_exited(body):
 	InteractionManager.unregister_area(self)
 
 func play_open_sound():
-	var audio_player = $AudioStreamPlayer
-	if audio_player and audio_player.stream:
-		audio_player.play()
+	SoundEngine.playChestSound()
 
-func destroy_after_delay():
-	$Timer.start() 
-	
-func _on_timer_timeout():
-	queue_free()
+
 	

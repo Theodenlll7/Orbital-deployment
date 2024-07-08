@@ -20,6 +20,7 @@ config/icon="res://Character/Icons/icon.svg"
 GameVariables="*res://GameManager/GameVariables/GameVariables.gd"
 InteractionManager="*res://Interaction/InteractionManager.tscn"
 GenerateMapVariables="*res://MapGeneration/Map_functions/GenerateMapVariables.gd"
+SoundEngine="*res://Sound/Sound_Objects/sound_engine.tscn"
 
 [display]
 

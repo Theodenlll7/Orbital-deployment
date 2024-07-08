@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://2fllr567gi4s"]
+
+[ext_resource type="Script" path="res://Sound/Sound_Objects/sound_engine.gd" id="1_x0m2n"]
+[ext_resource type="AudioStream" uid="uid://dqve6tvcfrdyr" path="res://Assets/Sound/ObjectSound/chest/short-success-sound-glockenspiel-treasure-video-game-6346.mp3" id="2_mkdpv"]
+
+[node name="SoundEngine" type="Node2D"]
+script = ExtResource("1_x0m2n")
+
+[node name="chestSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_mkdpv")
