@@ -2,7 +2,6 @@
 
 [ext_resource type="Texture2D" uid="uid://by4oy0ioqtmkt" path="res://MainHouse/Icons/MainHouse.svg" id="1_teiua"]
 
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8b6yb"]
 size = Vector2(682.41, 270.769)
 

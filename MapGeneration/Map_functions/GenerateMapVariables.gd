@@ -124,7 +124,6 @@ func between(val, start, end):
 
 func _on_chest_picked_up(chest_instance):
 	var chest_location = chest_instance.get_meta("chest_location")
-	
 	for i in range(chests.size()):
 		if chests[i] == chest_location:
 			chests.remove_at(i)
