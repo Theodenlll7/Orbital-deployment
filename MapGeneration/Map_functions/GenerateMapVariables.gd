@@ -59,7 +59,7 @@ func generate_cells():
 			var moist = moisture.get_noise_2d(map_x, map_y)
 			var temp = temperature.get_noise_2d(map_x, map_y)
 			
-			water_cells.append(Vector2i(map_x, map_y))
+			
 			
 			if x == 0 or x == width-1 or y == 0 or y == height-1:
 				map_Edge_cells.append(Vector2i(map_x, map_y))
@@ -77,6 +77,8 @@ func generate_cells():
 							Tree_cells.append(Vector2i(map_x, map_y))
 						elif randf()< randomDungeon: 
 							dungeon_cells.append(Vector2i(map_x, map_y))
+					else: 
+						water_cells.append(Vector2i(map_x, map_y))
 					#elif between(alt, 0.2, 0.25):
 						#shallow_water_cells.append(Vector2i(map_x, map_y))
 					#elif between(alt, 0.25, 0.8):

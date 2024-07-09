@@ -28,6 +28,7 @@ scale = Vector2(3.20833, 2.85417)
 texture = ExtResource("2_iappx")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="Control" type="Control" parent="CanvasLayer"]
 layout_mode = 3

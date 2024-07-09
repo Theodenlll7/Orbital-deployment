@@ -21,9 +21,7 @@ func _ready():
 	generate_tiles()
 
 func generate_tiles():
-	set_cells_terrain_connect(1, GenerateMapVariables.ground_cells, 0, 0)
-	set_cells_terrain_connect(2, GenerateMapVariables.Tree_cells, 0, 4)
-	set_cells_terrain_connect(0, GenerateMapVariables.water_cells, 0, 2)
+	connectTiles(1)
 	
 	for position in GenerateMapVariables.map_Edge_cells:
 		set_cell(2, position, 0, tile_outline)
@@ -45,4 +43,9 @@ func placeDungeon(pos):
 	dungeon_instance.position = map_to_local(pos)
 	dungeon_instance.z_index = 1
 	add_child(dungeon_instance)
+
+func connectTiles(tileset):
+	set_cells_terrain_connect(1, GenerateMapVariables.ground_cells, tileset, 0)
+	set_cells_terrain_connect(2, GenerateMapVariables.Tree_cells, tileset, 3)
+	set_cells_terrain_connect(1, GenerateMapVariables.water_cells, tileset, 1)
 	
