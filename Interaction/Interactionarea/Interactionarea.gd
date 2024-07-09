@@ -6,6 +6,8 @@ class_name InteractionArea
 @export var type: String = "Chest"
 @export var dungeon_scene_path: String = "res://MapGeneration/Dungeon/dungeon.tscn" 
 
+var isMainUIUp = false
+
 var interact: Callable = func():
 	match type:
 		"DungeonEntrance":
@@ -15,7 +17,10 @@ var interact: Callable = func():
 			play_open_sound()
 			emit_signal("chest_picked_up", self)
 			queue_free()
-	
+		"MainHouse":
+			print("Interacted with main house")
+			handleMainHouseUI()
+			
 signal chest_picked_up
 
 func _on_body_entered(body):
@@ -23,9 +28,13 @@ func _on_body_entered(body):
 
 func _on_body_exited(body):
 	InteractionManager.unregister_area(self)
+	if type == "MainHouse":
+		var houseUI = $CanvasLayer
+		houseUI.hide()
 
 func play_open_sound():
 	SoundEngine.playChestSound()
 
-
-	
+func handleMainHouseUI():
+	var houseUI = $CanvasLayer
+	houseUI.show()

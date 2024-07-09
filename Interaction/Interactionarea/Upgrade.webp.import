@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://by4oy0ioqtmkt"
-path="res://.godot/imported/MainHouse.svg-2abc1f8251b7aa7f1f2adde5374f007b.ctex"
+uid="uid://ugjmko6u8al3"
+path="res://.godot/imported/Upgrade.webp-a1757a1e32a43560f46e7fdf92b47687.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://MainHouse/Icons/MainHouse.svg"
-dest_files=["res://.godot/imported/MainHouse.svg-2abc1f8251b7aa7f1f2adde5374f007b.ctex"]
+source_file="res://Interaction/Interactionarea/Upgrade.webp"
+dest_files=["res://.godot/imported/Upgrade.webp-a1757a1e32a43560f46e7fdf92b47687.ctex"]
 
 [params]
 
@@ -32,6 +32,3 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
-svg/scale=1.0
-editor/scale_with_editor_scale=false
-editor/convert_colors_with_editor_theme=false
