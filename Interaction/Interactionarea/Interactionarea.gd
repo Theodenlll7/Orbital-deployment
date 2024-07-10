@@ -20,6 +20,9 @@ var interact: Callable = func():
 		"MainHouse":
 			print("Interacted with main house")
 			handleMainHouseUI()
+		"Tree":
+			print("Interacted with tree")
+			handleTreeInteraction()
 			
 signal chest_picked_up
 
@@ -38,3 +41,6 @@ func play_open_sound():
 func handleMainHouseUI():
 	var houseUI = $CanvasLayer
 	houseUI.show()
+
+func handleTreeInteraction():
+	SoundEngine.playWoodCuttingSound()

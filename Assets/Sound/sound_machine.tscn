@@ -1,22 +1,22 @@
 [gd_scene load_steps=6 format=3 uid="uid://bc5ojm504qtkq"]
 
 [ext_resource type="Script" path="res://Sound/soundMachine.gd" id="1_0x077"]
-[ext_resource type="AudioStream" uid="uid://dvj7g6d8r1oak" path="res://Assets/Sound/nature-soundscape.ogg" id="2_1tsac"]
-[ext_resource type="AudioStream" uid="uid://btxwlma6rpkv4" path="res://Assets/Sound/creepy-soundscape.ogg" id="3_v2123"]
-[ext_resource type="AudioStream" uid="uid://bciu0hkw1ilxr" path="res://Assets/Sound/howlingwolf.ogg" id="4_6x7nq"]
-[ext_resource type="AudioStream" uid="uid://r5nn6j7sgryi" path="res://Assets/Sound/morningcrow.ogg" id="5_jn72i"]
+[ext_resource type="AudioStream" uid="uid://g023l6v1qbqa" path="res://Assets/Sound/atmospheric-soundscape-152493.mp3" id="2_6k3jf"]
+[ext_resource type="AudioStream" uid="uid://dm1bk7hk5egp1" path="res://Assets/Sound/nemoscape1-54660.mp3" id="3_u0ql6"]
+[ext_resource type="AudioStream" uid="uid://cw6vrxcskw1hu" path="res://Assets/Sound/long-howl-whale-and-monster-37270.mp3" id="4_sd861"]
+[ext_resource type="AudioStream" uid="uid://dlr23ljgexnqd" path="res://Assets/Sound/bird-sing-101293.mp3" id="5_fnpl7"]
 
 [node name="SoundMachine" type="Node"]
 script = ExtResource("1_0x077")
 
 [node name="DaySound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("2_1tsac")
+stream = ExtResource("2_6k3jf")
 
 [node name="NightSound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_v2123")
+stream = ExtResource("3_u0ql6")
 
 [node name="NightStart" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("4_6x7nq")
+stream = ExtResource("4_sd861")
 
 [node name="DayStart" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("5_jn72i")
+stream = ExtResource("5_fnpl7")

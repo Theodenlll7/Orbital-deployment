@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://2fllr567gi4s"]
+[gd_scene load_steps=5 format=3 uid="uid://2fllr567gi4s"]
 
 [ext_resource type="Script" path="res://Sound/Sound_Objects/sound_engine.gd" id="1_x0m2n"]
 [ext_resource type="AudioStream" uid="uid://dqve6tvcfrdyr" path="res://Assets/Sound/ObjectSound/chest/short-success-sound-glockenspiel-treasure-video-game-6346.mp3" id="2_mkdpv"]
 [ext_resource type="AudioStream" uid="uid://e0ylrar4voh0" path="res://Assets/Sound/ObjectSound/upgrade/power-up-sparkle-1-177983.mp3" id="3_qua08"]
+[ext_resource type="AudioStream" uid="uid://b4qmremc2tx0n" path="res://Assets/Sound/ObjectSound/Cutting/woodcutting-35994.mp3" id="4_p1dl1"]
 
 [node name="SoundEngine" type="Node2D"]
 script = ExtResource("1_x0m2n")
@@ -12,3 +13,6 @@ stream = ExtResource("2_mkdpv")
 
 [node name="upgradeSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_qua08")
+
+[node name="woodCuttingSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_p1dl1")

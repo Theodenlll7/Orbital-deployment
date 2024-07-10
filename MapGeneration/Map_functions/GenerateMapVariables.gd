@@ -3,7 +3,7 @@ extends Node2D
 @export var width = 200
 @export var height = 200
 @export var spawnArea_size = 20
-@export var randomObjectChance = 0.01
+@export var randomObjectChance = 0.001
 @export var randomDungeon = 0.0001
 var center_offset = Vector2(-width / 2, -height / 2)
 const LAND_CAP = 0.2
@@ -39,6 +39,7 @@ var noise = FastNoiseLite.new()
 #Objects
 var chest= preload("res://Interaction/Prefabs/chest.tscn")
 
+
 func _ready():
 	randomize()
 	altitude.seed = randi()
@@ -58,7 +59,7 @@ func generate_cells():
 			var alt = altitude.get_noise_2d(map_x, map_y)
 			var moist = moisture.get_noise_2d(map_x, map_y)
 			var temp = temperature.get_noise_2d(map_x, map_y)
-			
+			water_cells.append(Vector2i(map_x, map_y))
 			
 			
 			if x == 0 or x == width-1 or y == 0 or y == height-1:
@@ -70,15 +71,14 @@ func generate_cells():
 				else:
 					if alt < LAND_CAP:
 						ground_cells.append(Vector2i(map_x, map_y))
-						if randf() < randomObjectChance:
+						if randf() < randomObjectChance and !between(temp, 0.2, 0.6):
 							random_Object_cells.append(Vector2i(map_x, map_y))
 						if between(temp, 0.2, 0.6):
 							dont_place_here.append(Vector2i(map_x, map_y))
 							Tree_cells.append(Vector2i(map_x, map_y))
 						elif randf()< randomDungeon: 
 							dungeon_cells.append(Vector2i(map_x, map_y))
-					else: 
-						water_cells.append(Vector2i(map_x, map_y))
+
 					#elif between(alt, 0.2, 0.25):
 						#shallow_water_cells.append(Vector2i(map_x, map_y))
 					#elif between(alt, 0.25, 0.8):

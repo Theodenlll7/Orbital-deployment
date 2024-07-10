@@ -1,10 +1,10 @@
 [gd_scene load_steps=4 format=3 uid="uid://hmlfraf7gi8r"]
 
 [ext_resource type="Script" path="res://Interaction/Interactionarea/Interactionarea.gd" id="1_20ang"]
-[ext_resource type="Texture2D" uid="uid://dw8ushp17jgx5" path="res://Assets/Sprites/treasure.png" id="2_tppna"]
+[ext_resource type="Texture2D" uid="uid://oblvu1gqtphm" path="res://Assets/Sprites/chest.png" id="2_25nnr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7y6fe"]
-size = Vector2(68, 60)
+size = Vector2(98.0187, 73.1937)
 
 [node name="InteractionArea" type="Area2D"]
 scale = Vector2(0.438692, 0.464521)
@@ -12,11 +12,12 @@ collision_layer = 0
 script = ExtResource("1_20ang")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.133899, 0.11699)
-texture = ExtResource("2_tppna")
+position = Vector2(-1.90735e-06, 1.07638)
+scale = Vector2(0.27354, 0.228192)
+texture = ExtResource("2_25nnr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(1, 0)
+position = Vector2(-1.13975, 0)
 shape = SubResource("RectangleShape2D_7y6fe")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
