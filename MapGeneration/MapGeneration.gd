@@ -66,6 +66,6 @@ func place_tree(pos):
 	
 func connectTiles(tileset):
 	set_cells_terrain_connect(1, GenerateMapVariables.ground_cells, tileset, 0)
-	set_cells_terrain_connect(2, GenerateMapVariables.Tree_cells, tileset, 2)
+	set_cells_terrain_connect(2, GenerateMapVariables.Tree_cells, tileset, 3)
 	set_cells_terrain_connect(0, GenerateMapVariables.water_cells, tileset, 1)
 	

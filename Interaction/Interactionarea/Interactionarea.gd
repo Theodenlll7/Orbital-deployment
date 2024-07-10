@@ -6,6 +6,8 @@ class_name InteractionArea
 @export var type: String = "Chest"
 @export var dungeon_scene_path: String = "res://MapGeneration/Dungeon/dungeon.tscn" 
 
+var treeStatus = "Fresh"
+
 var isMainUIUp = false
 
 var interact: Callable = func():
@@ -43,4 +45,29 @@ func handleMainHouseUI():
 	houseUI.show()
 
 func handleTreeInteraction():
-	SoundEngine.playWoodCuttingSound()
+	if treeStatus == "Fresh":
+		change_sprite_image()
+		SoundEngine.playWoodCuttingSound()
+		treeStatus = "Cut"
+	else: 
+		print("Already cut that tree")
+
+
+func _on_timer_timeout():
+	change_sprite_image()
+	treeStatus = "Fresh"
+	print("treestatus: ", treeStatus)
+
+func change_sprite_image():
+	if treeStatus =="Fresh":
+		var sprite = $Sprite2D
+		var new_texture = load("res://Assets/Sprites/woddenstump.png")
+		sprite.texture = new_texture
+		sprite.scale = Vector2(0.1, 0.1)
+		$Timer.start(5.0)
+		
+	else:
+		var sprite = $Sprite2D
+		var new_texture = load("res://Assets/Sprites/tree1.png")
+		sprite.texture = new_texture
+		sprite.scale = Vector2(0.2, 0.2) 
