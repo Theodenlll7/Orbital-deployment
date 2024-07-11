@@ -20,6 +20,7 @@ var chests = []
 
 #Information_Arrays
 var dont_place_here = []
+var water_is_here = []
 
 #Generation_Arrays
 var ground_cells = []
@@ -30,6 +31,7 @@ var Tree_cells = []
 
 var map_Edge_cells = []
 var random_Object_cells = []
+var random_WaterObject_cells = []
 var random_tree_cells=[]
 var dungeon_cells = []
 
@@ -75,11 +77,11 @@ func generate_cells():
 					if alt < LAND_CAP:
 						ground_cells.append(Vector2i(map_x, map_y))
 						if randf() < randomObjectChance:
-							if checkToCloseToMapEdge(Vector2(map_x, map_y),10) or isPosCloseToObjects(Vector2(map_x, map_y)):
+							if checkToCloseToMapEdge(Vector2(map_x, map_y),10) or isPosCloseToObjects(Vector2(map_x, map_y), random_Object_cells) or isPosCloseToObjects(Vector2(map_x, map_y), water_is_here):
 								pass
 							else:
 								random_Object_cells.append(Vector2i(map_x, map_y))
-						if randf() < randomTreeChance and !between(temp, 0.2, 0.6):
+						if randf() < randomTreeChance and !between(temp, 0.2, 0.6) and !isPosCloseToObjects(Vector2(map_x, map_y), water_is_here):
 							random_tree_cells.append(Vector2i(map_x, map_y))
 						if between(temp, 0.2, 0.6):
 							dont_place_here.append(Vector2i(map_x, map_y))
@@ -89,15 +91,21 @@ func generate_cells():
 								dirt_cells.append(Vector2i(map_x, map_y))
 						elif randf()< randomDungeon: 
 							dungeon_cells.append(Vector2i(map_x, map_y))
-					#else:
+					else: 
+						water_is_here.append(Vector2i(map_x, map_y))		
+						if randf() < randomObjectChance:
+							if checkToCloseToMapEdge(Vector2(map_x, map_y),10) or isPosCloseToObjects(Vector2(map_x, map_y),random_WaterObject_cells)or isPosCloseToObjects(Vector2(map_x, map_y),ground_cells):
+								pass
+							else:
+								random_WaterObject_cells.append(Vector2i(map_x, map_y))
 						#water_cells.append(Vector2i(map_x, map_y))
 
 					#elif between(alt, 0.2, 0.25):
 						#shallow_water_cells.append(Vector2i(map_x, map_y))
 
-func isPosCloseToObjects(pos):
-	for position in random_Object_cells:
-		if Vector2(pos).distance_to(Vector2(position))<5:
+func isPosCloseToObjects(pos, list):
+	for position in list:
+		if Vector2(pos).distance_to(Vector2(position))<7:
 				return true
 	return false
 func checkToCloseToMapEdge(pos, maxDistance):

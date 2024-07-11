@@ -24,11 +24,17 @@ func generate_tiles():
 		var random_number = randi() % 16 + 1
 		place_large_object_from_tile(random_number, position)
 		
+	for position in GenerateMapVariables.random_WaterObject_cells:
+		var random_number = randi() % 5 + 1
+		place_large_water_object_from_tile(random_number, position)
+	
+		
 	for position in GenerateMapVariables.random_tree_cells:
 		place_tree(position)
 		
 	for position in GenerateMapVariables.dungeon_cells:
 		placeDungeon(position)
+
 		
 
 func placeRandomObject(list, pos):
@@ -63,6 +69,35 @@ func connectTiles(tileset):
 	set_cells_terrain_connect(0, GenerateMapVariables.water_cells, tileset, 1)
 	
 
+func place_large_water_object_from_tile(objectID, center):
+	var columns = 0
+	var rows = 0
+	var start = null
+
+	match objectID:
+		1:
+			start = Vector2(8, 4)
+			columns = 4
+			rows = 4
+		2:  
+			start = Vector2(10, 11)  
+			columns = 4 
+			rows = 3
+		3:
+			pass
+		4:
+			start = Vector2(4, 17)  
+			columns = 2
+			rows = 2
+		5:
+			start = Vector2(8, 17)  
+			columns = 2 
+			rows = 2
+	for x in range(columns):
+		for y in range(rows):
+			var tile_position = Vector2(start.x + x, start.y + y)
+			set_cell(2, Vector2i(center.x + x, center.y + y), 16, tile_position)
+	
 func place_large_object_from_tile(objectID, center):
 	var columns = 0
 	var rows = 0
