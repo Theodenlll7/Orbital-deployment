@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c217n0824g1w6"
-path="res://.godot/imported/MasterSimple.png-62bd880f757ed490ef0033202b1d7c4f.ctex"
+uid="uid://cyw8tqe1bc4ld"
+path="res://.godot/imported/waterfalls1.png-dc5f8aaf481bfd3f50e5a6fd4bc9ad6a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Tiles/MasterSimple.png"
-dest_files=["res://.godot/imported/MasterSimple.png-62bd880f757ed490ef0033202b1d7c4f.ctex"]
+source_file="res://Assets/Tiles/waterfalls1.png"
+dest_files=["res://.godot/imported/waterfalls1.png-dc5f8aaf481bfd3f50e5a6fd4bc9ad6a.ctex"]
 
 [params]
 
