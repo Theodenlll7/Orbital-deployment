@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://pq26bkjbc0q8"
-path="res://.godot/imported/dungeonEntrance.png-71484c664c5a52ed6e5470b2af090ac4.ctex"
+uid="uid://b7oqd2d23gooh"
+path="res://.godot/imported/tree4.png-6bb5e90df2ba177eda003be7544dcd13.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/dungeonEntrance.png"
-dest_files=["res://.godot/imported/dungeonEntrance.png-71484c664c5a52ed6e5470b2af090ac4.ctex"]
+source_file="res://Assets/Sprites/Objects/trees/tree4.png"
+dest_files=["res://.godot/imported/tree4.png-6bb5e90df2ba177eda003be7544dcd13.ctex"]
 
 [params]
 

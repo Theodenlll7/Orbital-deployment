@@ -52,22 +52,22 @@ func handleTreeInteraction():
 	else: 
 		print("Already cut that tree")
 
-
 func _on_timer_timeout():
 	change_sprite_image()
 	treeStatus = "Fresh"
 	print("treestatus: ", treeStatus)
+	$Timer.stop()
 
 func change_sprite_image():
 	if treeStatus =="Fresh":
 		var sprite = $Sprite2D
-		var new_texture = load("res://Assets/Sprites/woddenstump.png")
+		var new_texture = GenerateMapVariables.getRandomTreeSprite()
 		sprite.texture = new_texture
-		sprite.scale = Vector2(0.1, 0.1)
-		$Timer.start(5.0)
+		sprite.scale = Vector2(0.05, 0.05)
+		$Timer.start(GenerateMapVariables.treeRespawnTime)
 		
 	else:
 		var sprite = $Sprite2D
-		var new_texture = load("res://Assets/Sprites/tree1.png")
+		var new_texture = GenerateMapVariables.getRandomTreeSprite()
 		sprite.texture = new_texture
-		sprite.scale = Vector2(0.2, 0.2) 
+		sprite.scale = Vector2(GenerateMapVariables.treeScale, GenerateMapVariables.treeScale) 

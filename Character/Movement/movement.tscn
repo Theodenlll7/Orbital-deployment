@@ -23,6 +23,7 @@ position = Vector2(-2, -0.5)
 shape = SubResource("RectangleShape2D_4p80h")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(1.5, 1.5)
 
 [node name="Night_Day" type="Node2D" parent="."]
 script = ExtResource("3_bimrk")

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://tg116xuqp2tt"
-path="res://.godot/imported/woddenstump.png-5d25ec430ad1247e31291a732a1ab73d.ctex"
+uid="uid://okswxneyx3lc"
+path="res://.godot/imported/tree7.png-3606dd4d9d5eab034380ba9044fa179e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/woddenstump.png"
-dest_files=["res://.godot/imported/woddenstump.png-5d25ec430ad1247e31291a732a1ab73d.ctex"]
+source_file="res://Assets/Sprites/Objects/trees/tree7.png"
+dest_files=["res://.godot/imported/tree7.png-3606dd4d9d5eab034380ba9044fa179e.ctex"]
 
 [params]
 

@@ -3,8 +3,13 @@ extends Node2D
 @export var width = 200
 @export var height = 200
 @export var spawnArea_size = 20
-@export var randomObjectChance = 0.001
+@export var randomObjectChance = 0.005
+@export var randomTreeChance = 0.001
 @export var randomDungeon = 0.0001
+
+@export var treeScale = 1.2
+@export var treeRespawnTime = 25
+
 var center_offset = Vector2(-width / 2, -height / 2)
 const LAND_CAP = 0.2
 
@@ -25,6 +30,7 @@ var Tree_cells = []
 
 var map_Edge_cells = []
 var random_Object_cells = []
+var random_tree_cells=[]
 var dungeon_cells = []
 
 #Cell info
@@ -45,12 +51,9 @@ func _ready():
 	altitude.seed = randi()
 	noise.seed = randi()
 	altitude.frequency = 0.01
-
 	generate_cells()
 
 func generate_cells():
-	var center_x = width / 2
-	var center_y = height / 2
 	for x in range(width):
 		for y in range(height):
 			var map_x = center_offset.x + x
@@ -71,8 +74,13 @@ func generate_cells():
 				else:
 					if alt < LAND_CAP:
 						ground_cells.append(Vector2i(map_x, map_y))
-						if randf() < randomObjectChance and !between(temp, 0.2, 0.6):
-							random_Object_cells.append(Vector2i(map_x, map_y))
+						if randf() < randomObjectChance:
+							if checkToCloseToMapEdge(Vector2(map_x, map_y),10) or isPosCloseToObjects(Vector2(map_x, map_y)):
+								pass
+							else:
+								random_Object_cells.append(Vector2i(map_x, map_y))
+						if randf() < randomTreeChance and !between(temp, 0.2, 0.6):
+							random_tree_cells.append(Vector2i(map_x, map_y))
 						if between(temp, 0.2, 0.6):
 							dont_place_here.append(Vector2i(map_x, map_y))
 							Tree_cells.append(Vector2i(map_x, map_y))
@@ -87,6 +95,29 @@ func generate_cells():
 					#elif between(alt, 0.2, 0.25):
 						#shallow_water_cells.append(Vector2i(map_x, map_y))
 
+func isPosCloseToObjects(pos):
+	for position in random_Object_cells:
+		if Vector2(pos).distance_to(Vector2(position))<5:
+				return true
+	return false
+func checkToCloseToMapEdge(pos, maxDistance):
+	var Min = -width / 2
+	var Max = width / 2
+	
+	var y_vectorMax = Vector2(0,Max)
+	var y_vectorMin =  Vector2(0,Min)
+	
+	var x_vectorMax = Vector2(Max,0)
+	var x_vectorMin =  Vector2(Min,0)
+	
+	var tempXVec = Vector2(pos.x,0)
+	var tempYVec = Vector2(0,pos.y)
+	
+	if tempXVec.distance_to(x_vectorMax)<maxDistance or tempXVec.distance_to(x_vectorMin)<maxDistance:
+		return true
+	if tempYVec.distance_to(y_vectorMax)<maxDistance or tempXVec.distance_to(y_vectorMin)<maxDistance:
+		return true
+	return false
 
 func spawn_chests():
 	if len(chests) >=max_chest_count:
@@ -136,4 +167,19 @@ func _on_chest_picked_up(chest_instance):
 			
 func tile_to_world(tile_pos: Vector2i) -> Vector2:
 	return Vector2(tile_pos.x * cell_size.x, tile_pos.y * cell_size.y)
-		
+
+func getRandomTreeSprite():
+	var treeSprites = [
+		"res://Assets/Sprites//Objects/trees/tree1.png",
+		"res://Assets/Sprites//Objects/trees/tree2.png",
+		"res://Assets/Sprites//Objects/trees/tree3.png",
+		"res://Assets/Sprites//Objects/trees/tree4.png",
+		"res://Assets/Sprites//Objects/trees/tree5.png",
+		"res://Assets/Sprites//Objects/trees/tree6.png",
+		"res://Assets/Sprites//Objects/trees/tree7.png",
+		"res://Assets/Sprites//Objects/trees/tree8.png",
+	]
+	var randomIndex = randi() % treeSprites.size()
+	var newTexture = load(treeSprites[randomIndex])
+	return newTexture
+			

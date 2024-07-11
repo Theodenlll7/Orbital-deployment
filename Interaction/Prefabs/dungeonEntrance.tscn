@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://cs3bfvpr2cj5a"]
 
 [ext_resource type="Script" path="res://Interaction/Interactionarea/Interactionarea.gd" id="1_anp3x"]
-[ext_resource type="Texture2D" uid="uid://pq26bkjbc0q8" path="res://Assets/Sprites/dungeonEntrance.png" id="2_wsybh"]
+[ext_resource type="Texture2D" uid="uid://ck6c60j6brtrp" path="res://Assets/Sprites/Objects/Tree_idol_human.png" id="2_82uoe"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y6588"]
 size = Vector2(93, 104)
@@ -13,9 +13,9 @@ action_name = "Enter"
 type = "DungeonEntrance"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-2, 0)
-scale = Vector2(0.184, 0.201789)
-texture = ExtResource("2_wsybh")
+position = Vector2(-3, -0.500004)
+scale = Vector2(0.734375, 0.804687)
+texture = ExtResource("2_82uoe")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-3.5, 0)
