@@ -5,7 +5,10 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ifh57"]
 
-[node name="BasicProjectile" type="Area2D"]
+[node name="BasicProjectile" type="RigidBody2D"]
+collision_layer = 4
+collision_mask = 2
+contact_monitor = true
 script = ExtResource("1_xdkvq")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
