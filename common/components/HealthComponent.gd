@@ -38,12 +38,14 @@ func is_dead() -> bool:
 var floating_text = preload("res://common/effects/floating text/floating_text.tscn")
 
 
+#TODO Extract functions to another component?
 func _ready():
 	connect("health_changed", _on_health_changed)
+	connect("died", Callable(get_parent(), "queue_free"))
 
 
 func _on_health_changed(amount: int):
 	var text = floating_text.instantiate()
 	text.amount = amount
-	print("placing text")
-	get_parent().add_child(text)
+	text.position = get_parent().position
+	get_tree().root.add_child(text)

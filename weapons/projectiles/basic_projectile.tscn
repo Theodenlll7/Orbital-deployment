@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://b1ahksg20mxej"]
 
 [ext_resource type="Script" path="res://weapons/projectiles/projectile_2d.gd" id="1_xdkvq"]
-[ext_resource type="Texture2D" uid="uid://ccoe78uc8jt31" path="res://Character/Icons/icon.svg" id="2_60xph"]
+[ext_resource type="Texture2D" uid="uid://ccoe78uc8jt31" path="res://Assets/Icons/icon.svg" id="2_60xph"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ifh57"]
 

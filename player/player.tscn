@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://6vt8l263l0o7"]
+[gd_scene load_steps=6 format=3 uid="uid://6vt8l263l0o7"]
 
 [ext_resource type="Script" path="res://player/scripts/player_movment_2d.gd" id="1_gaiyc"]
-[ext_resource type="Texture2D" uid="uid://ccoe78uc8jt31" path="res://Character/Icons/icon.svg" id="2_k55cd"]
+[ext_resource type="Texture2D" uid="uid://ccoe78uc8jt31" path="res://Assets/Icons/icon.svg" id="2_k55cd"]
 [ext_resource type="Script" path="res://common/components/HealthComponent.gd" id="3_rmoxv"]
+[ext_resource type="PackedScene" uid="uid://di567uabmlw1a" path="res://weapons/pistol_example/pistol_example.tscn" id="4_auag0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f3mtr"]
 
@@ -20,3 +21,15 @@ texture = ExtResource("2_k55cd")
 
 [node name="HealthComponent" type="Node" parent="."]
 script = ExtResource("3_rmoxv")
+max_health = null
+current_health = null
+
+[node name="PistolExample" parent="." instance=ExtResource("4_auag0")]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+scale = Vector2(0.62216, 1.02895)
+limit_left = -100000
+limit_top = -100000
+limit_right = 100000
+limit_bottom = 100000
+position_smoothing_enabled = true

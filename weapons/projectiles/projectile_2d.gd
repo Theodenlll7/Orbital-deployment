@@ -2,6 +2,7 @@ extends RigidBody2D
 class_name Projectile_2D
 
 @export var impulse: float = 500.0
+@export var damage: int = 10
 @export var lifetime: float = 2.0
 
 var direction: Vector2
@@ -19,8 +20,6 @@ func _ready() -> void:
 func _on_body_entered(body):
 	# This get dose not work need to read the documentation for clarity
 	var hp = body.get_node("HealthComponent") as HealthComponent
-	print(hp)
 	if hp:
-		hp.damage(10)
-		print(hp.current_health)
+		hp.damage(damage)
 	queue_free()

@@ -1,6 +1,5 @@
-[gd_scene load_steps=19 format=3 uid="uid://wsq75v2incod"]
+[gd_scene load_steps=21 format=3 uid="uid://wsq75v2incod"]
 
-[ext_resource type="PackedScene" uid="uid://ca6wvyqc106cg" path="res://Character/Movement/movement.tscn" id="1_cbxbj"]
 [ext_resource type="Script" path="res://GameManager/GameLoop/gameLoop.gd" id="3_aqmb8"]
 [ext_resource type="PackedScene" uid="uid://dgcxqingnrpqp" path="res://MapGeneration/MapGeneration.tscn" id="4_ci0vr"]
 [ext_resource type="Texture2D" uid="uid://bem86uv4m7q5l" path="res://Assets/Sprites/Objects/Assets_source.png" id="4_iwuf5"]
@@ -11,6 +10,9 @@
 [ext_resource type="PackedScene" uid="uid://dtyfw3eetyfc" path="res://MainHouse/MainHouse.tscn" id="6_js1dw"]
 [ext_resource type="Texture2D" uid="uid://dn84s1b5icr65" path="res://Assets/Sprites/Objects/Rocks_source_texture_shadow.png" id="6_kgt1x"]
 [ext_resource type="Texture2D" uid="uid://c03den4ayjr17" path="res://Assets/Tiles/terrain tiles.png" id="8_o4o7f"]
+[ext_resource type="PackedScene" uid="uid://6vt8l263l0o7" path="res://player/player.tscn" id="11_we5f1"]
+[ext_resource type="PackedScene" uid="uid://bwqebjpl0otwb" path="res://UI/night_day.tscn" id="12_om3kp"]
+[ext_resource type="PackedScene" uid="uid://b88le3f50loho" path="res://enemies/target_dummy.tscn" id="13_waqpc"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cw1ff"]
 texture = ExtResource("4_xjlxn")
@@ -2478,10 +2480,32 @@ layer_1/tile_data = PackedInt32Array()
 layer_2/tile_data = PackedInt32Array()
 script = ExtResource("5_xrdx4")
 
-[node name="MainCharacter2D" parent="." groups=["player"] instance=ExtResource("1_cbxbj")]
-
 [node name="GameLoop" type="Node2D" parent="."]
 script = ExtResource("3_aqmb8")
 
-[node name="InteractionArea" parent="." instance=ExtResource("6_js1dw")]
+[node name="Ship" parent="." instance=ExtResource("6_js1dw")]
 position = Vector2(0, -87)
+
+[node name="Player" parent="." instance=ExtResource("11_we5f1")]
+
+[node name="Night_Day" parent="Player" instance=ExtResource("12_om3kp")]
+
+[node name="TargetDummy" parent="." instance=ExtResource("13_waqpc")]
+position = Vector2(-165, 58)
+scale = Vector2(2, 2)
+
+[node name="TargetDummy2" parent="." instance=ExtResource("13_waqpc")]
+position = Vector2(-171, -54)
+scale = Vector2(2, 2)
+
+[node name="TargetDummy3" parent="." instance=ExtResource("13_waqpc")]
+position = Vector2(-63, 105)
+scale = Vector2(2, 2)
+
+[node name="TargetDummy4" parent="." instance=ExtResource("13_waqpc")]
+position = Vector2(390, 34)
+scale = Vector2(2, 2)
+
+[node name="TargetDummy5" parent="." instance=ExtResource("13_waqpc")]
+position = Vector2(346, -189)
+scale = Vector2(2, 2)
