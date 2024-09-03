@@ -28,19 +28,16 @@ func generate_tiles():
 		var random_number = randi() % 5 + 1
 		place_large_water_object_from_tile(random_number, position)
 	
-		
-	for position in GenerateMapVariables.random_tree_cells:
-		place_tree(position)
+	#for position in GenerateMapVariables.random_tree_cells:
+		#place_tree(position)
 		
 	for position in GenerateMapVariables.dungeon_cells:
 		placeDungeon(position)
 
-		
 
 func placeRandomObject(list, pos):
 	var random_index = randi() % list.size()
 	set_cell(2, pos, 0, list[random_index])
-
 
 
 func placeDungeon(pos):
@@ -68,7 +65,10 @@ func connectTiles(tileset):
 	set_cells_terrain_connect(1, GenerateMapVariables.Tree_cells, tileset, 2)
 	set_cells_terrain_connect(0, GenerateMapVariables.water_cells, tileset, 1)
 	
-
+	#Testa WIlles här
+	#set_cells_terrain_connect(1, GenerateMapVariables.ground_cells, tileset,5)
+	#set_cells_terrain_connect(1, GenerateMapVariables.Tree_cells, tileset, 6)
+	
 func place_large_water_object_from_tile(objectID, center):
 	var columns = 0
 	var rows = 0
