@@ -28,8 +28,13 @@ current_health = null
 
 [node name="Camera2D" type="Camera2D" parent="."]
 scale = Vector2(0.62216, 1.02895)
+zoom = Vector2(2.3, 2.3)
 limit_left = -100000
 limit_top = -100000
 limit_right = 100000
 limit_bottom = 100000
+limit_smoothed = true
 position_smoothing_enabled = true
+position_smoothing_speed = 10.0
+drag_horizontal_enabled = true
+drag_vertical_enabled = true

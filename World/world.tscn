@@ -2480,20 +2480,8 @@ sources/16 = SubResource("TileSetAtlasSource_f85ho")
 
 [node name="MapGeneration" parent="." instance=ExtResource("4_ci0vr")]
 tile_set = SubResource("TileSet_6altl")
-layer_1/name = ""
-layer_1/enabled = true
-layer_1/modulate = Color(1, 1, 1, 1)
-layer_1/y_sort_enabled = false
-layer_1/y_sort_origin = 0
-layer_1/z_index = 0
-layer_1/tile_data = PackedInt32Array()
-layer_2/name = ""
-layer_2/enabled = true
-layer_2/modulate = Color(1, 1, 1, 1)
-layer_2/y_sort_enabled = false
-layer_2/y_sort_origin = 0
-layer_2/z_index = 0
-layer_2/tile_data = PackedInt32Array()
+layer_1/name = "Layer1"
+layer_2/name = "Layer2"
 script = ExtResource("5_xrdx4")
 
 [node name="GameLoop" type="Node2D" parent="."]
