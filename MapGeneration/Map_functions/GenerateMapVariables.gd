@@ -15,7 +15,7 @@ const LAND_CAP = 0.2
 
 
 #Variables for spawning
-var max_chest_count = 50
+var max_chest_count = 10
 var chests = []
 
 #Information_Arrays
@@ -34,6 +34,11 @@ var random_Object_cells = []
 var random_WaterObject_cells = []
 var random_tree_cells=[]
 var dungeon_cells = []
+
+var pod_positions = []
+@export var numberOfPods = 3
+@export var podDistanceBetween = 30
+
 
 #Cell info
 var cell_size = Vector2(16, 16)
@@ -54,6 +59,7 @@ func _ready():
 	noise.seed = randi()
 	altitude.frequency = 0.01
 	generate_cells()
+	Get_pod_locations()
 
 func generate_cells():
 	for x in range(width):
@@ -127,13 +133,39 @@ func checkToCloseToMapEdge(pos, maxDistance):
 		return true
 	return false
 
+func Get_pod_locations():
+	var podCount = 0
+	var attempts = 0
+	
+	while podCount < numberOfPods and attempts < 1000:
+		attempts +=1
+		var rand_index = randi() % ground_cells.size()
+		var pod_location = ground_cells[rand_index]
+		var can_place = true
+		
+		for existing_pods in pod_positions:
+			if Vector2(pod_location).distance_to(Vector2(existing_pods))<podDistanceBetween:
+				can_place = false
+				break
+		for pos in dont_place_here:
+			if pod_location == pos:
+				can_place = false
+				break
+		if can_place:
+			pod_positions.append(pod_location)
+			podCount+=1
+		
+		print(pod_positions)
+			
+	print("after spawn ", chests.size(), "chests:")
 func spawn_chests():
 	if len(chests) >=max_chest_count:
 		return
-	print("called spawn_chest, with ", chests.size(), "chests:")
+
 	var chest_distance = 5
 	var chest_count = chests.size()
 	var attempts = 0
+
 
 	while chest_count < max_chest_count and attempts < 1000:
 		attempts += 1
