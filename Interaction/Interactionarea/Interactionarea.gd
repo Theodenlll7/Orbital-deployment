@@ -25,6 +25,8 @@ var interact: Callable = func():
 		"Tree":
 			print("Interacted with tree")
 			handleTreeInteraction()
+		"pod":
+			print("Interacted with a pod")
 			
 signal chest_picked_up
 

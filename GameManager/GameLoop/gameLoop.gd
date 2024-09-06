@@ -24,6 +24,9 @@ func _update_game_state(day: int) -> void:
 	# Example: Increase player stats, reset daily quests, etc.
 	_update_player_stats()
 	_reset_daily_quests()
+	
+	if day < 7:
+		updatePods(day)
 
 func _update_player_stats() -> void:
 	print("Updating player stats for the new day")
@@ -31,4 +34,12 @@ func _update_player_stats() -> void:
 
 func _reset_daily_quests() -> void:
 	print("Resetting daily quests for the new day")
-	# Implement daily quest reset logic here
+
+func updatePods(day):
+	match day:
+		2:
+			GenerateMapVariables.spawnPod(0)
+		4:
+			GenerateMapVariables.spawnPod(1)
+		6:
+			GenerateMapVariables.spawnPod(2)

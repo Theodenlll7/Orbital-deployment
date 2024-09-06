@@ -38,6 +38,7 @@ var dungeon_cells = []
 var pod_positions = []
 @export var numberOfPods = 3
 @export var podDistanceBetween = 30
+var podCount = numberOfPods-1
 
 
 #Cell info
@@ -51,7 +52,7 @@ var noise = FastNoiseLite.new()
 
 #Objects
 var chest= preload("res://Interaction/Prefabs/chest.tscn")
-
+var weaponPod = preload("res://Interaction/Prefabs/pods/weaponPod.tscn")
 
 func _ready():
 	randomize()
@@ -114,6 +115,7 @@ func isPosCloseToObjects(pos, list):
 		if Vector2(pos).distance_to(Vector2(position))<7:
 				return true
 	return false
+	
 func checkToCloseToMapEdge(pos, maxDistance):
 	var Min = -width / 2
 	var Max = width / 2
@@ -158,6 +160,7 @@ func Get_pod_locations():
 		print(pod_positions)
 			
 	print("after spawn ", chests.size(), "chests:")
+	
 func spawn_chests():
 	if len(chests) >=max_chest_count:
 		return
@@ -179,6 +182,10 @@ func spawn_chests():
 				break
 		for pos in dont_place_here:
 			if chest_location == pos:
+				can_place = false
+				break
+		for pos in pod_positions:
+			if Vector2(chest_location).distance_to(Vector2(pos))<chest_distance:
 				can_place = false
 				break
 		if can_place:
@@ -222,4 +229,9 @@ func getRandomTreeSprite():
 	var randomIndex = randi() % treeSprites.size()
 	var newTexture = load(treeSprites[randomIndex])
 	return newTexture
-			
+
+func spawnPod(type):
+	var weponPodInstance = weaponPod.instantiate()
+	weponPodInstance.position=tile_to_world(pod_positions[type])
+	weponPodInstance.z_index = 1
+	add_child(weponPodInstance)
