@@ -19,7 +19,7 @@ func _ready() -> void:
 
 func _on_body_entered(body):
 	# This get dose not work need to read the documentation for clarity
-	var hp = body.get_node("HealthComponent") as HealthComponent
+	var hp = body.get_node_or_null("HealthComponent") as HealthComponent
 	if hp:
 		hp.damage(damage)
 	queue_free()

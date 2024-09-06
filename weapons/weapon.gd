@@ -3,11 +3,13 @@ class_name Weapon
 
 enum AttackMode {
 	SINGLE,  ## Attacks ones per button press
-	AUTOMATIC,  ## Attacks continulsy with button press
+	AUTOMATIC,  ## Attacks continulsy while button is pressed
 }
 
 @export var attackMode: AttackMode = AttackMode.SINGLE
-@export var attackRate: float = 0.2  ## Time between shots in seconds
+
+## Time between shots in seconds
+@export var attackRate: float = 0.2
 
 var canAttack: bool = true
 var cooldown: float = 0
@@ -18,20 +20,20 @@ func _process(delta) -> void:
 		cooldown -= delta
 		if cooldown <= 0:
 			canAttack = true
-			cooldown = 0
 
-	if Input.is_action_pressed("primary_action"):
+
+func _input(event):
+	if (
+		canAttack
+		and (
+			(attackMode == AttackMode.AUTOMATIC and Input.is_action_pressed("primary_action"))
+			or (attackMode == AttackMode.SINGLE and Input.is_action_just_pressed("primary_action"))
+		)
+	):
 		attack()
-
-
-func attack():
-	if canAttack:
-		weapon_attack()
 		cooldown = attackRate
-		if attackMode == AttackMode.SINGLE:
-			Input.action_release("primary_action")
-			canAttack = false
+		canAttack = false
 
 
-func weapon_attack() -> void:
-	pass
+func attack() -> void:
+	push_error("The 'attack' function must be overridden in a subclass")

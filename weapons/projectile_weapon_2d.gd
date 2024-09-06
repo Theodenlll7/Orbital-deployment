@@ -5,7 +5,7 @@ class_name Projectile_Weapon_2D
 @export var muzzle: Marker2D = null
 
 
-func weapon_attack() -> void:
+func attack() -> void:
 	if not projectile_scene:
 		return
 
