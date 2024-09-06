@@ -3,12 +3,12 @@
 importer="mp3"
 type="AudioStreamMP3"
 uid="uid://e0ylrar4voh0"
-path="res://.godot/imported/power-up-sparkle-1-177983.mp3-180d15699a0149dde98c9e76d04aac39.mp3str"
+path="res://.godot/imported/power-up-sparkle-1-177983.mp3-dbc6134242aaedf7387955ef54314662.mp3str"
 
 [deps]
 
-source_file="res://Assets/Sound/ObjectSound/upgrade/power-up-sparkle-1-177983.mp3"
-dest_files=["res://.godot/imported/power-up-sparkle-1-177983.mp3-180d15699a0149dde98c9e76d04aac39.mp3str"]
+source_file="res://assets/Sound/ObjectSound/upgrade/power-up-sparkle-1-177983.mp3"
+dest_files=["res://.godot/imported/power-up-sparkle-1-177983.mp3-dbc6134242aaedf7387955ef54314662.mp3str"]
 
 [params]
 

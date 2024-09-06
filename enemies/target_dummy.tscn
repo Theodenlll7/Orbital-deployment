@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://b88le3f50loho"]
 
-[ext_resource type="Texture2D" uid="uid://bxdm7unavdbqa" path="res://Assets/Alien.png" id="1_xjli0"]
+[ext_resource type="Texture2D" uid="uid://bxdm7unavdbqa" path="res://assets/Alien.png" id="1_xjli0"]
 [ext_resource type="Script" path="res://common/components/HealthComponent.gd" id="2_um0ha"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lx1um"]

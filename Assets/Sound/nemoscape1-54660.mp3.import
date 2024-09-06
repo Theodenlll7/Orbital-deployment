@@ -3,12 +3,12 @@
 importer="mp3"
 type="AudioStreamMP3"
 uid="uid://dm1bk7hk5egp1"
-path="res://.godot/imported/nemoscape1-54660.mp3-d2c6464452454953c28a03bbe9a6c364.mp3str"
+path="res://.godot/imported/nemoscape1-54660.mp3-7068655aece1dc388019aa42463fafea.mp3str"
 
 [deps]
 
-source_file="res://Assets/Sound/nemoscape1-54660.mp3"
-dest_files=["res://.godot/imported/nemoscape1-54660.mp3-d2c6464452454953c28a03bbe9a6c364.mp3str"]
+source_file="res://assets/Sound/nemoscape1-54660.mp3"
+dest_files=["res://.godot/imported/nemoscape1-54660.mp3-7068655aece1dc388019aa42463fafea.mp3str"]
 
 [params]
 

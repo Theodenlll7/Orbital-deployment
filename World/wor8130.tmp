@@ -1,7 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://wsq75v2incod"]
-
-[ext_resource type="PackedScene" uid="uid://ca6wvyqc106cg" path="res://Character/Movement/movement.tscn" id="1_cbxbj"]
-
-[node name="World" type="Node2D"]
-
-[node name="MainCharacter2D" parent="." instance=ExtResource("1_cbxbj")]

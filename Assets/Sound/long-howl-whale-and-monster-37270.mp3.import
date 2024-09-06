@@ -3,12 +3,12 @@
 importer="mp3"
 type="AudioStreamMP3"
 uid="uid://cw6vrxcskw1hu"
-path="res://.godot/imported/long-howl-whale-and-monster-37270.mp3-4de52cebfe6fdee21263e01759526a52.mp3str"
+path="res://.godot/imported/long-howl-whale-and-monster-37270.mp3-07b0f011430f0ce3f2b1f6e22923f0f4.mp3str"
 
 [deps]
 
-source_file="res://Assets/Sound/long-howl-whale-and-monster-37270.mp3"
-dest_files=["res://.godot/imported/long-howl-whale-and-monster-37270.mp3-4de52cebfe6fdee21263e01759526a52.mp3str"]
+source_file="res://assets/Sound/long-howl-whale-and-monster-37270.mp3"
+dest_files=["res://.godot/imported/long-howl-whale-and-monster-37270.mp3-07b0f011430f0ce3f2b1f6e22923f0f4.mp3str"]
 
 [params]
 

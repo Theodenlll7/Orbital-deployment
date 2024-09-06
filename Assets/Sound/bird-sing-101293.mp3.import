@@ -3,12 +3,12 @@
 importer="mp3"
 type="AudioStreamMP3"
 uid="uid://dlr23ljgexnqd"
-path="res://.godot/imported/bird-sing-101293.mp3-a219bf14162645b7ea3827eed19ff319.mp3str"
+path="res://.godot/imported/bird-sing-101293.mp3-47d345b30b836f5bb93721db5367b2d2.mp3str"
 
 [deps]
 
-source_file="res://Assets/Sound/bird-sing-101293.mp3"
-dest_files=["res://.godot/imported/bird-sing-101293.mp3-a219bf14162645b7ea3827eed19ff319.mp3str"]
+source_file="res://assets/Sound/bird-sing-101293.mp3"
+dest_files=["res://.godot/imported/bird-sing-101293.mp3-47d345b30b836f5bb93721db5367b2d2.mp3str"]
 
 [params]
 

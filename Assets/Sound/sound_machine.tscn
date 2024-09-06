@@ -1,10 +1,10 @@
 [gd_scene load_steps=6 format=3 uid="uid://bc5ojm504qtkq"]
 
-[ext_resource type="Script" path="res://Sound/soundMachine.gd" id="1_0x077"]
-[ext_resource type="AudioStream" uid="uid://g023l6v1qbqa" path="res://Assets/Sound/atmospheric-soundscape-152493.mp3" id="2_6k3jf"]
-[ext_resource type="AudioStream" uid="uid://dm1bk7hk5egp1" path="res://Assets/Sound/nemoscape1-54660.mp3" id="3_u0ql6"]
-[ext_resource type="AudioStream" uid="uid://cw6vrxcskw1hu" path="res://Assets/Sound/long-howl-whale-and-monster-37270.mp3" id="4_sd861"]
-[ext_resource type="AudioStream" uid="uid://dlr23ljgexnqd" path="res://Assets/Sound/bird-sing-101293.mp3" id="5_fnpl7"]
+[ext_resource type="Script" path="res://game_manager/sound_engine/script/soundMachine.gd" id="1_0x077"]
+[ext_resource type="AudioStream" uid="uid://g023l6v1qbqa" path="res://assets/Sound/atmospheric-soundscape-152493.mp3" id="2_6k3jf"]
+[ext_resource type="AudioStream" uid="uid://dm1bk7hk5egp1" path="res://assets/Sound/nemoscape1-54660.mp3" id="3_u0ql6"]
+[ext_resource type="AudioStream" uid="uid://cw6vrxcskw1hu" path="res://assets/Sound/long-howl-whale-and-monster-37270.mp3" id="4_sd861"]
+[ext_resource type="AudioStream" uid="uid://dlr23ljgexnqd" path="res://assets/Sound/bird-sing-101293.mp3" id="5_fnpl7"]
 
 [node name="SoundMachine" type="Node"]
 script = ExtResource("1_0x077")

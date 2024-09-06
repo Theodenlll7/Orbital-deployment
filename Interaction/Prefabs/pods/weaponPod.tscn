@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://fwtaakyb0exx"]
 
-[ext_resource type="Script" path="res://Interaction/Interactionarea/Interactionarea.gd" id="1_71ma8"]
-[ext_resource type="Texture2D" uid="uid://ccoe78uc8jt31" path="res://Assets/Icons/icon.svg" id="2_tam8g"]
+[ext_resource type="Script" path="res://interaction/Interactionarea/Interactionarea.gd" id="1_71ma8"]
+[ext_resource type="Texture2D" uid="uid://ccoe78uc8jt31" path="res://assets/Icons/icon.svg" id="2_tam8g"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7y6fe"]
 size = Vector2(98.0187, 73.1937)

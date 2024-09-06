@@ -3,12 +3,12 @@
 importer="mp3"
 type="AudioStreamMP3"
 uid="uid://g023l6v1qbqa"
-path="res://.godot/imported/atmospheric-soundscape-152493.mp3-683dd0a17b26379d5916a02cd2a71875.mp3str"
+path="res://.godot/imported/atmospheric-soundscape-152493.mp3-a1c603f6a9b62f28f4ddfd99b7ab2e3b.mp3str"
 
 [deps]
 
-source_file="res://Assets/Sound/atmospheric-soundscape-152493.mp3"
-dest_files=["res://.godot/imported/atmospheric-soundscape-152493.mp3-683dd0a17b26379d5916a02cd2a71875.mp3str"]
+source_file="res://assets/Sound/atmospheric-soundscape-152493.mp3"
+dest_files=["res://.godot/imported/atmospheric-soundscape-152493.mp3-a1c603f6a9b62f28f4ddfd99b7ab2e3b.mp3str"]
 
 [params]
 

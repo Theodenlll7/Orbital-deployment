@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://m5nmmnnc8ejh"]
+
+[ext_resource type="Script" path="res://game_manager/DayAndNightCycle/Scripts/DayAndNightcycle.gd" id="1_sxav0"]
+[ext_resource type="Texture2D" uid="uid://bkpc1kjm4t2xn" path="res://game_manager/DayAndNightCycle/Images/daynightcycle-gradient-texture.tres" id="2_cm7q0"]
+
+[node name="Sky" type="CanvasModulate"]
+color = Color(0.207963, 0.223215, 0.665254, 1)
+script = ExtResource("1_sxav0")
+gradient_texture = ExtResource("2_cm7q0")

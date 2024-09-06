@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://ugjmko6u8al3"
-path="res://.godot/imported/Upgrade.webp-a1757a1e32a43560f46e7fdf92b47687.ctex"
+path="res://.godot/imported/Upgrade.webp-42ed18966318e0e8424bfc5e364e92c4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Interaction/Interactionarea/Upgrade.webp"
-dest_files=["res://.godot/imported/Upgrade.webp-a1757a1e32a43560f46e7fdf92b47687.ctex"]
+source_file="res://interaction/Interactionarea/Upgrade.webp"
+dest_files=["res://.godot/imported/Upgrade.webp-42ed18966318e0e8424bfc5e364e92c4.ctex"]
 
 [params]
 

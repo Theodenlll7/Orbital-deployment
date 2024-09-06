@@ -11,16 +11,16 @@ config_version=5
 [application]
 
 config/name="Test"
-run/main_scene="res://World/world.tscn"
+run/main_scene="res://scenes/world.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
-config/icon="res://Assets/Icons/icon.svg"
+config/icon="res://assets/Icons/icon.svg"
 
 [autoload]
 
-GameVariables="*res://GameManager/GameVariables/GameVariables.gd"
-InteractionManager="*res://Interaction/InteractionManager.tscn"
-GenerateMapVariables="*res://MapGeneration/Map_functions/GenerateMapVariables.gd"
-SoundEngine="*res://Sound/Sound_Objects/sound_engine.tscn"
+GameVariables="*res://game_manager/GameVariables/GameVariables.gd"
+InteractionManager="*res://interaction/InteractionManager.tscn"
+GenerateMapVariables="*res://maps/map_generation/Map_functions/GenerateMapVariables.gd"
+SoundEngine="*res://game_manager/sound_engine/sound_engine.tscn"
 
 [display]
 

@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://hmlfraf7gi8r"]
 
-[ext_resource type="Script" path="res://Interaction/Interactionarea/Interactionarea.gd" id="1_20ang"]
-[ext_resource type="Texture2D" uid="uid://oblvu1gqtphm" path="res://Assets/Sprites/chest.png" id="2_25nnr"]
+[ext_resource type="Script" path="res://interaction/Interactionarea/Interactionarea.gd" id="1_20ang"]
+[ext_resource type="Texture2D" uid="uid://oblvu1gqtphm" path="res://assets/Sprites/chest.png" id="2_25nnr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7y6fe"]
 size = Vector2(98.0187, 73.1937)

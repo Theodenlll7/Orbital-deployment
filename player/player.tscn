@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" path="res://player/scripts/player_movment_2d.gd" id="1_gaiyc"]
 [ext_resource type="Script" path="res://common/components/HealthComponent.gd" id="3_rmoxv"]
-[ext_resource type="Texture2D" uid="uid://brgbromo74jvb" path="res://Assets/Sprites/Player/player.png" id="4_arusb"]
-[ext_resource type="PackedScene" uid="uid://di567uabmlw1a" path="res://weapons/pistol_example/pistol_example.tscn" id="4_auag0"]
+[ext_resource type="Texture2D" uid="uid://brgbromo74jvb" path="res://assets/Sprites/Player/player.png" id="4_arusb"]
+[ext_resource type="PackedScene" uid="uid://di567uabmlw1a" path="res://inventory/items/weapons/pistol_example/pistol_example.tscn" id="4_auag0"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uiavt"]
 atlas = ExtResource("4_arusb")

@@ -3,12 +3,12 @@
 importer="mp3"
 type="AudioStreamMP3"
 uid="uid://dqve6tvcfrdyr"
-path="res://.godot/imported/short-success-sound-glockenspiel-treasure-video-game-6346.mp3-eeb89c0e912522a98c0399e3dcb53413.mp3str"
+path="res://.godot/imported/short-success-sound-glockenspiel-treasure-video-game-6346.mp3-ba834387beae85c6880c372e14703b44.mp3str"
 
 [deps]
 
-source_file="res://Assets/Sound/ObjectSound/chest/short-success-sound-glockenspiel-treasure-video-game-6346.mp3"
-dest_files=["res://.godot/imported/short-success-sound-glockenspiel-treasure-video-game-6346.mp3-eeb89c0e912522a98c0399e3dcb53413.mp3str"]
+source_file="res://assets/Sound/ObjectSound/chest/short-success-sound-glockenspiel-treasure-video-game-6346.mp3"
+dest_files=["res://.godot/imported/short-success-sound-glockenspiel-treasure-video-game-6346.mp3-ba834387beae85c6880c372e14703b44.mp3str"]
 
 [params]
 
