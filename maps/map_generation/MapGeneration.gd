@@ -8,8 +8,8 @@ var tile_outline = Vector2(17, 12)
 
 
 #Objects that spawn at start (dont need respawn)
-var dungeon= preload("res://Interaction/Prefabs/dungeonEntrance.tscn")
-var tree = preload("res://Interaction/Prefabs/Tree.tscn")
+var dungeon= preload("res://interaction/Prefabs/dungeonEntrance.tscn")
+var tree = preload("res://interaction/Prefabs/Tree.tscn")
 
 func _ready():
 	generate_tiles()

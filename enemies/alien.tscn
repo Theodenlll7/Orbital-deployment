@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://b5rdpdm748scj"]
 
 [ext_resource type="Script" path="res://enemies/alien.gd" id="1_773d6"]
-[ext_resource type="Texture2D" uid="uid://bxdm7unavdbqa" path="res://Assets/Alien.png" id="2_tmha4"]
+[ext_resource type="Texture2D" uid="uid://bxdm7unavdbqa" path="res://assets/Alien.png" id="2_tmha4"]
 [ext_resource type="Script" path="res://common/components/HealthComponent.gd" id="3_rkv71"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_w8yv8"]

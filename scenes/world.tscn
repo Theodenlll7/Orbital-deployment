@@ -2479,47 +2479,38 @@ sources/16 = SubResource("TileSetAtlasSource_f85ho")
 [node name="World" type="Node2D"]
 
 [node name="MapGeneration" parent="." instance=ExtResource("1_huq2t")]
-visible = false
 tile_set = SubResource("TileSet_6altl")
 layer_1/name = "Layer1"
 layer_2/name = "Layer2"
 script = ExtResource("8_xh3lq")
 
 [node name="GameLoop" type="Node2D" parent="."]
-visible = false
 script = ExtResource("9_53pwr")
 
 [node name="Ship" parent="." instance=ExtResource("10_bfo0j")]
-visible = false
 position = Vector2(0, -87)
+script = null
 
 [node name="Player" parent="." instance=ExtResource("11_rp00p")]
-visible = false
 
 [node name="Night_Day" parent="Player" instance=ExtResource("12_gnnhm")]
-visible = false
 
 [node name="TargetDummy" parent="." instance=ExtResource("13_njcai")]
-visible = false
 position = Vector2(-165, 58)
 scale = Vector2(2, 2)
 
 [node name="TargetDummy2" parent="." instance=ExtResource("13_njcai")]
-visible = false
 position = Vector2(-171, -54)
 scale = Vector2(2, 2)
 
 [node name="TargetDummy3" parent="." instance=ExtResource("13_njcai")]
-visible = false
 position = Vector2(-63, 105)
 scale = Vector2(2, 2)
 
 [node name="TargetDummy4" parent="." instance=ExtResource("13_njcai")]
-visible = false
 position = Vector2(390, 34)
 scale = Vector2(2, 2)
 
 [node name="TargetDummy5" parent="." instance=ExtResource("13_njcai")]
-visible = false
 position = Vector2(346, -189)
 scale = Vector2(2, 2)
