@@ -10,7 +10,6 @@ size = Vector2(93, 104)
 collision_layer = 0
 script = ExtResource("1_anp3x")
 action_name = "Enter"
-type = "DungeonEntrance"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-3, -0.500004)

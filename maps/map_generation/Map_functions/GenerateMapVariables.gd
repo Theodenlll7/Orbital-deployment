@@ -51,7 +51,7 @@ var altitude = FastNoiseLite.new()
 var noise = FastNoiseLite.new()
 
 #Objects
-var chest= preload("res://interaction/Prefabs/chest.tscn")
+var chest= preload("res://interaction/Prefabs/chest/chest.tscn")
 var weapon_pod = preload("res://interaction/Prefabs/pods/weaponPod.tscn")
 
 func _ready():

@@ -18,9 +18,9 @@ func updateButtonLabels():
 	var weapon_path_upgrades = $Weapon_paths
 	for i in range(weapon_path_upgrades.get_child_count()):
 		var child = weapon_path_upgrades.get_child(i)
-		for j in range(child.get_child_count()):
-			child.get_child(j).get_child(0).text = "23"
-			child.get_child(j).get_child(0).text = "23"
+		#for j in range(child.get_child_count()):
+			#child.get_child(j).get_child(1).text = "23"
+			#child.get_child(j).get_child(2).text = "23"
 
 
 	
