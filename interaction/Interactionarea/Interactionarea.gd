@@ -37,5 +37,5 @@ func play_open_sound():
 	SoundEngine.playChestSound()
 
 func showUI():
-	var houseUI = $CanvasLayer
-	houseUI.show()
+	var UI = $CanvasLayer
+	UI.show()

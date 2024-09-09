@@ -40,7 +40,23 @@ func upgradeFromPod(type):
 				towerUpgrade+=difficultyVariable
 			"shipUpgrade": 
 				shipUpgrade+=difficultyVariable
-				
+
+func upgradeFromWeaponPod(type, upg_tier):
+	match type:
+		"Pistols":
+			return
+		"Shotguns":
+			return
+		"Assault_Rifles":
+			return
+		"Machine_Guns":
+			return
+		"LaserGuns":
+			return
+		"Snipers":
+			return
+	return
+
 func setUpGameDifficulty():
 		match GameDifficulty:
 			"easy": 
