@@ -1,22 +1,21 @@
-[gd_scene load_steps=22 format=3 uid="uid://wsq75v2incod"]
+[gd_scene load_steps=21 format=3 uid="uid://b6jw8n5a7o8uh"]
 
-[ext_resource type="PackedScene" uid="uid://dgcxqingnrpqp" path="res://maps/map_generation/MapGeneration.tscn" id="1_huq2t"]
-[ext_resource type="Texture2D" uid="uid://cyw8tqe1bc4ld" path="res://assets/Tiles/waterfalls1.png" id="2_go67u"]
-[ext_resource type="Texture2D" uid="uid://bem86uv4m7q5l" path="res://assets/Sprites/Objects/Assets_source.png" id="3_gvtxe"]
-[ext_resource type="Texture2D" uid="uid://6l4t3kc4sj2h" path="res://assets/Sprites/Objects/Rocks_source_no_shadow.png" id="4_m32xo"]
-[ext_resource type="Texture2D" uid="uid://u3pdmylvmf4f" path="res://assets/Sprites/Objects/Rocks_source.png" id="5_kbqwh"]
-[ext_resource type="Texture2D" uid="uid://dn84s1b5icr65" path="res://assets/Sprites/Objects/Rocks_source_texture_shadow.png" id="6_q6uwx"]
-[ext_resource type="Texture2D" uid="uid://c03den4ayjr17" path="res://assets/Tiles/terrain tiles.png" id="7_r6xlk"]
-[ext_resource type="Script" path="res://maps/map_generation/MapGeneration.gd" id="8_xh3lq"]
-[ext_resource type="Script" path="res://game_manager/GameLoop/gameLoop.gd" id="9_53pwr"]
-[ext_resource type="PackedScene" uid="uid://dtyfw3eetyfc" path="res://maps/ship/MainHouse.tscn" id="10_bfo0j"]
-[ext_resource type="PackedScene" uid="uid://6vt8l263l0o7" path="res://player/player.tscn" id="11_rp00p"]
-[ext_resource type="PackedScene" uid="uid://bwqebjpl0otwb" path="res://UI/night_day.tscn" id="12_gnnhm"]
-[ext_resource type="PackedScene" uid="uid://b88le3f50loho" path="res://enemies/target_dummy.tscn" id="13_njcai"]
-[ext_resource type="PackedScene" uid="uid://fwtaakyb0exx" path="res://interaction/Prefabs/pods/weaponPod.tscn" id="14_caebo"]
+[ext_resource type="PackedScene" uid="uid://dgcxqingnrpqp" path="res://maps/map_generation/MapGeneration.tscn" id="1_edtdc"]
+[ext_resource type="Texture2D" uid="uid://cyw8tqe1bc4ld" path="res://assets/Tiles/waterfalls1.png" id="2_mgm4u"]
+[ext_resource type="Texture2D" uid="uid://bem86uv4m7q5l" path="res://assets/Sprites/Objects/Assets_source.png" id="3_2m02m"]
+[ext_resource type="Texture2D" uid="uid://6l4t3kc4sj2h" path="res://assets/Sprites/Objects/Rocks_source_no_shadow.png" id="4_0bxyc"]
+[ext_resource type="Texture2D" uid="uid://u3pdmylvmf4f" path="res://assets/Sprites/Objects/Rocks_source.png" id="5_aocfy"]
+[ext_resource type="Texture2D" uid="uid://dn84s1b5icr65" path="res://assets/Sprites/Objects/Rocks_source_texture_shadow.png" id="6_eg10o"]
+[ext_resource type="Texture2D" uid="uid://c03den4ayjr17" path="res://assets/Tiles/terrain tiles.png" id="7_3a8rk"]
+[ext_resource type="Script" path="res://maps/map_generation/MapGeneration.gd" id="8_2d21u"]
+[ext_resource type="Script" path="res://game_manager/GameLoop/gameLoop.gd" id="9_4ugi8"]
+[ext_resource type="PackedScene" uid="uid://dtyfw3eetyfc" path="res://maps/ship/MainHouse.tscn" id="10_msivw"]
+[ext_resource type="PackedScene" uid="uid://6vt8l263l0o7" path="res://player/player.tscn" id="11_xh6w4"]
+[ext_resource type="PackedScene" uid="uid://b88le3f50loho" path="res://enemies/target_dummy.tscn" id="13_lxeo7"]
+[ext_resource type="PackedScene" uid="uid://fwtaakyb0exx" path="res://interaction/Prefabs/pods/weaponPod.tscn" id="14_6vv28"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cw1ff"]
-texture = ExtResource("2_go67u")
+texture = ExtResource("2_mgm4u")
 2:2/0 = 0
 3:2/0 = 0
 4:2/0 = 0
@@ -151,7 +150,7 @@ texture = ExtResource("2_go67u")
 21:10/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vxqv2"]
-texture = ExtResource("3_gvtxe")
+texture = ExtResource("3_2m02m")
 4:0/0 = 0
 5:0/0 = 0
 6:0/0 = 0
@@ -1008,7 +1007,7 @@ texture = ExtResource("3_gvtxe")
 21:23/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4q5ci"]
-texture = ExtResource("4_m32xo")
+texture = ExtResource("4_0bxyc")
 0:0/0 = 0
 1:0/0 = 0
 2:0/0 = 0
@@ -1298,7 +1297,7 @@ texture = ExtResource("4_m32xo")
 11:18/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_idiif"]
-texture = ExtResource("5_kbqwh")
+texture = ExtResource("5_aocfy")
 0:0/0 = 0
 1:0/0 = 0
 2:0/0 = 0
@@ -1597,7 +1596,7 @@ texture = ExtResource("5_kbqwh")
 13:11/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_f85ho"]
-texture = ExtResource("6_q6uwx")
+texture = ExtResource("6_eg10o")
 0:0/0 = 0
 1:0/0 = 0
 2:0/0 = 0
@@ -1895,7 +1894,7 @@ texture = ExtResource("6_q6uwx")
 11:18/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_m37yq"]
-texture = ExtResource("7_r6xlk")
+texture = ExtResource("7_3a8rk")
 1:0/0 = 0
 1:0/0/terrain_set = 0
 1:0/0/terrains_peering_bit/bottom_right_corner = 0
@@ -2479,43 +2478,41 @@ sources/16 = SubResource("TileSetAtlasSource_f85ho")
 
 [node name="World" type="Node2D"]
 
-[node name="MapGeneration" parent="." instance=ExtResource("1_huq2t")]
+[node name="MapGeneration" parent="." instance=ExtResource("1_edtdc")]
 tile_set = SubResource("TileSet_6altl")
 layer_1/name = "Layer1"
 layer_2/name = "Layer2"
-script = ExtResource("8_xh3lq")
+script = ExtResource("8_2d21u")
 
 [node name="GameLoop" type="Node2D" parent="."]
-script = ExtResource("9_53pwr")
+script = ExtResource("9_4ugi8")
 
-[node name="Ship" parent="." instance=ExtResource("10_bfo0j")]
+[node name="Ship" parent="." instance=ExtResource("10_msivw")]
 position = Vector2(0, -87)
 script = null
 
-[node name="Player" parent="." instance=ExtResource("11_rp00p")]
+[node name="Player" parent="." instance=ExtResource("11_xh6w4")]
 
-[node name="Night_Day" parent="Player" instance=ExtResource("12_gnnhm")]
-
-[node name="TargetDummy" parent="." instance=ExtResource("13_njcai")]
+[node name="TargetDummy" parent="." instance=ExtResource("13_lxeo7")]
 position = Vector2(-165, 58)
 scale = Vector2(2, 2)
 
-[node name="TargetDummy2" parent="." instance=ExtResource("13_njcai")]
+[node name="TargetDummy2" parent="." instance=ExtResource("13_lxeo7")]
 position = Vector2(-171, -54)
 scale = Vector2(2, 2)
 
-[node name="TargetDummy3" parent="." instance=ExtResource("13_njcai")]
+[node name="TargetDummy3" parent="." instance=ExtResource("13_lxeo7")]
 position = Vector2(-63, 105)
 scale = Vector2(2, 2)
 
-[node name="TargetDummy4" parent="." instance=ExtResource("13_njcai")]
+[node name="TargetDummy4" parent="." instance=ExtResource("13_lxeo7")]
 position = Vector2(390, 34)
 scale = Vector2(2, 2)
 
-[node name="TargetDummy5" parent="." instance=ExtResource("13_njcai")]
+[node name="TargetDummy5" parent="." instance=ExtResource("13_lxeo7")]
 position = Vector2(346, -189)
 scale = Vector2(2, 2)
 
-[node name="InteractionArea" parent="." instance=ExtResource("14_caebo")]
+[node name="InteractionArea" parent="." instance=ExtResource("14_6vv28")]
 position = Vector2(382, -31)
 scale = Vector2(0.438692, 0.464521)

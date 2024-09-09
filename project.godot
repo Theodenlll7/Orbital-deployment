@@ -26,6 +26,11 @@ SoundEngine="*res://game_manager/sound_engine/sound_engine.tscn"
 
 window/vsync/vsync_mode=0
 
+[global_group]
+
+chests=""
+map_objects=""
+
 [input]
 
 move_right={

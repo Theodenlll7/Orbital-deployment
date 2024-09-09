@@ -50,17 +50,12 @@ var temperature = FastNoiseLite.new()
 var altitude = FastNoiseLite.new()
 var noise = FastNoiseLite.new()
 
-#Objects
-var chest= preload("res://interaction/Prefabs/chest.tscn")
-var weapon_pod = preload("res://interaction/Prefabs/pods/weaponPod.tscn")
-
 func _ready():
 	randomize()
 	altitude.seed = randi()
 	noise.seed = randi()
 	altitude.frequency = 0.01
 	generate_cells()
-	Get_pod_locations()
 
 func generate_cells():
 	for x in range(width):
@@ -135,82 +130,54 @@ func checkToCloseToMapEdge(pos, maxDistance):
 		return true
 	return false
 
-func Get_pod_locations():
-	var podCount = 0
-	var attempts = 0
-	
-	while podCount < numberOfPods and attempts < 1000:
-		attempts +=1
-		var rand_index = randi() % ground_cells.size()
-		var pod_location = ground_cells[rand_index]
-		var can_place = true
-		
-		for existing_pods in pod_positions:
-			if Vector2(pod_location).distance_to(Vector2(existing_pods))<podDistanceBetween:
-				can_place = false
-				break
-		for pos in dont_place_here:
-			if pod_location == pos:
-				can_place = false
-				break
-		if can_place:
-			pod_positions.append(pod_location)
-			podCount+=1
-		
-		print(pod_positions)
-			
-	print("after spawn ", chests.size(), "chests:")
-	
-func spawn_chests():
-	if len(chests) >=max_chest_count:
+func spawn_objects(scene: PackedScene, distance: float, group: String = "", spawn_count: int = 1):
+	var object_count = 0
+	if group != "":
+		object_count = get_tree().get_nodes_in_group(group).size()
+	var map_objects = get_tree().get_nodes_in_group("map_objects")
+
+	if object_count >= spawn_count:
 		return
 
-	var chest_distance = 5
-	var chest_count = chests.size()
 	var attempts = 0
-
-
-	while chest_count < max_chest_count and attempts < 1000:
+	while object_count < spawn_count and attempts < 100:
 		attempts += 1
-		var rand_index = randi() % ground_cells.size()
-		var chest_location = ground_cells[rand_index]
+		var spawn_location = get_spawn_location()
 
 		var can_place = true
-		for existing_chest in chests:
-			if Vector2(chest_location).distance_to(Vector2(existing_chest))<chest_distance:
-				can_place = false
-				break
-		for pos in dont_place_here:
-			if chest_location == pos:
-				can_place = false
-				break
-		for pos in pod_positions:
-			if Vector2(chest_location).distance_to(Vector2(pos))<chest_distance:
+		for object in map_objects:
+			if spawn_location.distance_to(object.position)<distance:
 				can_place = false
 				break
 		if can_place:
-			var chest_instance = chest.instantiate()
-			chest_instance.position = tile_to_world(chest_location) + cell_size / 2
-			chest_instance.z_index = 1
-			add_child(chest_instance)
-			chests.append(chest_location)
-			chest_instance.set_meta("chest_location", chest_location)
-			chest_instance.connect("chest_picked_up", Callable(self, "_on_chest_picked_up"))
-			chest_count +=1
-	print("after spawn ", chests.size(), "chests:")
+			object_count += 1
+			map_objects.push_back(place_object(spawn_location, scene, group))
 
+func place_object(pos: Vector2, scene: PackedScene, group: String):
+	var instance = scene.instantiate()
+	instance.position = pos
+	instance.z_index = 1
+	if group != "":
+		instance.add_to_group(group)
+	instance.add_to_group("map_objects")
+	add_child(instance)
+	return instance
+
+func get_spawn_location():
+	var grid_pos
+	var attempts = 10
+	for attempt in attempts:
+		var rand_index = randi() % ground_cells.size()
+		grid_pos = ground_cells[rand_index]
+		if grid_pos not in dont_place_here:
+			break
+
+	return tile_to_world(grid_pos) + cell_size / 2
 
 func between(val, start, end):
 	if start <=val and val <end:
 		return true
 	return false
-
-func _on_chest_picked_up(chest_instance):
-	var chest_location = chest_instance.get_meta("chest_location")
-	for i in range(chests.size()):
-		if chests[i] == chest_location:
-			chests.remove_at(i)
-			break
 			
 func tile_to_world(tile_pos: Vector2i) -> Vector2:
 	return Vector2(tile_pos.x * cell_size.x, tile_pos.y * cell_size.y)
@@ -229,9 +196,3 @@ func getRandomTreeSprite():
 	var randomIndex = randi() % treeSprites.size()
 	var newTexture = load(treeSprites[randomIndex])
 	return newTexture
-
-func spawnPod(type):
-	var weponPodInstance = weapon_pod.instantiate()
-	weponPodInstance.position=tile_to_world(pod_positions[type])
-	weponPodInstance.z_index = 1
-	add_child(weponPodInstance)

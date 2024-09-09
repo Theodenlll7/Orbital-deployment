@@ -1,5 +1,8 @@
 extends Node
 
+var chest= preload("res://interaction/Prefabs/chest/chest.tscn")
+var weapon_pod = preload("res://interaction/Prefabs/pods/weaponPod.tscn")
+
 var last_day: int = -1 
 
 func _ready() -> void:
@@ -14,7 +17,7 @@ func _process(delta: float) -> void:
 func _on_day_changed(day: int) -> void:
 	print("Day has changed to:", day)
 	_update_game_state(day)
-	GenerateMapVariables.spawn_chests()
+	GenerateMapVariables.spawn_objects(chest, 20, "chests", 10)
 
 func _update_game_state(day: int) -> void:
 	print("Updating game state for day:", day)
@@ -33,8 +36,8 @@ func _reset_daily_quests() -> void:
 func updatePods(day):
 	match day:
 		2:
-			GenerateMapVariables.spawnPod(0)
+			GenerateMapVariables.spawn_objects(weapon_pod, 20)
 		4:
-			GenerateMapVariables.spawnPod(1)
+			GenerateMapVariables.spawn_objects(weapon_pod, 20)
 		6:
-			GenerateMapVariables.spawnPod(2)
+			GenerateMapVariables.spawn_objects(weapon_pod, 20)
