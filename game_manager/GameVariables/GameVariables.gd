@@ -1,5 +1,5 @@
 extends Node
-
+var player_money = 20
 var GameDifficulty = "easy"
 var difficultyVariable = 1
 
@@ -12,6 +12,13 @@ var shipUpgrade = 1
 
 func _ready():
 	setUpGameDifficulty()
+
+func increasePlayerMoney(amount):
+	player_money+=amount
+
+func getPlayerMoney():
+	return player_money
+
 func getCostOfUpgrade(type):
 	match type:
 		"meleeUpgrade": 
@@ -23,7 +30,7 @@ func getCostOfUpgrade(type):
 		"shipUpgrade": 
 			return shipUpgrade*4
 			
-func upgradeFromShip(type):
+func upgradeFromPod(type):
 		match type:
 			"meleeUpgrade": 
 				meleeUpgrade+=difficultyVariable
@@ -43,4 +50,3 @@ func setUpGameDifficulty():
 			"hard": 
 				difficultyVariable = 3
 				
-

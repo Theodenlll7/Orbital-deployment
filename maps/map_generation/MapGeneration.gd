@@ -6,7 +6,6 @@ var cell_size = Vector2(16, 16)
 # Tiles
 var tile_outline = Vector2(17, 12)
 
-
 #Objects that spawn at start (dont need respawn)
 var dungeon= preload("res://interaction/Prefabs/dungeonEntrance.tscn")
 var tree = preload("res://interaction/Prefabs/Tree.tscn")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://wsq75v2incod"]
+[gd_scene load_steps=22 format=3 uid="uid://wsq75v2incod"]
 
 [ext_resource type="PackedScene" uid="uid://dgcxqingnrpqp" path="res://maps/map_generation/MapGeneration.tscn" id="1_huq2t"]
 [ext_resource type="Texture2D" uid="uid://cyw8tqe1bc4ld" path="res://assets/Tiles/waterfalls1.png" id="2_go67u"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://6vt8l263l0o7" path="res://player/player.tscn" id="11_rp00p"]
 [ext_resource type="PackedScene" uid="uid://bwqebjpl0otwb" path="res://UI/night_day.tscn" id="12_gnnhm"]
 [ext_resource type="PackedScene" uid="uid://b88le3f50loho" path="res://enemies/target_dummy.tscn" id="13_njcai"]
+[ext_resource type="PackedScene" uid="uid://cadgh8y7cvcsh" path="res://interaction/Prefabs/pods/weaponPod.tscn" id="14_caebo"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cw1ff"]
 texture = ExtResource("2_go67u")
@@ -2514,3 +2515,6 @@ scale = Vector2(2, 2)
 [node name="TargetDummy5" parent="." instance=ExtResource("13_njcai")]
 position = Vector2(346, -189)
 scale = Vector2(2, 2)
+
+[node name="InteractionArea" parent="." instance=ExtResource("14_caebo")]
+position = Vector2(382, -31)

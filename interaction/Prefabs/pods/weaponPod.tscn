@@ -1,39 +1,125 @@
-[gd_scene load_steps=4 format=3 uid="uid://fwtaakyb0exx"]
+[gd_scene load_steps=7 format=3 uid="uid://cadgh8y7cvcsh"]
 
 [ext_resource type="Script" path="res://interaction/Interactionarea/Interactionarea.gd" id="1_71ma8"]
-[ext_resource type="Texture2D" uid="uid://ccoe78uc8jt31" path="res://assets/Icons/icon.svg" id="2_tam8g"]
+[ext_resource type="Texture2D" uid="uid://oblvu1gqtphm" path="res://assets/Sprites/chest.png" id="2_qqv4b"]
+[ext_resource type="Script" path="res://maps/ship/MainHouseUI.gd" id="3_pt7m5"]
+[ext_resource type="FontFile" uid="uid://dkg32o3qfh2n7" path="res://assets/Fonts/pixelmix.ttf" id="4_s3igv"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_7y6fe"]
-size = Vector2(98.0187, 73.1937)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k8nvd"]
+size = Vector2(210, 193)
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_6liyn"]
+specular_color = Color(0.349043, 0.425067, 0.297768, 1)
 
 [node name="InteractionArea" type="Area2D"]
-scale = Vector2(0.438692, 0.464521)
 collision_layer = 0
 script = ExtResource("1_71ma8")
-action_name = "interact with pod"
+action_name = "open pod"
 type = "pod"
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-1.13976, -4.76837e-06)
-scale = Vector2(0.765771, 0.571826)
-texture = ExtResource("2_tam8g")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1.13975, 0)
-shape = SubResource("RectangleShape2D_7y6fe")
+position = Vector2(3, 5.5)
+shape = SubResource("RectangleShape2D_k8nvd")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-1.99997, 15)
+scale = Vector2(0.763083, 0.672543)
+texture = ExtResource("2_qqv4b")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="Control" type="Control" parent="CanvasLayer"]
 layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+anchor_left = 0.5
+anchor_top = 0.478
+anchor_right = 0.492188
+anchor_bottom = 0.478
+offset_left = -344.0
+offset_top = -175.744
+offset_right = 364.0
+offset_bottom = 196.256
+script = ExtResource("3_pt7m5")
+metadata/_edit_use_anchors_ = true
 
-[node name="Button" type="Button" parent="CanvasLayer/Control"]
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/Control"]
+modulate = Color(1, 1, 1, 0.717647)
+position = Vector2(347.5, 182.5)
+scale = Vector2(629, 327)
+texture = SubResource("CanvasTexture_6liyn")
+
+[node name="upgradeTurretButton" type="Button" parent="CanvasLayer/Control"]
+top_level = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -287.0
+offset_top = -98.0
+offset_right = -60.0
+offset_bottom = -59.0
+theme_override_fonts/font = ExtResource("4_s3igv")
+action_mode = 0
+icon_alignment = 1
+expand_icon = true
+
+[node name="Label" type="Label" parent="CanvasLayer/Control/upgradeTurretButton"]
 layout_mode = 0
-offset_right = 8.0
-offset_bottom = 8.0
+offset_left = 68.0
+offset_top = 9.0
+offset_right = 157.0
+offset_bottom = 32.0
+theme_override_fonts/font = ExtResource("4_s3igv")
+text = "Turrets
+"
+
+[node name="Cost" type="Label" parent="CanvasLayer/Control/upgradeTurretButton"]
+layout_mode = 0
+offset_left = 174.0
+offset_top = 10.0
+offset_right = 215.0
+offset_bottom = 33.0
+theme_override_colors/font_color = Color(0.762676, 0.655324, 0.283658, 1)
+theme_override_fonts/font = ExtResource("4_s3igv")
+text = "1 $"
+
+[node name="Header" type="Control" parent="CanvasLayer/Control"]
+anchors_preset = 0
+offset_left = 55.0
+offset_top = 33.0
+offset_right = 642.0
+offset_bottom = 89.0
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Control/Header"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 3.99998
+offset_right = 574.0
+offset_bottom = 45.0
+color = Color(0.321728, 0.321728, 0.321728, 1)
+
+[node name="Header_Text" type="Label" parent="CanvasLayer/Control/Header"]
+offset_left = 19.0
+offset_top = 12.0
+offset_right = 227.0
+offset_bottom = 35.0
+theme_override_fonts/font = ExtResource("4_s3igv")
+text = "Weapon Pod Station
+"
+
+[node name="Players_money" type="Label" parent="CanvasLayer/Control/Header"]
+offset_left = 435.0
+offset_top = 13.0
+offset_right = 476.0
+offset_bottom = 36.0
+theme_override_colors/font_color = Color(0.762676, 0.655324, 0.283658, 1)
+theme_override_fonts/font = ExtResource("4_s3igv")
+text = "1 $"
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[connection signal="gui_input" from="CanvasLayer/Control" to="." method="_on_control_gui_input"]
+[connection signal="mouse_entered" from="CanvasLayer/Control" to="CanvasLayer/Control" method="_on_mouse_entered"]
+[connection signal="pressed" from="CanvasLayer/Control/upgradeTurretButton" to="CanvasLayer/Control" method="_on_upgrade_turret_button_pressed"]
