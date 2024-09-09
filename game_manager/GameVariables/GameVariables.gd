@@ -1,15 +1,19 @@
 extends Node
-var player_money = 20
+var player_money = 1000
 var GameDifficulty = "easy"
 var difficultyVariable = 1
 
 var day: int = 0
+
 
 func _ready():
 	setUpGameDifficulty()
 
 func increasePlayerMoney(amount):
 	player_money+=amount
+	
+func decreasePlayerMoney(amount):
+	player_money-=amount
 
 func getPlayerMoney():
 	return player_money

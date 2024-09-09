@@ -2,6 +2,7 @@ extends Control
 
 func _ready():
 	updateButtonLabels()
+	setLabelsAndCost()
 
 func _process(delta):
 	pass
@@ -10,20 +11,26 @@ func _on_upgrade_turret_button_pressed():
 	GameVariables.upgradeFromPod("towerUpgrade")
 	updateButtonLabels()
 	SoundEngine.playUpgradeSound()
-
+	
+func setLabelsAndCost():
+	var weapons = PodVariables.weapons
+	var weapon_path_upgrades = $Weapon_paths
+	var counter = 0
+	for i in range(weapon_path_upgrades.get_child_count()):
+		var child = weapon_path_upgrades.get_child(i)
+		if child.name!="back_button":
+			for j in range(child.get_child_count()):
+				var button_node = child.get_child(j)
+				var label_node = button_node.get_node("Label")
+				var cost_node = button_node.get_node("Cost")
+				label_node.text = str(weapons[counter])
+				cost_node.text = str(weapons[counter+1])
+				counter+=2
+				
 func updateButtonLabels():
 	var player_money = $Header.get_node("Players_money")
 	player_money.text = str(GameVariables.getPlayerMoney()) + "$"
-	
-	var weapon_path_upgrades = $Weapon_paths
-	for i in range(weapon_path_upgrades.get_child_count()):
-		var child = weapon_path_upgrades.get_child(i)
-		#for j in range(child.get_child_count()):
-			#child.get_child(j).get_child(1).text = "23"
-			#child.get_child(j).get_child(2).text = "23"
 
-
-	
 func _on_pistols_button_pressed(extra_arg_0: int) -> void:
 	var weaponsUI = $weapons_UI
 	weaponsUI.hide()
@@ -51,26 +58,15 @@ func _on_back_button_pressed() -> void:
 	var weaponsUI = $weapons_UI
 	weaponsUI.show()
 
-func _on_pistol_upg_pressed(extra_arg_0: int) -> void:
-	handleBuy("Pistol", extra_arg_0)
-
-func _on_shotgun_upg_pressed(extra_arg_0: int) -> void:
-	handleBuy("Shotgun", extra_arg_0)
-
-func _on_assault_rifle_upg_pressed(extra_arg_0: int) -> void:
-	handleBuy("Assault_Rifle", extra_arg_0)
-
-func _on_machine_gun_upg_pressed(extra_arg_0: int) -> void:
-	handleBuy("Machine_Gun", extra_arg_0)
-
-func _on_laser_gun_upg_pressed(extra_arg_0: int) -> void:
-	handleBuy("Laser_Gun", extra_arg_0)
-
-func _on_sniper_upg_pressed(extra_arg_0: int) -> void:
-	handleBuy("Sniper_Gun", extra_arg_0)
-
+func _on_weaponPod_upg_pressed(extra_arg_0: int, type: String):
+	var tier= extra_arg_0
+	handleBuy(type, tier)
+	
 func handleBuy(type, upg_tier):
-	if GameVariables.getPlayerMoney() >= upg_tier*100:
-		print("Player just Bought a ", type)
+	var cost = PodVariables.get_weapon_cost(type)
+	if GameVariables.getPlayerMoney() >=cost:
+		print("Player just Bought a ", type, " Tier: ", upg_tier)
+		GameVariables.decreasePlayerMoney(cost)
+		updateButtonLabels()
 	else:
 		print("Not enough money to buy that")

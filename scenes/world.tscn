@@ -13,7 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://6vt8l263l0o7" path="res://player/player.tscn" id="11_rp00p"]
 [ext_resource type="PackedScene" uid="uid://bwqebjpl0otwb" path="res://UI/night_day.tscn" id="12_gnnhm"]
 [ext_resource type="PackedScene" uid="uid://b88le3f50loho" path="res://enemies/target_dummy.tscn" id="13_njcai"]
-[ext_resource type="PackedScene" uid="uid://cadgh8y7cvcsh" path="res://interaction/Prefabs/pods/weaponPod.tscn" id="14_caebo"]
+[ext_resource type="PackedScene" uid="uid://fwtaakyb0exx" path="res://interaction/Prefabs/pods/weaponPod.tscn" id="14_caebo"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cw1ff"]
 texture = ExtResource("2_go67u")
