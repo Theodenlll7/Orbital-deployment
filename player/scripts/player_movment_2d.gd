@@ -43,8 +43,10 @@ func move_player() -> void:
 		elif input_vector.x > 0:
 			animated_sprite.flip_h = false;
 
-		if !velocity.is_zero_approx():
+		if !velocity.is_zero_approx() && input_vector.y != -1:
 			animated_sprite.play("run_h")
+		elif !velocity.is_zero_approx():
+			animated_sprite.play("run_v_up")
 		else:
 			animated_sprite.play("idle")
 
