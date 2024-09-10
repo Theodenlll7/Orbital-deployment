@@ -28,6 +28,10 @@ Shop="*res://game_manager/GameVariables/Shop.gd"
 
 window/vsync/vsync_mode=0
 
+[global_group]
+
+Player=""
+
 [input]
 
 move_right={
