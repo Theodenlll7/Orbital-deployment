@@ -12,7 +12,8 @@
 [ext_resource type="PackedScene" uid="uid://dtyfw3eetyfc" path="res://maps/ship/MainHouse.tscn" id="10_msivw"]
 [ext_resource type="PackedScene" uid="uid://6vt8l263l0o7" path="res://player/player.tscn" id="11_xh6w4"]
 [ext_resource type="PackedScene" uid="uid://b88le3f50loho" path="res://enemies/target_dummy.tscn" id="13_lxeo7"]
-[ext_resource type="PackedScene" uid="uid://fwtaakyb0exx" path="res://interaction/Prefabs/pods/weaponPod.tscn" id="14_6vv28"]
+[ext_resource type="PackedScene" uid="uid://fwtaakyb0exx" path="res://interaction/Prefabs/pods/weapon_pod.tscn" id="14_6vv28"]
+
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cw1ff"]
 texture = ExtResource("2_mgm4u")

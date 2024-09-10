@@ -22,6 +22,7 @@ InteractionManager="*res://interaction/InteractionManager.tscn"
 GenerateMapVariables="*res://maps/map_generation/Map_functions/GenerateMapVariables.gd"
 SoundEngine="*res://game_manager/sound_engine/sound_engine.tscn"
 PodVariables="*res://game_manager/GameVariables/PodVariables.gd"
+Shop="*res://game_manager/GameVariables/Shop.gd"
 
 [display]
 

@@ -1,5 +1,10 @@
 extends Node
-var player_money = 1000
+var player_money: int = 1000:
+	get: return player_money
+	set(value):
+		player_money = value
+		print("Player money has been updated: ", player_money)
+		
 var GameDifficulty = "easy"
 var difficultyVariable = 1
 
@@ -11,28 +16,9 @@ func _ready():
 
 func increasePlayerMoney(amount):
 	player_money+=amount
-	
 func decreasePlayerMoney(amount):
 	player_money-=amount
 
-func getPlayerMoney():
-	return player_money
-
-func upgradeFromWeaponPod(type, upg_tier):
-	match type:
-		"Pistols":
-			return
-		"Shotguns":
-			return
-		"Assault_Rifles":
-			return
-		"Machine_Guns":
-			return
-		"LaserGuns":
-			return
-		"Snipers":
-			return
-	return
 
 func setUpGameDifficulty():
 		match GameDifficulty:

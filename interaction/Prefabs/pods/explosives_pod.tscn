@@ -1,0 +1,261 @@
+[gd_scene load_steps=8 format=3 uid="uid://ceamovlb0j31d"]
+
+[ext_resource type="Script" path="res://interaction/Prefabs/pods/pod.gd" id="1_4asqp"]
+[ext_resource type="Script" path="res://interaction/Interactionarea/Interactionarea.gd" id="2_70vuy"]
+[ext_resource type="Texture2D" uid="uid://oblvu1gqtphm" path="res://assets/Sprites/chest.png" id="3_3485p"]
+[ext_resource type="Script" path="res://UI/scripts/explosive_pod.gd" id="4_5nkae"]
+[ext_resource type="FontFile" uid="uid://dkg32o3qfh2n7" path="res://assets/Fonts/pixelmix.ttf" id="5_nlw7a"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k8nvd"]
+size = Vector2(147, 133)
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_6liyn"]
+specular_color = Color(0.349043, 0.425067, 0.297768, 1)
+
+[node name="InteractionArea" type="Node2D"]
+script = ExtResource("1_4asqp")
+
+[node name="InteractionArea" type="Area2D" parent="."]
+script = ExtResource("2_70vuy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
+position = Vector2(0.5, 1.5)
+shape = SubResource("RectangleShape2D_k8nvd")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(1, 1)
+scale = Vector2(0.431541, 0.420271)
+texture = ExtResource("3_3485p")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchor_left = 0.492188
+anchor_top = 0.478
+anchor_right = 0.492188
+anchor_bottom = 0.478
+offset_left = -344.0
+offset_top = -175.744
+offset_right = 364.0
+offset_bottom = 196.256
+script = ExtResource("4_5nkae")
+metadata/_edit_use_anchors_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/Control"]
+modulate = Color(1, 1, 1, 0.717647)
+position = Vector2(347.5, 182.5)
+scale = Vector2(629, 327)
+texture = SubResource("CanvasTexture_6liyn")
+
+[node name="Header" type="Control" parent="CanvasLayer/Control"]
+anchors_preset = 0
+offset_left = 55.0
+offset_top = 33.0
+offset_right = 642.0
+offset_bottom = 89.0
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Control/Header"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 3.99998
+offset_right = 574.0
+offset_bottom = 45.0
+color = Color(0.321728, 0.321728, 0.321728, 1)
+
+[node name="Header_Text" type="Label" parent="CanvasLayer/Control/Header"]
+layout_mode = 0
+offset_left = 18.0
+offset_top = 13.0
+offset_right = 226.0
+offset_bottom = 36.0
+theme_override_fonts/font = ExtResource("5_nlw7a")
+text = "Explovive Pod Station
+"
+
+[node name="Players_money" type="Label" parent="CanvasLayer/Control/Header"]
+layout_mode = 0
+offset_left = 435.0
+offset_top = 13.0
+offset_right = 476.0
+offset_bottom = 36.0
+theme_override_colors/font_color = Color(0.762676, 0.655324, 0.283658, 1)
+theme_override_fonts/font = ExtResource("5_nlw7a")
+text = "1 $"
+
+[node name="Grenades_options_UI" type="Control" parent="CanvasLayer/Control"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="grenade_button" type="Button" parent="CanvasLayer/Control/Grenades_options_UI"]
+layout_mode = 0
+offset_left = 57.0
+offset_top = 102.0
+offset_right = 334.0
+offset_bottom = 133.0
+
+[node name="Label" type="Label" parent="CanvasLayer/Control/Grenades_options_UI/grenade_button"]
+layout_mode = 0
+offset_left = 12.9994
+offset_top = 5.00002
+offset_right = 220.999
+offset_bottom = 28.0
+theme_override_fonts/font = ExtResource("5_nlw7a")
+text = "Grenades
+"
+
+[node name="Cost" type="Label" parent="CanvasLayer/Control/Grenades_options_UI/grenade_button"]
+layout_mode = 0
+offset_left = 238.999
+offset_top = 6.00002
+offset_right = 274.999
+offset_bottom = 27.0
+theme_override_colors/font_color = Color(0.762676, 0.655324, 0.283658, 1)
+theme_override_fonts/font = ExtResource("5_nlw7a")
+text = "1 $"
+
+[node name="stun_grenade_button" type="Button" parent="CanvasLayer/Control/Grenades_options_UI"]
+layout_mode = 0
+offset_left = 57.9994
+offset_top = 138.0
+offset_right = 334.999
+offset_bottom = 169.0
+
+[node name="Label" type="Label" parent="CanvasLayer/Control/Grenades_options_UI/stun_grenade_button"]
+layout_mode = 0
+offset_left = 12.9994
+offset_top = 5.00002
+offset_right = 220.999
+offset_bottom = 28.0
+theme_override_fonts/font = ExtResource("5_nlw7a")
+text = "Weapon Pod Station
+"
+
+[node name="Cost" type="Label" parent="CanvasLayer/Control/Grenades_options_UI/stun_grenade_button"]
+layout_mode = 0
+offset_left = 238.999
+offset_top = 6.00002
+offset_right = 274.999
+offset_bottom = 27.0
+theme_override_colors/font_color = Color(0.762676, 0.655324, 0.283658, 1)
+theme_override_fonts/font = ExtResource("5_nlw7a")
+text = "1 $"
+
+[node name="RPG_button" type="Button" parent="CanvasLayer/Control/Grenades_options_UI"]
+layout_mode = 0
+offset_left = 59.9994
+offset_top = 175.0
+offset_right = 336.999
+offset_bottom = 206.0
+
+[node name="Label" type="Label" parent="CanvasLayer/Control/Grenades_options_UI/RPG_button"]
+layout_mode = 0
+offset_left = 12.9994
+offset_top = 5.00002
+offset_right = 220.999
+offset_bottom = 28.0
+theme_override_fonts/font = ExtResource("5_nlw7a")
+text = "Weapon Pod Station
+"
+
+[node name="Cost" type="Label" parent="CanvasLayer/Control/Grenades_options_UI/RPG_button"]
+layout_mode = 0
+offset_left = 238.999
+offset_top = 6.00002
+offset_right = 274.999
+offset_bottom = 27.0
+theme_override_colors/font_color = Color(0.762676, 0.655324, 0.283658, 1)
+theme_override_fonts/font = ExtResource("5_nlw7a")
+text = "1 $"
+
+[node name="machine_gun_turret" type="Button" parent="CanvasLayer/Control/Grenades_options_UI"]
+layout_mode = 0
+offset_left = 60.9994
+offset_top = 212.0
+offset_right = 337.999
+offset_bottom = 243.0
+
+[node name="Label" type="Label" parent="CanvasLayer/Control/Grenades_options_UI/machine_gun_turret"]
+layout_mode = 0
+offset_left = 12.9994
+offset_top = 5.00002
+offset_right = 220.999
+offset_bottom = 28.0
+theme_override_fonts/font = ExtResource("5_nlw7a")
+text = "Weapon Pod Station
+"
+
+[node name="Cost" type="Label" parent="CanvasLayer/Control/Grenades_options_UI/machine_gun_turret"]
+layout_mode = 0
+offset_left = 238.999
+offset_top = 6.00002
+offset_right = 274.999
+offset_bottom = 27.0
+theme_override_colors/font_color = Color(0.762676, 0.655324, 0.283658, 1)
+theme_override_fonts/font = ExtResource("5_nlw7a")
+text = "1 $"
+
+[node name="self_revive_button" type="Button" parent="CanvasLayer/Control/Grenades_options_UI"]
+layout_mode = 0
+offset_left = 59.9994
+offset_top = 250.0
+offset_right = 336.999
+offset_bottom = 281.0
+
+[node name="Label" type="Label" parent="CanvasLayer/Control/Grenades_options_UI/self_revive_button"]
+layout_mode = 0
+offset_left = 12.9994
+offset_top = 5.00002
+offset_right = 220.999
+offset_bottom = 28.0
+theme_override_fonts/font = ExtResource("5_nlw7a")
+text = "Weapon Pod Station
+"
+
+[node name="Cost" type="Label" parent="CanvasLayer/Control/Grenades_options_UI/self_revive_button"]
+layout_mode = 0
+offset_left = 238.999
+offset_top = 6.00002
+offset_right = 274.999
+offset_bottom = 27.0
+theme_override_colors/font_color = Color(0.762676, 0.655324, 0.283658, 1)
+theme_override_fonts/font = ExtResource("5_nlw7a")
+text = "1 $"
+
+[node name="armor_button" type="Button" parent="CanvasLayer/Control/Grenades_options_UI"]
+layout_mode = 0
+offset_left = 59.9994
+offset_top = 286.0
+offset_right = 336.999
+offset_bottom = 317.0
+
+[node name="Label" type="Label" parent="CanvasLayer/Control/Grenades_options_UI/armor_button"]
+layout_mode = 0
+offset_left = 12.9994
+offset_top = 5.00002
+offset_right = 220.999
+offset_bottom = 28.0
+theme_override_fonts/font = ExtResource("5_nlw7a")
+text = "Weapon Pod Station
+"
+
+[node name="Cost" type="Label" parent="CanvasLayer/Control/Grenades_options_UI/armor_button"]
+layout_mode = 0
+offset_left = 238.999
+offset_top = 6.00002
+offset_right = 274.999
+offset_bottom = 27.0
+theme_override_colors/font_color = Color(0.762676, 0.655324, 0.283658, 1)
+theme_override_fonts/font = ExtResource("5_nlw7a")
+text = "1 $"
+
+[connection signal="body_entered" from="InteractionArea" to="InteractionArea" method="_on_body_entered"]
+[connection signal="body_exited" from="InteractionArea" to="InteractionArea" method="_on_body_exited"]
+[connection signal="mouse_entered" from="CanvasLayer/Control" to="CanvasLayer/Control" method="_on_mouse_entered"]
+[connection signal="pressed" from="CanvasLayer/Control/Grenades_options_UI/grenade_button" to="CanvasLayer/Control" method="_on_button_pressed" binds= [0]]
+[connection signal="pressed" from="CanvasLayer/Control/Grenades_options_UI/stun_grenade_button" to="CanvasLayer/Control" method="_on_button_pressed" binds= [1]]
+[connection signal="pressed" from="CanvasLayer/Control/Grenades_options_UI/RPG_button" to="CanvasLayer/Control" method="_on_button_pressed" binds= [2]]
+[connection signal="pressed" from="CanvasLayer/Control/Grenades_options_UI/machine_gun_turret" to="CanvasLayer/Control" method="_on_button_pressed" binds= [3]]
+[connection signal="pressed" from="CanvasLayer/Control/Grenades_options_UI/self_revive_button" to="CanvasLayer/Control" method="_on_button_pressed" binds= [4]]
+[connection signal="pressed" from="CanvasLayer/Control/Grenades_options_UI/armor_button" to="CanvasLayer/Control" method="_on_button_pressed" binds= [5]]

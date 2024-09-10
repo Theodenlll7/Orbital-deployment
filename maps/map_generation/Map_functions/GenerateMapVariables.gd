@@ -52,8 +52,11 @@ var noise = FastNoiseLite.new()
 
 #Objects
 var chest= preload("res://interaction/Prefabs/chest/chest.tscn")
-var weapon_pod = preload("res://interaction/Prefabs/pods/weaponPod.tscn")
+var weapon_pod = preload("res://interaction/Prefabs/pods/weapon_pod.tscn")
+var orbital_strike_pod = preload("res://interaction/Prefabs/pods/orbital_strike_pod.tscn")
+var explosives_pod = preload("res://interaction/Prefabs/pods/explosives_pod.tscn")
 
+var pods = [weapon_pod, explosives_pod, orbital_strike_pod]
 func _ready():
 	randomize()
 	altitude.seed = randi()
@@ -61,6 +64,7 @@ func _ready():
 	altitude.frequency = 0.01
 	generate_cells()
 	Get_pod_locations()
+	
 
 func generate_cells():
 	for x in range(width):
@@ -231,7 +235,8 @@ func getRandomTreeSprite():
 	return newTexture
 
 func spawnPod(type):
-	var weponPodInstance = weapon_pod.instantiate()
-	weponPodInstance.position=tile_to_world(pod_positions[type])
-	weponPodInstance.z_index = 1
-	add_child(weponPodInstance)
+	var pod_instance = pods[type].instantiate()
+	pod_instance.position=tile_to_world(pod_positions[type])
+	pod_instance.z_index = 1
+	var parent_node = get_parent()
+	parent_node.add_child(pod_instance)

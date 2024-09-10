@@ -1,10 +1,10 @@
 [gd_scene load_steps=8 format=3 uid="uid://fwtaakyb0exx"]
 
-[ext_resource type="Script" path="res://interaction/Interactionarea/Interactionarea.gd" id="1_71ma8"]
-[ext_resource type="Script" path="res://interaction/Prefabs/pods/pod.gd" id="1_wyy4u"]
-[ext_resource type="Texture2D" uid="uid://oblvu1gqtphm" path="res://assets/Sprites/chest.png" id="2_qqv4b"]
-[ext_resource type="Script" path="res://maps/ship/MainHouseUI.gd" id="3_pt7m5"]
-[ext_resource type="FontFile" uid="uid://dkg32o3qfh2n7" path="res://assets/Fonts/pixelmix.ttf" id="4_s3igv"]
+[ext_resource type="Script" path="res://interaction/Prefabs/pods/pod.gd" id="1_dfide"]
+[ext_resource type="Script" path="res://interaction/Interactionarea/Interactionarea.gd" id="2_ndqur"]
+[ext_resource type="Texture2D" uid="uid://oblvu1gqtphm" path="res://assets/Sprites/chest.png" id="3_edx7n"]
+[ext_resource type="Script" path="res://UI/scripts/weapon_pod.gd" id="4_hau4n"]
+[ext_resource type="FontFile" uid="uid://dkg32o3qfh2n7" path="res://assets/Fonts/pixelmix.ttf" id="5_iwn8t"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k8nvd"]
 size = Vector2(147, 133)
@@ -13,10 +13,10 @@ size = Vector2(147, 133)
 specular_color = Color(0.349043, 0.425067, 0.297768, 1)
 
 [node name="InteractionArea" type="Node2D"]
-script = ExtResource("1_wyy4u")
+script = ExtResource("1_dfide")
 
 [node name="InteractionArea" type="Area2D" parent="."]
-script = ExtResource("1_71ma8")
+script = ExtResource("2_ndqur")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
 position = Vector2(0.5, 1.5)
@@ -25,7 +25,7 @@ shape = SubResource("RectangleShape2D_k8nvd")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(1, 1)
 scale = Vector2(0.431541, 0.420271)
-texture = ExtResource("2_qqv4b")
+texture = ExtResource("3_edx7n")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 visible = false
@@ -40,7 +40,7 @@ offset_left = -344.0
 offset_top = -175.744
 offset_right = 364.0
 offset_bottom = 196.256
-script = ExtResource("3_pt7m5")
+script = ExtResource("4_hau4n")
 metadata/_edit_use_anchors_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/Control"]
@@ -70,7 +70,7 @@ offset_left = 18.0
 offset_top = 13.0
 offset_right = 226.0
 offset_bottom = 36.0
-theme_override_fonts/font = ExtResource("4_s3igv")
+theme_override_fonts/font = ExtResource("5_iwn8t")
 text = "Weapon Pod Station
 "
 
@@ -81,7 +81,7 @@ offset_top = 13.0
 offset_right = 476.0
 offset_bottom = 36.0
 theme_override_colors/font_color = Color(0.762676, 0.655324, 0.283658, 1)
-theme_override_fonts/font = ExtResource("4_s3igv")
+theme_override_fonts/font = ExtResource("5_iwn8t")
 text = "1 $"
 
 [node name="weapons_UI" type="Control" parent="CanvasLayer/Control"]
@@ -162,7 +162,7 @@ offset_left = 14.0
 offset_top = 4.0
 offset_right = 103.0
 offset_bottom = 27.0
-theme_override_fonts/font = ExtResource("4_s3igv")
+theme_override_fonts/font = ExtResource("5_iwn8t")
 text = "Pistol 1
 "
 
@@ -173,7 +173,7 @@ offset_top = 5.0
 offset_right = 444.0
 offset_bottom = 31.0
 theme_override_colors/font_color = Color(0.762676, 0.655324, 0.283658, 1)
-theme_override_fonts/font = ExtResource("4_s3igv")
+theme_override_fonts/font = ExtResource("5_iwn8t")
 text = "100 $"
 
 [node name="pistol_upg_2" type="Button" parent="CanvasLayer/Control/Weapon_paths/Pistols"]
@@ -189,7 +189,7 @@ offset_left = 14.0
 offset_top = 4.0
 offset_right = 103.0
 offset_bottom = 27.0
-theme_override_fonts/font = ExtResource("4_s3igv")
+theme_override_fonts/font = ExtResource("5_iwn8t")
 text = "Pistol 2
 "
 
@@ -200,7 +200,7 @@ offset_top = 5.0
 offset_right = 444.0
 offset_bottom = 31.0
 theme_override_colors/font_color = Color(0.762676, 0.655324, 0.283658, 1)
-theme_override_fonts/font = ExtResource("4_s3igv")
+theme_override_fonts/font = ExtResource("5_iwn8t")
 text = "200 $"
 
 [node name="pistol_upg_3" type="Button" parent="CanvasLayer/Control/Weapon_paths/Pistols"]
@@ -216,7 +216,7 @@ offset_left = 14.0
 offset_top = 4.0
 offset_right = 103.0
 offset_bottom = 27.0
-theme_override_fonts/font = ExtResource("4_s3igv")
+theme_override_fonts/font = ExtResource("5_iwn8t")
 text = "Pistol 3
 "
 
@@ -227,7 +227,7 @@ offset_top = 5.0
 offset_right = 444.0
 offset_bottom = 31.0
 theme_override_colors/font_color = Color(0.762676, 0.655324, 0.283658, 1)
-theme_override_fonts/font = ExtResource("4_s3igv")
+theme_override_fonts/font = ExtResource("5_iwn8t")
 text = "300 $"
 
 [node name="Shotguns" type="Control" parent="CanvasLayer/Control/Weapon_paths"]
@@ -249,7 +249,7 @@ offset_left = 14.0
 offset_top = 4.0
 offset_right = 103.0
 offset_bottom = 27.0
-theme_override_fonts/font = ExtResource("4_s3igv")
+theme_override_fonts/font = ExtResource("5_iwn8t")
 text = "Shotgun 1
 "
 
@@ -260,7 +260,7 @@ offset_top = 5.0
 offset_right = 444.0
 offset_bottom = 31.0
 theme_override_colors/font_color = Color(0.762676, 0.655324, 0.283658, 1)
-theme_override_fonts/font = ExtResource("4_s3igv")
+theme_override_fonts/font = ExtResource("5_iwn8t")
 text = "100 $"
 
 [node name="shotgun_upg_2" type="Button" parent="CanvasLayer/Control/Weapon_paths/Shotguns"]
@@ -276,7 +276,7 @@ offset_left = 14.0
 offset_top = 4.0
 offset_right = 103.0
 offset_bottom = 27.0
-theme_override_fonts/font = ExtResource("4_s3igv")
+theme_override_fonts/font = ExtResource("5_iwn8t")
 text = "Shotgun 2
 "
 
@@ -287,7 +287,7 @@ offset_top = 5.0
 offset_right = 444.0
 offset_bottom = 31.0
 theme_override_colors/font_color = Color(0.762676, 0.655324, 0.283658, 1)
-theme_override_fonts/font = ExtResource("4_s3igv")
+theme_override_fonts/font = ExtResource("5_iwn8t")
 text = "200 $"
 
 [node name="Assault_Rifles" type="Control" parent="CanvasLayer/Control/Weapon_paths"]
@@ -309,7 +309,7 @@ offset_left = 14.0
 offset_top = 4.0
 offset_right = 103.0
 offset_bottom = 27.0
-theme_override_fonts/font = ExtResource("4_s3igv")
+theme_override_fonts/font = ExtResource("5_iwn8t")
 text = "Assault Rifle 1
 "
 
@@ -320,7 +320,7 @@ offset_top = 5.0
 offset_right = 444.0
 offset_bottom = 31.0
 theme_override_colors/font_color = Color(0.762676, 0.655324, 0.283658, 1)
-theme_override_fonts/font = ExtResource("4_s3igv")
+theme_override_fonts/font = ExtResource("5_iwn8t")
 text = "100 $"
 
 [node name="assault_rifle_upg_2" type="Button" parent="CanvasLayer/Control/Weapon_paths/Assault_Rifles"]
@@ -336,7 +336,7 @@ offset_left = 14.0
 offset_top = 4.0
 offset_right = 103.0
 offset_bottom = 27.0
-theme_override_fonts/font = ExtResource("4_s3igv")
+theme_override_fonts/font = ExtResource("5_iwn8t")
 text = "Assault Rifle 2
 "
 
@@ -347,7 +347,7 @@ offset_top = 5.0
 offset_right = 444.0
 offset_bottom = 31.0
 theme_override_colors/font_color = Color(0.762676, 0.655324, 0.283658, 1)
-theme_override_fonts/font = ExtResource("4_s3igv")
+theme_override_fonts/font = ExtResource("5_iwn8t")
 text = "200 $"
 
 [node name="assault_rifle_upg_3" type="Button" parent="CanvasLayer/Control/Weapon_paths/Assault_Rifles"]
@@ -363,7 +363,7 @@ offset_left = 14.0
 offset_top = 4.0
 offset_right = 103.0
 offset_bottom = 27.0
-theme_override_fonts/font = ExtResource("4_s3igv")
+theme_override_fonts/font = ExtResource("5_iwn8t")
 text = "Assault Rifle 3
 "
 
@@ -374,7 +374,7 @@ offset_top = 5.0
 offset_right = 444.0
 offset_bottom = 31.0
 theme_override_colors/font_color = Color(0.762676, 0.655324, 0.283658, 1)
-theme_override_fonts/font = ExtResource("4_s3igv")
+theme_override_fonts/font = ExtResource("5_iwn8t")
 text = "300 $"
 
 [node name="assault_rifle_upg_4" type="Button" parent="CanvasLayer/Control/Weapon_paths/Assault_Rifles"]
@@ -390,7 +390,7 @@ offset_left = 14.0
 offset_top = 4.0
 offset_right = 103.0
 offset_bottom = 27.0
-theme_override_fonts/font = ExtResource("4_s3igv")
+theme_override_fonts/font = ExtResource("5_iwn8t")
 text = "Assault Rifle 4
 "
 
@@ -401,7 +401,7 @@ offset_top = 5.0
 offset_right = 444.0
 offset_bottom = 31.0
 theme_override_colors/font_color = Color(0.762676, 0.655324, 0.283658, 1)
-theme_override_fonts/font = ExtResource("4_s3igv")
+theme_override_fonts/font = ExtResource("5_iwn8t")
 text = "400 $"
 
 [node name="Machine_Guns" type="Control" parent="CanvasLayer/Control/Weapon_paths"]
@@ -423,7 +423,7 @@ offset_left = 14.0
 offset_top = 4.0
 offset_right = 103.0
 offset_bottom = 27.0
-theme_override_fonts/font = ExtResource("4_s3igv")
+theme_override_fonts/font = ExtResource("5_iwn8t")
 text = "Machine Gun 1
 "
 
@@ -434,7 +434,7 @@ offset_top = 5.0
 offset_right = 444.0
 offset_bottom = 31.0
 theme_override_colors/font_color = Color(0.762676, 0.655324, 0.283658, 1)
-theme_override_fonts/font = ExtResource("4_s3igv")
+theme_override_fonts/font = ExtResource("5_iwn8t")
 text = "100 $"
 
 [node name="machine_gun_upg_2" type="Button" parent="CanvasLayer/Control/Weapon_paths/Machine_Guns"]
@@ -450,7 +450,7 @@ offset_left = 14.0
 offset_top = 4.0
 offset_right = 103.0
 offset_bottom = 27.0
-theme_override_fonts/font = ExtResource("4_s3igv")
+theme_override_fonts/font = ExtResource("5_iwn8t")
 text = "Machine Gun 2
 "
 
@@ -461,7 +461,7 @@ offset_top = 5.0
 offset_right = 444.0
 offset_bottom = 31.0
 theme_override_colors/font_color = Color(0.762676, 0.655324, 0.283658, 1)
-theme_override_fonts/font = ExtResource("4_s3igv")
+theme_override_fonts/font = ExtResource("5_iwn8t")
 text = "200 $"
 
 [node name="Laser_Guns" type="Control" parent="CanvasLayer/Control/Weapon_paths"]
@@ -483,7 +483,7 @@ offset_left = 14.0
 offset_top = 4.0
 offset_right = 103.0
 offset_bottom = 27.0
-theme_override_fonts/font = ExtResource("4_s3igv")
+theme_override_fonts/font = ExtResource("5_iwn8t")
 text = "Laser Gun 1
 "
 
@@ -494,7 +494,7 @@ offset_top = 5.0
 offset_right = 444.0
 offset_bottom = 31.0
 theme_override_colors/font_color = Color(0.762676, 0.655324, 0.283658, 1)
-theme_override_fonts/font = ExtResource("4_s3igv")
+theme_override_fonts/font = ExtResource("5_iwn8t")
 text = "100 $"
 
 [node name="laser_gun_upg_2" type="Button" parent="CanvasLayer/Control/Weapon_paths/Laser_Guns"]
@@ -510,7 +510,7 @@ offset_left = 14.0
 offset_top = 4.0
 offset_right = 103.0
 offset_bottom = 27.0
-theme_override_fonts/font = ExtResource("4_s3igv")
+theme_override_fonts/font = ExtResource("5_iwn8t")
 text = "Laser Gun 2
 "
 
@@ -521,7 +521,7 @@ offset_top = 5.0
 offset_right = 444.0
 offset_bottom = 31.0
 theme_override_colors/font_color = Color(0.762676, 0.655324, 0.283658, 1)
-theme_override_fonts/font = ExtResource("4_s3igv")
+theme_override_fonts/font = ExtResource("5_iwn8t")
 text = "200 $"
 
 [node name="Snipers" type="Control" parent="CanvasLayer/Control/Weapon_paths"]
@@ -543,7 +543,7 @@ offset_left = 14.0
 offset_top = 4.0
 offset_right = 103.0
 offset_bottom = 27.0
-theme_override_fonts/font = ExtResource("4_s3igv")
+theme_override_fonts/font = ExtResource("5_iwn8t")
 text = "Sniper 1"
 
 [node name="Cost" type="Label" parent="CanvasLayer/Control/Weapon_paths/Snipers/sniper_upg_1"]
@@ -553,7 +553,7 @@ offset_top = 5.0
 offset_right = 444.0
 offset_bottom = 31.0
 theme_override_colors/font_color = Color(0.762676, 0.655324, 0.283658, 1)
-theme_override_fonts/font = ExtResource("4_s3igv")
+theme_override_fonts/font = ExtResource("5_iwn8t")
 text = "100 $"
 
 [node name="sniper_upg_2" type="Button" parent="CanvasLayer/Control/Weapon_paths/Snipers"]
@@ -569,7 +569,7 @@ offset_left = 14.0
 offset_top = 4.0
 offset_right = 103.0
 offset_bottom = 27.0
-theme_override_fonts/font = ExtResource("4_s3igv")
+theme_override_fonts/font = ExtResource("5_iwn8t")
 text = "Sniper 2"
 
 [node name="Cost" type="Label" parent="CanvasLayer/Control/Weapon_paths/Snipers/sniper_upg_2"]
@@ -579,7 +579,7 @@ offset_top = 5.0
 offset_right = 444.0
 offset_bottom = 31.0
 theme_override_colors/font_color = Color(0.762676, 0.655324, 0.283658, 1)
-theme_override_fonts/font = ExtResource("4_s3igv")
+theme_override_fonts/font = ExtResource("5_iwn8t")
 text = "200 $"
 
 [node name="back_button" type="Button" parent="CanvasLayer/Control/Weapon_paths"]
@@ -597,7 +597,7 @@ offset_left = 19.0
 offset_top = 13.0
 offset_right = 108.0
 offset_bottom = 36.0
-theme_override_fonts/font = ExtResource("4_s3igv")
+theme_override_fonts/font = ExtResource("5_iwn8t")
 text = "Return
 "
 
@@ -610,19 +610,19 @@ text = "Return
 [connection signal="pressed" from="CanvasLayer/Control/weapons_UI/pistols_button4" to="CanvasLayer/Control" method="_on_pistols_button_pressed" binds= [4]]
 [connection signal="pressed" from="CanvasLayer/Control/weapons_UI/pistols_button5" to="CanvasLayer/Control" method="_on_pistols_button_pressed" binds= [5]]
 [connection signal="pressed" from="CanvasLayer/Control/weapons_UI/pistols_button6" to="CanvasLayer/Control" method="_on_pistols_button_pressed" binds= [6]]
-[connection signal="pressed" from="CanvasLayer/Control/Weapon_paths/Pistols/pistol_upg_1" to="CanvasLayer/Control" method="_on_weaponPod_upg_pressed" binds= [1, "Pistol 1"]]
-[connection signal="pressed" from="CanvasLayer/Control/Weapon_paths/Pistols/pistol_upg_2" to="CanvasLayer/Control" method="_on_weaponPod_upg_pressed" binds= [2, "Pistol 2"]]
-[connection signal="pressed" from="CanvasLayer/Control/Weapon_paths/Pistols/pistol_upg_3" to="CanvasLayer/Control" method="_on_weaponPod_upg_pressed" binds= [3, "Pistol 3"]]
-[connection signal="pressed" from="CanvasLayer/Control/Weapon_paths/Shotguns/shotgun_upg_1" to="CanvasLayer/Control" method="_on_weaponPod_upg_pressed" binds= [1, "ShotGun 1"]]
-[connection signal="pressed" from="CanvasLayer/Control/Weapon_paths/Shotguns/shotgun_upg_2" to="CanvasLayer/Control" method="_on_weaponPod_upg_pressed" binds= [2, "Shotgun 2"]]
-[connection signal="pressed" from="CanvasLayer/Control/Weapon_paths/Assault_Rifles/assault_rifle_upg_1" to="CanvasLayer/Control" method="_on_weaponPod_upg_pressed" binds= [1, "Assault Rifle 1"]]
-[connection signal="pressed" from="CanvasLayer/Control/Weapon_paths/Assault_Rifles/assault_rifle_upg_2" to="CanvasLayer/Control" method="_on_weaponPod_upg_pressed" binds= [2, "Assault Rifle 2"]]
-[connection signal="pressed" from="CanvasLayer/Control/Weapon_paths/Assault_Rifles/assault_rifle_upg_3" to="CanvasLayer/Control" method="_on_weaponPod_upg_pressed" binds= [3, "Assault Rifle 3"]]
-[connection signal="pressed" from="CanvasLayer/Control/Weapon_paths/Assault_Rifles/assault_rifle_upg_4" to="CanvasLayer/Control" method="_on_weaponPod_upg_pressed" binds= [4, "Assault Rifle 4"]]
-[connection signal="pressed" from="CanvasLayer/Control/Weapon_paths/Machine_Guns/machine_gun_upg_1" to="CanvasLayer/Control" method="_on_weaponPod_upg_pressed" binds= [1, "Machinegun 1"]]
-[connection signal="pressed" from="CanvasLayer/Control/Weapon_paths/Machine_Guns/machine_gun_upg_2" to="CanvasLayer/Control" method="_on_weaponPod_upg_pressed" binds= [2, "Machinegun 2"]]
-[connection signal="pressed" from="CanvasLayer/Control/Weapon_paths/Laser_Guns/laser_gun_upg_1" to="CanvasLayer/Control" method="_on_weaponPod_upg_pressed" binds= [1, "Laser Gun 1"]]
-[connection signal="pressed" from="CanvasLayer/Control/Weapon_paths/Laser_Guns/laser_gun_upg_2" to="CanvasLayer/Control" method="_on_weaponPod_upg_pressed" binds= [2, "Laser Gun 2"]]
-[connection signal="pressed" from="CanvasLayer/Control/Weapon_paths/Snipers/sniper_upg_1" to="CanvasLayer/Control" method="_on_weaponPod_upg_pressed" binds= [1, "Sniper 1"]]
-[connection signal="pressed" from="CanvasLayer/Control/Weapon_paths/Snipers/sniper_upg_2" to="CanvasLayer/Control" method="_on_weaponPod_upg_pressed" binds= [2, "Sniper 2"]]
+[connection signal="pressed" from="CanvasLayer/Control/Weapon_paths/Pistols/pistol_upg_1" to="CanvasLayer/Control" method="_on_button_pressed" binds= [0, 0]]
+[connection signal="pressed" from="CanvasLayer/Control/Weapon_paths/Pistols/pistol_upg_2" to="CanvasLayer/Control" method="_on_button_pressed" binds= [0, 1]]
+[connection signal="pressed" from="CanvasLayer/Control/Weapon_paths/Pistols/pistol_upg_3" to="CanvasLayer/Control" method="_on_button_pressed" binds= [0, 2]]
+[connection signal="pressed" from="CanvasLayer/Control/Weapon_paths/Shotguns/shotgun_upg_1" to="CanvasLayer/Control" method="_on_button_pressed" binds= [1, 0]]
+[connection signal="pressed" from="CanvasLayer/Control/Weapon_paths/Shotguns/shotgun_upg_2" to="CanvasLayer/Control" method="_on_button_pressed" binds= [1, 1]]
+[connection signal="pressed" from="CanvasLayer/Control/Weapon_paths/Assault_Rifles/assault_rifle_upg_1" to="CanvasLayer/Control" method="_on_button_pressed" binds= [2, 0]]
+[connection signal="pressed" from="CanvasLayer/Control/Weapon_paths/Assault_Rifles/assault_rifle_upg_2" to="CanvasLayer/Control" method="_on_button_pressed" binds= [2, 1]]
+[connection signal="pressed" from="CanvasLayer/Control/Weapon_paths/Assault_Rifles/assault_rifle_upg_3" to="CanvasLayer/Control" method="_on_button_pressed" binds= [2, 2]]
+[connection signal="pressed" from="CanvasLayer/Control/Weapon_paths/Assault_Rifles/assault_rifle_upg_4" to="CanvasLayer/Control" method="_on_button_pressed" binds= [2, 3]]
+[connection signal="pressed" from="CanvasLayer/Control/Weapon_paths/Machine_Guns/machine_gun_upg_1" to="CanvasLayer/Control" method="_on_button_pressed" binds= [3, 0]]
+[connection signal="pressed" from="CanvasLayer/Control/Weapon_paths/Machine_Guns/machine_gun_upg_2" to="CanvasLayer/Control" method="_on_button_pressed" binds= [3, 1]]
+[connection signal="pressed" from="CanvasLayer/Control/Weapon_paths/Laser_Guns/laser_gun_upg_1" to="CanvasLayer/Control" method="_on_button_pressed" binds= [4, 0]]
+[connection signal="pressed" from="CanvasLayer/Control/Weapon_paths/Laser_Guns/laser_gun_upg_2" to="CanvasLayer/Control" method="_on_button_pressed" binds= [4, 1]]
+[connection signal="pressed" from="CanvasLayer/Control/Weapon_paths/Snipers/sniper_upg_1" to="CanvasLayer/Control" method="_on_button_pressed" binds= [5, 0]]
+[connection signal="pressed" from="CanvasLayer/Control/Weapon_paths/Snipers/sniper_upg_2" to="CanvasLayer/Control" method="_on_button_pressed" binds= [5, 1]]
 [connection signal="pressed" from="CanvasLayer/Control/Weapon_paths/back_button" to="CanvasLayer/Control" method="_on_back_button_pressed"]

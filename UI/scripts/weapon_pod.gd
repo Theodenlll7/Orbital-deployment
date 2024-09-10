@@ -7,11 +7,6 @@ func _ready():
 func _process(delta):
 	pass
 
-func _on_upgrade_turret_button_pressed():
-	GameVariables.upgradeFromPod("towerUpgrade")
-	updateButtonLabels()
-	SoundEngine.playUpgradeSound()
-	
 func setLabelsAndCost():
 	var weapons = PodVariables.weapons
 	var weapon_path_upgrades = $Weapon_paths
@@ -29,7 +24,7 @@ func setLabelsAndCost():
 				
 func updateButtonLabels():
 	var player_money = $Header.get_node("Players_money")
-	player_money.text = str(GameVariables.getPlayerMoney()) + "$"
+	player_money.text = str(GameVariables.player_money) + "$"
 
 func _on_pistols_button_pressed(extra_arg_0: int) -> void:
 	var weaponsUI = $weapons_UI
@@ -51,22 +46,15 @@ func showCorrectWeaponUI(not_to_hide):
 	$Weapon_paths/back_button.show()
 	$Weapon_paths/back_button/Label.show()
 
-
 func _on_back_button_pressed() -> void:
 	var weapon_node_tree = $Weapon_paths
 	weapon_node_tree.hide()
 	var weaponsUI = $weapons_UI
 	weaponsUI.show()
 
-func _on_weaponPod_upg_pressed(extra_arg_0: int, type: String):
-	var tier= extra_arg_0
-	handleBuy(type, tier)
-	
-func handleBuy(type, upg_tier):
-	var cost = PodVariables.get_weapon_cost(type)
-	if GameVariables.getPlayerMoney() >=cost:
-		print("Player just Bought a ", type, " Tier: ", upg_tier)
-		GameVariables.decreasePlayerMoney(cost)
-		updateButtonLabels()
-	else:
-		print("Not enough money to buy that")
+
+func _on_button_pressed(extra_arg_1: int, extra_arg_2: int) -> void:
+	var type = $Weapon_paths.get_child((extra_arg_1)).get_child(extra_arg_2).get_child(0).text
+	var cost = $Weapon_paths.get_child((extra_arg_1)).get_child(extra_arg_2).get_child(1).text
+	Shop.handleBuy(type, cost)
+	updateButtonLabels()
