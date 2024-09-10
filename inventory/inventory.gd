@@ -16,5 +16,6 @@ func add_weapon(weapon):
 		drop_item(weapon_slots[selected_weapon_slot])
 		weapon_slots[selected_weapon_slot] = weapon
 
+
 func drop_item(item):
 	pass

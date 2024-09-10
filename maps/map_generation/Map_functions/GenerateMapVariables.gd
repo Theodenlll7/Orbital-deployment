@@ -25,9 +25,10 @@ var water_is_here = []
 #Generation_Arrays
 var ground_cells = []
 var water_cells = []
+var entire_map_cells = []
 var dirt_cells=[]
 var path_cells = []
-var Tree_cells = []
+var ground2_cells = []
 
 var map_Edge_cells = []
 var random_Object_cells = []
@@ -75,7 +76,7 @@ func generate_cells():
 			var alt = altitude.get_noise_2d(map_x, map_y)
 			var moist = moisture.get_noise_2d(map_x, map_y)
 			var temp = temperature.get_noise_2d(map_x, map_y)
-			water_cells.append(Vector2i(map_x, map_y))
+			entire_map_cells.append(Vector2i(map_x, map_y))
 			
 			
 			if x == 0 or x == width-1 or y == 0 or y == height-1:
@@ -96,7 +97,7 @@ func generate_cells():
 							random_tree_cells.append(Vector2i(map_x, map_y))
 						if between(temp, 0.2, 0.6):
 							dont_place_here.append(Vector2i(map_x, map_y))
-							Tree_cells.append(Vector2i(map_x, map_y))
+							ground2_cells.append(Vector2i(map_x, map_y))
 						elif between(alt, 0.1, 0.9):
 							if between(moist, 0, 0.4) and between(temp, 0.2, 0.6):
 								dirt_cells.append(Vector2i(map_x, map_y))
@@ -160,19 +161,14 @@ func Get_pod_locations():
 		if can_place:
 			pod_positions.append(pod_location)
 			podCount+=1
-		
-		print(pod_positions)
-			
-	print("after spawn ", chests.size(), "chests:")
 	
 func spawn_chests():
 	if len(chests) >=max_chest_count:
 		return
-
+		
 	var chest_distance = 5
 	var chest_count = chests.size()
 	var attempts = 0
-
 
 	while chest_count < max_chest_count and attempts < 1000:
 		attempts += 1
