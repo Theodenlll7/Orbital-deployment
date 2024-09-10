@@ -518,7 +518,7 @@ animations = [{
 radius = 4.5
 height = 15.0
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" groups=["players"]]
 motion_mode = 1
 script = ExtResource("1_gaiyc")
 

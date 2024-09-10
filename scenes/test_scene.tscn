@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://mnavfugu2d2p"]
+[gd_scene load_steps=8 format=3 uid="uid://mnavfugu2d2p"]
 
 [ext_resource type="PackedScene" uid="uid://6vt8l263l0o7" path="res://player/player.tscn" id="1_xevkj"]
 [ext_resource type="PackedScene" uid="uid://dtyfw3eetyfc" path="res://maps/ship/MainHouse.tscn" id="2_b4xw8"]
 [ext_resource type="PackedScene" uid="uid://cyguxpvjhsj7b" path="res://addons/sprout_lands_tilemap/examples/scenes/harvest_hill_example.tscn" id="5_ki0rd"]
 [ext_resource type="PackedScene" uid="uid://b88le3f50loho" path="res://enemies/target_dummy.tscn" id="5_mfuhq"]
+[ext_resource type="Script" path="res://enemies/enemy_spawner.gd" id="6_lj1w8"]
 [ext_resource type="PackedScene" uid="uid://b5rdpdm748scj" path="res://enemies/alien.tscn" id="6_vu708"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_5b6c2"]
@@ -35,7 +36,7 @@ position = Vector2(-296, 136)
 [node name="TargetDummy4" parent="." instance=ExtResource("5_mfuhq")]
 position = Vector2(-217, -116)
 
-[node name="Player" parent="." instance=ExtResource("1_xevkj")]
+[node name="Player" parent="." groups=["Player"] instance=ExtResource("1_xevkj")]
 position = Vector2(-94, 34)
 move_speed = 125
 dodge_speed = 300
@@ -43,3 +44,9 @@ dodge_speed = 300
 [node name="Alien" parent="." node_paths=PackedStringArray("target") instance=ExtResource("6_vu708")]
 position = Vector2(-63, -219)
 target = NodePath("../Player")
+
+[node name="enemy_spawner" type="Node2D" parent="."]
+script = ExtResource("6_lj1w8")
+enemy_scene = ExtResource("6_vu708")
+spawn_radius_min = 100
+spawn_radius_max = 200

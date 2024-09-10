@@ -11,6 +11,8 @@ var map_ready := false
 
 
 func _ready():
+	if !target:
+		target = get_tree().get_first_node_in_group("players")
 	# Make sure to not await during _ready.
 	set_physics_process(false)
 	call_deferred("actor_setup")
@@ -30,8 +32,6 @@ func _physics_process(_delta):
 	var current_agent_position = global_position
 	var next_path_position = agent.get_next_path_position()
 	velocity = current_agent_position.direction_to(next_path_position) * speed
-
-	print(agent.get_current_navigation_path())
 
 	move_and_slide()
 
