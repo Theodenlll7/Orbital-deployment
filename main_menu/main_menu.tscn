@@ -1,9 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://dxk7c6wikv43p"]
+[gd_scene load_steps=10 format=3 uid="uid://dxk7c6wikv43p"]
 
 [ext_resource type="Script" path="res://main_menu/main_menu.gd" id="1_sgu6m"]
 [ext_resource type="Texture2D" uid="uid://5mo2p51wsuay" path="res://assets/Backgrounds/space.png" id="1_w5je3"]
 [ext_resource type="Shader" path="res://main_menu/main_menu_scroll.gdshader" id="2_ot4nc"]
 [ext_resource type="FontFile" uid="uid://dkg32o3qfh2n7" path="res://assets/Fonts/pixelmix.ttf" id="2_t4ix4"]
+[ext_resource type="Texture2D" uid="uid://ckvltbyqf3xwo" path="res://assets/Sprites/drop_ship/drop_ship_large.png" id="5_h2a75"]
+[ext_resource type="Script" path="res://main_menu/drop_ship_main_menu_texture.gd" id="6_g3xgq"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7cjl6"]
 shader = ExtResource("2_ot4nc")
@@ -112,3 +114,13 @@ theme_override_font_sizes/font_size = 32
 theme_override_styles/hover = SubResource("StyleBoxFlat_8ioed")
 theme_override_styles/normal = SubResource("StyleBoxFlat_1p2d2")
 text = "Exit game"
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 747.0
+offset_top = 247.0
+offset_right = 1089.0
+offset_bottom = 561.0
+texture = ExtResource("5_h2a75")
+flip_h = true
+script = ExtResource("6_g3xgq")
