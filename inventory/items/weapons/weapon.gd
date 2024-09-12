@@ -1,6 +1,20 @@
 extends Node
 class_name Weapon
 
+var weapon_name: String = ""
+var weapon_cost: int = 0
+
+func _init(
+		new_weapon_name: String = "", 
+		new_weapon_cost: int = 0, 
+		new_attack_mode: AttackMode = AttackMode.SINGLE, 
+		new_attack_rate: float = 0.2
+	) -> void:
+	weapon_name = new_weapon_name
+	weapon_cost = new_weapon_cost
+	attackMode = new_attack_mode
+	attackRate = new_attack_rate
+	
 enum AttackMode {
 	SINGLE,  ## Attacks ones per button press
 	AUTOMATIC,  ## Attacks continulsy while button is pressed

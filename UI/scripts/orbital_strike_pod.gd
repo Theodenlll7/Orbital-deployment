@@ -15,9 +15,9 @@ func setLabelsAndCost():
 		var button_node = orbital_strike_options.get_child(i)
 		var label_node = button_node.get_node("Label")
 		var cost_node = button_node.get_node("Cost")
-		label_node.text = str(special_equipment[counter])
-		cost_node.text = str(special_equipment[counter+1])
-		counter+=2
+		label_node.text = special_equipment[counter].equipment_name
+		cost_node.text = str(special_equipment[counter].equipment_cost)
+		counter+=1
 		
 func updateButtonLabels():
 	var player_money = $Header.get_node("Players_money")
@@ -25,8 +25,9 @@ func updateButtonLabels():
 	
 
 func _on_button_pressed(extra_arg_1: int) -> void:
+	var special_equipment = PodVariables.special_equipment[extra_arg_1]
 	var name = $Orbital_strike_UI.get_child((extra_arg_1)).get_child(0).text
 	var cost = $Orbital_strike_UI.get_child((extra_arg_1)).get_child(1).text
-	print("pressed: ", name, " cost: ", cost)
-	Shop.handleBuy(name, cost)
+
+	Shop.handleBuy(name, cost, special_equipment)
 	updateButtonLabels()

@@ -18,9 +18,9 @@ func setLabelsAndCost():
 				var button_node = child.get_child(j)
 				var label_node = button_node.get_node("Label")
 				var cost_node = button_node.get_node("Cost")
-				label_node.text = str(weapons[counter])
-				cost_node.text = str(weapons[counter+1])
-				counter+=2
+				label_node.text = weapons[counter].weapon_name
+				cost_node.text = str(weapons[counter].weapon_cost)
+				counter +=1
 				
 func updateButtonLabels():
 	var player_money = $Header.get_node("Players_money")
@@ -53,8 +53,9 @@ func _on_back_button_pressed() -> void:
 	weaponsUI.show()
 
 
-func _on_button_pressed(extra_arg_1: int, extra_arg_2: int) -> void:
-	var type = $Weapon_paths.get_child((extra_arg_1)).get_child(extra_arg_2).get_child(0).text
-	var cost = $Weapon_paths.get_child((extra_arg_1)).get_child(extra_arg_2).get_child(1).text
-	Shop.handleBuy(type, cost)
+func _on_button_pressed(extra_arg_1: int) -> void:
+	var weapon = PodVariables.weapons[extra_arg_1]
+	var type =PodVariables.weapons[extra_arg_1].weapon_name
+	var cost = PodVariables.weapons[extra_arg_1].weapon_cost
+	Shop.handleBuy(type, cost, weapon)
 	updateButtonLabels()

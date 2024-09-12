@@ -32,5 +32,5 @@ func drop_item(item):
 func setPlayerInventoryImage(slot, image):
 	self.get_child(slot).Texture = image
 
-func _on_purchase_made(name, type, type2):
-	print("signal to inventory made", name)
+func _on_purchase_made(item):
+	print("signal to inventory made", item)
