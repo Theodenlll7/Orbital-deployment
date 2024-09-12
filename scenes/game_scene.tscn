@@ -1,7 +1,6 @@
 [gd_scene load_steps=4 format=4 uid="uid://b1b2hxq1nibll"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_2u64n"]
-load_path = "res://.godot/imported/ground_tilemap.png-3708cfbffa1f42bf7fb71eb3e9a7d297.ctex"
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_row5h"]
 texture = SubResource("CompressedTexture2D_2u64n")
