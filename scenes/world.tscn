@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://wsq75v2incod"]
+[gd_scene load_steps=25 format=3 uid="uid://wsq75v2incod"]
 
 [ext_resource type="PackedScene" uid="uid://dgcxqingnrpqp" path="res://maps/map_generation/MapGeneration.tscn" id="1_huq2t"]
 [ext_resource type="Texture2D" uid="uid://cyw8tqe1bc4ld" path="res://assets/Tiles/waterfalls1.png" id="2_go67u"]
@@ -13,7 +13,9 @@
 [ext_resource type="PackedScene" uid="uid://6vt8l263l0o7" path="res://player/player.tscn" id="11_rp00p"]
 [ext_resource type="PackedScene" uid="uid://bwqebjpl0otwb" path="res://UI/night_day.tscn" id="12_gnnhm"]
 [ext_resource type="PackedScene" uid="uid://b88le3f50loho" path="res://enemies/target_dummy.tscn" id="13_njcai"]
+[ext_resource type="Script" path="res://inventory/inventory.gd" id="14_6mpms"]
 [ext_resource type="Texture2D" uid="uid://ccoe78uc8jt31" path="res://assets/Icons/icon.svg" id="14_kfuio"]
+[ext_resource type="PackedScene" uid="uid://dcpqdssnbuqbk" path="res://interaction/Prefabs/pods/orbital_strike_pod.tscn" id="16_bg7mq"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cw1ff"]
 texture = ExtResource("2_go67u")
@@ -2885,30 +2887,34 @@ offset_left = -156.0
 offset_top = -88.0
 offset_right = 159.0
 offset_bottom = -3.0
+script = ExtResource("14_6mpms")
 
-[node name="Sprite2D5" type="Sprite2D" parent="Player__UI/Inventory"]
+[node name="background" type="Sprite2D" parent="Player__UI/Inventory"]
 modulate = Color(0.446777, 0.446777, 0.446777, 1)
 position = Vector2(158.465, 54.3671)
 rotation = 3.14159
 scale = Vector2(294.742, 60.8799)
 texture = SubResource("CanvasTexture_vxf3t")
 
-[node name="Sprite2D" type="Sprite2D" parent="Player__UI/Inventory"]
+[node name="slot1" type="Sprite2D" parent="Player__UI/Inventory"]
+position = Vector2(51, 53)
+scale = Vector2(0.516, 0.4)
+texture = ExtResource("14_kfuio")
+
+[node name="slot2" type="Sprite2D" parent="Player__UI/Inventory"]
 position = Vector2(122, 53)
 scale = Vector2(0.516, 0.4)
 texture = ExtResource("14_kfuio")
 
-[node name="Sprite2D2" type="Sprite2D" parent="Player__UI/Inventory"]
+[node name="slot3" type="Sprite2D" parent="Player__UI/Inventory"]
 position = Vector2(193, 53)
 scale = Vector2(0.516, 0.4)
 texture = ExtResource("14_kfuio")
 
-[node name="Sprite2D3" type="Sprite2D" parent="Player__UI/Inventory"]
+[node name="slot4" type="Sprite2D" parent="Player__UI/Inventory"]
 position = Vector2(265, 53)
 scale = Vector2(0.516, 0.4)
 texture = ExtResource("14_kfuio")
 
-[node name="Sprite2D4" type="Sprite2D" parent="Player__UI/Inventory"]
-position = Vector2(52, 53)
-scale = Vector2(0.516, 0.4)
-texture = ExtResource("14_kfuio")
+[node name="InteractionArea" parent="." instance=ExtResource("16_bg7mq")]
+position = Vector2(246, 156)

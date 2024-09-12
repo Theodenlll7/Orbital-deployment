@@ -1,7 +1,7 @@
 extends Node
 
 var weapons = [
-	"Pistol 1", 100,
+	"Pistol 1", 100, 
 	"Pistol 2", 200,
 	"Pistol 3", 300,
 	
