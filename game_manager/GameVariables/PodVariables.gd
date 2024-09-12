@@ -5,9 +5,12 @@ var explosives = []
 var special_equipment = []
 
 func _ready():
-	var pistol1 = Weapon.new("Pistol 1", 100, Weapon.AttackMode.AUTOMATIC, 0.1)
-	var pistol2 = Weapon.new("Pistol 2", 200, Weapon.AttackMode.AUTOMATIC, 0.1)
-	var pistol3 = Weapon.new("Pistol 3", 300, Weapon.AttackMode.AUTOMATIC, 0.1)
+	var pistol1_texture_icon = load("res://assets/Icons/Items/weapons/pistols/pistol1.png")
+	var pistol1 = Weapon.new("Pistol 1", 100, Weapon.AttackMode.AUTOMATIC, 0.1, pistol1_texture_icon)
+	var pistol2_texture_icon = load("res://assets/Icons/Items/weapons/pistols/pistol2.png")
+	var pistol2 = Weapon.new("Pistol 2", 200, Weapon.AttackMode.AUTOMATIC, 0.1, pistol2_texture_icon)
+	var pistol3_texture_icon = load("res://assets/Icons/Items/weapons/pistols/pistol3.png")
+	var pistol3 = Weapon.new("Pistol 3", 300, Weapon.AttackMode.AUTOMATIC, 0.1, pistol3_texture_icon)
 	
 	var shotgun1 = Weapon.new("Shotgun 1", 100, Weapon.AttackMode.SINGLE, 0.5)
 	var shotgun2 = Weapon.new("Shotgun 2", 200, Weapon.AttackMode.SINGLE, 0.5)
