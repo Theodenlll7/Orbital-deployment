@@ -7,7 +7,6 @@ var util_slot = null
 var ability_slot: Node = null #TODO Replace node with the correct class_name
 
 var selected_weapon_slot = 0
-
 var signal_emitter
 
 func _ready():
@@ -33,5 +32,5 @@ func drop_item(item):
 func setPlayerInventoryImage(slot, image):
 	self.get_child(slot).Texture = image
 
-func _on_purchase_made(name):
+func _on_purchase_made(name, type, type2):
 	print("signal to inventory made", name)

@@ -38,6 +38,9 @@ var special_equipment = [
 	"AI Bots", 275,
 	
 ]
+
+func _ready():
+	pass:
 func get_cost(name: String, type_of_array: Array):
 	for i in range(0, type_of_array.size(), 2):
 		if type_of_array[i] == name:

@@ -104,13 +104,14 @@ func generate_cells():
 						elif randf()< randomDungeon: 
 							dungeon_cells.append(Vector2i(map_x, map_y))
 					else: 
-						water_is_here.append(Vector2i(map_x, map_y))		
+						water_is_here.append(Vector2i(map_x, map_y))
+						water_cells.append(Vector2i(map_x, map_y))		
 						if randf() < randomObjectChance:
 							if checkToCloseToMapEdge(Vector2(map_x, map_y),10) or isPosCloseToObjects(Vector2(map_x, map_y),random_WaterObject_cells)or isPosCloseToObjects(Vector2(map_x, map_y),ground_cells):
 								pass
 							else:
 								random_WaterObject_cells.append(Vector2i(map_x, map_y))
-						#water_cells.append(Vector2i(map_x, map_y))
+					
 
 					#elif between(alt, 0.2, 0.25):
 						#shallow_water_cells.append(Vector2i(map_x, map_y))
