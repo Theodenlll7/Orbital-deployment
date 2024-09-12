@@ -1,9 +1,11 @@
-[gd_scene load_steps=75 format=3 uid="uid://6vt8l263l0o7"]
+[gd_scene load_steps=77 format=3 uid="uid://6vt8l263l0o7"]
 
 [ext_resource type="Script" path="res://player/scripts/player_movment_2d.gd" id="1_gaiyc"]
 [ext_resource type="Script" path="res://common/components/HealthComponent.gd" id="3_rmoxv"]
 [ext_resource type="Texture2D" uid="uid://dgfwosrjlow2i" path="res://assets/Sprites/Player/player.png" id="4_arusb"]
 [ext_resource type="PackedScene" uid="uid://di567uabmlw1a" path="res://inventory/items/weapons/pistol_example/pistol_example.tscn" id="4_auag0"]
+[ext_resource type="Script" path="res://player/camera_2d.gd" id="4_hh08p"]
+[ext_resource type="Script" path="res://player/health_bar.gd" id="6_2vp58"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uiavt"]
 atlas = ExtResource("4_arusb")
@@ -524,8 +526,6 @@ script = ExtResource("1_gaiyc")
 
 [node name="HealthComponent" type="Node" parent="."]
 script = ExtResource("3_rmoxv")
-max_health = null
-current_health = null
 
 [node name="PistolExample" parent="." instance=ExtResource("4_auag0")]
 
@@ -541,6 +541,7 @@ position_smoothing_enabled = true
 position_smoothing_speed = 10.0
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
+script = ExtResource("4_hh08p")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_7t3vk")
@@ -549,3 +550,18 @@ animation = &"run_v_up"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 4)
 shape = SubResource("CapsuleShape2D_ep4uh")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HealthBar" type="ProgressBar" parent="CanvasLayer" node_paths=PackedStringArray("health_component")]
+offset_left = 30.0
+offset_top = 26.0
+offset_right = 265.0
+offset_bottom = 53.0
+rounded = true
+script = ExtResource("6_2vp58")
+health_component = NodePath("../../HealthComponent")
+
+[connection signal="died" from="HealthComponent" to="." method="_on_health_component_died"]
+[connection signal="health_changed" from="HealthComponent" to="." method="_on_health_component_health_changed"]
+[connection signal="health_changed" from="HealthComponent" to="CanvasLayer/HealthBar" method="_on_health_component_health_changed"]

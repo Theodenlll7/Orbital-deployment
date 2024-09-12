@@ -9,7 +9,6 @@ var player_position := Vector2.ZERO
 
 var map_ready := false
 
-
 func _ready():
 	if !target:
 		target = get_tree().get_first_node_in_group("players")
@@ -42,3 +41,7 @@ func _on_target_reached():
 
 func set_target_position(target_position: Vector2):
 	agent.target_position = target.global_position
+
+
+func _on_health_component_died() -> void:
+	queue_free()

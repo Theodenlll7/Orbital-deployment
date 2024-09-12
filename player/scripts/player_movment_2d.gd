@@ -6,14 +6,14 @@ extends CharacterBody2D
 @export var dodge_cooldown = 0.5
 
 @onready var animated_sprite := $AnimatedSprite2D
-
+@onready var camera := $Camera2D
 var dodge_timer = -dodge_cooldown
 var can_dodge = true
 
+var can_move := true
 
 func _ready() -> void:
 	motion_mode = CharacterBody2D.MOTION_MODE_FLOATING
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -27,8 +27,9 @@ func _process(delta):
 
 	move_player()
 
-
 func move_player() -> void:
+	if !can_move:
+		return
 	if dodge_timer > 0:
 		velocity = velocity.normalized() * dodge_speed
 		animated_sprite.play("roll_h")
@@ -50,11 +51,31 @@ func move_player() -> void:
 		else:
 			animated_sprite.play("idle")
 
-	
-
 	move_and_slide()
-
 
 func start_dodge() -> void:
 	can_dodge = false
 	dodge_timer = dodge_duration
+
+
+func _on_health_component_health_changed(amount: Variant) -> void:
+	# Check if the amount is negative (indicating a health decrease)
+	if amount < 0:
+		camera.screen_shake()
+		# Hurt animation: scale and change color to red briefly
+		#var tween := get_tree().create_tween()
+		
+		# Scale the sprite to create a "shake" effect
+		#tween.tween_property(animated_sprite, "scale", Vector2(), 1).set_trans(Tween.TRANS_BOUNCE)
+		
+
+		# Change the color modulate to red to indicate damage
+		#tween.tween_property(animated_sprite, "modulate", Color.RED, 1).set_trans(Tween.TRANS_BOUNCE)
+		
+		# Start the tween animation
+		#tween.play()
+
+
+func _on_health_component_died() -> void:
+	can_move = false
+	animated_sprite.play("die")

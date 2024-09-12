@@ -41,7 +41,6 @@ var floating_text = preload("res://common/effects/floating text/floating_text.ts
 #TODO Extract functions to another component?
 func _ready():
 	connect("health_changed", _on_health_changed)
-	connect("died", Callable(get_parent(), "queue_free"))
 
 
 func _on_health_changed(amount: int):
