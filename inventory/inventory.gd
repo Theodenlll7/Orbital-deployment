@@ -17,13 +17,14 @@ func _ready():
 #TODO Make selected_weapon work	
 func add_weapon(weapon):
 	var empty_slot = weapon_slots.find(null)
-	if empty_slot:
+	if empty_slot!=-1:
 		weapon_slots[empty_slot] = weapon
 		setPlayerInventoryImage(empty_slot+1, weapon.weapon_texture_icon)
 	else:
+		selected_weapon_slot = randf_range(1, 2)
 		drop_item(weapon_slots[selected_weapon_slot])
 		weapon_slots[selected_weapon_slot] = weapon
-		setPlayerInventoryImage(selected_weapon_slot+1, weapon.weapon_texture_icon)
+		setPlayerInventoryImage(selected_weapon_slot, weapon.weapon_texture_icon)
 
 func add_explosive(explosive):
 	explosive_slot = explosive
@@ -41,7 +42,7 @@ func setPlayerInventoryImage(slot, image):
 	if image:
 		self.get_child(slot).texture = image
 	else:
-		print("Texture not found")
+		print("Icon texture not found")
 
 #Coming from shop with the help of signal
 func _on_purchase_made(item):
