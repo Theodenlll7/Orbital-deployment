@@ -5,7 +5,9 @@ var explosive_name: String = ""
 var explosive_cost: int = 0
 var explosive_damage: float = 100.0 
 
-@export var explosive_type: String = "" 
+@export var explosive_type: String = ""
+
+@export var explosive_texture_icon: Texture  # Texture associated with the weapon 
 
 func _init(
 		new_explosive_name: String = "", 

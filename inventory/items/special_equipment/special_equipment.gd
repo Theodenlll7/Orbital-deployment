@@ -5,7 +5,9 @@ var equipment_name: String = ""
 var equipment_cost: int = 0
 var equipment_effect: String = ""  
 
-@export var equipment_type: String = ""  
+@export var equipment_type: String = "" 
+
+@export var special_equipment_texture_icon: Texture  # Texture associated with the weapon 
 
 func _init(
 		new_equipment_name: String = "", 

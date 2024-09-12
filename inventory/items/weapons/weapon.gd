@@ -4,16 +4,20 @@ class_name Weapon
 var weapon_name: String = ""
 var weapon_cost: int = 0
 
+@export var weapon_texture_icon: Texture  # Texture associated with the weapon
+
 func _init(
 		new_weapon_name: String = "", 
 		new_weapon_cost: int = 0, 
 		new_attack_mode: AttackMode = AttackMode.SINGLE, 
-		new_attack_rate: float = 0.2
+		new_attack_rate: float = 0.2,
+		new_texture: Texture = null
 	) -> void:
 	weapon_name = new_weapon_name
 	weapon_cost = new_weapon_cost
 	attackMode = new_attack_mode
 	attackRate = new_attack_rate
+	weapon_texture_icon = new_texture
 	
 enum AttackMode {
 	SINGLE,  ## Attacks ones per button press
