@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=4 uid="uid://dsad6qof6xa7f"]
 
-[ext_resource type="Texture2D" uid="uid://cxleu77ytxirk" path="res://assets/Tiles/tilemap.png" id="1_xdrw5"]
+[ext_resource type="Texture2D" uid="uid://c47qsqjeww0od" path="res://assets/Tiles/tilemap.png" id="1_xdrw5"]
 [ext_resource type="PackedScene" uid="uid://6vt8l263l0o7" path="res://player/player.tscn" id="2_5ihlw"]
 [ext_resource type="Script" path="res://enemies/enemy_spawner.gd" id="3_rkl8f"]
 [ext_resource type="PackedScene" uid="uid://b5rdpdm748scj" path="res://enemies/alien.tscn" id="4_xn1oy"]
