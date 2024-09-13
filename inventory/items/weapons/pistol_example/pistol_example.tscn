@@ -7,6 +7,8 @@
 script = ExtResource("1_xth38")
 projectile_scene = ExtResource("2_ixnnj")
 muzzle = NodePath("Muzzel")
+attackMode = 1
+attackRate = 0.05
 
 [node name="Muzzel" type="Marker2D" parent="."]
 show_behind_parent = true
