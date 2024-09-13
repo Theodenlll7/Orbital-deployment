@@ -13,8 +13,8 @@ func _ready():
 	signal_emitter = get_node("/root/Shop")
 	if signal_emitter:
 		signal_emitter.connect("purchase_made", Callable(self, "_on_purchase_made"))
-	
-#TODO Make selected_weapon work	
+	update_selected_slot()
+
 func add_weapon(weapon):
 	var empty_slot = weapon_slots.find(null)
 	if empty_slot!=-1:
