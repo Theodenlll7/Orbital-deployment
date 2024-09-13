@@ -74,4 +74,4 @@ func update_selected_slot() -> void:
 	self.get_child(2).scale = Vector2(0.5, 0.5)  # Reset scale to normal
 	
 	self.get_child(selected_weapon_slot+1).modulate = Color(1, 1, 0)  # Highlight with yellow color
-	self.get_child(selected_weapon_slot+1).scale = Vector2(0.7, 0.7)  # Scale up the sprite
+	self.get_child(selected_weapon_slot+1).scale = Vector2(0.6, 0.6)  # Scale up the sprite
