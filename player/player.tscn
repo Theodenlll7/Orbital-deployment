@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://dgfwosrjlow2i" path="res://assets/Sprites/Player/player.png" id="4_arusb"]
 [ext_resource type="PackedScene" uid="uid://di567uabmlw1a" path="res://inventory/items/weapons/pistol_example/pistol_example.tscn" id="4_auag0"]
 [ext_resource type="Script" path="res://player/camera_2d.gd" id="4_hh08p"]
-[ext_resource type="Script" path="res://player/health_bar.gd" id="6_2vp58"]
+[ext_resource type="PackedScene" uid="uid://bdxxnqyrxk04e" path="res://player/player_hud.tscn" id="6_pjces"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uiavt"]
 atlas = ExtResource("4_arusb")
@@ -294,7 +294,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_32cwn")
 }],
-"loop": true,
+"loop": false,
 "name": &"die",
 "speed": 5.0
 }, {
@@ -545,23 +545,18 @@ script = ExtResource("4_hh08p")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_7t3vk")
-animation = &"run_v_up"
+animation = &"die"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 4)
 shape = SubResource("CapsuleShape2D_ep4uh")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="PlayerHUD" parent="." instance=ExtResource("6_pjces")]
 
-[node name="HealthBar" type="ProgressBar" parent="CanvasLayer" node_paths=PackedStringArray("health_component")]
-offset_left = 30.0
-offset_top = 26.0
-offset_right = 265.0
-offset_bottom = 53.0
-rounded = true
-script = ExtResource("6_2vp58")
-health_component = NodePath("../../HealthComponent")
+[node name="HealthBar" parent="PlayerHUD/Control" index="0" node_paths=PackedStringArray("health_component")]
+health_component = NodePath("../../../HealthComponent")
 
 [connection signal="died" from="HealthComponent" to="." method="_on_health_component_died"]
 [connection signal="health_changed" from="HealthComponent" to="." method="_on_health_component_health_changed"]
-[connection signal="health_changed" from="HealthComponent" to="CanvasLayer/HealthBar" method="_on_health_component_health_changed"]
+
+[editable path="PlayerHUD"]

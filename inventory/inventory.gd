@@ -2,7 +2,7 @@ extends Node
 
 class_name Inventory
 
-var weapon_slots: Array = [null, null]
+var weapon_slots: Array[Weapon] = [null, null]
 var explosive_slot = Explosive
 var special_equipment_slot: SpecialEquipment = null #TODO Replace node with the correct class_name
 

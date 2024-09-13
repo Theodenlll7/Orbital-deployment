@@ -43,3 +43,4 @@ shape = SubResource("CircleShape2D_gynkl")
 
 [connection signal="died" from="HealthComponent" to="." method="_on_health_component_died"]
 [connection signal="body_entered" from="AttackRange" to="AttackRange" method="_on_body_entered"]
+[connection signal="body_exited" from="AttackRange" to="AttackRange" method="_on_body_exited"]
