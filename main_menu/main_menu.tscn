@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dxk7c6wikv43p"]
+[gd_scene load_steps=21 format=3 uid="uid://dxk7c6wikv43p"]
 
 [ext_resource type="Script" path="res://main_menu/main_menu.gd" id="1_sgu6m"]
 [ext_resource type="Texture2D" uid="uid://5mo2p51wsuay" path="res://assets/Backgrounds/space.png" id="1_w5je3"]
@@ -6,6 +6,77 @@
 [ext_resource type="FontFile" uid="uid://dkg32o3qfh2n7" path="res://assets/Fonts/pixelmix.ttf" id="2_t4ix4"]
 [ext_resource type="Texture2D" uid="uid://ckvltbyqf3xwo" path="res://assets/Sprites/drop_ship/drop_ship_large.png" id="5_h2a75"]
 [ext_resource type="Script" path="res://main_menu/drop_ship_main_menu_texture.gd" id="6_g3xgq"]
+[ext_resource type="PackedScene" uid="uid://bkr08nyqjnpg5" path="res://main_menu/options_menu.tscn" id="7_x8lvi"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s783n"]
+bg_color = Color(1, 1, 1, 0.803922)
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6wg4l"]
+bg_color = Color(1, 1, 1, 0.376471)
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xeebp"]
+bg_color = Color(1, 1, 1, 0)
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_60h6q"]
+bg_color = Color(1, 1, 1, 0.803922)
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m5lrp"]
+bg_color = Color(1, 1, 1, 0.376471)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cprxr"]
+content_margin_left = 8.0
+content_margin_right = 8.0
+bg_color = Color(1, 1, 1, 0.803922)
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1bd5i"]
+content_margin_left = 8.0
+content_margin_right = 8.0
+bg_color = Color(1, 1, 1, 0.376471)
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_46uyr"]
+content_margin_left = 8.0
+content_margin_right = 8.0
+bg_color = Color(1, 1, 1, 0.803922)
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dr21c"]
+content_margin_left = 8.0
+content_margin_right = 8.0
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+
+[sub_resource type="Theme" id="Theme_x4ceu"]
+Button/colors/font_color = Color(1, 1, 1, 1)
+Button/colors/font_focus_color = Color(0, 0, 0, 1)
+Button/colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+Button/colors/font_pressed_color = Color(0, 0, 0, 1)
+Button/fonts/font = ExtResource("2_t4ix4")
+Button/styles/focus = SubResource("StyleBoxFlat_s783n")
+Button/styles/hover = SubResource("StyleBoxFlat_6wg4l")
+Button/styles/normal = SubResource("StyleBoxFlat_xeebp")
+Button/styles/pressed = SubResource("StyleBoxFlat_60h6q")
+TabContainer/colors/font_selected_color = Color(0, 0, 0, 1)
+TabContainer/font_sizes/font_size = 24
+TabContainer/fonts/font = ExtResource("2_t4ix4")
+TabContainer/styles/panel = SubResource("StyleBoxFlat_m5lrp")
+TabContainer/styles/tab_focus = SubResource("StyleBoxFlat_cprxr")
+TabContainer/styles/tab_hovered = SubResource("StyleBoxFlat_1bd5i")
+TabContainer/styles/tab_selected = SubResource("StyleBoxFlat_46uyr")
+TabContainer/styles/tab_unselected = SubResource("StyleBoxFlat_dr21c")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7cjl6"]
 shader = ExtResource("2_ot4nc")
@@ -15,26 +86,14 @@ shader_parameter/frequency_y = 2.0
 shader_parameter/amplitude_y = 0.05
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8ioed"]
-bg_color = Color(0.6, 0.6, 0.6, 0.329412)
-border_width_left = 4
-border_width_top = 4
-border_width_right = 4
+bg_color = Color(0.6, 0.6, 0.6, 0.333333)
 border_width_bottom = 4
-corner_radius_top_left = 16
-corner_radius_top_right = 16
-corner_radius_bottom_right = 16
-corner_radius_bottom_left = 16
+corner_detail = 1
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1p2d2"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
-border_width_left = 4
-border_width_top = 4
-border_width_right = 4
 border_width_bottom = 4
-corner_radius_top_left = 16
-corner_radius_top_right = 16
-corner_radius_bottom_right = 16
-corner_radius_bottom_left = 16
+corner_detail = 1
 
 [node name="main_menu" type="Control"]
 layout_mode = 3
@@ -43,6 +102,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = SubResource("Theme_x4ceu")
 script = ExtResource("1_sgu6m")
 
 [node name="BackGroundTextureRect" type="TextureRect" parent="."]
@@ -60,28 +120,52 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_w5je3")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="ContentMarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 16
-theme_override_constants/margin_top = 16
-theme_override_constants/margin_right = 16
-theme_override_constants/margin_bottom = 16
+theme_override_constants/margin_left = 64
+theme_override_constants/margin_top = 64
+theme_override_constants/margin_right = 64
+theme_override_constants/margin_bottom = 64
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+[node name="Control" type="Control" parent="ContentMarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+
+[node name="DropShipTextureRect" type="TextureRect" parent="ContentMarginContainer/Control"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -412.0
+offset_top = -26.0
+offset_bottom = 386.0
+grow_horizontal = 0
+grow_vertical = 2
+texture = ExtResource("5_h2a75")
+expand_mode = 2
+stretch_mode = 4
+flip_h = true
+script = ExtResource("6_g3xgq")
+
+[node name="MarginContainer" type="MarginContainer" parent="ContentMarginContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 64
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ContentMarginContainer/MarginContainer"]
 layout_mode = 2
 theme_override_constants/separation = 64
 
-[node name="TopSeperatorPadding" type="Control" parent="MarginContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="ContentMarginContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
-
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_colors/font_shadow_color = Color(0.133333, 0.290196, 0.619608, 1)
+theme_override_colors/font_shadow_color = Color(0.221264, 0.399307, 0.745747, 1)
 theme_override_constants/shadow_offset_x = 0
 theme_override_constants/shadow_offset_y = 4
 theme_override_constants/shadow_outline_size = 16
@@ -91,19 +175,19 @@ text = "Orbital assault"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="ContentMarginContainer"]
 layout_mode = 2
 alignment = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="ContentMarginContainer/HBoxContainer"]
 layout_mode = 2
 theme_override_constants/separation = 32
 alignment = 1
 
-[node name="TopSeperatorPadding" type="Control" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="TopSeperatorPadding" type="Control" parent="ContentMarginContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="StartButton" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="StartButton" type="Button" parent="ContentMarginContainer/HBoxContainer/VBoxContainer"]
 clip_contents = true
 custom_minimum_size = Vector2(256, 64)
 layout_mode = 2
@@ -113,7 +197,7 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_8ioed")
 theme_override_styles/normal = SubResource("StyleBoxFlat_1p2d2")
 text = "Start game"
 
-[node name="OptionsButton" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="OptionsButton" type="Button" parent="ContentMarginContainer/HBoxContainer/VBoxContainer"]
 clip_contents = true
 custom_minimum_size = Vector2(256, 64)
 layout_mode = 2
@@ -123,7 +207,7 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_8ioed")
 theme_override_styles/normal = SubResource("StyleBoxFlat_1p2d2")
 text = "Options"
 
-[node name="ExitButton" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="ExitButton" type="Button" parent="ContentMarginContainer/HBoxContainer/VBoxContainer"]
 clip_contents = true
 custom_minimum_size = Vector2(256, 64)
 layout_mode = 2
@@ -133,31 +217,6 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_8ioed")
 theme_override_styles/normal = SubResource("StyleBoxFlat_1p2d2")
 text = "Exit game"
 
-[node name="Control" type="Control" parent="."]
+[node name="options_menu" parent="." instance=ExtResource("7_x8lvi")]
+visible = false
 layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -672.0
-offset_top = -642.0
-offset_right = 44.0
-offset_bottom = -250.0
-grow_horizontal = 0
-grow_vertical = 0
-
-[node name="DropShipTextureRect" type="TextureRect" parent="Control"]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -358.0
-offset_right = 54.0
-offset_bottom = 412.0
-grow_horizontal = 2
-texture = ExtResource("5_h2a75")
-expand_mode = 2
-stretch_mode = 4
-flip_h = true
-script = ExtResource("6_g3xgq")
