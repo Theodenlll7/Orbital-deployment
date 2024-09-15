@@ -8,13 +8,11 @@ extends Control
 @onready var options_menu: OptionsMenu = $options_menu
 @onready var content_margin_container: MarginContainer = $ContentMarginContainer
 
-
 @onready var start_level: PackedScene = preload("res://scenes/world.tscn") 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	handle_connecting_signals()
-
 func on_start_button_pressed() -> void:
 	get_tree().change_scene_to_packed(start_level)
 
