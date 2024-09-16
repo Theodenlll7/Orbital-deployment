@@ -1,16 +1,23 @@
 extends Weapon
-class_name Projectile_Weapon_2D
+class_name ProjectileWeapon2D
 
-@export var projectile_scene: PackedScene = null
-@export var muzzle: Marker2D = null
+func _init(data : ProjectileWeaponData):
+	weapon_data = data
+	
+var muzzel : Marker2D
 
+func _ready() -> void:
+	assert(weapon_data is ProjectileWeaponData, "weapon_data is the wrong type for Projectile Weapon")
+	muzzel = Marker2D.new()
+	muzzel.position = weapon_data.muzzle_offset
+	add_child(muzzel)
 
 func attack() -> void:
-	if not projectile_scene:
+	if not weapon_data.projectile_scene:
 		return
 
-	var position = muzzle.global_position
-	var projectile = projectile_scene.instantiate()
+	var position = muzzel.global_position
+	var projectile = weapon_data.projectile_scene.instantiate()
 	projectile.global_position = position
 
 	var mouse_position = get_viewport().get_camera_2d().get_global_mouse_position()

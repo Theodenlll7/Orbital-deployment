@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="WeaponData" load_steps=2 format=3 uid="uid://tu8bvp0mwo7c"]
+
+[ext_resource type="Script" path="res://inventory/items/weapons/weapon_data.gd" id="1_r4nqx"]
+
+[resource]
+script = ExtResource("1_r4nqx")
+weapon_name = "Weapon"
+weapon_cost = 100
+muzzel_offset = Vector2(0, 0)
+attack_mode = 0
+attack_rate = 0.2
+magasine_size = 10
