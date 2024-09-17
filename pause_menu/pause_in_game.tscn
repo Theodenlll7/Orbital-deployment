@@ -1,0 +1,140 @@
+[gd_scene load_steps=6 format=3 uid="uid://cffw36sg62gs0"]
+
+[ext_resource type="FontFile" uid="uid://dkg32o3qfh2n7" path="res://assets/Fonts/pixelmix.ttf" id="1_pcg1f"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1gsln"]
+bg_color = Color(0.6, 0.6, 0.6, 0.333333)
+border_width_bottom = 4
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cmvve"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_bottom = 4
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hsoft"]
+bg_color = Color(0.6, 0.6, 0.6, 0.333333)
+border_width_bottom = 4
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cki7q"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_bottom = 4
+corner_detail = 1
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 256
+theme_override_constants/margin_top = 128
+theme_override_constants/margin_right = 256
+theme_override_constants/margin_bottom = 128
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/TextureRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 64
+theme_override_constants/margin_top = 64
+theme_override_constants/margin_right = 64
+theme_override_constants/margin_bottom = 64
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/TextureRect/MarginContainer"]
+layout_mode = 2
+
+[node name="Title" type="Control" parent="MarginContainer/TextureRect/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 128)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/TextureRect/MarginContainer/VBoxContainer/Title"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 64.0
+grow_horizontal = 2
+
+[node name="Label2" type="Label" parent="MarginContainer/TextureRect/MarginContainer/VBoxContainer/Title/MarginContainer"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0.221264, 0.399307, 0.745747, 1)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 4
+theme_override_constants/shadow_outline_size = 16
+theme_override_fonts/font = ExtResource("1_pcg1f")
+theme_override_font_sizes/font_size = 64
+text = "In game menu"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Buttons" type="Control" parent="MarginContainer/TextureRect/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 256)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/TextureRect/MarginContainer/VBoxContainer/Buttons"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -320.0
+offset_bottom = 80.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/TextureRect/MarginContainer/VBoxContainer/Buttons/MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/TextureRect/MarginContainer/VBoxContainer/Buttons/MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 32
+alignment = 1
+
+[node name="OptionsButton" type="Button" parent="MarginContainer/TextureRect/MarginContainer/VBoxContainer/Buttons/MarginContainer/HBoxContainer/VBoxContainer"]
+clip_contents = true
+custom_minimum_size = Vector2(256, 64)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_pcg1f")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/hover = SubResource("StyleBoxFlat_1gsln")
+theme_override_styles/normal = SubResource("StyleBoxFlat_cmvve")
+text = "Options"
+
+[node name="ExitButton" type="Button" parent="MarginContainer/TextureRect/MarginContainer/VBoxContainer/Buttons/MarginContainer/HBoxContainer/VBoxContainer"]
+clip_contents = true
+custom_minimum_size = Vector2(256, 64)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_pcg1f")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/hover = SubResource("StyleBoxFlat_1gsln")
+theme_override_styles/normal = SubResource("StyleBoxFlat_cmvve")
+text = "Exit game"
+
+[node name="BackButton" type="Button" parent="MarginContainer/TextureRect/MarginContainer"]
+custom_minimum_size = Vector2(256, 64)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 10
+theme_override_fonts/font = ExtResource("1_pcg1f")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/hover = SubResource("StyleBoxFlat_hsoft")
+theme_override_styles/normal = SubResource("StyleBoxFlat_cki7q")
+text = "Back"

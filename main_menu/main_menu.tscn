@@ -1,5 +1,6 @@
-[gd_scene load_steps=24 format=3 uid="uid://dxk7c6wikv43p"]
+[gd_scene load_steps=20 format=3 uid="uid://dxk7c6wikv43p"]
 
+[ext_resource type="Theme" uid="uid://cjrgdyjiceo5a" path="res://main_menu/UI_theme.tres" id="1_7cya5"]
 [ext_resource type="Script" path="res://main_menu/main_menu.gd" id="1_sgu6m"]
 [ext_resource type="Texture2D" uid="uid://5mo2p51wsuay" path="res://assets/Backgrounds/space.png" id="1_w5je3"]
 [ext_resource type="Shader" path="res://main_menu/main_menu_scroll.gdshader" id="2_ot4nc"]
@@ -7,76 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://ckvltbyqf3xwo" path="res://assets/Sprites/drop_ship/drop_ship_large.png" id="5_h2a75"]
 [ext_resource type="Script" path="res://main_menu/drop_ship_main_menu_texture.gd" id="6_g3xgq"]
 [ext_resource type="PackedScene" uid="uid://bkr08nyqjnpg5" path="res://main_menu/options_menu.tscn" id="7_x8lvi"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s783n"]
-bg_color = Color(1, 1, 1, 0.803922)
-border_width_bottom = 2
-border_color = Color(1, 1, 1, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6wg4l"]
-bg_color = Color(1, 1, 1, 0.376471)
-border_width_bottom = 2
-border_color = Color(1, 1, 1, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xeebp"]
-bg_color = Color(1, 1, 1, 0)
-border_width_bottom = 2
-border_color = Color(1, 1, 1, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_60h6q"]
-bg_color = Color(1, 1, 1, 0.803922)
-border_width_bottom = 2
-border_color = Color(1, 1, 1, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m5lrp"]
-bg_color = Color(1, 1, 1, 0.376471)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cprxr"]
-content_margin_left = 8.0
-content_margin_right = 8.0
-bg_color = Color(1, 1, 1, 0.803922)
-border_width_bottom = 2
-border_color = Color(1, 1, 1, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1bd5i"]
-content_margin_left = 8.0
-content_margin_right = 8.0
-bg_color = Color(1, 1, 1, 0.376471)
-border_width_bottom = 2
-border_color = Color(1, 1, 1, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_46uyr"]
-content_margin_left = 8.0
-content_margin_right = 8.0
-bg_color = Color(1, 1, 1, 0.803922)
-border_width_bottom = 2
-border_color = Color(1, 1, 1, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dr21c"]
-content_margin_left = 8.0
-content_margin_right = 8.0
-bg_color = Color(0.6, 0.6, 0.6, 0)
-border_width_bottom = 2
-border_color = Color(1, 1, 1, 1)
-
-[sub_resource type="Theme" id="Theme_x4ceu"]
-Button/colors/font_color = Color(1, 1, 1, 1)
-Button/colors/font_focus_color = Color(0, 0, 0, 1)
-Button/colors/font_hover_pressed_color = Color(0, 0, 0, 1)
-Button/colors/font_pressed_color = Color(0, 0, 0, 1)
-Button/fonts/font = ExtResource("2_t4ix4")
-Button/styles/focus = SubResource("StyleBoxFlat_s783n")
-Button/styles/hover = SubResource("StyleBoxFlat_6wg4l")
-Button/styles/normal = SubResource("StyleBoxFlat_xeebp")
-Button/styles/pressed = SubResource("StyleBoxFlat_60h6q")
-TabContainer/colors/font_selected_color = Color(0, 0, 0, 1)
-TabContainer/font_sizes/font_size = 24
-TabContainer/fonts/font = ExtResource("2_t4ix4")
-TabContainer/styles/panel = SubResource("StyleBoxFlat_m5lrp")
-TabContainer/styles/tab_focus = SubResource("StyleBoxFlat_cprxr")
-TabContainer/styles/tab_hovered = SubResource("StyleBoxFlat_1bd5i")
-TabContainer/styles/tab_selected = SubResource("StyleBoxFlat_46uyr")
-TabContainer/styles/tab_unselected = SubResource("StyleBoxFlat_dr21c")
+[ext_resource type="Texture2D" uid="uid://r032l1xiye2a" path="res://assets/Backgrounds/astroid_rocks.png" id="9_bh1l6"]
+[ext_resource type="Texture2D" uid="uid://tfvnvck40nnr" path="res://assets/Backgrounds/astroid_dust.png" id="10_oyrou"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7cjl6"]
 shader = ExtResource("2_ot4nc")
@@ -84,33 +17,6 @@ shader_parameter/speed_x = 0.1
 shader_parameter/speed_y = 0.1
 shader_parameter/frequency_y = 2.0
 shader_parameter/amplitude_y = 0.05
-
-[sub_resource type="Animation" id="Animation_vlrxt"]
-resource_name = "init_dropship"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.333333, 0.5, 1),
-"transitions": PackedFloat32Array(1.6818, 1, 0.466516, 200),
-"update": 0,
-"values": [Vector2(-2287, -431), Vector2(-1587, -240), Vector2(-907.142, -132.951), Vector2(-412, -26)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:size")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0.0333333, 0.333333, 1),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(673, 531), Vector2(412, 412), Vector2(412, 412)]
-}
 
 [sub_resource type="Animation" id="Animation_dk7bx"]
 length = 0.001
@@ -139,6 +45,33 @@ tracks/1/keys = {
 "values": [Vector2(412, 412)]
 }
 
+[sub_resource type="Animation" id="Animation_vlrxt"]
+resource_name = "init_dropship"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.333333, 0.5, 1),
+"transitions": PackedFloat32Array(1.6818, 1, 0.466516, 200),
+"update": 0,
+"values": [Vector2(-2287, -431), Vector2(-1587, -240), Vector2(-907.142, -132.951), Vector2(-412, -26)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.0333333, 0.333333, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(673, 531), Vector2(412, 412), Vector2(412, 412)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_eesv0"]
 _data = {
 "RESET": SubResource("Animation_dk7bx"),
@@ -155,6 +88,66 @@ bg_color = Color(0.6, 0.6, 0.6, 0)
 border_width_bottom = 4
 corner_detail = 1
 
+[sub_resource type="Animation" id="Animation_l2jtp"]
+resource_name = "to_new_scene"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.63728, 0.183011),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(65, -2771)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../ship/DropShipTextureRect:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 2.21914),
+"update": 0,
+"values": [Vector2(-412, -26), Vector2(114, -597)]
+}
+
+[sub_resource type="Animation" id="Animation_enoc0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../ship/DropShipTextureRect:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-412, -26)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_t0w68"]
+_data = {
+"RESET": SubResource("Animation_enoc0"),
+"to_new_scene": SubResource("Animation_l2jtp")
+}
+
 [node name="main_menu" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -162,7 +155,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = SubResource("Theme_x4ceu")
+theme = ExtResource("1_7cya5")
 script = ExtResource("1_sgu6m")
 
 [node name="BackGroundTextureRect" type="TextureRect" parent="."]
@@ -180,6 +173,40 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_w5je3")
 
+[node name="ship" type="Control" parent="."]
+layout_mode = 2
+anchors_preset = 0
+offset_left = 1856.0
+offset_top = 540.0
+offset_right = 1856.0
+offset_bottom = 540.0
+size_flags_horizontal = 8
+size_flags_vertical = 4
+
+[node name="DropShipTextureRect" type="TextureRect" parent="ship"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -412.0
+offset_top = -26.0
+offset_bottom = 386.0
+grow_horizontal = 0
+grow_vertical = 2
+texture = ExtResource("5_h2a75")
+expand_mode = 2
+stretch_mode = 4
+flip_h = true
+script = ExtResource("6_g3xgq")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ship"]
+root_node = NodePath("../DropShipTextureRect")
+libraries = {
+"": SubResource("AnimationLibrary_eesv0")
+}
+
 [node name="ContentMarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
@@ -191,36 +218,6 @@ theme_override_constants/margin_left = 64
 theme_override_constants/margin_top = 64
 theme_override_constants/margin_right = 64
 theme_override_constants/margin_bottom = 64
-
-[node name="Control" type="Control" parent="ContentMarginContainer"]
-layout_mode = 2
-size_flags_horizontal = 8
-size_flags_vertical = 4
-
-[node name="DropShipTextureRect" type="TextureRect" parent="ContentMarginContainer/Control"]
-layout_mode = 1
-anchors_preset = 6
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = -412.0
-offset_top = -26.0
-offset_right = 119.0
-offset_bottom = 386.0
-grow_horizontal = 0
-grow_vertical = 2
-texture = ExtResource("5_h2a75")
-expand_mode = 2
-stretch_mode = 4
-flip_h = true
-script = ExtResource("6_g3xgq")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="ContentMarginContainer/Control"]
-root_node = NodePath("../DropShipTextureRect")
-libraries = {
-"": SubResource("AnimationLibrary_eesv0")
-}
 
 [node name="MarginContainer" type="MarginContainer" parent="ContentMarginContainer"]
 layout_mode = 2
@@ -287,3 +284,56 @@ text = "Exit game"
 [node name="options_menu" parent="." instance=ExtResource("7_x8lvi")]
 visible = false
 layout_mode = 1
+
+[node name="transistion_content" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -252.0
+offset_top = 1118.0
+offset_right = 205.0
+offset_bottom = 2788.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control" type="Control" parent="transistion_content"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="transistion_content/Control"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 301.0
+offset_bottom = 1632.0
+grow_horizontal = 2
+texture = ExtResource("10_oyrou")
+
+[node name="TextureRect2" type="TextureRect" parent="transistion_content/Control"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 1651.0
+grow_horizontal = 2
+texture = ExtResource("9_bh1l6")
+
+[node name="ColorRect" type="ColorRect" parent="transistion_content/Control"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -1282.0
+grow_horizontal = 2
+grow_vertical = 0
+color = Color(0, 0, 0, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="transistion_content"]
+libraries = {
+"": SubResource("AnimationLibrary_t0w68")
+}
