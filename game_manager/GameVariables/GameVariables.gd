@@ -15,9 +15,12 @@ func _ready():
 
 func increasePlayerMoney(amount):
 	player_money+=amount
+	
 func decreasePlayerMoney(amount):
 	player_money-=amount
 
+func reparirShip():
+	pass
 
 func setUpGameDifficulty():
 		match GameDifficulty:

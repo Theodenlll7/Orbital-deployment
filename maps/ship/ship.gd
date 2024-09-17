@@ -12,10 +12,8 @@ func _ready() -> void:
 	interaction_area.interact = Callable(self, "_on_interact") 
 	arrow_to_ship_canvas.visible = false
 
-
 func _on_interact():
-	print(getPlayerLocation())
-
+	GameVariables.reparirShip()
 
 func getPlayerLocation():
 	return player.position
@@ -42,6 +40,7 @@ func update_direction(player_pos, ship_pos):
 
 	var x_max_pos = 430
 	var y_max_pos = 220
+	
 	if player_pos.x > x_max_pos: 
 		line_start.x -=x_max_pos*2
 	elif player_pos.x < -x_max_pos:
@@ -55,6 +54,22 @@ func update_direction(player_pos, ship_pos):
 		line_start.y +=y_max_pos*2
 	else:
 		line_start.y -=player_pos.y*2
+	
+	var line_end = line_start + direction * 100
 	direction_line.clear_points()
 	direction_line.add_point(line_start)
-	direction_line.add_point(line_start + direction * 100) 
+	direction_line.add_point(line_end) 
+
+	# Draw the arrowhead
+	var arrowhead_size = 20.0
+	var angle = direction.angle()  # Get the angle of the direction vector
+
+	# Calculate the positions of the arrowhead points
+	var arrowhead_left = line_end + direction.rotated(-4*PI/5) * arrowhead_size
+	var arrowhead_right = line_end + direction.rotated(4*PI/5) * arrowhead_size
+
+	# Draw the arrowhead
+	direction_line.add_point(arrowhead_left)
+	direction_line.add_point(line_end)
+	direction_line.add_point(arrowhead_right)
+	direction_line.add_point(line_end)
