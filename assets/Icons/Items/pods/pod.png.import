@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dtxwcq5diqb83"
-path="res://.godot/imported/ship.webp-578865c6b156af3fd2ad54408491c2ba.ctex"
+uid="uid://cf1tqraah3nyk"
+path="res://.godot/imported/pod.png-798f234d60f8816b8905fe0145931d7d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://maps/ship/Icons/ship.webp"
-dest_files=["res://.godot/imported/ship.webp-578865c6b156af3fd2ad54408491c2ba.ctex"]
+source_file="res://assets/Icons/Items/pods/pod.png"
+dest_files=["res://.godot/imported/pod.png-798f234d60f8816b8905fe0145931d7d.ctex"]
 
 [params]
 

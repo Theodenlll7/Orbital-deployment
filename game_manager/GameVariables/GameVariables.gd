@@ -10,15 +10,17 @@ var difficultyVariable = 1
 
 var day: int = 0
 
-
 func _ready():
 	setUpGameDifficulty()
 
 func increasePlayerMoney(amount):
 	player_money+=amount
+	
 func decreasePlayerMoney(amount):
 	player_money-=amount
 
+func reparirShip():
+	pass
 
 func setUpGameDifficulty():
 		match GameDifficulty:
