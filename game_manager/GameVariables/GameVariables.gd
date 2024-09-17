@@ -10,7 +10,6 @@ var difficultyVariable = 1
 
 var day: int = 0
 
-
 func _ready():
 	setUpGameDifficulty()
 

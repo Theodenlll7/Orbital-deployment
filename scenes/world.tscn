@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://wsq75v2incod"]
+[gd_scene load_steps=28 format=3 uid="uid://wsq75v2incod"]
 
 [ext_resource type="PackedScene" uid="uid://dgcxqingnrpqp" path="res://maps/map_generation/MapGeneration.tscn" id="1_huq2t"]
 [ext_resource type="Texture2D" uid="uid://c47qsqjeww0od" path="res://assets/Tiles/tilemap.png" id="2_31m2w"]
@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://b88le3f50loho" path="res://enemies/target_dummy.tscn" id="13_njcai"]
 [ext_resource type="PackedScene" uid="uid://ghlxpyv6tfv1" path="res://UI/player_ui/player__ui.tscn" id="16_6ydk3"]
 [ext_resource type="PackedScene" uid="uid://fwtaakyb0exx" path="res://interaction/Prefabs/pods/weapon_pod.tscn" id="16_31l5l"]
+[ext_resource type="PackedScene" uid="uid://dj36rh4ptga2b" path="res://maps/ship/ship.tscn" id="18_c65v2"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_n8sf8"]
 texture = ExtResource("2_31m2w")
@@ -3671,7 +3672,7 @@ script = ExtResource("8_xh3lq")
 script = ExtResource("9_53pwr")
 
 [node name="Ship" parent="." instance=ExtResource("10_bfo0j")]
-position = Vector2(0, -87)
+position = Vector2(1, -86)
 script = null
 
 [node name="Player" parent="." groups=["Player"] instance=ExtResource("11_rp00p")]
@@ -3703,3 +3704,6 @@ scale = Vector2(2, 2)
 
 [node name="InteractionArea" parent="." instance=ExtResource("16_31l5l")]
 position = Vector2(278, 139)
+
+[node name="InteractionArea2" parent="." instance=ExtResource("18_c65v2")]
+position = Vector2(0, 140)
