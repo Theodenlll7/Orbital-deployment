@@ -4,7 +4,7 @@ extends TileMap
 var cell_size = Vector2(16, 16)
 
 # Tiles
-var tile_outline = Vector2(17, 12)
+var tile_outline = Vector2(1, 9)
 
 
 func _ready():
@@ -13,16 +13,17 @@ func _ready():
 func generate_tiles():
 	connectTiles(1)
 	
+	
 	for position in GenerateMapVariables.map_Edge_cells:
-		set_cell(2, position, 12, tile_outline)
+		set_cell(2, position, 2, tile_outline)
 	
 	for position in GenerateMapVariables.random_Object_cells:
 		var random_number = randi() % 16 + 1
 		place_large_object_from_new_tile(random_number, position)
 		
-	for position in GenerateMapVariables.random_WaterObject_cells:
-		var random_number = randi() % 5 + 1
-		place_large_water_object_from_tile(random_number, position)
+	#for position in GenerateMapVariables.random_WaterObject_cells:
+		#var random_number = randi() % 5 + 1
+		#place_large_water_object_from_tile(random_number, position)
 	
 func placeRandomObject(list, pos):
 	var random_index = randi() % list.size()
@@ -45,7 +46,7 @@ func placeRandomObject(list, pos):
 func connectTiles(tileset):
 	set_cells_terrain_connect(1, GenerateMapVariables.ground_cells, tileset, 0)
 	#set_cells_terrain_connect(2, GenerateMapVariables.dirt_cells,tileset,4)
-	#set_cells_terrain_connect(1, GenerateMapVariables.ground2_cells, tileset, 0)
+	set_cells_terrain_connect(2, GenerateMapVariables.ground2_cells, tileset, 4)
 	set_cells_terrain_connect(0, GenerateMapVariables.entire_map_cells, tileset, 2)
 	
 	
@@ -98,12 +99,12 @@ func place_large_object_from_new_tile(objectID, center):
 			rows = 2
 		4:
 			start = Vector2(4, 2)  
-			columns = 4 
-			rows = 4
+			columns = 2
+			rows = 2
 		5:
 			start = Vector2(0, 4)  
-			columns = 4 
-			rows = 4
+			columns = 1
+			rows = 1
 		6:
 			start = Vector2(6, 2)  
 			columns = 1
