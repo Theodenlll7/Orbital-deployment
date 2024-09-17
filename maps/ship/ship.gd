@@ -19,15 +19,17 @@ func getPlayerLocation():
 	return player.position
 
 func _process(delta: float) -> void:
-	var direction_to_ship = getPlayerLocation().distance_to(self.position)
+	var distance_to_ship = getPlayerLocation().distance_to(self.position)
+	check_distance_to_ship(distance_to_ship)
 	
-	if direction_to_ship > max_distance:
+func check_distance_to_ship(distance_to_ship):
+	if distance_to_ship > max_distance:
 		arrow_to_ship_canvas.visible = true
-		update_direction(getPlayerLocation(), self.position)
+		update_arrow_direction(getPlayerLocation(), self.position)
 	else:
 		arrow_to_ship_canvas.visible=false
 	
-func update_direction(player_pos, ship_pos):
+func update_arrow_direction(player_pos, ship_pos):
 	var camera_transform = camera.get_global_transform_with_canvas().affine_inverse()
 	var player_screen_pos = camera_transform* player_pos
 	var ship_screen_pos = camera_transform* ship_pos
