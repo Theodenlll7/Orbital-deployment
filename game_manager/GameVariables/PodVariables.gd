@@ -4,18 +4,9 @@ var weapons : Array[Weapon] = []
 var explosives = []
 var special_equipment = []
 
-@export var weapons_dir: String = "res://inventory/items/weapons/weapon_types/"
+signal weapons_loaded
 
 func _ready():
-	var weapon_data = load_all_resources(weapons_dir)
-	for data in weapon_data:
-		match data:
-			WeaponData:
-				weapons.append(Weapon.new(data))
-			ProjectileWeaponData:
-				weapons.append(ProjectileWeapon2D.new(data))
-	
-	
 	var grenade = Explosive.new("Grenades", 5, 50.0, "Standard Grenade")
 	var stun_grenade = Explosive.new("Stun Grenades", 10, 25.0, "Stun Grenade")
 	var rpg = Explosive.new("RPG", 150, 500.0, "Rocket Propelled Grenade")
@@ -43,29 +34,3 @@ func get_cost(name: String, type_of_array: Array):
 	for i in range(0, type_of_array.size(), 2):
 		if type_of_array[i] == name:
 			return type_of_array[i+1]
-
-func load_all_resources(folder_path: String) -> Array:
-	var dir = DirAccess.open(folder_path)
-	var resources = []
-	
-	if dir:
-		dir.list_dir_begin()
-		var file_name = dir.get_next()
-		
-		while file_name != "":
-			if dir.current_is_dir():
-				# Skip directories for now, or handle them recursively if needed
-				pass
-			elif file_name.ends_with(".tres"):
-				var file_path = folder_path + file_name
-				var resource = ResourceLoader.load(file_path)
-				if resource:
-					resources.append(resource)
-			
-			file_name = dir.get_next()
-		
-		dir.list_dir_end()
-	else:
-		print("Failed to open folder: " + folder_path)
-
-	return resources
