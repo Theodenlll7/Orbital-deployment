@@ -11,7 +11,7 @@ var signal_emitter
 
 @export var player_hud: PlayerHUD = null
 
-@onready var hand := $"../WeaponHand"
+@onready var player: Player = get_parent()
 
 
 func _ready():
@@ -92,4 +92,4 @@ func select_next_slot() -> void:
 		if weapon_slots[next_slot]:
 			selected_weapon_slot = next_slot
 			player_hud.select_weapon_slot(selected_weapon_slot)
-			hand.equip_weapon(weapon_slots[selected_weapon_slot])
+			player.equip_weapon(weapon_slots[selected_weapon_slot])

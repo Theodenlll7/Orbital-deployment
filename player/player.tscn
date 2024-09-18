@@ -1,7 +1,6 @@
-[gd_scene load_steps=78 format=3 uid="uid://6vt8l263l0o7"]
+[gd_scene load_steps=77 format=3 uid="uid://6vt8l263l0o7"]
 
 [ext_resource type="Script" path="res://player/scripts/player.gd" id="1_gaiyc"]
-[ext_resource type="Script" path="res://player/scripts/weapon_hand.gd" id="3_qbonr"]
 [ext_resource type="Script" path="res://common/components/HealthComponent.gd" id="3_rmoxv"]
 [ext_resource type="Texture2D" uid="uid://dgfwosrjlow2i" path="res://assets/Sprites/Player/player.png" id="4_arusb"]
 [ext_resource type="Script" path="res://player/camera_2d.gd" id="4_hh08p"]
@@ -358,7 +357,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_4t2tt")
 }],
-"loop": true,
+"loop": false,
 "name": &"roll_h",
 "speed": 17.5
 }, {
@@ -522,6 +521,7 @@ radius = 4.5
 height = 15.0
 
 [node name="Player" type="CharacterBody2D" groups=["players"]]
+z_index = 1
 motion_mode = 1
 script = ExtResource("1_gaiyc")
 
@@ -543,24 +543,25 @@ drag_vertical_enabled = true
 script = ExtResource("4_hh08p")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = 1
 sprite_frames = SubResource("SpriteFrames_7t3vk")
-animation = &"die"
+animation = &"roll_h"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 4)
 shape = SubResource("CapsuleShape2D_ep4uh")
 
-[node name="PlayerHUD" parent="." instance=ExtResource("6_pjces")]
-
-[node name="HealthBar" parent="PlayerHUD/Control" index="0" node_paths=PackedStringArray("health_component")]
-health_component = NodePath("../../../HealthComponent")
-
 [node name="Inventory" type="Node" parent="." node_paths=PackedStringArray("player_hud")]
 script = ExtResource("7_5ivnr")
 player_hud = NodePath("../PlayerHUD")
 
-[node name="WeaponHand" type="Node2D" parent="."]
-script = ExtResource("3_qbonr")
+[node name="WeaponOrbitPoint" type="Marker2D" parent="."]
+position = Vector2(0, 5.5)
+
+[node name="PlayerHUD" parent="." instance=ExtResource("6_pjces")]
+
+[node name="HealthBar" parent="PlayerHUD/Control" index="0" node_paths=PackedStringArray("health_component")]
+health_component = NodePath("../../../HealthComponent")
 
 [connection signal="died" from="HealthComponent" to="." method="_on_health_component_died"]
 [connection signal="health_changed" from="HealthComponent" to="." method="_on_health_component_health_changed"]

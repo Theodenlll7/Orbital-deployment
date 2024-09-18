@@ -546,6 +546,7 @@ tile_map_data = PackedByteArray("AAAAAAAAAAAIAAAAAAACAAAAAAAHAAEAAAD//wAAAAAJAAA
 tile_set = SubResource("TileSet_lfhat")
 
 [node name="Player" parent="." instance=ExtResource("2_5ihlw")]
+position = Vector2(-8, -32)
 
 [node name="enemy_spawner" type="Node2D" parent="."]
 script = ExtResource("3_rkl8f")
