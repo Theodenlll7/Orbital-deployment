@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://dxk7c6wikv43p"]
+[gd_scene load_steps=22 format=3 uid="uid://dxk7c6wikv43p"]
 
 [ext_resource type="Theme" uid="uid://c3a3bfndbpf03" path="res://main_menu/UI_theme.tres" id="1_7cya5"]
 [ext_resource type="Script" path="res://main_menu/main_menu.gd" id="1_sgu6m"]
@@ -10,7 +10,6 @@
 [ext_resource type="PackedScene" uid="uid://bkr08nyqjnpg5" path="res://main_menu/options_menu.tscn" id="7_x8lvi"]
 [ext_resource type="PackedScene" uid="uid://b7bby50sr8bfd" path="res://main_menu/mission_select.tscn" id="8_cavjr"]
 [ext_resource type="Texture2D" uid="uid://r032l1xiye2a" path="res://assets/Backgrounds/astroid_rocks.png" id="9_bh1l6"]
-[ext_resource type="Texture2D" uid="uid://tfvnvck40nnr" path="res://assets/Backgrounds/astroid_dust.png" id="10_oyrou"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7cjl6"]
 shader = ExtResource("2_ot4nc")
@@ -131,9 +130,9 @@ tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 0.574349),
+"transitions": PackedFloat32Array(1, 0.8),
 "update": 0,
-"values": [Vector2(0, -2766), Vector2(0, 0)]
+"values": [Vector2(124, -2327), Vector2(0, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_l2jtp"]
@@ -147,9 +146,9 @@ tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(0.63728, 0.183011),
+"transitions": PackedFloat32Array(0.63728, 0.81),
 "update": 0,
-"values": [Vector2(0, 0), Vector2(65, -2771)]
+"values": [Vector2(0, 0), Vector2(124, -2327)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_t0w68"]
@@ -311,36 +310,18 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_bottom = -471.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TextureRect" type="TextureRect" parent="transistion_content/Control"]
-layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-offset_top = 301.0
-offset_bottom = 1632.0
-grow_horizontal = 2
-texture = ExtResource("10_oyrou")
-
 [node name="TextureRect2" type="TextureRect" parent="transistion_content/Control"]
 layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-offset_bottom = 1651.0
-grow_horizontal = 2
-texture = ExtResource("9_bh1l6")
-
-[node name="ColorRect" type="ColorRect" parent="transistion_content/Control"]
-layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -1282.0
 grow_horizontal = 2
-grow_vertical = 0
-color = Color(0, 0, 0, 1)
+grow_vertical = 2
+texture = ExtResource("9_bh1l6")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="transistion_content"]
 libraries = {
