@@ -34,9 +34,8 @@ func updateButtonLabels():
 
 func _on_button_pressed(identifier: StringName) -> void:
 	var weapon := find_weapon(identifier)
-	var type = weapon.weapon_name
 	var cost = weapon.weapon_cost
-	Shop.handleBuy(type, cost, weapon)
+	Shop.handleBuy(weapon, cost)
 	updateButtonLabels()
 
 

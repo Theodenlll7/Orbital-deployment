@@ -19,7 +19,7 @@ var amount: int = 0
 func _ready():
 	# Apply initial spawn offset
 	position += Vector2(
-		randi_range(-spawn_offset, spawn_offset), randi_range(-spawn_offset, spawn_offset)
+		randf_range(-spawn_offset, spawn_offset), randf_range(-spawn_offset, spawn_offset)
 	)
 
 	# Set the label text and color based on the amount
@@ -49,7 +49,7 @@ func _ready():
 
 	# Randomize movement direction while floating up
 	var end_position = (
-		position + Vector2(randi_range(-move_randomness, move_randomness), -move_distance)
+		position + Vector2(randf_range(-move_randomness, move_randomness), -move_distance)
 	)
 	(
 		tween
@@ -79,8 +79,3 @@ func _ready():
 	tween.set_parallel(false)
 	# Free the node after the animation
 	tween.tween_callback(Callable(self, "queue_free"))
-
-
-# Utility function to get a random integer in a range
-func randi_range(min: int, max: int) -> int:
-	return randi() % (max - min + 1) + min

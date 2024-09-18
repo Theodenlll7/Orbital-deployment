@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://dio16my8y0ch1"]
+[gd_scene load_steps=11 format=3 uid="uid://b7bby50sr8bfd"]
 
+[ext_resource type="Theme" uid="uid://c3a3bfndbpf03" path="res://main_menu/UI_theme.tres" id="1_aij7t"]
 [ext_resource type="FontFile" uid="uid://dkg32o3qfh2n7" path="res://assets/Fonts/pixelmix.ttf" id="1_btar0"]
 [ext_resource type="Script" path="res://main_menu/mission_select.gd" id="1_r3fi7"]
 [ext_resource type="Texture2D" uid="uid://btq7kpwl38qu2" path="res://assets/Backgrounds/planet.png" id="2_u4ul3"]
 [ext_resource type="Texture2D" uid="uid://dibhga4ndblxk" path="res://assets/Icons/Menu/planet_marker_inf.png" id="4_b6rgk"]
-[ext_resource type="PackedScene" uid="uid://cww0c8kcsxed4" path="res://main_menu/missions_tab.tscn" id="4_m46ts"]
+[ext_resource type="PackedScene" uid="uid://bmymcla08yo51" path="res://main_menu/missions_tab.tscn" id="4_m46ts"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o7efk"]
 bg_color = Color(0.6, 0.6, 0.6, 0.333333)
@@ -33,6 +34,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_aij7t")
 script = ExtResource("1_r3fi7")
 
 [node name="Planet" type="Control" parent="."]

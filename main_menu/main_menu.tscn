@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://ckvltbyqf3xwo" path="res://assets/Sprites/drop_ship/drop_ship_large.png" id="5_h2a75"]
 [ext_resource type="Script" path="res://main_menu/drop_ship_main_menu_texture.gd" id="6_g3xgq"]
 [ext_resource type="PackedScene" uid="uid://bkr08nyqjnpg5" path="res://main_menu/options_menu.tscn" id="7_x8lvi"]
-[ext_resource type="PackedScene" path="res://main_menu/mission_select.tscn" id="8_cavjr"]
+[ext_resource type="PackedScene" uid="uid://b7bby50sr8bfd" path="res://main_menu/mission_select.tscn" id="8_cavjr"]
 [ext_resource type="Texture2D" uid="uid://r032l1xiye2a" path="res://assets/Backgrounds/astroid_rocks.png" id="9_bh1l6"]
 [ext_resource type="Texture2D" uid="uid://tfvnvck40nnr" path="res://assets/Backgrounds/astroid_dust.png" id="10_oyrou"]
 

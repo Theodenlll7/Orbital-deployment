@@ -42,7 +42,7 @@ func add_special_equipment(special_equipment):
 	setPlayerInventoryImage(4, special_equipment.explosive_texture_icon)
 
 
-func drop_item(item):
+func drop_item(_item):
 	pass
 
 

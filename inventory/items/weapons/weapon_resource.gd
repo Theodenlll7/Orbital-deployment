@@ -25,5 +25,5 @@ enum AttackMode {
 var attack: Callable = _attack
 
 
-func _attack(weapon: Weapon) -> void:
+func _attack(_weapon: Weapon) -> void:
 	push_error("The 'attack' is a callable that must be overridden in a subclass")

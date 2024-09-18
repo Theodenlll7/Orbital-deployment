@@ -3,7 +3,7 @@
 [ext_resource type="FontFile" uid="uid://dkg32o3qfh2n7" path="res://assets/Fonts/pixelmix.ttf" id="1_jyk5g"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s783n"]
-bg_color = Color(1, 1, 1, 0.803922)
+bg_color = Color(1, 1, 1, 0.490196)
 border_width_bottom = 2
 border_color = Color(1, 1, 1, 1)
 

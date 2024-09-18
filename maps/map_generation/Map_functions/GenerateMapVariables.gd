@@ -10,9 +10,8 @@ extends Node2D
 @export var treeScale = 1.2
 @export var treeRespawnTime = 25
 
-var center_offset = Vector2(-width / 2, -height / 2)
+var center_offset = Vector2(-width / 2.0, -height / 2.0)
 const LAND_CAP = 0.2
-
 
 #Variables for spawning
 var max_chest_count = 10
@@ -26,21 +25,19 @@ var water_is_here = []
 var ground_cells = []
 var water_cells = []
 var entire_map_cells = []
-var dirt_cells=[]
+var dirt_cells = []
 var path_cells = []
 var ground2_cells = []
 
 var map_Edge_cells = []
 var random_Object_cells = []
 var random_WaterObject_cells = []
-var random_tree_cells=[]
+var random_tree_cells = []
 var dungeon_cells = []
 
 var pod_positions = []
 @export var numberOfPods = 3
 @export var podDistanceBetween = 30
-var podCount = numberOfPods-1
-
 
 #Cell info
 var cell_size = Vector2(16, 16)
@@ -52,12 +49,14 @@ var altitude = FastNoiseLite.new()
 var noise = FastNoiseLite.new()
 
 #Objects
-var chest= preload("res://interaction/Prefabs/chest/chest.tscn")
+var chest = preload("res://interaction/Prefabs/chest/chest.tscn")
 var weapon_pod = preload("res://interaction/Prefabs/pods/weapon_pod.tscn")
 var orbital_strike_pod = preload("res://interaction/Prefabs/pods/orbital_strike_pod.tscn")
 var explosives_pod = preload("res://interaction/Prefabs/pods/explosives_pod.tscn")
 
 var pods = [weapon_pod, explosives_pod, orbital_strike_pod]
+
+
 func _ready():
 	randomize()
 	altitude.seed = randi()
@@ -65,21 +64,20 @@ func _ready():
 	altitude.frequency = 0.01
 	generate_cells()
 	Get_pod_locations()
-	
+
 
 func generate_cells():
 	for x in range(width):
 		for y in range(height):
 			var map_x = center_offset.x + x
 			var map_y = center_offset.y + y
-			
+
 			var alt = altitude.get_noise_2d(map_x, map_y)
 			var moist = moisture.get_noise_2d(map_x, map_y)
 			var temp = temperature.get_noise_2d(map_x, map_y)
 			entire_map_cells.append(Vector2i(map_x, map_y))
-			
-			
-			if x == 0 or x == width-1 or y == 0 or y == height-1:
+
+			if x == 0 or x == width - 1 or y == 0 or y == height - 1:
 				map_Edge_cells.append(Vector2i(map_x, map_y))
 			else:
 				var distance_to_center = Vector2(map_x, map_y).length()
@@ -89,11 +87,19 @@ func generate_cells():
 					if alt < LAND_CAP:
 						ground_cells.append(Vector2i(map_x, map_y))
 						if randf() < randomObjectChance:
-							if checkToCloseToMapEdge(Vector2(map_x, map_y),10) or isPosCloseToObjects(Vector2(map_x, map_y), random_Object_cells) or isPosCloseToObjects(Vector2(map_x, map_y), water_is_here):
+							if (
+								checkToCloseToMapEdge(Vector2(map_x, map_y), 10)
+								or isPosCloseToObjects(Vector2(map_x, map_y), random_Object_cells)
+								or isPosCloseToObjects(Vector2(map_x, map_y), water_is_here)
+							):
 								pass
 							else:
 								random_Object_cells.append(Vector2i(map_x, map_y))
-						if randf() < randomTreeChance and !between(temp, 0.2, 0.6) and !isPosCloseToObjects(Vector2(map_x, map_y), water_is_here):
+						if (
+							randf() < randomTreeChance
+							and !between(temp, 0.2, 0.6)
+							and !isPosCloseToObjects(Vector2(map_x, map_y), water_is_here)
+						):
 							random_tree_cells.append(Vector2i(map_x, map_y))
 						if between(temp, 0.2, 0.6):
 							dont_place_here.append(Vector2i(map_x, map_y))
@@ -101,59 +107,72 @@ func generate_cells():
 						elif between(alt, 0.1, 0.9):
 							if between(moist, 0, 0.4) and between(temp, 0.2, 0.6):
 								dirt_cells.append(Vector2i(map_x, map_y))
-						elif randf()< randomDungeon: 
+						elif randf() < randomDungeon:
 							dungeon_cells.append(Vector2i(map_x, map_y))
 						elif randf() < randomObjectChance:
-							if checkToCloseToMapEdge(Vector2(map_x, map_y),10) or isPosCloseToObjects(Vector2(map_x, map_y),random_WaterObject_cells)or isPosCloseToObjects(Vector2(map_x, map_y),ground_cells):
+							if (
+								checkToCloseToMapEdge(Vector2(map_x, map_y), 10)
+								or isPosCloseToObjects(
+									Vector2(map_x, map_y), random_WaterObject_cells
+								)
+								or isPosCloseToObjects(Vector2(map_x, map_y), ground_cells)
+							):
 								pass
 							else:
 								random_WaterObject_cells.append(Vector2i(map_x, map_y))
-					else: 
+					else:
 						water_is_here.append(Vector2i(map_x, map_y))
-						water_cells.append(Vector2i(map_x, map_y))		
-
-					
+						water_cells.append(Vector2i(map_x, map_y))
 
 					#elif between(alt, 0.2, 0.25):
-						#shallow_water_cells.append(Vector2i(map_x, map_y))
+					#shallow_water_cells.append(Vector2i(map_x, map_y))
+
 
 func isPosCloseToObjects(pos, list):
-	for position in list:
-		if Vector2(pos).distance_to(Vector2(position))<7:
-				return true
+	for other_pos in list:
+		if Vector2(pos).distance_to(Vector2(other_pos)) < 7:
+			return true
 	return false
-	
+
+
 func checkToCloseToMapEdge(pos, maxDistance):
-	var Min = -width / 2
-	var Max = width / 2
-	
-	var y_vectorMax = Vector2(0,Max)
-	var y_vectorMin =  Vector2(0,Min)
-	
-	var x_vectorMax = Vector2(Max,0)
-	var x_vectorMin =  Vector2(Min,0)
-	
-	var tempXVec = Vector2(pos.x,0)
-	var tempYVec = Vector2(0,pos.y)
-	
-	if tempXVec.distance_to(x_vectorMax)<maxDistance or tempXVec.distance_to(x_vectorMin)<maxDistance:
+	var edge_min = -width / 2.0
+	var edge_max = width / 2.0
+
+	var y_vectorMax = Vector2(0, edge_max)
+	var y_vectorMin = Vector2(0, edge_min)
+
+	var x_vectorMax = Vector2(edge_max, 0)
+	var x_vectorMin = Vector2(edge_min, 0)
+
+	var tempXVec = Vector2(pos.x, 0)
+	var tempYVec = Vector2(0, pos.y)
+
+	if (
+		tempXVec.distance_to(x_vectorMax) < maxDistance
+		or tempXVec.distance_to(x_vectorMin) < maxDistance
+	):
 		return true
-	if tempYVec.distance_to(y_vectorMax)<maxDistance or tempXVec.distance_to(y_vectorMin)<maxDistance:
+	if (
+		tempYVec.distance_to(y_vectorMax) < maxDistance
+		or tempXVec.distance_to(y_vectorMin) < maxDistance
+	):
 		return true
 	return false
+
 
 func Get_pod_locations():
 	var podCount = 0
 	var attempts = 0
-	
+
 	while podCount < numberOfPods and attempts < 1000:
-		attempts +=1
+		attempts += 1
 		var rand_index = randi() % ground_cells.size()
 		var pod_location = ground_cells[rand_index]
 		var can_place = true
-		
+
 		for existing_pods in pod_positions:
-			if Vector2(pod_location).distance_to(Vector2(existing_pods))<podDistanceBetween:
+			if Vector2(pod_location).distance_to(Vector2(existing_pods)) < podDistanceBetween:
 				can_place = false
 				break
 		for pos in dont_place_here:
@@ -162,12 +181,13 @@ func Get_pod_locations():
 				break
 		if can_place:
 			pod_positions.append(pod_location)
-			podCount+=1
-	
+			podCount += 1
+
+
 func spawn_chests():
-	if len(chests) >=max_chest_count:
+	if len(chests) >= max_chest_count:
 		return
-		
+
 	var chest_distance = 5
 	var chest_count = chests.size()
 	var attempts = 0
@@ -179,7 +199,7 @@ func spawn_chests():
 
 		var can_place = true
 		for existing_chest in chests:
-			if Vector2(chest_location).distance_to(Vector2(existing_chest))<chest_distance:
+			if Vector2(chest_location).distance_to(Vector2(existing_chest)) < chest_distance:
 				can_place = false
 				break
 		for pos in dont_place_here:
@@ -187,7 +207,7 @@ func spawn_chests():
 				can_place = false
 				break
 		for pos in pod_positions:
-			if Vector2(chest_location).distance_to(Vector2(pos))<chest_distance:
+			if Vector2(chest_location).distance_to(Vector2(pos)) < chest_distance:
 				can_place = false
 				break
 		if can_place:
@@ -198,14 +218,15 @@ func spawn_chests():
 			chests.append(chest_location)
 			chest_instance.set_meta("chest_location", chest_location)
 			chest_instance.connect("chest_picked_up", Callable(self, "_on_chest_picked_up"))
-			chest_count +=1
+			chest_count += 1
 	print("after spawn ", chests.size(), "chests:")
 
 
 func between(val, start, end):
-	if start <=val and val <end:
+	if start <= val and val < end:
 		return true
 	return false
+
 
 func _on_chest_picked_up(chest_instance):
 	var chest_location = chest_instance.get_meta("chest_location")
@@ -213,9 +234,11 @@ func _on_chest_picked_up(chest_instance):
 		if chests[i] == chest_location:
 			chests.remove_at(i)
 			break
-			
+
+
 func tile_to_world(tile_pos: Vector2i) -> Vector2:
 	return Vector2(tile_pos.x * cell_size.x, tile_pos.y * cell_size.y)
+
 
 func getRandomTreeSprite():
 	var treeSprites = [
@@ -232,9 +255,10 @@ func getRandomTreeSprite():
 	var newTexture = load(treeSprites[randomIndex])
 	return newTexture
 
+
 func spawnPod(type):
 	var pod_instance = pods[type].instantiate()
-	pod_instance.position=tile_to_world(pod_positions[type])
+	pod_instance.position = tile_to_world(pod_positions[type])
 	pod_instance.z_index = 1
 	var parent_node = get_parent()
 	parent_node.add_child(pod_instance)

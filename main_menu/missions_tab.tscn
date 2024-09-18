@@ -1,8 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://cww0c8kcsxed4"]
+[gd_scene load_steps=8 format=3 uid="uid://bmymcla08yo51"]
 
 [ext_resource type="FontFile" uid="uid://dkg32o3qfh2n7" path="res://assets/Fonts/pixelmix.ttf" id="1_2dhbq"]
 [ext_resource type="Script" path="res://main_menu/missions_tab.gd" id="1_5a3hb"]
-[ext_resource type="Theme" uid="uid://cjrgdyjiceo5a" path="res://main_menu/UI_theme.tres" id="1_jwxa8"]
 [ext_resource type="Texture2D" uid="uid://dd2vfdo18d4tf" path="res://assets/Icons/Menu/planet_marker.png" id="2_87oxx"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8r476"]
@@ -32,7 +31,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("1_jwxa8")
 script = ExtResource("1_5a3hb")
 
 [node name="Planet" type="Control" parent="."]

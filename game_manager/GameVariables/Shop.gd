@@ -1,13 +1,11 @@
 extends Node
 signal purchase_made(item)
-func handleBuy(name, cost, item):
+
+
+func handleBuy(item, cost: float):
 	cost = int(cost)
-	if GameVariables.player_money >=cost:
-		print("Player just Bought a ", name)
+	if GameVariables.player_money >= cost:
 		GameVariables.decreasePlayerMoney(cost)
-		emit_signal("purchase_made", item)
+		purchase_made.emit(item)
 	else:
 		print("Not enough money to buy that")
-
-
-	
