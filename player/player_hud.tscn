@@ -3,7 +3,10 @@
 [ext_resource type="Script" path="res://player/health_bar.gd" id="1_1fig6"]
 [ext_resource type="Script" path="res://player/scripts/player_hud.gd" id="1_7u87w"]
 [ext_resource type="Texture2D" uid="uid://dkr0pw0btoksp" path="res://inventory/sprites/inventory_slot.png" id="2_idg8k"]
-[ext_resource type="Script" path="res://player/hotbar.gd" id="3_wyv3m"]
+
+[sub_resource type="GDScript" id="GDScript_wbga3"]
+script/source = "extends HBoxContainer
+"
 
 [node name="PlayerHUD" type="CanvasLayer" node_paths=PackedStringArray("weapon_slots")]
 script = ExtResource("1_7u87w")
@@ -49,7 +52,7 @@ offset_top = -2.0
 offset_right = 12.0
 offset_bottom = 93.0
 grow_horizontal = 2
-script = ExtResource("3_wyv3m")
+script = SubResource("GDScript_wbga3")
 metadata/_edit_group_ = true
 
 [node name="AspectRatioContainer2" type="Control" parent="Control/HBoxContainer"]
@@ -73,11 +76,11 @@ grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(50, 50)
 
-[node name="TextureRect2" type="TextureRect" parent="Control/HBoxContainer/AspectRatioContainer2/AspectRatioContainer"]
+[node name="Frame" type="TextureRect" parent="Control/HBoxContainer/AspectRatioContainer2/AspectRatioContainer"]
 layout_mode = 2
 texture = ExtResource("2_idg8k")
 
-[node name="TextureRect" type="TextureRect" parent="Control/HBoxContainer/AspectRatioContainer2/AspectRatioContainer"]
+[node name="Icon" type="TextureRect" parent="Control/HBoxContainer/AspectRatioContainer2/AspectRatioContainer"]
 layout_mode = 2
 
 [node name="AspectRatioContainer" type="Control" parent="Control/HBoxContainer"]
@@ -101,12 +104,12 @@ grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(50, 50)
 
-[node name="TextureRect2" type="TextureRect" parent="Control/HBoxContainer/AspectRatioContainer/AspectRatioContainer"]
+[node name="Frame" type="TextureRect" parent="Control/HBoxContainer/AspectRatioContainer/AspectRatioContainer"]
 layout_direction = 1
 layout_mode = 2
 texture = ExtResource("2_idg8k")
 
-[node name="TextureRect" type="TextureRect" parent="Control/HBoxContainer/AspectRatioContainer/AspectRatioContainer"]
+[node name="Icon" type="TextureRect" parent="Control/HBoxContainer/AspectRatioContainer/AspectRatioContainer"]
 layout_mode = 2
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="Control"]
@@ -119,7 +122,7 @@ offset_top = -2.0
 offset_right = 251.0
 offset_bottom = 93.0
 grow_horizontal = 2
-script = ExtResource("3_wyv3m")
+script = SubResource("GDScript_wbga3")
 metadata/_edit_group_ = true
 
 [node name="AspectRatioContainer2" type="Control" parent="Control/HBoxContainer2"]

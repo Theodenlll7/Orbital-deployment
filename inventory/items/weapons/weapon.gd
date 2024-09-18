@@ -1,30 +1,21 @@
-extends Node
+extends Node2D
 class_name Weapon
-
-var weapon_name: String = ""
-var weapon_cost: int = 0
 
 @export var weapon_texture_icon: Texture  # Texture associated with the weapon
 
-func _init(
-		new_weapon_name: String = "", 
-		new_weapon_cost: int = 0, 
-		new_attack_mode: AttackMode = AttackMode.SINGLE, 
-		new_attack_rate: float = 0.2,
-		new_texture: Texture = null
-	) -> void:
-	weapon_name = new_weapon_name
-	weapon_cost = new_weapon_cost
-	attackMode = new_attack_mode
-	attackRate = new_attack_rate
-	weapon_texture_icon = new_texture
-	
-enum AttackMode {
-	SINGLE,  ## Attacks ones per button press
-	AUTOMATIC,  ## Attacks continulsy while button is pressed
-}
+var weapon_resource: WeaponResource
 
-@export var attackMode: AttackMode = AttackMode.SINGLE
+
+func _init(data: WeaponResource):
+	weapon_resource = data
+
+
+func _ready() -> void:
+	var sprite := Sprite2D.new()
+	sprite.scale = Vector2(0.8, 0.8)
+	sprite.texture = weapon_resource.texture
+	add_child(sprite)
+
 
 ## Time between shots in seconds
 @export var attackRate: float = 0.2
@@ -40,18 +31,20 @@ func _process(delta) -> void:
 			canAttack = true
 
 
-func _input(event):
+func _unhandled_input(event):
 	if (
 		canAttack
 		and (
-			(attackMode == AttackMode.AUTOMATIC and Input.is_action_pressed("primary_action"))
-			or (attackMode == AttackMode.SINGLE and Input.is_action_just_pressed("primary_action"))
+			(
+				weapon_resource.attack_mode == WeaponResource.AttackMode.AUTOMATIC
+				and Input.is_action_pressed("primary_action")
+			)
+			or (
+				weapon_resource.attack_mode == WeaponResource.AttackMode.SINGLE
+				and Input.is_action_just_pressed("primary_action")
+			)
 		)
 	):
-		attack()
-		cooldown = attackRate
+		weapon_resource.attack.call(self)
+		cooldown = weapon_resource.attack_rate
 		canAttack = false
-
-
-func attack() -> void:
-	push_error("The 'attack' function must be overridden in a subclass")

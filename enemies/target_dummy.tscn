@@ -17,8 +17,6 @@ texture = ExtResource("1_0yxnu")
 
 [node name="HealthComponent" type="Node" parent="."]
 script = ExtResource("2_um0ha")
-max_health = null
-current_health = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_lx1um")

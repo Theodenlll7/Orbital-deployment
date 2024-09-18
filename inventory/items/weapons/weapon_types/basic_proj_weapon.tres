@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="ProjectileWeaponResource" load_steps=5 format=3 uid="uid://c1o1e1pct7o7g"]
+
+[ext_resource type="PackedScene" uid="uid://b1ahksg20mxej" path="res://inventory/items/weapons/projectiles/basic_projectile.tscn" id="1_6hahn"]
+[ext_resource type="Script" path="res://inventory/items/weapons/projectile_weapon_resource.gd" id="1_dtgsb"]
+[ext_resource type="Texture2D" uid="uid://e7tmgx55v77v" path="res://inventory/items/weapons/pistol_example/gun1.png" id="2_gok5a"]
+[ext_resource type="PackedScene" uid="uid://di567uabmlw1a" path="res://inventory/items/weapons/pistol_example/pistol_example.tscn" id="3_htrhe"]
+
+[resource]
+script = ExtResource("1_dtgsb")
+projectile_scene = ExtResource("1_6hahn")
+muzzle_offset = Vector2(0, 0)
+weapon_name = &"Proj Weapon"
+weapon_cost = 100
+weapon_scene = ExtResource("3_htrhe")
+texture = ExtResource("2_gok5a")
+muzzel_offset = Vector2(0, 0)
+attack_mode = 0
+attack_rate = 0.2
+magasine_size = 10
