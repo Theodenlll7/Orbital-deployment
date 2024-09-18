@@ -30,8 +30,6 @@ func _process(delta) -> void:
 		if cooldown <= 0:
 			canAttack = true
 
-
-func _unhandled_input(event):
 	if (
 		canAttack
 		and (

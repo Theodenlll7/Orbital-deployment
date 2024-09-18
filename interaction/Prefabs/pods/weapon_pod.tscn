@@ -8,7 +8,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k8nvd"]
 size = Vector2(91, 46)
 
-[node name="InteractionArea" type="Node2D"]
+[node name="WeaponPod" type="Node2D"]
 script = ExtResource("1_dfide")
 
 [node name="InteractionArea" type="Area2D" parent="."]
@@ -26,6 +26,7 @@ texture = ExtResource("3_napab")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="StoreUI" parent="CanvasLayer" instance=ExtResource("4_5te7r")]
+weapons_dir = "res://inventory/items/weapons/weapon_types/"
 
 [connection signal="body_entered" from="InteractionArea" to="InteractionArea" method="_on_body_entered"]
 [connection signal="body_exited" from="InteractionArea" to="." method="_on_interaction_area_body_exited"]

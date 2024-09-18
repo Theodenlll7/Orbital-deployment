@@ -7,7 +7,6 @@ class_name WeaponResource
 @export var weapon_cost: int = 100
 
 @export_group("Weapon Setup")
-@export var weapon_scene: PackedScene
 @export var texture: Texture
 @export var muzzel_offset: Vector2 = Vector2(0, 0)
 

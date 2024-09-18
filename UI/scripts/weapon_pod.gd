@@ -61,6 +61,7 @@ func load_all_resources(folder_path: String) -> Array[WeaponResource]:
 				pass
 			elif file_name.ends_with(".tres"):
 				var file_path = folder_path + file_name
+				print(file_path)
 				var resource = ResourceLoader.load(file_path)
 				if resource:
 					resources.append(resource)
