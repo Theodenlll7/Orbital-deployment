@@ -107,7 +107,6 @@ corner_detail = 1
 
 [sub_resource type="Animation" id="Animation_l2jtp"]
 resource_name = "to_new_scene"
-length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -115,7 +114,7 @@ tracks/0/path = NodePath("Control:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
+"times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(0.63728, 0.183011),
 "update": 0,
 "values": [Vector2(0, 0), Vector2(65, -2771)]
@@ -135,21 +134,32 @@ tracks/0/keys = {
 "update": 0,
 "values": [Vector2(0, 0)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-252, 1118)]
+}
 
 [sub_resource type="Animation" id="Animation_8b7nh"]
 resource_name = "in_new_scene"
-length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Control:position")
+tracks/0/path = NodePath(".:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 0.574349),
+"times": PackedFloat32Array(0.0333333, 0.966667),
+"transitions": PackedFloat32Array(1, 2.37841),
 "update": 0,
-"values": [Vector2(0, -2766), Vector2(0, 0)]
+"values": [Vector2(-252, 1118), Vector2(-252, 1118)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_t0w68"]
