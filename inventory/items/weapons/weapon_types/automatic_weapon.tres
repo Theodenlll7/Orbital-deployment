@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ProjectileWeaponResource" load_steps=4 format=3 uid="uid://b60n7b3sbqrcb"]
+
+[ext_resource type="PackedScene" uid="uid://b1ahksg20mxej" path="res://inventory/items/weapons/projectiles/basic_projectile.tscn" id="1_nhrq8"]
+[ext_resource type="Script" path="res://inventory/items/weapons/projectile_weapon_resource.gd" id="2_wac4t"]
+[ext_resource type="Texture2D" uid="uid://e7tmgx55v77v" path="res://inventory/items/weapons/pistol_example/gun1.png" id="3_2exs0"]
+
+[resource]
+script = ExtResource("2_wac4t")
+projectile_scene = ExtResource("1_nhrq8")
+muzzle_offset = Vector2(0, 0)
+weapon_name = &"Automatic Weapon"
+weapon_cost = 500
+texture = ExtResource("3_2exs0")
+muzzel_offset = Vector2(0, 0)
+attack_mode = 1
+attack_rate = 0.05
+magasine_size = 10
