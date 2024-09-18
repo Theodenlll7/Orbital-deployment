@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://wsq75v2incod"]
+[gd_scene load_steps=23 format=3 uid="uid://wsq75v2incod"]
 
 [ext_resource type="PackedScene" uid="uid://dgcxqingnrpqp" path="res://maps/map_generation/MapGeneration.tscn" id="1_huq2t"]
 [ext_resource type="Texture2D" uid="uid://c47qsqjeww0od" path="res://assets/Tiles/tilemap.png" id="2_31m2w"]
@@ -13,7 +13,6 @@
 [ext_resource type="PackedScene" uid="uid://6vt8l263l0o7" path="res://player/player.tscn" id="11_rp00p"]
 [ext_resource type="PackedScene" uid="uid://bwqebjpl0otwb" path="res://UI/night_day.tscn" id="12_gnnhm"]
 [ext_resource type="PackedScene" uid="uid://b88le3f50loho" path="res://enemies/target_dummy.tscn" id="13_njcai"]
-[ext_resource type="PackedScene" uid="uid://ghlxpyv6tfv1" path="res://UI/player_ui/player__ui.tscn" id="16_6ydk3"]
 [ext_resource type="PackedScene" uid="uid://fwtaakyb0exx" path="res://interaction/Prefabs/pods/weapon_pod.tscn" id="16_31l5l"]
 [ext_resource type="PackedScene" uid="uid://dj36rh4ptga2b" path="res://maps/ship/ship.tscn" id="18_c65v2"]
 
@@ -2336,6 +2335,10 @@ sources/2 = SubResource("TileSetAtlasSource_rgo0j")
 
 [node name="World" type="Node2D"]
 
+[node name="Night_Day" parent="." instance=ExtResource("12_gnnhm")]
+rotation = 3.14159
+scale = Vector2(31.9724, 26.7973)
+
 [node name="MapGeneration" parent="." instance=ExtResource("1_huq2t")]
 tile_set = SubResource("TileSet_6altl")
 layer_1/name = "Layer1"
@@ -2350,9 +2353,6 @@ position = Vector2(1, -86)
 script = null
 
 [node name="Player" parent="." groups=["Player"] instance=ExtResource("11_rp00p")]
-
-[node name="Night_Day" parent="Player" instance=ExtResource("12_gnnhm")]
-scale = Vector2(-31.9724, -26.7973)
 
 [node name="TargetDummy" parent="." instance=ExtResource("13_njcai")]
 position = Vector2(-165, 58)
@@ -2374,10 +2374,8 @@ scale = Vector2(2, 2)
 position = Vector2(346, -189)
 scale = Vector2(2, 2)
 
-[node name="Player__UI" parent="." instance=ExtResource("16_6ydk3")]
-
-[node name="InteractionArea" parent="." instance=ExtResource("16_31l5l")]
-position = Vector2(278, 139)
+[node name="WeaponPod" parent="." instance=ExtResource("16_31l5l")]
+position = Vector2(212, 121)
 
 [node name="InteractionArea2" parent="." instance=ExtResource("18_c65v2")]
 position = Vector2(0, 140)

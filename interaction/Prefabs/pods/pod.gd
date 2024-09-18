@@ -3,20 +3,25 @@ extends Node2D
 @onready var interaction_area := $InteractionArea
 @onready var houseUI := $CanvasLayer
 
+
 func _ready() -> void:
-	interaction_area.interact = Callable(self, "_on_interact") 
-	
+	interaction_area.interact = Callable(self, "_on_interact")
+
 	# Initially hide the UI
 	houseUI.hide()
+
 
 func _on_interact():
 	showUI()
 
+
 func showUI():
 	houseUI.show()
 
+
 func hideUI():
 	houseUI.hide()
+
 
 func _input(event: InputEvent) -> void:
 	# Check if the event is a key press and if it's the ESC key
@@ -24,3 +29,8 @@ func _input(event: InputEvent) -> void:
 		# Hide the UI when ESC is pressed
 		if houseUI.visible:
 			hideUI()
+
+
+func _on_interaction_area_body_exited(body) -> void:
+	if body.is_in_group("players"):
+		hideUI()

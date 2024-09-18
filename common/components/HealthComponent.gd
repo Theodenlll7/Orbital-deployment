@@ -4,13 +4,16 @@ class_name HealthComponent
 @export var max_health: int = 100
 @export var current_health: int = 100
 
+var can_take_damage := true
+
 signal health_changed(current_health)
 signal died
 
 
 func damage(amount: int) -> void:
 	current_health -= amount
-	if current_health <= 0:
+	if can_take_damage and current_health <= 0:
+		can_take_damage = false
 		current_health = 0
 		emit_signal("died")
 	emit_signal("health_changed", -amount)

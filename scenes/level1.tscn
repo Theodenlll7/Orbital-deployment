@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=4 uid="uid://dsad6qof6xa7f"]
+[gd_scene load_steps=9 format=4 uid="uid://dsad6qof6xa7f"]
 
 [ext_resource type="Texture2D" uid="uid://c47qsqjeww0od" path="res://assets/Tiles/tilemap.png" id="1_xdrw5"]
 [ext_resource type="PackedScene" uid="uid://6vt8l263l0o7" path="res://player/player.tscn" id="2_5ihlw"]
 [ext_resource type="Script" path="res://enemies/enemy_spawner.gd" id="3_rkl8f"]
 [ext_resource type="PackedScene" uid="uid://b5rdpdm748scj" path="res://enemies/alien.tscn" id="4_xn1oy"]
+[ext_resource type="PackedScene" uid="uid://fwtaakyb0exx" path="res://interaction/Prefabs/pods/weapon_pod.tscn" id="5_cpg73"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_fnvuf"]
 vertices = PackedVector2Array(8, 8, -8, 8, -8, -8, 8, -8)
@@ -549,3 +550,6 @@ tile_set = SubResource("TileSet_lfhat")
 [node name="enemy_spawner" type="Node2D" parent="."]
 script = ExtResource("3_rkl8f")
 enemy_scene = ExtResource("4_xn1oy")
+
+[node name="InteractionArea" parent="." instance=ExtResource("5_cpg73")]
+position = Vector2(115, -109)

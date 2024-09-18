@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+class_name Player
+
 @export var move_speed = 100
 @export var dodge_speed = 200
 @export var dodge_duration = 0.4
@@ -7,6 +9,8 @@ extends CharacterBody2D
 
 @onready var animated_sprite := $AnimatedSprite2D
 @onready var camera := $Camera2D
+@onready var inventory := $Inventory
+
 var dodge_timer = -dodge_cooldown
 var can_dodge = true
 
@@ -17,6 +21,14 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	move_player(delta)	
+
+func _unhandled_input(event):
+	if event.is_action_pressed("swap_weapon"):
+		inventory.select_next_slot()
+	
+
+func move_player(delta : float) -> void:
 	if can_dodge and Input.is_action_just_pressed("dodge"):
 		start_dodge()
 
@@ -24,10 +36,7 @@ func _process(delta):
 		dodge_timer -= delta
 		if dodge_timer <= -dodge_cooldown:
 			can_dodge = true
-
-	move_player()
-
-func move_player() -> void:
+			
 	if !can_move:
 		return
 	if dodge_timer > 0:

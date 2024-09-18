@@ -1,0 +1,90 @@
+[gd_scene load_steps=4 format=3 uid="uid://bwiyp052pwqfg"]
+
+[ext_resource type="Script" path="res://UI/scripts/weapon_pod.gd" id="1_twncm"]
+[ext_resource type="PackedScene" uid="uid://bnnxham1qo2uu" path="res://objects/pods/store_element.tscn" id="2_socjt"]
+[ext_resource type="FontFile" uid="uid://dkg32o3qfh2n7" path="res://assets/Fonts/pixelmix.ttf" id="3_xknsf"]
+
+[node name="Control" type="Control"]
+clip_contents = true
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -302.5
+offset_top = -186.0
+offset_right = 302.5
+offset_bottom = 186.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_twncm")
+weapon_buy_button = ExtResource("2_socjt")
+weapons_dir = null
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect" type="ColorRect" parent="."]
+layout_mode = 2
+offset_right = 605.0
+offset_bottom = 372.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0.584314)
+
+[node name="Header" type="ColorRect" parent="."]
+layout_mode = 2
+offset_right = 605.0
+offset_bottom = 47.0
+grow_horizontal = 2
+color = Color(0.321728, 0.321728, 0.321728, 1)
+
+[node name="Header_Text" type="Label" parent="Header"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 15.0
+offset_top = -11.5
+offset_right = 223.0
+offset_bottom = 11.5
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_xknsf")
+text = "Weapon Pod Station
+"
+
+[node name="Players_money" type="Label" parent="Header"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -41.0
+offset_top = -11.5
+offset_bottom = 11.5
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.762676, 0.655324, 0.283658, 1)
+theme_override_fonts/font = ExtResource("3_xknsf")
+text = "1 $"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -274.5
+offset_top = -115.0
+offset_right = 277.5
+offset_bottom = 158.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_scroll_mode = 0
+
+[node name="shop" type="VBoxContainer" parent="ScrollContainer"]
+custom_minimum_size = Vector2(1, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 10
