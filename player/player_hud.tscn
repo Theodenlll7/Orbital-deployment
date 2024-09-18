@@ -76,11 +76,11 @@ grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(50, 50)
 
-[node name="TextureRect2" type="TextureRect" parent="Control/HBoxContainer/AspectRatioContainer2/AspectRatioContainer"]
+[node name="Frame" type="TextureRect" parent="Control/HBoxContainer/AspectRatioContainer2/AspectRatioContainer"]
 layout_mode = 2
 texture = ExtResource("2_idg8k")
 
-[node name="TextureRect" type="TextureRect" parent="Control/HBoxContainer/AspectRatioContainer2/AspectRatioContainer"]
+[node name="Icon" type="TextureRect" parent="Control/HBoxContainer/AspectRatioContainer2/AspectRatioContainer"]
 layout_mode = 2
 
 [node name="AspectRatioContainer" type="Control" parent="Control/HBoxContainer"]
@@ -104,12 +104,12 @@ grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(50, 50)
 
-[node name="TextureRect2" type="TextureRect" parent="Control/HBoxContainer/AspectRatioContainer/AspectRatioContainer"]
+[node name="Frame" type="TextureRect" parent="Control/HBoxContainer/AspectRatioContainer/AspectRatioContainer"]
 layout_direction = 1
 layout_mode = 2
 texture = ExtResource("2_idg8k")
 
-[node name="TextureRect" type="TextureRect" parent="Control/HBoxContainer/AspectRatioContainer/AspectRatioContainer"]
+[node name="Icon" type="TextureRect" parent="Control/HBoxContainer/AspectRatioContainer/AspectRatioContainer"]
 layout_mode = 2
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="Control"]

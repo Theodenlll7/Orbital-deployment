@@ -1,11 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://fwtaakyb0exx"]
+[gd_scene load_steps=6 format=3 uid="uid://fwtaakyb0exx"]
 
 [ext_resource type="Script" path="res://interaction/Prefabs/pods/pod.gd" id="1_dfide"]
 [ext_resource type="Script" path="res://interaction/Interactionarea/Interactionarea.gd" id="2_ndqur"]
 [ext_resource type="Texture2D" uid="uid://cf1tqraah3nyk" path="res://assets/Icons/Items/pods/pod.png" id="3_napab"]
-[ext_resource type="Script" path="res://UI/scripts/weapon_pod.gd" id="4_hau4n"]
-[ext_resource type="FontFile" uid="uid://dkg32o3qfh2n7" path="res://assets/Fonts/pixelmix.ttf" id="5_iwn8t"]
-[ext_resource type="PackedScene" uid="uid://bnnxham1qo2uu" path="res://objects/pods/store_element.tscn" id="6_fcrnb"]
+[ext_resource type="PackedScene" uid="uid://bwiyp052pwqfg" path="res://store_ui.tscn" id="4_5te7r"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k8nvd"]
 size = Vector2(91, 46)
@@ -27,155 +25,8 @@ texture = ExtResource("3_napab")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="Control" type="Control" parent="CanvasLayer"]
-clip_contents = true
-layout_mode = 3
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -302.5
-offset_top = -186.0
-offset_right = 302.5
-offset_bottom = 186.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("4_hau4n")
-weapon_buy_button = ExtResource("6_fcrnb")
-metadata/_edit_use_anchors_ = true
-
-[node name="TextureRect" type="ColorRect" parent="CanvasLayer/Control"]
-layout_mode = 2
-offset_right = 605.0
-offset_bottom = 372.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(1, 1, 1, 0.584314)
-
-[node name="Header" type="ColorRect" parent="CanvasLayer/Control"]
-layout_mode = 2
-offset_right = 605.0
-offset_bottom = 47.0
-grow_horizontal = 2
-color = Color(0.321728, 0.321728, 0.321728, 1)
-
-[node name="Header_Text" type="Label" parent="CanvasLayer/Control/Header"]
-layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_left = 15.0
-offset_top = -11.5
-offset_right = 223.0
-offset_bottom = 11.5
-grow_vertical = 2
-theme_override_fonts/font = ExtResource("5_iwn8t")
-text = "Weapon Pod Station
-"
-
-[node name="Players_money" type="Label" parent="CanvasLayer/Control/Header"]
-layout_mode = 1
-anchors_preset = 6
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = -41.0
-offset_top = -11.5
-offset_bottom = 11.5
-grow_horizontal = 0
-grow_vertical = 2
-theme_override_colors/font_color = Color(0.762676, 0.655324, 0.283658, 1)
-theme_override_fonts/font = ExtResource("5_iwn8t")
-text = "1 $"
-
-[node name="weapons_UI" type="VBoxContainer" parent="CanvasLayer/Control"]
-layout_mode = 2
-offset_left = 26.0
-offset_top = 58.0
-offset_right = 578.0
-offset_bottom = 346.0
-theme_override_constants/separation = 10
-
-[node name="pistols_button" type="Button" parent="CanvasLayer/Control/weapons_UI"]
-layout_mode = 2
-text = "Pistols"
-
-[node name="pistols_button2" type="Button" parent="CanvasLayer/Control/weapons_UI"]
-layout_mode = 2
-text = "ShotGuns"
-
-[node name="pistols_button3" type="Button" parent="CanvasLayer/Control/weapons_UI"]
-layout_mode = 2
-text = "Assault Rifles"
-
-[node name="pistols_button4" type="Button" parent="CanvasLayer/Control/weapons_UI"]
-layout_mode = 2
-text = "Machine Guns"
-
-[node name="pistols_button5" type="Button" parent="CanvasLayer/Control/weapons_UI"]
-layout_mode = 2
-text = "Laser Guns"
-
-[node name="pistols_button6" type="Button" parent="CanvasLayer/Control/weapons_UI"]
-layout_mode = 2
-text = "Snipers"
-
-[node name="Weapon_paths" type="Control" parent="CanvasLayer/Control"]
-visible = false
-layout_mode = 2
-anchors_preset = 0
-offset_right = 605.0
-offset_bottom = 372.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="back_button" type="Button" parent="CanvasLayer/Control/Weapon_paths"]
-layout_mode = 0
-offset_left = 25.5
-offset_top = 57.0
-offset_right = 119.5
-offset_bottom = 88.0
-
-[node name="Label" type="Label" parent="CanvasLayer/Control/Weapon_paths/back_button"]
-visible = false
-layout_mode = 0
-offset_left = 19.0
-offset_top = 13.0
-offset_right = 108.0
-offset_bottom = 36.0
-theme_override_fonts/font = ExtResource("5_iwn8t")
-text = "Return
-"
-
-[node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer/Control/Weapon_paths"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -274.5
-offset_top = -88.0
-offset_right = 277.5
-offset_bottom = 158.0
-grow_horizontal = 2
-grow_vertical = 2
-horizontal_scroll_mode = 0
-
-[node name="shop" type="VBoxContainer" parent="CanvasLayer/Control/Weapon_paths/ScrollContainer"]
-custom_minimum_size = Vector2(1, 1)
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_constants/separation = 10
+[node name="StoreUI" parent="CanvasLayer" instance=ExtResource("4_5te7r")]
 
 [connection signal="body_entered" from="InteractionArea" to="InteractionArea" method="_on_body_entered"]
+[connection signal="body_exited" from="InteractionArea" to="." method="_on_interaction_area_body_exited"]
 [connection signal="body_exited" from="InteractionArea" to="InteractionArea" method="_on_body_exited"]
-[connection signal="pressed" from="CanvasLayer/Control/weapons_UI/pistols_button" to="CanvasLayer/Control" method="_on_pistols_button_pressed"]
-[connection signal="pressed" from="CanvasLayer/Control/weapons_UI/pistols_button2" to="CanvasLayer/Control" method="_on_pistols_button_pressed"]
-[connection signal="pressed" from="CanvasLayer/Control/weapons_UI/pistols_button3" to="CanvasLayer/Control" method="_on_pistols_button_pressed"]
-[connection signal="pressed" from="CanvasLayer/Control/weapons_UI/pistols_button4" to="CanvasLayer/Control" method="_on_pistols_button_pressed"]
-[connection signal="pressed" from="CanvasLayer/Control/weapons_UI/pistols_button5" to="CanvasLayer/Control" method="_on_pistols_button_pressed"]
-[connection signal="pressed" from="CanvasLayer/Control/weapons_UI/pistols_button6" to="CanvasLayer/Control" method="_on_pistols_button_pressed"]
-[connection signal="pressed" from="CanvasLayer/Control/Weapon_paths/back_button" to="CanvasLayer/Control" method="_on_back_button_pressed"]
