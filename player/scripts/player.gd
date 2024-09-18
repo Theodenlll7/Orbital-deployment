@@ -11,6 +11,8 @@ class_name Player
 @onready var camera := $Camera2D
 @onready var inventory := $Inventory
 
+@onready var death_screen: DeathScreen = $PlayerHUD/death_screen
+
 var dodge_timer = -dodge_cooldown
 var can_dodge = true
 
@@ -88,3 +90,4 @@ func _on_health_component_health_changed(amount: Variant) -> void:
 func _on_health_component_died() -> void:
 	can_move = false
 	animated_sprite.play("die")
+	death_screen.fade_in()

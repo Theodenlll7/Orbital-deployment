@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://bdxxnqyrxk04e"]
+[gd_scene load_steps=6 format=3 uid="uid://bdxxnqyrxk04e"]
 
 [ext_resource type="Script" path="res://player/health_bar.gd" id="1_1fig6"]
 [ext_resource type="Script" path="res://player/scripts/player_hud.gd" id="1_7u87w"]
 [ext_resource type="Texture2D" uid="uid://dkr0pw0btoksp" path="res://inventory/sprites/inventory_slot.png" id="2_idg8k"]
+[ext_resource type="PackedScene" uid="uid://dcm0rxa7wl85t" path="res://pause_menu/death_screen.tscn" id="4_mdrqq"]
 
 [sub_resource type="GDScript" id="GDScript_wbga3"]
 script/source = "extends HBoxContainer
@@ -181,3 +182,6 @@ texture = ExtResource("2_idg8k")
 
 [node name="TextureRect" type="TextureRect" parent="Control/HBoxContainer2/AspectRatioContainer/AspectRatioContainer"]
 layout_mode = 2
+
+[node name="death_screen" parent="." instance=ExtResource("4_mdrqq")]
+visible = false

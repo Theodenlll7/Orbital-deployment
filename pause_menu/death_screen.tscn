@@ -1,9 +1,9 @@
 [gd_scene load_steps=7 format=3 uid="uid://dcm0rxa7wl85t"]
 
-[ext_resource type="Theme" uid="uid://cjrgdyjiceo5a" path="res://main_menu/UI_theme.tres" id="1_8qjol"]
-[ext_resource type="FontFile" uid="uid://dkg32o3qfh2n7" path="res://assets/Fonts/pixelmix.ttf" id="1_i04e6"]
-[ext_resource type="Script" path="res://pause_menu/end_of_game.gd" id="1_uy2mh"]
-[ext_resource type="Texture2D" uid="uid://bjjk6jmae6h7h" path="res://assets/Backgrounds/blood.png" id="3_dekfu"]
+[ext_resource type="Theme" uid="uid://c3a3bfndbpf03" path="res://main_menu/UI_theme.tres" id="1_vullf"]
+[ext_resource type="Script" path="res://pause_menu/death_screen.gd" id="2_h7m7i"]
+[ext_resource type="Texture2D" uid="uid://bjjk6jmae6h7h" path="res://assets/Backgrounds/blood.png" id="3_35qih"]
+[ext_resource type="FontFile" uid="uid://dkg32o3qfh2n7" path="res://assets/Fonts/pixelmix.ttf" id="4_m6phl"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m7gdi"]
 bg_color = Color(0.6, 0.6, 0.6, 0.333333)
@@ -22,8 +22,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("1_8qjol")
-script = ExtResource("1_uy2mh")
+theme = ExtResource("1_vullf")
+script = ExtResource("2_h7m7i")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
@@ -32,7 +32,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("3_dekfu")
+texture = ExtResource("3_35qih")
 
 [node name="BackgroundColorRect" type="ColorRect" parent="TextureRect"]
 layout_mode = 1
@@ -188,7 +188,7 @@ theme_override_constants/separation = 32
 clip_contents = true
 custom_minimum_size = Vector2(256, 64)
 layout_mode = 2
-theme_override_fonts/font = ExtResource("1_i04e6")
+theme_override_fonts/font = ExtResource("4_m6phl")
 theme_override_font_sizes/font_size = 32
 theme_override_styles/hover = SubResource("StyleBoxFlat_m7gdi")
 theme_override_styles/normal = SubResource("StyleBoxFlat_la7ls")
@@ -198,7 +198,7 @@ text = "Try again"
 clip_contents = true
 custom_minimum_size = Vector2(256, 64)
 layout_mode = 2
-theme_override_fonts/font = ExtResource("1_i04e6")
+theme_override_fonts/font = ExtResource("4_m6phl")
 theme_override_font_sizes/font_size = 32
 theme_override_styles/hover = SubResource("StyleBoxFlat_m7gdi")
 theme_override_styles/normal = SubResource("StyleBoxFlat_la7ls")
