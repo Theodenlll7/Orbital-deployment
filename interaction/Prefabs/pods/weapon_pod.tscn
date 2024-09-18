@@ -4,8 +4,6 @@
 [ext_resource type="Script" path="res://interaction/Interactionarea/Interactionarea.gd" id="2_ndqur"]
 [ext_resource type="Texture2D" uid="uid://cf1tqraah3nyk" path="res://assets/Icons/Items/pods/pod.png" id="3_napab"]
 [ext_resource type="PackedScene" uid="uid://bwiyp052pwqfg" path="res://store_ui.tscn" id="4_5te7r"]
-[ext_resource type="Script" path="res://UI/scripts/weapon_pod.gd" id="4_hau4n"]
-[ext_resource type="FontFile" uid="uid://dkg32o3qfh2n7" path="res://assets/Fonts/pixelmix.ttf" id="5_iwn8t"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k8nvd"]
 size = Vector2(91, 46)

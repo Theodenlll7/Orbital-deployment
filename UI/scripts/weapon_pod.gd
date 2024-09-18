@@ -60,7 +60,6 @@ func load_all_resources(folder_path: String) -> Array[WeaponResource]:
 				# Skip directories for now, or handle them recursively if needed
 				pass
 			elif file_name.ends_with(".tres"):
-				print(file_name)
 				var file_path = folder_path + file_name
 				var resource = ResourceLoader.load(file_path)
 				if resource:
