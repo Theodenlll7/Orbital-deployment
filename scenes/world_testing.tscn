@@ -2,10 +2,6 @@
 
 [ext_resource type="PackedScene" uid="uid://dgcxqingnrpqp" path="res://maps/map_generation/MapGeneration.tscn" id="1_edtdc"]
 [ext_resource type="Texture2D" uid="uid://cyw8tqe1bc4ld" path="res://assets/Tiles/waterfalls1.png" id="2_mgm4u"]
-[ext_resource type="Texture2D" uid="uid://bem86uv4m7q5l" path="res://assets/Sprites/Objects/Assets_source.png" id="3_2m02m"]
-[ext_resource type="Texture2D" uid="uid://6l4t3kc4sj2h" path="res://assets/Sprites/Objects/Rocks_source_no_shadow.png" id="4_0bxyc"]
-[ext_resource type="Texture2D" uid="uid://u3pdmylvmf4f" path="res://assets/Sprites/Objects/Rocks_source.png" id="5_aocfy"]
-[ext_resource type="Texture2D" uid="uid://dn84s1b5icr65" path="res://assets/Sprites/Objects/Rocks_source_texture_shadow.png" id="6_eg10o"]
 [ext_resource type="Texture2D" uid="uid://c03den4ayjr17" path="res://assets/Tiles/terrain tiles.png" id="7_3a8rk"]
 [ext_resource type="Script" path="res://maps/map_generation/MapGeneration.gd" id="8_2d21u"]
 [ext_resource type="Script" path="res://game_manager/GameLoop/gameLoop.gd" id="9_4ugi8"]
@@ -149,8 +145,11 @@ texture = ExtResource("2_mgm4u")
 20:10/0 = 0
 21:10/0 = 0
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_k02dt"]
+load_path = "res://.godot/imported/Assets_source.png-ec80182a7cf14c06b777073468d1a2a8.ctex"
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vxqv2"]
-texture = ExtResource("3_2m02m")
+texture = SubResource("CompressedTexture2D_k02dt")
 4:0/0 = 0
 5:0/0 = 0
 6:0/0 = 0
@@ -1006,8 +1005,11 @@ texture = ExtResource("3_2m02m")
 20:23/0 = 0
 21:23/0 = 0
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_8kutf"]
+load_path = "res://.godot/imported/Rocks_source_no_shadow.png-9d2024da65ae2646fbbc6b8f6d6a40bb.ctex"
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4q5ci"]
-texture = ExtResource("4_0bxyc")
+texture = SubResource("CompressedTexture2D_8kutf")
 0:0/0 = 0
 1:0/0 = 0
 2:0/0 = 0
@@ -1296,8 +1298,11 @@ texture = ExtResource("4_0bxyc")
 10:18/0 = 0
 11:18/0 = 0
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_yde22"]
+load_path = "res://.godot/imported/Rocks_source.png-74e5530290fa870d7f45cd1bfbd02264.ctex"
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_idiif"]
-texture = ExtResource("5_aocfy")
+texture = SubResource("CompressedTexture2D_yde22")
 0:0/0 = 0
 1:0/0 = 0
 2:0/0 = 0
@@ -1595,8 +1600,11 @@ texture = ExtResource("5_aocfy")
 3:11/0 = 0
 13:11/0 = 0
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_vgy8x"]
+load_path = "res://.godot/imported/Rocks_source_texture_shadow.png-5e3d10c9933aeda2d2fd7c102011c09f.ctex"
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_f85ho"]
-texture = ExtResource("6_eg10o")
+texture = SubResource("CompressedTexture2D_vgy8x")
 0:0/0 = 0
 1:0/0 = 0
 2:0/0 = 0

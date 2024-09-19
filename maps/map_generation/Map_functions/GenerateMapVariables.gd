@@ -5,7 +5,6 @@ extends Node2D
 @export var spawnArea_size = 20
 @export var randomObjectChance = 0.05
 @export var randomTreeChance = 0.001
-@export var randomDungeon = 0.0001
 
 @export var treeScale = 1.2
 @export var treeRespawnTime = 25
@@ -33,7 +32,6 @@ var map_Edge_cells = []
 var random_Object_cells = []
 var random_WaterObject_cells = []
 var random_tree_cells = []
-var dungeon_cells = []
 
 var pod_positions = []
 @export var numberOfPods = 3
@@ -108,8 +106,7 @@ func generate_cells():
 						elif between(alt, 0.1, 0.9):
 							if between(moist, 0, 0.4) and between(temp, 0.2, 0.6):
 								dirt_cells.append(Vector2i(map_x, map_y))
-						elif randf() < randomDungeon:
-							dungeon_cells.append(Vector2i(map_x, map_y))
+
 						elif randf() < randomObjectChance:
 							if (
 								checkToCloseToMapEdge(Vector2(map_x, map_y), 10)
@@ -239,22 +236,6 @@ func _on_chest_picked_up(chest_instance):
 
 func tile_to_world(tile_pos: Vector2i) -> Vector2:
 	return Vector2(tile_pos.x * cell_size.x, tile_pos.y * cell_size.y)
-
-
-func getRandomTreeSprite():
-	var treeSprites = [
-		"res://Assets/Sprites//Objects/trees/tree1.png",
-		"res://Assets/Sprites//Objects/trees/tree2.png",
-		"res://Assets/Sprites//Objects/trees/tree3.png",
-		"res://Assets/Sprites//Objects/trees/tree4.png",
-		"res://Assets/Sprites//Objects/trees/tree5.png",
-		"res://Assets/Sprites//Objects/trees/tree6.png",
-		"res://Assets/Sprites//Objects/trees/tree7.png",
-		"res://Assets/Sprites//Objects/trees/tree8.png",
-	]
-	var randomIndex = randi() % treeSprites.size()
-	var newTexture = load(treeSprites[randomIndex])
-	return newTexture
 
 
 func spawnPod(type):
