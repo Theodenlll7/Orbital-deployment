@@ -36,6 +36,8 @@ shape = SubResource("CapsuleShape2D_w8yv8")
 avoidance_enabled = true
 
 [node name="AttackRange" type="Area2D" parent="."]
+collision_layer = 0
+monitorable = false
 script = ExtResource("4_ai4i4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackRange"]

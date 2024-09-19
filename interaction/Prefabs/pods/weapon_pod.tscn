@@ -12,6 +12,8 @@ size = Vector2(91, 46)
 script = ExtResource("1_dfide")
 
 [node name="InteractionArea" type="Area2D" parent="."]
+collision_layer = 0
+monitorable = false
 script = ExtResource("2_ndqur")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]

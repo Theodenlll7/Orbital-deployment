@@ -1,0 +1,36 @@
+extends CharacterBody2D
+class_name MagneticItem
+
+# Variables to adjust
+var player: Node2D = null
+var speed: float = 300
+var proximity_range: float = 150
+var pick_up_distance: float = 10
+
+
+func _on_area_2d_area_exited(body) -> void:
+	print("Enterd")
+	if body == player:
+		player = null
+
+
+func _on_area_2d_area_entered(body) -> void:
+	if player != null and body.is_in_group("players"):
+		player = body
+
+
+func _physics_process(_delta):
+	if player:
+		# Move towards the player
+		var direction = (player.position - position).normalized()
+		velocity = direction * speed
+		move_and_slide()
+
+		# Check if close enough to pick up
+		if position.distance_to(player.position) < pick_up_distance:
+			pick_up_item()
+
+
+func pick_up_item():
+	print("Item picked up!")
+	queue_free()

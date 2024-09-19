@@ -2,8 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://b1ahksg20mxej" path="res://inventory/items/weapons/projectiles/basic_projectile.tscn" id="1_6hahn"]
 [ext_resource type="AudioStream" uid="uid://bswtowqo0jjtx" path="res://inventory/items/weapons/assets/audio/gun_fire.mp3" id="1_b0ttv"]
-[ext_resource type="Script" path="res://inventory/items/weapons/projectile_weapon_resource.gd" id="1_dtgsb"]
-[ext_resource type="Texture2D" uid="uid://e7tmgx55v77v" path="res://inventory/items/weapons/pistol_example/gun1.png" id="2_gok5a"]
+[ext_resource type="Script" path="res://inventory/items/weapons/scripts/projectile_weapon_resource.gd" id="1_dtgsb"]
+[ext_resource type="Texture2D" uid="uid://e7tmgx55v77v" path="res://inventory/items/weapons/assets/sprites/gun1.png" id="2_gok5a"]
 
 [resource]
 script = ExtResource("1_dtgsb")

@@ -2,8 +2,8 @@
 
 [ext_resource type="AudioStream" uid="uid://bx0erxmcc8tb2" path="res://inventory/items/weapons/assets/audio/gun_fire2.mp3" id="1_n2xvy"]
 [ext_resource type="PackedScene" uid="uid://b1ahksg20mxej" path="res://inventory/items/weapons/projectiles/basic_projectile.tscn" id="1_nhrq8"]
-[ext_resource type="Script" path="res://inventory/items/weapons/projectile_weapon_resource.gd" id="2_wac4t"]
-[ext_resource type="Texture2D" uid="uid://e7tmgx55v77v" path="res://inventory/items/weapons/pistol_example/gun1.png" id="3_2exs0"]
+[ext_resource type="Script" path="res://inventory/items/weapons/scripts/projectile_weapon_resource.gd" id="2_wac4t"]
+[ext_resource type="Texture2D" uid="uid://e7tmgx55v77v" path="res://inventory/items/weapons/assets/sprites/gun1.png" id="3_2exs0"]
 
 [resource]
 script = ExtResource("2_wac4t")
@@ -18,6 +18,7 @@ attack_mode = 1
 attack_rate = 0.05
 has_magazine = true
 magazine_size = 10
+ammo_in_magazine = 10
 reload_time = 0.5
 has_ammo = true
 ammo = 50
