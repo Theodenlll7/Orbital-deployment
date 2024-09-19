@@ -34,10 +34,11 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	move_player(delta)
-	aim()
-	if not in_dodge:
-		animate()
+	if can_move:
+		move_player(delta)
+		aim()
+		if not in_dodge:
+			animate()
 
 
 func _unhandled_input(event):
@@ -54,8 +55,6 @@ func move_player(delta: float) -> void:
 		if dodge_timer <= -dodge_cooldown:
 			can_dodge = true
 
-	if !can_move:
-		return
 	if dodge_timer > 0:
 		in_dodge = true
 		velocity = velocity.normalized() * dodge_speed

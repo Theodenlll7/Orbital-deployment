@@ -20,8 +20,20 @@ enum AttackMode {
 @export var attack_mode: AttackMode = AttackMode.SINGLE
 ## Time between shots in seconds
 @export var attack_rate: float = 0.2
-##How many bullets can be fired before reloding
-@export var magasine_size: int = 10
+
+@export_subgroup("Amunition")
+@export var has_magazine: bool = true
+#How many bullets can be fired before reloding
+@export var magazine_size: int = 10
+@export var ammo_in_magazine: int = 10
+
+@export var reload_time: float = 0.5  # The time it takes to reload (in seconds)
+
+@export var has_ammo: bool = true
+#Current amount of amuntion
+@export var ammo: int = 50
+#Maximum ammo cary capasity set to 0 to disable
+@export var ammo_cap: int = 200
 
 var attack: Callable = _attack
 
