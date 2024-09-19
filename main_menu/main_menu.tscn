@@ -179,6 +179,9 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_w5je3")
 
+[node name="mission_select" parent="." instance=ExtResource("8_cavjr")]
+layout_mode = 1
+
 [node name="ship" type="Control" parent="."]
 layout_mode = 2
 anchors_preset = 0
@@ -286,9 +289,6 @@ theme_override_font_sizes/font_size = 32
 theme_override_styles/hover = SubResource("StyleBoxFlat_8ioed")
 theme_override_styles/normal = SubResource("StyleBoxFlat_1p2d2")
 text = "Exit game"
-
-[node name="mission_select" parent="." instance=ExtResource("8_cavjr")]
-layout_mode = 1
 
 [node name="options_menu" parent="." instance=ExtResource("7_x8lvi")]
 layout_mode = 1

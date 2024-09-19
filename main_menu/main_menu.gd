@@ -6,8 +6,9 @@ var select_mission_button: Button = $ContentMarginContainer/HBoxContainer/VBoxCo
 @onready
 var options_button: Button = $ContentMarginContainer/HBoxContainer/VBoxContainer/OptionsButton
 @onready var exit_button: Button = $ContentMarginContainer/HBoxContainer/VBoxContainer/ExitButton
-@onready var ship: Control = $ship
 
+@onready var ship: Control = $ship
+@onready var ship_texture: TextureRect = $ship/DropShipTextureRect
 @onready var animation_player_ship: AnimationPlayer = $ship/AnimationPlayer
 
 @onready var mission_select_menu: Control = $mission_select
@@ -19,11 +20,12 @@ var options_button: Button = $ContentMarginContainer/HBoxContainer/VBoxContainer
 @onready var target_menu: Control = main_menu
 
 const level1 = preload("res://scenes/level1.tscn")
-
+var ship_start_position: Vector2
 
 func _ready() -> void:
 	handle_connecting_signals()
 	first_btn_focus_grab()
+	ship_start_position = ship.global_position
 
 
 func on_animation_finished(animation_name: String) -> void:
@@ -69,6 +71,7 @@ func change_menu() -> void:
 	animation_player.play("in_new_scene")
 
 	first_btn_focus_grab()
+	reset_ship()
 
 	if target_menu == options_menu:
 		main_menu.visible = false
@@ -85,7 +88,23 @@ func change_menu() -> void:
 		options_menu.visible = false
 		mission_select_menu.visible = false
 
-func start_mission(mission_ID: String) -> void:
+func start_mission(mission_ID: String, marker_position: Vector2) -> void:
+	print("marker_position: ", marker_position)
+	print("Let's go")
+	move_ship_to_marker(mission_ID, marker_position)
+
+func move_ship_to_marker(mission_ID: String, move_to: Vector2) -> void:
+	move_to = ship.global_position + move_to - Vector2(300.0, 300.0)
+	
+	var move_time = 0.5
+	var scale_to = 0.6
+	
+	var tween = create_tween()
+	tween.tween_property(ship, "global_position",move_to, move_time).set_ease(Tween.EASE_OUT)
+	tween.parallel().tween_property(ship_texture, "scale",Vector2(scale_to, scale_to), move_time).set_ease(Tween.EASE_OUT)
+	tween.connect("finished", Callable(self, "on_tween_finished").bind(mission_ID))
+
+func on_tween_finished(mission_ID: String) -> void:
 	match mission_ID:
 		"infinite":
 			print("Start infinite")
@@ -95,6 +114,11 @@ func start_mission(mission_ID: String) -> void:
 			get_tree().change_scene_to_packed(level1)
 		_:
 			print("Error in starting the game")
+
+func reset_ship() -> void:
+	ship_texture.scale = Vector2(1.0, 1.0)
+	ship.global_position = ship_start_position
+	
 
 func handle_connecting_signals() -> void:
 	select_mission_button.button_down.connect(on_select_mission_button_pressed)

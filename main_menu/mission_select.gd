@@ -12,11 +12,11 @@ extends Control
 @onready var content: Control = $Content
 @onready var missions_tab: Control = $missions_tab
 
-
-signal level_selected(level_ID)
 signal back_to_main_menu
+signal level_selected(mission_ID, mission_position)
 
 var planet_center = Vector2()
+var marker_position = Vector2()
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -24,6 +24,7 @@ func _ready() -> void:
 
 	planet_center = planet_texture_rect.global_position + planet_texture_rect.size / 2
 	missions_tab.set_planet_center(planet_center)
+
 	visible = false
 	set_process(true)
 	
@@ -40,14 +41,14 @@ func on_exit_mission_tab() -> void:
 	missions_tab.visible = false
 
 func on_infinite_button_pressed() -> void:
-	emit_signal("level_selected", "infinite")
+	emit_signal("level_selected", "infinite", marker_position)
 
-func on_mission_selected_from_tab(mission_ID: String) -> void:
-	emit_signal("level_selected", mission_ID)
+func on_mission_selected_from_tab(mission_ID: String, marker_position: Vector2) -> void:
+	emit_signal("level_selected", mission_ID, marker_position)
 
 func on_infinite_survival_button_hover() -> void:
 	var marker_offset = Vector2(-300, -200)
-	var marker_position = planet_center + marker_offset
+	marker_position = planet_center + marker_offset
 	
 	infinite_survival_texture_rect.visible = true;
 	infinite_survival_texture_rect.set_global_position(marker_position)
@@ -64,7 +65,6 @@ func on_infinite_survival_button_hover() -> void:
 	tween.tween_property(mission_label, "modulate:a", opacity, fade_time)
 	tween.parallel().tween_property(infinite_survival_texture_rect, "modulate:a", opacity, fade_time)
 
-	
 func on_infinite_survival_button_hover_exit() -> void:
 	infinite_survival_texture_rect.visible = false
 	mission_label.text = ""
@@ -82,6 +82,5 @@ func handle_connecting_signals() -> void:
 	
 	missions_tab.connect("tab_level_selected", Callable(self, "on_mission_selected_from_tab"))
 
-	
 	infinite_survival_button.connect("mouse_entered", Callable(self, "on_infinite_survival_button_hover"))
 	infinite_survival_button.connect("mouse_exited", Callable(self, "on_infinite_survival_button_hover_exit"))
