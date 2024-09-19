@@ -5,6 +5,8 @@ class_name Weapon
 
 var weapon_resource: WeaponResource
 
+var audio_player: AudioStreamPlayer
+
 
 func _init(data: WeaponResource):
 	weapon_resource = data
@@ -15,6 +17,10 @@ func _ready() -> void:
 	sprite.scale = Vector2(0.8, 0.8)
 	sprite.texture = weapon_resource.texture
 	add_child(sprite)
+
+	audio_player = AudioStreamPlayer.new()
+	audio_player.stream = weapon_resource.audio_steam
+	add_child(audio_player)
 
 
 ## Time between shots in seconds
@@ -44,5 +50,6 @@ func _process(delta) -> void:
 		)
 	):
 		weapon_resource.attack.call(self)
+		audio_player.play()
 		cooldown = weapon_resource.attack_rate
 		canAttack = false

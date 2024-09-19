@@ -1,6 +1,7 @@
-[gd_resource type="Resource" script_class="ProjectileWeaponResource" load_steps=4 format=3 uid="uid://c1o1e1pct7o7g"]
+[gd_resource type="Resource" script_class="ProjectileWeaponResource" load_steps=5 format=3 uid="uid://c1o1e1pct7o7g"]
 
 [ext_resource type="PackedScene" uid="uid://b1ahksg20mxej" path="res://inventory/items/weapons/projectiles/basic_projectile.tscn" id="1_6hahn"]
+[ext_resource type="AudioStream" uid="uid://bswtowqo0jjtx" path="res://inventory/items/weapons/assets/audio/gun_fire.mp3" id="1_b0ttv"]
 [ext_resource type="Script" path="res://inventory/items/weapons/projectile_weapon_resource.gd" id="1_dtgsb"]
 [ext_resource type="Texture2D" uid="uid://e7tmgx55v77v" path="res://inventory/items/weapons/pistol_example/gun1.png" id="2_gok5a"]
 
@@ -12,6 +13,7 @@ weapon_name = &"Proj Weapon"
 weapon_cost = 100
 texture = ExtResource("2_gok5a")
 muzzel_offset = Vector2(0, 0)
+audio_steam = ExtResource("1_b0ttv")
 attack_mode = 0
 attack_rate = 0.2
 magasine_size = 10

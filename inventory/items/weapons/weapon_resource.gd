@@ -9,6 +9,7 @@ class_name WeaponResource
 @export_group("Weapon Setup")
 @export var texture: Texture
 @export var muzzel_offset: Vector2 = Vector2(0, 0)
+@export var audio_steam: AudioStream
 
 enum AttackMode {
 	SINGLE,  ## Attacks ones per button press
