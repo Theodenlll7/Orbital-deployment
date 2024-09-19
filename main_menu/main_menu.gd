@@ -18,6 +18,8 @@ var options_button: Button = $ContentMarginContainer/HBoxContainer/VBoxContainer
 
 @onready var target_menu: Control = main_menu
 
+const level1 = preload("res://scenes/level1.tscn")
+
 
 func _ready() -> void:
 	handle_connecting_signals()
@@ -83,10 +85,21 @@ func change_menu() -> void:
 		options_menu.visible = false
 		mission_select_menu.visible = false
 
+func start_mission(mission_ID: String) -> void:
+	match mission_ID:
+		"infinite":
+			print("Start infinite")
+			get_tree().change_scene_to_packed(level1)
+		"1":
+			print("Start level 1")
+			get_tree().change_scene_to_packed(level1)
+		_:
+			print("Error in starting the game")
 
 func handle_connecting_signals() -> void:
 	select_mission_button.button_down.connect(on_select_mission_button_pressed)
 	mission_select_menu.back_to_main_menu.connect(on_exit_mission_select_menu)
+	mission_select_menu.connect("level_selected", Callable(self, "start_mission"))
 
 	options_button.button_down.connect(on_options_button_pressed)
 	options_menu.back_to_main_menu.connect(on_exit_options_menu)

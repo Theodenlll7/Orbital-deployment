@@ -5,25 +5,31 @@ extends Control
 @onready var back_button: Button = $content/ContentMarginContainer/BackButton
 
 @onready var mission_marker: Control = $mission_marker
-@onready var planet_texture_rect: TextureRect = $Planet/TextureRect
 @onready var mission_label: Label = $content/ContentMarginContainer/VBoxContainer/HBoxContainer/mission_description/MarginContainer/MarginContainer/mission_label
 
 signal back_mission_select
+signal tab_level_selected(mission_ID)
 
 const marker_offsets: Array = [Vector2(-20, -200), Vector2(100, 10)]
 const mission_descriptions: Array = [String("Mission1"), String("Mission2")]
+var planet_center = Vector2()
 
 func _ready() -> void:
 	handle_connecting_signals()
 	mission_marker.visible = false
 	
+func on_mission_1_button_pressed() -> void:
+	emit_signal("tab_level_selected", "1")
+	
 func on_back_pressed() -> void:
 	back_mission_select.emit()
 	
+func set_planet_center(new_center: Vector2) -> void:
+	planet_center = new_center
+	
 func on_mission_button_hover(mission_nmber: int) -> void:	
-	var marker_area_center = planet_texture_rect.global_position + planet_texture_rect.size / 2
 	var marker_offset = marker_offsets[mission_nmber - 1]
-	var marker_position = marker_area_center + marker_offset
+	var marker_position = planet_center + marker_offset
 	
 	mission_marker.visible = true;	
 	mission_marker.set_global_position(marker_position)
@@ -41,6 +47,7 @@ func handle_connecting_signals() -> void:
 	
 	mission_1_button.connect("mouse_entered", Callable(self, "on_mission_button_hover").bind(1))
 	mission_1_button.connect("mouse_exited", Callable(self, "on_mission_button_hover_exit"))
+	mission_1_button.button_down.connect(on_mission_1_button_pressed)
 
 	mission_2_button.connect("mouse_entered", Callable(self, "on_mission_button_hover").bind(2))
 	mission_2_button.connect("mouse_exited", Callable(self, "on_mission_button_hover_exit"))

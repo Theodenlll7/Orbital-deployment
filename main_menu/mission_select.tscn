@@ -159,6 +159,49 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.75
 
+[node name="HBoxContainer" type="HBoxContainer" parent="Content/ContentMarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="mission_description" type="Control" parent="Content/ContentMarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="Content/ContentMarginContainer/VBoxContainer/HBoxContainer/mission_description"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_bottom = 96
+
+[node name="MarginContainer" type="MarginContainer" parent="Content/ContentMarginContainer/VBoxContainer/HBoxContainer/mission_description/MarginContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="mission_label" type="Label" parent="Content/ContentMarginContainer/VBoxContainer/HBoxContainer/mission_description/MarginContainer/MarginContainer"]
+custom_minimum_size = Vector2(800, 400)
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(0.545098, 0.0941176, 0.12549, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_font_sizes/font_size = 48
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Control2" type="Control" parent="Content/ContentMarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
 [node name="BackButton" type="Button" parent="Content/ContentMarginContainer"]
 custom_minimum_size = Vector2(256, 64)
 layout_mode = 2
@@ -168,9 +211,10 @@ theme_override_fonts/font = ExtResource("1_btar0")
 theme_override_font_sizes/font_size = 32
 theme_override_styles/hover = SubResource("StyleBoxFlat_xdokf")
 theme_override_styles/normal = SubResource("StyleBoxFlat_yj7p8")
-text = "Back"
+text = "Main menu"
 
 [node name="missions_tab" parent="." instance=ExtResource("4_m46ts")]
+visible = false
 layout_mode = 1
 
 [node name="infinit_marker" type="Control" parent="."]
