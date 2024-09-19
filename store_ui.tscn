@@ -20,7 +20,6 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_twncm")
 weapon_buy_button = ExtResource("2_socjt")
-weapons_dir = null
 metadata/_edit_use_anchors_ = true
 
 [node name="TextureRect" type="ColorRect" parent="."]

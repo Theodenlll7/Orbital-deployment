@@ -3,7 +3,7 @@ extends Node2D
 @export var width = 200
 @export var height = 200
 @export var spawnArea_size = 20
-@export var randomObjectChance = 0.005
+@export var randomObjectChance = 0.05
 @export var randomTreeChance = 0.001
 @export var randomDungeon = 0.0001
 
@@ -91,6 +91,7 @@ func generate_cells():
 								checkToCloseToMapEdge(Vector2(map_x, map_y), 10)
 								or isPosCloseToObjects(Vector2(map_x, map_y), random_Object_cells)
 								or isPosCloseToObjects(Vector2(map_x, map_y), water_is_here)
+								or between(temp, 0.2, 0.6)
 							):
 								pass
 							else:
