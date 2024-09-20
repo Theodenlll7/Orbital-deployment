@@ -13,6 +13,7 @@ func _attack(weapon: Weapon):
 
 	var position = weapon.to_global(muzzel_offset)
 	var projectile = projectile_scene.instantiate()
+	projectile.global_rotation = weapon.global_rotation
 	projectile.global_position = position
 
 	var mouse_position = weapon.get_viewport().get_camera_2d().get_global_mouse_position()
