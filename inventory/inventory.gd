@@ -91,5 +91,6 @@ func select_next_slot() -> void:
 		var next_slot = (selected_weapon_slot + 1) % weapon_slots.size()
 		if weapon_slots[next_slot]:
 			player_hud.select_weapon_slot(next_slot)
-			player.equip_weapon(weapon_slots[next_slot])
+			var weapon = player.equip_weapon(weapon_slots[next_slot])
 			selected_weapon_slot = next_slot
+			player_hud.ammo_indicator.equip_weapon(weapon)

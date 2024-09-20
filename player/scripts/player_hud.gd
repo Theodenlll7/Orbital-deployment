@@ -7,6 +7,8 @@ class_name PlayerHUD
 @export var selected_size: float = 1
 @export var deselected_size: float = 0.5
 
+@onready var ammo_indicator : AmmoIndicator = $PlayerHUD/AmmoIndicator
+
 var selected_slot = -1
 
 

@@ -560,7 +560,7 @@ position = Vector2(0, 5.5)
 
 [node name="PlayerHUD" parent="." instance=ExtResource("6_pjces")]
 
-[node name="HealthBar" parent="PlayerHUD/Control" index="0" node_paths=PackedStringArray("health_component")]
+[node name="HealthBar" parent="PlayerHUD/PlayerHUD" index="0" node_paths=PackedStringArray("health_component")]
 health_component = NodePath("../../../HealthComponent")
 
 [connection signal="died" from="HealthComponent" to="." method="_on_health_component_died"]

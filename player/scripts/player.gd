@@ -96,11 +96,12 @@ func aim() -> void:
 			held_weapon.z_index = 1  # Render in front of the player when aiming below
 
 
-func equip_weapon(weapon: WeaponResource):
+func equip_weapon(weapon: WeaponResource) -> Weapon:
 	if held_weapon:
 		held_weapon.queue_free()
 	held_weapon = Weapon.new(weapon)
 	weapon_orbit_point.add_child(held_weapon)
+	return held_weapon
 
 
 func animate() -> void:
