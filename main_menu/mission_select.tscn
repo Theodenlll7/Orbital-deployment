@@ -142,7 +142,7 @@ theme_override_fonts/font = ExtResource("1_btar0")
 theme_override_font_sizes/font_size = 32
 theme_override_styles/hover = SubResource("StyleBoxFlat_o7efk")
 theme_override_styles/normal = SubResource("StyleBoxFlat_ub2bo")
-text = "Missions"
+text = " Missions "
 
 [node name="InfiniteSurvivalButton" type="Button" parent="Content/ContentMarginContainer/VBoxContainer/Buttons/MarginContainer/HBoxContainer/Control/VBoxContainer"]
 clip_contents = true
@@ -152,7 +152,7 @@ theme_override_fonts/font = ExtResource("1_btar0")
 theme_override_font_sizes/font_size = 32
 theme_override_styles/hover = SubResource("StyleBoxFlat_o7efk")
 theme_override_styles/normal = SubResource("StyleBoxFlat_ub2bo")
-text = "Infinite survival"
+text = " Infinite survival "
 
 [node name="Control2" type="Control" parent="Content/ContentMarginContainer/VBoxContainer/Buttons/MarginContainer/HBoxContainer"]
 layout_mode = 2
@@ -211,7 +211,7 @@ theme_override_fonts/font = ExtResource("1_btar0")
 theme_override_font_sizes/font_size = 32
 theme_override_styles/hover = SubResource("StyleBoxFlat_xdokf")
 theme_override_styles/normal = SubResource("StyleBoxFlat_yj7p8")
-text = "Main menu"
+text = " Main menu "
 
 [node name="missions_tab" parent="." instance=ExtResource("4_m46ts")]
 visible = false

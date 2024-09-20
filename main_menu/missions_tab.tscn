@@ -122,7 +122,7 @@ theme_override_fonts/font = ExtResource("1_2dhbq")
 theme_override_font_sizes/font_size = 32
 theme_override_styles/hover = SubResource("StyleBoxFlat_8r476")
 theme_override_styles/normal = SubResource("StyleBoxFlat_rq8e6")
-text = "Mission 1
+text = " Mission 1 
 "
 
 [node name="Mission2Button" type="Button" parent="content/ContentMarginContainer/VBoxContainer/Buttons/MarginContainer/HBoxContainer/Control/VBoxContainer"]
@@ -133,7 +133,7 @@ theme_override_fonts/font = ExtResource("1_2dhbq")
 theme_override_font_sizes/font_size = 32
 theme_override_styles/hover = SubResource("StyleBoxFlat_8r476")
 theme_override_styles/normal = SubResource("StyleBoxFlat_rq8e6")
-text = "Mission 2"
+text = " Mission 2 "
 
 [node name="Control2" type="Control" parent="content/ContentMarginContainer/VBoxContainer/Buttons/MarginContainer/HBoxContainer"]
 layout_mode = 2
@@ -194,7 +194,7 @@ theme_override_fonts/font = ExtResource("1_2dhbq")
 theme_override_font_sizes/font_size = 32
 theme_override_styles/hover = SubResource("StyleBoxFlat_nvoic")
 theme_override_styles/normal = SubResource("StyleBoxFlat_hsf3s")
-text = "Back"
+text = " Back "
 
 [node name="mission_marker" type="Control" parent="."]
 layout_mode = 3

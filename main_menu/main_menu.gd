@@ -94,7 +94,7 @@ func start_mission(mission_ID: String, marker_position: Vector2) -> void:
 	move_ship_to_marker(mission_ID, marker_position)
 
 func move_ship_to_marker(mission_ID: String, move_to: Vector2) -> void:
-	move_to = ship.global_position + move_to - Vector2(300.0, 300.0)
+	move_to = ship.global_position + move_to - Vector2(80.0, 80.0)
 	
 	var move_time = 0.5
 	var scale_to = 0.6

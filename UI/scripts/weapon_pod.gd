@@ -15,20 +15,20 @@ func _ready():
 
 
 func setLabelsAndCost():
-	var shop = $ScrollContainer/shop
+	var shop = $ContentPanelContainer/MarginContainer/ScrollContainer/shop
 	for weapon in weapons:
 		var buy_btn: Button = weapon_buy_button.instantiate()
-		var label: Label = buy_btn.get_node_or_null("Label")
-		var cost: Label = buy_btn.get_node_or_null("Cost")
+		var pod_item_container = buy_btn.get_child(0)
+		var label: Label = pod_item_container.get_node_or_null("Label")
+		var cost: Label = pod_item_container.get_node_or_null("Cost")
 		label.text = weapon.weapon_name
 		cost.text = "%d $" % weapon.weapon_cost
 		buy_btn.action_mode = BaseButton.ACTION_MODE_BUTTON_RELEASE
 		buy_btn.connect("pressed", _on_button_pressed.bind(weapon.weapon_name))
 		shop.add_child(buy_btn)
 
-
 func updateButtonLabels():
-	var player_money = $Header.get_node("Players_money")
+	var player_money = $HeaderPanelContainer/MarginContainer/HBoxContainer.get_node("Players_money")
 	player_money.text = str(GameVariables.player_money) + "$"
 
 

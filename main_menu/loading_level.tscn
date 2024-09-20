@@ -1,0 +1,233 @@
+[gd_scene load_steps=14 format=3 uid="uid://c5js6pnm2kdrx"]
+
+[ext_resource type="Script" path="res://main_menu/loading_level.gd" id="1_c0tbi"]
+[ext_resource type="Texture2D" uid="uid://ndy3bp8m8o7y" path="res://assets/Backgrounds/loading/landingcraft_space.png" id="2_qbtp8"]
+[ext_resource type="Shader" path="res://main_menu/helmet.gdshader" id="3_foj0k"]
+[ext_resource type="Texture2D" uid="uid://bpelbthainlnh" path="res://assets/Backgrounds/loading/helmetglas.png" id="3_roo5a"]
+[ext_resource type="Texture2D" uid="uid://00o3ookfdlp5" path="res://assets/Backgrounds/loading/landingcraft.png" id="4_7bu6j"]
+[ext_resource type="Texture2D" uid="uid://bjlamfjbqgd28" path="res://assets/Backgrounds/loading/landingcraft_lamp.png" id="5_nqu7e"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ofvn7"]
+shader = ExtResource("3_foj0k")
+
+[sub_resource type="Animation" id="Animation_5eeqi"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control/space/SpaceTextureRect:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(197, -369)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Control/landingcraft/LampTextureRect:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-143, -109)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Control/landingcraft/LandingcraftTextureRect:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-636, -61)]
+}
+
+[sub_resource type="Animation" id="Animation_mm60e"]
+resource_name = "loading_animation"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control/space/SpaceTextureRect:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 1.01, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(197, -369), Vector2(-2061, -162), Vector2(197, -369), Vector2(-2061, -162)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Control/landingcraft/LampTextureRect:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-143, -109), Vector2(-475, -383), Vector2(-143, -109), Vector2(-475, -383), Vector2(-143, -109)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Control/landingcraft/LandingcraftTextureRect:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.133333, 0.166667, 0.533333, 0.566667, 0.6, 1.2, 1.23333, 1.26667, 1.33333, 1.36667, 1.4, 1.51664, 1.66667, 1.73333, 1.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-649, -35), Vector2(-649, -24), Vector2(-649, -35), Vector2(-649, -35), Vector2(-649, -43), Vector2(-649, -35), Vector2(-649, -35), Vector2(-649, -25), Vector2(-649, -35), Vector2(-649, -35), Vector2(-649, -28), Vector2(-649, -35), Vector2(-649, -35), Vector2(-649, -35), Vector2(-649, -25), Vector2(-649, -35)]
+}
+
+[sub_resource type="Animation" id="Animation_wf6kf"]
+resource_name = "loading_animation_lamp"
+length = 1.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control/landingcraft/LampTextureRect:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.75, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-143, -109), Vector2(-462, -333), Vector2(-143, -109)]
+}
+
+[sub_resource type="Animation" id="Animation_rsi57"]
+resource_name = "loading_animation_landingcraft"
+
+[sub_resource type="Animation" id="Animation_4xwga"]
+resource_name = "loading_animation_space"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control/space/SpaceTextureRect:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(197, -369), Vector2(-2023, -142)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_l6umx"]
+_data = {
+"RESET": SubResource("Animation_5eeqi"),
+"loading_animation": SubResource("Animation_mm60e"),
+"loading_animation_lamp": SubResource("Animation_wf6kf"),
+"loading_animation_landingcraft": SubResource("Animation_rsi57"),
+"loading_animation_space": SubResource("Animation_4xwga")
+}
+
+[node name="loading_level" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_c0tbi")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="space" type="Control" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SpaceTextureRect" type="TextureRect" parent="Control/space"]
+layout_mode = 0
+offset_left = 197.0
+offset_top = -369.0
+offset_right = 3657.0
+offset_bottom = 721.0
+texture = ExtResource("2_qbtp8")
+
+[node name="HelmetGlasTextureRect" type="TextureRect" parent="Control/space"]
+material = SubResource("ShaderMaterial_ofvn7")
+layout_mode = 0
+offset_left = 1044.0
+offset_top = 316.0
+offset_right = 2315.0
+offset_bottom = 702.0
+texture = ExtResource("3_roo5a")
+
+[node name="landingcraft" type="Control" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LandingcraftTextureRect" type="TextureRect" parent="Control/landingcraft"]
+layout_mode = 0
+offset_left = -636.0
+offset_top = -61.0
+offset_right = 2957.0
+offset_bottom = 1071.0
+texture = ExtResource("4_7bu6j")
+
+[node name="LampTextureRect" type="TextureRect" parent="Control/landingcraft"]
+layout_mode = 0
+offset_left = -143.0
+offset_top = -109.0
+offset_right = 3163.0
+offset_bottom = 932.0
+texture = ExtResource("5_nqu7e")
+
+[node name="Label" type="Control" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/Label"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 64
+theme_override_constants/margin_top = 64
+theme_override_constants/margin_right = 64
+theme_override_constants/margin_bottom = 64
+
+[node name="Label" type="Label" parent="Control/Label/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_font_sizes/font_size = 64
+text = "Loading..."
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_l6umx")
+}

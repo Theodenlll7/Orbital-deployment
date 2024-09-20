@@ -1,12 +1,9 @@
 shader_type canvas_item;
 
-uniform float speed = 0.01;       	
 
 void vertex() {
 	// Called for every vertex the material is visible on.
-	UV.x += fract(TIME * speed);
-    UV.y += fract(TIME * speed);
-	
+		UV.x += fract(TIME * 0.2);
 }
 
 void fragment() {

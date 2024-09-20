@@ -35,16 +35,22 @@ func _ready() -> void:
 func on_missions_button_pressed() -> void:
 	content.visible = false
 	missions_tab.visible = true
+	var first_btn = missions_tab.find_child("*Button", true) as Button
+	if first_btn:
+		first_btn.grab_focus()
 
 func on_exit_mission_tab() -> void:
 	content.visible = true
 	missions_tab.visible = false
+	var first_btn = content.find_child("*Button", true) as Button
+	if first_btn:
+		first_btn.grab_focus()
 
 func on_infinite_button_pressed() -> void:
 	emit_signal("level_selected", "infinite", marker_position)
 
-func on_mission_selected_from_tab(mission_ID: String, marker_position: Vector2) -> void:
-	emit_signal("level_selected", mission_ID, marker_position)
+func on_mission_selected_from_tab(mission_ID: String, current_marker_position: Vector2) -> void:
+	emit_signal("level_selected", mission_ID, current_marker_position)
 
 func on_infinite_survival_button_hover() -> void:
 	var marker_offset = Vector2(-300, -200)
@@ -84,3 +90,5 @@ func handle_connecting_signals() -> void:
 
 	infinite_survival_button.connect("mouse_entered", Callable(self, "on_infinite_survival_button_hover"))
 	infinite_survival_button.connect("mouse_exited", Callable(self, "on_infinite_survival_button_hover_exit"))
+	infinite_survival_button.connect("focus_entered", Callable(self, "on_infinite_survival_button_hover"))
+	infinite_survival_button.connect("focus_exited", Callable(self, "on_infinite_survival_button_hover_exit"))

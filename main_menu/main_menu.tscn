@@ -82,9 +82,9 @@ tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(0.277393, 0.574349),
+"transitions": PackedFloat32Array(0.277393, 0.8),
 "update": 0,
-"values": [Vector2(-2151, 563), Vector2(-1721, -172)]
+"values": [Vector2(-2151, 563), Vector2(-1882.94, -440)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_eesv0"]
@@ -199,9 +199,10 @@ anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -412.0
-offset_top = -26.0
-offset_bottom = 386.0
+offset_left = -1816.0
+offset_top = -546.0
+offset_right = -1404.0
+offset_bottom = -134.0
 grow_horizontal = 0
 grow_vertical = 2
 texture = ExtResource("5_h2a75")
@@ -268,7 +269,7 @@ theme_override_fonts/font = ExtResource("2_t4ix4")
 theme_override_font_sizes/font_size = 32
 theme_override_styles/hover = SubResource("StyleBoxFlat_8ioed")
 theme_override_styles/normal = SubResource("StyleBoxFlat_1p2d2")
-text = "Select mission"
+text = " Select mission "
 
 [node name="OptionsButton" type="Button" parent="ContentMarginContainer/HBoxContainer/VBoxContainer"]
 clip_contents = true
@@ -278,7 +279,7 @@ theme_override_fonts/font = ExtResource("2_t4ix4")
 theme_override_font_sizes/font_size = 32
 theme_override_styles/hover = SubResource("StyleBoxFlat_8ioed")
 theme_override_styles/normal = SubResource("StyleBoxFlat_1p2d2")
-text = "Options"
+text = " Options "
 
 [node name="ExitButton" type="Button" parent="ContentMarginContainer/HBoxContainer/VBoxContainer"]
 clip_contents = true
@@ -288,7 +289,7 @@ theme_override_fonts/font = ExtResource("2_t4ix4")
 theme_override_font_sizes/font_size = 32
 theme_override_styles/hover = SubResource("StyleBoxFlat_8ioed")
 theme_override_styles/normal = SubResource("StyleBoxFlat_1p2d2")
-text = "Exit game"
+text = " Exit game "
 
 [node name="options_menu" parent="." instance=ExtResource("7_x8lvi")]
 layout_mode = 1

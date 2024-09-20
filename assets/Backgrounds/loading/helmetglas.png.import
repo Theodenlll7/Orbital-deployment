@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://tfvnvck40nnr"
-path="res://.godot/imported/astroid_dust.png-0d69255235cb26bc844fa902e2ddf6be.ctex"
+uid="uid://bpelbthainlnh"
+path="res://.godot/imported/helmetglas.png-7b61455adc1aba0bbb661e19c5396dcf.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Backgrounds/astroid_dust.png"
-dest_files=["res://.godot/imported/astroid_dust.png-0d69255235cb26bc844fa902e2ddf6be.ctex"]
+source_file="res://assets/Backgrounds/loading/helmetglas.png"
+dest_files=["res://.godot/imported/helmetglas.png-7b61455adc1aba0bbb661e19c5396dcf.ctex"]
 
 [params]
 

@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://b1ahksg20mxej"]
 
 [ext_resource type="Script" path="res://inventory/items/weapons/projectiles/projectile_2d.gd" id="1_xdkvq"]
-[ext_resource type="Texture2D" uid="uid://ccoe78uc8jt31" path="res://assets/Icons/icon.svg" id="2_60xph"]
+[ext_resource type="Texture2D" uid="uid://b5303f7vfendw" path="res://inventory/items/weapons/projectiles/sprites/bullet.png" id="2_bl6gy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ifh57"]
 
@@ -21,5 +21,4 @@ scale = Vector2(0.3, 0.3)
 shape = SubResource("RectangleShape2D_ifh57")
 
 [node name="Sprite2D" type="Sprite2D" parent="CollisionShape2D"]
-scale = Vector2(0.159998, 0.159998)
-texture = ExtResource("2_60xph")
+texture = ExtResource("2_bl6gy")

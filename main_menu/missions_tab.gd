@@ -43,12 +43,16 @@ func on_mission_button_hover(mission_nmber: int) -> void:
 	mission_marker.modulate.a = 0.0
 	tween.tween_property(mission_marker, "modulate:a", opacity, fade_time)
 
+func set_button_connection(mission_button: Button, mission_index: int) -> void:
+	mission_button.connect("mouse_entered", Callable(self, "on_mission_button_hover").bind(mission_index))
+	mission_button.connect("mouse_exited", Callable(self, "on_mission_button_hover_exit"))
+	mission_button.connect("focus_entered", Callable(self, "on_mission_button_hover").bind(mission_index))
+	mission_button.connect("focus_exited", Callable(self, "on_mission_button_hover_exit"))
+
 func handle_connecting_signals() -> void:
 	back_button.button_down.connect(on_back_pressed)
 	
-	mission_1_button.connect("mouse_entered", Callable(self, "on_mission_button_hover").bind(1))
-	mission_1_button.connect("mouse_exited", Callable(self, "on_mission_button_hover_exit"))
+	set_button_connection(mission_1_button, 1)
 	mission_1_button.button_down.connect(on_mission_1_button_pressed)
 
-	mission_2_button.connect("mouse_entered", Callable(self, "on_mission_button_hover").bind(2))
-	mission_2_button.connect("mouse_exited", Callable(self, "on_mission_button_hover_exit"))
+	set_button_connection(mission_2_button, 2)
