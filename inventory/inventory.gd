@@ -34,30 +34,26 @@ func add_weapon(weapon: WeaponResource):
 
 func add_explosive(explosive):
 	explosive_slot = explosive
-	setPlayerInventoryImage(3, explosive.explosive_texture_icon)
 
 
 func add_special_equipment(special_equipment):
 	special_equipment_slot = special_equipment
-	setPlayerInventoryImage(4, special_equipment.explosive_texture_icon)
 
 
 func drop_item(_item):
 	pass
 
 
-#Change a sprite image when you change weapon
-func setPlayerInventoryImage(slot, image):
-	if image:
-		self.get_child(slot).texture = image
-	else:
-		print("Icon texture not found")
+func add_ammo(amount: int):
+	var weapon = weapon_slots[selected_weapon_slot]
+	weapon.ammo += amount
+	if weapon.ammo > weapon.ammo_cap:
+		weapon.ammo = weapon.ammo_cap
 
 
 #Coming from shop with the help of a signal
 func _on_purchase_made(item):
 	if item is WeaponResource:
-		print("Purchased Weapon: ", item.weapon_name, " | Cost: ", item.weapon_cost)
 		add_weapon(item)
 	elif item is Explosive:
 		print(
