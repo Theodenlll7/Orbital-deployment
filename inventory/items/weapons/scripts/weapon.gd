@@ -1,10 +1,8 @@
 extends Node2D
 class_name Weapon
 
-@export var weapon_texture_icon: Texture  # Texture associated with the weapon
-
-signal weapon_fired(new_magazine_amount : int)
-signal weapon_reloded(new_magazine_amount : int, new_ammo_amount : int)
+signal weapon_fired(new_magazine_amount: int)
+signal weapon_reloded(new_magazine_amount: int, new_ammo_amount: int)
 
 var weapon_resource: WeaponResource
 
@@ -77,8 +75,6 @@ func attack_pressed() -> bool:
 
 
 func attack() -> void:
-	
-	
 	weapon_resource.attack.call(self)
 	audio_player.play()
 	cooldown = weapon_resource.attack_rate
@@ -118,5 +114,5 @@ func _on_reload_complete() -> void:
 			# Partially reload if there's not enough ammo
 			weapon_resource.ammo_in_magazine += weapon_resource.ammo
 			weapon_resource.ammo = 0
-			
+
 	weapon_reloded.emit(weapon_resource.ammo_in_magazine, weapon_resource.ammo)

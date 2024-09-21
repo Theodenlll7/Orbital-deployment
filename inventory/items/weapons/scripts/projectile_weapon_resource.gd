@@ -4,7 +4,6 @@ class_name ProjectileWeaponResource
 @export var projectile_scene: PackedScene = preload(
 	"res://inventory/items/weapons/projectiles/basic_projectile.tscn"
 )
-@export var muzzle_offset: Vector2 = Vector2(0, 0)
 
 
 func _attack(weapon: Weapon):

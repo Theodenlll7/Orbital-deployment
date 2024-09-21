@@ -44,11 +44,13 @@ func drop_item(_item):
 	pass
 
 
-func add_ammo(amount: int):
+func add_ammo():
 	var weapon = weapon_slots[selected_weapon_slot]
-	weapon.ammo += amount
-	if weapon.ammo > weapon.ammo_cap:
-		weapon.ammo = weapon.ammo_cap
+	weapon.ammo_create_picked_up()
+	if weapon.has_magazine:
+		player_hud.ammo_indicator._on_ammo_changed(weapon.ammo_in_magazine, weapon.ammo)
+	else:
+		player_hud.ammo_indicator._on_magazine_changed(weapon.ammo)
 
 
 #Coming from shop with the help of a signal

@@ -8,7 +8,6 @@
 [resource]
 script = ExtResource("1_dtgsb")
 projectile_scene = ExtResource("1_6hahn")
-muzzle_offset = Vector2(0, 0)
 weapon_name = &"Proj Weapon"
 weapon_cost = 100
 texture = ExtResource("2_gok5a")
@@ -16,4 +15,10 @@ muzzel_offset = Vector2(0, 0)
 audio_steam = ExtResource("1_b0ttv")
 attack_mode = 0
 attack_rate = 0.2
-magasine_size = 10
+has_magazine = true
+magazine_size = 10
+ammo_in_magazine = 10
+reload_time = 0.5
+has_ammo = true
+ammo = 50
+ammo_cap = 200

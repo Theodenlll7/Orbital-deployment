@@ -11,12 +11,11 @@ class_name WeaponResource
 @export var muzzel_offset: Vector2 = Vector2(0, 0)
 @export var audio_steam: AudioStream
 
+@export_group("Weapon Handle")
 enum AttackMode {
 	SINGLE,  ## Attacks ones per button press
 	AUTOMATIC,  ## Attacks continulsy while button is pressed
 }
-
-@export_group("Weapon Handle")
 @export var attack_mode: AttackMode = AttackMode.SINGLE
 ## Time between shots in seconds
 @export var attack_rate: float = 0.2
@@ -35,7 +34,17 @@ enum AttackMode {
 #Maximum ammo cary capasity set to 0 to disable
 @export var ammo_cap: int = 200
 
+#Amount of ammo recived from ammo crate
+@export var ammo_crate_value: int = 50
+
 var attack: Callable = _attack
+
+
+func ammo_create_picked_up():
+	if has_ammo:
+		ammo += ammo_crate_value
+		if ammo > ammo_cap:
+			ammo = ammo_cap
 
 
 func _attack(_weapon: Weapon) -> void:

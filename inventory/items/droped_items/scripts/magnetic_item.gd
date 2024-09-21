@@ -1,37 +1,59 @@
-extends RigidBody2D
+extends Area2D
 class_name MagneticItem
 
 # Variables to adjust
-var player: Node2D = null
-var speed: float = 100
-var pick_up_distance: float = 15
+var player: Player = null
+var inventory: Inventory = null
+var speed: float = 500
+var pick_up_distance: float = 5
+
+var velocity := Vector2.ZERO
 
 
-func _physics_process(_delta: float) -> void:
-	if player:
-		# Calculate the distance between the item and the player
+func _physics_process(delta: float) -> void:
+	if player and pick_up_condition():
 		var distance_to_player = position.distance_to(player.position)
 
-		# Normalize direction vector towards the player
-		var direction = (player.position - position).normalized()
-		# Apply force proportional to the inverse of the distance
-		var force_multiplier = clamp(1000 / distance_to_player, 1, 15)
-
-		apply_force(direction * speed * force_multiplier)
 		# Check if close enough to pick up
 		if distance_to_player < pick_up_distance:
 			pick_up_item()
+			return
 
-		# Start dampening velocity as we get close to the player to prevent circling
+		var direction = (player.position - position).normalized()
+
+		var accel = direction * speed
+
+		velocity += accel * delta
+
 		if distance_to_player < 50:
-			linear_velocity = lerp(linear_velocity, Vector2.ZERO, 0.1)
+			velocity = lerp(velocity, accel, 0.1)
+
+		position += velocity * delta
+
+
+func pick_up_condition() -> bool:
+	printerr(
+		"'pick_up_condition' is a function in 'MagneticItem' that is to be overwriten in subclass"
+	)
+	return true
 
 
 func pick_up_item():
-	print("Item picked up!")
+	printerr("'pick_up_item' is a function in 'MagneticItem' that should be overwriten in subclass")
 	queue_free()
 
 
-func _on_area_2d_body_entered(body: Node2D) -> void:
-	if player == null and body.is_in_group("players"):
-		player = body
+func _on_body_entered(body: Node2D) -> void:
+	if body.is_in_group("players"):
+		if player == null:
+			player = body as Player
+			inventory = player.get_node("Inventory") as Inventory
+		elif !pick_up_condition():
+			player = body as Player
+			inventory = player.get_node("Inventory") as Inventory
+
+
+func _on_body_exited(body: Node2D) -> void:
+	if body == player:
+		player = null
+		inventory = null

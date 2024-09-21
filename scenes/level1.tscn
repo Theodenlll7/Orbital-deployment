@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://dsad6qof6xa7f"]
+[gd_scene load_steps=12 format=4 uid="uid://dsad6qof6xa7f"]
 
 [ext_resource type="TileSet" uid="uid://csk8y7hr781bf" path="res://assets/Tiles/earth_tileset.tres" id="1_4qrhp"]
 [ext_resource type="PackedScene" uid="uid://6vt8l263l0o7" path="res://player/player.tscn" id="2_5ihlw"]
@@ -6,7 +6,7 @@
 [ext_resource type="Script" path="res://enemies/enemy_spawner.gd" id="3_rkl8f"]
 [ext_resource type="PackedScene" uid="uid://b5rdpdm748scj" path="res://enemies/alien.tscn" id="4_xn1oy"]
 [ext_resource type="PackedScene" uid="uid://fwtaakyb0exx" path="res://interaction/Prefabs/pods/weapon_pod.tscn" id="5_cpg73"]
-[ext_resource type="Script" path="res://inventory/items/droped_items/scripts/magnetic_item.gd" id="7_ef1kn"]
+[ext_resource type="Script" path="res://inventory/items/weapons/scripts/ammo_crate.gd" id="7_wtpsh"]
 [ext_resource type="Texture2D" uid="uid://droul8ku4n0e8" path="res://addons/sprout_lands_tilemap/assets/Objects/Egg item.png" id="8_xtle8"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5vrix"]
@@ -224,10 +224,7 @@ texture = ExtResource("2_npsw5")
 sources/0 = SubResource("TileSetAtlasSource_5vrix")
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_frced"]
-radius = 3.16228
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_sowaw"]
-radius = 83.3847
+radius = 77.0065
 
 [node name="Level1" type="Node2D"]
 
@@ -249,25 +246,16 @@ enemy_scene = ExtResource("4_xn1oy")
 [node name="InteractionArea" parent="." instance=ExtResource("5_cpg73")]
 position = Vector2(115, -109)
 
-[node name="MagneticItem" type="RigidBody2D" parent="."]
+[node name="AmmoCrate" type="Area2D" parent="."]
 collision_layer = 0
-collision_mask = 0
-lock_rotation = true
-script = ExtResource("7_ef1kn")
+script = ExtResource("7_wtpsh")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MagneticItem"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AmmoCrate"]
 shape = SubResource("CircleShape2D_frced")
 
-[node name="Sprite2D" type="Sprite2D" parent="MagneticItem"]
+[node name="Sprite2D" type="Sprite2D" parent="AmmoCrate"]
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("8_xtle8")
 
-[node name="Area2D" type="Area2D" parent="MagneticItem"]
-collision_layer = 0
-monitorable = false
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MagneticItem/Area2D"]
-shape = SubResource("CircleShape2D_sowaw")
-
-[connection signal="body_entered" from="MagneticItem/Area2D" to="MagneticItem" method="_on_area_2d_body_entered"]
-[connection signal="body_exited" from="MagneticItem/Area2D" to="MagneticItem" method="_on_area_2d_body_exited"]
+[connection signal="body_entered" from="AmmoCrate" to="AmmoCrate" method="_on_body_entered"]
+[connection signal="body_exited" from="AmmoCrate" to="AmmoCrate" method="_on_body_exited"]

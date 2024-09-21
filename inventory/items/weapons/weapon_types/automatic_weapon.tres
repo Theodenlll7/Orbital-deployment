@@ -8,7 +8,6 @@
 [resource]
 script = ExtResource("2_wac4t")
 projectile_scene = ExtResource("1_nhrq8")
-muzzle_offset = Vector2(0, 0)
 weapon_name = &"Automatic Weapon"
 weapon_cost = 500
 texture = ExtResource("3_2exs0")
