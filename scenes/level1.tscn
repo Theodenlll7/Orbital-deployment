@@ -6,7 +6,7 @@
 [ext_resource type="Script" path="res://enemies/enemy_spawner.gd" id="3_rkl8f"]
 [ext_resource type="PackedScene" uid="uid://b5rdpdm748scj" path="res://enemies/alien.tscn" id="4_xn1oy"]
 [ext_resource type="PackedScene" uid="uid://fwtaakyb0exx" path="res://interaction/Prefabs/pods/weapon_pod.tscn" id="5_cpg73"]
-[ext_resource type="Script" path="res://inventory/items/weapons/scripts/ammo_crate.gd" id="7_wtpsh"]
+[ext_resource type="Script" path="res://inventory/loot/droped_items/scripts/ammo_crate.gd" id="7_wtpsh"]
 [ext_resource type="Texture2D" uid="uid://droul8ku4n0e8" path="res://addons/sprout_lands_tilemap/assets/Objects/Egg item.png" id="8_xtle8"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5vrix"]
@@ -224,7 +224,7 @@ texture = ExtResource("2_npsw5")
 sources/0 = SubResource("TileSetAtlasSource_5vrix")
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_frced"]
-radius = 77.0065
+radius = 40.56
 
 [node name="Level1" type="Node2D"]
 

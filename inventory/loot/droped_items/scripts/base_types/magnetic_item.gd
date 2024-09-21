@@ -10,6 +10,17 @@ var pick_up_distance: float = 5
 var velocity := Vector2.ZERO
 
 
+func _init(pick_up_radius: float = 50, texture: Texture2D = null):
+	var collider = CollisionShape2D.new()
+	var shape := CircleShape2D.new()
+	shape.radius = pick_up_radius
+	collider.shape = shape
+	add_child(collider)
+
+	var sprite = Sprite2D.new()
+	sprite.texture = texture
+
+
 func _physics_process(delta: float) -> void:
 	if player and pick_up_condition():
 		var distance_to_player = position.distance_to(player.position)
