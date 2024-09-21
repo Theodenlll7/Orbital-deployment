@@ -11,7 +11,7 @@ var options_button: Button = $ContentMarginContainer/HBoxContainer/VBoxContainer
 @onready var ship_texture: TextureRect = $ship/DropShipTextureRect
 @onready var animation_player_ship: AnimationPlayer = $ship/AnimationPlayer
 
-@onready var mission_select_menu: Control = $mission_select
+@onready var mission_select_menu: MissionSelect = $mission_select
 @onready var options_menu: OptionsMenu = $options_menu
 @onready var main_menu: MarginContainer = $ContentMarginContainer
 
@@ -22,10 +22,26 @@ var options_button: Button = $ContentMarginContainer/HBoxContainer/VBoxContainer
 const level1 = preload("res://scenes/level1.tscn")
 var ship_start_position: Vector2
 
+
 func _ready() -> void:
 	handle_connecting_signals()
 	first_btn_focus_grab()
 	ship_start_position = ship.global_position
+
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("ui_cancel") and target_menu != main_menu:
+		if target_menu == mission_select_menu:
+			if mission_select_menu.missions_tab.visible:
+				mission_select_menu.on_exit_mission_tab()
+			else:
+				target_menu = main_menu
+				change_menu()
+		elif target_menu == options_menu:
+			on_exit_options_menu()
+		else:
+			target_menu = main_menu
+			change_menu()
 
 
 func on_animation_finished(animation_name: String) -> void:
@@ -88,21 +104,29 @@ func change_menu() -> void:
 		options_menu.visible = false
 		mission_select_menu.visible = false
 
+
 func start_mission(mission_ID: String, marker_position: Vector2) -> void:
 	print("marker_position: ", marker_position)
 	print("Let's go")
 	move_ship_to_marker(mission_ID, marker_position)
 
+
 func move_ship_to_marker(mission_ID: String, move_to: Vector2) -> void:
 	move_to = ship.global_position + move_to - Vector2(80.0, 80.0)
-	
+
 	var move_time = 0.5
 	var scale_to = 0.6
-	
+
 	var tween = create_tween()
-	tween.tween_property(ship, "global_position",move_to, move_time).set_ease(Tween.EASE_OUT)
-	tween.parallel().tween_property(ship_texture, "scale",Vector2(scale_to, scale_to), move_time).set_ease(Tween.EASE_OUT)
+	tween.tween_property(ship, "global_position", move_to, move_time).set_ease(Tween.EASE_OUT)
+	(
+		tween
+		. parallel()
+		. tween_property(ship_texture, "scale", Vector2(scale_to, scale_to), move_time)
+		. set_ease(Tween.EASE_OUT)
+	)
 	tween.connect("finished", Callable(self, "on_tween_finished").bind(mission_ID))
+
 
 func on_tween_finished(mission_ID: String) -> void:
 	match mission_ID:
@@ -115,10 +139,11 @@ func on_tween_finished(mission_ID: String) -> void:
 		_:
 			print("Error in starting the game")
 
+
 func reset_ship() -> void:
 	ship_texture.scale = Vector2(1.0, 1.0)
 	ship.global_position = ship_start_position
-	
+
 
 func handle_connecting_signals() -> void:
 	select_mission_button.button_down.connect(on_select_mission_button_pressed)
