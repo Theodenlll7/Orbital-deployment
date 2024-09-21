@@ -22,3 +22,4 @@ reload_time = 0.5
 has_ammo = true
 ammo = 50
 ammo_cap = 200
+ammo_crate_value = 50
