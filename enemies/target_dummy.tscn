@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://b88le3f50loho"]
 
-[ext_resource type="Texture2D" uid="uid://xoiggvxuo4wh" path="res://assets/Sprites/Enemies/monster.png" id="1_0yxnu"]
+[ext_resource type="Texture2D" uid="uid://xoiggvxuo4wh" path="res://enemies/assets/textures/monster.png" id="1_0yxnu"]
 [ext_resource type="Script" path="res://common/components/HealthComponent.gd" id="2_um0ha"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lx1um"]

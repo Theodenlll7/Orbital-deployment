@@ -1,16 +1,19 @@
 extends Resource
 class_name WeaponResource
 
-@export_group("Store Details")
+## Name and weapon value
+@export_group("Weapon Details")
 @export var weapon_name: StringName = "Weapon"
 ##Purchase cost
 @export var weapon_cost: int = 100
 
+## How the weapon looks and sounds
 @export_group("Weapon Setup")
 @export var texture: Texture
 @export var muzzel_offset: Vector2 = Vector2(0, 0)
 @export var audio_steam: AudioStream
 
+## How the weapon acts
 @export_group("Weapon Handle")
 enum AttackMode {
 	SINGLE,  ## Attacks ones per button press
@@ -22,19 +25,24 @@ enum AttackMode {
 
 @export_subgroup("Amunition")
 @export var has_magazine: bool = true
-#How many bullets can be fired before reloding
-@export var magazine_size: int = 10
-@export var ammo_in_magazine: int = 10
 
-@export var reload_time: float = 0.5  # The time it takes to reload (in seconds)
+var ammo_in_magazine: int
+##How many bullets can be fired before reloding
+@export var magazine_size: int = 10:
+	set(value):
+		ammo_in_magazine = value
+		magazine_size = value
+
+## The time it takes to reload (in seconds)
+@export var reload_time: float = 0.5
 
 @export var has_ammo: bool = true
-#Current amount of amuntion
+##Current amount of amuntion
 @export var ammo: int = 50
-#Maximum ammo cary capasity set to 0 to disable
+##Maximum ammo cary capasity set to 0 to disable
 @export var ammo_cap: int = 200
 
-#Amount of ammo recived from ammo crate
+##Amount of ammo recived from ammo crate
 @export var ammo_crate_value: int = 50
 
 var attack: Callable = _attack

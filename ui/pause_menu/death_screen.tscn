@@ -1,0 +1,208 @@
+[gd_scene load_steps=7 format=3 uid="uid://dcm0rxa7wl85t"]
+
+[ext_resource type="Theme" uid="uid://c3a3bfndbpf03" path="res://ui/main_menu/UI_theme.tres" id="1_vullf"]
+[ext_resource type="Script" path="res://ui/pause_menu/death_screen.gd" id="2_h7m7i"]
+[ext_resource type="Texture2D" uid="uid://bjjk6jmae6h7h" path="res://ui/main_menu/assets/textures/blood.png" id="3_35qih"]
+[ext_resource type="FontFile" uid="uid://dkg32o3qfh2n7" path="res://assets/Fonts/pixelmix.ttf" id="4_m6phl"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m7gdi"]
+bg_color = Color(0.6, 0.6, 0.6, 0.333333)
+border_width_bottom = 4
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_la7ls"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_bottom = 4
+corner_detail = 1
+
+[node name="DeathScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_vullf")
+script = ExtResource("2_h7m7i")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_35qih")
+
+[node name="BackgroundColorRect" type="ColorRect" parent="TextureRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="TextureRect/BackgroundColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 256
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 64
+
+[node name="VBoxContentContainer" type="VBoxContainer" parent="TextureRect/BackgroundColorRect/MarginContainer"]
+layout_mode = 2
+
+[node name="Text" type="Control" parent="TextureRect/BackgroundColorRect/MarginContainer/VBoxContentContainer"]
+custom_minimum_size = Vector2(0, 320)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="TextureRect/BackgroundColorRect/MarginContainer/VBoxContentContainer/Text"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TextureRect/BackgroundColorRect/MarginContainer/VBoxContentContainer/Text/MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Control" type="Control" parent="TextureRect/BackgroundColorRect/MarginContainer/VBoxContentContainer/Text/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(832, 288)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ColorRect" type="ColorRect" parent="TextureRect/BackgroundColorRect/MarginContainer/VBoxContentContainer/Text/MarginContainer/HBoxContainer/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TextureRect/BackgroundColorRect/MarginContainer/VBoxContentContainer/Text/MarginContainer/HBoxContainer/Control/ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control" type="Control" parent="TextureRect/BackgroundColorRect/MarginContainer/VBoxContentContainer/Text/MarginContainer/HBoxContainer/Control/ColorRect/VBoxContainer"]
+custom_minimum_size = Vector2(0, 192)
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="TextureRect/BackgroundColorRect/MarginContainer/VBoxContentContainer/Text/MarginContainer/HBoxContainer/Control/ColorRect/VBoxContainer/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0)
+
+[node name="DeathLabel" type="Label" parent="TextureRect/BackgroundColorRect/MarginContainer/VBoxContentContainer/Text/MarginContainer/HBoxContainer/Control/ColorRect/VBoxContainer/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = 48.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.545098, 0.0941176, 0.12549, 1)
+theme_override_font_sizes/font_size = 48
+text = "Orbital team missing in action"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="TextureRect/BackgroundColorRect/MarginContainer/VBoxContentContainer/Text/MarginContainer/HBoxContainer/Control/ColorRect/VBoxContainer"]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+color = Color(0, 0, 0, 0)
+
+[node name="MarginContainer" type="MarginContainer" parent="TextureRect/BackgroundColorRect/MarginContainer/VBoxContentContainer/Text/MarginContainer/HBoxContainer/Control/ColorRect/VBoxContainer/ColorRect"]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -152.0
+offset_top = -26.0
+offset_right = 152.0
+offset_bottom = 26.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 32
+
+[node name="ProgressLabels" type="HBoxContainer" parent="TextureRect/BackgroundColorRect/MarginContainer/VBoxContentContainer/Text/MarginContainer/HBoxContainer/Control/ColorRect/VBoxContainer/ColorRect/MarginContainer"]
+layout_mode = 2
+
+[node name="Reached" type="Label" parent="TextureRect/BackgroundColorRect/MarginContainer/VBoxContentContainer/Text/MarginContainer/HBoxContainer/Control/ColorRect/VBoxContainer/ColorRect/MarginContainer/ProgressLabels"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+theme_override_font_sizes/font_size = 20
+text = "You reached level "
+horizontal_alignment = 2
+
+[node name="Level" type="Label" parent="TextureRect/BackgroundColorRect/MarginContainer/VBoxContentContainer/Text/MarginContainer/HBoxContainer/Control/ColorRect/VBoxContainer/ColorRect/MarginContainer/ProgressLabels"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 20
+text = "-"
+
+[node name="Buttons" type="Control" parent="TextureRect/BackgroundColorRect/MarginContainer/VBoxContentContainer"]
+custom_minimum_size = Vector2(0, 256)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="TextureRect/BackgroundColorRect/MarginContainer/VBoxContentContainer/Buttons"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 160.0
+grow_horizontal = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TextureRect/BackgroundColorRect/MarginContainer/VBoxContentContainer/Buttons/MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TextureRect/BackgroundColorRect/MarginContainer/VBoxContentContainer/Buttons/MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 32
+
+[node name="TryAgainButton" type="Button" parent="TextureRect/BackgroundColorRect/MarginContainer/VBoxContentContainer/Buttons/MarginContainer/HBoxContainer/VBoxContainer"]
+clip_contents = true
+custom_minimum_size = Vector2(256, 64)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_m6phl")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/hover = SubResource("StyleBoxFlat_m7gdi")
+theme_override_styles/normal = SubResource("StyleBoxFlat_la7ls")
+text = "Try again"
+
+[node name="BackToMenuButton" type="Button" parent="TextureRect/BackgroundColorRect/MarginContainer/VBoxContentContainer/Buttons/MarginContainer/HBoxContainer/VBoxContainer"]
+clip_contents = true
+custom_minimum_size = Vector2(256, 64)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_m6phl")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/hover = SubResource("StyleBoxFlat_m7gdi")
+theme_override_styles/normal = SubResource("StyleBoxFlat_la7ls")
+text = "Back to menu"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TextureRect/BackgroundColorRect/MarginContainer/VBoxContentContainer/Buttons/MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2

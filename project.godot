@@ -11,14 +11,14 @@ config_version=5
 [application]
 
 config/name="Orbital deployment"
-run/main_scene="res://main_menu/main_menu.tscn"
+run/main_scene="res://ui/main_menu/main_menu.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
-config/icon="res://assets/Icons/icon.svg"
+config/icon="res://assets/icon.svg"
 
 [autoload]
 
 GameVariables="*res://game_manager/GameVariables/GameVariables.gd"
-InteractionManager="*res://interaction/InteractionManager.tscn"
+InteractionManager="*res://common/interaction/InteractionManager.tscn"
 GenerateMapVariables="*res://maps/map_generation/Map_functions/GenerateMapVariables.gd"
 SoundEngine="*res://game_manager/sound_engine/sound_engine.tscn"
 PodVariables="*res://game_manager/GameVariables/PodVariables.gd"
@@ -32,13 +32,26 @@ window/stretch/mode="viewport"
 window/stretch/aspect="expand"
 window/vsync/vsync_mode=0
 
+[file_customization]
+
+folder_colors={
+"res://common/": "blue",
+"res://enemies/": "red",
+"res://game_manager/": "orange",
+"res://inventory/": "yellow",
+"res://maps/": "gray",
+"res://player/": "green",
+"res://scenes/": "pink",
+"res://ui/": "purple"
+}
+
 [global_group]
 
 players=""
 
 [gui]
 
-theme/custom="res://main_menu/UI_theme.tres"
+theme/custom="res://ui/main_menu/UI_theme.tres"
 
 [input]
 

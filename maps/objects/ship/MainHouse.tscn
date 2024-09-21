@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://dtyfw3eetyfc"]
+
+[ext_resource type="Script" path="res://common/interaction/Interactionarea/Interactionarea.gd" id="1_nw8rw"]
+[ext_resource type="Texture2D" uid="uid://bmg7fvruvs8p4" path="res://maps/objects/ship/Icons/Main Ship - Base - Full health.png" id="2_iappx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k8nvd"]
+size = Vector2(103, 82)
+
+[node name="InteractionArea" type="Area2D"]
+collision_layer = 0
+script = ExtResource("1_nw8rw")
+action_name = "Interact"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_k8nvd")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(7.62939e-06, 0)
+scale = Vector2(3.20833, 2.85417)
+texture = ExtResource("2_iappx")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

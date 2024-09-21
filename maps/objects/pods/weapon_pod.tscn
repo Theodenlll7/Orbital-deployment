@@ -1,0 +1,34 @@
+[gd_scene load_steps=6 format=3 uid="uid://fwtaakyb0exx"]
+
+[ext_resource type="Script" path="res://maps/objects/pods/scripts/pod.gd" id="1_dfide"]
+[ext_resource type="Script" path="res://common/interaction/Interactionarea/Interactionarea.gd" id="2_ndqur"]
+[ext_resource type="Texture2D" uid="uid://cf1tqraah3nyk" path="res://maps/objects/pods/assets/pod.png" id="3_napab"]
+[ext_resource type="PackedScene" uid="uid://cc25in05338v8" path="res://maps/objects/pods/store_ui.tscn" id="4_5te7r"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k8nvd"]
+size = Vector2(91, 46)
+
+[node name="WeaponPod" type="Node2D"]
+script = ExtResource("1_dfide")
+
+[node name="InteractionArea" type="Area2D" parent="."]
+collision_layer = 0
+monitorable = false
+script = ExtResource("2_ndqur")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
+position = Vector2(0.5, 2)
+shape = SubResource("RectangleShape2D_k8nvd")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-0.499997, 0.500002)
+scale = Vector2(1.72917, 1.34375)
+texture = ExtResource("3_napab")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="StoreUI" parent="CanvasLayer" instance=ExtResource("4_5te7r")]
+
+[connection signal="body_entered" from="InteractionArea" to="InteractionArea" method="_on_body_entered"]
+[connection signal="body_exited" from="InteractionArea" to="." method="_on_interaction_area_body_exited"]
+[connection signal="body_exited" from="InteractionArea" to="InteractionArea" method="_on_body_exited"]

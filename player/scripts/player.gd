@@ -11,7 +11,7 @@ class_name Player
 @onready var camera := $Camera2D
 @onready var inventory := $Inventory
 
-@onready var death_screen: DeathScreen = $PlayerHUD/death_screen
+@onready var death_screen: DeathScreen = $PlayerHUD/DeathScreen
 
 @export var weapon_orbit_distance: float = 8.0  # Distance from the player at which the weapon orbits
 

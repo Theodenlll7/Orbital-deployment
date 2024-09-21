@@ -2,7 +2,7 @@ extends Resource
 
 class_name LootTable
 # We define loot as an array of dictionaries with `item` and `chance` fields
-@export var loot: Array = []
+@export var loot: Dictionary
 
 
 func get_random_loot():

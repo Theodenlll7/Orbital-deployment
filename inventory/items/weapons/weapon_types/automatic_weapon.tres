@@ -17,7 +17,6 @@ attack_mode = 1
 attack_rate = 0.05
 has_magazine = true
 magazine_size = 10
-ammo_in_magazine = 10
 reload_time = 0.5
 has_ammo = true
 ammo = 50
