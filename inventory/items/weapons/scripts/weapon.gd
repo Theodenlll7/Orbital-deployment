@@ -65,6 +65,15 @@ func get_bullet_damage() -> int:
 
 func get_bullet_speed() -> float:
 	return weapon_resource.bullet_speed
+	
+func get_bullet_lifetime() -> float:
+	return weapon_resource.bullet_lifetime
+	
+func get_bullet_spread() -> float:
+	return weapon_resource.bullet_spread
+	
+func get_bullets_per_shot() -> int:
+	return weapon_resource.bullets_per_shot
 
 func attack_pressed() -> bool:
 	return (

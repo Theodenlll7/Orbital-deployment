@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="ProjectileWeaponResource" load_steps=5 format=3 uid="uid://c7vr025grdda3"]
+
+[ext_resource type="AudioStream" uid="uid://bx0erxmcc8tb2" path="res://inventory/items/weapons/assets/audio/gun_fire2.mp3" id="1_30bos"]
+[ext_resource type="PackedScene" uid="uid://b1ahksg20mxej" path="res://inventory/items/weapons/projectiles/basic_projectile.tscn" id="2_ua4wu"]
+[ext_resource type="Script" path="res://inventory/items/weapons/scripts/projectile_weapon_resource.gd" id="3_4j6gg"]
+[ext_resource type="Texture2D" uid="uid://cl5qwpevj30pp" path="res://inventory/items/weapons/assets/sprites/HMG32.png" id="4_2cjby"]
+
+[resource]
+script = ExtResource("3_4j6gg")
+projectile_scene = ExtResource("2_ua4wu")
+weapon_name = &"Breacher 36"
+weapon_cost = 600
+texture = ExtResource("4_2cjby")
+muzzel_offset = Vector2(8, 0)
+audio_steam = ExtResource("1_30bos")
+attack_mode = 1
+attack_rate = 0.8
+has_magazine = true
+bullet_damage = 20
+bullet_speed = 400.0
+bullet_spread = 10.0
+bullet_lifetime = 0.5
+bullets_per_shot = 5
+magazine_size = 8
+reload_time = 0.5
+has_ammo = true
+ammo = 64
+ammo_cap = 64
+ammo_crate_value = 32

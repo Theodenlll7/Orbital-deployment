@@ -32,6 +32,15 @@ enum AttackMode {
 ##Speed of bullets, standard speed set to 500.0
 @export var bullet_speed: float = 500.0
 
+## Spread of a bullet (deg), normaly set to 0.0
+@export var bullet_spread: float = 0.0
+
+##Lifetime of a bullet, standard set to 2.0
+@export var bullet_lifetime: float = 2.0
+
+##Number of bullets per singel shot
+@export var bullets_per_shot: int = 1
+
 var ammo_in_magazine: int
 ##How many bullets can be fired before reloding
 @export var magazine_size: int = 10:
