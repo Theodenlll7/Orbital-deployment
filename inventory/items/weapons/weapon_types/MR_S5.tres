@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="ProjectileWeaponResource" load_steps=5 format=3 uid="uid://bnac6v17omsei"]
+
+[ext_resource type="AudioStream" uid="uid://bswtowqo0jjtx" path="res://inventory/items/weapons/assets/audio/gun_fire.mp3" id="1_n47xr"]
+[ext_resource type="PackedScene" uid="uid://b1ahksg20mxej" path="res://inventory/items/weapons/projectiles/basic_projectile.tscn" id="2_4smc3"]
+[ext_resource type="Script" path="res://inventory/items/weapons/scripts/projectile_weapon_resource.gd" id="3_vqdyc"]
+[ext_resource type="Texture2D" uid="uid://dboamah0mox3j" path="res://inventory/items/weapons/assets/sprites/MR_S5.png" id="4_558er"]
+
+[resource]
+script = ExtResource("3_vqdyc")
+projectile_scene = ExtResource("2_4smc3")
+weapon_name = &"MR S5"
+weapon_cost = 100
+texture = ExtResource("4_558er")
+muzzel_offset = Vector2(0, 0)
+audio_steam = ExtResource("1_n47xr")
+attack_mode = 0
+attack_rate = 0.4
+has_magazine = true
+bullet_damage = 35
+magazine_size = 11
+reload_time = 0.4
+has_ammo = true
+ammo = 40
+ammo_cap = 40
+ammo_crate_value = 20

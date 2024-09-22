@@ -3,21 +3,20 @@
 [ext_resource type="PackedScene" uid="uid://b1ahksg20mxej" path="res://inventory/items/weapons/projectiles/basic_projectile.tscn" id="1_6hahn"]
 [ext_resource type="AudioStream" uid="uid://bswtowqo0jjtx" path="res://inventory/items/weapons/assets/audio/gun_fire.mp3" id="1_b0ttv"]
 [ext_resource type="Script" path="res://inventory/items/weapons/scripts/projectile_weapon_resource.gd" id="1_dtgsb"]
-[ext_resource type="Texture2D" uid="uid://e7tmgx55v77v" path="res://inventory/items/weapons/assets/sprites/gun1.png" id="2_gok5a"]
+[ext_resource type="Texture2D" uid="uid://c5c84xutfwu1y" path="res://inventory/items/weapons/assets/sprites/pistol.png" id="4_avs3j"]
 
 [resource]
 script = ExtResource("1_dtgsb")
 projectile_scene = ExtResource("1_6hahn")
 weapon_name = &"Proj Weapon"
 weapon_cost = 100
-texture = ExtResource("2_gok5a")
+texture = ExtResource("4_avs3j")
 muzzel_offset = Vector2(0, 0)
 audio_steam = ExtResource("1_b0ttv")
 attack_mode = 0
 attack_rate = 0.2
 has_magazine = true
 magazine_size = 10
-ammo_in_magazine = 10
 reload_time = 0.5
 has_ammo = true
 ammo = 50

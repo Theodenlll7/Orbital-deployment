@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="ProjectileWeaponResource" load_steps=5 format=3 uid="uid://cm5am7x8d6kav"]
+
+[ext_resource type="AudioStream" uid="uid://bx0erxmcc8tb2" path="res://inventory/items/weapons/assets/audio/gun_fire2.mp3" id="1_4ltvm"]
+[ext_resource type="PackedScene" uid="uid://b1ahksg20mxej" path="res://inventory/items/weapons/projectiles/basic_projectile.tscn" id="2_joyfi"]
+[ext_resource type="Script" path="res://inventory/items/weapons/scripts/projectile_weapon_resource.gd" id="3_7q36s"]
+[ext_resource type="Texture2D" uid="uid://cl5qwpevj30pp" path="res://inventory/items/weapons/assets/sprites/HMG32.png" id="4_8qkk7"]
+
+[resource]
+script = ExtResource("3_7q36s")
+projectile_scene = ExtResource("2_joyfi")
+weapon_name = &"HMG 32"
+weapon_cost = 600
+texture = ExtResource("4_8qkk7")
+muzzel_offset = Vector2(8, 0)
+audio_steam = ExtResource("1_4ltvm")
+attack_mode = 1
+attack_rate = 0.1
+has_magazine = true
+bullet_damage = 10
+magazine_size = 61
+reload_time = 0.8
+has_ammo = true
+ammo = 120
+ammo_cap = 120
+ammo_crate_value = 50

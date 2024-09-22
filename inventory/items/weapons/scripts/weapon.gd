@@ -60,6 +60,8 @@ func _process(delta) -> void:
 		else:
 			attack()
 
+func get_bullet_damage() -> int:
+	return weapon_resource.bullet_damage
 
 func attack_pressed() -> bool:
 	return (

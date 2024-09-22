@@ -26,6 +26,9 @@ enum AttackMode {
 @export_subgroup("Amunition")
 @export var has_magazine: bool = true
 
+##Damage per bullet, standard damage set to 10
+@export var bullet_damage: int = 10
+
 var ammo_in_magazine: int
 ##How many bullets can be fired before reloding
 @export var magazine_size: int = 10:
