@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="ProjectileWeaponResource" load_steps=5 format=3 uid="uid://owcd3a8fujm2"]
+
+[ext_resource type="AudioStream" uid="uid://bcqxb1lhluf3y" path="res://inventory/items/weapons/assets/audio/Breacher_36.ogg" id="1_4v7hj"]
+[ext_resource type="PackedScene" uid="uid://b1ahksg20mxej" path="res://inventory/items/weapons/projectiles/basic_projectile.tscn" id="2_m4vi2"]
+[ext_resource type="Script" path="res://inventory/items/weapons/scripts/projectile_weapon_resource.gd" id="3_5mh75"]
+[ext_resource type="Texture2D" uid="uid://fynhjhvwfvw2" path="res://inventory/items/weapons/assets/sprites/AS_12.png" id="4_0v8x3"]
+
+[resource]
+script = ExtResource("3_5mh75")
+projectile_scene = ExtResource("2_m4vi2")
+weapon_name = &"AS 12"
+weapon_cost = 600
+texture = ExtResource("4_0v8x3")
+muzzel_offset = Vector2(8, 0)
+audio_steam = ExtResource("1_4v7hj")
+attack_mode = 1
+attack_rate = 0.1
+has_magazine = true
+bullet_damage = 10
+bullet_speed = 500.0
+bullet_spread = 12.0
+bullet_lifetime = 0.18
+bullets_per_shot = 5
+magazine_size = 12
+reload_time = 1.8
+has_ammo = true
+ammo = 36
+ammo_cap = 36
+ammo_crate_value = 36
