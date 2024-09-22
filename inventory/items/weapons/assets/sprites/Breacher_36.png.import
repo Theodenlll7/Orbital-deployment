@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bblutfu20r54"
-path="res://.godot/imported/tilemap_objects.png-ae3f689c3ae23097515fc0caac9c0233.ctex"
+uid="uid://bs0r2twce1cg3"
+path="res://.godot/imported/Breacher_36.png-2d09c2ed3008c886c18f9665a4055cf3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Tiles/tilemap_objects.png"
-dest_files=["res://.godot/imported/tilemap_objects.png-ae3f689c3ae23097515fc0caac9c0233.ctex"]
+source_file="res://inventory/items/weapons/assets/sprites/Breacher_36.png"
+dest_files=["res://.godot/imported/Breacher_36.png-2d09c2ed3008c886c18f9665a4055cf3.ctex"]
 
 [params]
 
