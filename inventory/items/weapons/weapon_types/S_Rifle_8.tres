@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="ProjectileWeaponResource" load_steps=5 format=3 uid="uid://df470b6ubcsns"]
 
-[ext_resource type="AudioStream" uid="uid://bswtowqo0jjtx" path="res://inventory/items/weapons/assets/audio/gun_fire.mp3" id="1_ookbo"]
+[ext_resource type="AudioStream" uid="uid://bctsd45rk8cit" path="res://inventory/items/weapons/assets/audio/S_Rifle_8_fire.ogg" id="1_k52ua"]
 [ext_resource type="PackedScene" uid="uid://b1ahksg20mxej" path="res://inventory/items/weapons/projectiles/basic_projectile.tscn" id="2_r5c6p"]
 [ext_resource type="Script" path="res://inventory/items/weapons/scripts/projectile_weapon_resource.gd" id="3_rv8uu"]
 [ext_resource type="Texture2D" uid="uid://83g4k7b2y2cg" path="res://inventory/items/weapons/assets/sprites/S_Rifle_8.png" id="4_cxvj4"]
@@ -8,15 +8,16 @@
 [resource]
 script = ExtResource("3_rv8uu")
 projectile_scene = ExtResource("2_r5c6p")
-weapon_name = &"S_Rifle_8"
+weapon_name = &"S Rifle 8"
 weapon_cost = 100
 texture = ExtResource("4_cxvj4")
 muzzel_offset = Vector2(0, 0)
-audio_steam = ExtResource("1_ookbo")
+audio_steam = ExtResource("1_k52ua")
 attack_mode = 0
 attack_rate = 0.8
 has_magazine = true
 bullet_damage = 110
+bullet_speed = 2000.0
 magazine_size = 9
 reload_time = 1.0
 has_ammo = true

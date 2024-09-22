@@ -18,8 +18,8 @@ func _attack(weapon: Weapon):
 	var mouse_position = weapon.get_viewport().get_camera_2d().get_global_mouse_position()
 
 	var direction = (mouse_position - position).normalized()
-
 	projectile.direction = direction
+	projectile.linear_velocity = direction * weapon.get_bullet_speed();
 	projectile.damage = weapon.get_bullet_damage()
 
 	weapon.get_tree().current_scene.add_child(projectile)

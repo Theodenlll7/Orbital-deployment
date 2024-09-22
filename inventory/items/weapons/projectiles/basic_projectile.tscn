@@ -14,7 +14,6 @@ can_sleep = false
 lock_rotation = true
 continuous_cd = 1
 script = ExtResource("1_xdkvq")
-impulse = 0.5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(0.3, 0.3)
