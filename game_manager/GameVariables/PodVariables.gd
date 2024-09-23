@@ -6,20 +6,6 @@ var special_equipment = []
 
 
 func _ready():
-	var grenade = Explosive.new("Grenades", 5, 50.0, "Standard Grenade")
-	var stun_grenade = Explosive.new("Stun Grenades", 10, 25.0, "Stun Grenade")
-	var rpg = Explosive.new("RPG", 150, 500.0, "Rocket Propelled Grenade")
-	var machine_gun_turret = Explosive.new("Machine Gun Turret", 80, 200.0, "Turret")
-	var self_revive = Explosive.new("Self Revive", 200, 0.0, "Revives the user")
-	var armor = Explosive.new("Armor", 50, 0.0, "Protective Armor")
-
-	explosives.append(grenade)
-	explosives.append(stun_grenade)
-	explosives.append(rpg)
-	explosives.append(machine_gun_turret)
-	explosives.append(self_revive)
-	explosives.append(armor)
-
 	# Create SpecialEquipment instances and add them to the special_equipment list
 	var orbital_strike = SpecialEquipment.new(
 		"Orbital Strike", 200, "Devastating orbital bombardment", "Orbital Strike"
