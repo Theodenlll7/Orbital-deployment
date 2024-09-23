@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://dk7o82ads1eea"]
+
+[ext_resource type="Script" path="res://inventory/loot/droped_items/scripts/ammo_crate.gd" id="1_n2dy0"]
+[ext_resource type="Texture2D" uid="uid://ccoe78uc8jt31" path="res://assets/icon.svg" id="2_46ymd"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_weo7e"]
+radius = 50.0
+
+[node name="AmmoCrate" type="Area2D"]
+script = ExtResource("1_n2dy0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_weo7e")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_46ymd")

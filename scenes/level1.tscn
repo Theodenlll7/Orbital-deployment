@@ -1,8 +1,8 @@
 [gd_scene load_steps=12 format=4 uid="uid://dsad6qof6xa7f"]
 
-[ext_resource type="TileSet" uid="uid://csk8y7hr781bf" path="res://assets/Tiles/earth_tileset.tres" id="1_4qrhp"]
+[ext_resource type="TileSet" uid="uid://c6je8biy2vjep" path="res://assets/Tiles/earth_tileset.tres" id="1_4qrhp"]
 [ext_resource type="PackedScene" uid="uid://6vt8l263l0o7" path="res://player/player.tscn" id="2_5ihlw"]
-[ext_resource type="Texture2D" uid="uid://bofjkntu8tej3" path="res://assets/Tiles/tilemap_objects.png" id="2_npsw5"]
+[ext_resource type="Texture2D" uid="uid://bblutfu20r54" path="res://assets/Tiles/tilemap_objects.png" id="2_npsw5"]
 [ext_resource type="Script" path="res://enemies/enemy_spawner.gd" id="3_rkl8f"]
 [ext_resource type="PackedScene" uid="uid://b5rdpdm748scj" path="res://enemies/alien.tscn" id="4_xn1oy"]
 [ext_resource type="PackedScene" uid="uid://fwtaakyb0exx" path="res://maps/objects/pods/weapon_pod.tscn" id="5_cpg73"]

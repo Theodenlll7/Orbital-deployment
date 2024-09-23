@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://kua7fs588s48"]
+
+[ext_resource type="Texture2D" uid="uid://xoiggvxuo4wh" path="res://enemies/assets/textures/monster.png" id="1_b12vd"]
+[ext_resource type="Script" path="res://addons/tree_mind/nodes/mind_tree.gd" id="2_ao7rd"]
+[ext_resource type="Script" path="res://addons/tree_mind/nodes/composites/sequence.gd" id="3_nukmd"]
+
+[node name="Ranger" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_b12vd")
+
+[node name="MindTreeRoot" type="Node" parent="."]
+script = ExtResource("2_ao7rd")
+
+[node name="Selector" type="Node" parent="MindTreeRoot"]
+script = ExtResource("3_nukmd")

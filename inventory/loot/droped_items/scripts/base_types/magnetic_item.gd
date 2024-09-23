@@ -4,8 +4,8 @@ class_name MagneticItem
 # Variables to adjust
 var player: Player = null
 var inventory: Inventory = null
-var speed: float = 500
-var pick_up_distance: float = 5
+const speed: float = 500
+const pick_up_distance: float = 5
 
 var velocity := Vector2.ZERO
 
