@@ -10,7 +10,6 @@ var audio_player: AudioStreamPlayer
 
 var sprite: Sprite2D
 
-
 func _init(data: WeaponResource):
 	weapon_resource = data
 
