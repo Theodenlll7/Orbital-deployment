@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="ExplosiveResource" load_steps=3 format=3 uid="uid://b8ygjcwesgo88"]
+
+[ext_resource type="Script" path="res://inventory/items/explosives/scripts/explosive_resource.gd" id="1_q56y2"]
+[ext_resource type="Texture2D" uid="uid://ccoe78uc8jt31" path="res://assets/icon.svg" id="4_fyu15"]
+
+[resource]
+script = ExtResource("1_q56y2")
+item_name = &"testgrenade"
+cost = 150
+texture = ExtResource("4_fyu15")
+throw_offset = Vector2(1, 2)
+throw_rate = 1.5
+explosion_damage = 100
+explosion_radius = 200.0
+fuse_time = 3.0
+has_explosive_quantity = true
+explosive_count = 3
+explosive_capacity = 5
+reload_time = 2.0
+resupply_value = 2

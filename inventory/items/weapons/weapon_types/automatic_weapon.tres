@@ -8,14 +8,19 @@
 [resource]
 script = ExtResource("2_wac4t")
 projectile_scene = ExtResource("1_nhrq8")
-weapon_name = &"Automatic Weapon"
-weapon_cost = 500
+item_name = &"automatic_weapon"
+cost = 100
 texture = ExtResource("3_2exs0")
 muzzel_offset = Vector2(8, 0)
 audio_steam = ExtResource("1_n2xvy")
 attack_mode = 1
 attack_rate = 0.05
 has_magazine = true
+bullet_damage = 10
+bullet_speed = 500.0
+bullet_spread = 0.0
+bullet_lifetime = 2.0
+bullets_per_shot = 1
 magazine_size = 10
 reload_time = 0.5
 has_ammo = true

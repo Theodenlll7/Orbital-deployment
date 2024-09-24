@@ -8,8 +8,8 @@
 [resource]
 script = ExtResource("3_7q36s")
 projectile_scene = ExtResource("2_joyfi")
-weapon_name = &"HMG 32"
-weapon_cost = 600
+item_name = &"HMG_32"
+cost = 100
 texture = ExtResource("4_8qkk7")
 muzzel_offset = Vector2(8, 0)
 audio_steam = ExtResource("1_4ltvm")
@@ -18,6 +18,9 @@ attack_rate = 0.1
 has_magazine = true
 bullet_damage = 10
 bullet_speed = 400.0
+bullet_spread = 0.0
+bullet_lifetime = 2.0
+bullets_per_shot = 1
 magazine_size = 61
 reload_time = 2.0
 has_ammo = true

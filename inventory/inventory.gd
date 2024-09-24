@@ -33,7 +33,7 @@ func add_weapon(weapon: WeaponResource):
 
 
 func add_explosive(explosive):
-	explosive_slot = explosive
+	player_hud.equip_explosive(explosive)
 
 
 func add_special_equipment(special_equipment):
@@ -57,18 +57,8 @@ func add_ammo():
 func _on_purchase_made(item):
 	if item is WeaponResource:
 		add_weapon(item)
-	elif item is Explosive:
-		print(
-			"Purchased Explosive: ",
-			item.explosive_name,
-			" | Cost: ",
-			item.explosive_cost,
-			" | Damage: ",
-			item.explosive_damage,
-			" | Type: ",
-			item.explosive_type
-		)
-		add_weapon(item)
+	elif item is ExplosiveResource:
+		add_explosive(item)
 	elif item is SpecialEquipment:
 		print(
 			"Purchased Special Equipment: ",

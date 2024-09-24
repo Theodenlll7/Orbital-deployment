@@ -3,9 +3,9 @@ class_name WeaponResource
 
 ## Name and weapon value
 @export_group("Weapon Details")
-@export var weapon_name: StringName = "Weapon"
+@export var item_name: StringName = "Weapon"
 ##Purchase cost
-@export var weapon_cost: int = 100
+@export var cost: int = 100
 
 ## How the weapon looks and sounds
 @export_group("Weapon Setup")

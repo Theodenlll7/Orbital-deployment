@@ -8,8 +8,8 @@
 [resource]
 script = ExtResource("3_rv8uu")
 projectile_scene = ExtResource("2_r5c6p")
-weapon_name = &"S Rifle 8"
-weapon_cost = 100
+item_name = &"Sniper Rifle"
+cost = 100
 texture = ExtResource("4_cxvj4")
 muzzel_offset = Vector2(0, 0)
 audio_steam = ExtResource("1_k52ua")
@@ -18,6 +18,9 @@ attack_rate = 0.8
 has_magazine = true
 bullet_damage = 110
 bullet_speed = 2000.0
+bullet_spread = 0.0
+bullet_lifetime = 2.0
+bullets_per_shot = 1
 magazine_size = 9
 reload_time = 1.0
 has_ammo = true

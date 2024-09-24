@@ -35,6 +35,6 @@ func updatePods(day):
 		2:
 			GenerateMapVariables.spawnPod(0)
 		4:
-			GenerateMapVariables.spawnPod(1)
+			GenerateMapVariables.spawnPod(0)
 		6:
-			GenerateMapVariables.spawnPod(2)
+			GenerateMapVariables.spawnPod(0)

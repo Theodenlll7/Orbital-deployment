@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://wsq75v2incod"]
+[gd_scene load_steps=16 format=3 uid="uid://wsq75v2incod"]
 
 [ext_resource type="PackedScene" uid="uid://dgcxqingnrpqp" path="res://maps/map_generation/MapGeneration.tscn" id="1_huq2t"]
 [ext_resource type="Texture2D" uid="uid://c47qsqjeww0od" path="res://assets/Tiles/tilemap.png" id="2_31m2w"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bblutfu20r54" path="res://assets/Tiles/tilemap_objects.png" id="7_8hfy4"]
 [ext_resource type="Script" path="res://maps/map_generation/MapGeneration.gd" id="8_xh3lq"]
 [ext_resource type="Script" path="res://game_manager/GameLoop/gameLoop.gd" id="9_53pwr"]
+[ext_resource type="PackedScene" uid="uid://m724oqngam6i" path="res://maps/objects/pods/expl_pod.tscn" id="11_bfcpc"]
 [ext_resource type="PackedScene" uid="uid://6vt8l263l0o7" path="res://player/player.tscn" id="11_rp00p"]
 [ext_resource type="PackedScene" uid="uid://bwqebjpl0otwb" path="res://game_manager/DayAndNightCycle/night_day.tscn" id="12_gnnhm"]
 [ext_resource type="PackedScene" uid="uid://b88le3f50loho" path="res://enemies/target_dummy.tscn" id="13_njcai"]
@@ -1139,3 +1140,6 @@ scale = Vector2(2, 2)
 
 [node name="InteractionArea2" parent="." instance=ExtResource("18_c65v2")]
 position = Vector2(0, 140)
+
+[node name="ExplosivePod" parent="." instance=ExtResource("11_bfcpc")]
+position = Vector2(150, 111)

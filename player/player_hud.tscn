@@ -155,7 +155,7 @@ pivot_offset = Vector2(50, 50)
 layout_mode = 2
 texture = ExtResource("2_idg8k")
 
-[node name="TextureRect" type="TextureRect" parent="PlayerHUD/HBoxContainer2/AspectRatioContainer2/AspectRatioContainer"]
+[node name="Icon" type="TextureRect" parent="PlayerHUD/HBoxContainer2/AspectRatioContainer2/AspectRatioContainer"]
 layout_mode = 2
 
 [node name="AspectRatioContainer" type="Control" parent="PlayerHUD/HBoxContainer2"]

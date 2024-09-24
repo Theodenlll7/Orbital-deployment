@@ -3,9 +3,9 @@ class_name ExplosiveResource
 
 ## Name and explosive value
 @export_group("Explosive Details")
-@export var explosive_name: StringName = "Explosive"
+@export var item_name: StringName = "Explosive"
 ## Purchase cost for the explosive
-@export var explosive_cost: int = 150
+@export var cost: int = 150
 
 ## How the explosive looks and sounds
 @export_group("Explosive Setup")

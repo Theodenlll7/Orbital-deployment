@@ -8,8 +8,8 @@
 [resource]
 script = ExtResource("3_vqdyc")
 projectile_scene = ExtResource("2_4smc3")
-weapon_name = &"MR S5"
-weapon_cost = 100
+item_name = &"MR_S5"
+cost = 100
 texture = ExtResource("4_558er")
 muzzel_offset = Vector2(0, 0)
 audio_steam = ExtResource("1_n47xr")
@@ -17,6 +17,10 @@ attack_mode = 0
 attack_rate = 0.4
 has_magazine = true
 bullet_damage = 35
+bullet_speed = 500.0
+bullet_spread = 0.0
+bullet_lifetime = 2.0
+bullets_per_shot = 1
 magazine_size = 11
 reload_time = 0.4
 has_ammo = true

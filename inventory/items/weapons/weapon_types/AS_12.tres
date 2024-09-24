@@ -8,8 +8,8 @@
 [resource]
 script = ExtResource("3_5mh75")
 projectile_scene = ExtResource("2_m4vi2")
-weapon_name = &"AS 12"
-weapon_cost = 600
+item_name = &"AS_12"
+cost = 100
 texture = ExtResource("4_0v8x3")
 muzzel_offset = Vector2(8, 0)
 audio_steam = ExtResource("1_4v7hj")

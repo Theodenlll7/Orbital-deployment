@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://yob22fwt8ode"]
+
+[ext_resource type="Script" path="res://inventory/items/explosives/grenades/grenade_2d.gd" id="1_huw2f"]
+[ext_resource type="Texture2D" uid="uid://b5303f7vfendw" path="res://inventory/items/weapons/projectiles/sprites/bullet.png" id="2_ahw40"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ifh57"]
+
+[node name="BasicGrenade" type="RigidBody2D"]
+collision_layer = 4
+collision_mask = 2
+mass = 0.001
+gravity_scale = 0.0
+can_sleep = false
+lock_rotation = true
+continuous_cd = 1
+script = ExtResource("1_huw2f")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(0.3, 0.3)
+shape = SubResource("RectangleShape2D_ifh57")
+
+[node name="Sprite2D" type="Sprite2D" parent="CollisionShape2D"]
+texture = ExtResource("2_ahw40")
