@@ -18,8 +18,9 @@ class_name ExplosiveResource
 @export_group("Explosive Handle")
 
 ## Time between throws (cooldown in seconds)
+@export var throw_speed: float = 2.0
 @export var throw_rate: float = 1.5
-
+@export var muzzel_offset: Vector2 = Vector2(0, 0)
 @export_subgroup("Explosion Details")
 ## Damage per explosion, default set to 100
 @export var explosion_damage: int = 100
@@ -45,7 +46,7 @@ class_name ExplosiveResource
 ## The amount of explosives gained from resupply or crates
 @export var resupply_value: int = 2
 
-var explosive_action: Callable = _explode
+var throw_action: Callable = _throw
 
 
 func resupply():
@@ -55,6 +56,6 @@ func resupply():
 		if explosive_count > explosive_capacity:
 			explosive_count = explosive_capacity
 
-func _explode(_explosive: Explosive) -> void:
+func _throw(_explosive: Explosive) -> void:
 	## This method should be overridden to define explosion behavior
 	push_error("The 'explode' is a callable that must be overridden in a subclass")

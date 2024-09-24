@@ -3,7 +3,7 @@ extends Node
 class_name Inventory
 
 var weapon_slots: Array[WeaponResource] = [null, null]
-var explosive_slot = Explosive
+var explosive_slot = ExplosiveResource
 var special_equipment_slot: SpecialEquipment = null
 
 var selected_weapon_slot = -1
@@ -33,6 +33,7 @@ func add_weapon(weapon: WeaponResource):
 
 
 func add_explosive(explosive):
+	explosive_slot = explosive
 	player_hud.equip_explosive(explosive)
 
 
@@ -59,6 +60,7 @@ func _on_purchase_made(item):
 		add_weapon(item)
 	elif item is ExplosiveResource:
 		add_explosive(item)
+		player.equip_explosive(item)
 	elif item is SpecialEquipment:
 		print(
 			"Purchased Special Equipment: ",

@@ -5,28 +5,23 @@ class_name ThrowableExplosiveResource
 	"res://inventory/items/explosives/grenades/basic_grenade.tscn"
 )
 
-func _explode(explosive: Explosive):
-	## If no explosive scene is assigned, return early
+func _throw(explosive: Explosive):
 	if not explosive_scene:
 		return
-
-	## Instantiate the explosive scene (e.g., grenade)
 	var explosive_instance = explosive_scene.instantiate()
+	
+	var position = explosive.to_global(muzzel_offset)
+	var grenade = explosive_scene.instantiate()
+	grenade.global_rotation = explosive.global_rotation
+	grenade.global_position = position
+	var mouse_position = explosive.get_viewport().get_camera_2d().get_global_mouse_position()
 
-	## Set the initial position and rotation of the explosive when thrown
-	var position = explosive.to_global(throw_offset)
-	explosive_instance.global_position = position
-	explosive_instance.global_rotation = explosive.global_rotation
+	var direction = (mouse_position - position).normalized()
 
-	## Set the explosive's fuse timer (how long before it explodes)
-	explosive_instance.fuse_time = get_fuse_time()
+	grenade.direction = direction
+	grenade.linear_velocity = direction * explosive.get_throw_speed();
 
-	## Set explosion parameters (damage, radius, etc.)
-	explosive_instance.explosion_damage = get_explosion_damage()
-	explosive_instance.explosion_radius = get_explosion_radius()
-
-	## Add the explosive to the current scene
-	explosive.get_tree().current_scene.add_child(explosive_instance)
+	explosive.get_tree().current_scene.add_child(grenade)
 
 
 func get_fuse_time() -> float:
