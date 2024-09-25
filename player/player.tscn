@@ -9,7 +9,7 @@
 [ext_resource type="Script" path="res://ui/pause_menu/death_screen.gd" id="7_il1d8"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_c3fsl"]
-radius = 3.0
+radius = 4.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uiavt"]
 atlas = ExtResource("4_arusb")
