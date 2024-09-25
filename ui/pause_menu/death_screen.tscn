@@ -100,6 +100,7 @@ custom_minimum_size = Vector2(0, 192)
 layout_mode = 2
 
 [node name="ColorRect" type="ColorRect" parent="TextureRect/MarginContainer/VBoxContentContainer/Text/MarginContainer/HBoxContainer/Control/VBoxContainer/Control"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -118,7 +119,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0.545098, 0.0941176, 0.12549, 1)
 theme_override_font_sizes/font_size = 48
-text = "Orbital team missing in action"
+text = "Orbital team killed in action"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2

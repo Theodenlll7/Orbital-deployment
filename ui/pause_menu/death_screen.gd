@@ -2,10 +2,9 @@ extends Control
 class_name DeathScreen
 @onready var back_to_menu_button: Button = $TextureRect/MarginContainer/VBoxContentContainer/Buttons/MarginContainer/HBoxContainer/VBoxContainer/BackToMenuButton
 @onready var background_color_rect: ColorRect = $TextureRect/BackgroundColorRect
-@onready var death_label: Label = $TextureRect/BackgroundColorRect/MarginContainer/VBoxContentContainer/Text/MarginContainer/HBoxContainer/Control/ColorRect/VBoxContainer/Control/DeathLabel 
-@onready var progress_labels: HBoxContainer = $TextureRect/BackgroundColorRect/MarginContainer/VBoxContentContainer/Text/MarginContainer/HBoxContainer/Control/ColorRect/VBoxContainer/ColorRect/MarginContainer/ProgressLabels
-@onready var text_background_color_rect: ColorRect = $TextureRect/BackgroundColorRect/MarginContainer/VBoxContentContainer/Text/MarginContainer/HBoxContainer/Control/ColorRect
-
+@onready var death_label: Label = $TextureRect/MarginContainer/VBoxContentContainer/Text/MarginContainer/HBoxContainer/Control/VBoxContainer/Control/DeathLabel
+@onready var progress_labels: HBoxContainer = $TextureRect/MarginContainer/VBoxContentContainer/Text/MarginContainer/HBoxContainer/Control/VBoxContainer/ColorRect/MarginContainer/ProgressLabels
+@onready var text_background_color_rect: ColorRect = $TextureRect/MarginContainer/VBoxContentContainer/Text/MarginContainer/HBoxContainer/Control/VBoxContainer/Control/ColorRect
 @onready var main_menu = load("res://ui/main_menu/main_menu.tscn")
 
 
