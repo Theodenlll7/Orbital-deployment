@@ -1,8 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://kua7fs588s48"]
+[gd_scene load_steps=7 format=3 uid="uid://kua7fs588s48"]
 
 [ext_resource type="Texture2D" uid="uid://xoiggvxuo4wh" path="res://enemies/assets/textures/monster.png" id="1_b12vd"]
 [ext_resource type="Script" path="res://addons/tree_mind/nodes/mind_tree.gd" id="2_ao7rd"]
+[ext_resource type="Script" path="res://addons/tree_mind/nodes/blackboard.gd" id="3_hmn3r"]
 [ext_resource type="Script" path="res://addons/tree_mind/nodes/composites/sequence.gd" id="3_nukmd"]
+[ext_resource type="Script" path="res://addons/tree_mind/nodes/composites/selector.gd" id="4_028xp"]
+
+[sub_resource type="Resource" id="Resource_15g2u"]
+script = ExtResource("3_hmn3r")
+data = {}
 
 [node name="Ranger" type="Node2D"]
 
@@ -11,6 +17,12 @@ texture = ExtResource("1_b12vd")
 
 [node name="MindTreeRoot" type="Node" parent="."]
 script = ExtResource("2_ao7rd")
+blackboard = SubResource("Resource_15g2u")
 
 [node name="Selector" type="Node" parent="MindTreeRoot"]
+script = ExtResource("4_028xp")
+
+[node name="Sequance" type="Node" parent="MindTreeRoot/Selector"]
 script = ExtResource("3_nukmd")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]

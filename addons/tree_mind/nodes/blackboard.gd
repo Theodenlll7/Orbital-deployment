@@ -1,8 +1,7 @@
-class_name Blackboard
-extends RefCounted
+class_name Blackboard extends Resource
 
 ## Dictionary to store key-value pairs of data
-var data: Dictionary = {}
+@export var data: Dictionary = {}
 var actor: Node
 
 

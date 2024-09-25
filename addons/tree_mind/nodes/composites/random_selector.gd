@@ -1,4 +1,4 @@
-class_name RandomSelector extends MindTreeTask
+class_name RandomSelector extends Composite
 
 
 func tick(blackboard: Blackboard) -> int:

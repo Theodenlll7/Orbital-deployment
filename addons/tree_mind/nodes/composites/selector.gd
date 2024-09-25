@@ -1,5 +1,4 @@
-class_name Selector extends MindTreeTask
-
+class_name Selector extends Composite
 
 func tick(blackboard: Blackboard) -> int:
 	for c: MindTreeTask in get_children():

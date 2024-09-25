@@ -5,14 +5,7 @@ extends MindTreeNode
 class_name MindTreeRoot
 enum ProcessThread { PROCESS, PHYSICS }
 
-const blackboard := Blackboard.new()
-
-@export var actor: Node:
-	set(m_actor):
-		actor = m_actor
-		if actor == null:
-			actor = get_parent()
-		blackboard.actor = actor
+@export var blackboard := Blackboard.new()
 
 @export var tick_rate: int = 1
 
@@ -25,15 +18,17 @@ const blackboard := Blackboard.new()
 var status: int = -1
 @onready var last_tick: int = randi_range(0, tick_rate - 1)
 
+func _ready() -> void:
+	blackboard.actor = get_parent()
 
 func procces_tree() -> void:
 	if skip_tick():
 		return
 
-	tick()
+	tick(blackboard)
 
 
-func tick():
+func tick(blackboard : Blackboard):
 	if get_child_count() != 1:
 		return FAILURE
 
