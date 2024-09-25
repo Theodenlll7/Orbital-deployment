@@ -230,11 +230,24 @@ theme_override_constants/margin_top = 64
 theme_override_constants/margin_right = 64
 theme_override_constants/margin_bottom = 64
 
-[node name="loadingText" type="Label" parent="Control/Label/MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/Label/MarginContainer"]
 layout_mode = 2
+size_flags_vertical = 8
+
+[node name="loadingText" type="Label" parent="Control/Label/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
 size_flags_vertical = 8
 theme_override_font_sizes/font_size = 64
 text = "Loading..."
+
+[node name="loadingPercent" type="Label" parent="Control/Label/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 8
+theme_override_font_sizes/font_size = 64
+text = "100%"
+horizontal_alignment = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

@@ -1,10 +1,8 @@
 class_name MainMenu
 extends Control
 
-@onready
-var select_mission_button: Button = $ContentMarginContainer/HBoxContainer/VBoxContainer/SelectMissionButton
-@onready
-var options_button: Button = $ContentMarginContainer/HBoxContainer/VBoxContainer/OptionsButton
+@onready var select_mission_button: Button = $ContentMarginContainer/HBoxContainer/VBoxContainer/SelectMissionButton
+@onready var options_button: Button = $ContentMarginContainer/HBoxContainer/VBoxContainer/OptionsButton
 @onready var exit_button: Button = $ContentMarginContainer/HBoxContainer/VBoxContainer/ExitButton
 
 @onready var ship: Control = $ship
@@ -19,7 +17,7 @@ var options_button: Button = $ContentMarginContainer/HBoxContainer/VBoxContainer
 
 @onready var target_menu: Control = main_menu
 
-const level1 = preload("res://scenes/level1.tscn")
+const load_level = preload("res://ui/main_menu/loading_level.tscn")
 var ship_start_position: Vector2
 
 
@@ -106,8 +104,6 @@ func change_menu() -> void:
 
 
 func start_mission(mission_ID: String, marker_position: Vector2) -> void:
-	print("marker_position: ", marker_position)
-	print("Let's go")
 	move_ship_to_marker(mission_ID, marker_position)
 
 
@@ -132,10 +128,10 @@ func on_tween_finished(mission_ID: String) -> void:
 	match mission_ID:
 		"infinite":
 			print("Start infinite")
-			get_tree().change_scene_to_packed(level1)
+			get_tree().change_scene_to_packed(load_level)
 		"1":
 			print("Start level 1")
-			get_tree().change_scene_to_packed(level1)
+			get_tree().change_scene_to_packed(load_level)
 		_:
 			print("Error in starting the game")
 

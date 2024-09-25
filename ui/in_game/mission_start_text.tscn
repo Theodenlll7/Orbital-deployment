@@ -1,0 +1,64 @@
+[gd_scene load_steps=2 format=3 uid="uid://inymqhajqaf7"]
+
+[ext_resource type="Script" path="res://ui/in_game/mission_start_text.gd" id="1_5hjv3"]
+
+[node name="mission_start_text" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_5hjv3")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="MarginContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+color = Color(0.203922, 0.203922, 0.317647, 0.501961)
+
+[node name="ContentMarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer/ContentMarginContainer"]
+layout_mode = 2
+
+[node name="ShipDestroyedLabel" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer/ContentMarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Deploment ship destroyed"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer/ContentMarginContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="MissionLabel" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer/ContentMarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Your mission: "
+
+[node name="SurviveLabel" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer/ContentMarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.278431, 0, 0, 1)
+text = "survive"
+
+[node name="AsLongLabel" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer/ContentMarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = " as long as you can"

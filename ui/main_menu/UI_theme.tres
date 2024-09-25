@@ -69,7 +69,7 @@ border_color = Color(1, 1, 1, 1)
 color = Color(1, 1, 1, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m5lrp"]
-bg_color = Color(1, 1, 1, 0.376471)
+bg_color = Color(0.203922, 0.203922, 0.317647, 0.501961)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cprxr"]
 content_margin_left = 8.0
