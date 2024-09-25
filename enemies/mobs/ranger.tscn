@@ -1,28 +1,78 @@
-[gd_scene load_steps=7 format=3 uid="uid://kua7fs588s48"]
+[gd_scene load_steps=14 format=3 uid="uid://kua7fs588s48"]
 
 [ext_resource type="Texture2D" uid="uid://xoiggvxuo4wh" path="res://enemies/assets/textures/monster.png" id="1_b12vd"]
 [ext_resource type="Script" path="res://addons/tree_mind/nodes/mind_tree.gd" id="2_ao7rd"]
-[ext_resource type="Script" path="res://addons/tree_mind/nodes/blackboard.gd" id="3_hmn3r"]
 [ext_resource type="Script" path="res://addons/tree_mind/nodes/composites/sequence.gd" id="3_nukmd"]
 [ext_resource type="Script" path="res://addons/tree_mind/nodes/composites/selector.gd" id="4_028xp"]
+[ext_resource type="Script" path="res://addons/tree_mind/nodes/leafs/blackbord_set.gd" id="6_k0upd"]
+[ext_resource type="Script" path="res://enemies/mind_tree_components/conditions/target_in_range.gd.gd" id="6_svhc6"]
+[ext_resource type="Script" path="res://enemies/mind_tree_components/actions/stop_navigation.gd" id="7_kalj1"]
+[ext_resource type="Script" path="res://enemies/melee_attack.gd" id="8_1g12m"]
+[ext_resource type="Script" path="res://enemies/mind_tree_components/actions/start_navigation_to_target.gd" id="8_ruax5"]
+[ext_resource type="Script" path="res://common/components/navigator2d.gd" id="9_rvix5"]
+[ext_resource type="Script" path="res://common/components/HealthComponent.gd" id="11_u8r02"]
 
-[sub_resource type="Resource" id="Resource_15g2u"]
-script = ExtResource("3_hmn3r")
-data = {}
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qvi5h"]
+radius = 4.0
+height = 11.0
 
-[node name="Ranger" type="Node2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_rke3j"]
+radius = 18.0
+
+[node name="Ranger" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 39
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -3)
+scale = Vector2(0.75, 0.75)
 texture = ExtResource("1_b12vd")
+
+[node name="HealthComponent" type="Node" parent="."]
+script = ExtResource("11_u8r02")
 
 [node name="MindTreeRoot" type="Node" parent="."]
 script = ExtResource("2_ao7rd")
-blackboard = SubResource("Resource_15g2u")
+tick_rate = 1
+process_thread = 0
 
 [node name="Selector" type="Node" parent="MindTreeRoot"]
 script = ExtResource("4_028xp")
 
+[node name="Sequance2" type="Node" parent="MindTreeRoot/Selector"]
+script = ExtResource("3_nukmd")
+
+[node name="TargetInRange" type="Node" parent="MindTreeRoot/Selector/Sequance2"]
+script = ExtResource("6_svhc6")
+reach_distance = 100
+
+[node name="StopNavgation" type="Node" parent="MindTreeRoot/Selector/Sequance2"]
+script = ExtResource("7_kalj1")
+
 [node name="Sequance" type="Node" parent="MindTreeRoot/Selector"]
 script = ExtResource("3_nukmd")
 
-[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+[node name="BlackboardSet" type="Node" parent="MindTreeRoot/Selector/Sequance"]
+script = ExtResource("6_k0upd")
+key = "\"target\""
+value = "actor.get_tree().get_nodes_in_group(\"players\").pick_random()"
+
+[node name="StartNavgationToTarget" type="Node" parent="MindTreeRoot/Selector/Sequance"]
+script = ExtResource("8_ruax5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_qvi5h")
+
+[node name="AttackRange" type="Area2D" parent="."]
+collision_layer = 0
+monitorable = false
+script = ExtResource("8_1g12m")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackRange"]
+shape = SubResource("CircleShape2D_rke3j")
+
+[node name="Navigator2D" type="NavigationAgent2D" parent="."]
+script = ExtResource("9_rvix5")
+
+[connection signal="body_entered" from="AttackRange" to="AttackRange" method="_on_body_entered"]
+[connection signal="body_exited" from="AttackRange" to="AttackRange" method="_on_body_exited"]

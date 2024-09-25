@@ -3,8 +3,8 @@
 [ext_resource type="PackedScene" uid="uid://o3dndqv0yf5s" path="res://scenes/scene1.tscn" id="1_wr805"]
 [ext_resource type="PackedScene" uid="uid://6vt8l263l0o7" path="res://player/player.tscn" id="2_5ihlw"]
 [ext_resource type="Script" path="res://enemies/enemy_spawner.gd" id="3_rkl8f"]
-[ext_resource type="PackedScene" uid="uid://b5rdpdm748scj" path="res://enemies/alien.tscn" id="4_xn1oy"]
 [ext_resource type="PackedScene" uid="uid://fwtaakyb0exx" path="res://maps/objects/pods/weapon_pod.tscn" id="5_cpg73"]
+[ext_resource type="PackedScene" uid="uid://kua7fs588s48" path="res://enemies/mobs/ranger.tscn" id="5_r2vmx"]
 [ext_resource type="Script" path="res://inventory/loot/droped_items/scripts/ammo_crate.gd" id="7_wtpsh"]
 [ext_resource type="Texture2D" uid="uid://ccoe78uc8jt31" path="res://assets/icon.svg" id="8_1ygnd"]
 
@@ -20,7 +20,7 @@ position = Vector2(-98, -39)
 
 [node name="enemy_spawner" type="Node2D" parent="."]
 script = ExtResource("3_rkl8f")
-enemy_scene = ExtResource("4_xn1oy")
+enemy_scene = ExtResource("5_r2vmx")
 
 [node name="InteractionArea" parent="." instance=ExtResource("5_cpg73")]
 position = Vector2(239, -34)
