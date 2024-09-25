@@ -1,11 +1,22 @@
-[gd_scene load_steps=12 format=3 uid="uid://c5js6pnm2kdrx"]
+[gd_scene load_steps=16 format=3 uid="uid://c5js6pnm2kdrx"]
 
+[ext_resource type="Shader" path="res://ui/main_menu/main_menu_scroll.gdshader" id="1_qcuvr"]
+[ext_resource type="Script" path="res://ui/main_menu/loading_level.gd" id="1_yaehp"]
 [ext_resource type="Texture2D" uid="uid://ndy3bp8m8o7y" path="res://ui/main_menu/assets/textures/loading/landingcraft_space.png" id="2_qbtp8"]
+[ext_resource type="Shader" path="res://ui/main_menu/helmet.gdshader" id="3_3cwts"]
 [ext_resource type="Texture2D" uid="uid://bpelbthainlnh" path="res://ui/main_menu/assets/textures/loading/helmetglas.png" id="3_roo5a"]
 [ext_resource type="Texture2D" uid="uid://00o3ookfdlp5" path="res://ui/main_menu/assets/textures/loading/landingcraft.png" id="4_7bu6j"]
 [ext_resource type="Texture2D" uid="uid://bjlamfjbqgd28" path="res://ui/main_menu/assets/textures/loading/landingcraft_lamp.png" id="5_nqu7e"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4mvgl"]
+shader = ExtResource("1_qcuvr")
+shader_parameter/speed_x = 0.8
+shader_parameter/speed_y = 0.3
+shader_parameter/frequency_y = 2.0
+shader_parameter/amplitude_y = 0.1
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ofvn7"]
+shader = ExtResource("3_3cwts")
 
 [sub_resource type="Animation" id="Animation_5eeqi"]
 length = 0.001
@@ -139,6 +150,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_yaehp")
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 1
@@ -157,6 +169,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="SpaceTextureRect" type="TextureRect" parent="Control/space"]
+material = SubResource("ShaderMaterial_4mvgl")
 layout_mode = 0
 offset_left = 197.0
 offset_top = -369.0
@@ -217,7 +230,7 @@ theme_override_constants/margin_top = 64
 theme_override_constants/margin_right = 64
 theme_override_constants/margin_bottom = 64
 
-[node name="Label" type="Label" parent="Control/Label/MarginContainer"]
+[node name="loadingText" type="Label" parent="Control/Label/MarginContainer"]
 layout_mode = 2
 size_flags_vertical = 8
 theme_override_font_sizes/font_size = 64
