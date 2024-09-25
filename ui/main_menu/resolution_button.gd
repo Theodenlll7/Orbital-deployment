@@ -9,9 +9,7 @@ const RESOLUTION_DICTIONARY : Dictionary = {
 }
 
 func _ready():
-	var window_size = DisplayServer.window_get_size()
-	print("Current window size: ", window_size)
-	
+	var window_size = DisplayServer.window_get_size()	
 	option_button.item_selected.connect(on_resolution_selected)
 	add_resolution_items()
 
