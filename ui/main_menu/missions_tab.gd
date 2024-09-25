@@ -20,7 +20,7 @@ func _ready() -> void:
 	mission_marker.visible = false
 	
 func on_mission_1_button_pressed() -> void:
-	emit_signal("tab_level_selected", "1", marker_position )
+	tab_level_selected.emit("1", marker_position )
 	
 func on_back_pressed() -> void:
 	back_mission_select.emit()

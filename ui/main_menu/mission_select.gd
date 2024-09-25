@@ -47,10 +47,10 @@ func on_exit_mission_tab() -> void:
 		first_btn.grab_focus()
 
 func on_infinite_button_pressed() -> void:
-	emit_signal("level_selected", "infinite", marker_position)
+	level_selected.emit("infinite", marker_position)
 
 func on_mission_selected_from_tab(mission_ID: String, current_marker_position: Vector2) -> void:
-	emit_signal("level_selected", mission_ID, current_marker_position)
+	level_selected.emit(mission_ID, current_marker_position)
 
 func on_infinite_survival_button_hover() -> void:
 	var marker_offset = Vector2(-300, -200)
