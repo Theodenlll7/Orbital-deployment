@@ -8,6 +8,9 @@
 [ext_resource type="Script" path="res://inventory/inventory.gd" id="7_5ivnr"]
 [ext_resource type="Script" path="res://ui/pause_menu/death_screen.gd" id="7_il1d8"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_c3fsl"]
+radius = 3.0
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_uiavt"]
 atlas = ExtResource("4_arusb")
 region = Rect2(0, 160, 32, 32)
@@ -517,12 +520,9 @@ animations = [{
 "speed": 8.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ep4uh"]
-radius = 4.5
-height = 15.0
-
 [node name="Player" type="CharacterBody2D" groups=["players"]]
 z_index = 1
+collision_mask = 35
 motion_mode = 1
 script = ExtResource("1_gaiyc")
 
@@ -543,14 +543,15 @@ drag_horizontal_enabled = true
 drag_vertical_enabled = true
 script = ExtResource("4_hh08p")
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 8)
+rotation = 1.5708
+shape = SubResource("CircleShape2D_c3fsl")
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 z_index = 1
 sprite_frames = SubResource("SpriteFrames_7t3vk")
 animation = &"roll_h"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 4)
-shape = SubResource("CapsuleShape2D_ep4uh")
 
 [node name="Inventory" type="Node" parent="." node_paths=PackedStringArray("player_hud")]
 script = ExtResource("7_5ivnr")

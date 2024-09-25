@@ -1,14 +1,11 @@
-[gd_scene load_steps=14 format=3 uid="uid://c5js6pnm2kdrx"]
+[gd_scene load_steps=12 format=3 uid="uid://c5js6pnm2kdrx"]
 
-[ext_resource type="Script" path="res://main_menu/loading_level.gd" id="1_c0tbi"]
 [ext_resource type="Texture2D" uid="uid://ndy3bp8m8o7y" path="res://ui/main_menu/assets/textures/loading/landingcraft_space.png" id="2_qbtp8"]
-[ext_resource type="Shader" path="res://main_menu/helmet.gdshader" id="3_foj0k"]
 [ext_resource type="Texture2D" uid="uid://bpelbthainlnh" path="res://ui/main_menu/assets/textures/loading/helmetglas.png" id="3_roo5a"]
 [ext_resource type="Texture2D" uid="uid://00o3ookfdlp5" path="res://ui/main_menu/assets/textures/loading/landingcraft.png" id="4_7bu6j"]
 [ext_resource type="Texture2D" uid="uid://bjlamfjbqgd28" path="res://ui/main_menu/assets/textures/loading/landingcraft_lamp.png" id="5_nqu7e"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ofvn7"]
-shader = ExtResource("3_foj0k")
 
 [sub_resource type="Animation" id="Animation_5eeqi"]
 length = 0.001
@@ -142,7 +139,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_c0tbi")
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 1
