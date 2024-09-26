@@ -546,12 +546,13 @@ drag_vertical_enabled = true
 script = ExtResource("4_hh08p")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 8)
+position = Vector2(0, 3)
 rotation = 1.5708
 shape = SubResource("CircleShape2D_c3fsl")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 z_index = 1
+position = Vector2(0, -5)
 sprite_frames = SubResource("SpriteFrames_7t3vk")
 animation = &"roll_h"
 
@@ -561,7 +562,7 @@ weapon_slots = Array[ExtResource("6_0qlh8")]([ExtResource("7_3q14l"), null])
 player_hud = NodePath("../PlayerHUD")
 
 [node name="WeaponOrbitPoint" type="Marker2D" parent="."]
-position = Vector2(0, 5.5)
+position = Vector2(0, 1)
 
 [node name="PlayerHUD" parent="." instance=ExtResource("6_pjces")]
 

@@ -1,6 +1,9 @@
 extends Control
 class_name DeathScreen
+
 @onready var back_to_menu_button: Button = $TextureRect/MarginContainer/VBoxContentContainer/Buttons/MarginContainer/HBoxContainer/VBoxContainer/BackToMenuButton
+@onready var try_again_button: Button = $TextureRect/MarginContainer/VBoxContentContainer/Buttons/MarginContainer/HBoxContainer/VBoxContainer/TryAgainButton
+
 @onready var background_color_rect: ColorRect = $TextureRect/BackgroundColorRect
 @onready var death_label: Label = $TextureRect/MarginContainer/VBoxContentContainer/Text/MarginContainer/HBoxContainer/Control/VBoxContainer/Control/DeathLabel
 @onready var progress_labels: HBoxContainer = $TextureRect/MarginContainer/VBoxContentContainer/Text/MarginContainer/HBoxContainer/Control/VBoxContainer/ColorRect/MarginContainer/ProgressLabels
@@ -31,10 +34,14 @@ func fade_in():
 	tween.parallel().tween_property(text_background_color_rect, "color:a", opacity, fade_time)
 	tween.parallel().tween_property(progress_labels, "modulate:a", opacity, fade_time_slow)
 
+func on_try_again_button_pressed() -> void:
+	var current_scene = get_tree().current_scene
+	get_tree().reload_current_scene()
 
 func on_back_to_menu_button_pressed() -> void:
 	get_tree().change_scene_to_packed(main_menu)
 
 
 func handle_connecting_signals() -> void:
+	try_again_button.button_down.connect(on_try_again_button_pressed)
 	back_to_menu_button.button_down.connect(on_back_to_menu_button_pressed)
