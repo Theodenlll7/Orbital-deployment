@@ -43,6 +43,7 @@ layout_mode = 2
 
 [node name="ShipDestroyedLabel" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer/ContentMarginContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 48
 text = "Deploment ship destroyed"
 horizontal_alignment = 1
 
@@ -52,13 +53,16 @@ alignment = 1
 
 [node name="MissionLabel" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer/ContentMarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 48
 text = "Your mission: "
 
 [node name="SurviveLabel" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer/ContentMarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.278431, 0, 0, 1)
+theme_override_font_sizes/font_size = 48
 text = "survive"
 
 [node name="AsLongLabel" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer/ContentMarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 48
 text = " as long as you can"

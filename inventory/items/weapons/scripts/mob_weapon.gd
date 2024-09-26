@@ -32,7 +32,7 @@ func start_attacking():
 
 
 func stop_attacking():
-	attack_enabled = true
+	attack_enabled = false
 
 
 func _process(delta: float) -> void:
@@ -84,7 +84,7 @@ func aim_direction() -> Vector2:
 
 # Function to trigger an attack
 func attack():
-	if !target and !can_attack:
+	if !target or !can_attack or !attack_enabled:
 		return
 
 	weapon_resource.attack(self)

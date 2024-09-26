@@ -6,8 +6,8 @@ extends Control
 @onready var as_long_label: Label = $MarginContainer/VBoxContainer/MarginContainer/ContentMarginContainer/VBoxContainer/HBoxContainer/AsLongLabel
 @onready var survive_label: Label = $MarginContainer/VBoxContainer/MarginContainer/ContentMarginContainer/VBoxContainer/HBoxContainer/SurviveLabel
 
-var first_fade_duration: float = 5.0  # Duration for the first 3 labels to fade
-var second_fade_duration: float = 3.0  # Duration for the last label to fade
+var first_fade_duration: float = 2.5  # Duration for the first 3 labels to fade
+var second_fade_duration: float = 0.5  # Duration for the last label to fade
 var fade_time_passed: float = 0.0  # Tracks time for fade
 
 var fading_first_group: bool = true  # Fading the first 3 labels

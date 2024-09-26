@@ -33,5 +33,5 @@ func _process(_delta: float):
 func move_towards_target():
 	var current_position = actor.global_position
 	var next_path_position = get_next_path_position()
-	actor.velocity = current_position.direction_to(next_path_position) * 150
+	actor.velocity = current_position.direction_to(next_path_position) * speed
 	actor.move_and_slide()
