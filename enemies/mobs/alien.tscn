@@ -1,9 +1,9 @@
 [gd_scene load_steps=7 format=3 uid="uid://b5rdpdm748scj"]
 
-[ext_resource type="Script" path="res://enemies/alien.gd" id="1_773d6"]
-[ext_resource type="Texture2D" uid="uid://bxdm7unavdbqa" path="res://enemies/assets/textures/Alien.png" id="2_tmha4"]
-[ext_resource type="Script" path="res://common/components/HealthComponent.gd" id="3_rkv71"]
-[ext_resource type="Script" path="res://enemies/melee_attack.gd" id="4_ai4i4"]
+[ext_resource type="Script" path="res://enemies/scripts/alien.gd" id="1_rg0qk"]
+[ext_resource type="Texture2D" uid="uid://bxdm7unavdbqa" path="res://enemies/assets/textures/Alien.png" id="2_46tp8"]
+[ext_resource type="Script" path="res://common/components/HealthComponent.gd" id="3_32up1"]
+[ext_resource type="Script" path="res://enemies/scripts/melee_attack.gd" id="4_5a78v"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_w8yv8"]
 radius = 4.0
@@ -17,16 +17,16 @@ collision_layer = 2
 collision_mask = 7
 motion_mode = 1
 wall_min_slide_angle = 0.0
-script = ExtResource("1_773d6")
+script = ExtResource("1_rg0qk")
 speed = 150
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
 texture_repeat = 1
-texture = ExtResource("2_tmha4")
+texture = ExtResource("2_46tp8")
 
 [node name="HealthComponent" type="Node" parent="."]
-script = ExtResource("3_rkv71")
+script = ExtResource("3_32up1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 0.5)
@@ -38,7 +38,7 @@ avoidance_enabled = true
 [node name="AttackRange" type="Area2D" parent="."]
 collision_layer = 0
 monitorable = false
-script = ExtResource("4_ai4i4")
+script = ExtResource("4_5a78v")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackRange"]
 shape = SubResource("CircleShape2D_gynkl")

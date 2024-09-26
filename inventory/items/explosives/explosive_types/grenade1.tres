@@ -1,5 +1,6 @@
-[gd_resource type="Resource" script_class="ThrowableExplosiveResource" load_steps=5 format=3 uid="uid://cdd7r7fg3e8te"]
+[gd_resource type="Resource" script_class="ThrowableExplosiveResource" load_steps=6 format=3 uid="uid://cdd7r7fg3e8te"]
 
+[ext_resource type="AudioStream" uid="uid://qw7wnnd7uy37" path="res://inventory/items/explosives/assets/audio/grenade-explosion-14-190266.mp3" id="1_4dmel"]
 [ext_resource type="AudioStream" uid="uid://sqacyxqd4be5" path="res://inventory/items/explosives/assets/audio/throw_object-97796.mp3" id="1_ixlum"]
 [ext_resource type="PackedScene" uid="uid://yob22fwt8ode" path="res://inventory/items/explosives/grenades/basic_grenade.tscn" id="2_7k4tf"]
 [ext_resource type="Script" path="res://inventory/items/explosives/scripts/grenade_proj_resource.gd" id="3_agwwp"]
@@ -13,15 +14,12 @@ cost = 150
 texture = ExtResource("4_fyu15")
 throw_offset = Vector2(0, 0)
 audio_stream_throw = ExtResource("1_ixlum")
-audio_stream_explode = ExtResource("1_ixlum")
+audio_stream_explode = ExtResource("1_4dmel")
 throw_speed = 100.0
-throw_rate = 1.5
 muzzel_offset = Vector2(0, 0)
+grenade_weight = 0.5
 explosion_damage = 100
-explosion_radius = 200.0
+explosion_radius = 800.0
 fuse_time = 3.0
 has_explosive_quantity = true
 explosive_count = 3
-explosive_capacity = 5
-reload_time = 2.0
-resupply_value = 2

@@ -1,3 +1,3 @@
-class_name Decorator extends MindTreeNode
+class_name MTDecorator extends MindTreeNode
 
-@onready var child: MindTreeTask = get_child(0)
+@onready var child: MindTreeNode = get_child(0)

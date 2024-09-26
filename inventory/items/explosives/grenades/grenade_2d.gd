@@ -1,29 +1,31 @@
 extends RigidBody2D
 class_name Grenade_2D
 
-@export var throw_speed: float = 600.0
-@export var explosion_damage: int = 100
-@export var explosion_radius: float = 200.0
-@export var fuse_time: float = 2.0
+var throw_speed: float = 600.0
+var explosion_damage: int = 100
+var explosion_radius: float = 200.0
+var fuse_time: float = 2.0
 
 var direction: Vector2 = Vector2(1,1)
 var explosion_area: Area2D
 
-var audio_player: AudioStreamPlayer
-@export var audio_stream: AudioStream
+@onready var animated_sprite_explosion = $AnimatedSprite2D
+
 
 func _ready() -> void:
-	audio_player = AudioStreamPlayer.new()
-	add_child(audio_player)
-	
 	explosion_area = Area2D.new()
 	var collision_shape = CollisionShape2D.new()
-	collision_shape.shape = CircleShape2D.new()
-	collision_shape.shape.set_radius(explosion_radius)
+	var circle_shape = CircleShape2D.new()
+	circle_shape.radius = explosion_radius
+	collision_shape.shape = circle_shape
 	explosion_area.add_child(collision_shape)
 	explosion_area.monitorable = true
-	explosion_area.monitoring = false  # Turn it on only at explosion time
+	explosion_area.monitoring = false
+	explosion_area.collision_layer = 3  # Adjust as needed
+	explosion_area.collision_mask = 2  # Adjust as needed
 	add_child(explosion_area)
+	
+	explosion_area.connect("body_entered", _on_body_entered)
 	
 	var timer = Timer.new()
 	timer.wait_time = fuse_time
@@ -31,23 +33,29 @@ func _ready() -> void:
 	timer.timeout.connect(_on_fuse_time_end)
 	add_child(timer)
 	timer.start()
-	
-	
+
 func _on_fuse_time_end() -> void:
-	audio_player.stream = audio_stream
-	audio_player.play()
-	await audio_player.finished 
 	_explode()
 
-	
 func _explode() -> void:
 	explosion_area.monitoring = true
-	
-	var overlapping_bodies = explosion_area.get_overlapping_bodies()
 
-	for body in overlapping_bodies:
-		if body.has_method("take_damage"):
-			body.take_damage(explosion_damage)
 
+# Signal handler for body entered
+func _on_body_entered(body) -> void:
+	var hp = body.get_node_or_null("HealthComponent") as HealthComponent
+	if hp:
+		hp.damage(explosion_damage)
 	
-	queue_free() 
+	queue_free()
+
+func set_fuse_time(time: float):
+	fuse_time = time
+
+# Setter for explosion damage
+func set_explosion_damage(damage: int):
+	explosion_damage = damage
+
+# Setter for explosion radius
+func set_explosion_radius(radius: float):
+	explosion_radius = radius

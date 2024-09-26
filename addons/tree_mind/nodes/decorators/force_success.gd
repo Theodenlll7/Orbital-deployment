@@ -1,4 +1,4 @@
-class_name ForceSuccess extends Decorator
+class_name ForceSuccess extends MTDecorator
 
 
 func tick(blackboard: Blackboard) -> int:

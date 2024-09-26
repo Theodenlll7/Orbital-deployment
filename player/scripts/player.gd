@@ -23,7 +23,7 @@ var can_move := true
 
 @onready var weapon_orbit_point := $WeaponOrbitPoint
 
-var held_weapon: Weapon = null
+var held_weapon: PlayerWeapon = null
 var held_explosive: Explosive = null
 
 var aim_dir: Vector2 = Vector2()
@@ -100,16 +100,17 @@ func aim() -> void:
 func equip_weapon(weapon: WeaponResource) -> Weapon:
 	if held_weapon:
 		held_weapon.queue_free()
-	held_weapon = Weapon.new(weapon)
+	held_weapon = PlayerWeapon.new(weapon)
 	weapon_orbit_point.add_child(held_weapon)
 	return held_weapon
 
-func equip_explosive(explosive: ExplosiveResource) ->Explosive:
+
+func equip_explosive(explosive: ExplosiveResource) -> Explosive:
 	held_explosive = Explosive.new(explosive)
-	held_explosive.scale = Vector2(0.02,0.02)
+	held_explosive.scale = Vector2(0.02, 0.02)
 	weapon_orbit_point.add_child(held_explosive)
 	return held_explosive
-	
+
 
 func animate() -> void:
 	if aim_dir.x < 0:

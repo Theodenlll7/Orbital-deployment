@@ -1,6 +1,7 @@
-class_name UntilFailure extends Decorator
+class_name UntilFailure extends MTDecorator
 
-func tick(blackbord : Blackboard):
+
+func tick(blackbord: Blackboard):
 	if child.tick(blackbord) != FAILURE:
 		return RUNNING
 	else:
