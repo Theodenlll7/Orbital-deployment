@@ -1,14 +1,15 @@
 extends RigidBody2D
 class_name Grenade_2D
 
-@export var throw_speed: float = 600.0
-@export var explosion_damage: int = 100
-@export var explosion_radius: float = 200.0
-@export var fuse_time: float = 2.0
+var throw_speed: float = 600.0
+var explosion_damage: int = 100
+var explosion_radius: float = 200.0
+var fuse_time: float = 2.0
 
 var direction: Vector2 = Vector2(1,1)
 var explosion_area: Area2D
 
+@onready var animated_sprite_explosion = $AnimatedSprite2D
 
 
 func _ready() -> void:
@@ -38,7 +39,7 @@ func _on_fuse_time_end() -> void:
 
 func _explode() -> void:
 	explosion_area.monitoring = true
-	print("Explosion triggered, area monitoring active.")
+
 
 # Signal handler for body entered
 func _on_body_entered(body) -> void:

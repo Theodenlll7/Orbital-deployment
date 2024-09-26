@@ -105,12 +105,13 @@ func equip_weapon(weapon: WeaponResource) -> Weapon:
 	return held_weapon
 
 func equip_explosive(explosive: ExplosiveResource) ->Explosive:
-	if held_explosive == null:
-		held_explosive = Explosive.new(explosive)
-		held_explosive.scale = Vector2(0.02,0.02)
-		weapon_orbit_point.add_child(held_explosive)
-		return held_explosive
-	return
+	if held_explosive:
+		held_explosive.queue_free()
+	held_explosive = Explosive.new(explosive)
+	held_explosive.scale = Vector2(0.02,0.02)
+	weapon_orbit_point.add_child(held_explosive)
+	return held_explosive
+
 	
 
 func animate() -> void:

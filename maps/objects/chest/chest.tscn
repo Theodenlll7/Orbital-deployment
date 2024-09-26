@@ -1,19 +1,20 @@
 [gd_scene load_steps=5 format=3 uid="uid://hmlfraf7gi8r"]
 
 [ext_resource type="Script" path="res://maps/objects/chest/chest.gd" id="1_yv647"]
-[ext_resource type="Texture2D" uid="uid://btq7kpwl38qu2" path="res://ui/main_menu/assets/textures/planet.png" id="2_njj4r"]
+[ext_resource type="Texture2D" uid="uid://d146je42kx5wl" path="res://maps/objects/chest/chest.png" id="2_2v3e0"]
 [ext_resource type="Script" path="res://common/interaction/Interactionarea/Interactionarea.gd" id="3_lomhk"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_401qq"]
-radius = 25.02
+radius = 8.0
 
 [node name="Chest" type="Node2D"]
 position = Vector2(2.98023e-08, 5.96046e-08)
 script = ExtResource("1_yv647")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.131, 0.118282)
-texture = ExtResource("2_njj4r")
+position = Vector2(-3.57628e-07, -0.5)
+scale = Vector2(0.625, 0.6875)
+texture = ExtResource("2_2v3e0")
 
 [node name="InteractionArea" type="Area2D" parent="."]
 script = ExtResource("3_lomhk")

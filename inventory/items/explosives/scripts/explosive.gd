@@ -43,23 +43,24 @@ func throw_pressed() -> bool:
 	return Input.is_action_just_pressed("throw_action")
 
 func throw_explosive() -> void:
-	if can_throw:
+	if explosive_resource.has_explosive_quantity and explosive_resource.explosive_count > 0:
 		is_thrown = true
 		can_throw = false
 		cooldown = throw_rate
 
 		explosive_thrown.emit()
-
+		explosive_resource.explosive_count -= 1
+		
 		audio_player.stream = explosive_resource.audio_stream_throw
 		audio_player.play()
 		throw_grenade()
 		
-	var timer = Timer.new()
-	timer.wait_time = fuse_time
-	timer.one_shot = true
-	timer.timeout.connect(_on_fuse_time_end)
-	add_child(timer)
-	timer.start()
+		var timer = Timer.new()
+		timer.wait_time = fuse_time
+		timer.one_shot = true
+		timer.timeout.connect(_on_fuse_time_end)
+		add_child(timer)
+		timer.start()
 
 func _on_fuse_time_end() -> void:
 	audio_player.stream = explosive_resource.audio_stream_explode
