@@ -11,7 +11,7 @@ var sinTime: float = 0.0
 var speed: float = 2.0
 var minOpacity = 0.2
 
-var min_loading_time: float = 1.5 #seconds
+var min_loading_time: float = 1.5
 var load_started_time: float = 0.0
 var loading_complete: bool = false
 
@@ -19,6 +19,7 @@ var loading_complete: bool = false
 func _ready() -> void:
 	animation_player.play("loading_animation")
 	ResourceLoader.load_threaded_request(next_scene)
+	load_started_time = time
 
 func flashLoadingText() -> void:
 	sinTime = minOpacity + (1 - minOpacity) * ((sin(time * speed) + 1) * 0.5)
@@ -34,8 +35,7 @@ func _process(delta: float) -> void:
 	
 	if progress[0] == 1 and not loading_complete:
 		loading_complete = true
-		load_started_time = time
 
-	if loading_complete and time >= load_started_time + min_loading_time:
+	if loading_complete and time >= min_loading_time  + load_started_time:
 		var packed_scene = ResourceLoader.load_threaded_get(next_scene)
 		get_tree().change_scene_to_packed(packed_scene)
