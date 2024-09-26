@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://bmymcla08yo51"]
+[gd_scene load_steps=9 format=3 uid="uid://bmymcla08yo51"]
 
 [ext_resource type="FontFile" uid="uid://dkg32o3qfh2n7" path="res://assets/Fonts/pixelmix.ttf" id="1_2dhbq"]
 [ext_resource type="Script" path="res://ui/main_menu/missions_tab.gd" id="1_5a3hb"]
 [ext_resource type="Texture2D" uid="uid://dd2vfdo18d4tf" path="res://ui/main_menu/assets/textures/planet_marker.png" id="2_87oxx"]
+[ext_resource type="Texture2D" uid="uid://bribge1j87rai" path="res://scenes/level_thumbnails/1id_thumbnail_mission.png" id="3_jtt8n"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8r476"]
 bg_color = Color(0.6, 0.6, 0.6, 0.333333)
@@ -170,15 +171,45 @@ theme_override_constants/margin_top = 16
 theme_override_constants/margin_right = 16
 theme_override_constants/margin_bottom = 16
 
-[node name="mission_label" type="Label" parent="content/ContentMarginContainer/VBoxContainer/HBoxContainer/mission_description/MarginContainer/MarginContainer"]
-custom_minimum_size = Vector2(800, 400)
+[node name="HBoxContainer" type="HBoxContainer" parent="content/ContentMarginContainer/VBoxContainer/HBoxContainer/mission_description/MarginContainer/MarginContainer"]
 layout_mode = 2
-size_flags_vertical = 1
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_font_sizes/font_size = 24
-horizontal_alignment = 1
-vertical_alignment = 1
-autowrap_mode = 2
+theme_override_constants/separation = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="content/ContentMarginContainer/VBoxContainer/HBoxContainer/mission_description/MarginContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 1.26
+
+[node name="Title" type="RichTextLabel" parent="content/ContentMarginContainer/VBoxContainer/HBoxContainer/mission_description/MarginContainer/MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 32
+theme_override_font_sizes/bold_font_size = 32
+text = "Mission"
+fit_content = true
+
+[node name="HSeparator" type="HSeparator" parent="content/ContentMarginContainer/VBoxContainer/HBoxContainer/mission_description/MarginContainer/MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 32
+
+[node name="Description" type="RichTextLabel" parent="content/ContentMarginContainer/VBoxContainer/HBoxContainer/mission_description/MarginContainer/MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia, molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum numquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium optio, eaque rerum! Provident similique accusantium nemo autem. Veritatis
+obcaecati tenetur iure eius earum ut molestias architecto voluptate aliquam
+nihil"
+fit_content = true
+scroll_active = false
+
+[node name="MarginContainer" type="MarginContainer" parent="content/ContentMarginContainer/VBoxContainer/HBoxContainer/mission_description/MarginContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Thumbnail" type="TextureRect" parent="content/ContentMarginContainer/VBoxContainer/HBoxContainer/mission_description/MarginContainer/MarginContainer/HBoxContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+texture = ExtResource("3_jtt8n")
+expand_mode = 5
+stretch_mode = 4
 
 [node name="Control2" type="Control" parent="content/ContentMarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2

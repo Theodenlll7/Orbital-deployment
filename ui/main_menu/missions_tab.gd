@@ -5,20 +5,21 @@ extends Control
 @onready var back_button: Button = $content/ContentMarginContainer/BackButton
 
 @onready var mission_marker: Control = $mission_marker
-@onready var mission_label: Label = $content/ContentMarginContainer/VBoxContainer/HBoxContainer/mission_description/MarginContainer/MarginContainer/mission_label
+
+@onready var mission_title_label: RichTextLabel = $content/ContentMarginContainer/VBoxContainer/HBoxContainer/mission_description/MarginContainer/MarginContainer/HBoxContainer/VBoxContainer/Title
+@onready var mission_description_label: RichTextLabel = $content/ContentMarginContainer/VBoxContainer/HBoxContainer/mission_description/MarginContainer/MarginContainer/HBoxContainer/VBoxContainer/Description
+@onready var texture_rect: TextureRect = $content/ContentMarginContainer/VBoxContainer/HBoxContainer/mission_description/MarginContainer/MarginContainer/HBoxContainer/MarginContainer/Thumbnail
 
 signal back_mission_select
 signal tab_level_selected(mission_ID, mission_position)
 
-const marker_offsets: Array = [Vector2(-20, -200), Vector2(100, 10)]
-const mission_descriptions: Array = [String("Mission1"), String("Mission2")]
 var planet_center = Vector2()
 var marker_position = Vector2()
 
 func _ready() -> void:
 	handle_connecting_signals()
 	mission_marker.visible = false
-	
+
 func on_mission_1_button_pressed() -> void:
 	tab_level_selected.emit("1", marker_position )
 	
@@ -28,13 +29,20 @@ func on_back_pressed() -> void:
 func set_planet_center(new_center: Vector2) -> void:
 	planet_center = new_center
 	
-func on_mission_button_hover(mission_nmber: int) -> void:	
-	var marker_offset = marker_offsets[mission_nmber - 1]
+func on_mission_button_hover(mission_number: int) -> void:
+	var mission = MissionManager.get_mission_by_id(mission_number)
+	
+	var marker_offset = mission.marker_offset
 	marker_position = planet_center + marker_offset
 	
-	mission_marker.visible = true;	
+	mission_marker.visible = true;
 	mission_marker.set_global_position(marker_position)
-	mission_label.text = mission_descriptions[mission_nmber - 1]
+	
+	mission_title_label.text = mission.title
+	mission_description_label.text = mission.description
+	var new_texture = load(mission.image_path) as Texture2D
+	texture_rect.texture = new_texture
+	
 	
 	var fade_time = 0.2 
 	var opacity = 1.0

@@ -23,6 +23,7 @@ GenerateMapVariables="*res://maps/map_generation/Map_functions/GenerateMapVariab
 SoundEngine="*res://game_manager/sound_engine/sound_engine.tscn"
 PodVariables="*res://game_manager/GameVariables/PodVariables.gd"
 Shop="*res://game_manager/GameVariables/Shop.gd"
+MissionManager="*res://ui/main_menu/mission_manager.gd"
 
 [display]
 
