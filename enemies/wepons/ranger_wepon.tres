@@ -1,6 +1,7 @@
-[gd_resource type="Resource" script_class="ProjectileWeaponResource" load_steps=4 format=3 uid="uid://dnvskhvxxim16"]
+[gd_resource type="Resource" script_class="ProjectileWeaponResource" load_steps=5 format=3 uid="uid://dnvskhvxxim16"]
 
 [ext_resource type="PackedScene" uid="uid://delp5066b08hb" path="res://enemies/wepons/projectiles/basic_enemy_projectile.tscn" id="1_atv00"]
+[ext_resource type="AudioStream" uid="uid://bx0erxmcc8tb2" path="res://inventory/items/weapons/assets/audio/gun_fire2.mp3" id="1_v73mk"]
 [ext_resource type="Script" path="res://inventory/items/weapons/scripts/projectile_weapon_resource.gd" id="2_a8g3u"]
 [ext_resource type="Texture2D" uid="uid://fynhjhvwfvw2" path="res://inventory/items/weapons/assets/sprites/AS_12.png" id="3_pxg4y"]
 
@@ -11,6 +12,7 @@ item_name = &"Weapon"
 cost = 0
 texture = ExtResource("3_pxg4y")
 muzzel_offset = Vector2(0, 0)
+audio_steam = ExtResource("1_v73mk")
 attack_mode = 1
 attack_cooldown = 0.8
 has_magazine = true

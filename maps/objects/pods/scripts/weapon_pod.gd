@@ -1,34 +1,46 @@
-extends Control
+class_name PodShop extends Control
 
 @export var weapon_buy_button: PackedScene
 
-@export var weapons_dir: String = "res://inventory/items/weapons/weapon_types/"
-@export var explosive_dir: String = "res://inventory/items/explosives/explosive_types/"
+@export_dir var weapons_dir: String = "res://inventory/items/weapons/weapon_types/"
+@export_dir var explosive_dir: String = "res://inventory/items/explosives/explosive_types/"
+
+enum ShopType {
+	weapon,
+	explosive
+}
 
 var weapons: Array[WeaponResource] = []
 var explosives: Array[ExplosiveResource] = []
 
-var podType: String = ""
+var pod_type: ShopType = ShopType.weapon
 func _ready():
-	updateButtonLabels()
+	setRefillAmmonition()
+	loadResources()
 
-func loadResource(type):
-	podType = type
-	match type:
-		"weapon":
-			setRefillAmmonition()
-			weapons = load_all_resources(weapons_dir)
-			return weapons
-		"explosive":
-			explosives = load_all_resources_explosive(explosive_dir)
-			return explosives
+func loadResources():
+	var paths = FilePaths.get_files(weapons_dir, ".tres")
+	for path in paths:
+		weapons.append(ResourceLoader.load(path))
+		
+	paths = FilePaths.get_files(explosive_dir, ".tres")
+	for path in paths:
+		explosives.append(ResourceLoader.load(path))
 
 func setRefillAmmonition():
 	var buy_btn: Button = $ContentPanelContainer/MarginContainer/VBoxContainer/Panel/RefillAmmonition
 	buy_btn.action_mode = BaseButton.ACTION_MODE_BUTTON_RELEASE
 	buy_btn.connect("pressed", _on_refill_ammonition_button_pressed)
 
-func setLabelsAndCost(array_items):
+func setLabelsAndCost(shop_type : ShopType):
+	var array_items : Array
+	pod_type = shop_type
+	match shop_type:
+		ShopType.weapon:
+			array_items = weapons
+		ShopType.explosive:
+			array_items = explosives
+	
 	var shop = $ContentPanelContainer/MarginContainer/VBoxContainer/ScrollContainer/shop
 	
 	for item in array_items:
@@ -56,10 +68,10 @@ func _on_button_pressed(identifier: StringName) -> void:
 	updateButtonLabels()
 
 func find_item(identifier: StringName):
-	match podType:
-		"explosive":
+	match pod_type:
+		ShopType.explosive:
 			return find_explosive(identifier)
-		"weapon":
+		ShopType.weapon:
 			return find_weapon(identifier)
 	return null
 	
@@ -74,57 +86,3 @@ func find_explosive(identifier: StringName) -> ExplosiveResource:
 		if explosive.item_name == identifier:
 			return explosive
 	return null
-
-func load_all_resources(folder_path: String) -> Array[WeaponResource]:
-	var dir = DirAccess.open(folder_path)
-	var resources: Array[WeaponResource] = []
-
-	if dir:
-		dir.list_dir_begin()
-		var file_name = dir.get_next()
-
-		while file_name != "":
-			if dir.current_is_dir():
-				# Skip directories for now, or handle them recursively if needed
-				pass
-			elif file_name.ends_with(".tres"):
-				var file_path = folder_path + file_name
-				print(file_path)
-				var resource = ResourceLoader.load(file_path)
-				if resource:
-					resources.append(resource)
-
-			file_name = dir.get_next()
-
-		dir.list_dir_end()
-	else:
-		print("Failed to open folder: " + folder_path)
-
-	return resources
-
-func load_all_resources_explosive(folder_path: String) -> Array[ExplosiveResource]:
-	var dir = DirAccess.open(folder_path)
-	var resources: Array[ExplosiveResource] = []
-
-	if dir:
-		dir.list_dir_begin()
-		var file_name = dir.get_next()
-
-		while file_name != "":
-			if dir.current_is_dir():
-				# Skip directories for now, or handle them recursively if needed
-				pass
-			elif file_name.ends_with(".tres"):
-				var file_path = folder_path + file_name
-				print(file_path)
-				var resource = ResourceLoader.load(file_path)
-				if resource:
-					resources.append(resource)
-
-			file_name = dir.get_next()
-
-		dir.list_dir_end()
-	else:
-		print("Failed to open folder: " + folder_path)
-
-	return resources
