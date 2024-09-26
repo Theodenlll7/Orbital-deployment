@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://delp5066b08hb"]
+
+[ext_resource type="Script" path="res://inventory/items/weapons/projectiles/projectile_2d.gd" id="1_4fb8d"]
+[ext_resource type="Texture2D" uid="uid://b5303f7vfendw" path="res://inventory/items/weapons/projectiles/sprites/bullet.png" id="2_i3rxq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ifh57"]
+
+[node name="BasicProjectile" type="RigidBody2D"]
+z_index = 1
+collision_layer = 8
+mass = 0.001
+gravity_scale = 0.0
+can_sleep = false
+lock_rotation = true
+continuous_cd = 1
+script = ExtResource("1_4fb8d")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(0.3, 0.3)
+shape = SubResource("RectangleShape2D_ifh57")
+
+[node name="Sprite2D" type="Sprite2D" parent="CollisionShape2D"]
+modulate = Color(0.772549, 0, 0.0627451, 1)
+self_modulate = Color(0.772735, 0, 0.0635086, 1)
+texture = ExtResource("2_i3rxq")

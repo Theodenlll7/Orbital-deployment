@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://dsad6qof6xa7f"]
 
-[ext_resource type="PackedScene" uid="uid://o3dndqv0yf5s" path="res://scenes/scene1.tscn" id="1_wr805"]
+[ext_resource type="PackedScene" path="res://scenes/scene1.tscn" id="1_wr805"]
 [ext_resource type="PackedScene" uid="uid://6vt8l263l0o7" path="res://player/player.tscn" id="2_5ihlw"]
 [ext_resource type="Script" path="res://enemies/scripts/enemy_spawner.gd" id="3_rkl8f"]
 [ext_resource type="PackedScene" uid="uid://fwtaakyb0exx" path="res://maps/objects/pods/weapon_pod.tscn" id="5_cpg73"]
