@@ -21,7 +21,7 @@ enum AttackMode {
 }
 @export var attack_mode: AttackMode = AttackMode.SINGLE
 ## Time between shots in seconds
-@export var attack_rate: float = 0.2
+@export var attack_cooldown: float = 0.2
 
 @export_subgroup("Amunition")
 @export var has_magazine: bool = true
@@ -60,8 +60,6 @@ var ammo_in_magazine: int
 ##Amount of ammo recived from ammo crate
 @export var ammo_crate_value: int = 50
 
-var attack: Callable = _attack
-
 
 func ammo_create_picked_up():
 	if has_ammo:
@@ -70,5 +68,5 @@ func ammo_create_picked_up():
 			ammo = ammo_cap
 
 
-func _attack(_weapon: Weapon) -> void:
+func attack(_weapon: Weapon) -> void:
 	push_error("The 'attack' is a callable that must be overridden in a subclass")

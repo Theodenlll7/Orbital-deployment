@@ -4,7 +4,7 @@ extends MindTreeNode
 class_name MindTreeRoot
 enum ProcessThread { IDLE, PHYSICS }
 
-@export var tick_rate: int = 0
+@export var tick_rate: int = 1
 
 @export var process_thread: ProcessThread = ProcessThread.PHYSICS
 
@@ -29,6 +29,8 @@ func _physics_process(delta: float) -> void:
 
 
 func procces_tree(delta: float) -> void:
+	if Engine.is_editor_hint():
+		return
 	blackboard.delta += delta
 	if skip_tick():
 		return

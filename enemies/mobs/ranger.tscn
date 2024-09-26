@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://kua7fs588s48"]
+[gd_scene load_steps=19 format=3 uid="uid://kua7fs588s48"]
 
 [ext_resource type="Texture2D" uid="uid://xoiggvxuo4wh" path="res://enemies/assets/textures/monster.png" id="1_b12vd"]
 [ext_resource type="Script" path="res://addons/tree_mind/nodes/mind_tree.gd" id="2_ao7rd"]
@@ -7,10 +7,15 @@
 [ext_resource type="Script" path="res://addons/tree_mind/nodes/leafs/blackbord_set.gd" id="6_k0upd"]
 [ext_resource type="Script" path="res://enemies/mind_tree_components/conditions/target_in_range.gd.gd" id="6_svhc6"]
 [ext_resource type="Script" path="res://enemies/mind_tree_components/actions/stop_navigation.gd" id="7_kalj1"]
-[ext_resource type="Script" path="res://enemies/melee_attack.gd" id="8_1g12m"]
+[ext_resource type="Script" path="res://enemies/scripts/melee_attack.gd" id="8_1g12m"]
+[ext_resource type="Script" path="res://addons/tree_mind/nodes/decorators/inverter.gd" id="8_honx4"]
+[ext_resource type="Script" path="res://enemies/mind_tree_components/actions/start_attacking_target.gd" id="8_k7jc1"]
 [ext_resource type="Script" path="res://enemies/mind_tree_components/actions/start_navigation_to_target.gd" id="8_ruax5"]
 [ext_resource type="Script" path="res://common/components/navigator2d.gd" id="9_rvix5"]
+[ext_resource type="Script" path="res://enemies/mind_tree_components/actions/stop_attacking_target.gd" id="10_y1y7c"]
 [ext_resource type="Script" path="res://common/components/HealthComponent.gd" id="11_u8r02"]
+[ext_resource type="Script" path="res://inventory/items/weapons/scripts/mob_weapon.gd" id="15_nllvl"]
+[ext_resource type="Resource" uid="uid://b60n7b3sbqrcb" path="res://inventory/items/weapons/weapon_types/automatic_weapon.tres" id="16_4r1wm"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qvi5h"]
 radius = 4.0
@@ -33,31 +38,43 @@ script = ExtResource("11_u8r02")
 
 [node name="MindTreeRoot" type="Node" parent="."]
 script = ExtResource("2_ao7rd")
-tick_rate = 1
 process_thread = 0
 
 [node name="Selector" type="Node" parent="MindTreeRoot"]
 script = ExtResource("4_028xp")
 
-[node name="Sequance2" type="Node" parent="MindTreeRoot/Selector"]
+[node name="StopAtTheInneBorderOfWeaponRange" type="Node" parent="MindTreeRoot/Selector"]
 script = ExtResource("3_nukmd")
 
-[node name="TargetInRange" type="Node" parent="MindTreeRoot/Selector/Sequance2"]
+[node name="TargetInRange" type="Node" parent="MindTreeRoot/Selector/StopAtTheInneBorderOfWeaponRange"]
 script = ExtResource("6_svhc6")
 reach_distance = 100
 
-[node name="StopNavgation" type="Node" parent="MindTreeRoot/Selector/Sequance2"]
+[node name="StopNavgation" type="Node" parent="MindTreeRoot/Selector/StopAtTheInneBorderOfWeaponRange"]
 script = ExtResource("7_kalj1")
 
-[node name="Sequance" type="Node" parent="MindTreeRoot/Selector"]
+[node name="StartAttackingTarget" type="Node" parent="MindTreeRoot/Selector/StopAtTheInneBorderOfWeaponRange"]
+script = ExtResource("8_k7jc1")
+
+[node name="SelectAndWalktToTarget" type="Node" parent="MindTreeRoot/Selector"]
 script = ExtResource("3_nukmd")
 
-[node name="BlackboardSet" type="Node" parent="MindTreeRoot/Selector/Sequance"]
+[node name="TargetOutOfRange" type="Node" parent="MindTreeRoot/Selector/SelectAndWalktToTarget"]
+script = ExtResource("8_honx4")
+
+[node name="TargetInRange" type="Node" parent="MindTreeRoot/Selector/SelectAndWalktToTarget/TargetOutOfRange"]
+script = ExtResource("6_svhc6")
+reach_distance = 150
+
+[node name="StopAttacking" type="Node" parent="MindTreeRoot/Selector/SelectAndWalktToTarget"]
+script = ExtResource("10_y1y7c")
+
+[node name="BlackboardSet" type="Node" parent="MindTreeRoot/Selector/SelectAndWalktToTarget"]
 script = ExtResource("6_k0upd")
 key = "\"target\""
 value = "actor.get_tree().get_nodes_in_group(\"players\").pick_random()"
 
-[node name="StartNavgationToTarget" type="Node" parent="MindTreeRoot/Selector/Sequance"]
+[node name="StartNavgationToTarget" type="Node" parent="MindTreeRoot/Selector/SelectAndWalktToTarget"]
 script = ExtResource("8_ruax5")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -73,6 +90,13 @@ shape = SubResource("CircleShape2D_rke3j")
 
 [node name="Navigator2D" type="NavigationAgent2D" parent="."]
 script = ExtResource("9_rvix5")
+
+[node name="MobWeapon" type="Node2D" parent="."]
+script = ExtResource("15_nllvl")
+weapon_resource = ExtResource("16_4r1wm")
+
+[node name="WeaponOrbitPoint" type="Marker2D" parent="MobWeapon"]
+position = Vector2(0, 2)
 
 [connection signal="body_entered" from="AttackRange" to="AttackRange" method="_on_body_entered"]
 [connection signal="body_exited" from="AttackRange" to="AttackRange" method="_on_body_exited"]

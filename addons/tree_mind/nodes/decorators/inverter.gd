@@ -1,4 +1,4 @@
-class_name Inverter extends Decorator
+class_name Inverter extends MTDecorator
 
 
 func tick(blackboard: Blackboard) -> int:
