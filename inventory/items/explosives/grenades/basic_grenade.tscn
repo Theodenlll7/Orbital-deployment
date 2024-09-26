@@ -1,10 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://yob22fwt8ode"]
+[gd_scene load_steps=4 format=3 uid="uid://yob22fwt8ode"]
 
 [ext_resource type="Script" path="res://inventory/items/explosives/grenades/grenade_2d.gd" id="1_huw2f"]
 [ext_resource type="Texture2D" uid="uid://4dobheqamdsh" path="res://inventory/items/explosives/assets/sprites/grenade.png" id="2_wdn4d"]
-[ext_resource type="AudioStream" uid="uid://qw7wnnd7uy37" path="res://inventory/items/explosives/assets/audio/grenade-explosion-14-190266.mp3" id="2_xcyr0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ifh57"]
+size = Vector2(60, 53.3333)
 
 [node name="BasicGrenade" type="RigidBody2D"]
 collision_layer = 4
@@ -15,13 +15,12 @@ can_sleep = false
 lock_rotation = true
 continuous_cd = 1
 script = ExtResource("1_huw2f")
-audio_stream = ExtResource("2_xcyr0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(0.3, 0.3)
 shape = SubResource("RectangleShape2D_ifh57")
 
 [node name="Sprite2D" type="Sprite2D" parent="CollisionShape2D"]
-position = Vector2(9.53674e-07, -9.53674e-07)
+position = Vector2(3.33333, 0)
 scale = Vector2(0.126953, 0.110677)
 texture = ExtResource("2_wdn4d")

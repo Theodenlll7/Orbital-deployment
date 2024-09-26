@@ -5,6 +5,9 @@ class_name ThrowableExplosiveResource
 	"res://inventory/items/explosives/grenades/basic_grenade.tscn"
 )
 
+var audio_player: AudioStreamPlayer
+var audio_stream: AudioStream
+
 func _throw(explosive: Explosive):
 	if not explosive_scene:
 		return
@@ -17,18 +20,20 @@ func _throw(explosive: Explosive):
 	var mouse_position = explosive.get_viewport().get_camera_2d().get_global_mouse_position()
 
 	var direction = (mouse_position - position).normalized()
-
+	
+	#Collision
+	grenade.collision_layer = 1  
+	grenade.collision_mask = 1  
+	
+	#Throwing
 	grenade.direction = direction
 	grenade.linear_velocity = direction * explosive.get_throw_speed();
+	grenade.linear_damp = explosive.get_grenade_weight()
 
+	#Explosion
+	grenade.set_explosion_radius(explosive.get_explosion_radius())
+	grenade.set_explosion_damage(explosive.get_explosion_damage())
+	grenade.set_fuse_time(explosive.get_fuse_time())
+	
 	explosive.get_tree().current_scene.add_child(grenade)
-
-
-func get_fuse_time() -> float:
-	return fuse_time
-
-func get_explosion_damage() -> int:
-	return explosion_damage
-
-func get_explosion_radius() -> float:
-	return explosion_radius
+	
