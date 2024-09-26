@@ -1,7 +1,7 @@
 extends Node2D
 class_name Weapon
 
-#@warning_ignore("unused_signal")
+@warning_ignore("unused_signal")
 signal weapon_fired(new_magazine_amount: int)
 signal weapon_reloded(new_magazine_amount: int, new_ammo_amount: int)
 

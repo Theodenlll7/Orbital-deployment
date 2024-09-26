@@ -7,9 +7,9 @@ var description: String
 var image_path: String
 var marker_offset: Vector2
 
-func _init(id: int,title: String, description: String, image_path: String, marker_offset: Vector2) -> void:
-	self.id = id
-	self.title = title
-	self.description = description
-	self.image_path = image_path
-	self.marker_offset = marker_offset
+func _init(new_id: int,new_title: String, new_description: String, new_image_path: String, new_marker_offset: Vector2) -> void:
+	id = new_id
+	title = new_title
+	description = new_description
+	image_path = new_image_path
+	marker_offset = new_marker_offset
