@@ -3,11 +3,11 @@ extends Node2D
 class_name enemy_spawner
 
 # Exported variables
-@export var enemy_scene: PackedScene  # The enemy scene to instantiate
-@export var spawn_radius_min: int = 200  # Minimum distance from players for spawning
-@export var spawn_radius_max: int = 500  # Maximum distance from players for spawning
-@export var max_enemies: int = 20  # Max number of enemies at a time
-@export var spawn_interval: float = 5.0  # Time between spawns
+@export var spawn_radius_min: int = 500  # Minimum distance from players for spawning
+@export var spawn_radius_max: int = 600  # Maximum distance from players for spawning
+@export var spawn_interval: float = 3.0  # Time between spawns
+
+@export var enemy_spawn_pool: Array[PackedScene] = []
 
 @onready var players = get_tree().get_nodes_in_group("players")
 
@@ -25,7 +25,8 @@ func _process(delta):
 # Spawn an enemy at a random valid position around one of the players
 func spawn_enemy():
 	var spawn_postion = get_random_valid_position_around_players()
-	var enemy = enemy_scene.instantiate()
+	var enemy = enemy_spawn_pool.pick_random().instantiate()
+	enemy.add_to_group("enemies")
 	enemy.global_position = spawn_postion
 	add_child(enemy)
 
@@ -34,7 +35,7 @@ func spawn_enemy():
 func get_random_valid_position_around_players():
 	var attempts := 0
 	while attempts < 100:
-		var chosen_player = players[randi() % players.size()]
+		var chosen_player = players.pick_random()
 		var player_pos = chosen_player.global_position
 
 		# Generate a random point within the allowed radius around the chosen player

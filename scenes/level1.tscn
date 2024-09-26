@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://dsad6qof6xa7f"]
+[gd_scene load_steps=11 format=3 uid="uid://dsad6qof6xa7f"]
 
-[ext_resource type="PackedScene" path="res://scenes/scene1.tscn" id="1_wr805"]
+[ext_resource type="PackedScene" uid="uid://bjlice1mgjhqp" path="res://scenes/scene1.tscn" id="1_wr805"]
 [ext_resource type="PackedScene" uid="uid://6vt8l263l0o7" path="res://player/player.tscn" id="2_5ihlw"]
 [ext_resource type="Script" path="res://enemies/scripts/enemy_spawner.gd" id="3_rkl8f"]
+[ext_resource type="PackedScene" path="res://enemies/mobs/alien.tscn" id="4_v3qcm"]
 [ext_resource type="PackedScene" uid="uid://fwtaakyb0exx" path="res://maps/objects/pods/weapon_pod.tscn" id="5_cpg73"]
 [ext_resource type="PackedScene" uid="uid://kua7fs588s48" path="res://enemies/mobs/ranger.tscn" id="5_r2vmx"]
 [ext_resource type="Script" path="res://inventory/loot/droped_items/scripts/ammo_crate.gd" id="7_wtpsh"]
@@ -24,7 +25,7 @@ position = Vector2(123, 110)
 
 [node name="enemy_spawner" type="Node2D" parent="."]
 script = ExtResource("3_rkl8f")
-enemy_scene = ExtResource("5_r2vmx")
+enemy_spawn_pool = Array[PackedScene]([ExtResource("4_v3qcm"), ExtResource("5_r2vmx")])
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

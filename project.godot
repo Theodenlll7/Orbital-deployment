@@ -155,7 +155,8 @@ throw_action={
 2d_physics/layer_3="Player Projectiles"
 2d_physics/layer_4="Enemy projectiles"
 2d_physics/layer_5="Collectible objects"
-2d_physics/layer_6="Ground and walls"
+2d_physics/layer_6="Walls"
+2d_physics/layer_7="Ground"
 
 [physics]
 
