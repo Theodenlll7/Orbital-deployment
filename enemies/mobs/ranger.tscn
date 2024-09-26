@@ -73,7 +73,7 @@ value = "actor.get_tree().get_nodes_in_group(\"players\").pick_random()"
 
 [node name="StartNavgationToTarget" type="Node" parent="MindTreeRoot/Selector/SelectAndWalktToTarget"]
 script = ExtResource("8_ruax5")
-move_speed = 20.0
+move_speed = 80.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_qvi5h")

@@ -2,9 +2,9 @@ extends Node
 
 class_name Inventory
 
-var weapon_slots: Array[WeaponResource] = [null, null]
-var explosive_slot = ExplosiveResource
-var special_equipment_slot: SpecialEquipment = null
+@export var weapon_slots: Array[WeaponResource] = [null, null]
+@export var explosive_slot = ExplosiveResource
+@export var special_equipment_slot: SpecialEquipment = null
 
 var selected_weapon_slot = -1
 var signal_emitter
