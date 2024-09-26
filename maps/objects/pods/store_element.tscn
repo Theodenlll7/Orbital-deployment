@@ -9,15 +9,20 @@ offset_top = 112.0
 offset_right = 509.0
 offset_bottom = 144.0
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_right = 16
 
-[node name="Label" type="Label" parent="HBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 2.0
@@ -25,12 +30,12 @@ theme_override_fonts/font = ExtResource("1_45f8j")
 text = "NAME
 "
 
-[node name="PaddingMid" type="Control" parent="HBoxContainer"]
+[node name="PaddingMid" type="Control" parent="MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.5
 
-[node name="Cost" type="Label" parent="HBoxContainer"]
+[node name="Cost" type="Label" parent="MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_colors/font_color = Color(0.121569, 0.729412, 0.309804, 1)

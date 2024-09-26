@@ -16,17 +16,24 @@ func loadResource(type):
 	podType = type
 	match type:
 		"weapon":
+			setRefillAmmonition()
 			weapons = load_all_resources(weapons_dir)
 			return weapons
 		"explosive":
 			explosives = load_all_resources_explosive(explosive_dir)
 			return explosives
-	
+
+func setRefillAmmonition():
+	var buy_btn: Button = $ContentPanelContainer/MarginContainer/VBoxContainer/Panel/RefillAmmonition
+	buy_btn.action_mode = BaseButton.ACTION_MODE_BUTTON_RELEASE
+	buy_btn.connect("pressed", _on_refill_ammonition_button_pressed)
+
 func setLabelsAndCost(array_items):
-	var shop = $ContentPanelContainer/MarginContainer/ScrollContainer/shop
+	var shop = $ContentPanelContainer/MarginContainer/VBoxContainer/ScrollContainer/shop
+	
 	for item in array_items:
 		var buy_btn: Button = weapon_buy_button.instantiate()
-		var pod_item_container = buy_btn.get_child(0)
+		var pod_item_container = buy_btn.get_child(0).get_child(0) # This feels bad :(
 		var label: Label = pod_item_container.get_node_or_null("Label")
 		var cost: Label = pod_item_container.get_node_or_null("Cost")
 		label.text = item.item_name
@@ -39,6 +46,8 @@ func updateButtonLabels():
 	var player_money = $HeaderPanelContainer/MarginContainer/HBoxContainer.get_node("Players_money")
 	player_money.text = str(GameVariables.player_money) + "$"
 
+func _on_refill_ammonition_button_pressed() -> void:
+	print("Ammo, ammo, get sum")
 
 func _on_button_pressed(identifier: StringName) -> void:
 	var item = find_item(identifier)
