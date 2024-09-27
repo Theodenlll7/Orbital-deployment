@@ -20,9 +20,10 @@ script/source = "extends HBoxContainer
 font_size = 32
 font_color = Color(0.400698, 0.400698, 0.400698, 1)
 
-[node name="PlayerHUD" type="CanvasLayer" node_paths=PackedStringArray("weapon_slots")]
+[node name="PlayerHUD" type="CanvasLayer" node_paths=PackedStringArray("weapon_slots", "ammo_indicator")]
 script = ExtResource("1_7u87w")
 weapon_slots = [NodePath("PlayerHUD/HBoxContainer/AspectRatioContainer2/AspectRatioContainer"), NodePath("PlayerHUD/HBoxContainer/AspectRatioContainer/AspectRatioContainer")]
+ammo_indicator = NodePath("PlayerHUD/AmmoIndicator")
 
 [node name="PlayerHUD" type="Control" parent="."]
 layout_mode = 3

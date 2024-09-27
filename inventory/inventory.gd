@@ -18,6 +18,18 @@ func _ready():
 	signal_emitter = get_node("/root/Shop")
 	if signal_emitter:
 		signal_emitter.connect("purchase_made", Callable(self, "_on_purchase_made"))
+	init_inventory()
+
+
+func init_inventory():
+	await get_tree().process_frame
+
+	# Iterate through the weapon slots and equip them
+	for i in range(weapon_slots.size()):
+		if weapon_slots[i]:
+			player_hud.equip_weapon(i, weapon_slots[i])
+			if selected_weapon_slot == -1:
+				select_weapon_slot(i)
 
 
 func add_weapon(weapon: WeaponResource):
@@ -79,8 +91,13 @@ func _on_purchase_made(item):
 func select_next_slot() -> void:
 	if weapon_slots.size() > 0:
 		var next_slot = (selected_weapon_slot + 1) % weapon_slots.size()
-		if weapon_slots[next_slot]:
-			player_hud.select_weapon_slot(next_slot)
-			var weapon = player.equip_weapon(weapon_slots[next_slot])
-			selected_weapon_slot = next_slot
+		select_weapon_slot(next_slot)
+
+
+func select_weapon_slot(slot: int):
+	if slot >= 0 and slot < weapon_slots.size():
+		if weapon_slots[slot]:
+			player_hud.select_weapon_slot(slot)
+			var weapon = player.equip_weapon(weapon_slots[slot])
+			selected_weapon_slot = slot
 			player_hud.ammo_indicator.equip_weapon(weapon)

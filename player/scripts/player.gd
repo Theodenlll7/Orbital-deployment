@@ -14,14 +14,13 @@ class_name Player
 @onready var death_screen: DeathScreen = $PlayerHUD/DeathScreen
 
 @export var weapon_orbit_distance: float = 8.0  # Distance from the player at which the weapon orbits
+@export var weapon_orbit_point: Marker2D = null
 
 var dodge_timer := -dodge_cooldown
 var can_dodge := true
 var in_dodge := false
 
 var can_move := true
-
-@onready var weapon_orbit_point := $WeaponOrbitPoint
 
 var held_weapon: PlayerWeapon = null
 var held_explosive: Explosive = null

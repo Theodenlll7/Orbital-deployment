@@ -522,9 +522,11 @@ animations = [{
 "speed": 8.0
 }]
 
-[node name="Player" type="CharacterBody2D" groups=["players"]]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("weapon_orbit_point") groups=["players"]]
 z_index = 1
+collision_mask = 42
 script = ExtResource("1_gaiyc")
+weapon_orbit_point = NodePath("WeaponOrbitPoint")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 3)
