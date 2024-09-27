@@ -1,7 +1,7 @@
 extends Camera2D
 
-var follow_strength: float = 100.0  
-var lerp_factor: float = 1000.0     
+var follow_strength: float = 50.0  
+var lerp_factor: float = 500.0     
 
 func screen_shake(_intensity: float = 10.0, _duration: float = 0.5, _shakes: int = 5) -> void:
 	pass
@@ -13,5 +13,5 @@ func move_camera_in_game() -> void:
 	
 	position = lerp(Vector2(), target_position, mouse_offset.length() / lerp_factor)	
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	move_camera_in_game()

@@ -35,7 +35,6 @@ func fade_in():
 	tween.parallel().tween_property(progress_labels, "modulate:a", opacity, fade_time_slow)
 
 func on_try_again_button_pressed() -> void:
-	var current_scene = get_tree().current_scene
 	get_tree().reload_current_scene()
 
 func on_back_to_menu_button_pressed() -> void:
