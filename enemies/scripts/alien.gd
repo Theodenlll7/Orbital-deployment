@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 @export var target: Node2D = null
 
-@export var speed := 100
+@export var speed := 80
 var player_position := Vector2.ZERO
 
 @onready var agent: NavigationAgent2D = $NavigationAgent2D
@@ -57,14 +57,13 @@ func on_death_animation_finished() -> void:
 	queue_free()
 
 func animate() -> void:
-	if velocity > Vector2.ZERO:
-		if velocity.x > 0: # always bigger then 0
+	if abs(velocity) > Vector2(0.1, 0.1):
+		animated_sprite.play("run_h")
+		if velocity.x > 0.0:
 			animated_sprite.flip_h = true
-			#print("left")
-		elif velocity.x < 0:
+		elif velocity.x < 0.0:
 			animated_sprite.flip_h = false
-			#print("right")
-	else:		
+	else:
 		animated_sprite.play("idle")
-	
+
 	
