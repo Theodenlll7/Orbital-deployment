@@ -8,7 +8,7 @@ func _validate_node(node: Node):
 	return node as CharacterBody2D
 
 
-func _apply_area_effect(_delta: float):
+func _apply_area_effect(delta: float):
 	for target in targets_in_area:
 		var cb = target as CharacterBody2D
 		if cb:

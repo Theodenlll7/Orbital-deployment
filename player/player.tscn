@@ -523,7 +523,6 @@ animations = [{
 }]
 
 [node name="Player" type="CharacterBody2D" groups=["players"]]
-process_physics_priority = 10
 z_index = 1
 script = ExtResource("1_gaiyc")
 
@@ -538,11 +537,6 @@ script = ExtResource("3_rmoxv")
 [node name="Camera2D" type="Camera2D" parent="."]
 scale = Vector2(0.62216, 1.02895)
 zoom = Vector2(3, 3)
-limit_left = -100000
-limit_top = -100000
-limit_right = 100000
-limit_bottom = 100000
-position_smoothing_enabled = true
 script = ExtResource("4_hh08p")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

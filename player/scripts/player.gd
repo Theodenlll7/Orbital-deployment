@@ -43,7 +43,8 @@ func _process(delta):
 
 
 func _physics_process(_delta: float) -> void:
-	move_and_slide()
+	if can_move:
+		move_and_slide()
 
 
 func _unhandled_input(event):

@@ -1,13 +1,13 @@
 class_name AreaEffect extends Node
 
-var targets_in_area: Dictionary = {}
-
 enum ProcessThread { IDLE, PHYSICS }
 
 @export var process_thread: ProcessThread = ProcessThread.IDLE
 @export var process_thread_priority: int = 10
 
 @export var group_blacklist: Array[String] = []
+
+var targets_in_area: Dictionary = {}
 
 
 func _apply_area_effect(_delta: float):

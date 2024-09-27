@@ -46,9 +46,13 @@ func generate_areas() -> void:
 
 				# Create the Area2D for this rectangle
 				var area = Area2D.new()
+				print(area.collision_layer)
 				area.body_entered.connect(area_effect._on_body_entered)
 				area.body_exited.connect(area_effect._on_body_exited)
 				add_child(area)
+				area.set_collision_layer_value(1, false)
+				area.set_collision_mask_value(2, true)
+				area.collision_priority = 0.1
 
 				# Position the Area2D in the center of the rectangle
 				var local_position = map_to_local(Vector2(x + area_rect.x / 2, y + area_rect.y / 2))
