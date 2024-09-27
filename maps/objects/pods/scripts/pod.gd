@@ -9,11 +9,18 @@ extends Node2D
 func _ready() -> void:
 	interaction_area.interact = Callable(self, "_on_interact")
 	houseUI.hide()
-	Store.setLabelsAndCost(PodShop.ShopType.weapon)
+	set_pod_type(pod_type)
 
+func set_pod_type(pod_type):
+	match pod_type:
+		"weapon":
+			Store.setLabelsAndCost(PodShop.ShopType.weapon)
+		"explosive":
+			Store.setLabelsAndCost(PodShop.ShopType.explosive)
+			
+			
 func _on_interact():
 	showUI()
-
 
 func showUI():
 	houseUI.show()

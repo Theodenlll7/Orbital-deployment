@@ -25,6 +25,8 @@ func _ready() -> void:
 	explosion_area.collision_mask = 2  # Adjust as needed
 	add_child(explosion_area)
 	
+	scale_explosion_sprite()
+	
 	explosion_area.connect("body_entered", _on_body_entered)
 	
 	var timer = Timer.new()
@@ -36,18 +38,26 @@ func _ready() -> void:
 
 func _on_fuse_time_end() -> void:
 	_explode()
-
+	
+func scale_explosion_sprite():
+	var explosion_scale_factor = explosion_radius / 38
+	animated_sprite_explosion.scale = Vector2(explosion_scale_factor, explosion_scale_factor)
+	
 func _explode() -> void:
+	var sprite_frames = animated_sprite_explosion.get_sprite_frames()
+	sprite_frames.set_animation_loop("explode", false)
+	animated_sprite_explosion.visible = true
+	animated_sprite_explosion.play("explode")
+
 	explosion_area.monitoring = true
+	
 
-
-# Signal handler for body entered
 func _on_body_entered(body) -> void:
 	var hp = body.get_node_or_null("HealthComponent") as HealthComponent
 	if hp:
 		hp.damage(explosion_damage)
 	
-	queue_free()
+	
 
 func set_fuse_time(time: float):
 	fuse_time = time
@@ -59,3 +69,7 @@ func set_explosion_damage(damage: int):
 # Setter for explosion radius
 func set_explosion_radius(radius: float):
 	explosion_radius = radius
+
+
+func _on_animated_sprite_2d_animation_finished() -> void:
+	queue_free()
