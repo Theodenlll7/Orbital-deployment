@@ -214,7 +214,6 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_yj7p8")
 text = " Main menu "
 
 [node name="missions_tab" parent="." instance=ExtResource("4_m46ts")]
-visible = false
 layout_mode = 1
 
 [node name="infinit_marker" type="Control" parent="."]

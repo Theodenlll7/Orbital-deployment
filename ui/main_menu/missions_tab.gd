@@ -1,14 +1,14 @@
 extends Control
 
-@onready var mission_1_button: Button = $content/ContentMarginContainer/VBoxContainer/Buttons/MarginContainer/HBoxContainer/Control/VBoxContainer/Mission1Button
-@onready var mission_2_button: Button = $content/ContentMarginContainer/VBoxContainer/Buttons/MarginContainer/HBoxContainer/Control/VBoxContainer/Mission2Button
+@onready var mission_1_button: Button = $content/ContentMarginContainer/VBoxContainer/Title/HBoxContainer/Control/HBoxContainer/Buttons/MarginContainer/MarginContainer/ScrollContainer/VBoxContainer/Mission1Button
+@onready var mission_2_button: Button = $content/ContentMarginContainer/VBoxContainer/Title/HBoxContainer/Control/HBoxContainer/Buttons/MarginContainer/MarginContainer/ScrollContainer/VBoxContainer/Mission2Button
 @onready var back_button: Button = $content/ContentMarginContainer/BackButton
 
 @onready var mission_marker: Control = $mission_marker
 
-@onready var mission_title_label: RichTextLabel = $content/ContentMarginContainer/VBoxContainer/HBoxContainer/mission_description/MarginContainer/MarginContainer/HBoxContainer/VBoxContainer/Title
-@onready var mission_description_label: RichTextLabel = $content/ContentMarginContainer/VBoxContainer/HBoxContainer/mission_description/MarginContainer/MarginContainer/HBoxContainer/VBoxContainer/Description
-@onready var texture_rect: TextureRect = $content/ContentMarginContainer/VBoxContainer/HBoxContainer/mission_description/MarginContainer/MarginContainer/HBoxContainer/MarginContainer/Thumbnail
+@onready var mission_title_label: RichTextLabel = $content/ContentMarginContainer/VBoxContainer/Title/HBoxContainer/Control/HBoxContainer/mission_description/MarginContainer/MarginContainer/VBoxContainer/Title
+@onready var mission_description_label: RichTextLabel = $content/ContentMarginContainer/VBoxContainer/Title/HBoxContainer/Control/HBoxContainer/mission_description/MarginContainer/MarginContainer/VBoxContainer/Description
+@onready var texture_rect: TextureRect = $content/ContentMarginContainer/VBoxContainer/Title/HBoxContainer/Control/HBoxContainer/mission_description/MarginContainer/MarginContainer/VBoxContainer/MarginContainer/Thumbnail
 
 signal back_mission_select
 signal tab_level_selected(mission_ID, mission_position)
