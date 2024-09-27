@@ -1,17 +1,60 @@
-[gd_scene load_steps=5 format=3 uid="uid://yob22fwt8ode"]
+[gd_scene load_steps=12 format=3 uid="uid://yob22fwt8ode"]
 
 [ext_resource type="Script" path="res://inventory/items/explosives/grenades/grenade_2d.gd" id="1_huw2f"]
 [ext_resource type="Texture2D" uid="uid://4dobheqamdsh" path="res://inventory/items/explosives/assets/sprites/grenade.png" id="2_wdn4d"]
+[ext_resource type="Texture2D" uid="uid://l4wtwm8alisl" path="res://inventory/items/explosives/assets/Animations/1601.m00.i104.n010.P.c25.259592090_Video_game_explosion_animation_in_Pixel_Art._Explosion_animation_frames-removebg-preview.png" id="3_fivit"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ifh57"]
 size = Vector2(60, 53.3333)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_kybcn"]
+atlas = ExtResource("3_fivit")
+region = Rect2(0, 0, 189, 220)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fwl66"]
+atlas = ExtResource("3_fivit")
+region = Rect2(189, 0, 189, 220)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0tkvj"]
+atlas = ExtResource("3_fivit")
+region = Rect2(378, 0, 189, 220)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ybytg"]
+atlas = ExtResource("3_fivit")
+region = Rect2(0, 220, 189, 220)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v2sen"]
+atlas = ExtResource("3_fivit")
+region = Rect2(189, 220, 189, 220)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t6a2u"]
+atlas = ExtResource("3_fivit")
+region = Rect2(378, 220, 189, 220)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_nnglh"]
 animations = [{
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kybcn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fwl66")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0tkvj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ybytg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v2sen")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t6a2u")
+}],
 "loop": true,
-"name": &"default",
-"speed": 5.0
+"name": &"explode",
+"speed": 10.0
 }, {
 "frames": [],
 "loop": true,
@@ -39,4 +82,8 @@ scale = Vector2(0.126953, 0.110677)
 texture = ExtResource("2_wdn4d")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+visible = false
 sprite_frames = SubResource("SpriteFrames_nnglh")
+animation = &"explode"
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

@@ -106,8 +106,10 @@ func equip_weapon(weapon: WeaponResource) -> Weapon:
 
 
 func equip_explosive(explosive: ExplosiveResource) -> Explosive:
+	if held_explosive:
+		held_explosive.queue_free()
 	held_explosive = Explosive.new(explosive)
-	held_explosive.scale = Vector2(0.02, 0.02)
+	held_explosive.scale = Vector2(0.01, 0.01)
 	weapon_orbit_point.add_child(held_explosive)
 	return held_explosive
 

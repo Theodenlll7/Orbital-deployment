@@ -29,7 +29,11 @@ func _throw(explosive: Explosive):
 	grenade.direction = direction
 	grenade.linear_velocity = direction * explosive.get_throw_speed();
 	grenade.linear_damp = explosive.get_grenade_weight()
-
+	
+	#Spinn
+	grenade.angular_velocity = deg_to_rad(randf_range(720, 1080))  # Random spin speed between 720 and 1080 degrees/second
+	grenade.angular_damp = 1.0  # Damping to slow the spin over time
+	
 	#Explosion
 	grenade.set_explosion_radius(explosive.get_explosion_radius())
 	grenade.set_explosion_damage(explosive.get_explosion_damage())

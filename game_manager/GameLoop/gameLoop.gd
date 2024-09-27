@@ -18,14 +18,14 @@ func _on_day_changed(day: int) -> void:
 
 func _update_game_state(day: int) -> void:
 	print("Updating game state for day:", day)
-	_update_player_stats()
+	_update_player_stats(day)
 	_reset_daily_quests()
 	
 	if day < 7:
 		updatePods(day)
 
-func _update_player_stats() -> void:
-	print("Updating player stats for the new day")
+func _update_player_stats(day) -> void:
+	GameVariables.increasePlayerMoney(100*day)
 
 func _reset_daily_quests() -> void:
 	print("Resetting daily quests for the new day")

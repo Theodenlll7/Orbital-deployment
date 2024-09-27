@@ -45,4 +45,3 @@ func _recalculate_time() -> void:
 		past_minute = minute
 		GameVariables.day = day + 1
 		time_tick.emit(day, hour, minute)
-

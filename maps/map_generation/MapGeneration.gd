@@ -13,7 +13,6 @@ func _ready():
 func generate_tiles():
 	connectTiles(1)
 	
-	
 	for position in GenerateMapVariables.map_Edge_cells:
 		set_cell(2, position, 2, tile_outline)
 	
@@ -49,35 +48,6 @@ func connectTiles(tileset):
 	set_cells_terrain_connect(2, GenerateMapVariables.ground2_cells, tileset, 4)
 	set_cells_terrain_connect(0, GenerateMapVariables.entire_map_cells, tileset, 2)
 	
-	
-func place_large_water_object_from_tile(objectID, center):
-	var columns = 0
-	var rows = 0
-	var start = null
-
-	match objectID:
-		1:
-			start = Vector2(8, 4)
-			columns = 4
-			rows = 4
-		2:  
-			start = Vector2(10, 11)  
-			columns = 4 
-			rows = 3
-		3:
-			pass
-		4:
-			start = Vector2(4, 17)  
-			columns = 2
-			rows = 2
-		5:
-			start = Vector2(8, 17)  
-			columns = 2 
-			rows = 2
-	for x in range(columns):
-		for y in range(rows):
-			var tile_position = Vector2(start.x + x, start.y + y)
-			set_cell(2, Vector2i(center.x + x, center.y + y), 16, tile_position)
 
 func place_large_object_from_new_tile(objectID, center):
 	var columns = 0
@@ -153,79 +123,3 @@ func place_large_object_from_new_tile(objectID, center):
 		for y in range(rows):
 			var tile_position = Vector2(start.x + x, start.y + y)
 			set_cell(2, Vector2i(center.x + x, center.y + y), 2, tile_position)
-
-	
-func place_large_object_from_tile(objectID, center):
-	var columns = 0
-	var rows = 0
-	var start = null
-
-	match objectID:
-		1:
-			start = Vector2(0, 0)
-			columns = 4
-			rows = 4
-		2:  
-			start = Vector2(4, 0)  
-			columns = 4 
-			rows = 4
-		3:
-			start = Vector2(8, 0)  
-			columns = 4 
-			rows = 4
-		4:
-			start = Vector2(12, 0)  
-			columns = 4 
-			rows = 4
-		5:
-			start = Vector2(0, 4)  
-			columns = 4 
-			rows = 4
-		6:
-			start = Vector2(4, 4)  
-			columns = 4 
-			rows = 4
-		7:
-			start = Vector2(8, 4)  
-			columns = 4 
-			rows = 4
-		8:
-			start = Vector2(12, 4)  
-			columns = 4 
-			rows = 4
-		9:
-			start = Vector2(0, 8)  
-			columns = 4 
-			rows = 3
-		10:
-			start = Vector2(4, 8)  
-			columns = 4 
-			rows = 3
-		11:
-			start = Vector2(8, 8)  
-			columns = 4 
-			rows = 3
-		12:
-			start = Vector2(12, 8)  
-			columns = 4 
-			rows = 3
-		13:
-			start = Vector2(0, 11)  
-			columns = 4 
-			rows = 4
-		14:
-			start = Vector2(4, 11)  
-			columns = 3 
-			rows = 4																							
-		15:
-			start = Vector2(7, 11)  
-			columns = 3 
-			rows = 3
-		16: 
-			start = Vector2(10, 11)  
-			columns = 4 
-			rows = 3
-	for x in range(columns):
-		for y in range(rows):
-			var tile_position = Vector2(start.x + x, start.y + y)
-			set_cell(2, Vector2i(center.x + x, center.y + y), 15, tile_position)
