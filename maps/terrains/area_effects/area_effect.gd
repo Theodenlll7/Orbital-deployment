@@ -5,9 +5,15 @@ enum ProcessThread { IDLE, PHYSICS }
 @export var process_thread: ProcessThread = ProcessThread.IDLE
 @export var process_thread_priority: int = 10
 
+@export var tick_rate: int = 0
+
 @export var group_blacklist: Array[String] = []
 
 var targets_in_area: Dictionary = {}
+
+@onready var last_tick: int = randi_range(0, tick_rate)
+
+var last_tick_delta: float = 0
 
 
 func _apply_area_effect(_delta: float):
@@ -52,8 +58,28 @@ func _on_body_exited(body: Node) -> void:
 
 
 func _process(delta: float) -> void:
-	_apply_area_effect(delta)
+	procces_effect(delta)
 
 
 func _physics_process(delta: float) -> void:
+	procces_effect(delta)
+
+
+func procces_effect(delta: float) -> void:
+	last_tick_delta += delta
+	if skip_tick():
+		return
+	tick(last_tick_delta)
+	last_tick_delta = 0
+
+
+func tick(delta: float) -> void:
 	_apply_area_effect(delta)
+
+
+func skip_tick() -> bool:
+	if last_tick <= tick_rate:
+		last_tick += 1
+		return true
+	last_tick = 0
+	return false
