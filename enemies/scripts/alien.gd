@@ -6,8 +6,10 @@ extends CharacterBody2D
 var player_position := Vector2.ZERO
 
 @onready var agent: NavigationAgent2D = $NavigationAgent2D
+@onready var animated_sprite := $AnimatedSprite2D
 
 var map_ready := false
+var is_dead := false
 
 func _ready():
 	if !target:
@@ -25,6 +27,8 @@ func actor_setup():
 
 
 func _physics_process(_delta):
+	if is_dead: 
+		return
 	if target:
 		agent.target_position = target.global_position
 
@@ -33,6 +37,7 @@ func _physics_process(_delta):
 	velocity = current_agent_position.direction_to(next_path_position) * speed
 
 	move_and_slide()
+	animate()
 
 
 func _on_target_reached():
@@ -44,4 +49,22 @@ func set_target_position(target_position: Vector2):
 
 
 func _on_health_component_died() -> void:
+	is_dead = true
+	animated_sprite.play("die")
+	animated_sprite.animation_finished.connect(on_death_animation_finished)
+
+func on_death_animation_finished() -> void:
 	queue_free()
+
+func animate() -> void:
+	if velocity > Vector2.ZERO:
+		if velocity.x > 0: # always bigger then 0
+			animated_sprite.flip_h = true
+			#print("left")
+		elif velocity.x < 0:
+			animated_sprite.flip_h = false
+			#print("right")
+	else:		
+		animated_sprite.play("idle")
+	
+	
