@@ -523,10 +523,14 @@ animations = [{
 }]
 
 [node name="Player" type="CharacterBody2D" groups=["players"]]
+process_physics_priority = 10
 z_index = 1
-collision_mask = 35
-motion_mode = 1
 script = ExtResource("1_gaiyc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 3)
+rotation = 1.5708
+shape = SubResource("CircleShape2D_c3fsl")
 
 [node name="HealthComponent" type="Node" parent="."]
 script = ExtResource("3_rmoxv")
@@ -538,17 +542,8 @@ limit_left = -100000
 limit_top = -100000
 limit_right = 100000
 limit_bottom = 100000
-limit_smoothed = true
 position_smoothing_enabled = true
-position_smoothing_speed = 10.0
-drag_horizontal_enabled = true
-drag_vertical_enabled = true
 script = ExtResource("4_hh08p")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 3)
-rotation = 1.5708
-shape = SubResource("CircleShape2D_c3fsl")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 z_index = 1

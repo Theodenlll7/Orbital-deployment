@@ -42,6 +42,10 @@ func _process(delta):
 			animate()
 
 
+func _physics_process(_delta: float) -> void:
+	move_and_slide()
+
+
 func _unhandled_input(event):
 	if event.is_action_pressed("swap_weapon"):
 		inventory.select_next_slot()
@@ -65,8 +69,6 @@ func move_player(delta: float) -> void:
 			Input.get_vector("move_left", "move_right", "move_up", "move_down").normalized()
 		)
 		velocity = input_vector * move_speed
-
-	move_and_slide()
 
 
 func start_dodge() -> void:

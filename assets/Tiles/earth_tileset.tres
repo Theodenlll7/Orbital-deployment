@@ -1,6 +1,9 @@
-[gd_resource type="TileSet" load_steps=4 format=3 uid="uid://c6je8biy2vjep"]
+[gd_resource type="TileSet" load_steps=5 format=3 uid="uid://c6je8biy2vjep"]
 
 [ext_resource type="Texture2D" uid="uid://csjbwptdepd7a" path="res://assets/Tiles/tilemap.png" id="1_ughnj"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_qnwgu"]
+friction = 0.2
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_fnvuf"]
 vertices = PackedVector2Array(8, 8, -8, 8, -8, -8, 8, -8)
@@ -1119,8 +1122,9 @@ texture = ExtResource("1_ughnj")
 2:12/0/terrains_peering_bit/top_right_corner = 0
 
 [resource]
-physics_layer_0/collision_layer = 64
-physics_layer_0/collision_mask = 0
+physics_layer_0/collision_layer = 0
+physics_layer_0/collision_mask = 3
+physics_layer_0/physics_material = SubResource("PhysicsMaterial_qnwgu")
 terrain_set_0/mode = 0
 terrain_set_0/terrain_0/name = "grass"
 terrain_set_0/terrain_0/color = Color(0.199893, 0.452628, 0.112937, 1)
