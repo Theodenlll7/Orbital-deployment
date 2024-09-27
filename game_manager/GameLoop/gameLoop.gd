@@ -1,12 +1,11 @@
 extends Node
 
 var last_day: int = -1 
-
+@onready var enemy_handler = $Enemy_handler
 func _ready() -> void:
 	last_day = GameVariables.day  
 
 func _process(delta: float) -> void:
-
 	if GameVariables.day != last_day:
 		last_day = GameVariables.day
 		_on_day_changed(last_day)
@@ -20,6 +19,7 @@ func _update_game_state(day: int) -> void:
 	print("Updating game state for day:", day)
 	_update_player_stats(day)
 	_reset_daily_quests()
+	enemy_handler.new_day(day)
 	
 	if day < 7:
 		updatePods(day)
