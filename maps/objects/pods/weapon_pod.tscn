@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://maps/objects/pods/scripts/pod.gd" id="1_dfide"]
 [ext_resource type="Script" path="res://common/interaction/Interactionarea/Interactionarea.gd" id="2_ndqur"]
 [ext_resource type="PackedScene" uid="uid://cc25in05338v8" path="res://maps/objects/pods/store_ui.tscn" id="4_5te7r"]
-[ext_resource type="TileSet" uid="uid://c524dnedfb61l" path="res://assets/Tiles/pods_tileset.tres" id="5_c6o6u"]
+[ext_resource type="TileSet" uid="uid://bsx0avqdj3afs" path="res://assets/Tiles/pods_tileset.tres" id="5_c6o6u"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k8nvd"]
 size = Vector2(91, 46)
