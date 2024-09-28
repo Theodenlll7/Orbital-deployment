@@ -17,8 +17,8 @@ func start_navigation(navigation_target: Vector2, move_speed: float = 100):
 		return false
 	target_position = navigation_target
 	speed = move_speed
-	set_process(is_target_reachable())
-	return is_target_reachable()
+	set_process(true)
+	return true
 
 
 func stop_navigation():
