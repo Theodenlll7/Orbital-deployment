@@ -4,7 +4,7 @@ extends Control
 @onready var loading_text: Label = $Control/Label/MarginContainer/HBoxContainer/loadingText
 @onready var loading_percent: Label = $Control/Label/MarginContainer/HBoxContainer/loadingPercent
 
-var next_scene = "res://scenes/level1.tscn"
+var next_scene = ""
 
 var time: float = 0.0;
 var sinTime: float = 0.0
@@ -15,11 +15,13 @@ var min_loading_time: float = 0.0
 var load_started_time: float = 0.0
 var loading_complete: bool = false
 
-var mission_ID = null;
+var mission_ID: String = "";
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	animation_player.play("loading_animation")
+	next_scene = MissionManager.get_mission_path_by_id(mission_ID)
+	
 	ResourceLoader.load_threaded_request(next_scene)
 	load_started_time = time
 	print("In load level the ID is: ", mission_ID)

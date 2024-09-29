@@ -21,7 +21,10 @@ func _ready() -> void:
 	mission_marker.visible = false
 
 func on_mission_1_button_pressed() -> void:
-	tab_level_selected.emit("1", marker_position )
+	tab_level_selected.emit("1", marker_position)
+	
+func on_mission_2_button_pressed() -> void:
+	tab_level_selected.emit("2", marker_position)
 	
 func on_back_pressed() -> void:
 	back_mission_select.emit()
@@ -29,7 +32,7 @@ func on_back_pressed() -> void:
 func set_planet_center(new_center: Vector2) -> void:
 	planet_center = new_center
 	
-func on_mission_button_hover(mission_number: int) -> void:
+func on_mission_button_hover(mission_number: String) -> void:
 	var mission = MissionManager.get_mission_by_id(mission_number)
 	
 	var marker_offset = mission.marker_offset
@@ -51,7 +54,7 @@ func on_mission_button_hover(mission_number: int) -> void:
 	mission_marker.modulate.a = 0.0
 	tween.tween_property(mission_marker, "modulate:a", opacity, fade_time)
 
-func set_button_connection(mission_button: Button, mission_index: int) -> void:
+func set_button_connection(mission_button: Button, mission_index: String) -> void:
 	mission_button.connect("mouse_entered", Callable(self, "on_mission_button_hover").bind(mission_index))
 	mission_button.connect("mouse_exited", Callable(self, "on_mission_button_hover_exit"))
 	mission_button.connect("focus_entered", Callable(self, "on_mission_button_hover").bind(mission_index))
@@ -60,7 +63,8 @@ func set_button_connection(mission_button: Button, mission_index: int) -> void:
 func handle_connecting_signals() -> void:
 	back_button.button_down.connect(on_back_pressed)
 	
-	set_button_connection(mission_1_button, 1)
+	set_button_connection(mission_1_button, "1")
 	mission_1_button.button_down.connect(on_mission_1_button_pressed)
 
-	set_button_connection(mission_2_button, 2)
+	set_button_connection(mission_2_button, "2")
+	mission_2_button.button_down.connect(on_mission_2_button_pressed)
