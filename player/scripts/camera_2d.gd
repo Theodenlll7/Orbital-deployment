@@ -5,7 +5,7 @@ var lerp_factor: float = 5.0  # A smaller factor ensures smoother transitions
 
 @export var snap_distance: float = 100
 @export var snap_offset: float = 2
-@export var snap_hold_duration: float = 0.5  # Hold time in seconds before switching points
+@export var snap_hold_duration: float = 0.1  # Hold time in seconds before switching points
 
 # Snapping directions in 8 directions plus the center
 const snap_points: Array = [

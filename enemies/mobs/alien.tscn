@@ -1,7 +1,6 @@
-[gd_scene load_steps=36 format=3 uid="uid://bgg2qlsu5f8qd"]
+[gd_scene load_steps=35 format=3 uid="uid://bgg2qlsu5f8qd"]
 
 [ext_resource type="Script" path="res://enemies/scripts/alien.gd" id="1_rg0qk"]
-[ext_resource type="Texture2D" uid="uid://bxdm7unavdbqa" path="res://enemies/assets/textures/Alien.png" id="2_46tp8"]
 [ext_resource type="Texture2D" uid="uid://ck8r1ebnncxpg" path="res://enemies/assets/textures/spider.png" id="2_jn7y3"]
 [ext_resource type="Script" path="res://common/components/HealthComponent.gd" id="3_32up1"]
 [ext_resource type="Script" path="res://enemies/scripts/melee_attack.gd" id="4_5a78v"]
@@ -163,7 +162,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"die",
-"speed": 5.0
+"speed": 32.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -240,13 +239,7 @@ speed = 150
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_xao01")
-animation = &"run_h"
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-visible = false
-texture_filter = 1
-texture_repeat = 1
-texture = ExtResource("2_46tp8")
+animation = &"die"
 
 [node name="HealthComponent" type="Node" parent="."]
 script = ExtResource("3_32up1")

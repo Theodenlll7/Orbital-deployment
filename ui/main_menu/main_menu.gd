@@ -125,15 +125,15 @@ func move_ship_to_marker(mission_ID: String, move_to: Vector2) -> void:
 
 
 func on_tween_finished(mission_ID: String) -> void:
-	match mission_ID:
-		"infinite":
-			print("Start infinite")
-			get_tree().change_scene_to_packed(load_level)
-		"1":
-			print("Start level 1")
-			get_tree().change_scene_to_packed(load_level)
-		_:
-			print("Error in starting the game")
+	var next_scene = load_level.instantiate()
+
+	if next_scene and mission_ID:
+		next_scene.mission_ID = mission_ID        
+		get_tree().root.add_child(next_scene)
+		get_tree().unload_current_scene()
+	else:
+		print("Failed to load the level")
+
 
 
 func reset_ship() -> void:
