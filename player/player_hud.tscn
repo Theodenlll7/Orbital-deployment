@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bdxxnqyrxk04e"]
+[gd_scene load_steps=11 format=3 uid="uid://bdxxnqyrxk04e"]
 
 [ext_resource type="Script" path="res://player/scripts/health_bar.gd" id="1_1fig6"]
 [ext_resource type="Script" path="res://player/scripts/player_hud.gd" id="1_7u87w"]
@@ -19,6 +19,9 @@ script/source = "extends HBoxContainer
 [sub_resource type="LabelSettings" id="LabelSettings_sc3hn"]
 font_size = 32
 font_color = Color(0.400698, 0.400698, 0.400698, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eojwm"]
+bg_color = Color(0.203922, 0.203922, 0.317647, 0.501961)
 
 [node name="PlayerHUD" type="CanvasLayer" node_paths=PackedStringArray("weapon_slots", "ammo_indicator")]
 script = ExtResource("1_7u87w")
@@ -226,6 +229,101 @@ visible = false
 layout_mode = 2
 text = "1000"
 label_settings = SubResource("LabelSettings_sc3hn")
+
+[node name="CacheIndicator" type="HBoxContainer" parent="PlayerHUD"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.068
+offset_top = -878.0
+offset_right = 150.008
+offset_bottom = -801.0
+
+[node name="cache" type="Label" parent="PlayerHUD/CacheIndicator"]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(0.121569, 0.729412, 0.309804, 1)
+theme_override_font_sizes/font_size = 48
+text = "---"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="cacheIcon" type="Label" parent="PlayerHUD/CacheIndicator"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(0.121569, 0.729412, 0.309804, 1)
+theme_override_font_sizes/font_size = 48
+text = " $"
+vertical_alignment = 1
+
+[node name="LevelBar" type="HBoxContainer" parent="PlayerHUD"]
+layout_mode = 0
+offset_left = 1050.0
+offset_top = 80.0
+offset_right = 1808.0
+offset_bottom = 145.0
+theme_override_constants/separation = 16
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PlayerHUD/LevelBar"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="LevelText" type="Label" parent="PlayerHUD/LevelBar/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 32
+text = "Lv"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Level" type="Label" parent="PlayerHUD/LevelBar/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 32
+text = "1"
+horizontal_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="PlayerHUD/LevelBar"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 6.0
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="ProgressBar" type="ProgressBar" parent="PlayerHUD/LevelBar/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_override_styles/background = SubResource("StyleBoxFlat_eojwm")
+
+[node name="WaveIndicator" type="HBoxContainer" parent="PlayerHUD"]
+layout_mode = 2
+offset_left = 1506.0
+offset_top = -878.0
+offset_right = 1782.0
+offset_bottom = -801.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="WaveText" type="Label" parent="PlayerHUD/WaveIndicator"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+size_flags_stretch_ratio = 2.0
+theme_override_font_sizes/font_size = 48
+text = "Wave "
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="WaveNumber" type="Label" parent="PlayerHUD/WaveIndicator"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 48
+text = "-"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="DeathScreen" parent="." instance=ExtResource("4_mdrqq")]
 visible = false
