@@ -38,7 +38,7 @@ func _process(delta: float) -> void:
 	ResourceLoader.load_threaded_get_status(next_scene, progress)
 
 	if progress.size() > 0:
-		loading_percent.text = str(progress[0] * 100) + "%"
+		loading_percent.text = str(floor(progress[0]) * 100) + "%"
 	
 	if progress[0] == 1 and not loading_complete:
 		loading_complete = true
