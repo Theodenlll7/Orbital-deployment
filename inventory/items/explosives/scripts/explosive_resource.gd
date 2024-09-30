@@ -33,6 +33,7 @@ class_name ExplosiveResource
 
 var throw_action: Callable = _throw
 
+@export var grenade_scene: PackedScene
 
 func _throw(_explosive: Explosive) -> void:
 	## This method should be overridden to define explosion behavior

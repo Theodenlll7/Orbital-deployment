@@ -1,7 +1,7 @@
 extends ExplosiveResource
 class_name ThrowableExplosiveResource
 
-@export var explosive_scene: PackedScene = preload(
+@export var explosive_grenade: PackedScene = preload(
 	"res://inventory/items/explosives/grenades/basic_grenade.tscn"
 )
 
@@ -9,21 +9,23 @@ var audio_player: AudioStreamPlayer
 var audio_stream: AudioStream
 
 func _throw(explosive: Explosive):
-	if not explosive_scene:
+	explosive_grenade = explosive.get_grenade()
+	if not explosive_grenade:
 		return
-	var explosive_instance = explosive_scene.instantiate()
-	
+	var explosive_instance = explosive_grenade.instantiate()
 	var position = explosive.to_global(muzzel_offset)
-	var grenade = explosive_scene.instantiate()
+
+	var grenade = explosive_grenade.instantiate()
 	grenade.global_rotation = explosive.global_rotation
 	grenade.global_position = position
 	var mouse_position = explosive.get_viewport().get_camera_2d().get_global_mouse_position()
-
 	var direction = (mouse_position - position).normalized()
+
+	#var direction = Vector2.RIGHT.rotated(explosive.global_rotation)
 	
 	#Collision
-	grenade.collision_layer = 1  
-	grenade.collision_mask = 1  
+	grenade.collision_layer = 2  
+	grenade.collision_mask = 3  
 	
 	#Throwing
 	grenade.direction = direction
@@ -40,4 +42,8 @@ func _throw(explosive: Explosive):
 	grenade.set_fuse_time(explosive.get_fuse_time())
 	
 	explosive.get_tree().current_scene.add_child(grenade)
+	
+	print("Mouse Position: ", mouse_position)
+	print("Grenade Position: ", position)
+	print("Direction: ", direction)
 	

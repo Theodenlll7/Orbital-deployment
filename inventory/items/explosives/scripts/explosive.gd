@@ -84,3 +84,6 @@ func get_fuse_time() -> float:
 	
 func get_grenade_weight() -> float:
 	return explosive_resource.grenade_weight
+
+func get_grenade():
+	return explosive_resource.grenade_scene
