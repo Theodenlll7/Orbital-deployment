@@ -1,15 +1,15 @@
 shader_type canvas_item;
 
-uniform float speed_x = 0.8;   
-uniform float speed_y = 0.3;       	
-uniform float frequency_y = 2.0;   
+uniform float speed_x = 0.8;
+uniform float speed_y = 0.3;
+uniform float frequency_y = 2.0;
 uniform float amplitude_y = 0.1;
 
 void vertex() {
 	// Called for every vertex the material is visible on.
 	UV.x += fract(TIME * speed_x);
     UV.y += sin(UV.y * frequency_y + TIME * speed_y) * amplitude_y;
-	
+
 }
 
 void fragment() {

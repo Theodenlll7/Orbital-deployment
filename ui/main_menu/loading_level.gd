@@ -11,7 +11,7 @@ var sinTime: float = 0.0
 var speed: float = 2.0
 var minOpacity = 0.2
 
-var min_loading_time: float = 0.0
+var min_loading_time: float = 3.0
 var load_started_time: float = 0.0
 var loading_complete: bool = false
 

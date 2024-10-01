@@ -5,7 +5,7 @@ class_name ExperiencePointsManager
 signal experience_updated
 
 # Variables to store experience and level
-var experience_points: int = 0
+var experience_points: int = 128
 var current_level: int = 0
 var experience_needed: int = 400
 
