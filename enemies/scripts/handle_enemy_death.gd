@@ -5,4 +5,5 @@ func _ready() -> void:
 	hp.died.connect(_on_death)
 
 func _on_death() -> void:
+	ExperiencePoints.add_experience(10)
 	get_parent().queue_free()

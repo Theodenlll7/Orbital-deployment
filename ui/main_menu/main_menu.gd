@@ -15,6 +15,9 @@ extends Control
 
 @onready var animation_player: AnimationPlayer = $transistion_content/AnimationPlayer
 
+@onready var player_level_label: Label = $Control/MarginContainer/HBoxContainer/PlayerLevelLabel
+
+
 @onready var target_menu: Control = main_menu
 
 const load_level = preload("res://ui/main_menu/loading_level.tscn")
@@ -25,6 +28,7 @@ func _ready() -> void:
 	handle_connecting_signals()
 	first_btn_focus_grab()
 	ship_start_position = ship.global_position
+	dispaly_level()
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -139,6 +143,9 @@ func on_tween_finished(mission_ID: String) -> void:
 func reset_ship() -> void:
 	ship_texture.scale = Vector2(1.0, 1.0)
 	ship.global_position = ship_start_position
+	
+func dispaly_level() -> void:
+	player_level_label.text = str(ExperiencePoints.get_current_level())
 
 
 func handle_connecting_signals() -> void:

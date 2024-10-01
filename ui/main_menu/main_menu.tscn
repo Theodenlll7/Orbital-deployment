@@ -180,6 +180,7 @@ grow_vertical = 2
 texture = ExtResource("1_w5je3")
 
 [node name="mission_select" parent="." instance=ExtResource("8_cavjr")]
+visible = false
 layout_mode = 1
 
 [node name="ship" type="Control" parent="."]
@@ -291,6 +292,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_1p2d2")
 text = " Exit game "
 
 [node name="options_menu" parent="." instance=ExtResource("7_x8lvi")]
+visible = false
 layout_mode = 1
 
 [node name="transistion_content" type="Control" parent="."]
@@ -327,3 +329,50 @@ texture = ExtResource("9_bh1l6")
 libraries = {
 "": SubResource("AnimationLibrary_t0w68")
 }
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -465.0
+offset_top = -121.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="LevelTextLabel" type="Label" parent="Control/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+theme_override_font_sizes/font_size = 32
+text = "Your level: "
+horizontal_alignment = 2
+
+[node name="PlayerLevelLabel" type="Label" parent="Control/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.219608, 0.4, 0.745098, 1)
+theme_override_font_sizes/font_size = 32
+text = "-"
+
+[node name="Label" type="Label" parent="Control/MarginContainer/HBoxContainer"]
+layout_mode = 2
+text = "(Under construction)"

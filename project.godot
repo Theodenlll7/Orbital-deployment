@@ -24,6 +24,7 @@ SoundEngine="*res://game_manager/sound_engine/sound_engine.tscn"
 PodVariables="*res://game_manager/GameVariables/PodVariables.gd"
 Shop="*res://game_manager/GameVariables/Shop.gd"
 MissionManager="*res://ui/main_menu/mission_manager.gd"
+ExperiencePoints="*res://player/experience_points/ExperiencePointsManager.gd"
 
 [debug]
 

@@ -54,6 +54,7 @@ func _on_health_component_died() -> void:
 	animated_sprite.animation_finished.connect(on_death_animation_finished)
 
 func on_death_animation_finished() -> void:
+	ExperiencePoints.add_experience(20)
 	queue_free()
 
 func animate() -> void:

@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://bdxxnqyrxk04e"]
+[gd_scene load_steps=13 format=3 uid="uid://bdxxnqyrxk04e"]
 
 [ext_resource type="Script" path="res://player/scripts/health_bar.gd" id="1_1fig6"]
 [ext_resource type="Script" path="res://player/scripts/player_hud.gd" id="1_7u87w"]
 [ext_resource type="Texture2D" uid="uid://dkr0pw0btoksp" path="res://inventory/sprites/inventory_slot.png" id="2_idg8k"]
 [ext_resource type="Script" path="res://player/scripts/ammo_indicator.gd" id="4_8psay"]
 [ext_resource type="PackedScene" uid="uid://dcm0rxa7wl85t" path="res://ui/pause_menu/death_screen.tscn" id="4_mdrqq"]
+[ext_resource type="Script" path="res://player/level_bar.gd" id="5_07hhj"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t7j8m"]
 bg_color = Color(0.203922, 0.203922, 0.317647, 0.501961)
@@ -22,6 +23,9 @@ font_color = Color(0.400698, 0.400698, 0.400698, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eojwm"]
 bg_color = Color(0.203922, 0.203922, 0.317647, 0.501961)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e4ky8"]
+bg_color = Color(1, 0.698039, 0.196078, 1)
 
 [node name="PlayerHUD" type="CanvasLayer" node_paths=PackedStringArray("weapon_slots", "ammo_indicator")]
 script = ExtResource("1_7u87w")
@@ -43,18 +47,20 @@ grow_horizontal = 2
 grow_vertical = 0
 
 [node name="HealthBar" type="ProgressBar" parent="PlayerHUD"]
+custom_minimum_size = Vector2(500, 52)
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -155.0
-offset_top = -26.0
-offset_right = 328.0
-offset_bottom = 1.0
+offset_left = -156.0
+offset_top = -23.0
+offset_right = 327.0
+offset_bottom = 29.0
 grow_horizontal = 2
 grow_vertical = 0
+theme_override_font_sizes/font_size = 28
 theme_override_styles/background = SubResource("StyleBoxFlat_t7j8m")
 theme_override_styles/fill = SubResource("StyleBoxFlat_ougiu")
 rounded = true
@@ -258,33 +264,26 @@ vertical_alignment = 1
 
 [node name="LevelBar" type="HBoxContainer" parent="PlayerHUD"]
 layout_mode = 0
-offset_left = 1050.0
+offset_left = 1055.0
 offset_top = 80.0
 offset_right = 1808.0
-offset_bottom = 145.0
+offset_bottom = 148.0
 theme_override_constants/separation = 16
+script = ExtResource("5_07hhj")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="PlayerHUD/LevelBar"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="LevelText" type="Label" parent="PlayerHUD/LevelBar/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 1
-theme_override_font_sizes/font_size = 32
-text = "Lv"
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [node name="Level" type="Label" parent="PlayerHUD/LevelBar/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 32
-text = "1"
+text = "Level: -"
 horizontal_alignment = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="PlayerHUD/LevelBar"]
+custom_minimum_size = Vector2(0, 68)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 6.0
@@ -292,10 +291,27 @@ theme_override_constants/margin_top = 8
 theme_override_constants/margin_bottom = 8
 
 [node name="ProgressBar" type="ProgressBar" parent="PlayerHUD/LevelBar/MarginContainer"]
+custom_minimum_size = Vector2(500, 52)
 layout_mode = 2
-size_flags_horizontal = 3
+size_flags_horizontal = 6
 size_flags_vertical = 1
+size_flags_stretch_ratio = 0.0
+theme_override_colors/font_color = Color(0, 0, 0, 0)
 theme_override_styles/background = SubResource("StyleBoxFlat_eojwm")
+theme_override_styles/fill = SubResource("StyleBoxFlat_e4ky8")
+
+[node name="ProgressLabel" type="Label" parent="PlayerHUD/LevelBar/MarginContainer/ProgressBar"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 24
+text = "0/0"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="WaveIndicator" type="HBoxContainer" parent="PlayerHUD"]
 layout_mode = 2
