@@ -1,4 +1,23 @@
-[gd_scene format=3 uid="uid://cissp82tlrhpu"]
+[gd_scene load_steps=7 format=3 uid="uid://cissp82tlrhpu"]
+
+[ext_resource type="Script" path="res://ui/main_menu/player_progress.gd" id="1_5up80"]
+[ext_resource type="FontFile" uid="uid://dkg32o3qfh2n7" path="res://assets/Fonts/pixelmix.ttf" id="1_q1ym1"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4uwop"]
+bg_color = Color(0.6, 0.6, 0.6, 0.333333)
+border_width_bottom = 4
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0ngwi"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_bottom = 4
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hrsb2"]
+bg_color = Color(0.203922, 0.203922, 0.317647, 0.501961)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_digek"]
+bg_color = Color(1, 0.698039, 0.196078, 1)
 
 [node name="player_progress" type="Control"]
 layout_mode = 3
@@ -7,11 +26,125 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_5up80")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="ContentMarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/margin_left = 64
+theme_override_constants/margin_top = 64
+theme_override_constants/margin_right = 64
+theme_override_constants/margin_bottom = 64
+
+[node name="MarginContainer" type="MarginContainer" parent="ContentMarginContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 64
+theme_override_constants/margin_bottom = 64
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ContentMarginContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 64
+
+[node name="Label" type="Label" parent="ContentMarginContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0.219608, 0.4, 0.745098, 1)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 4
+theme_override_constants/shadow_outline_size = 16
+theme_override_fonts/font = ExtResource("1_q1ym1")
+theme_override_font_sizes/font_size = 64
+text = "Player progress"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="ContentMarginContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="BackButton" type="Button" parent="ContentMarginContainer"]
+custom_minimum_size = Vector2(256, 64)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 10
+theme_override_fonts/font = ExtResource("1_q1ym1")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/hover = SubResource("StyleBoxFlat_4uwop")
+theme_override_styles/normal = SubResource("StyleBoxFlat_0ngwi")
+text = "Back"
+
+[node name="LevelMarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -700.0
+offset_top = -301.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 64
+
+[node name="Panel" type="Panel" parent="LevelMarginContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_hrsb2")
+
+[node name="MarginContainer" type="MarginContainer" parent="LevelMarginContainer/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_right = 32
+
+[node name="VBoxContainer" type="VBoxContainer" parent="LevelMarginContainer/Panel/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="LevelMarginContainer/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="LevelTextLabel" type="Label" parent="LevelMarginContainer/Panel/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(0, 52)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.18
+theme_override_font_sizes/font_size = 28
+text = "You are level "
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="LevelLabel" type="Label" parent="LevelMarginContainer/Panel/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(0, 52)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 0.698039, 0.196078, 1)
+theme_override_font_sizes/font_size = 28
+text = "-"
+vertical_alignment = 1
+
+[node name="ProgressBar" type="ProgressBar" parent="LevelMarginContainer/Panel/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(400, 52)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0, 0, 0, 0)
+theme_override_styles/fill = SubResource("StyleBoxFlat_digek")
+
+[node name="ProgressLabel" type="Label" parent="LevelMarginContainer/Panel/MarginContainer/VBoxContainer/ProgressBar"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 28
+text = "-/-"
+horizontal_alignment = 1
+vertical_alignment = 1

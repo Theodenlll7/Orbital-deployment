@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://dxk7c6wikv43p"]
+[gd_scene load_steps=23 format=3 uid="uid://dxk7c6wikv43p"]
 
 [ext_resource type="Theme" uid="uid://c3a3bfndbpf03" path="res://ui/main_menu/UI_theme.tres" id="1_7cya5"]
 [ext_resource type="Script" path="res://ui/main_menu/main_menu.gd" id="1_sgu6m"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://bkr08nyqjnpg5" path="res://ui/main_menu/options_menu.tscn" id="7_x8lvi"]
 [ext_resource type="PackedScene" uid="uid://b7bby50sr8bfd" path="res://ui/main_menu/mission_select.tscn" id="8_cavjr"]
 [ext_resource type="Texture2D" uid="uid://r032l1xiye2a" path="res://ui/main_menu/assets/textures/astroid_rocks.png" id="9_bh1l6"]
+[ext_resource type="PackedScene" uid="uid://cissp82tlrhpu" path="res://ui/main_menu/player_progress.tscn" id="11_4ytoj"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7cjl6"]
 shader = ExtResource("2_ot4nc")
@@ -271,6 +272,16 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_8ioed")
 theme_override_styles/normal = SubResource("StyleBoxFlat_1p2d2")
 text = " Select mission "
 
+[node name="PlayerProgressButton" type="Button" parent="ContentMarginContainer/HBoxContainer/VBoxContainer"]
+clip_contents = true
+custom_minimum_size = Vector2(256, 64)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_t4ix4")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/hover = SubResource("StyleBoxFlat_8ioed")
+theme_override_styles/normal = SubResource("StyleBoxFlat_1p2d2")
+text = "Player progress"
+
 [node name="OptionsButton" type="Button" parent="ContentMarginContainer/HBoxContainer/VBoxContainer"]
 clip_contents = true
 custom_minimum_size = Vector2(256, 64)
@@ -292,6 +303,10 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_1p2d2")
 text = " Exit game "
 
 [node name="options_menu" parent="." instance=ExtResource("7_x8lvi")]
+visible = false
+layout_mode = 1
+
+[node name="player_progress" parent="." instance=ExtResource("11_4ytoj")]
 visible = false
 layout_mode = 1
 
@@ -329,50 +344,3 @@ texture = ExtResource("9_bh1l6")
 libraries = {
 "": SubResource("AnimationLibrary_t0w68")
 }
-
-[node name="Control" type="Control" parent="."]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -465.0
-offset_top = -121.0
-grow_horizontal = 0
-grow_vertical = 0
-
-[node name="MarginContainer" type="MarginContainer" parent="Control"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 8
-theme_override_constants/margin_top = 8
-theme_override_constants/margin_right = 8
-theme_override_constants/margin_bottom = 8
-
-[node name="HBoxContainer" type="HBoxContainer" parent="Control/MarginContainer"]
-layout_mode = 2
-alignment = 1
-
-[node name="LevelTextLabel" type="Label" parent="Control/MarginContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_stretch_ratio = 2.0
-theme_override_font_sizes/font_size = 32
-text = "Your level: "
-horizontal_alignment = 2
-
-[node name="PlayerLevelLabel" type="Label" parent="Control/MarginContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_colors/font_color = Color(0.219608, 0.4, 0.745098, 1)
-theme_override_font_sizes/font_size = 32
-text = "-"
-
-[node name="Label" type="Label" parent="Control/MarginContainer/HBoxContainer"]
-layout_mode = 2
-text = "(Under construction)"
