@@ -22,7 +22,7 @@ func add_experience(points: int) -> void:
 	print("Added ", points, " experience points. Total: ", experience_points)
 	
 	# Emit the signal to notify listeners (like UI)
-	emit_signal("experience_updated")
+	experience_updated.emit()
 	check_level_up()
 
 func check_level_up() -> void:
@@ -38,7 +38,7 @@ func level_up() -> void:
 	print("Leveled up! New level: ", current_level)
 	print("Experience needed for next level: ", experience_needed)
 
-	emit_signal("experience_updated")
+	experience_updated.emit()
 
 func calculate_experience_needed(level: int) -> int:
 	return int(base_xp * level + log(level + 1) * curve_steepness)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://c5js6pnm2kdrx"]
+[gd_scene load_steps=18 format=3 uid="uid://c5js6pnm2kdrx"]
 
 [ext_resource type="Shader" path="res://ui/main_menu/main_menu_scroll.gdshader" id="1_qcuvr"]
 [ext_resource type="Script" path="res://ui/main_menu/loading_level.gd" id="1_yaehp"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://bpelbthainlnh" path="res://ui/main_menu/assets/textures/loading/helmetglas.png" id="3_roo5a"]
 [ext_resource type="Texture2D" uid="uid://00o3ookfdlp5" path="res://ui/main_menu/assets/textures/loading/landingcraft.png" id="4_7bu6j"]
 [ext_resource type="Texture2D" uid="uid://bjlamfjbqgd28" path="res://ui/main_menu/assets/textures/loading/landingcraft_lamp.png" id="5_nqu7e"]
+[ext_resource type="FontFile" uid="uid://dkg32o3qfh2n7" path="res://assets/Fonts/pixelmix.ttf" id="8_6wc2l"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4mvgl"]
 shader = ExtResource("1_qcuvr")
@@ -17,6 +18,9 @@ shader_parameter/amplitude_y = 0.1
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ofvn7"]
 shader = ExtResource("3_3cwts")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4hski"]
+bg_color = Color(0.203922, 0.203922, 0.317647, 0.380392)
 
 [sub_resource type="Animation" id="Animation_5eeqi"]
 length = 0.001
@@ -232,7 +236,6 @@ theme_override_constants/margin_bottom = 64
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Control/Label/MarginContainer"]
 layout_mode = 2
-size_flags_vertical = 8
 
 [node name="loadingText" type="Label" parent="Control/Label/MarginContainer/HBoxContainer"]
 layout_mode = 2
@@ -248,6 +251,72 @@ size_flags_vertical = 8
 theme_override_font_sizes/font_size = 64
 text = "---%"
 horizontal_alignment = 2
+
+[node name="Tip" type="Control" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/Tip"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 58
+theme_override_constants/margin_top = 64
+theme_override_constants/margin_right = 64
+theme_override_constants/margin_bottom = 160
+
+[node name="Control" type="Control" parent="Control/Tip/MarginContainer"]
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="Control/Tip/MarginContainer/Control"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -472.0
+offset_right = 832.0
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_4hski")
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/Tip/MarginContainer/Control/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/Tip/MarginContainer/Control/Panel/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Control/Tip/MarginContainer/Control/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_font_sizes/font_size = 48
+text = "Game hint"
+
+[node name="HSeparator" type="HSeparator" parent="Control/Tip/MarginContainer/Control/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Control/Tip/MarginContainer/Control/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 3.0
+theme_override_fonts/normal_font = ExtResource("8_6wc2l")
+theme_override_font_sizes/normal_font_size = 40
+text = "Lorem ipsum"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

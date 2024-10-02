@@ -1,6 +1,7 @@
-[gd_scene load_steps=80 format=3 uid="uid://6vt8l263l0o7"]
+[gd_scene load_steps=82 format=3 uid="uid://6vt8l263l0o7"]
 
 [ext_resource type="Script" path="res://player/scripts/player.gd" id="1_gaiyc"]
+[ext_resource type="Texture2D" uid="uid://dcgcly83hxan6" path="res://player/assets/textures/light.png" id="2_8ye7d"]
 [ext_resource type="Script" path="res://common/components/HealthComponent.gd" id="3_rmoxv"]
 [ext_resource type="Texture2D" uid="uid://dgfwosrjlow2i" path="res://player/assets/textures/player.png" id="4_arusb"]
 [ext_resource type="Script" path="res://player/scripts/camera_2d.gd" id="4_hh08p"]
@@ -12,6 +13,9 @@
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_c3fsl"]
 radius = 4.0
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_8yrgv"]
+light_mode = 1
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uiavt"]
 atlas = ExtResource("4_arusb")
@@ -524,9 +528,16 @@ animations = [{
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("weapon_orbit_point") groups=["players"]]
 z_index = 1
-collision_mask = 42
+collision_mask = 106
 script = ExtResource("1_gaiyc")
 weapon_orbit_point = NodePath("WeaponOrbitPoint")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+color = Color(0.99529, 0.931272, 0.871325, 1)
+energy = 0.6
+shadow_enabled = true
+texture = ExtResource("2_8ye7d")
+texture_scale = 0.1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 3)
@@ -538,11 +549,13 @@ script = ExtResource("3_rmoxv")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 scale = Vector2(0.62216, 1.02895)
-zoom = Vector2(3, 3)
+zoom = Vector2(5, 5)
 script = ExtResource("4_hh08p")
+snap_distance = 70.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 z_index = 1
+material = SubResource("CanvasItemMaterial_8yrgv")
 position = Vector2(0, -5)
 sprite_frames = SubResource("SpriteFrames_7t3vk")
 animation = &"roll_h"

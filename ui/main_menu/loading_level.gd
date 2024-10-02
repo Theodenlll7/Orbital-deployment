@@ -15,12 +15,17 @@ var min_loading_time: float = 3.0
 var load_started_time: float = 0.0
 var loading_complete: bool = false
 
-var mission_ID: String = "";
+var mission_ID: String = ""
+
+@onready var rich_text_label: RichTextLabel = $Control/Tip/MarginContainer/Control/Panel/MarginContainer/VBoxContainer/RichTextLabel
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	animation_player.play("loading_animation")
 	next_scene = MissionManager.get_mission_path_by_id(mission_ID)
+	
+	set_random_hint()
 	
 	ResourceLoader.load_threaded_request(next_scene)
 	load_started_time = time
@@ -29,6 +34,9 @@ func _ready() -> void:
 func flashLoadingText() -> void:
 	sinTime = minOpacity + (1 - minOpacity) * ((sin(time * speed) + 1) * 0.5)
 	loading_text.modulate.a = sinTime
+	
+func set_random_hint() -> void:
+	rich_text_label.text =  hints.get_random_hint()
 
 func _process(delta: float) -> void:
 	var progress = []
