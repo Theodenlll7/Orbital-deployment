@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://o3dndqv0yf5s" path="res://scenes/scene1.tscn" id="1_wr805"]
 [ext_resource type="PackedScene" uid="uid://6vt8l263l0o7" path="res://player/player.tscn" id="2_5ihlw"]
 [ext_resource type="Script" path="res://enemies/scripts/enemy_spawner.gd" id="3_rkl8f"]
-[ext_resource type="PackedScene" uid="uid://bgg2qlsu5f8qd" path="res://enemies/mobs/alien.tscn" id="4_v3qcm"]
+[ext_resource type="PackedScene" uid="uid://b7wp5x6v1xeft" path="res://enemies/mobs/alien.tscn" id="4_v3qcm"]
 [ext_resource type="PackedScene" uid="uid://fwtaakyb0exx" path="res://maps/objects/pods/weapon_pod.tscn" id="5_cpg73"]
 [ext_resource type="PackedScene" uid="uid://kua7fs588s48" path="res://enemies/mobs/ranger.tscn" id="5_r2vmx"]
 [ext_resource type="Script" path="res://inventory/loot/droped_items/scripts/ammo_crate.gd" id="7_wtpsh"]

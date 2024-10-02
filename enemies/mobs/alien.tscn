@@ -1,9 +1,10 @@
-[gd_scene load_steps=35 format=3 uid="uid://bgg2qlsu5f8qd"]
+[gd_scene load_steps=36 format=3 uid="uid://b7wp5x6v1xeft"]
 
 [ext_resource type="Script" path="res://enemies/scripts/alien.gd" id="1_rg0qk"]
 [ext_resource type="Texture2D" uid="uid://ck8r1ebnncxpg" path="res://enemies/assets/textures/spider.png" id="2_jn7y3"]
 [ext_resource type="Script" path="res://common/components/HealthComponent.gd" id="3_32up1"]
 [ext_resource type="Script" path="res://enemies/scripts/melee_attack.gd" id="4_5a78v"]
+[ext_resource type="Script" path="res://enemies/scripts/handle_enemy_death.gd" id="5_61k3r"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wxfpv"]
 atlas = ExtResource("2_jn7y3")
@@ -258,6 +259,9 @@ script = ExtResource("4_5a78v")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackRange"]
 shape = SubResource("CircleShape2D_gynkl")
+
+[node name="HandleEnemeyDeath" type="Node" parent="."]
+script = ExtResource("5_61k3r")
 
 [connection signal="died" from="HealthComponent" to="." method="_on_health_component_died"]
 [connection signal="body_entered" from="AttackRange" to="AttackRange" method="_on_body_entered"]
