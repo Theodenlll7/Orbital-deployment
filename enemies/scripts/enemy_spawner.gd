@@ -2,25 +2,58 @@ extends Node2D
 
 class_name enemy_spawner
 
+
+
+
+	
+
 # Exported variables
 @export var spawn_radius_min: int = 500  # Minimum distance from players for spawning
 @export var spawn_radius_max: int = 600  # Maximum distance from players for spawning
 @export var spawn_interval: float = 3.0  # Time between spawns
 
 @export var enemy_spawn_pool: Array[PackedScene] = []
+@export var enemy_spawn_weights : Array[int] = []
 
 @onready var players = get_tree().get_nodes_in_group("players")
 
 var spawn_timer = spawn_interval  # Timer for controlling spawn intervals
 
+var wave = 0
 
-# Main game loop
-func _process(delta):
-	if spawn_timer < 0:
-		spawn_timer = spawn_interval
+var enemy_count = 0
+
+var enemies_spawnd_this_wave : int = 0
+
+var enemies_to_spawn: int = 10
+
+var wave_finished := false
+
+var in_between_wave_timer = Timer.new()
+
+func start_next_wave():
+	print("Start Wave")
+	wave_finished = false
+	process_wave()
+	
+func _enemy_death():
+	enemy_count -= 1
+	if enemy_count <= 0:
+		in_between_wave_timer.start()
+		
+		
+func _ready() -> void:
+	add_child(in_between_wave_timer)
+	in_between_wave_timer.wait_time = 10
+	in_between_wave_timer.one_shot = true
+	in_between_wave_timer.timeout.connect(start_next_wave)
+	in_between_wave_timer.start()
+	
+
+func process_wave():
+	for i in range(enemies_to_spawn):
 		spawn_enemy()
-	spawn_timer -= delta
-
+	wave_finished = true
 
 # Spawn an enemy at a random valid position around one of the players
 func spawn_enemy():
@@ -29,6 +62,9 @@ func spawn_enemy():
 	enemy.add_to_group("enemies")
 	enemy.global_position = spawn_postion
 	add_child(enemy)
+	var death = enemy.get_node("HandleEnemeyDeath") as HandleEnemeyDeath
+	death.died.connect(_enemy_death)
+	enemy_count += 1
 
 
 # Find a random valid tile position that is at a valid distance from all players

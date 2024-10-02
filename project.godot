@@ -26,10 +26,6 @@ Shop="*res://game_manager/GameVariables/Shop.gd"
 MissionManager="*res://ui/main_menu/mission_manager.gd"
 ExperiencePoints="*res://player/experience_points/ExperiencePointsManager.gd"
 
-[debug]
-
-settings/stdout/print_fps=true
-
 [display]
 
 window/size/viewport_width=1920
