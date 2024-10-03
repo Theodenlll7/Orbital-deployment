@@ -42,6 +42,9 @@ func setLabelsAndCost(shop_type : ShopType):
 			array_items = explosives
 	
 	var shop = $ContentPanelContainer/MarginContainer/VBoxContainer/ScrollContainer/shop
+	if shop_type != ShopType.weapon:
+		var refil_ammo_shop_slot: Panel = $ContentPanelContainer/MarginContainer/VBoxContainer/Panel
+		refil_ammo_shop_slot.visible = false
 	
 	for item in array_items:
 		var buy_btn: Button = weapon_buy_button.instantiate()

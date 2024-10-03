@@ -1,8 +1,12 @@
 extends Node
+
+signal money_updated(new_money: int)
+
 var player_money: int = 1000:
 	get: return player_money
 	set(value):
 		player_money = value
+		money_updated.emit(player_money)
 		print("Player money has been updated: ", player_money)
 		
 var GameDifficulty = "easy"
@@ -15,9 +19,11 @@ func _ready():
 
 func increasePlayerMoney(amount):
 	player_money+=amount
+	money_updated.emit(player_money)
 	
 func decreasePlayerMoney(amount):
 	player_money-=amount
+	money_updated.emit(player_money)
 
 func reparirShip():
 	pass

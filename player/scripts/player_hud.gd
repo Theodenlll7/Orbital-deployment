@@ -4,9 +4,13 @@ class_name PlayerHUD
 
 @export_group("Weapon Slots")
 @export var weapon_slots: Array[AspectRatioContainer] = [null, null]
-@export var selected_size: float = 1
+@export var selected_size: float = 1.0
 @export var deselected_size: float = 0.5
 
+@onready var mony_label: Label = $PlayerHUD/monyIndicator/mony
+@onready var wave_number: Label = $PlayerHUD/WaveIndicator/WaveNumber
+
+@onready var wave_manager = get_tree().get_nodes_in_group("wave_manager")[0] as WaveManager
 @export var ammo_indicator: AmmoIndicator = null
 
 const INVENTORY_SLOT = preload("res://inventory/sprites/inventory_slot.png")
@@ -16,8 +20,18 @@ var selected_slot = -1
 
 
 func _ready() -> void:
+	wave_manager.new_wave_started.connect(new_wave)
+	wave_number.text = str(wave_manager.wave)
+
+	GameVariables.money_updated.connect(update_money_display)
+	mony_label.text = str(GameVariables.player_money)
+	
+	
 	for slot in weapon_slots.size():
 		deselect_weapon_slot(slot)
+
+func new_wave(wave: int):
+	wave_number.text = str(wave)
 
 
 func select_weapon_slot(index: int) -> void:
@@ -32,6 +46,9 @@ func deselect_weapon_slot(index: int) -> void:
 		return
 	weapon_slots[index].get_node("Frame").texture = INVENTORY_SLOT
 	#weapon_slots[index].scale = Vector2(deselected_size, deselected_size)
+
+func update_money_display(new_money_value: int) -> void:
+	mony_label.text = str(new_money_value)
 
 
 func equip_weapon(slot_index: int, weapon: WeaponResource):

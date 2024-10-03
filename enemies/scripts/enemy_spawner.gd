@@ -1,11 +1,6 @@
 extends Node2D
 
-class_name enemy_spawner
-
-
-
-
-	
+class_name WaveManager
 
 # Exported variables
 @export var spawn_radius_min: int = 500  # Minimum distance from players for spawning
@@ -16,6 +11,8 @@ class_name enemy_spawner
 @export var enemy_spawn_weights : Array[int] = []
 
 @onready var players = get_tree().get_nodes_in_group("players")
+
+signal new_wave_started(wave: int)
 
 var spawn_timer = spawn_interval  # Timer for controlling spawn intervals
 
@@ -33,6 +30,8 @@ var in_between_wave_timer = Timer.new()
 
 func start_next_wave():
 	print("Start Wave")
+	wave += 1;
+	new_wave_started.emit(wave)
 	wave_finished = false
 	process_wave()
 	
@@ -43,6 +42,8 @@ func _enemy_death():
 		
 		
 func _ready() -> void:
+	add_to_group("managers")
+	add_to_group("wave_manager")
 	add_child(in_between_wave_timer)
 	in_between_wave_timer.wait_time = 10
 	in_between_wave_timer.one_shot = true
