@@ -1,7 +1,8 @@
-[gd_scene load_steps=18 format=3 uid="uid://kua7fs588s48"]
+[gd_scene load_steps=20 format=3 uid="uid://kua7fs588s48"]
 
 [ext_resource type="Texture2D" uid="uid://xoiggvxuo4wh" path="res://enemies/assets/textures/monster.png" id="1_b12vd"]
 [ext_resource type="Script" path="res://addons/tree_mind/nodes/mind_tree.gd" id="2_ao7rd"]
+[ext_resource type="Texture2D" uid="uid://dcgcly83hxan6" path="res://player/assets/textures/light.png" id="2_lkxbg"]
 [ext_resource type="Script" path="res://addons/tree_mind/nodes/composites/sequence.gd" id="3_nukmd"]
 [ext_resource type="Script" path="res://addons/tree_mind/nodes/composites/selector.gd" id="4_028xp"]
 [ext_resource type="Script" path="res://addons/tree_mind/nodes/leafs/blackbord_set.gd" id="6_k0upd"]
@@ -17,6 +18,9 @@
 [ext_resource type="Script" path="res://inventory/items/weapons/scripts/mob_weapon.gd" id="15_nllvl"]
 [ext_resource type="Script" path="res://enemies/scripts/handle_enemy_death.gd" id="16_islfw"]
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_eg8l2"]
+light_mode = 1
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qvi5h"]
 radius = 4.0
 height = 14.0
@@ -27,8 +31,18 @@ collision_layer = 2
 collision_mask = 39
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("CanvasItemMaterial_eg8l2")
 position = Vector2(0, -3)
 texture = ExtResource("1_b12vd")
+
+[node name="PointLight2D" type="PointLight2D" parent="Sprite2D"]
+position = Vector2(0, 3)
+color = Color(0.539865, 0, 0, 1)
+energy = 0.8
+shadow_enabled = true
+shadow_item_cull_mask = 2
+texture = ExtResource("2_lkxbg")
+texture_scale = 0.15
 
 [node name="HealthComponent" type="Node" parent="."]
 script = ExtResource("11_u8r02")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://b7wp5x6v1xeft"]
+[gd_scene load_steps=36 format=3 uid="uid://bgg2qlsu5f8qd"]
 
 [ext_resource type="Script" path="res://enemies/scripts/alien.gd" id="1_rg0qk"]
 [ext_resource type="Texture2D" uid="uid://ck8r1ebnncxpg" path="res://enemies/assets/textures/spider.png" id="2_jn7y3"]

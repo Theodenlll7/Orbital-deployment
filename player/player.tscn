@@ -533,11 +533,12 @@ script = ExtResource("1_gaiyc")
 weapon_orbit_point = NodePath("WeaponOrbitPoint")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
-color = Color(0.99529, 0.931272, 0.871325, 1)
+color = Color(0.969719, 0.711934, 0.449195, 1)
 energy = 0.6
 shadow_enabled = true
+shadow_item_cull_mask = 2
 texture = ExtResource("2_8ye7d")
-texture_scale = 0.1
+texture_scale = 0.15
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 3)
