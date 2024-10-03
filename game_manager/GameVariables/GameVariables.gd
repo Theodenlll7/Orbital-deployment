@@ -1,6 +1,7 @@
 extends Node
 
 signal money_updated(new_money: int)
+var is_night = false
 
 var player_money: int = 1000:
 	get: return player_money
@@ -27,7 +28,7 @@ func decreasePlayerMoney(amount):
 
 func reparirShip():
 	pass
-
+	
 func setUpGameDifficulty():
 		match GameDifficulty:
 			"easy": 

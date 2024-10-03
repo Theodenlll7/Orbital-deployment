@@ -1,7 +1,0 @@
-[gd_resource type="Resource" script_class="LootTable" load_steps=2 format=3 uid="uid://dwncsm7kwadaj"]
-
-[ext_resource type="Script" path="res://inventory/loot/loot_table.gd" id="1_c8hjv"]
-
-[resource]
-script = ExtResource("1_c8hjv")
-loot = {}
