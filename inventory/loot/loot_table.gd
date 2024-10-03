@@ -15,17 +15,16 @@ var total_weight: int = 0
 func _calculate_total_weight():
 	total_weight = 0
 	for loot in loot_table:
-		total_weight += loot.weight
+		total_weight += loot.drop_weight
 
 
 func get_random_loot() -> Item:
-	print("Total weight: ", total_weight)
-
 	var picked_weight = randi_range(0, total_weight)
 
 	for loot in loot_table:
-		if loot.weight <= picked_weight:
+		if picked_weight <= picked_weight:
+			print("loot picked")
 			return loot
-		picked_weight -= loot.weight
+		picked_weight -= loot.drop_weight
 
 	return null

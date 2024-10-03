@@ -1,8 +1,9 @@
-extends Resource
+extends Item
 class_name WeaponResource
 
-signal ammo_changed(new_ammo_count : int)
-signal magazine_changed(new_magazine_count : int)
+signal ammo_changed(new_ammo_count: int)
+@warning_ignore("unused_signal")
+signal magazine_changed(new_magazine_count: int)
 
 ## Name and weapon value
 @export_group("Weapon Details")
@@ -12,7 +13,6 @@ signal magazine_changed(new_magazine_count : int)
 
 ## How the weapon looks and sounds
 @export_group("Weapon Setup")
-@export var texture: Texture
 @export var muzzel_offset: Vector2 = Vector2(0, 0)
 @export var audio_steam: AudioStream
 

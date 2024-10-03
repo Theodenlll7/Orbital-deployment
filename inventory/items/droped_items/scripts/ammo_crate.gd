@@ -1,12 +1,10 @@
-extends MagneticItem
-class_name AmmoCrate
+class_name Ammo extends Item
 
 
-func pick_up_condition() -> bool:
-	var weapon = inventory.weapon_slots[inventory.selected_weapon_slot]
+func pickup_condition(player: Player) -> bool:
+	var weapon = player.inventory.weapon_slots[player.inventory.selected_weapon_slot]
 	return weapon and weapon.ammo < weapon.ammo_cap
 
 
-func pick_up_item():
-	inventory.add_ammo()
-	queue_free()
+func pickup_item(player: Player) -> void:
+	player.inventory.add_ammo()

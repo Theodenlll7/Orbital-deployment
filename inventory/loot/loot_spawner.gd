@@ -1,4 +1,4 @@
-extends Node2D
+class_name LootSpawner extends Node2D
 
 @export var loot_table: LootTable
 @export_range(0, 1) var item_spawn_chanse: float = 1
@@ -11,4 +11,4 @@ func spawn_loot() -> void:
 			if randf_range(0, 1) >= item_spawn_chanse:
 				continue
 		var item := loot_table.get_random_loot()
-		item.drop_on_ground(global_position)
+		item.drop_on_ground(self)

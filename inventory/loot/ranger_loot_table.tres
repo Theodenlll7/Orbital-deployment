@@ -1,9 +1,9 @@
 [gd_resource type="Resource" script_class="LootTable" load_steps=4 format=3 uid="uid://dwncsm7kwadaj"]
 
 [ext_resource type="Script" path="res://inventory/items/item.gd" id="1_armkm"]
-[ext_resource type="Resource" uid="uid://bipl567v73rb6" path="res://inventory/items/ammo.tres" id="2_wkcsr"]
+[ext_resource type="Resource" uid="uid://dtdei68ijdun2" path="res://inventory/items/droped_items/ammo.tres" id="2_vgvpq"]
 [ext_resource type="Script" path="res://inventory/loot/loot_table.gd" id="3_075bl"]
 
 [resource]
 script = ExtResource("3_075bl")
-loot_table = Array[ExtResource("1_armkm")]([ExtResource("2_wkcsr")])
+loot_table = Array[ExtResource("1_armkm")]([ExtResource("2_vgvpq")])
