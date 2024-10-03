@@ -1,4 +1,6 @@
 extends Node
+var is_night = false
+
 var player_money: int = 1000:
 	get: return player_money
 	set(value):
@@ -21,7 +23,7 @@ func decreasePlayerMoney(amount):
 
 func reparirShip():
 	pass
-
+	
 func setUpGameDifficulty():
 		match GameDifficulty:
 			"easy": 

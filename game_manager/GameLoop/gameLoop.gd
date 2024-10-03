@@ -10,6 +10,9 @@ func _process(delta: float) -> void:
 		last_day = GameVariables.day
 		_on_day_changed(last_day)
 
+func _on_night_start():
+	print("Night has started")
+	
 func _on_day_changed(day: int) -> void:
 	print("Day has changed to:", day)
 	_update_game_state(day)
@@ -19,7 +22,7 @@ func _update_game_state(day: int) -> void:
 	print("Updating game state for day:", day)
 	_update_player_stats(day)
 	_reset_daily_quests()
-	enemy_handler.new_day(day)
+
 	
 	if day < 7:
 		updatePods(day)

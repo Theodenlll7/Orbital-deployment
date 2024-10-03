@@ -7,7 +7,7 @@ extends Node
 @onready var night_jingle: AudioStreamPlayer = $NightStart
 @onready var day_soundscape: AudioStreamPlayer = $DaySound
 @onready var night_soundscape: AudioStreamPlayer = $NightSound
-
+@onready var game_loop: Node = get_parent().get_parent().get_node("GameLoop")
 
 func set_daytime(_day: int, hour: int, minute: int) -> void:
 	if hour <= day_hour or hour >= night_hour:
@@ -25,6 +25,7 @@ func set_daytime(_day: int, hour: int, minute: int) -> void:
 		day_soundscape.play()
 		night_soundscape.stop()
 	if hour == night_hour and minute == 0:
+		game_loop._on_night_start()
 		night_jingle.play()
 		day_soundscape.stop()
 		night_soundscape.play()
