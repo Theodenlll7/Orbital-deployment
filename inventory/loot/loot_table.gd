@@ -1,21 +1,31 @@
 extends Resource
 
 class_name LootTable
-# We define loot as an array of dictionaries with `item` and `chance` fields
-@export var loot: Dictionary
+# We define loot_table as an array of dictionaries with `item` and `chance` fields
+@export var loot_table: Array[Item]:
+	set(value):
+		loot_table = value
+		loot_table.sort_custom(func(a, b): return a.weight > b.weight)
+
+		_calculate_total_weight()
+
+var total_weight: int = 0
 
 
-func get_random_loot():
-	var total_chance = 0
-	for entry in loot:
-		total_chance += entry["chance"]
+func _calculate_total_weight():
+	total_weight = 0
+	for loot in loot_table:
+		total_weight += loot.weight
 
-	var random_value = randf() * total_chance
-	var accumulated_chance = 0
 
-	for entry in loot:
-		accumulated_chance += entry["chance"]
-		if random_value <= accumulated_chance:
-			return entry["item"]
+func get_random_loot() -> Item:
+	print("Total weight: ", total_weight)
 
-	return null  # If nothing matches, return null
+	var picked_weight = randi_range(0, total_weight)
+
+	for loot in loot_table:
+		if loot.weight <= picked_weight:
+			return loot
+		picked_weight -= loot.weight
+
+	return null
