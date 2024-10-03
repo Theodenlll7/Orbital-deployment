@@ -58,10 +58,10 @@ func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("players"):
 		if player == null:
 			player = body as Player
-			inventory = player.get_node("Inventory") as Inventory
+			inventory = player.inventory
 		elif !pick_up_condition():
 			player = body as Player
-			inventory = player.get_node("Inventory") as Inventory
+			inventory = player.inventory
 
 
 func _on_body_exited(body: Node2D) -> void:

@@ -1,15 +1,13 @@
-[gd_scene load_steps=82 format=3 uid="uid://6vt8l263l0o7"]
+[gd_scene load_steps=80 format=3 uid="uid://6vt8l263l0o7"]
 
 [ext_resource type="Script" path="res://player/scripts/player.gd" id="1_gaiyc"]
 [ext_resource type="Texture2D" uid="uid://dcgcly83hxan6" path="res://player/assets/textures/light.png" id="2_8ye7d"]
 [ext_resource type="Script" path="res://common/components/HealthComponent.gd" id="3_rmoxv"]
 [ext_resource type="Texture2D" uid="uid://dgfwosrjlow2i" path="res://player/assets/textures/player.png" id="4_arusb"]
 [ext_resource type="Script" path="res://player/scripts/camera_2d.gd" id="4_hh08p"]
-[ext_resource type="Script" path="res://inventory/items/weapons/scripts/weapon_resource.gd" id="6_0qlh8"]
 [ext_resource type="PackedScene" uid="uid://bdxxnqyrxk04e" path="res://player/player_hud.tscn" id="6_pjces"]
-[ext_resource type="Resource" uid="uid://c1o1e1pct7o7g" path="res://inventory/items/weapons/weapon_types/basic_proj_weapon.tres" id="7_3q14l"]
-[ext_resource type="Script" path="res://inventory/inventory.gd" id="7_5ivnr"]
 [ext_resource type="Script" path="res://ui/pause_menu/death_screen.gd" id="7_il1d8"]
+[ext_resource type="Script" path="res://common/interaction/interactionManager.gd" id="8_o6i1s"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_8yrgv"]
 light_mode = 1
@@ -563,11 +561,6 @@ zoom = Vector2(5, 5)
 script = ExtResource("4_hh08p")
 snap_distance = 70.0
 
-[node name="Inventory" type="Node" parent="." node_paths=PackedStringArray("player_hud")]
-script = ExtResource("7_5ivnr")
-weapon_slots = Array[ExtResource("6_0qlh8")]([ExtResource("7_3q14l"), null])
-player_hud = NodePath("../PlayerHUD")
-
 [node name="WeaponOrbitPoint" type="Marker2D" parent="."]
 position = Vector2(0, 1)
 
@@ -578,6 +571,9 @@ health_component = NodePath("../../../HealthComponent")
 
 [node name="DeathScreen" parent="PlayerHUD" index="1"]
 script = ExtResource("7_il1d8")
+
+[node name="InteractionManager" type="Node2D" parent="."]
+script = ExtResource("8_o6i1s")
 
 [connection signal="died" from="HealthComponent" to="." method="_on_health_component_died"]
 [connection signal="health_changed" from="HealthComponent" to="." method="_on_health_component_health_changed"]

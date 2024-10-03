@@ -14,6 +14,9 @@ var weapons: Array[WeaponResource] = []
 var explosives: Array[ExplosiveResource] = []
 
 var pod_type: ShopType = ShopType.weapon
+
+var costumer : Inventory
+
 func _ready():
 	setRefillAmmonition()
 	loadResources()
@@ -67,7 +70,7 @@ func _on_refill_ammonition_button_pressed() -> void:
 func _on_button_pressed(identifier: StringName) -> void:
 	var item = find_item(identifier)
 	var cost = item.cost
-	Shop.handleBuy(item.duplicate(), cost)
+	handleBuy(item.duplicate(), cost)
 	updateButtonLabels()
 
 func find_item(identifier: StringName):
@@ -89,3 +92,10 @@ func find_explosive(identifier: StringName) -> ExplosiveResource:
 		if explosive.item_name == identifier:
 			return explosive
 	return null
+	
+func handleBuy(item, cost : int):
+	if costumer.money >= cost:
+		costumer.money -= cost
+		costumer.pickup(item)
+	else:
+		print("Not enough money to buy that")

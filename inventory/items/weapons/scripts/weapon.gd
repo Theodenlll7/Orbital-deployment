@@ -95,5 +95,6 @@ func _on_reload_complete() -> void:
 			# Partially reload if there's not enough ammo
 			weapon_resource.ammo_in_magazine += weapon_resource.ammo
 			weapon_resource.ammo = 0
-
-	weapon_reloded.emit(weapon_resource.ammo_in_magazine, weapon_resource.ammo)
+	
+	weapon_resource.ammo_changed.emit(weapon_resource.ammo)
+	weapon_resource.magazine_changed.emit(weapon_resource.ammo_in_magazine)

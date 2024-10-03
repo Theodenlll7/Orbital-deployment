@@ -1,6 +1,9 @@
 extends Resource
 class_name WeaponResource
 
+signal ammo_changed(new_ammo_count : int)
+signal magazine_changed(new_magazine_count : int)
+
 ## Name and weapon value
 @export_group("Weapon Details")
 @export var item_name: StringName = "Weapon"
@@ -66,6 +69,7 @@ func ammo_create_picked_up():
 		ammo += ammo_crate_value
 		if ammo > ammo_cap:
 			ammo = ammo_cap
+	ammo_changed.emit(ammo)
 
 
 func attack(_weapon: Weapon) -> void:

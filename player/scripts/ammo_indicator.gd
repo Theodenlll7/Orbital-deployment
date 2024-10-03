@@ -8,6 +8,8 @@ class_name AmmoIndicator
 
 func equip_weapon(weapon: Weapon):
 	var data : WeaponResource = weapon.weapon_resource
+	data.ammo_changed.connect(_on_ammo_changed)
+	data.magazine_changed.connect(_on_magazine_changed)
 	if data.has_magazine:
 		weapon.weapon_fired.connect(_on_magazine_changed)
 		magazin_ammo.text = "%d" % data.ammo_in_magazine
@@ -32,7 +34,6 @@ func _on_magazine_changed(new_magazine_amount : int):
 	magazin_ammo.text = "%d" % new_magazine_amount
 	
 
-func _on_ammo_changed(new_magazine_amount : int,new_ammo_amount : int):
+func _on_ammo_changed(new_ammo_amount : int):
 	extra_ammo.text = "%d" % new_ammo_amount
-	magazin_ammo.text = "%d" % new_magazine_amount
 	

@@ -1,14 +1,16 @@
 extends Node2D
 
 @onready var interaction_area := $InteractionArea
-@onready var houseUI := $CanvasLayer
+@onready var storeUI := $CanvasLayer/StoreUI as PodShop
 @onready var Store : PodShop = $CanvasLayer/StoreUI
 
 @export var pod_type = ""
 
+var costumer: Player
+
 func _ready() -> void:
-	interaction_area.interact = Callable(self, "_on_interact")
-	houseUI.hide()
+	interaction_area.interact = _on_interact
+	storeUI.hide()
 	set_pod_type(pod_type)
 
 func set_pod_type(pod_type):
@@ -19,22 +21,24 @@ func set_pod_type(pod_type):
 			Store.setLabelsAndCost(PodShop.ShopType.explosive)
 			
 			
-func _on_interact():
-	showUI()
+func _on_interact(player : Player):
+	showUI(player)
 
-func showUI():
-	houseUI.show()
+func showUI(player : Player):
+	storeUI.show()
+	storeUI.costumer = player.inventory
 
 
 func hideUI():
-	houseUI.hide()
+	storeUI.hide()
+	storeUI.costumer = null
 
 
 func _input(event: InputEvent) -> void:
 	# Check if the event is a key press and if it's the ESC key
 	if event.is_action_pressed("ui_cancel"):
 		# Hide the UI when ESC is pressed
-		if houseUI.visible:
+		if storeUI.visible:
 			hideUI()
 
 
