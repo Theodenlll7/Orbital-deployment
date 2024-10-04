@@ -19,7 +19,6 @@ func drop_on_ground(node: Node2D):
 			pass
 
 	item.global_position = node.global_position
-	print("Item drop ", item)
 	node.get_tree().current_scene.add_child(item)
 
 

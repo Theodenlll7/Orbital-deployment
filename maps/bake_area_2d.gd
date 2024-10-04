@@ -2,6 +2,7 @@ extends TileMapLayer
 
 @export var target_terrain_id: int
 @export var area_effect: AreaEffect
+@export var edge_margin: float = 5
 
 var tilemap_start: Vector2i
 var tilemap_end: Vector2i
@@ -54,24 +55,40 @@ func generate_areas() -> void:
 				area.set_collision_mask_value(2, true)
 				area.collision_priority = 0.1
 
-				# Position the Area2D in the center of the rectangle
-				var local_position = map_to_local(Vector2(x + area_rect.x / 2, y + area_rect.y / 2))
-				if area_rect.x % 2 == 0:
-					local_position.x -= cell_size.x / 2
+				# Check for margins on each side
+				var left_margin = check_x_margin(Vector2i(x - 1, y))
+				var right_margin = check_x_margin(Vector2i(x + area_rect.x, y))
+				var top_margin = check_y_margin(x, y - 1, area_rect.x)
+				var bottom_margin = check_y_margin(x, y + area_rect.y, area_rect.x)
 
-				if area_rect.y % 2 == 0:
-					local_position.y -= cell_size.y / 2
+				# Calculate the size of the area with the margin adjustments
+				var adjusted_width = area_rect.x * cell_size.x - (left_margin + right_margin)
+				var adjusted_height = area_rect.y * cell_size.y - (top_margin + bottom_margin)
 
-				area.position = local_position
+				# Ensure we don't shrink below zero or negative size
+				adjusted_width = max(adjusted_width, 0)
+				adjusted_height = max(adjusted_height, 0)
 
 				# Set the size of the collision shape
 				var collision_shape = CollisionShape2D.new()
 				collision_shape.shape = RectangleShape2D.new()
-				collision_shape.shape.size = Vector2(
-					area_rect.x * cell_size.x, area_rect.y * cell_size.y
-				)
-
+				collision_shape.shape.size = Vector2(adjusted_width, adjusted_height)
 				area.add_child(collision_shape)
+
+				# Position the Area2D in the center of the rectangle
+				var local_position = map_to_local(Vector2(x + area_rect.x / 2, y + area_rect.y / 2))
+				if area_rect.x % 2 == 0:
+					local_position.x -= cell_size.x / 2
+				if area_rect.y % 2 == 0:
+					local_position.y -= cell_size.y / 2
+
+				# Offset the position by the margins
+				local_position.x += left_margin - right_margin
+				local_position.y += top_margin - bottom_margin
+
+				area.z_index = 10
+
+				area.position = local_position
 
 
 # Function to find the largest rectangle starting at (x, y)
@@ -120,6 +137,33 @@ func get_terrain(tile_pos: Vector2i):
 	if !tile_data:
 		return null
 	return tile_data.terrain_set
+
+
+func is_inside_tilemap(tile_pos: Vector2i) -> bool:
+	return (
+		tile_pos.x >= tilemap_start.x
+		and tile_pos.x < tilemap_end.x
+		and tile_pos.y >= tilemap_start.y
+		and tile_pos.y < tilemap_end.y
+	)
+
+
+# Function to check if a margin should be applied based on adjacent terrain
+func check_x_margin(tile_pos: Vector2i) -> float:
+	# If the tile position is outside the tilemap bounds or is not the target terrain, apply the margin
+	if not is_inside_tilemap(tile_pos) or get_terrain(tile_pos) != target_terrain_id:
+		return edge_margin
+	return 0.0
+
+
+func check_y_margin(start_x: int, y: int, width: int) -> float:
+	for x in range(start_x, start_x + width):
+		if (
+			not is_inside_tilemap(Vector2i(x, y))
+			or get_terrain(Vector2i(x, y)) != target_terrain_id
+		):
+			return edge_margin
+	return 0.0
 
 
 func _ready() -> void:

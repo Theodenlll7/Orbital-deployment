@@ -1,19 +1,28 @@
 class_name Inventory
 
-var money : int = 250
+signal money_changed(new_money_amount: int)
+var money: int = 1000:
+	get:
+		return money
+	set(value):
+		money = value
+		money_changed.emit(money)
+		print("Player money has been updated: ", money)
+
 var weapon_slots: Array[WeaponResource] = [null, null]
 var explosive_slot = ExplosiveResource
 var special_equipment_slot: SpecialEquipment = null
 
-var actor : Node2D
+var actor: Node2D
 
 var selected_weapon_slot = -1
 var signal_emitter
 
 ##Triggers when the selected weapon slot changes to a new slot
-signal weapon_swap(index : int, weapon : WeaponResource)
-signal new_weapon(index : int, weapon : WeaponResource)
-signal new_explosive(index : int, explosive : ExplosiveResource)
+signal weapon_swap(index: int, weapon: WeaponResource)
+signal new_weapon(index: int, weapon: WeaponResource)
+signal new_explosive(index: int, explosive: ExplosiveResource)
+
 
 func add_weapon(weapon: WeaponResource):
 	if weapon:

@@ -19,6 +19,7 @@ collision_enabled = false
 script = ExtResource("2_fedqi")
 target_terrain_id = 2
 area_effect = NodePath("SlowAreaEffect2D")
+edge_margin = 3.0
 
 [node name="SlowAreaEffect2D" type="Node" parent="TileWater"]
 script = ExtResource("3_kvrpn")

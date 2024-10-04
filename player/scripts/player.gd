@@ -34,6 +34,8 @@ func _ready() -> void:
 	inventory.actor = self
 	inventory.new_weapon.connect(player_hud.equip_weapon)
 	inventory.weapon_swap.connect(equip_weapon)
+	inventory.money_changed.connect(player_hud.update_money_display)
+	player_hud.update_money_display(inventory.money)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
