@@ -35,6 +35,7 @@ func _ready() -> void:
 	inventory.new_weapon.connect(player_hud.equip_weapon)
 	inventory.weapon_swap.connect(equip_weapon)
 
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if can_move:
@@ -102,12 +103,13 @@ func aim() -> void:
 			held_weapon.z_index = 1  # Render in front of the player when aiming below
 
 
-func equip_weapon(index : int, weapon: WeaponResource) -> Weapon:
+func equip_weapon(index: int, weapon: WeaponResource) -> Weapon:
 	if held_weapon:
 		held_weapon.queue_free()
 	held_weapon = PlayerWeapon.new(weapon)
 	weapon_orbit_point.add_child(held_weapon)
 	player_hud.select_weapon_slot(index)
+	player_hud.ammo_indicator.equip_weapon(weapon)
 	return held_weapon
 
 
