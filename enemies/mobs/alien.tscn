@@ -253,7 +253,12 @@ position = Vector2(0, 0.5)
 shape = SubResource("CapsuleShape2D_w8yv8")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+target_desired_distance = 25.0
+path_max_distance = 250.0
+simplify_path = true
+simplify_epsilon = 10.0
 avoidance_enabled = true
+radius = 50.0
 
 [node name="AttackRange" type="Area2D" parent="."]
 collision_layer = 0

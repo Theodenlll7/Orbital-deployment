@@ -84,6 +84,11 @@ move_speed = 80.0
 shape = SubResource("CapsuleShape2D_qvi5h")
 
 [node name="Navigator2D" type="NavigationAgent2D" parent="."]
+path_postprocessing = 1
+simplify_path = true
+simplify_epsilon = 10.0
+avoidance_enabled = true
+radius = 20.0
 script = ExtResource("9_rvix5")
 
 [node name="MobWeapon" type="Node2D" parent="."]
