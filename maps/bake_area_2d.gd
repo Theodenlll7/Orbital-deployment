@@ -1,4 +1,4 @@
-extends TileMapLayer
+class_name AreaEffectBaker extends Node
 
 @export var target_terrain_id: int
 @export var area_effect: AreaEffect
@@ -7,16 +7,18 @@ extends TileMapLayer
 var tilemap_start: Vector2i
 var tilemap_end: Vector2i
 
+@onready var tilemap = get_parent() as TileMapLayer
+
 
 # Greedy meshing algorithm to generate merged water areas
 func generate_areas() -> void:
-	tilemap_start = get_used_rect().position
-	tilemap_end = tilemap_start + get_used_rect().size
-	var cell_size = tile_set.tile_size
+	tilemap_start = tilemap.get_used_rect().position
+	tilemap_end = tilemap_start + tilemap.get_used_rect().size
+	var cell_size = tilemap.tile_set.tile_size
 	if Engine.is_editor_hint():
 		cell_size = Vector2(16, 16)
 	else:
-		cell_size = tile_set.tile_size
+		cell_size = tilemap.tile_set.tile_size
 	var processed = []
 
 	# Initialize processed array
@@ -47,7 +49,6 @@ func generate_areas() -> void:
 
 				# Create the Area2D for this rectangle
 				var area = Area2D.new()
-				print(area.collision_layer)
 				area.body_entered.connect(area_effect._on_body_entered)
 				area.body_exited.connect(area_effect._on_body_exited)
 				add_child(area)
@@ -76,7 +77,9 @@ func generate_areas() -> void:
 				area.add_child(collision_shape)
 
 				# Position the Area2D in the center of the rectangle
-				var local_position = map_to_local(Vector2(x + area_rect.x / 2, y + area_rect.y / 2))
+				var local_position = tilemap.map_to_local(
+					Vector2(x + area_rect.x / 2, y + area_rect.y / 2)
+				)
 				if area_rect.x % 2 == 0:
 					local_position.x -= cell_size.x / 2
 				if area_rect.y % 2 == 0:
@@ -93,7 +96,7 @@ func generate_areas() -> void:
 
 # Function to find the largest rectangle starting at (x, y)
 func find_largest_rectangle(start_x: int, start_y: int, processed: Array) -> Vector2i:
-	var tilemap_size = get_used_rect().size
+	var tilemap_size = tilemap.get_used_rect().size
 
 	# Find the largest width
 	var width = 0
@@ -133,7 +136,7 @@ func find_largest_rectangle(start_x: int, start_y: int, processed: Array) -> Vec
 
 
 func get_terrain(tile_pos: Vector2i):
-	var tile_data = get_cell_tile_data(tile_pos)
+	var tile_data = tilemap.get_cell_tile_data(tile_pos)
 	if !tile_data:
 		return null
 	return tile_data.terrain_set
