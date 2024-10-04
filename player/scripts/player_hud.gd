@@ -17,6 +17,8 @@ const INVENTORY_SLOT = preload("res://inventory/sprites/inventory_slot.png")
 const SELECTED_INVENTORY_SLOT = preload("res://inventory/sprites/selected_inventory_slot.png")
 
 var selected_slot = -1
+@onready var pause_in_game_menu: Control = $PauseInGameMenu
+var paused: bool = false
 
 
 func _ready() -> void:
@@ -61,3 +63,16 @@ func equip_explosive(explosive: ExplosiveResource):
 	var slot = $PlayerHUD/HBoxContainer2.get_child(0).get_child(0)
 	var icon: TextureRect = slot.get_node("Icon")
 	icon.texture = explosive.texture
+
+func _process(delta: float) -> void:
+	if Input.is_action_just_pressed("pause"):
+		pauseMenu()
+		
+func pauseMenu():
+	if paused:
+		pause_in_game_menu.visible = false
+		Engine.time_scale = 1
+	else:
+		pause_in_game_menu.visible = true
+		Engine.time_scale = 0
+	paused = !paused

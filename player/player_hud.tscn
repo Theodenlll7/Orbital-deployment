@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bdxxnqyrxk04e"]
+[gd_scene load_steps=14 format=3 uid="uid://bdxxnqyrxk04e"]
 
 [ext_resource type="Script" path="res://player/scripts/health_bar.gd" id="1_1fig6"]
 [ext_resource type="Script" path="res://player/scripts/player_hud.gd" id="1_7u87w"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://player/scripts/ammo_indicator.gd" id="4_8psay"]
 [ext_resource type="PackedScene" uid="uid://dcm0rxa7wl85t" path="res://ui/pause_menu/death_screen.tscn" id="4_mdrqq"]
 [ext_resource type="Script" path="res://player/level_bar.gd" id="5_07hhj"]
+[ext_resource type="PackedScene" uid="uid://cffw36sg62gs0" path="res://ui/pause_menu/pause_in_game.tscn" id="7_krje1"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t7j8m"]
 bg_color = Color(0.203922, 0.203922, 0.317647, 0.501961)
@@ -344,3 +345,7 @@ vertical_alignment = 1
 [node name="DeathScreen" parent="." instance=ExtResource("4_mdrqq")]
 visible = false
 script = null
+
+[node name="PauseInGameMenu" parent="." instance=ExtResource("7_krje1")]
+visible = false
+z_as_relative = false

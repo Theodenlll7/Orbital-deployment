@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://cffw36sg62gs0"]
+[gd_scene load_steps=7 format=3 uid="uid://cffw36sg62gs0"]
 
 [ext_resource type="FontFile" uid="uid://dkg32o3qfh2n7" path="res://assets/Fonts/pixelmix.ttf" id="1_pcg1f"]
+[ext_resource type="Script" path="res://ui/pause_menu/pause_in_game.gd" id="1_q0268"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1gsln"]
 bg_color = Color(0.6, 0.6, 0.6, 0.333333)
@@ -22,13 +23,23 @@ bg_color = Color(0.6, 0.6, 0.6, 0)
 border_width_bottom = 4
 corner_detail = 1
 
-[node name="Control" type="Control"]
+[node name="PauseInGameMenu" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_q0268")
+
+[node name="Panel" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.705882)
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -37,10 +48,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 256
+theme_override_constants/margin_left = 64
 theme_override_constants/margin_top = 128
-theme_override_constants/margin_right = 256
-theme_override_constants/margin_bottom = 128
+theme_override_constants/margin_right = 64
+theme_override_constants/margin_bottom = 64
 
 [node name="TextureRect" type="TextureRect" parent="MarginContainer"]
 layout_mode = 2
@@ -116,9 +127,9 @@ theme_override_fonts/font = ExtResource("1_pcg1f")
 theme_override_font_sizes/font_size = 32
 theme_override_styles/hover = SubResource("StyleBoxFlat_1gsln")
 theme_override_styles/normal = SubResource("StyleBoxFlat_cmvve")
-text = "Options"
+text = "-"
 
-[node name="ExitButton" type="Button" parent="MarginContainer/TextureRect/MarginContainer/VBoxContainer/Buttons/MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="QuitLevelButton" type="Button" parent="MarginContainer/TextureRect/MarginContainer/VBoxContainer/Buttons/MarginContainer/HBoxContainer/VBoxContainer"]
 clip_contents = true
 custom_minimum_size = Vector2(256, 64)
 layout_mode = 2
@@ -126,9 +137,9 @@ theme_override_fonts/font = ExtResource("1_pcg1f")
 theme_override_font_sizes/font_size = 32
 theme_override_styles/hover = SubResource("StyleBoxFlat_1gsln")
 theme_override_styles/normal = SubResource("StyleBoxFlat_cmvve")
-text = "Exit game"
+text = "Quit level"
 
-[node name="BackButton" type="Button" parent="MarginContainer/TextureRect/MarginContainer"]
+[node name="BackButton" type="Button" parent="MarginContainer"]
 custom_minimum_size = Vector2(256, 64)
 layout_mode = 2
 size_flags_horizontal = 0
