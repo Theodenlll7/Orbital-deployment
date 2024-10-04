@@ -91,6 +91,10 @@ func equip_explosive(explosive: ExplosiveResource):
 	icon.texture = explosive.texture
 
 func update_timer_display(newValue: float) -> void:
+	if newValue < 4.0:
+		time_until_next_wave_label.modulate = Color("#d2202c")
+	else: 
+		time_until_next_wave_label.modulate = Color("#FFFFFF")
 	time_until_next_wave_label.text = str(int(newValue)) + "s"
 
 func _process(delta: float) -> void:
