@@ -314,32 +314,80 @@ text = "0/0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="WaveIndicator" type="HBoxContainer" parent="PlayerHUD"]
-layout_mode = 2
-offset_left = 1506.0
-offset_top = -878.0
-offset_right = 1782.0
-offset_bottom = -801.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="WaveIndicator" type="VBoxContainer" parent="PlayerHUD"]
+layout_mode = 0
+offset_left = 1033.0
+offset_top = -863.0
+offset_right = 1769.0
+offset_bottom = -678.0
 
-[node name="WaveText" type="Label" parent="PlayerHUD/WaveIndicator"]
+[node name="WaveHBoxContainer" type="HBoxContainer" parent="PlayerHUD/WaveIndicator"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="WaveText" type="Label" parent="PlayerHUD/WaveIndicator/WaveHBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
-size_flags_stretch_ratio = 2.0
+size_flags_stretch_ratio = 7.0
 theme_override_font_sizes/font_size = 48
 text = "Wave "
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="WaveNumber" type="Label" parent="PlayerHUD/WaveIndicator"]
+[node name="WaveNumber" type="Label" parent="PlayerHUD/WaveIndicator/WaveHBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
 theme_override_font_sizes/font_size = 48
 text = "-"
-horizontal_alignment = 1
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="WaveInfoHBoxContainer" type="HBoxContainer" parent="PlayerHUD/WaveIndicator"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="RemainingText" type="Label" parent="PlayerHUD/WaveIndicator/WaveInfoHBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+size_flags_stretch_ratio = 7.0
+theme_override_font_sizes/font_size = 32
+text = "Remaining hostiles"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="RemainingNumber" type="Label" parent="PlayerHUD/WaveIndicator/WaveInfoHBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 32
+text = "20"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="TimeHBoxContainer" type="HBoxContainer" parent="PlayerHUD/WaveIndicator"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="PlayerHUD/WaveIndicator/TimeHBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+size_flags_stretch_ratio = 7.0
+theme_override_font_sizes/font_size = 32
+text = "Next wave in "
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="TimeUntilNextWave" type="Label" parent="PlayerHUD/WaveIndicator/TimeHBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 32
+text = "- s"
+horizontal_alignment = 2
 vertical_alignment = 1
 
 [node name="DeathScreen" parent="." instance=ExtResource("4_mdrqq")]

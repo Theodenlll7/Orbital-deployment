@@ -13,10 +13,14 @@ class_name WaveManager
 @onready var players = get_tree().get_nodes_in_group("players")
 
 signal new_wave_started(wave: int)
+signal end_of_wave(time_until_next_wave: float)
+signal nr_of_enemies(nr: int)
 
 var spawn_timer = spawn_interval  # Timer for controlling spawn intervals
 
 var wave = 0
+
+const in_between_wave_time = 10.0
 
 var enemy_count = 0
 
@@ -34,18 +38,21 @@ func start_next_wave():
 	new_wave_started.emit(wave)
 	wave_finished = false
 	process_wave()
+
 	
 func _enemy_death():
 	enemy_count -= 1
+	nr_of_enemies.emit(enemy_count)
 	if enemy_count <= 0:
 		in_between_wave_timer.start()
+		end_of_wave.emit(in_between_wave_time)
 		
 		
 func _ready() -> void:
 	add_to_group("managers")
 	add_to_group("wave_manager")
 	add_child(in_between_wave_timer)
-	in_between_wave_timer.wait_time = 10
+	in_between_wave_timer.wait_time = in_between_wave_time
 	in_between_wave_timer.one_shot = true
 	in_between_wave_timer.timeout.connect(start_next_wave)
 	in_between_wave_timer.start()
@@ -54,6 +61,7 @@ func _ready() -> void:
 func process_wave():
 	for i in range(enemies_to_spawn):
 		spawn_enemy()
+	nr_of_enemies.emit(enemy_count)
 	wave_finished = true
 
 # Spawn an enemy at a random valid position around one of the players

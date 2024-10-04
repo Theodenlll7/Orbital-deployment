@@ -8,7 +8,14 @@ class_name PlayerHUD
 @export var deselected_size: float = 0.5
 
 @onready var money_label: Label = $PlayerHUD/monyIndicator/mony
-@onready var wave_number: Label = $PlayerHUD/WaveIndicator/WaveNumber
+
+@onready var wave_number: Label = $PlayerHUD/WaveIndicator/WaveHBoxContainer/WaveNumber
+
+@onready var remaining_text: Label = $PlayerHUD/WaveIndicator/WaveInfoHBoxContainer/RemainingText
+@onready var remaining_number: Label = $PlayerHUD/WaveIndicator/WaveInfoHBoxContainer/RemainingNumber
+
+@onready var time_h_box_container: HBoxContainer = $PlayerHUD/WaveIndicator/TimeHBoxContainer
+@onready var time_until_next_wave_label: Label = $PlayerHUD/WaveIndicator/TimeHBoxContainer/TimeUntilNextWave
 
 @onready var wave_manager = get_tree().get_nodes_in_group("wave_manager")[0] as WaveManager
 @export var ammo_indicator: AmmoIndicator = null
@@ -21,18 +28,28 @@ var selected_slot = -1
 var paused: bool = false
 @onready var death_screen: Control = $DeathScreen
 
+var countdown_time = 0.0
 
 func _ready() -> void:
 	wave_manager.new_wave_started.connect(new_wave)
+	wave_manager.end_of_wave.connect(between_waves)
+	wave_manager.nr_of_enemies.connect(set_hostiles)
+	
+	between_waves(wave_manager.in_between_wave_time)
 	wave_number.text = str(wave_manager.wave)
+	
 
 	for slot in weapon_slots.size():
 		deselect_weapon_slot(slot)
 
-
 func new_wave(wave: int):
 	wave_number.text = str(wave)
 
+func between_waves(time: float):
+	countdown_time = time
+	time_h_box_container.show()  
+	set_hostiles(0)
+	update_timer_display(countdown_time)
 
 func select_weapon_slot(index: int) -> void:
 	weapon_slots[index].get_node("Frame").texture = SELECTED_INVENTORY_SLOT
@@ -40,6 +57,16 @@ func select_weapon_slot(index: int) -> void:
 	deselect_weapon_slot(selected_slot)
 	selected_slot = index
 
+func set_hostiles(remaining: int) -> void:
+	print("remaining", remaining)
+	if remaining > 0:
+		remaining_number.visible = true
+		remaining_text.text = "Remaining hostiles"
+		remaining_number.text = str(remaining)
+	else:
+		remaining_text.text = "Prepare for the Next Wave"
+		remaining_number.text = ""
+		remaining_number.visible = false
 
 func deselect_weapon_slot(index: int) -> void:
 	if index < 0 or weapon_slots.size() < index:
@@ -63,9 +90,19 @@ func equip_explosive(explosive: ExplosiveResource):
 	var icon: TextureRect = slot.get_node("Icon")
 	icon.texture = explosive.texture
 
+func update_timer_display(newValue: float) -> void:
+	time_until_next_wave_label.text = str(int(newValue)) + "s"
+
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("pause"):
 		pauseMenu()
+
+	if countdown_time > 0.0:
+		countdown_time -= delta  
+		update_timer_display(countdown_time)  
+		if countdown_time <= 0.0:
+			countdown_time = 0.0
+			time_h_box_container.hide()
 		
 func pauseMenu():
 	if death_screen.visible:
