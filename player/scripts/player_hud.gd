@@ -19,6 +19,7 @@ const SELECTED_INVENTORY_SLOT = preload("res://inventory/sprites/selected_invent
 var selected_slot = -1
 @onready var pause_in_game_menu: Control = $PauseInGameMenu
 var paused: bool = false
+@onready var death_screen: Control = $DeathScreen
 
 
 func _ready() -> void:
@@ -69,6 +70,9 @@ func _process(delta: float) -> void:
 		pauseMenu()
 		
 func pauseMenu():
+	if death_screen.visible:
+		paused = true
+	
 	if paused:
 		pause_in_game_menu.visible = false
 		Engine.time_scale = 1
