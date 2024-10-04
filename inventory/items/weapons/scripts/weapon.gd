@@ -2,8 +2,6 @@ extends Node2D
 class_name Weapon
 
 @warning_ignore("unused_signal")
-signal weapon_fired(new_magazine_amount: int)
-signal weapon_reloded(new_magazine_amount: int, new_ammo_amount: int)
 
 @export var weapon_resource: WeaponResource = null
 
@@ -95,6 +93,6 @@ func _on_reload_complete() -> void:
 			# Partially reload if there's not enough ammo
 			weapon_resource.ammo_in_magazine += weapon_resource.ammo
 			weapon_resource.ammo = 0
-	
+
 	weapon_resource.ammo_changed.emit(weapon_resource.ammo)
 	weapon_resource.magazine_changed.emit(weapon_resource.ammo_in_magazine)

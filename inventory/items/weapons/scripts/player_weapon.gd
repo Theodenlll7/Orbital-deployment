@@ -1,5 +1,6 @@
 class_name PlayerWeapon extends Weapon
 
+
 func _process(delta) -> void:
 	if weapon_resource.has_magazine:
 		if !reloading and Input.is_action_just_pressed("reload"):
@@ -14,13 +15,13 @@ func _process(delta) -> void:
 		if weapon_resource.has_magazine:
 			if weapon_resource.ammo_in_magazine > 0:
 				weapon_resource.ammo_in_magazine -= 1
-				weapon_fired.emit(weapon_resource.ammo_in_magazine)
+				weapon_resource.magazine_changed.emit(weapon_resource.ammo_in_magazine)
 				attack()
 			elif Input.is_action_just_pressed("primary_action"):
 				reload()
 		elif weapon_resource.has_ammo and weapon_resource.ammo > 0:
 			weapon_resource.ammo -= 1
-			weapon_fired.emit(weapon_resource.ammo)
+			weapon_resource.magazine_changed.emit(weapon_resource.ammo)
 			attack()
 		else:
 			attack()

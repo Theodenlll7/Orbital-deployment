@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dsad6qof6xa7f"]
+[gd_scene load_steps=8 format=3 uid="uid://dsad6qof6xa7f"]
 
 [ext_resource type="PackedScene" uid="uid://o3dndqv0yf5s" path="res://scenes/scene1.tscn" id="1_wr805"]
 [ext_resource type="PackedScene" uid="uid://6vt8l263l0o7" path="res://player/player.tscn" id="2_5ihlw"]
@@ -6,12 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bgg2qlsu5f8qd" path="res://enemies/mobs/alien.tscn" id="4_v3qcm"]
 [ext_resource type="PackedScene" uid="uid://fwtaakyb0exx" path="res://maps/objects/pods/weapon_pod.tscn" id="5_cpg73"]
 [ext_resource type="PackedScene" uid="uid://kua7fs588s48" path="res://enemies/mobs/ranger.tscn" id="5_r2vmx"]
-[ext_resource type="Script" path="res://inventory/items/droped_items/scripts/ammo_crate.gd" id="7_wtpsh"]
-[ext_resource type="Texture2D" uid="uid://ccoe78uc8jt31" path="res://assets/icon.svg" id="8_1ygnd"]
 [ext_resource type="PackedScene" uid="uid://inymqhajqaf7" path="res://ui/in_game/mission_start_text.tscn" id="8_lbulo"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_frced"]
-radius = 40.56
 
 [node name="Level1" type="Node2D"]
 y_sort_enabled = true
@@ -26,6 +21,11 @@ enemy_spawn_pool = Array[PackedScene]([ExtResource("4_v3qcm"), ExtResource("5_r2
 z_index = 3
 y_sort_enabled = true
 position = Vector2(123, 110)
+move_speed = null
+dodge_speed = null
+dodge_duration = null
+dodge_cooldown = null
+weapon_orbit_distance = null
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -35,17 +35,3 @@ size_flags_horizontal = 3
 [node name="InteractionArea" parent="." instance=ExtResource("5_cpg73")]
 z_index = 1
 position = Vector2(239, -34)
-
-[node name="AmmoCrate" type="Area2D" parent="."]
-collision_layer = 0
-script = ExtResource("7_wtpsh")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AmmoCrate"]
-shape = SubResource("CircleShape2D_frced")
-
-[node name="Sprite2D" type="Sprite2D" parent="AmmoCrate"]
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("8_1ygnd")
-
-[connection signal="body_entered" from="AmmoCrate" to="AmmoCrate" method="_on_body_entered"]
-[connection signal="body_exited" from="AmmoCrate" to="AmmoCrate" method="_on_body_exited"]
