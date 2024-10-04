@@ -20,6 +20,7 @@ class_name Player
 var dodge_timer := -dodge_cooldown
 var can_dodge := true
 var in_dodge := false
+var player_dead := false
 
 var can_move := true
 
@@ -138,11 +139,20 @@ func animate() -> void:
 
 
 func _on_health_component_health_changed(amount: Variant) -> void:
+	if !player_dead:
+		flash_red(animated_sprite)
 	if amount < 0:
 		camera.screen_shake()
 
+func flash_red(sprite: AnimatedSprite2D) -> void:
+	var tween = create_tween()
+	var time = 0.05
+	tween.tween_property(sprite, "modulate", Color(0.8, 0.2, 0.2), time)  
+	tween.tween_property(sprite, "modulate", Color(1, 1, 1), time)
+
 
 func _on_health_component_died() -> void:
+	player_dead = true
 	can_move = false
 	animated_sprite.play("die")
 	death_screen.fade_in()
