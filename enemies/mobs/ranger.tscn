@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://kua7fs588s48"]
+[gd_scene load_steps=47 format=3 uid="uid://kua7fs588s48"]
 
 [ext_resource type="Texture2D" uid="uid://bp5yo3btc8723" path="res://enemies/assets/textures/ranger_sprite.png" id="1_pe8ap"]
 [ext_resource type="Script" path="res://enemies/mobs/ranger.gd" id="1_qqsbq"]
@@ -19,6 +19,7 @@
 [ext_resource type="Script" path="res://enemies/scripts/handle_enemy_death.gd" id="16_islfw"]
 [ext_resource type="Script" path="res://inventory/loot/loot_spawner.gd" id="17_4v7s2"]
 [ext_resource type="Resource" uid="uid://dwncsm7kwadaj" path="res://inventory/loot/ranger_loot_table.tres" id="17_4165f"]
+[ext_resource type="Texture2D" uid="uid://dcgcly83hxan6" path="res://player/assets/textures/light.png" id="20_pui2m"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ni7c6"]
 atlas = ExtResource("1_pe8ap")
@@ -291,3 +292,10 @@ spawn_attempts = null
 
 [node name="HandleEnemeyDeath" type="Node" parent="."]
 script = ExtResource("16_islfw")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(0, -3)
+color = Color(1, 0, 0.0352941, 1)
+energy = 0.4
+texture = ExtResource("20_pui2m")
+texture_scale = 0.05
