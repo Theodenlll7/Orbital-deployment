@@ -545,8 +545,7 @@ z_index = 1
 material = SubResource("CanvasItemMaterial_8yrgv")
 position = Vector2(0, -5)
 sprite_frames = SubResource("SpriteFrames_7t3vk")
-animation = &"hit"
-frame_progress = 0.133006
+animation = &"idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 3)

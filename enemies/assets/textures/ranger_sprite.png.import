@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ck8r1ebnncxpg"
-path="res://.godot/imported/spider.png-fa8dea68982cde5176e69c02f3e53f59.ctex"
+uid="uid://bp5yo3btc8723"
+path="res://.godot/imported/ranger_sprite.png-fb33f3d510c8c30bd3ee9210e9809e17.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://enemies/assets/textures/spider.png"
-dest_files=["res://.godot/imported/spider.png-fa8dea68982cde5176e69c02f3e53f59.ctex"]
+source_file="res://enemies/assets/textures/ranger_sprite.png"
+dest_files=["res://.godot/imported/ranger_sprite.png-fb33f3d510c8c30bd3ee9210e9809e17.ctex"]
 
 [params]
 

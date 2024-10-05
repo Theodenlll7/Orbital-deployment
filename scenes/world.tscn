@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://enemies/scripts/enemy_spawner.gd" id="2_3mje2"]
 [ext_resource type="Texture2D" uid="uid://csjbwptdepd7a" path="res://assets/Tiles/tilemap.png" id="2_31m2w"]
 [ext_resource type="Texture2D" uid="uid://b7bbent6b8pnu" path="res://assets/Tiles/tilemap2.png" id="3_0i8q7"]
-[ext_resource type="PackedScene" uid="uid://bgg2qlsu5f8qd" path="res://enemies/mobs/alien.tscn" id="3_r8gpc"]
+[ext_resource type="PackedScene" uid="uid://bgg2qlsu5f8qd" path="res://enemies/mobs/spider.tscn" id="3_r8gpc"]
 [ext_resource type="PackedScene" uid="uid://kua7fs588s48" path="res://enemies/mobs/ranger.tscn" id="4_6dy7k"]
 [ext_resource type="Texture2D" uid="uid://bblutfu20r54" path="res://assets/Tiles/tilemap_objects.png" id="7_8hfy4"]
 [ext_resource type="Script" path="res://maps/map_generation/MapGeneration.gd" id="8_xh3lq"]
