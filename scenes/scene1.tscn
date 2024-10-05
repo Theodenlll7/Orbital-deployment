@@ -138,6 +138,71 @@ position = Vector2(1, 0)
 tile_map_data = PackedByteArray("AADn/9n/AAAKAA4AAADq/9n/AAAJAA4AAADm/9n/AAAFAAgAAADr/9n/AAAGAAgAAADm/9f/AAABAAwAAADm/9b/AAABAAsAAADr/9f/AAACAAwAAADr/9b/AAACAAwAAADr/9X/AAAGAA4AAADm/9X/AAAFAA4AAADn/9X/AAABAAgAAADo/9X/AAACAAgAAADq/9X/AAADAAgAAADp/9X/AAABAAgAAADw/9f/AAAFAA4AAAD+/9f/AAAGAA4AAADw/9n/AAAJAA4AAADy/9v/AAAFAAgAAAD9/9v/AAAGAAgAAAD+/9r/AAAGAAgAAAD+/9j/AAACAAsAAAD9/9n/AAAIAA4AAADx/9n/AAACAAgAAADy/9j/AAAHAA4AAADy/9n/AAAHAA8AAAD8/9v/AAADAAgAAAD7/9v/AAACAAgAAADz/9v/AAACAAgAAAD0/9v/AAACAAgAAAD1/9v/AAACAAgAAAD6/9v/AAABAAgAAAD5/9v/AAAJAA4AAAD2/9v/AAAKAA4AAAD9/9f/AAACAAgAAAD5/9f/AAACAAgAAAD4/9f/AAABAAgAAAD3/9f/AAAAAAgAAAD2/9f/AAADAAgAAAD1/9f/AAAAAAgAAAD0/9f/AAABAAgAAADx/9f/AAAKAA4AAADz/9f/AAAJAA4AAAD8/9f/AAAJAA4AAAD6/9f/AAAKAA4AAADs/+//AAAKAA4AAADn/+//AAAFAA4AAADn//L/AAAFAAgAAADo//H/AAAHAA4AAADo//L/AAAHAA8AAADo//T/AAAJAA4AAADp//T/AAAKAA4AAADn//D/AAABAAwAAADo/+//AAABAAgAAADp/+//AAABAAgAAADq/+//AAABAAgAAADr/+//AAADAAgAAADx/+//AAACAAoAAADx//D/AAACAAsAAADx//L/AAAKAA4AAADw//L/AAAJAA4AAAA=")
 tile_set = ExtResource("3_5as4k")
 
+[node name="Lights" type="Node2D" parent="TileWalls"]
+
+[node name="PointLight2D" type="PointLight2D" parent="TileWalls/Lights"]
+position = Vector2(-63, -624)
+color = Color(1, 0.494118, 1, 1)
+energy = 0.68
+texture = ExtResource("5_v0wqw")
+texture_scale = 0.2
+
+[node name="PointLight2D6" type="PointLight2D" parent="TileWalls/Lights"]
+position = Vector2(-341, -236)
+color = Color(1, 0.494118, 1, 1)
+energy = 0.68
+texture = ExtResource("5_v0wqw")
+texture_scale = 0.2
+
+[node name="PointLight2D2" type="PointLight2D" parent="TileWalls/Lights"]
+position = Vector2(-197, -634)
+color = Color(0.486275, 0.494118, 1, 1)
+energy = 0.68
+texture = ExtResource("5_v0wqw")
+texture_scale = 0.2
+
+[node name="PointLight2D3" type="PointLight2D" parent="TileWalls/Lights"]
+position = Vector2(171, -150)
+color = Color(0.486275, 0.494118, 1, 1)
+energy = 0.68
+texture = ExtResource("5_v0wqw")
+texture_scale = 0.2
+
+[node name="PointLight2D4" type="PointLight2D" parent="TileWalls/Lights"]
+position = Vector2(-34, 19)
+color = Color(0.486275, 0.494118, 1, 1)
+energy = 0.68
+texture = ExtResource("5_v0wqw")
+texture_scale = 0.2
+
+[node name="PointLight2D5" type="PointLight2D" parent="TileWalls/Lights"]
+position = Vector2(-550, -168)
+color = Color(0.486275, 0.494118, 1, 1)
+energy = 0.68
+texture = ExtResource("5_v0wqw")
+texture_scale = 0.2
+
+[node name="PointLight2D7" type="PointLight2D" parent="TileWalls/Lights"]
+position = Vector2(407, -393)
+color = Color(0.890196, 0.211765, 0.223529, 1)
+energy = 0.68
+texture = ExtResource("5_v0wqw")
+texture_scale = 0.2
+
+[node name="PointLight2D8" type="PointLight2D" parent="TileWalls/Lights"]
+position = Vector2(-295, -31)
+color = Color(0.890196, 0.211765, 0.223529, 1)
+energy = 0.68
+texture = ExtResource("5_v0wqw")
+texture_scale = 0.2
+
+[node name="PointLight2D9" type="PointLight2D" parent="TileWalls/Lights"]
+position = Vector2(-204, -323)
+color = Color(0.890196, 0.211765, 0.223529, 1)
+energy = 0.68
+texture = ExtResource("5_v0wqw")
+texture_scale = 0.2
+
 [node name="TilePattern" type="TileMapLayer" parent="."]
 light_mask = 2
 z_index = 4
@@ -152,9 +217,8 @@ script = ExtResource("8_u4ukb")
 [node name="ShipPointLight2D" type="PointLight2D" parent="TilePattern/ShipLight"]
 position = Vector2(80, 96)
 color = Color(0.941176, 0.352941, 0.0980392, 1)
-blend_mode = 2
 texture = ExtResource("5_v0wqw")
-texture_scale = 0.1
+texture_scale = 0.2
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0.695768, 0.483863, 0.501306, 1)
