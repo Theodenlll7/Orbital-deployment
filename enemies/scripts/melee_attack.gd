@@ -10,8 +10,8 @@ var cooldown := attack_cooldown
 
 
 func _process(delta: float) -> void:
+	cooldown -= delta
 	if target:
-		cooldown -= delta
 		if cooldown <= 0:
 			target.damage(damage)
 			cooldown = attack_cooldown

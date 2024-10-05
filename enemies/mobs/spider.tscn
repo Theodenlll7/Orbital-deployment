@@ -1,10 +1,20 @@
-[gd_scene load_steps=37 format=3 uid="uid://bgg2qlsu5f8qd"]
+[gd_scene load_steps=47 format=3 uid="uid://bgg2qlsu5f8qd"]
 
 [ext_resource type="Script" path="res://enemies/scripts/spider.gd" id="1_7iu6l"]
 [ext_resource type="Texture2D" uid="uid://ck8r1ebnncxpg" path="res://enemies/assets/textures/spider_sprite.png" id="2_wlcod"]
 [ext_resource type="Script" path="res://common/components/HealthComponent.gd" id="3_1r3kr"]
 [ext_resource type="Script" path="res://enemies/scripts/melee_attack.gd" id="4_phmkr"]
 [ext_resource type="Script" path="res://enemies/scripts/handle_enemy_death.gd" id="5_lqmlb"]
+[ext_resource type="Script" path="res://addons/tree_mind/nodes/mind_tree.gd" id="6_ufjvm"]
+[ext_resource type="Script" path="res://addons/tree_mind/nodes/composites/selector.gd" id="7_vw743"]
+[ext_resource type="Script" path="res://addons/tree_mind/nodes/composites/sequence.gd" id="8_r68s8"]
+[ext_resource type="Script" path="res://enemies/mind_tree_components/conditions/target_in_range.gd.gd" id="9_sn4u0"]
+[ext_resource type="Script" path="res://enemies/mind_tree_components/actions/stop_navigation.gd" id="10_ad8k3"]
+[ext_resource type="Script" path="res://enemies/mind_tree_components/actions/bull_charge_attack.gd" id="11_1oqij"]
+[ext_resource type="Script" path="res://addons/tree_mind/nodes/leafs/blackbord_set.gd" id="14_vquxb"]
+[ext_resource type="Script" path="res://enemies/scripts/parent_move_and_slide.gd" id="15_eh0ey"]
+[ext_resource type="Script" path="res://enemies/mind_tree_components/actions/start_navigation_to_target.gd" id="15_q7nvy"]
+[ext_resource type="Script" path="res://common/components/navigator2d.gd" id="15_xr0je"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_oqobr"]
 light_mode = 1
@@ -240,6 +250,9 @@ motion_mode = 1
 wall_min_slide_angle = 0.0
 script = ExtResource("1_7iu6l")
 
+[node name="Navigator2D" type="NavigationAgent2D" parent="."]
+script = ExtResource("15_xr0je")
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 material = SubResource("CanvasItemMaterial_oqobr")
 sprite_frames = SubResource("SpriteFrames_xao01")
@@ -270,6 +283,42 @@ shape = SubResource("CircleShape2D_gynkl")
 
 [node name="HandleEnemeyDeath" type="Node" parent="."]
 script = ExtResource("5_lqmlb")
+
+[node name="MindTreeRoot" type="Node" parent="."]
+script = ExtResource("6_ufjvm")
+process_thread = 0
+
+[node name="Selector" type="Node" parent="MindTreeRoot"]
+script = ExtResource("7_vw743")
+
+[node name="ChargeAttack" type="Node" parent="MindTreeRoot/Selector"]
+script = ExtResource("8_r68s8")
+
+[node name="TargetInRange" type="Node" parent="MindTreeRoot/Selector/ChargeAttack"]
+script = ExtResource("9_sn4u0")
+
+[node name="StopNavgation" type="Node" parent="MindTreeRoot/Selector/ChargeAttack"]
+script = ExtResource("10_ad8k3")
+
+[node name="BullChargeAttack" type="Node" parent="MindTreeRoot/Selector/ChargeAttack"]
+script = ExtResource("11_1oqij")
+charge_duration = 0.5
+windup_time = 1.0
+
+[node name="SelectAndWalktToTarget" type="Node" parent="MindTreeRoot/Selector"]
+script = ExtResource("8_r68s8")
+
+[node name="BlackboardSet" type="Node" parent="MindTreeRoot/Selector/SelectAndWalktToTarget"]
+script = ExtResource("14_vquxb")
+key = "\"target\""
+value = "actor.get_tree().get_nodes_in_group(\"players\").pick_random()"
+
+[node name="StartNavgationToTarget" type="Node" parent="MindTreeRoot/Selector/SelectAndWalktToTarget"]
+script = ExtResource("15_q7nvy")
+move_speed = 80.0
+
+[node name="ParentMoveAndSlide" type="Node" parent="."]
+script = ExtResource("15_eh0ey")
 
 [connection signal="died" from="HealthComponent" to="." method="_on_health_component_died"]
 [connection signal="body_entered" from="AttackRange" to="AttackRange" method="_on_body_entered"]

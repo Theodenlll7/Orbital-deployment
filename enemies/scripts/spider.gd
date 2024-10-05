@@ -11,6 +11,7 @@ var player_position := Vector2.ZERO
 var map_ready := false
 var is_dead := false
 
+
 func _ready():
 	if !target:
 		target = get_tree().get_first_node_in_group("players")
@@ -27,16 +28,15 @@ func actor_setup():
 
 
 func _physics_process(_delta):
-	if is_dead: 
+	if is_dead:
 		return
-	if target:
-		agent.target_position = target.global_position
+	#if target:
+	#agent.target_position = target.global_position
+	#var current_agent_position = global_position
+	#var next_path_position = agent.get_next_path_position()
+	#velocity = current_agent_position.direction_to(next_path_position) * speed
 
-	var current_agent_position = global_position
-	var next_path_position = agent.get_next_path_position()
-	velocity = current_agent_position.direction_to(next_path_position) * speed
-
-	move_and_slide()
+	#move_and_slide()
 	animate()
 
 
@@ -53,9 +53,11 @@ func _on_health_component_died() -> void:
 	animated_sprite.play("die")
 	animated_sprite.animation_finished.connect(on_death_animation_finished)
 
+
 func on_death_animation_finished() -> void:
 	ExperiencePoints.add_experience(20)
 	queue_free()
+
 
 func animate() -> void:
 	if abs(velocity) > Vector2(0.1, 0.1):
@@ -66,5 +68,3 @@ func animate() -> void:
 			animated_sprite.flip_h = false
 	else:
 		animated_sprite.play("idle")
-
-	

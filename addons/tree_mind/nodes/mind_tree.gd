@@ -31,11 +31,11 @@ func _physics_process(delta: float) -> void:
 func procces_tree(delta: float) -> void:
 	if Engine.is_editor_hint():
 		return
-	blackboard.delta += delta
+	blackboard.delta_time += delta
 	if skip_tick():
 		return
 	tick(blackboard)
-	blackboard.delta = 0
+	blackboard.delta_time = 0
 
 
 func tick(blackboard: Blackboard) -> int:
