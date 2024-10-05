@@ -104,7 +104,8 @@ tile_data = PackedInt32Array(0, 131072, 14, 65536, 131072, 15, 1, 196608, 14, 65
 [sub_resource type="TileMapPattern" id="TileMapPattern_vdbxj"]
 tile_data = PackedInt32Array(0, 655360, 6)
 
-[sub_resource type="TileMapPattern" id="TileMapPattern_3hiix"] tile_data = PackedInt32Array(0, 262144, 0, 65536, 262144, 1)
+[sub_resource type="TileMapPattern" id="TileMapPattern_3hiix"]
+tile_data = PackedInt32Array(0, 262144, 0, 65536, 262144, 1)
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_pqcli"]
 tile_data = PackedInt32Array(0, 655360, 7)
