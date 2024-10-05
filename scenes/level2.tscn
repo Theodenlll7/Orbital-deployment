@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://kua7fs588s48" path="res://enemies/mobs/ranger.tscn" id="5_v0ucf"]
 [ext_resource type="PackedScene" uid="uid://inymqhajqaf7" path="res://ui/in_game/mission_start_text.tscn" id="6_r6q3o"]
 [ext_resource type="PackedScene" uid="uid://fwtaakyb0exx" path="res://maps/objects/pods/weapon_pod.tscn" id="7_38vkb"]
-[ext_resource type="Script" path="res://inventory/items/droped_items/scripts/ammo_crate.gd" id="8_ffrcw"]
+[ext_resource type="Script" path="res://inventory/loot/droped_items/scripts/ammo_crate.gd" id="8_ffrcw"]
 [ext_resource type="Texture2D" uid="uid://ccoe78uc8jt31" path="res://assets/icon.svg" id="9_pstlk"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_frced"]

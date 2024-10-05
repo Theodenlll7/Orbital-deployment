@@ -5,7 +5,7 @@ class_name LootTable
 @export var loot_table: Array[Item]:
 	set(value):
 		loot_table = value
-		loot_table.sort_custom(func(a, b): return a.weight > b.weight)
+		loot_table.sort_custom(func(a, b): return a.drop_weight > b.drop_weight)
 
 		_calculate_total_weight()
 

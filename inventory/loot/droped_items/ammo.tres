@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Ammo" load_steps=3 format=3 uid="uid://dtdei68ijdun2"]
+
+[ext_resource type="Script" path="res://inventory/loot/droped_items/scripts/ammo_crate.gd" id="1_33f6v"]
+[ext_resource type="Texture2D" uid="uid://d146je42kx5wl" path="res://maps/objects/chest/chest.png" id="2_2eerh"]
+
+[resource]
+script = ExtResource("1_33f6v")
+drop_type = 0
+texture = ExtResource("2_2eerh")
+drop_weight = 500
+test = Callable()
