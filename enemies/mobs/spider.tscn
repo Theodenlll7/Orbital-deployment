@@ -302,6 +302,7 @@ script = ExtResource("10_ad8k3")
 
 [node name="BullChargeAttack" type="Node" parent="MindTreeRoot/Selector/ChargeAttack"]
 script = ExtResource("11_1oqij")
+charge_speed = 500.0
 charge_duration = 0.5
 windup_time = 1.0
 

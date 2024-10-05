@@ -9,7 +9,7 @@ class_name Player
 
 @onready var animated_sprite := $AnimatedSprite2D
 @onready var camera := $Camera2D
-@onready var inventory := Inventory.new()
+@onready var inventory := $Inventory
 
 @onready var death_screen: DeathScreen = $PlayerHUD/DeathScreen
 @onready var player_hud: PlayerHUD = $PlayerHUD
@@ -37,6 +37,7 @@ func _ready() -> void:
 	inventory.weapon_swap.connect(equip_weapon)
 	inventory.money_changed.connect(player_hud.update_money_display)
 	player_hud.update_money_display(inventory.money)
+	inventory.setup()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -144,10 +145,11 @@ func _on_health_component_health_changed(amount: Variant) -> void:
 	if amount < 0:
 		camera.screen_shake()
 
+
 func flash_red(sprite: AnimatedSprite2D) -> void:
 	var tween = create_tween()
 	var time = 0.05
-	tween.tween_property(sprite, "modulate", Color(0.8, 0.2, 0.2), time)  
+	tween.tween_property(sprite, "modulate", Color(0.8, 0.2, 0.2), time)
 	tween.tween_property(sprite, "modulate", Color(1, 1, 1), time)
 
 

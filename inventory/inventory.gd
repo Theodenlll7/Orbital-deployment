@@ -1,4 +1,4 @@
-class_name Inventory
+class_name Inventory extends Node
 
 signal money_changed(new_money_amount: int)
 var money: int = 1000:
@@ -9,9 +9,9 @@ var money: int = 1000:
 		money_changed.emit(money)
 		print("Player money has been updated: ", money)
 
-var weapon_slots: Array[WeaponResource] = [null, null]
-var explosive_slot = ExplosiveResource
-var special_equipment_slot: SpecialEquipment = null
+@export var weapon_slots: Array[WeaponResource] = [null, null]
+@export var explosive_slot = ExplosiveResource
+@export var special_equipment_slot: SpecialEquipment = null
 
 var actor: Node2D
 
@@ -21,7 +21,18 @@ var signal_emitter
 ##Triggers when the selected weapon slot changes to a new slot
 signal weapon_swap(index: int, weapon: WeaponResource)
 signal new_weapon(index: int, weapon: WeaponResource)
-signal new_explosive(index: int, explosive: ExplosiveResource)
+signal new_explosive(explosive: ExplosiveResource)
+
+
+func setup() -> void:
+	for i in range(weapon_slots.size()):
+		if weapon_slots[i]:
+			new_weapon.emit(i, weapon_slots[i])
+			if selected_weapon_slot == -1:
+				select_weapon_slot(i)
+
+	if explosive_slot:
+		new_explosive.emit(explosive_slot)
 
 
 func add_weapon(weapon: WeaponResource):
