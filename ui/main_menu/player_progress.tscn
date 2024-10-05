@@ -40,7 +40,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/margin_left = 64
-theme_override_constants/margin_top = 64
+theme_override_constants/margin_top = 16
 theme_override_constants/margin_right = 64
 theme_override_constants/margin_bottom = 64
 
@@ -51,7 +51,7 @@ theme_override_constants/margin_bottom = 160
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ContentMarginContainer/MarginContainer"]
 layout_mode = 2
-theme_override_constants/separation = 64
+theme_override_constants/separation = 32
 
 [node name="Label" type="Label" parent="ContentMarginContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -70,19 +70,8 @@ layout_mode = 2
 size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_kkny7")
 
-[node name="ScrollContainer" type="ScrollContainer" parent="ContentMarginContainer/MarginContainer/VBoxContainer/Panel"]
+[node name="skill_tree" parent="ContentMarginContainer/MarginContainer/VBoxContainer/Panel" instance=ExtResource("3_mhmia")]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-metadata/_edit_use_anchors_ = true
-
-[node name="skill_tree" parent="ContentMarginContainer/MarginContainer/VBoxContainer/Panel/ScrollContainer" instance=ExtResource("3_mhmia")]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
 
 [node name="BackButton" type="Button" parent="ContentMarginContainer"]
 custom_minimum_size = Vector2(256, 64)
