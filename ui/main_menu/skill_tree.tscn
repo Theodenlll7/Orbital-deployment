@@ -1,12 +1,20 @@
-[gd_scene load_steps=8 format=3 uid="uid://twbag55wnin1"]
+[gd_scene load_steps=16 format=3 uid="uid://twbag55wnin1"]
 
 [ext_resource type="Texture2D" uid="uid://dvlcqyuus4xy3" path="res://ui/main_menu/assets/progressbar_straight.png" id="1_207fo"]
+[ext_resource type="Theme" uid="uid://dvraluy0ogo1l" path="res://ui/main_menu/skill_tree_theme.tres" id="1_icgfo"]
 [ext_resource type="Texture2D" uid="uid://b7lee46e6qnmu" path="res://ui/main_menu/assets/progressbar_up.png" id="2_15xhf"]
+[ext_resource type="Script" path="res://ui/main_menu/skill_tree.gd" id="2_c7w71"]
 [ext_resource type="Texture2D" uid="uid://cojchy4w4lgcj" path="res://ui/main_menu/assets/progressbar_down.png" id="3_n4o13"]
 [ext_resource type="Texture2D" uid="uid://crrqlvf66f3u3" path="res://ui/main_menu/assets/player.png" id="4_mpgbs"]
 [ext_resource type="Texture2D" uid="uid://61y0o8eov5gy" path="res://ui/main_menu/assets/timeglass.png" id="5_6xyve"]
 [ext_resource type="Texture2D" uid="uid://bl5bwe1py2r0u" path="res://ui/main_menu/assets/bulletdamage.png" id="6_6qtjv"]
 [ext_resource type="Texture2D" uid="uid://da3352vhgpp58" path="res://ui/main_menu/assets/heartplus.png" id="7_ckitc"]
+[ext_resource type="Texture2D" uid="uid://ba84ai015atqr" path="res://ui/main_menu/assets/timeglassHover.png" id="8_gkhen"]
+[ext_resource type="Texture2D" uid="uid://v64s8iqw2wjb" path="res://ui/main_menu/assets/timeglassDisabled.png" id="9_tyni7"]
+[ext_resource type="Texture2D" uid="uid://doeuwqhrxnis1" path="res://ui/main_menu/assets/bulletHover.png" id="11_n7ocv"]
+[ext_resource type="Texture2D" uid="uid://dba3dxcy8ngcv" path="res://ui/main_menu/assets/bulletDisabled.png" id="12_av035"]
+[ext_resource type="Texture2D" uid="uid://een41g7xxesw" path="res://ui/main_menu/assets/heartHover.png" id="14_st63j"]
+[ext_resource type="Texture2D" uid="uid://b1f4tqoqbmpy4" path="res://ui/main_menu/assets/heartDisabled.png" id="15_1mvyl"]
 
 [node name="skill_tree" type="Control"]
 layout_mode = 3
@@ -15,6 +23,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_icgfo")
+script = ExtResource("2_c7w71")
 
 [node name="MarginContainer2" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -32,14 +42,14 @@ theme_override_constants/margin_bottom = 128
 layout_mode = 2
 theme_override_constants/separation = 192
 
-[node name="Control" type="Control" parent="MarginContainer2/HBoxContainer"]
+[node name="Padding" type="Control" parent="MarginContainer2/HBoxContainer"]
 layout_mode = 2
 
-[node name="Panel" type="Control" parent="MarginContainer2/HBoxContainer"]
+[node name="ProgressContent1" type="Control" parent="MarginContainer2/HBoxContainer"]
 custom_minimum_size = Vector2(256, 0)
 layout_mode = 2
 
-[node name="TextureProgressBar" type="TextureProgressBar" parent="MarginContainer2/HBoxContainer/Panel"]
+[node name="TextureProgressBar1" type="TextureProgressBar" parent="MarginContainer2/HBoxContainer/ProgressContent1"]
 layout_direction = 1
 layout_mode = 1
 anchors_preset = 8
@@ -53,17 +63,17 @@ offset_right = 128.0
 offset_bottom = 128.0
 grow_horizontal = 2
 grow_vertical = 2
-value = 20.0
+value = 100.0
 texture_under = ExtResource("1_207fo")
 texture_progress = ExtResource("1_207fo")
 tint_under = Color(0.331173, 0.323901, 0.392491, 1)
 tint_progress = Color(1, 0.698039, 0.196078, 1)
 
-[node name="Panel2" type="Control" parent="MarginContainer2/HBoxContainer"]
+[node name="ProgressContent2" type="Control" parent="MarginContainer2/HBoxContainer"]
 custom_minimum_size = Vector2(256, 0)
 layout_mode = 2
 
-[node name="TextureProgressBar" type="TextureProgressBar" parent="MarginContainer2/HBoxContainer/Panel2"]
+[node name="TextureProgressBar3Up" type="TextureProgressBar" parent="MarginContainer2/HBoxContainer/ProgressContent2"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -76,12 +86,13 @@ offset_right = 128.0
 offset_bottom = 128.0
 grow_horizontal = 2
 grow_vertical = 2
+value = 20.0
 texture_under = ExtResource("2_15xhf")
 texture_progress = ExtResource("2_15xhf")
 tint_under = Color(0.329412, 0.32549, 0.392157, 1)
 tint_progress = Color(1, 0.698039, 0.196078, 1)
 
-[node name="TextureProgressBar2" type="TextureProgressBar" parent="MarginContainer2/HBoxContainer/Panel2"]
+[node name="TextureProgressBar2Down" type="TextureProgressBar" parent="MarginContainer2/HBoxContainer/ProgressContent2"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -94,65 +105,11 @@ offset_right = 128.0
 offset_bottom = 128.0
 grow_horizontal = 2
 grow_vertical = 2
+value = 20.0
 texture_under = ExtResource("3_n4o13")
 texture_progress = ExtResource("3_n4o13")
 tint_under = Color(0.329412, 0.32549, 0.392157, 1)
 tint_progress = Color(1, 0.698039, 0.196078, 1)
-
-[node name="MarginContainer" type="MarginContainer" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 128
-theme_override_constants/margin_top = 128
-theme_override_constants/margin_right = 128
-theme_override_constants/margin_bottom = 128
-
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
-layout_mode = 2
-theme_override_constants/separation = 256
-
-[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
-layout_mode = 2
-theme_override_constants/separation = 64
-alignment = 1
-
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/VBoxContainer2"]
-custom_minimum_size = Vector2(192, 192)
-layout_mode = 2
-texture = ExtResource("4_mpgbs")
-expand_mode = 3
-
-[node name="VBoxContainer3" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
-layout_mode = 2
-theme_override_constants/separation = 64
-alignment = 1
-
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/VBoxContainer3"]
-custom_minimum_size = Vector2(192, 192)
-layout_mode = 2
-texture = ExtResource("5_6xyve")
-expand_mode = 3
-
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
-layout_mode = 2
-theme_override_constants/separation = 64
-alignment = 1
-
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/VBoxContainer"]
-custom_minimum_size = Vector2(192, 192)
-layout_mode = 2
-texture = ExtResource("6_6qtjv")
-expand_mode = 3
-
-[node name="TextureRect2" type="TextureRect" parent="MarginContainer/HBoxContainer/VBoxContainer"]
-custom_minimum_size = Vector2(192, 192)
-layout_mode = 2
-texture = ExtResource("7_ckitc")
-expand_mode = 5
 
 [node name="MarginContainer3" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -196,3 +153,91 @@ theme_override_font_sizes/font_size = 32
 text = "Level 10"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 128
+theme_override_constants/margin_top = 128
+theme_override_constants/margin_right = 128
+theme_override_constants/margin_bottom = 128
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 256
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 64
+alignment = 1
+
+[node name="Level0" type="Control" parent="MarginContainer/HBoxContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(192, 192)
+layout_mode = 2
+
+[node name="Level0Button" type="TextureButton" parent="MarginContainer/HBoxContainer/VBoxContainer2/Level0"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("4_mpgbs")
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 64
+alignment = 1
+
+[node name="Level5" type="Control" parent="MarginContainer/HBoxContainer/VBoxContainer3"]
+custom_minimum_size = Vector2(192, 192)
+layout_mode = 2
+
+[node name="Level5Button" type="TextureButton" parent="MarginContainer/HBoxContainer/VBoxContainer3/Level5"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture_normal = ExtResource("5_6xyve")
+texture_hover = ExtResource("8_gkhen")
+texture_disabled = ExtResource("9_tyni7")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 64
+alignment = 1
+
+[node name="Level10A" type="Control" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(192, 192)
+layout_mode = 2
+
+[node name="Level10ButtonA" type="TextureButton" parent="MarginContainer/HBoxContainer/VBoxContainer/Level10A"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+disabled = true
+texture_normal = ExtResource("6_6qtjv")
+texture_hover = ExtResource("11_n7ocv")
+texture_disabled = ExtResource("12_av035")
+
+[node name="Level10B" type="Control" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(192, 192)
+layout_mode = 2
+
+[node name="Level10ButtonB" type="TextureButton" parent="MarginContainer/HBoxContainer/VBoxContainer/Level10B"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+disabled = true
+texture_normal = ExtResource("7_ckitc")
+texture_hover = ExtResource("14_st63j")
+texture_disabled = ExtResource("15_1mvyl")

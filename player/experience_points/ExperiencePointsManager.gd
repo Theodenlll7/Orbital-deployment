@@ -6,12 +6,14 @@ signal experience_updated
 
 # Variables to store experience and level
 var experience_points: int = 128
-var current_level: int = 0
-var experience_needed: int = 400
+var current_level: int = 5
+var experience_needed: int = experience_points
 
 var base_xp: float = experience_needed
 var curve_steepness: float = 500
 
+func _ready() -> void:
+	experience_needed = calculate_experience_needed(current_level)
 
 func add_experience(points: int) -> void:
 	if points < 0:
