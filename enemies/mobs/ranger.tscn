@@ -1,6 +1,7 @@
-[gd_scene load_steps=45 format=3 uid="uid://kua7fs588s48"]
+[gd_scene load_steps=46 format=3 uid="uid://kua7fs588s48"]
 
 [ext_resource type="Texture2D" uid="uid://bp5yo3btc8723" path="res://enemies/assets/textures/ranger_sprite.png" id="1_pe8ap"]
+[ext_resource type="Script" path="res://enemies/mobs/ranger.gd" id="1_qqsbq"]
 [ext_resource type="Script" path="res://addons/tree_mind/nodes/mind_tree.gd" id="2_ao7rd"]
 [ext_resource type="Script" path="res://addons/tree_mind/nodes/composites/sequence.gd" id="3_nukmd"]
 [ext_resource type="Script" path="res://addons/tree_mind/nodes/composites/selector.gd" id="4_028xp"]
@@ -212,11 +213,12 @@ height = 14.0
 [node name="Ranger" type="CharacterBody2D"]
 collision_layer = 2
 collision_mask = 39
+script = ExtResource("1_qqsbq")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -3)
 sprite_frames = SubResource("SpriteFrames_bagim")
-animation = &"run_h"
+animation = &"idle"
 
 [node name="HealthComponent" type="Node" parent="."]
 script = ExtResource("11_u8r02")

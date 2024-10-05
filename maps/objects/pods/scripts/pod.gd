@@ -13,8 +13,8 @@ func _ready() -> void:
 	storeUI.hide()
 	set_pod_type(pod_type)
 
-func set_pod_type(pod_type):
-	match pod_type:
+func set_pod_type(new_pod_type):
+	match new_pod_type:
 		"weapon":
 			Store.setLabelsAndCost(PodShop.ShopType.weapon)
 		"explosive":

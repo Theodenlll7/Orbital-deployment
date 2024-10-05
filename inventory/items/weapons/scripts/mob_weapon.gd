@@ -41,7 +41,7 @@ func _process(delta: float) -> void:
 	attack()
 
 
-func aim(delta: float) -> void:
+func aim(_delta: float) -> void:
 	if !target:
 		return
 	var aim_dir = aim_direction()
