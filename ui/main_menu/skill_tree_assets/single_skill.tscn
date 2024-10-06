@@ -30,8 +30,16 @@ theme_override_constants/separation = 0
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 
-[node name="Label" type="Label" parent="VBoxContainerLabel"]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainerLabel"]
 layout_mode = 2
+
+[node name="Control" type="Control" parent="VBoxContainerLabel/HBoxContainer"]
+custom_minimum_size = Vector2(256, 0)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainerLabel/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
 size_flags_vertical = 0
 theme_override_font_sizes/font_size = 32
 text = "Level -"
@@ -59,18 +67,6 @@ layout_direction = 1
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-value = 100.0
-texture_under = ExtResource("1_8ayod")
-texture_progress = ExtResource("1_8ayod")
-tint_under = Color(0.331173, 0.323901, 0.392491, 1)
-tint_progress = Color(1, 0.698039, 0.196078, 1)
-
-[node name="TextureProgressBar" type="TextureProgressBar" parent="VBoxContainerContent/HBoxContainer/TextureProgressBar"]
-layout_direction = 1
-layout_mode = 0
-size_flags_horizontal = 4
-size_flags_vertical = 4
-value = 100.0
 texture_under = ExtResource("1_8ayod")
 texture_progress = ExtResource("1_8ayod")
 tint_under = Color(0.331173, 0.323901, 0.392491, 1)

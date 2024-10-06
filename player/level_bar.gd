@@ -12,10 +12,10 @@ func _ready() -> void:
 func update_ui() -> void:
 	var current_level = ExperiencePoints.get_current_level()
 	var current_experience = ExperiencePoints.get_experience_points()
-	var experience_needed = ExperiencePoints.experience_needed
+	var experience_needed = ExperiencePoints.get_experience_needed_to_next_level()
 	
-	progress_bar.value = current_experience
 	progress_bar.max_value = experience_needed
+	progress_bar.value = current_experience
 	level.text = "Level: " + str(current_level)
 	progress_label.text = str(current_experience) + " / " + str(experience_needed)
 

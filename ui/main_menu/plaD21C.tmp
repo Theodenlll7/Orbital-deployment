@@ -139,14 +139,14 @@ theme_override_font_sizes/font_size = 28
 text = "-"
 vertical_alignment = 1
 
-[node name="ProgressBarMain" type="ProgressBar" parent="LevelMarginContainer/Panel/MarginContainer/VBoxContainer"]
+[node name="ProgressBar" type="ProgressBar" parent="LevelMarginContainer/Panel/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(400, 52)
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_colors/font_color = Color(0, 0, 0, 0)
 theme_override_styles/fill = SubResource("StyleBoxFlat_digek")
 
-[node name="ProgressLabel" type="Label" parent="LevelMarginContainer/Panel/MarginContainer/VBoxContainer/ProgressBarMain"]
+[node name="ProgressLabel" type="Label" parent="LevelMarginContainer/Panel/MarginContainer/VBoxContainer/ProgressBar"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -157,11 +157,3 @@ theme_override_font_sizes/font_size = 28
 text = "-/-"
 horizontal_alignment = 1
 vertical_alignment = 1
-
-[node name="DevButton" type="Button" parent="."]
-layout_mode = 0
-offset_left = 107.0
-offset_top = 77.0
-offset_right = 368.0
-offset_bottom = 217.0
-text = "Add 200 xp"

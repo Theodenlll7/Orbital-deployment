@@ -58,7 +58,6 @@ func select_weapon_slot(index: int) -> void:
 	selected_slot = index
 
 func set_hostiles(remaining: int) -> void:
-	print("remaining", remaining)
 	if remaining > 0:
 		remaining_number.visible = true
 		remaining_text.text = "Remaining hostiles"

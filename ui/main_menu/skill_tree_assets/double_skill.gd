@@ -1,7 +1,8 @@
 extends Control
 
-@onready var label: Label = $VBoxContainerLabel/Label
+@onready var label: Label = $VBoxContainerLabel/HBoxContainer/Label
 
+@onready var texture_progress_bar: TextureProgressBar = $VBoxContainerContent/HBoxContainer/TextureProgressBar
 @onready var texture_button_top: TextureButton = $VBoxContainerContent/HBoxContainer/VBoxContainer/TextureButtonTop
 @onready var texture_button_bottom: TextureButton = $VBoxContainerContent/HBoxContainer/VBoxContainer/TextureButtonBottom
 
@@ -20,6 +21,22 @@ func set_texture(img_dict: Dictionary) -> void:
 	texture_button_bottom.texture_hover = hover_texture
 	texture_button_bottom.texture_disabled = disabled_texture
 
-func set_level(new_level: int) -> void:
-	level = new_level
+func set_level(this_level: int, player_level: int, prev_level: int) -> void:
+	level = this_level
 	label.text = "Level " + str(level)
+
+	var experience_needed = ExperiencePoints.get_experience_needed_from_start_to_this(level)
+	var experience = ExperiencePoints.get_total_amount_of_experience_points()
+
+	if(level > player_level):
+		texture_button_top.disabled = true
+		texture_button_bottom.disabled = true
+		if(prev_level <= player_level):
+			texture_progress_bar.max_value = experience_needed
+			texture_progress_bar.value = experience
+		else:
+			texture_progress_bar.max_value = 1
+			texture_progress_bar.value = 0
+	else:
+		texture_progress_bar.max_value = 1
+		texture_progress_bar.value = 1
