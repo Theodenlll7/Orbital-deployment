@@ -31,6 +31,7 @@ func _ready() -> void:
 
 	var sprite = Sprite2D.new()
 	sprite.texture = item.texture
+	sprite.scale = Vector2(0.3, 0.3)
 
 	pickup_condition = item.pickup_condition
 	pickup_item = item.pickup_item
