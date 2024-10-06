@@ -15,6 +15,7 @@ func set_custom_arrow(texture: Texture):
 
 # Called when the node enters the scene
 func _ready():
+	scale = Vector2(0.4, 0.4) # Scale down for a good texture size
 	arrow_sprite = $Sprite  # Ensure we have the sprite reference
 	if not camera:
 		camera = get_viewport().get_camera_2d()  # Get camera reference

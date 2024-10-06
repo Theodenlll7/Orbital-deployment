@@ -67,6 +67,7 @@ tint_progress = Color(1, 0.698039, 0.196078, 1)
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="VBoxContainerContent/HBoxContainer/TextureProgressBar"]
 layout_direction = 1
+layout_mode = 0
 size_flags_horizontal = 4
 size_flags_vertical = 4
 value = 100.0

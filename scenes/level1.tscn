@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://kua7fs588s48" path="res://enemies/mobs/ranger.tscn" id="5_r2vmx"]
 [ext_resource type="Script" path="res://common/arrow_indicators/ArrowIndicator.gd" id="8_btq2v"]
 [ext_resource type="PackedScene" uid="uid://inymqhajqaf7" path="res://ui/in_game/mission_start_text.tscn" id="8_lbulo"]
-[ext_resource type="Texture2D" uid="uid://dbwr0snos6500" path="res://inventory/items/weapons/assets/sprites/BFMG.png" id="9_aikst"]
+[ext_resource type="Texture2D" uid="uid://bsjfhwk5erona" path="res://assets/TextureIcons/gun_arrow.png" id="9_7mvpw"]
 
 [node name="Level1" type="Node2D"]
 y_sort_enabled = true
@@ -42,4 +42,4 @@ target = NodePath("../InteractionArea")
 arrow_sprite = NodePath("Sprite2D")
 
 [node name="Sprite2D" type="Sprite2D" parent="ArrowIndicator"]
-texture = ExtResource("9_aikst")
+texture = ExtResource("9_7mvpw")
