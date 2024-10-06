@@ -1,5 +1,7 @@
 class_name PodShop extends Control
 
+@export var ammo_cost: int = 200
+
 @export var weapon_buy_button: PackedScene
 
 @export_dir var weapons_dir: String = "res://inventory/items/weapons/weapon_types/"
@@ -33,7 +35,7 @@ func loadResources():
 func setRefillAmmonition():
 	var buy_btn: Button = $ContentPanelContainer/MarginContainer/VBoxContainer/Panel/RefillAmmonition
 	buy_btn.action_mode = BaseButton.ACTION_MODE_BUTTON_RELEASE
-	buy_btn.connect("pressed", _on_refill_ammonition_button_pressed)
+	buy_btn.connect("pressed", _on_refill_ammonition_button_pressed.bind(ammo_cost))
 
 
 func setLabelsAndCost(shop_type: ShopType):
@@ -67,8 +69,10 @@ func updateButtonLabels():
 	player_money.text = str(costumer.money) + "$"
 
 
-func _on_refill_ammonition_button_pressed() -> void:
-	print("Ammo, ammo, get sum")
+func _on_refill_ammonition_button_pressed(cost: int) -> void:
+	if costumer.money >= cost:
+		costumer.money -= cost
+		costumer.add_ammo()
 
 
 func _on_button_pressed(identifier: StringName) -> void:
