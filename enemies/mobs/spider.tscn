@@ -251,6 +251,8 @@ wall_min_slide_angle = 0.0
 script = ExtResource("1_7iu6l")
 
 [node name="Navigator2D" type="NavigationAgent2D" parent="."]
+process_priority = -100
+process_physics_priority = -100
 script = ExtResource("15_xr0je")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -264,14 +266,6 @@ script = ExtResource("3_1r3kr")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 0.5)
 shape = SubResource("CapsuleShape2D_w8yv8")
-
-[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
-target_desired_distance = 25.0
-path_max_distance = 250.0
-simplify_path = true
-simplify_epsilon = 10.0
-avoidance_enabled = true
-radius = 50.0
 
 [node name="AttackRange" type="Area2D" parent="."]
 collision_layer = 0
@@ -302,8 +296,8 @@ script = ExtResource("10_ad8k3")
 
 [node name="BullChargeAttack" type="Node" parent="MindTreeRoot/Selector/ChargeAttack"]
 script = ExtResource("11_1oqij")
-charge_speed = 500.0
-charge_duration = 0.5
+charge_speed = 300.0
+charge_duration = 0.4
 windup_time = 1.0
 
 [node name="SelectAndWalktToTarget" type="Node" parent="MindTreeRoot/Selector"]
@@ -316,7 +310,6 @@ value = "actor.get_tree().get_nodes_in_group(\"players\").pick_random()"
 
 [node name="StartNavgationToTarget" type="Node" parent="MindTreeRoot/Selector/SelectAndWalktToTarget"]
 script = ExtResource("15_q7nvy")
-move_speed = 80.0
 
 [node name="ParentMoveAndSlide" type="Node" parent="."]
 script = ExtResource("15_eh0ey")

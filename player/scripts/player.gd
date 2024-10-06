@@ -156,5 +156,6 @@ func flash_red(sprite: AnimatedSprite2D) -> void:
 func _on_health_component_died() -> void:
 	player_dead = true
 	can_move = false
+	held_weapon.queue_free()
 	animated_sprite.play("die")
 	death_screen.fade_in()

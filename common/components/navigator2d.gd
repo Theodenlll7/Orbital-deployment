@@ -27,7 +27,7 @@ func stop_navigation():
 	actor.velocity = Vector2.ZERO
 
 
-func _physics_process(_delta: float) -> void:
+func _process(_delta: float) -> void:
 	if navigate_to_target:
 		move_towards_target()
 

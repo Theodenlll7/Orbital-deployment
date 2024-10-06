@@ -218,6 +218,8 @@ collision_mask = 39
 script = ExtResource("1_qqsbq")
 
 [node name="Navigator2D" type="NavigationAgent2D" parent="."]
+process_priority = -100
+process_physics_priority = -100
 path_postprocessing = 1
 simplify_path = true
 simplify_epsilon = 10.0
@@ -302,4 +304,5 @@ texture = ExtResource("20_pui2m")
 texture_scale = 0.05
 
 [node name="ParentMoveAndSlide" type="Node" parent="."]
+process_physics_priority = 10
 script = ExtResource("21_2i7xj")

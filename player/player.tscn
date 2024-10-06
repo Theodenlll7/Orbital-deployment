@@ -531,11 +531,6 @@ radius = 4.0
 z_index = 1
 collision_mask = 106
 script = ExtResource("1_gaiyc")
-move_speed = null
-dodge_speed = null
-dodge_duration = null
-dodge_cooldown = null
-weapon_orbit_distance = null
 weapon_orbit_point = NodePath("WeaponOrbitPoint")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]

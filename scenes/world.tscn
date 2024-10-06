@@ -1221,6 +1221,11 @@ script = ExtResource("9_53pwr")
 script = ExtResource("14_7jqnq")
 
 [node name="Player" parent="." groups=["Player"] instance=ExtResource("11_rp00p")]
+move_speed = 100.0
+dodge_speed = 200.0
+dodge_duration = 0.4
+dodge_cooldown = 0.5
+weapon_orbit_distance = 8.0
 
 [node name="InteractionArea2" parent="." instance=ExtResource("18_c65v2")]
 position = Vector2(0, 140)
