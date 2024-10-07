@@ -8,8 +8,18 @@ var target: HealthComponent
 
 var cooldown := attack_cooldown
 
+var can_attack = true
+
+
+func _ready() -> void:
+	var hp = get_parent().get_node_or_null("HealthComponent") as HealthComponent
+	hp.died.connect(func(): can_attack = false)
+
 
 func _process(delta: float) -> void:
+	if !can_attack:
+		return
+
 	cooldown -= delta
 	if target:
 		if cooldown <= 0:

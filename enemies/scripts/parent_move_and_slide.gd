@@ -4,6 +4,11 @@ class_name ParentMoveAndSlide extends Node
 
 @onready var parent = get_parent() as CharacterBody2D
 
+@export var disabled := false:
+	set(value):
+		disabled = value
+		set_physics_process(!disabled)
+
 
 func _ready() -> void:
 	set_process_priority(process_thread_priority)

@@ -13,11 +13,20 @@ var status: int = -1
 
 @onready var blackboard := Blackboard.new()
 
+@export var disabled := false:
+	set(value):
+		disabled = value
+		_update_processing()
+
+
+func _update_processing() -> void:
+	set_physics_process(!disabled && process_thread == ProcessThread.PHYSICS)
+	set_process(!disabled && process_thread == ProcessThread.IDLE)
+
 
 func _ready() -> void:
 	blackboard.actor = get_parent()
-	set_physics_process(process_thread == ProcessThread.PHYSICS)
-	set_process(process_thread == ProcessThread.IDLE)
+	_update_processing()
 
 
 func _process(delta: float) -> void:

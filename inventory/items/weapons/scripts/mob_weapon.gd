@@ -21,6 +21,8 @@ func _ready():
 	add_child(cooldown_timer)
 	cooldown_timer.wait_time = weapon_resource.attack_cooldown
 	cooldown_timer.timeout.connect(_on_cooldown_timeout)
+	var hp = get_parent().get_node_or_null("HealthComponent") as HealthComponent
+	hp.died.connect(func(): stop_attacking())
 
 
 # Function to set the target (player)
@@ -34,11 +36,16 @@ func start_attacking():
 
 func stop_attacking():
 	attack_enabled = false
+	position = orbit_position
+	rotation = 0
+	z_index = 1
+	scale.y = abs(scale.y)
 
 
 func _process(delta: float) -> void:
-	aim(delta)
-	attack()
+	if attack_enabled:
+		aim(delta)
+		attack()
 
 
 func aim(_delta: float) -> void:

@@ -1,8 +1,8 @@
 [gd_scene load_steps=47 format=3 uid="uid://bgg2qlsu5f8qd"]
 
-[ext_resource type="Script" path="res://enemies/scripts/spider.gd" id="1_7iu6l"]
 [ext_resource type="Texture2D" uid="uid://ck8r1ebnncxpg" path="res://enemies/assets/textures/spider_sprite.png" id="2_wlcod"]
 [ext_resource type="Script" path="res://common/components/HealthComponent.gd" id="3_1r3kr"]
+[ext_resource type="Script" path="res://common/components/character_animated_sprite_2d.gd" id="3_ihi3d"]
 [ext_resource type="Script" path="res://enemies/scripts/melee_attack.gd" id="4_phmkr"]
 [ext_resource type="Script" path="res://enemies/scripts/handle_enemy_death.gd" id="5_lqmlb"]
 [ext_resource type="Script" path="res://addons/tree_mind/nodes/mind_tree.gd" id="6_ufjvm"]
@@ -248,17 +248,17 @@ collision_layer = 2
 collision_mask = 103
 motion_mode = 1
 wall_min_slide_angle = 0.0
-script = ExtResource("1_7iu6l")
 
 [node name="Navigator2D" type="NavigationAgent2D" parent="."]
 process_priority = -100
 process_physics_priority = -100
 script = ExtResource("15_xr0je")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="CharacterAnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 material = SubResource("CanvasItemMaterial_oqobr")
 sprite_frames = SubResource("SpriteFrames_xao01")
-animation = &"run_h"
+animation = &"die"
+script = ExtResource("3_ihi3d")
 
 [node name="HealthComponent" type="Node" parent="."]
 script = ExtResource("3_1r3kr")
