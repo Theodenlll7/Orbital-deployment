@@ -1,7 +1,6 @@
 extends Node
 
 var last_day: int = -1 
-@onready var enemy_handler = $Enemy_handler
 var costumer: Inventory
 
 func _ready() -> void:

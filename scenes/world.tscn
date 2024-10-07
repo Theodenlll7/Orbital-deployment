@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://wsq75v2incod"]
+[gd_scene load_steps=32 format=3 uid="uid://wsq75v2incod"]
 
 [ext_resource type="PackedScene" uid="uid://dgcxqingnrpqp" path="res://maps/map_generation/MapGeneration.tscn" id="1_huq2t"]
 [ext_resource type="Script" path="res://enemies/scripts/enemy_spawner.gd" id="2_3mje2"]
@@ -13,8 +13,6 @@
 [ext_resource type="PackedScene" uid="uid://6vt8l263l0o7" path="res://player/player.tscn" id="11_rp00p"]
 [ext_resource type="PackedScene" uid="uid://bwqebjpl0otwb" path="res://game_manager/DayAndNightCycle/night_day.tscn" id="12_gnnhm"]
 [ext_resource type="PackedScene" uid="uid://fwtaakyb0exx" path="res://maps/objects/pods/weapon_pod.tscn" id="12_lo35d"]
-[ext_resource type="PackedScene" uid="uid://d1etmnlvvpfab" path="res://maps/map_generation/enemy_handler/enemy_handler.tscn" id="13_hxcv5"]
-[ext_resource type="Script" path="res://maps/map_generation/enemy_handler/enemy_handler.gd" id="14_7jqnq"]
 [ext_resource type="PackedScene" uid="uid://dj36rh4ptga2b" path="res://maps/objects/ship/ship.tscn" id="18_c65v2"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_n8sf8"]
@@ -1216,9 +1214,6 @@ enemy_spawn_pool = Array[PackedScene]([ExtResource("3_r8gpc"), ExtResource("4_6d
 
 [node name="GameLoop" type="Node2D" parent="."]
 script = ExtResource("9_53pwr")
-
-[node name="Enemy_handler" parent="GameLoop" instance=ExtResource("13_hxcv5")]
-script = ExtResource("14_7jqnq")
 
 [node name="Player" parent="." groups=["Player"] instance=ExtResource("11_rp00p")]
 
