@@ -4,11 +4,14 @@ extends Node2D
 
 
 func _ready() -> void:
-	interaction_area.interact = Callable(self, "_on_interact")
+	interaction_area.interact = _on_interact
 
 
-func _on_interact():
-	print("Interaction/interactionarea.gd")
+func _on_interact(player : Player):
 	SoundEngine.playChestSound()
-	emit_signal("chest_picked_up", self)
+	GenerateMapVariables._on_chest_picked_up(self)
 	queue_free()
+
+
+func _on_interaction_area_body_exited(body: Node2D) -> void:
+	pass # Replace with function body.

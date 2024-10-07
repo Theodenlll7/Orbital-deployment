@@ -215,7 +215,7 @@ func spawn_chests():
 			add_child(chest_instance)
 			chests.append(chest_location)
 			chest_instance.set_meta("chest_location", chest_location)
-			chest_instance.connect("chest_picked_up", Callable(self, "_on_chest_picked_up"))
+			#chest_instance.connect("chest_picked_up", Callable(self, "_on_chest_picked_up"))
 			chest_count += 1
 	print("after spawn ", chests.size(), "chests:")
 
@@ -228,7 +228,6 @@ func between(val, start, end):
 
 func _on_chest_picked_up(chest_instance):
 	var chest_location = chest_instance.get_meta("chest_location")
-	GameVariables.increasePlayerMoney(100)
 	for i in range(chests.size()):
 		if chests[i] == chest_location:
 			chests.remove_at(i)

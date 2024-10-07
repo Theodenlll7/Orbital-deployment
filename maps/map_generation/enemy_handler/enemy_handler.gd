@@ -1,6 +1,6 @@
 extends Node2D
 
-var alien = preload("res://enemies/mobs/alien.tscn")
+var alien = preload("res://enemies/mobs/spider.tscn")
 var ranger = preload("res://enemies/mobs/ranger.tscn")
 var ground_positions = GenerateMapVariables.ground_cells
 var day_count = 0
@@ -21,7 +21,9 @@ func _on_spawn_timer_timeout():
 		var enemy_type = alien  
 		var enemy_instance = enemy_type.instantiate()
 		set_enemy_stats(enemy_instance, day_count)  
-		enemy_instance.position = enemies_to_spawn[current_spawn_index]  
+		enemy_instance.position = enemies_to_spawn[current_spawn_index]
+		enemy_instance.collision_layer = 3  # Adjust as needed
+		enemy_instance.collision_mask = 2  # Adjust as needed  
 		add_child(enemy_instance)  
 		current_spawn_index += 1  
 	else:

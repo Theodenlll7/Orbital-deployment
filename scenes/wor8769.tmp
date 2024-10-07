@@ -1204,15 +1204,15 @@ sources/2 = SubResource("TileSetAtlasSource_rgo0j")
 rotation = 3.14159
 scale = Vector2(31.9724, 26.7973)
 
+[node name="WaveManager" type="Node2D" parent="."]
+script = ExtResource("2_3mje2")
+enemy_spawn_pool = Array[PackedScene]([ExtResource("3_r8gpc"), ExtResource("4_6dy7k")])
+
 [node name="MapGeneration" parent="." instance=ExtResource("1_huq2t")]
 tile_set = SubResource("TileSet_6altl")
 layer_1/name = "Layer1"
 layer_2/name = "Layer2"
 script = ExtResource("8_xh3lq")
-
-[node name="WaveManager" type="Node2D" parent="."]
-script = ExtResource("2_3mje2")
-enemy_spawn_pool = Array[PackedScene]([ExtResource("3_r8gpc"), ExtResource("4_6dy7k")])
 
 [node name="GameLoop" type="Node2D" parent="."]
 script = ExtResource("9_53pwr")

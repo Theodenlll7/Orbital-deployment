@@ -70,6 +70,7 @@ func spawn_enemy():
 	var enemy = enemy_spawn_pool.pick_random().instantiate()
 	enemy.add_to_group("enemies")
 	enemy.global_position = spawn_postion
+
 	add_child(enemy)
 	var death = enemy.get_node("HandleEnemeyDeath") as HandleEnemeyDeath
 	death.died.connect(_enemy_death)
