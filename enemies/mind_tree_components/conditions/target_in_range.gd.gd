@@ -1,6 +1,6 @@
 class_name TargetInRange extends MTCondition
 
-@export var reach_distance = 50
+@export var reach_distance = 25
 
 
 func tick(blackboard: Blackboard) -> int:

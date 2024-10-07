@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="ProjectileWeaponResource" load_steps=5 format=3 uid="uid://bsdhsurnelj7f"]
+
+[ext_resource type="AudioStream" uid="uid://bx0erxmcc8tb2" path="res://inventory/items/weapons/assets/audio/gun_fire2.mp3" id="1_iwdrh"]
+[ext_resource type="PackedScene" uid="uid://delp5066b08hb" path="res://enemies/wepons/projectiles/basic_enemy_projectile.tscn" id="2_8cuuw"]
+[ext_resource type="Script" path="res://inventory/items/weapons/scripts/projectile_weapon_resource.gd" id="3_c1mnf"]
+[ext_resource type="Texture2D" uid="uid://fynhjhvwfvw2" path="res://inventory/items/weapons/assets/sprites/AS_12.png" id="4_0tgi8"]
+
+[resource]
+script = ExtResource("3_c1mnf")
+projectile_scene = ExtResource("2_8cuuw")
+item_name = &"Weapon"
+cost = 0
+muzzel_offset = Vector2(0, 0)
+audio_steam = ExtResource("1_iwdrh")
+attack_mode = 0
+attack_cooldown = 0.8
+has_magazine = true
+bullet_damage = 10
+bullet_speed = 300.0
+bullet_spread = 30.0
+bullet_lifetime = 0.3
+bullets_per_shot = 4
+magazine_size = 10
+reload_time = 0.5
+has_ammo = true
+ammo = 50
+ammo_cap = 200
+ammo_crate_value = 50
+drop_type = 0
+texture = ExtResource("4_0tgi8")
+drop_weight = 100
+test = Callable()
