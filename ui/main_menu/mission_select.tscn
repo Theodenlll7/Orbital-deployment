@@ -46,6 +46,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="TextureRect" type="TextureRect" parent="Planet"]
+modulate = Color(1, 1.1, 1.1, 1)
 layout_mode = 2
 offset_left = 787.0
 offset_top = -50.0
@@ -82,6 +83,7 @@ custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
 
 [node name="Label" type="Label" parent="Content/ContentMarginContainer/VBoxContainer/Title"]
+modulate = Color(1, 1, 1.3, 1)
 layout_mode = 2
 offset_right = 1792.0
 offset_bottom = 64.0
@@ -186,6 +188,7 @@ theme_override_constants/margin_right = 16
 theme_override_constants/margin_bottom = 16
 
 [node name="mission_label" type="Label" parent="Content/ContentMarginContainer/VBoxContainer/HBoxContainer/mission_description/MarginContainer/MarginContainer"]
+modulate = Color(3, 3, 3, 1)
 custom_minimum_size = Vector2(800, 400)
 layout_mode = 2
 size_flags_vertical = 1
@@ -214,6 +217,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_yj7p8")
 text = " Main menu "
 
 [node name="missions_tab" parent="." instance=ExtResource("4_m46ts")]
+visible = false
 layout_mode = 1
 
 [node name="infinit_marker" type="Control" parent="."]

@@ -4,9 +4,13 @@ extends Control
 @onready var texture_progress_bar: TextureProgressBar = $VBoxContainerContent/HBoxContainer/TextureProgressBar
 
 @onready var texture_button: TextureButton = $VBoxContainerContent/HBoxContainer/TextureButton
+
+signal skill_unlocked
+
 var level: int = 0
 
-func set_texture(img_dict: Dictionary) -> void:
+
+func set_texture(_id: int, img_dict: Dictionary) -> void:
 	var normal_texture: Texture2D = load(img_dict["normal"])
 	var hover_texture: Texture2D = load(img_dict["hover"])
 	var disabled_texture: Texture2D = load(img_dict["disabled"])
@@ -15,7 +19,7 @@ func set_texture(img_dict: Dictionary) -> void:
 	texture_button.texture_hover = hover_texture
 	texture_button.texture_disabled = disabled_texture
 
-func set_level(this_level: int, player_level: int, prev_level: int) -> void:
+func set_level(_id: int, this_level: int, player_level: int, prev_level: int) -> void:
 	level = this_level
 	label.text = "Level " + str(level)
 
@@ -33,3 +37,7 @@ func set_level(this_level: int, player_level: int, prev_level: int) -> void:
 	else:
 		texture_progress_bar.max_value = 1
 		texture_progress_bar.value = 1
+	texture_button.button_down.connect(skill_activated)
+
+func skill_activated() -> void:
+	skill_unlocked.emit()

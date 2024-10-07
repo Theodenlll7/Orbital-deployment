@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://dxk7c6wikv43p"]
+[gd_scene load_steps=24 format=3 uid="uid://dxk7c6wikv43p"]
 
 [ext_resource type="Theme" uid="uid://c3a3bfndbpf03" path="res://ui/main_menu/UI_theme.tres" id="1_7cya5"]
 [ext_resource type="Script" path="res://ui/main_menu/main_menu.gd" id="1_sgu6m"]
@@ -159,6 +159,12 @@ _data = {
 "to_new_scene": SubResource("Animation_l2jtp")
 }
 
+[sub_resource type="Environment" id="Environment_pbfcc"]
+background_mode = 3
+glow_enabled = true
+glow_intensity = 1.0
+glow_blend_mode = 0
+
 [node name="main_menu" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -195,6 +201,7 @@ size_flags_horizontal = 8
 size_flags_vertical = 4
 
 [node name="DropShipTextureRect" type="TextureRect" parent="ship"]
+modulate = Color(1.4, 1.2, 1.2, 1)
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
@@ -239,6 +246,7 @@ layout_mode = 2
 theme_override_constants/separation = 64
 
 [node name="Label" type="Label" parent="ContentMarginContainer/MarginContainer/VBoxContainer"]
+modulate = Color(1, 1, 1.3, 1)
 layout_mode = 2
 theme_override_colors/font_shadow_color = Color(0.221264, 0.399307, 0.745747, 1)
 theme_override_constants/shadow_offset_x = 0
@@ -344,3 +352,6 @@ texture = ExtResource("9_bh1l6")
 libraries = {
 "": SubResource("AnimationLibrary_t0w68")
 }
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_pbfcc")

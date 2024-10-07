@@ -22,7 +22,6 @@ collision_enabled = false
 script = ExtResource("2_fedqi")
 target_terrain_id = 2
 area_effect = NodePath("SlowAreaEffect2D")
-edge_margin = null
 
 [node name="SlowAreaEffect2D" type="Node" parent="TileWater/AreaEffectBaker"]
 script = ExtResource("3_kvrpn")
@@ -42,7 +41,6 @@ tile_set = ExtResource("1_s8v6d")
 script = ExtResource("2_fedqi")
 target_terrain_id = 3
 area_effect = NodePath("DamageAreaEffect2D")
-edge_margin = null
 
 [node name="DamageAreaEffect2D" type="Node" parent="TileLava/AreaEffectBaker"]
 script = ExtResource("4_ma5na")

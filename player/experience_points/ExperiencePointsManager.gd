@@ -16,7 +16,6 @@ var curve_steepness: float = 500 # A factor used to determine how much the XP re
 
 func _ready() -> void:
 	experience_needed_level_up = get_experience_needed_for_next_level()
-	print("Have ", experience_points, " and needs ", experience_needed_level_up)
 
 func add_experience(points: int) -> void:
 	if points < 0:

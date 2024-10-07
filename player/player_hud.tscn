@@ -391,6 +391,11 @@ text = "- s"
 horizontal_alignment = 2
 vertical_alignment = 1
 
+[node name="Panel" type="Panel" parent="PlayerHUD"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
 [node name="DeathScreen" parent="." instance=ExtResource("4_mdrqq")]
 visible = false
 script = null
