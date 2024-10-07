@@ -569,9 +569,6 @@ position = Vector2(0, 1)
 
 [node name="PlayerHUD" parent="." instance=ExtResource("6_pjces")]
 
-[node name="HealthBar" parent="PlayerHUD/PlayerHUD" index="0" node_paths=PackedStringArray("health_component")]
-health_component = NodePath("../../../HealthComponent")
-
 [node name="DeathScreen" parent="PlayerHUD" index="1"]
 script = ExtResource("7_il1d8")
 

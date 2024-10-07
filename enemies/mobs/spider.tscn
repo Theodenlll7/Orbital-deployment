@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://bgg2qlsu5f8qd"]
+[gd_scene load_steps=56 format=3 uid="uid://bgg2qlsu5f8qd"]
 
 [ext_resource type="Texture2D" uid="uid://ck8r1ebnncxpg" path="res://enemies/assets/textures/spider_sprite.png" id="2_wlcod"]
 [ext_resource type="Script" path="res://common/components/HealthComponent.gd" id="3_1r3kr"]
@@ -34,6 +34,42 @@ region = Rect2(64, 144, 16, 16)
 [sub_resource type="AtlasTexture" id="AtlasTexture_fj61q"]
 atlas = ExtResource("2_wlcod")
 region = Rect2(96, 144, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_44cf2"]
+atlas = ExtResource("2_wlcod")
+region = Rect2(0, 80, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wfx0p"]
+atlas = ExtResource("2_wlcod")
+region = Rect2(32, 80, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ev3tp"]
+atlas = ExtResource("2_wlcod")
+region = Rect2(64, 80, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tygog"]
+atlas = ExtResource("2_wlcod")
+region = Rect2(96, 80, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ajak1"]
+atlas = ExtResource("2_wlcod")
+region = Rect2(128, 80, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s2mg8"]
+atlas = ExtResource("2_wlcod")
+region = Rect2(160, 80, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ahyid"]
+atlas = ExtResource("2_wlcod")
+region = Rect2(192, 80, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dpjwk"]
+atlas = ExtResource("2_wlcod")
+region = Rect2(224, 80, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8gw5a"]
+atlas = ExtResource("2_wlcod")
+region = Rect2(256, 80, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sju50"]
 atlas = ExtResource("2_wlcod")
@@ -148,6 +184,38 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_44cf2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wfx0p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ev3tp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tygog")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ajak1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s2mg8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ahyid")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dpjwk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8gw5a")
+}],
+"loop": true,
+"name": &"charge",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_sju50")
 }, {
 "duration": 1.0,
@@ -257,7 +325,7 @@ script = ExtResource("15_xr0je")
 [node name="CharacterAnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 material = SubResource("CanvasItemMaterial_oqobr")
 sprite_frames = SubResource("SpriteFrames_xao01")
-animation = &"die"
+animation = &"charge"
 script = ExtResource("3_ihi3d")
 
 [node name="HealthComponent" type="Node" parent="."]
