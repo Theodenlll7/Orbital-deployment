@@ -5,25 +5,33 @@ extends Control
 @onready var texture_progress_bar: TextureProgressBar = $VBoxContainerContent/HBoxContainer/TextureProgressBar
 @onready var texture_button_top: TextureButton = $VBoxContainerContent/HBoxContainer/VBoxContainer/TextureButtonTop
 @onready var texture_button_bottom: TextureButton = $VBoxContainerContent/HBoxContainer/VBoxContainer/TextureButtonBottom
+@onready var end_texture_progress_bar: TextureProgressBar = $VBoxContainerContent/HBoxContainer/VBoxContainer/EndTextureProgressBar
 
-signal skill_unlocked
+signal skill_unlocked(level_id: String)
 
 var level: int = 0
 
-func set_texture(_id: int, img_dict: Dictionary) -> void:
-	var normal_texture: Texture2D = load(img_dict["normal"])
-	var hover_texture: Texture2D = load(img_dict["hover"])
-	var disabled_texture: Texture2D = load(img_dict["disabled"])
-	
-	texture_button_top.texture_normal = normal_texture
-	texture_button_top.texture_hover = hover_texture
-	texture_button_top.texture_disabled = disabled_texture
-	
-	texture_button_bottom.texture_normal = normal_texture
-	texture_button_bottom.texture_hover = hover_texture
-	texture_button_bottom.texture_disabled = disabled_texture
+func set_texture(_id: String, skill: Dictionary) -> void:
+	var img_dict_top = skill[1]["img"]
+	var img_dict_bottom = skill[2]["img"]
 
-func set_level(_id: int, this_level: int, player_level: int, prev_level: int) -> void:
+	var normal_texture_top: Texture2D = load(img_dict_top["normal"])
+	var hover_texture_top: Texture2D = load(img_dict_top["hover"])
+	var disabled_texture_top: Texture2D = load(img_dict_top["disabled"])
+	
+	var normal_texture_bottom: Texture2D = load(img_dict_bottom["normal"])
+	var hover_texture_bottom: Texture2D = load(img_dict_bottom["hover"])
+	var disabled_texture_bottom: Texture2D = load(img_dict_bottom["disabled"])
+	
+	texture_button_top.texture_normal = normal_texture_top
+	texture_button_top.texture_hover = hover_texture_top
+	texture_button_top.texture_disabled = disabled_texture_top
+
+	texture_button_bottom.texture_normal = normal_texture_bottom
+	texture_button_bottom.texture_hover = hover_texture_bottom
+	texture_button_bottom.texture_disabled = disabled_texture_bottom
+	
+func set_level(_id: String, this_level: int, player_level: int, prev_level: int) -> void:
 	level = this_level
 	label.text = "Level " + str(level)
 
@@ -42,9 +50,13 @@ func set_level(_id: int, this_level: int, player_level: int, prev_level: int) ->
 	else:
 		texture_progress_bar.max_value = 1
 		texture_progress_bar.value = 1
-	texture_button_top.button_down.connect(skill_activated)
-	texture_button_bottom.button_down.connect(skill_activated)
+		end_texture_progress_bar.max_value = 1
+		end_texture_progress_bar.value = 1
+
+	texture_button_top.button_down.connect(Callable(self, "skill_activated").bind(_id + "_2"))
+	texture_button_bottom.button_down.connect(Callable(self, "skill_activated").bind(_id + "_1"))
 
 
-func skill_activated() -> void:
-	skill_unlocked.emit()
+
+func skill_activated(_id: String) -> void:
+	skill_unlocked.emit(_id)

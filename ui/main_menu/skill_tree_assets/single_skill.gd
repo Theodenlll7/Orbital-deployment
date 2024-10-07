@@ -5,12 +5,13 @@ extends Control
 
 @onready var texture_button: TextureButton = $VBoxContainerContent/HBoxContainer/TextureButton
 
-signal skill_unlocked
+signal skill_unlocked(level_id: String)
 
 var level: int = 0
 
 
-func set_texture(_id: int, img_dict: Dictionary) -> void:
+func set_texture(_id: String, skill: Dictionary) -> void:
+	var img_dict = skill[1]["img"]
 	var normal_texture: Texture2D = load(img_dict["normal"])
 	var hover_texture: Texture2D = load(img_dict["hover"])
 	var disabled_texture: Texture2D = load(img_dict["disabled"])
@@ -19,7 +20,7 @@ func set_texture(_id: int, img_dict: Dictionary) -> void:
 	texture_button.texture_hover = hover_texture
 	texture_button.texture_disabled = disabled_texture
 
-func set_level(_id: int, this_level: int, player_level: int, prev_level: int) -> void:
+func set_level(_id: String, this_level: int, player_level: int, prev_level: int) -> void:
 	level = this_level
 	label.text = "Level " + str(level)
 
@@ -37,7 +38,9 @@ func set_level(_id: int, this_level: int, player_level: int, prev_level: int) ->
 	else:
 		texture_progress_bar.max_value = 1
 		texture_progress_bar.value = 1
-	texture_button.button_down.connect(skill_activated)
+	texture_button.button_down.connect(Callable(self, "skill_activated").bind(_id))
 
-func skill_activated() -> void:
-	skill_unlocked.emit()
+
+func skill_activated(id: String) -> void:
+	var emit_id: String = id + "_1"
+	skill_unlocked.emit(emit_id)

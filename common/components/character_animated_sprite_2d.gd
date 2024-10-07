@@ -23,8 +23,8 @@ func animate() -> void:
 	if abs(parent.velocity) > Vector2(0.1, 0.1):
 		play("run_h")
 		if parent.velocity.x > 0.0:
-			flip_h = true
-		elif parent.velocity.x < 0.0:
 			flip_h = false
+		elif parent.velocity.x < 0.0:
+			flip_h = true
 	else:
 		play("idle")

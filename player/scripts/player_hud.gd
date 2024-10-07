@@ -7,15 +7,15 @@ class_name PlayerHUD
 @export var selected_size: float = 1.0
 @export var deselected_size: float = 0.5
 
-@onready var money_label: Label = $PlayerHUD/monyIndicator/mony
+@onready var money_label: Label = $MarginContainer/PlayerHUD/MoneyHUD/mony
 
-@onready var wave_number: Label = $PlayerHUD/WaveIndicator/WaveHBoxContainer/WaveNumber
+@onready var wave_number: Label = $MarginContainer/PlayerHUD/WaveHUD/WaveHBoxContainer/WaveNumber
 
-@onready var remaining_text: Label = $PlayerHUD/WaveIndicator/WaveInfoHBoxContainer/RemainingText
-@onready var remaining_number: Label = $PlayerHUD/WaveIndicator/WaveInfoHBoxContainer/RemainingNumber
+@onready var remaining_text: Label = $MarginContainer/PlayerHUD/WaveHUD/WaveInfoHBoxContainer/RemainingText
+@onready var remaining_number: Label = $MarginContainer/PlayerHUD/WaveHUD/WaveInfoHBoxContainer/RemainingNumber
 
-@onready var time_h_box_container: HBoxContainer = $PlayerHUD/WaveIndicator/TimeHBoxContainer
-@onready var time_until_next_wave_label: Label = $PlayerHUD/WaveIndicator/TimeHBoxContainer/TimeUntilNextWave
+@onready var time_h_box_container: HBoxContainer = $MarginContainer/PlayerHUD/WaveHUD/TimeHBoxContainer
+@onready var time_until_next_wave_label: Label = $MarginContainer/PlayerHUD/WaveHUD/TimeHBoxContainer/TimeUntilNextWave
 
 @onready var wave_manager = get_tree().get_nodes_in_group("wave_manager")[0] as WaveManager
 @export var ammo_indicator: AmmoIndicator = null

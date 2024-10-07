@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://jydedg280lpm"]
+[gd_scene load_steps=10 format=3 uid="uid://jydedg280lpm"]
 
 [ext_resource type="PackedScene" uid="uid://dnhpjca7wh5ew" path="res://scenes/scene2.tscn" id="1_c8gxp"]
 [ext_resource type="PackedScene" uid="uid://6vt8l263l0o7" path="res://player/player.tscn" id="2_ammvo"]
@@ -7,11 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://kua7fs588s48" path="res://enemies/mobs/ranger.tscn" id="5_v0ucf"]
 [ext_resource type="PackedScene" uid="uid://inymqhajqaf7" path="res://ui/in_game/mission_start_text.tscn" id="6_r6q3o"]
 [ext_resource type="PackedScene" uid="uid://fwtaakyb0exx" path="res://maps/objects/pods/weapon_pod.tscn" id="7_38vkb"]
-[ext_resource type="Script" path="res://inventory/loot/droped_items/scripts/ammo_crate.gd" id="8_ffrcw"]
-[ext_resource type="Texture2D" uid="uid://ccoe78uc8jt31" path="res://assets/icon.svg" id="9_pstlk"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_frced"]
-radius = 40.56
+[ext_resource type="Script" path="res://common/arrow_indicators/ArrowIndicator.gd" id="8_imi2n"]
+[ext_resource type="Texture2D" uid="uid://bsjfhwk5erona" path="res://assets/TextureIcons/gun_arrow.png" id="9_gqmjs"]
 
 [node name="Level2" type="Node2D"]
 y_sort_enabled = true
@@ -36,16 +33,13 @@ position = Vector2(-117, -16)
 z_index = 1
 position = Vector2(95, -80)
 
-[node name="AmmoCrate" type="Area2D" parent="."]
-collision_layer = 0
-script = ExtResource("8_ffrcw")
+[node name="ArrowIndicator" type="Node2D" parent="." node_paths=PackedStringArray("target", "arrow_sprite", "player")]
+z_index = 100
+z_as_relative = false
+script = ExtResource("8_imi2n")
+target = NodePath("../InteractionArea")
+arrow_sprite = NodePath("Sprite2D")
+player = NodePath("../Player")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AmmoCrate"]
-shape = SubResource("CircleShape2D_frced")
-
-[node name="Sprite2D" type="Sprite2D" parent="AmmoCrate"]
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("9_pstlk")
-
-[connection signal="body_entered" from="AmmoCrate" to="AmmoCrate" method="_on_body_entered"]
-[connection signal="body_exited" from="AmmoCrate" to="AmmoCrate" method="_on_body_exited"]
+[node name="Sprite2D" type="Sprite2D" parent="ArrowIndicator"]
+texture = ExtResource("9_gqmjs")

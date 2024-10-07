@@ -3,7 +3,7 @@ class_name AmmoIndicator
 
 @onready var magazin_ammo = $MagazineAmmo
 @onready var extra_ammo = $ExtraAmmo
-@onready var devider = $Devider
+@onready var devider = $Control/Devider
 
 
 func equip_weapon(weapon: WeaponResource):

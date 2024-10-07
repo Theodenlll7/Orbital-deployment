@@ -59,7 +59,7 @@ func _ready():
 	randomize()
 	altitude.seed = randi()
 	noise.seed = randi()
-	altitude.frequency = 0.01
+	altitude.frequency = 0.1
 	generate_cells()
 	Get_pod_locations()
 

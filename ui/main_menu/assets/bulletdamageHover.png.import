@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dba3dxcy8ngcv"
-path="res://.godot/imported/bulletDisabled.png-16bab96be37fe82dfb1d50153b5f5105.ctex"
+uid="uid://doeuwqhrxnis1"
+path="res://.godot/imported/bulletdamageHover.png-1c1236e98614705adab7aa1dc9682aae.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ui/main_menu/assets/bulletDisabled.png"
-dest_files=["res://.godot/imported/bulletDisabled.png-16bab96be37fe82dfb1d50153b5f5105.ctex"]
+source_file="res://ui/main_menu/assets/bulletdamageHover.png"
+dest_files=["res://.godot/imported/bulletdamageHover.png-1c1236e98614705adab7aa1dc9682aae.ctex"]
 
 [params]
 

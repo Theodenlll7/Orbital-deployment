@@ -3,8 +3,8 @@
 [ext_resource type="Texture2D" uid="uid://csx6txruujpgt" path="res://ui/main_menu/assets/progressbar_double.png" id="1_albpn"]
 [ext_resource type="Script" path="res://ui/main_menu/skill_tree_assets/double_skill.gd" id="1_olt4t"]
 [ext_resource type="Texture2D" uid="uid://bl5bwe1py2r0u" path="res://ui/main_menu/assets/bulletdamage.png" id="2_x6jv2"]
-[ext_resource type="Texture2D" uid="uid://doeuwqhrxnis1" path="res://ui/main_menu/assets/bulletHover.png" id="3_4kqwn"]
-[ext_resource type="Texture2D" uid="uid://dba3dxcy8ngcv" path="res://ui/main_menu/assets/bulletDisabled.png" id="4_knp15"]
+[ext_resource type="Texture2D" uid="uid://doeuwqhrxnis1" path="res://ui/main_menu/assets/bulletdamageHover.png" id="3_4kqwn"]
+[ext_resource type="Texture2D" uid="uid://dba3dxcy8ngcv" path="res://ui/main_menu/assets/bulletdamageDisabled.png" id="4_knp15"]
 [ext_resource type="Texture2D" uid="uid://da3352vhgpp58" path="res://ui/main_menu/assets/heartplus.png" id="5_3q3ns"]
 [ext_resource type="Texture2D" uid="uid://kn5dbvx1lyso" path="res://ui/main_menu/assets/progressbar_double_out.png" id="5_r2u1x"]
 [ext_resource type="Texture2D" uid="uid://een41g7xxesw" path="res://ui/main_menu/assets/heartHover.png" id="6_dgrk3"]
@@ -15,7 +15,8 @@ custom_minimum_size = Vector2(448, 0)
 layout_mode = 3
 anchor_right = 0.233
 anchor_bottom = 1.0
-offset_right = 0.639984
+offset_left = -1.52588e-05
+offset_right = 1.64001
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_olt4t")
@@ -87,7 +88,7 @@ texture_normal = ExtResource("2_x6jv2")
 texture_hover = ExtResource("3_4kqwn")
 texture_disabled = ExtResource("4_knp15")
 
-[node name="TextureProgressBar" type="TextureProgressBar" parent="VBoxContainerContent/HBoxContainer/VBoxContainer"]
+[node name="EndTextureProgressBar" type="TextureProgressBar" parent="VBoxContainerContent/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 4

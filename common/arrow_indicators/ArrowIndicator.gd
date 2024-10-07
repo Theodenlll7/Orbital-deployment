@@ -5,13 +5,13 @@ extends Node2D
 @export var arrow_sprite: Sprite2D = null  # Reference to the Sprite node
 @export var screen_margin: float = 20.0  # Margin from screen edge when off-screen
 @export var camera: Camera2D = null  # Reference to the camera
+@export var player: Player = null
 
-
+var finished_travel := false
 # Function to set the custom arrow sprite
 func set_custom_arrow(texture: Texture):
 	if arrow_sprite:
 		arrow_sprite.texture = texture
-
 
 # Called when the node enters the scene
 func _ready():
@@ -45,13 +45,22 @@ func _process(delta):
 			global_position, target_position + Vector2(0, -screen_margin), delta * 5
 		)
 		look_at(target_position)
+		finished_travel = false
 		#arrow_sprite.visible = false  # Hide the arrow when over the target
 	else:
 		# Target is off-screen, point the arrow towards it
 
-		var direction = (target_position - camera.global_position).normalized()
-
-		position = camera.global_position + direction * 50
+		var direction = (target_position - player.global_position).normalized()
+		
+		var arrow_position = player.global_position + direction * 40
+		
+		if !finished_travel:
+			global_position = lerp(global_position, arrow_position, delta * 20) 
+			if global_position.distance_to(arrow_position) < 1:
+				finished_travel = true
+		else:
+			global_position = arrow_position
+		
 		look_at(target_position)
 
 

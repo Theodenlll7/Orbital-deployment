@@ -34,12 +34,13 @@ size_flags_horizontal = 3
 z_index = 1
 position = Vector2(239, -34)
 
-[node name="ArrowIndicator" type="Node2D" parent="." node_paths=PackedStringArray("target", "arrow_sprite")]
+[node name="ArrowIndicator" type="Node2D" parent="." node_paths=PackedStringArray("target", "arrow_sprite", "player")]
 z_index = 100
 z_as_relative = false
 script = ExtResource("8_btq2v")
 target = NodePath("../InteractionArea")
 arrow_sprite = NodePath("Sprite2D")
+player = NodePath("../Player")
 
 [node name="Sprite2D" type="Sprite2D" parent="ArrowIndicator"]
 texture = ExtResource("9_7mvpw")

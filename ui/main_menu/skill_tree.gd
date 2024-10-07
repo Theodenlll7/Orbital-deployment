@@ -7,15 +7,57 @@ extends Control
 
 const SINGLE_SKILL: String = "res://ui/main_menu/skill_tree_assets/single_skill.tscn"
 const DOUBLE_SKILL: String = "res://ui/main_menu/skill_tree_assets/double_skill.tscn"
+
 @onready var popup: MarginContainer = $Popup
+@onready var popup_header: Label = $Popup/Panel/MarginContainer/VBoxContainer/PopupHeader
 
 var player_level: int = 0
 
 const skill_layout: Dictionary = {
-	1: {"type": "single","level": 5, "img": {"normal": "res://ui/main_menu/assets/heart.png", "hover": "res://ui/main_menu/assets/heartHover.png", "disabled": "res://ui/main_menu/assets/heartDisabled.png"} },
-	2: {"type": "single","level": 10, "img": {"normal": "res://ui/main_menu/assets/heart.png", "hover": "res://ui/main_menu/assets/heartHover.png", "disabled": "res://ui/main_menu/assets/heartDisabled.png"} },
-	3: {"type": "double","level": 15, "img": {"normal": "res://ui/main_menu/assets/heart.png", "hover": "res://ui/main_menu/assets/heartHover.png", "disabled": "res://ui/main_menu/assets/heartDisabled.png"} },
-	4: {"type": "single","level": 20, "img": {"normal": "res://ui/main_menu/assets/heart.png", "hover": "res://ui/main_menu/assets/heartHover.png", "disabled": "res://ui/main_menu/assets/heartDisabled.png"} },
+	1: {
+		"type": "single","level": 5,"skill":{
+		1: {
+			"name": "Health regeneration", 
+			"img": {
+				"normal": "res://ui/main_menu/assets/timeglass.png", 
+				"hover": "res://ui/main_menu/assets/timeglassHover.png", 
+				"disabled": "res://ui/main_menu/assets/timeglassDisabled.png"
+				}
+			}
+		},
+	},
+	2: {
+		"type": "double","level": 10,"skill":{
+		1: {
+			"name": "More bullet damage", 
+			"img": {
+				"normal": "res://ui/main_menu/assets/bulletdamage.png", 
+				"hover": "res://ui/main_menu/assets/bulletdamageHover.png", 
+				"disabled": "res://ui/main_menu/assets/bulletdamageDisabled.png"
+				}
+			},
+		2: {
+		"name": "More health",
+	 	"img": {
+				"normal": "res://ui/main_menu/assets/heart.png", 
+				"hover": "res://ui/main_menu/assets/heartHover.png", 
+				"disabled": "res://ui/main_menu/assets/heartDisabled.png"
+				}
+			}
+		}
+	},
+	3: {
+		"type": "single","level": 15,"skill":{
+		1:{
+			"name": "More health",
+		 	"img": {
+				"normal": "res://ui/main_menu/assets/heart.png", 
+				"hover": "res://ui/main_menu/assets/heartHover.png", 
+				"disabled": "res://ui/main_menu/assets/heartDisabled.png"
+				}
+			}
+		},
+	},
 }
 
 func _ready() -> void:
@@ -44,26 +86,35 @@ func init_skill_tree() -> void:
 	var prev_level: int = 1
 	for id in skill_layout.keys():
 		var dictionary_item = skill_layout[id]
+		
 		match dictionary_item["type"]:
 			"single":
 				skill_tree_type = SINGLE_SKILL
 			"double":
 				skill_tree_type = DOUBLE_SKILL
+								
 		var skill_tree_instance = load(skill_tree_type).instantiate()
 		skill_content.add_child(skill_tree_instance)
 
-		skill_tree_instance.call_deferred("set_texture", id, dictionary_item["img"])
-		skill_tree_instance.call_deferred("set_level", id, dictionary_item["level"], player_level, prev_level)
+		skill_tree_instance.call_deferred("set_texture", str(id), dictionary_item["skill"])
+		skill_tree_instance.call_deferred("set_level", str(id), dictionary_item["level"], player_level, prev_level)
 		prev_level = dictionary_item["level"]
-		
+	
 		skill_tree_instance.connect("skill_unlocked", Callable(self, "on_skill_unlocked"))
 
-func on_skill_unlocked() -> void:
-	print("Skill unlocked!")
-	show_skill_information()
 
-func show_skill_information() -> void:
-		popup.visible = true
+func on_skill_unlocked(skill_id: String) -> void:
+	print("Skill unlocked!")
+	show_skill_information(skill_id)
+
+func show_skill_information(skill_id: String) -> void:
+	var parts = skill_id.split("_")  # Split the string at the underscore 
+	var id_a = int(parts[0]) 
+	var id_b = int(parts[1]) # id_b = 1 if single, if double 1 or 2
+	
+	var new_skill = skill_layout[id_a]["skill"][id_b]
+	popup_header.text = str(new_skill["name"])
+	popup.visible = true
 
 func handle_connecting_signals() -> void:
 	close_popup_button.button_down.connect(on_close_popup_button_pressed)

@@ -175,7 +175,17 @@ grow_vertical = 2
 theme = ExtResource("1_7cya5")
 script = ExtResource("1_sgu6m")
 
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0.0862745, 1)
+
 [node name="BackGroundTextureRect" type="TextureRect" parent="."]
+modulate = Color(2, 2, 1.9, 1)
 texture_repeat = 2
 material = SubResource("ShaderMaterial_7cjl6")
 layout_mode = 1
