@@ -2,7 +2,7 @@ extends Node2D
 class_name Explosive
 
 signal explosive_thrown()
-signal explosive_exploded()
+#signal explosive_exploded()
 
 var explosive_resource: ExplosiveResource
 
