@@ -14,7 +14,7 @@ func _ready() -> void:
 	connect("body_entered", _on_body_entered)
 	#apply_impulse(direction * impulse)
 	#linear_velocity = direction.normalized() * speed
-
+	play_bullet_animation()
 	await get_tree().create_timer(lifetime).timeout
 	queue_free()
 
@@ -24,3 +24,7 @@ func _on_body_entered(body):
 	if hp:
 		hp.damage(damage)
 	queue_free()
+
+func play_bullet_animation():
+	if $AnimatedSprite2D:
+		$AnimatedSprite2D.play("default")
