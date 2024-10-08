@@ -12,7 +12,7 @@ func _throw(explosive: Explosive):
 	explosive_grenade = explosive.get_grenade()
 	if not explosive_grenade:
 		return
-	var explosive_instance = explosive_grenade.instantiate()
+	var _explosive_instance = explosive_grenade.instantiate()
 	var position = explosive.to_global(muzzel_offset)
 
 	var grenade = explosive_grenade.instantiate()

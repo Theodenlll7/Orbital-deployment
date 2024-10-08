@@ -10,6 +10,8 @@ class_name WaveManager
 @export var enemy_spawn_pool: Array[PackedScene] = []
 @export var enemy_spawn_weights : Array[int] = []
 
+@export var enemies_to_spawn: int = 10
+
 @onready var players = get_tree().get_nodes_in_group("players")
 
 signal new_wave_started(wave: int)
@@ -26,7 +28,6 @@ var enemy_count = 0
 
 var enemies_spawnd_this_wave : int = 0
 
-var enemies_to_spawn: int = 10
 
 var wave_finished := false
 

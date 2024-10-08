@@ -13,9 +13,8 @@
 [ext_resource type="PackedScene" uid="uid://6vt8l263l0o7" path="res://player/player.tscn" id="11_rp00p"]
 [ext_resource type="PackedScene" path="res://game_manager/DayAndNightCycle/night_day.tscn" id="12_gnnhm"]
 [ext_resource type="PackedScene" uid="uid://fwtaakyb0exx" path="res://maps/objects/pods/weapon_pod.tscn" id="12_lo35d"]
-[ext_resource type="PackedScene" uid="uid://dihjqikmheg2n" path="res://enemies/mobs/bosses/juggernaut.tscn" id="15_4em7c"]
+[ext_resource type="PackedScene" uid="uid://dihjqikmheg2n" path="res://enemies/mobs/bosses/heavy_juggernaut.tscn" id="15_4em7c"]
 [ext_resource type="PackedScene" uid="uid://dj36rh4ptga2b" path="res://maps/objects/ship/ship.tscn" id="18_c65v2"]
-
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_n8sf8"]
 texture = ExtResource("2_31m2w")
@@ -1228,5 +1227,5 @@ position = Vector2(150, 111)
 [node name="WeaponPod" parent="." instance=ExtResource("12_lo35d")]
 position = Vector2(102, 8)
 
-[node name="Ranger" parent="." instance=ExtResource("15_4em7c")]
+[node name="Heavy_juggernaut" parent="." instance=ExtResource("15_4em7c")]
 position = Vector2(-127, 160)

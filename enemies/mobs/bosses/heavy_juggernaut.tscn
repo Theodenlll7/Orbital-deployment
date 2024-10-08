@@ -1,6 +1,6 @@
 [gd_scene load_steps=50 format=3 uid="uid://dihjqikmheg2n"]
 
-[ext_resource type="Script" path="res://enemies/mobs/bosses/juggernaut.gd" id="1_qc5bs"]
+[ext_resource type="Script" path="res://enemies/mobs/bosses/heavy_juggernaut.gd" id="1_qc5bs"]
 [ext_resource type="Script" path="res://common/components/navigator2d.gd" id="2_8y58p"]
 [ext_resource type="Texture2D" uid="uid://kmhaeqfjhlt2" path="res://enemies/assets/textures/juggernaut_sprite.png" id="3_m42v4"]
 [ext_resource type="Script" path="res://common/components/character_animated_sprite_2d.gd" id="4_ibnc0"]
@@ -211,10 +211,10 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qvi5h"]
-radius = 4.0
-height = 14.0
+radius = 7.0
+height = 22.0
 
-[node name="juggernaut" type="CharacterBody2D"]
+[node name="Heavy_juggernaut" type="CharacterBody2D"]
 collision_layer = 2
 collision_mask = 39
 script = ExtResource("1_qc5bs")
@@ -230,7 +230,7 @@ radius = 20.0
 script = ExtResource("2_8y58p")
 
 [node name="CharacterAnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, -3)
+position = Vector2(1, -3)
 sprite_frames = SubResource("SpriteFrames_vqxk7")
 animation = &"run_h"
 script = ExtResource("4_ibnc0")
@@ -281,6 +281,8 @@ script = ExtResource("15_1kblm")
 move_speed = 80.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, -3)
+scale = Vector2(1, 1.08)
 shape = SubResource("CapsuleShape2D_qvi5h")
 
 [node name="MobWeapon" type="Node2D" parent="."]
@@ -288,7 +290,7 @@ script = ExtResource("16_8vv8s")
 weapon_resource = ExtResource("17_dqrsw")
 
 [node name="WeaponOrbitPoint" type="Marker2D" parent="MobWeapon"]
-position = Vector2(0, 2)
+position = Vector2(0, -1)
 
 [node name="LootSpawner" type="Node2D" parent="."]
 script = ExtResource("18_sbb0s")
@@ -300,9 +302,9 @@ spawn_attempts = 10
 script = ExtResource("20_oc1ux")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
-position = Vector2(1, -3)
+position = Vector2(0, -10)
 color = Color(1, 0, 0.0352941, 1)
-energy = 0.4
+energy = 0.6
 texture = ExtResource("21_b8431")
 texture_scale = 0.05
 
