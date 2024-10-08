@@ -1,6 +1,7 @@
-[gd_scene load_steps=28 format=3 uid="uid://osyv1bssggkt"]
+[gd_scene load_steps=29 format=3 uid="uid://osyv1bssggkt"]
 
 [ext_resource type="Script" path="res://inventory/items/weapons/projectiles/projectile_2d.gd" id="1_epss2"]
+[ext_resource type="Script" path="res://enemies/wepons/projectiles/lighting_projectile.gd" id="2_rpe1f"]
 [ext_resource type="Texture2D" uid="uid://urf4beemi3e3" path="res://assets/animated_sprites/GlowingBall Blue 22frames RPG.png" id="2_trr3v"]
 [ext_resource type="AudioStream" uid="uid://bnpymfipss83n" path="res://assets/Sound/mob_sound/guns/lightning_ball.mp3" id="3_thtdh"]
 
@@ -184,10 +185,13 @@ script = ExtResource("1_epss2")
 position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_ifh57")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="Node2D" type="Node2D" parent="."]
+script = ExtResource("2_rpe1f")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Node2D"]
+stream = ExtResource("3_thtdh")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Node2D"]
 position = Vector2(1.54972e-06, 0)
 scale = Vector2(0.1875, 0.177083)
 sprite_frames = SubResource("SpriteFrames_ankfl")
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_thtdh")
