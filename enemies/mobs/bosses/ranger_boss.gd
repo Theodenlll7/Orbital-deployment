@@ -3,6 +3,7 @@ extends CharacterBody2D
 @onready var health_stats = $HealthComponent
 @onready var movement_stats = $MindTreeRoot/Selector/SelectAndWalktToTarget/StartNavgationToTarget
 @onready var weapon = $MobWeapon
+@onready var spawn_sound = $Sound/spawn
 
 #Base stats
 var movement_speed: float = 20
@@ -12,6 +13,7 @@ var max_health = 1000
 
 func _ready() -> void:
 	_set_boss_base_variables()
+	spawn_sound.play()
 	
 func _set_boss_base_variables():
 	set_health()

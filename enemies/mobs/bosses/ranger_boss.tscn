@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=3 uid="uid://dihjqikmheg2n"]
+[gd_scene load_steps=50 format=3 uid="uid://dihjqikmheg2n"]
 
 [ext_resource type="Script" path="res://common/components/navigator2d.gd" id="1_2ryfi"]
 [ext_resource type="Script" path="res://enemies/mobs/bosses/ranger_boss.gd" id="1_53ehn"]
@@ -22,6 +22,7 @@
 [ext_resource type="Script" path="res://enemies/scripts/handle_enemy_death.gd" id="19_mmpq8"]
 [ext_resource type="Texture2D" uid="uid://dcgcly83hxan6" path="res://player/assets/textures/light.png" id="20_30pqf"]
 [ext_resource type="Script" path="res://enemies/scripts/parent_move_and_slide.gd" id="21_aawtb"]
+[ext_resource type="AudioStream" uid="uid://pllhuipqlnc7" path="res://assets/Sound/mob_sound/spawn/boss_spawn.mp3" id="23_enpm5"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ni7c6"]
 atlas = ExtResource("2_1t1s7")
@@ -308,3 +309,8 @@ texture_scale = 0.05
 [node name="ParentMoveAndSlide" type="Node" parent="."]
 process_physics_priority = 10
 script = ExtResource("21_aawtb")
+
+[node name="Sound" type="Node" parent="."]
+
+[node name="spawn" type="AudioStreamPlayer" parent="Sound"]
+stream = ExtResource("23_enpm5")
