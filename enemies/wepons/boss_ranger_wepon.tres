@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="ProjectileWeaponResource" load_steps=5 format=3 uid="uid://brpyd72u83607"]
 
 [ext_resource type="AudioStream" uid="uid://bx0erxmcc8tb2" path="res://inventory/items/weapons/assets/audio/gun_fire2.mp3" id="1_khm2r"]
-[ext_resource type="PackedScene" uid="uid://osyv1bssggkt" path="res://enemies/wepons/projectiles/boss_enemy_projectile.tscn" id="2_upk4r"]
+[ext_resource type="PackedScene" uid="uid://osyv1bssggkt" path="res://enemies/wepons/projectiles/lightning_ball_projectile.tscn" id="2_upk4r"]
 [ext_resource type="Script" path="res://inventory/items/weapons/scripts/projectile_weapon_resource.gd" id="3_bwu3c"]
 [ext_resource type="Texture2D" uid="uid://fynhjhvwfvw2" path="res://inventory/items/weapons/assets/sprites/AS_12.png" id="4_rx6gd"]
 
