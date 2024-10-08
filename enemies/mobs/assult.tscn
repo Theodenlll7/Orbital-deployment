@@ -229,7 +229,7 @@ script = ExtResource("1_alrx4")
 [node name="CharacterAnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -3)
 sprite_frames = SubResource("SpriteFrames_bagim")
-animation = &"die"
+animation = &"idle"
 script = ExtResource("3_1pf4o")
 
 [node name="HealthComponent" type="Node" parent="."]
