@@ -135,7 +135,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_frqhh")
 }],
-"loop": true,
+"loop": false,
 "name": &"die",
 "speed": 2.5
 }, {
@@ -232,7 +232,7 @@ script = ExtResource("2_8y58p")
 [node name="CharacterAnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -3)
 sprite_frames = SubResource("SpriteFrames_vqxk7")
-animation = &"die"
+animation = &"run_h"
 script = ExtResource("4_ibnc0")
 
 [node name="HealthComponent" type="Node" parent="."]
