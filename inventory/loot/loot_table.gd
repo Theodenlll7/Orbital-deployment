@@ -22,7 +22,7 @@ func get_random_loot() -> Item:
 	var picked_weight = randi_range(0, total_weight)
 
 	for loot in loot_table:
-		if picked_weight <= picked_weight:
+		if picked_weight <= loot.drop_weight:
 			print("loot picked")
 			return loot
 		picked_weight -= loot.drop_weight
