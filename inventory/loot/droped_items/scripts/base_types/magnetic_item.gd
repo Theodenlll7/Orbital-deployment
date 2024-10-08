@@ -26,7 +26,7 @@ func _ready() -> void:
 	var collider := CollisionShape2D.new()
 	var shape := CircleShape2D.new()
 	shape.radius = magnet_radius
-	collider.shape = shape
+	collider.set_deferred("shape", shape)
 	add_child(collider)
 
 	var sprite = Sprite2D.new()
