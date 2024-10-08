@@ -16,6 +16,7 @@ y_sort_enabled = true
 [node name="TileMap2" parent="." instance=ExtResource("1_c8gxp")]
 
 [node name="enemy_spawner" type="Node2D" parent="."]
+z_index = 1
 script = ExtResource("3_3263j")
 enemy_spawn_pool = Array[PackedScene]([ExtResource("4_fkjhh"), ExtResource("5_v0ucf")])
 

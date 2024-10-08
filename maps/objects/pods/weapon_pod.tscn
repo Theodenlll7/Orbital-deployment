@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://dcgcly83hxan6" path="res://player/assets/textures/light.png" id="5_s3fsd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k8nvd"]
-size = Vector2(91, 46)
+size = Vector2(60, 46)
 
 [node name="WeaponPod" type="Node2D"]
 y_sort_enabled = true
@@ -21,6 +21,7 @@ monitorable = false
 script = ExtResource("2_ndqur")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
+position = Vector2(0, 13)
 shape = SubResource("RectangleShape2D_k8nvd")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
@@ -40,19 +41,18 @@ tile_set = ExtResource("5_c6o6u")
 position = Vector2(0.289154, -0.372095)
 
 [node name="PointLight2D" type="PointLight2D" parent="PodTileMapAcrive/Node2D"]
-position = Vector2(7.2289, -0.372095)
+position = Vector2(10.1205, 0.372095)
 color = Color(1, 0.698039, 0.196078, 1)
 energy = 2.0
 texture = ExtResource("5_s3fsd")
 texture_scale = 0.2
 
 [node name="PodTileMapDeactivated" type="TileMapLayer" parent="."]
-visible = false
 z_index = 3
 y_sort_enabled = true
-position = Vector2(-0.499997, 0.500002)
+position = Vector2(-14, 2)
 scale = Vector2(1.72917, 1.34375)
-tile_map_data = PackedByteArray(0, 0, 0, 0, 0, 0, 1, 0, 2, 0, 0, 0, 0, 0, 255, 255, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+tile_map_data = PackedByteArray(0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0)
 tile_set = ExtResource("5_c6o6u")
 
 [connection signal="body_entered" from="InteractionArea" to="InteractionArea" method="_on_body_entered"]

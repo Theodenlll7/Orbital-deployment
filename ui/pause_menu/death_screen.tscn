@@ -156,10 +156,10 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 2.0
 theme_override_font_sizes/font_size = 20
-text = "You reached level "
+text = "You reached wave "
 horizontal_alignment = 2
 
-[node name="Level" type="Label" parent="TextureRect/MarginContainer/VBoxContentContainer/Text/MarginContainer/HBoxContainer/Control/VBoxContainer/ColorRect/MarginContainer/ProgressLabels"]
+[node name="Wave" type="Label" parent="TextureRect/MarginContainer/VBoxContentContainer/Text/MarginContainer/HBoxContainer/Control/VBoxContainer/ColorRect/MarginContainer/ProgressLabels"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)

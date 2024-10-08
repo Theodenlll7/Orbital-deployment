@@ -6,6 +6,8 @@ extends Node2D
 @export var screen_margin: float = 20.0  # Margin from screen edge when off-screen
 @export var camera: Camera2D = null  # Reference to the camera
 @export var player: Player = null
+@export var at_player_scale: float = 0.4
+@export var lerp_speed_to_player: float = 10
 
 var finished_travel := false
 # Function to set the custom arrow sprite
@@ -45,18 +47,20 @@ func _process(delta):
 			global_position, target_position + Vector2(0, -screen_margin), delta * 5
 		)
 		look_at(target_position)
+		scale = lerp(scale, Vector2.ONE, delta)
 		finished_travel = false
 		#arrow_sprite.visible = false  # Hide the arrow when over the target
 	else:
 		# Target is off-screen, point the arrow towards it
 
 		var direction = (target_position - player.global_position).normalized()
+		scale = lerp(scale, Vector2(at_player_scale, at_player_scale), delta  * lerp_speed_to_player)
 		
 		var arrow_position = player.global_position + direction * 40
 		
 		if !finished_travel:
-			global_position = lerp(global_position, arrow_position, delta * 20) 
-			if global_position.distance_to(arrow_position) < 1:
+			global_position = lerp(global_position, arrow_position, delta * lerp_speed_to_player) 
+			if global_position.distance_to(arrow_position) < 10:
 				finished_travel = true
 		else:
 			global_position = arrow_position

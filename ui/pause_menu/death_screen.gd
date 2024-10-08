@@ -10,6 +10,9 @@ class_name DeathScreen
 @onready var text_background_color_rect: ColorRect = $TextureRect/MarginContainer/VBoxContentContainer/Text/MarginContainer/HBoxContainer/Control/VBoxContainer/Control/ColorRect
 @onready var main_menu = load("res://ui/main_menu/main_menu.tscn")
 
+@onready var wave_label: Label = $TextureRect/MarginContainer/VBoxContentContainer/Text/MarginContainer/HBoxContainer/Control/VBoxContainer/ColorRect/MarginContainer/ProgressLabels/Wave
+@onready var wave_manager = get_tree().get_nodes_in_group("wave_manager")[0] as WaveManager
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -23,6 +26,7 @@ func _ready() -> void:
 
 
 func fade_in():
+	wave_label.text = str(wave_manager.wave)
 	visible = true
 	var fade_time = 2.0
 	var fade_time_slow = 4.0
