@@ -85,7 +85,7 @@ func equip_weapon(slot_index: int, weapon: WeaponResource):
 
 
 func equip_explosive(explosive: ExplosiveResource):
-	var slot = $PlayerHUD/HBoxContainer2.get_child(0).get_child(0)
+	var slot = $MarginContainer/PlayerHUD/GameHUD/HBoxContainer/HBoxContainer2/AspectRatioContainer2/AspectRatioContainer
 	var icon: TextureRect = slot.get_node("Icon")
 	icon.texture = explosive.texture
 

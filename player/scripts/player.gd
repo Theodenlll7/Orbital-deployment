@@ -32,13 +32,20 @@ var aim_dir: Vector2 = Vector2()
 
 func _ready() -> void:
 	motion_mode = CharacterBody2D.MOTION_MODE_FLOATING
+	_bind_inventory()
+	
+
+func _bind_inventory() -> void:
 	inventory.actor = self
 	inventory.new_weapon.connect(player_hud.equip_weapon)
 	inventory.weapon_swap.connect(equip_weapon)
 	inventory.money_changed.connect(player_hud.update_money_display)
 	player_hud.update_money_display(inventory.money)
+	
+	inventory.new_explosive.connect(player_hud.equip_explosive)
+	inventory.new_explosive.connect(equip_explosive)
+	
 	inventory.setup()
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
