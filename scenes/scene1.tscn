@@ -219,4 +219,4 @@ texture = ExtResource("5_v0wqw")
 texture_scale = 0.2
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-color = Color(0.856234, 0.707533, 0.717177, 1)
+color = Color(0.880762, 0.607011, 0.673392, 1)
