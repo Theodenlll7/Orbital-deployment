@@ -8,9 +8,12 @@ class_name WaveManager
 @export var spawn_interval: float = 3.0  # Time between spawns
 
 @export var enemy_spawn_pool: Array[PackedScene] = []
-@export var enemy_spawn_weights : Array[int] = []
 
-@export var enemies_to_spawn: int = 10
+# Difficulty progression variables
+@export var initial_enemies_to_spawn: int = 10  ## Initial number of enemies
+@export var wave_enemy_increment: int = 5       ## Number of additional enemies each wave
+@export var initial_mean: float = 0.0           ## Mean for normal distribution (index in the array)
+@export var initial_std_dev: float = 0.5        ## Initial standard deviation for normal distribution
 
 @onready var players = get_tree().get_nodes_in_group("players")
 
@@ -28,6 +31,7 @@ var enemy_count = 0
 
 var enemies_spawnd_this_wave : int = 0
 
+var enemies_to_spawn: int = 0
 
 var wave_finished := false
 
@@ -35,7 +39,8 @@ var in_between_wave_timer = Timer.new()
 
 func start_next_wave():
 	print("Start Wave")
-	wave += 1;
+	wave += 1
+	enemies_to_spawn = initial_enemies_to_spawn + (wave - 1) * wave_enemy_increment
 	new_wave_started.emit(wave)
 	wave_finished = false
 	process_wave()
@@ -57,6 +62,7 @@ func _ready() -> void:
 	in_between_wave_timer.one_shot = true
 	in_between_wave_timer.timeout.connect(start_next_wave)
 	in_between_wave_timer.start()
+	enemies_to_spawn = initial_enemies_to_spawn
 	
 
 func process_wave():
@@ -67,15 +73,28 @@ func process_wave():
 
 # Spawn an enemy at a random valid position around one of the players
 func spawn_enemy():
-	var spawn_postion = get_random_valid_position_around_players()
-	var enemy = enemy_spawn_pool.pick_random().instantiate()
+	var spawn_position = get_random_valid_position_around_players()
+	var enemy = pick_enemy_based_on_difficulty().instantiate()
 	enemy.add_to_group("enemies")
-	enemy.global_position = spawn_postion
+	enemy.global_position = spawn_position
 
 	add_child(enemy)
 	var death = enemy.get_node("HandleEnemeyDeath") as HandleEnemeyDeath
 	death.died.connect(_enemy_death)
 	enemy_count += 1
+
+# Function to gradually shift the distribution of enemy difficulty using randfn
+func pick_enemy_based_on_difficulty() -> PackedScene:
+	var pool_size = enemy_spawn_pool.size()
+	var wave_progression = min(wave / 10.0, 1.0)  # Gradual progression to harder enemies (capped at 1.0)
+	
+	# Shift the mean toward the harder enemies as waves progress
+	var mean = initial_mean + wave_progression * (pool_size - 1)
+	var std_dev = initial_std_dev + wave_progression * 2.0  # Increase variance as waves go on
+
+	# Generate an index using randfn
+	var index = int(clamp(randfn(mean, std_dev), 0, pool_size - 1))
+	return enemy_spawn_pool[index]
 
 
 # Find a random valid tile position that is at a valid distance from all players

@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=3 uid="uid://dqsn50h508ms6"]
+[gd_scene load_steps=48 format=3 uid="uid://dfe5ipucd266p"]
 
 [ext_resource type="Script" path="res://common/components/navigator2d.gd" id="1_alrx4"]
 [ext_resource type="Texture2D" uid="uid://kmhaeqfjhlt2" path="res://enemies/assets/textures/juggernaut_sprite.png" id="2_165t6"]
@@ -15,7 +15,7 @@
 [ext_resource type="Script" path="res://addons/tree_mind/nodes/leafs/blackbord_set.gd" id="13_c5xn1"]
 [ext_resource type="Script" path="res://enemies/mind_tree_components/actions/start_navigation_to_target.gd" id="14_dtibg"]
 [ext_resource type="Script" path="res://inventory/items/weapons/scripts/mob_weapon.gd" id="15_jw6vi"]
-[ext_resource type="Resource" uid="uid://db45qyhpdakjq" path="res://enemies/wepons/juggernaut_wepon.tres" id="16_rrqjo"]
+[ext_resource type="Resource" path="res://enemies/wepons/juggernaut_wepon.tres" id="16_rrqjo"]
 [ext_resource type="Script" path="res://inventory/loot/loot_spawner.gd" id="17_qnkwj"]
 [ext_resource type="Resource" uid="uid://dwncsm7kwadaj" path="res://inventory/loot/ranger_loot_table.tres" id="18_f8474"]
 [ext_resource type="Script" path="res://enemies/scripts/handle_enemy_death.gd" id="19_8xdvp"]
