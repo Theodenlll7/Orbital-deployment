@@ -12,6 +12,7 @@ var can_interact = true
 func _ready() -> void:
 	label = Label.new()
 	add_child(label)
+	label.z_index = 2
 
 func register_area(area: InteractionArea):
 	active_areas.push_back(area)

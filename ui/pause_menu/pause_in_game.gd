@@ -3,20 +3,34 @@ class_name PauseInGame
 
 @onready var main_menu = load("res://ui/main_menu/main_menu.tscn")
 
-@onready var back_button: Button = $MarginContainer/BackButton
+@onready var options_button: Button = $MarginContainer/TextureRect/MarginContainer/VBoxContainer/Buttons/MarginContainer/HBoxContainer/VBoxContainer/OptionsButton
+@onready var resume_game_button: Button = $MarginContainer/TextureRect/MarginContainer/VBoxContainer/Buttons/MarginContainer/HBoxContainer/VBoxContainer/ResumeGameButton
 @onready var quit_level_button: Button = $MarginContainer/TextureRect/MarginContainer/VBoxContainer/Buttons/MarginContainer/HBoxContainer/VBoxContainer/QuitLevelButton
+@onready var options_menu: OptionsMenu = $options_menu
+@onready var pause_menu: MarginContainer = $MarginContainer
 
 func _ready() -> void:
 	handle_connecting_signals()
+	options_menu.visible = false
 
 func on_quit_level_button_pressed() -> void:
 	Engine.time_scale = 1
 	get_tree().change_scene_to_packed(main_menu)
 
-func on_back_button_pressed() -> void:
+func on_resume_game_button_pressed() -> void:
 	var parent_hud = get_parent() as PlayerHUD  
 	parent_hud.pauseMenu()
 
+func on_options_button_pressed() -> void:
+	options_menu.visible = true
+	pause_menu.visible = false
+
+func on_back_from__options_button_pressed() -> void:
+	options_menu.visible = false
+	pause_menu.visible = true
+
 func handle_connecting_signals() -> void:
 	quit_level_button.button_down.connect(on_quit_level_button_pressed)
-	back_button.button_down.connect(on_back_button_pressed)
+	resume_game_button.button_down.connect(on_resume_game_button_pressed)
+	options_button.button_down.connect(on_options_button_pressed)
+	options_menu.back_to_main_menu.connect(on_back_from__options_button_pressed)
