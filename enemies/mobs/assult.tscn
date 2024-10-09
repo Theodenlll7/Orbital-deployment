@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=3 uid="uid://7nocvq77u1l1"]
+[gd_scene load_steps=50 format=3 uid="uid://cqqagqvpntumn"]
 
 [ext_resource type="Script" path="res://common/components/navigator2d.gd" id="1_alrx4"]
 [ext_resource type="Texture2D" uid="uid://cecqjnwk0gp3p" path="res://enemies/assets/textures/assult.png" id="2_dj2q1"]
@@ -8,14 +8,16 @@
 [ext_resource type="Script" path="res://addons/tree_mind/nodes/composites/selector.gd" id="6_13jdy"]
 [ext_resource type="Script" path="res://addons/tree_mind/nodes/composites/sequence.gd" id="7_jlj26"]
 [ext_resource type="Script" path="res://enemies/mind_tree_components/conditions/target_in_range.gd.gd" id="8_ihojf"]
+[ext_resource type="Script" path="res://enemies/mind_tree_components/actions/has_los.gd" id="9_53l6g"]
 [ext_resource type="Script" path="res://enemies/mind_tree_components/actions/stop_navigation.gd" id="9_q26r8"]
 [ext_resource type="Script" path="res://enemies/mind_tree_components/actions/start_attacking_target.gd" id="10_3v7bl"]
 [ext_resource type="Script" path="res://addons/tree_mind/nodes/decorators/inverter.gd" id="11_s2yth"]
+[ext_resource type="Script" path="res://addons/tree_mind/nodes/decorators/any_success.gd" id="12_orif8"]
 [ext_resource type="Script" path="res://enemies/mind_tree_components/actions/stop_attacking_target.gd" id="12_pvii6"]
 [ext_resource type="Script" path="res://addons/tree_mind/nodes/leafs/blackbord_set.gd" id="13_c5xn1"]
 [ext_resource type="Script" path="res://enemies/mind_tree_components/actions/start_navigation_to_target.gd" id="14_dtibg"]
 [ext_resource type="Script" path="res://inventory/items/weapons/scripts/mob_weapon.gd" id="15_jw6vi"]
-[ext_resource type="Resource" uid="uid://bsdhsurnelj7f" path="res://enemies/wepons/assult_wepon.tres" id="16_jb6jn"]
+[ext_resource type="Resource" path="res://enemies/wepons/assult_wepon.tres" id="16_jb6jn"]
 [ext_resource type="Script" path="res://inventory/loot/loot_spawner.gd" id="17_qnkwj"]
 [ext_resource type="Resource" uid="uid://dwncsm7kwadaj" path="res://inventory/loot/ranger_loot_table.tres" id="18_f8474"]
 [ext_resource type="Script" path="res://enemies/scripts/handle_enemy_death.gd" id="19_8xdvp"]
@@ -249,6 +251,9 @@ script = ExtResource("7_jlj26")
 script = ExtResource("8_ihojf")
 reach_distance = 50
 
+[node name="HasLoS" type="Node" parent="MindTreeRoot/Selector/StopAtTheInneBorderOfWeaponRange"]
+script = ExtResource("9_53l6g")
+
 [node name="StopNavgation" type="Node" parent="MindTreeRoot/Selector/StopAtTheInneBorderOfWeaponRange"]
 script = ExtResource("9_q26r8")
 
@@ -258,12 +263,21 @@ script = ExtResource("10_3v7bl")
 [node name="SelectAndWalktToTarget" type="Node" parent="MindTreeRoot/Selector"]
 script = ExtResource("7_jlj26")
 
-[node name="TargetOutOfRange" type="Node" parent="MindTreeRoot/Selector/SelectAndWalktToTarget"]
+[node name="AnySuccess" type="Node" parent="MindTreeRoot/Selector/SelectAndWalktToTarget"]
+script = ExtResource("12_orif8")
+
+[node name="TargetOutOfRange" type="Node" parent="MindTreeRoot/Selector/SelectAndWalktToTarget/AnySuccess"]
 script = ExtResource("11_s2yth")
 
-[node name="TargetInRange" type="Node" parent="MindTreeRoot/Selector/SelectAndWalktToTarget/TargetOutOfRange"]
+[node name="TargetInRange" type="Node" parent="MindTreeRoot/Selector/SelectAndWalktToTarget/AnySuccess/TargetOutOfRange"]
 script = ExtResource("8_ihojf")
 reach_distance = 50
+
+[node name="NoLoS" type="Node" parent="MindTreeRoot/Selector/SelectAndWalktToTarget/AnySuccess"]
+script = ExtResource("11_s2yth")
+
+[node name="HasLoS" type="Node" parent="MindTreeRoot/Selector/SelectAndWalktToTarget/AnySuccess/NoLoS"]
+script = ExtResource("9_53l6g")
 
 [node name="StopAttacking" type="Node" parent="MindTreeRoot/Selector/SelectAndWalktToTarget"]
 script = ExtResource("12_pvii6")
