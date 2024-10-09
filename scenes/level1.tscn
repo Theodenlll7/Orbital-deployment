@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" path="res://enemies/mobs/spider.tscn" id="4_v3qcm"]
 [ext_resource type="PackedScene" uid="uid://fwtaakyb0exx" path="res://maps/objects/pods/weapon_pod.tscn" id="5_cpg73"]
 [ext_resource type="PackedScene" uid="uid://kua7fs588s48" path="res://enemies/mobs/ranger.tscn" id="5_r2vmx"]
-[ext_resource type="PackedScene" path="res://enemies/mobs/assult.tscn" id="5_rdqq8"]
+[ext_resource type="PackedScene" uid="uid://cqqagqvpntumn" path="res://enemies/mobs/assult.tscn" id="5_rdqq8"]
 [ext_resource type="PackedScene" uid="uid://dqsn50h508ms6" path="res://enemies/mobs/juggernaut.tscn" id="6_ryun3"]
 [ext_resource type="Script" path="res://common/arrow_indicators/ArrowIndicator.gd" id="8_btq2v"]
 [ext_resource type="PackedScene" uid="uid://inymqhajqaf7" path="res://ui/in_game/mission_start_text.tscn" id="8_lbulo"]

@@ -15,6 +15,7 @@ var pickup_item: Callable
 
 var item: Item
 
+var timer : Timer
 
 func _init(p_item: Item, pick_up_radius: float = 50):
 	magnet_radius = pick_up_radius
@@ -39,6 +40,31 @@ func _ready() -> void:
 	add_child(sprite)
 	body_entered.connect(_on_body_entered)
 	body_exited.connect(_on_body_exited)
+	
+	timer = Timer.new()
+	add_child(timer)
+	timer.wait_time = 15
+	timer.timeout.connect(_item_despawn)
+	timer.start()
+
+# Despawn function with blinking effect
+func _item_despawn():
+	# Create a Tween for the blinking effect
+	var tween = create_tween()
+	print("Dee spawn")
+	# Blink for 5 seconds (on/off every 0.5 seconds)
+	var blink_time = 3.0
+	var blink_frequency = 0.2
+	var show = false
+	for i in range(int(blink_time / blink_frequency)):
+		tween.tween_property(self ,"visible", show, blink_frequency)
+		show = !show
+	
+	# After blinking, remove the item
+	tween.tween_callback(queue_free)
+
+	# Start the tween animations
+	tween.play()
 
 
 func _physics_process(delta: float) -> void:
