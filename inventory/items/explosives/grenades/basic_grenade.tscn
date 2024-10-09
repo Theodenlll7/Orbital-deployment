@@ -64,12 +64,11 @@ animations = [{
 
 [node name="BasicGrenade" type="RigidBody2D"]
 collision_layer = 4
-collision_mask = 2
+collision_mask = 32
 mass = 0.001
 gravity_scale = 0.0
 can_sleep = false
 lock_rotation = true
-continuous_cd = 1
 script = ExtResource("1_huw2f")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -78,7 +77,7 @@ scale = Vector2(0.3, 0.3)
 shape = SubResource("CircleShape2D_li441")
 
 [node name="Sprite2D" type="Sprite2D" parent="CollisionShape2D"]
-position = Vector2(1, 1)
+scale = Vector2(7.46667, 5.60185)
 texture = ExtResource("2_iood8")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

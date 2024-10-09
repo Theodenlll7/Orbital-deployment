@@ -21,8 +21,6 @@ func _ready() -> void:
 	explosion_area.add_child(collision_shape)
 	explosion_area.monitorable = true
 	explosion_area.monitoring = false
-	explosion_area.collision_layer = 3  # Adjust as needed
-	explosion_area.collision_mask = 2  # Adjust as needed
 	add_child(explosion_area)
 	
 	scale_explosion_sprite()

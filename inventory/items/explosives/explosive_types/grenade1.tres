@@ -4,14 +4,13 @@
 [ext_resource type="AudioStream" uid="uid://sqacyxqd4be5" path="res://inventory/items/explosives/assets/audio/throw_object-97796.mp3" id="1_ixlum"]
 [ext_resource type="PackedScene" uid="uid://yob22fwt8ode" path="res://inventory/items/explosives/grenades/basic_grenade.tscn" id="2_7k4tf"]
 [ext_resource type="Script" path="res://inventory/items/explosives/scripts/grenade_proj_resource.gd" id="3_agwwp"]
-[ext_resource type="Texture2D" uid="uid://kwhnt3upf1f3" path="res://inventory/items/explosives/assets/sprites/grenade(1).png" id="5_idqg4"]
+[ext_resource type="Texture2D" uid="uid://0c5nerdqv44n" path="res://inventory/items/explosives/assets/sprites/grenade.png" id="5_2k17n"]
 
 [resource]
 script = ExtResource("3_agwwp")
 explosive_grenade = ExtResource("2_7k4tf")
 item_name = &"Explosive"
 cost = 150
-texture = ExtResource("5_idqg4")
 throw_offset = Vector2(0, 0)
 audio_stream_throw = ExtResource("1_ixlum")
 audio_stream_explode = ExtResource("1_4dmel")
@@ -24,3 +23,7 @@ fuse_time = 3.0
 has_explosive_quantity = true
 explosive_count = 3
 grenade_scene = ExtResource("2_7k4tf")
+drop_type = 0
+texture = ExtResource("5_2k17n")
+drop_weight = 100
+test = Callable()

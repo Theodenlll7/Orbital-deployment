@@ -72,7 +72,7 @@ tile_data = PackedInt32Array(0, 983040, 6, 65536, 983040, 7)
 tile_data = PackedInt32Array(0, 917504, 8, 65536, 917504, 9)
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_lwds2"]
-tile_data = PackedInt32Array(0, 327680, 6, 65536, 327680, 7, 1, 393216, 6, 65537, 393216, 7, 2, 458752, 6, 65538, 458752, 7, 3, 524288, 6, 65539, 524288, 7, 4, 589824, 6, 65540, 589824, 7)
+tile_data = PackedInt32Array(0, 327680, 6, 65536, 327680, 7, 1, 393216, 6, 2, 458752, 6, 65538, 458752, 7, 3, 524288, 6, 4, 589824, 6, 65540, 589824, 7)
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_0sbbo"]
 tile_data = PackedInt32Array(0, 983040, 8, 65536, 983040, 9)

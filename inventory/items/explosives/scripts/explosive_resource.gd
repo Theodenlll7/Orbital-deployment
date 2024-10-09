@@ -1,4 +1,4 @@
-extends Resource
+extends Item
 class_name ExplosiveResource
 
 ## Name and explosive value
@@ -8,7 +8,6 @@ class_name ExplosiveResource
 
 ## How the explosive looks and sounds
 @export_group("Explosive Setup")
-@export var texture: Texture
 @export var throw_offset: Vector2 = Vector2(0, 0)  
 @export var audio_stream_throw: AudioStream
 @export var audio_stream_explode: AudioStream

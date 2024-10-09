@@ -28,7 +28,7 @@ size_flags_horizontal = 3
 [node name="Player" parent="." instance=ExtResource("2_ammvo")]
 z_index = 3
 y_sort_enabled = true
-position = Vector2(-117, -16)
+position = Vector2(-143, 7)
 
 [node name="InteractionArea" parent="." instance=ExtResource("7_38vkb")]
 z_index = 1
@@ -37,6 +37,7 @@ position = Vector2(95, -80)
 [node name="ArrowIndicator" type="Node2D" parent="." node_paths=PackedStringArray("target", "arrow_sprite", "player")]
 z_index = 100
 z_as_relative = false
+position = Vector2(69, -99)
 script = ExtResource("8_imi2n")
 target = NodePath("../InteractionArea")
 arrow_sprite = NodePath("Sprite2D")
