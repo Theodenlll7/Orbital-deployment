@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bdxxnqyrxk04e"]
+[gd_scene load_steps=15 format=3 uid="uid://bdxxnqyrxk04e"]
 
 [ext_resource type="Script" path="res://player/scripts/health_bar.gd" id="1_1fig6"]
 [ext_resource type="Script" path="res://player/scripts/player_hud.gd" id="1_7u87w"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://player/scripts/ammo_indicator.gd" id="4_8psay"]
 [ext_resource type="PackedScene" uid="uid://dcm0rxa7wl85t" path="res://ui/pause_menu/death_screen.tscn" id="4_mdrqq"]
 [ext_resource type="Script" path="res://player/level_bar.gd" id="5_07hhj"]
+[ext_resource type="FontFile" uid="uid://dkg32o3qfh2n7" path="res://assets/Fonts/pixelmix.ttf" id="5_sur6r"]
 [ext_resource type="PackedScene" uid="uid://cffw36sg62gs0" path="res://ui/pause_menu/pause_in_game.tscn" id="7_krje1"]
 
 [sub_resource type="GDScript" id="GDScript_wbga3"]
@@ -225,11 +226,25 @@ layout_mode = 2
 custom_minimum_size = Vector2(500, 52)
 layout_mode = 2
 size_flags_vertical = 8
+theme_override_colors/font_color = Color(0, 0, 0, 0)
 theme_override_font_sizes/font_size = 28
 theme_override_styles/background = SubResource("StyleBoxFlat_t7j8m")
 theme_override_styles/fill = SubResource("StyleBoxFlat_ougiu")
 rounded = true
 script = ExtResource("1_1fig6")
+
+[node name="HealtLabel" type="Label" parent="MarginContainer/PlayerHUD/GameHUD/HealthBar"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("5_sur6r")
+theme_override_font_sizes/font_size = 32
+text = "- hp"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="MoneyHUD" type="HBoxContainer" parent="MarginContainer/PlayerHUD"]
 layout_mode = 1

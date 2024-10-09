@@ -55,10 +55,10 @@ func _item_despawn():
 	# Blink for 5 seconds (on/off every 0.5 seconds)
 	var blink_time = 3.0
 	var blink_frequency = 0.2
-	var show = false
+	var showItem = false
 	for i in range(int(blink_time / blink_frequency)):
-		tween.tween_property(self ,"visible", show, blink_frequency)
-		show = !show
+		tween.tween_property(self ,"visible", showItem, blink_frequency)
+		showItem = !showItem
 	
 	# After blinking, remove the item
 	tween.tween_callback(queue_free)

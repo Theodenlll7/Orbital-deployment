@@ -35,8 +35,8 @@ var aim_dir: Vector2 = Vector2()
 func _ready() -> void:
 	motion_mode = CharacterBody2D.MOTION_MODE_FLOATING
 	_bind_inventory()
-	health_component.max_health *= PlayerSkillsManager.get_healt_scaler()
-	health_component.current_health *= PlayerSkillsManager.get_healt_scaler()
+	health_component.max_health = int(health_component.current_health * PlayerSkillsManager.get_healt_scaler())
+	health_component.current_health = int(health_component.current_health * PlayerSkillsManager.get_healt_scaler())
 
 
 func _bind_inventory() -> void:

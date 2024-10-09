@@ -76,11 +76,11 @@ func setLabelsAndCost(shop_type: ShopType):
 
 
 func updateButtonLabels():
-	var player_money = $HeaderPanelContainer/MarginContainer/HBoxContainer.get_node("Players_money")
-	updateCostLabelColor(player_money)
+	#var player_money = $HeaderPanelContainer/MarginContainer/HBoxContainer.get_node("Players_money")
+	updateCostLabelColor()
 	updatePlayerMoney()
 	
-func updateCostLabelColor(player_money) -> void:
+func updateCostLabelColor() -> void:
 	var shop = $ContentPanelContainer/MarginContainer/VBoxContainer/ScrollContainer/shop
 	
 	var ammo_cost_label: Label = $ContentPanelContainer/MarginContainer/VBoxContainer/Panel/RefillAmmonition/MarginContainer/HBoxContainer/Cost
@@ -92,7 +92,6 @@ func updateCostLabelColor(player_money) -> void:
 	for buy_btn in shop.get_children():
 		var pod_item_container = buy_btn.get_child(0).get_child(0) 
 		var cost: Label = pod_item_container.get_node_or_null("Cost")
-		var item_cost = int(cost.text.split(" ")[0])
 		if cost:
 			if costumer.money >= int(cost.text.split(" ")[0]): 
 				cost.set("theme_override_colors/font_color", Color(31.0/255.0, 186.0/255.0, 79.0/255.0)) 
