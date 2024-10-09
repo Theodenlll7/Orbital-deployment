@@ -106,7 +106,7 @@ offset_bottom = 36.0
 text = "Refill ammunition"
 
 [node name="Cost" parent="ContentPanelContainer/MarginContainer/VBoxContainer/Panel/RefillAmmonition/MarginContainer/HBoxContainer" index="2"]
-text = "200 $"
+text = "50 $"
 
 [node name="ScrollContainer" type="ScrollContainer" parent="ContentPanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
