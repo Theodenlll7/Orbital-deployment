@@ -34,8 +34,8 @@ var skill_layout: Dictionary = {
 		"type": "double","level": 10,"skill":{
 		1: {
 			"name": "More bullet damage", 
-			"action": "set_new_healt_scaler",
-			"action_value": 1.1,
+			"action": "set_new_bullet_damage_scaler",
+			"action_value": 1.4,
 			"img": {
 				"normal": "res://ui/main_menu/assets/bulletdamage.png", 
 				"hover": "res://ui/main_menu/assets/bulletdamageHover.png", 
@@ -46,7 +46,7 @@ var skill_layout: Dictionary = {
 		2: {
 			"name": "More health",
 			"action": "set_new_healt_scaler",
-			"action_value": 1.1,
+			"action_value": 1.4,
 		 	"img": {
 				"normal": "res://ui/main_menu/assets/heart.png", 
 				"hover": "res://ui/main_menu/assets/heartHover.png", 
@@ -61,7 +61,7 @@ var skill_layout: Dictionary = {
 		1:{
 			"name": "More health",
 			"action": "set_new_healt_scaler",
-			"action_value": 1.1,
+			"action_value": 20.0,
 		 	"img": {
 				"normal": "res://ui/main_menu/assets/heart.png", 
 				"hover": "res://ui/main_menu/assets/heartHover.png", 
@@ -128,14 +128,16 @@ func on_skill_activated(skill_id: String) -> void:
 	
 	print("Skill active with id " + skill_id + "!")
 	skill_layout[id_a]["skill"][id_b]["active"] = true
-	
 	init_skill_tree()
 	
 	var skill = skill_layout[id_a]["skill"][id_b]
+	
 	match skill["action"]:
 		"set_new_healt_scaler":
 			PlayerSkillsManager.set_new_healt_scaler(skill["action_value"])
-	
+		"set_new_bullet_damage_scaler":
+			PlayerSkillsManager.set_new_bullet_damage_scaler(skill["action_value"])
+
 
 
 func show_skill_information(skill_id: String) -> void:

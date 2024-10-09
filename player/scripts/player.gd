@@ -17,6 +17,8 @@ class_name Player
 @export var weapon_orbit_distance: float = 8.0  # Distance from the player at which the weapon orbits
 @export var weapon_orbit_point: Marker2D = null
 
+@onready var health_component: HealthComponent = $HealthComponent
+
 var dodge_timer := -dodge_cooldown
 var can_dodge := true
 var in_dodge := false
@@ -33,7 +35,9 @@ var aim_dir: Vector2 = Vector2()
 func _ready() -> void:
 	motion_mode = CharacterBody2D.MOTION_MODE_FLOATING
 	_bind_inventory()
-	
+	health_component.max_health *= PlayerSkillsManager.get_healt_scaler()
+	health_component.current_health *= PlayerSkillsManager.get_healt_scaler()
+
 
 func _bind_inventory() -> void:
 	inventory.actor = self
@@ -147,6 +151,7 @@ func animate() -> void:
 
 
 func _on_health_component_health_changed(amount: Variant) -> void:
+	print()
 	if !player_dead:
 		flash_red(animated_sprite)
 	if amount < 0:

@@ -1,12 +1,16 @@
 extends Node
 class_name HealthComponent
 
-@export var max_health: int = 100
+@export var max_health: int = 100:
+	set(value):
+		max_health = value
+		max_health_changed.emit(max_health)
 @export var current_health: int = 100
 
 var can_take_damage := true
 
 signal health_changed(current_health)
+signal max_health_changed(max_health)
 signal died
 
 
