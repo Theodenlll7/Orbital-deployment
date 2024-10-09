@@ -1,5 +1,4 @@
 extends Node
-class_name ExperiencePointsManager
 
 # Declare the signal to notify when experience or level changes
 signal experience_updated

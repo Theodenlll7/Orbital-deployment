@@ -11,7 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://b1f4tqoqbmpy4" path="res://ui/main_menu/assets/heartDisabled.png" id="7_y73ox"]
 
 [node name="double_skills" type="Control"]
-custom_minimum_size = Vector2(448, 0)
+custom_minimum_size = Vector2(447, 0)
 layout_mode = 3
 anchor_right = 0.233
 anchor_bottom = 1.0
@@ -24,12 +24,9 @@ script = ExtResource("1_olt4t")
 [node name="VBoxContainerLabel" type="VBoxContainer" parent="."]
 custom_minimum_size = Vector2(448, 0)
 layout_mode = 1
-anchors_preset = 13
-anchor_left = 0.5
-anchor_right = 0.5
+anchors_preset = 15
+anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -226.0
-offset_right = 226.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -59,8 +56,8 @@ anchors_preset = 13
 anchor_left = 0.5
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -226.0
-offset_right = 226.0
+offset_left = -225.5
+offset_right = 226.5
 grow_horizontal = 2
 grow_vertical = 2
 

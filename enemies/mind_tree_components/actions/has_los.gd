@@ -11,6 +11,5 @@ func tick(blackboard: Blackboard) -> int:
 		var result = space_state.intersect_ray(query)
 		# Update the ray and check for collisions
 		if result.is_empty():
-			print("Has_LoS")
 			return SUCCESS # Clear line of sight
 	return FAILURE

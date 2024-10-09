@@ -1,5 +1,4 @@
 extends Node
-class_name PlayerSkillsManager
 
 var healt_scaler: float = 1.0
 var bullet_damage_scaler: float = 1.0
@@ -19,15 +18,19 @@ func set_new_healt_scaler(new_scale: float) -> void:
 		print("Health alrady have a greater scale")
 		pass
 	healt_scaler = new_scale
+	print("Health scaled with ", healt_scaler)
+
 
 func set_new_bullet_damage_scaler(new_scale: float) -> void:
 	if(new_scale < bullet_damage_scaler || new_scale < 0.0):
 		print("Bullet damage alrady have a greater scale")
 		pass
 	bullet_damage_scaler = new_scale
+	print("Bullet damage scaled with ", healt_scaler)
 
 func set_new_health_regeneration_scaler(new_scale: float) -> void:
 	if(new_scale < health_regeneration_scaler || new_scale < 1.0):
 		print("Health regeneration scaler alrady have a greater scale")
 		pass
 	health_regeneration_scaler = new_scale
+	print("Health regeneratione scaled with ", healt_scaler, " / s")

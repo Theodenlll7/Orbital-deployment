@@ -330,6 +330,8 @@ script = ExtResource("3_ihi3d")
 
 [node name="HealthComponent" type="Node" parent="."]
 script = ExtResource("3_1r3kr")
+max_health = 50
+current_health = 50
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 0.5)
@@ -378,6 +380,7 @@ value = "actor.get_tree().get_nodes_in_group(\"players\").pick_random()"
 
 [node name="StartNavgationToTarget" type="Node" parent="MindTreeRoot/Selector/SelectAndWalktToTarget"]
 script = ExtResource("15_q7nvy")
+move_speed = 110.0
 
 [node name="ParentMoveAndSlide" type="Node" parent="."]
 script = ExtResource("15_eh0ey")

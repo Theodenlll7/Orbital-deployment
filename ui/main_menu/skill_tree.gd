@@ -3,26 +3,30 @@ extends Control
 @onready var skill_content: HBoxContainer = $ScrollContainer/SkillContent
 @onready var padding: Control = $ScrollContainer/SkillContent/Padding
 @onready var close_popup_button: Button = $Popup/Panel/MarginContainer/VBoxContainer/HBoxContainer/CloseButton
-@onready var dev_button: Button = $Dev
+@onready var activate_skill_button: Button = $Popup/Panel/MarginContainer/VBoxContainer/HBoxContainer/ActivateButton
 
 const SINGLE_SKILL: String = "res://ui/main_menu/skill_tree_assets/single_skill.tscn"
 const DOUBLE_SKILL: String = "res://ui/main_menu/skill_tree_assets/double_skill.tscn"
 
 @onready var popup: MarginContainer = $Popup
 @onready var popup_header: Label = $Popup/Panel/MarginContainer/VBoxContainer/PopupHeader
+@onready var pop_up_texture_rect: TextureRect = $Popup/Panel/MarginContainer/VBoxContainer/HBoxContainer2/PopUpTextureRect
 
 var player_level: int = 0
 
-const skill_layout: Dictionary = {
+var skill_layout: Dictionary = {
 	1: {
 		"type": "single","level": 5,"skill":{
 		1: {
 			"name": "Health regeneration", 
+			"action": "set_new_healt_scaler",
+			"action_value": 1.1,
 			"img": {
 				"normal": "res://ui/main_menu/assets/timeglass.png", 
 				"hover": "res://ui/main_menu/assets/timeglassHover.png", 
 				"disabled": "res://ui/main_menu/assets/timeglassDisabled.png"
-				}
+				},
+			"active": false
 			}
 		},
 	},
@@ -30,19 +34,25 @@ const skill_layout: Dictionary = {
 		"type": "double","level": 10,"skill":{
 		1: {
 			"name": "More bullet damage", 
+			"action": "set_new_healt_scaler",
+			"action_value": 1.1,
 			"img": {
 				"normal": "res://ui/main_menu/assets/bulletdamage.png", 
 				"hover": "res://ui/main_menu/assets/bulletdamageHover.png", 
 				"disabled": "res://ui/main_menu/assets/bulletdamageDisabled.png"
-				}
+				},
+			"active": false
 			},
 		2: {
-		"name": "More health",
-	 	"img": {
+			"name": "More health",
+			"action": "set_new_healt_scaler",
+			"action_value": 1.1,
+		 	"img": {
 				"normal": "res://ui/main_menu/assets/heart.png", 
 				"hover": "res://ui/main_menu/assets/heartHover.png", 
 				"disabled": "res://ui/main_menu/assets/heartDisabled.png"
-				}
+				},
+			"active": false
 			}
 		}
 	},
@@ -50,11 +60,14 @@ const skill_layout: Dictionary = {
 		"type": "single","level": 15,"skill":{
 		1:{
 			"name": "More health",
+			"action": "set_new_healt_scaler",
+			"action_value": 1.1,
 		 	"img": {
 				"normal": "res://ui/main_menu/assets/heart.png", 
 				"hover": "res://ui/main_menu/assets/heartHover.png", 
 				"disabled": "res://ui/main_menu/assets/heartDisabled.png"
-				}
+				},
+			"active": false
 			}
 		},
 	},
@@ -68,8 +81,6 @@ func _ready() -> void:
 
 func on_experience_updated() -> void:
 	init_skill_tree()
-
-#func on_activate_skill_pressed() -> void:
 	
 func on_close_popup_button_pressed() -> void:
 	popup.visible = false
@@ -104,8 +115,28 @@ func init_skill_tree() -> void:
 
 
 func on_skill_unlocked(skill_id: String) -> void:
-	print("Skill unlocked!")
+	print("Skill unlocked with id " + skill_id + "!")
+	
 	show_skill_information(skill_id)
+	activate_skill_button.button_down.disconnect(on_skill_activated.bind("*"))
+	activate_skill_button.button_down.connect(on_skill_activated.bind(skill_id))
+
+func on_skill_activated(skill_id: String) -> void:
+	var id_parts = skill_id.split("_")
+	var id_a = int(id_parts[0]) 
+	var id_b = int(id_parts[1])
+	
+	print("Skill active with id " + skill_id + "!")
+	skill_layout[id_a]["skill"][id_b]["active"] = true
+	
+	init_skill_tree()
+	
+	var skill = skill_layout[id_a]["skill"][id_b]
+	match skill["action"]:
+		"set_new_healt_scaler":
+			PlayerSkillsManager.set_new_healt_scaler(skill["action_value"])
+	
+
 
 func show_skill_information(skill_id: String) -> void:
 	var parts = skill_id.split("_")  # Split the string at the underscore 
@@ -116,7 +147,8 @@ func show_skill_information(skill_id: String) -> void:
 	popup_header.text = str(new_skill["name"])
 	popup.visible = true
 
+	var skill_texture: Texture2D = load(new_skill["img"]["hover"])
+	pop_up_texture_rect.texture = skill_texture
+
 func handle_connecting_signals() -> void:
 	close_popup_button.button_down.connect(on_close_popup_button_pressed)
-	dev_button.button_down.connect(show_skill_information)
-	

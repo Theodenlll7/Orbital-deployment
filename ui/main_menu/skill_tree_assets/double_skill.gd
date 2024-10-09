@@ -14,20 +14,28 @@ var level: int = 0
 func set_texture(_id: String, skill: Dictionary) -> void:
 	var img_dict_top = skill[1]["img"]
 	var img_dict_bottom = skill[2]["img"]
+	var active_top = skill[1]["active"]
+	var active_bottom = skill[2]["active"]
 
-	var normal_texture_top: Texture2D = load(img_dict_top["normal"])
 	var hover_texture_top: Texture2D = load(img_dict_top["hover"])
+	var normal_texture_top: Texture2D = load(img_dict_top["normal"])
 	var disabled_texture_top: Texture2D = load(img_dict_top["disabled"])
 	
 	var normal_texture_bottom: Texture2D = load(img_dict_bottom["normal"])
 	var hover_texture_bottom: Texture2D = load(img_dict_bottom["hover"])
 	var disabled_texture_bottom: Texture2D = load(img_dict_bottom["disabled"])
 	
-	texture_button_top.texture_normal = normal_texture_top
+	if active_top:
+		texture_button_top.texture_normal = hover_texture_top
+	else:
+		texture_button_top.texture_normal = normal_texture_top
 	texture_button_top.texture_hover = hover_texture_top
 	texture_button_top.texture_disabled = disabled_texture_top
 
-	texture_button_bottom.texture_normal = normal_texture_bottom
+	if active_bottom:
+		texture_button_bottom.texture_normal = hover_texture_bottom
+	else:
+		texture_button_bottom.texture_normal = normal_texture_bottom
 	texture_button_bottom.texture_hover = hover_texture_bottom
 	texture_button_bottom.texture_disabled = disabled_texture_bottom
 	
@@ -53,8 +61,8 @@ func set_level(_id: String, this_level: int, player_level: int, prev_level: int)
 		end_texture_progress_bar.max_value = 1
 		end_texture_progress_bar.value = 1
 
-	texture_button_top.button_down.connect(Callable(self, "skill_activated").bind(_id + "_2"))
-	texture_button_bottom.button_down.connect(Callable(self, "skill_activated").bind(_id + "_1"))
+	texture_button_top.button_down.connect(Callable(self, "skill_activated").bind(_id + "_1"))
+	texture_button_bottom.button_down.connect(Callable(self, "skill_activated").bind(_id + "_2"))
 
 
 

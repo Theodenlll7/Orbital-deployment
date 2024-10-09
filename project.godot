@@ -24,6 +24,7 @@ PodVariables="*res://game_manager/GameVariables/PodVariables.gd"
 Shop="*res://game_manager/GameVariables/Shop.gd"
 MissionManager="*res://ui/main_menu/mission_manager.gd"
 ExperiencePoints="*res://player/experience_points/ExperiencePointsManager.gd"
+PlayerSkillsManager="*res://player/skills/PlayerSkillsManager.gd"
 
 [display]
 

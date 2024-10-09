@@ -166,3 +166,11 @@ offset_top = 77.0
 offset_right = 368.0
 offset_bottom = 217.0
 text = "Add 200 xp"
+
+[node name="DevButton2" type="Button" parent="."]
+layout_mode = 0
+offset_left = 376.0
+offset_top = 77.0
+offset_right = 637.0
+offset_bottom = 217.0
+text = "Add 1000 xp"

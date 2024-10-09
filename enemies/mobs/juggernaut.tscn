@@ -15,7 +15,7 @@
 [ext_resource type="Script" path="res://addons/tree_mind/nodes/leafs/blackbord_set.gd" id="13_c5xn1"]
 [ext_resource type="Script" path="res://enemies/mind_tree_components/actions/start_navigation_to_target.gd" id="14_dtibg"]
 [ext_resource type="Script" path="res://inventory/items/weapons/scripts/mob_weapon.gd" id="15_jw6vi"]
-[ext_resource type="Resource" path="res://enemies/wepons/juggernaut_wepon.tres" id="16_rrqjo"]
+[ext_resource type="Resource" uid="uid://db45qyhpdakjq" path="res://enemies/wepons/juggernaut_wepon.tres" id="16_rrqjo"]
 [ext_resource type="Script" path="res://inventory/loot/loot_spawner.gd" id="17_qnkwj"]
 [ext_resource type="Resource" uid="uid://dwncsm7kwadaj" path="res://inventory/loot/ranger_loot_table.tres" id="18_f8474"]
 [ext_resource type="Script" path="res://enemies/scripts/handle_enemy_death.gd" id="19_8xdvp"]
@@ -249,7 +249,7 @@ script = ExtResource("7_jlj26")
 
 [node name="TargetInRange" type="Node" parent="MindTreeRoot/Selector/StopAtTheInneBorderOfWeaponRange"]
 script = ExtResource("8_ihojf")
-reach_distance = 75
+reach_distance = 150
 
 [node name="StopNavgation" type="Node" parent="MindTreeRoot/Selector/StopAtTheInneBorderOfWeaponRange"]
 script = ExtResource("9_q26r8")
@@ -265,7 +265,7 @@ script = ExtResource("11_s2yth")
 
 [node name="TargetInRange" type="Node" parent="MindTreeRoot/Selector/SelectAndWalktToTarget/TargetOutOfRange"]
 script = ExtResource("8_ihojf")
-reach_distance = 75
+reach_distance = 150
 
 [node name="StopAttacking" type="Node" parent="MindTreeRoot/Selector/SelectAndWalktToTarget"]
 script = ExtResource("12_pvii6")
