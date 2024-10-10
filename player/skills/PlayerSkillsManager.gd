@@ -3,15 +3,7 @@ extends Node
 var healt_scaler: float = 1.0
 var bullet_damage_scaler: float = 1.0
 var health_regeneration_scaler: float = 0.0
-
-func get_healt_scaler() -> float:
-	return healt_scaler
-
-func get_bullet_damage_scaler() -> float:
-	return bullet_damage_scaler
-	
-func get_health_regeneration_scaler() -> float:
-	return health_regeneration_scaler
+var start_money_increase: float = 1.0
 
 func set_new_healt_scaler(new_scale: float) -> void:
 	if(new_scale < healt_scaler || new_scale < 0.0):

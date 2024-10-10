@@ -24,8 +24,13 @@ func damage(amount: int) -> void:
 
 
 func heal(amount: int) -> void:
+	if current_health >= max_health:
+		return
+	print("current_health ", current_health)
+	print("max_health ", max_health)
+
 	current_health += amount
-	if current_health + max_health:
+	if current_health >= max_health:
 		current_health = max_health
 	health_changed.emit(amount)
 

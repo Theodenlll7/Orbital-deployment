@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=3 uid="uid://bgg2qlsu5f8qd"]
+[gd_scene load_steps=58 format=3 uid="uid://bgg2qlsu5f8qd"]
 
 [ext_resource type="Texture2D" uid="uid://ck8r1ebnncxpg" path="res://enemies/assets/textures/spider_sprite.png" id="2_wlcod"]
 [ext_resource type="Script" path="res://common/components/HealthComponent.gd" id="3_1r3kr"]
@@ -15,6 +15,8 @@
 [ext_resource type="Script" path="res://enemies/scripts/parent_move_and_slide.gd" id="15_eh0ey"]
 [ext_resource type="Script" path="res://enemies/mind_tree_components/actions/start_navigation_to_target.gd" id="15_q7nvy"]
 [ext_resource type="Script" path="res://common/components/navigator2d.gd" id="15_xr0je"]
+[ext_resource type="Script" path="res://inventory/loot/loot_spawner.gd" id="16_8b7ue"]
+[ext_resource type="Resource" uid="uid://dwncsm7kwadaj" path="res://inventory/loot/ranger_loot_table.tres" id="17_tcvpw"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_oqobr"]
 light_mode = 1
@@ -385,6 +387,12 @@ move_speed = 110.0
 
 [node name="ParentMoveAndSlide" type="Node" parent="."]
 script = ExtResource("15_eh0ey")
+
+[node name="LootSpawner" type="Node2D" parent="."]
+script = ExtResource("16_8b7ue")
+loot_table = ExtResource("17_tcvpw")
+item_spawn_chanse = 0.25
+spawn_attempts = 2
 
 [connection signal="died" from="HealthComponent" to="." method="_on_health_component_died"]
 [connection signal="body_entered" from="AttackRange" to="AttackRange" method="_on_body_entered"]

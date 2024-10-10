@@ -27,8 +27,8 @@ var skill_layout: Dictionary = {
 		1: {
 			"name": "Health regeneration", 
 			"description": "Lorem ipsum",
-			"action": "set_new_healt_scaler",
-			"action_value": 1.5,
+			"action": "set_new_health_regeneration_scaler",
+			"action_value": 1.0,
 			"img": {
 				"normal": "res://ui/main_menu/assets/timeglass.png", 
 				"hover": "res://ui/main_menu/assets/timeglassHover.png", 
@@ -150,6 +150,8 @@ func on_skill_activated(skill_id: String) -> void:
 			PlayerSkillsManager.set_new_healt_scaler(skill["action_value"])
 		"set_new_bullet_damage_scaler":
 			PlayerSkillsManager.set_new_bullet_damage_scaler(skill["action_value"])
+		"set_new_health_regeneration_scaler":
+			PlayerSkillsManager.set_new_health_regeneration_scaler(skill["action_value"])
 
 func show_skill_information(skill_id: String) -> void:
 	var parts = skill_id.split("_")  # Split the string at the underscore 

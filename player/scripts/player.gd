@@ -35,9 +35,21 @@ var aim_dir: Vector2 = Vector2()
 func _ready() -> void:
 	motion_mode = CharacterBody2D.MOTION_MODE_FLOATING
 	_bind_inventory()
-	health_component.max_health = int(health_component.current_health * PlayerSkillsManager.get_healt_scaler())
-	health_component.current_health = int(health_component.current_health * PlayerSkillsManager.get_healt_scaler())
+	health_component.max_health = int(health_component.current_health * PlayerSkillsManager.healt_scaler)
+	health_component.current_health = int(health_component.current_health * PlayerSkillsManager.healt_scaler)
+	if PlayerSkillsManager.health_regeneration_scaler != 0:
+		var timer = Timer.new()
+		timer.wait_time = 1
+		timer.one_shot = false
+		timer.autostart = true
+		timer.timeout.connect(_regen)
+		add_child(timer)
 
+func _regen():
+	
+	if !player_dead:
+		print("Regen")
+		health_component.heal(PlayerSkillsManager.health_regeneration_scaler)
 
 func _bind_inventory() -> void:
 	inventory.actor = self
@@ -48,7 +60,7 @@ func _bind_inventory() -> void:
 	
 	inventory.new_explosive.connect(player_hud.equip_explosive)
 	inventory.new_explosive.connect(equip_explosive)
-	
+	inventory.money += PlayerSkillsManager.start_money_increase
 	inventory.setup()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -151,10 +163,10 @@ func animate() -> void:
 
 
 func _on_health_component_health_changed(amount: Variant) -> void:
-	print()
+	if amount > 0:
+		return
 	if !player_dead:
 		flash_red(animated_sprite)
-	if amount < 0:
 		camera.screen_shake()
 
 

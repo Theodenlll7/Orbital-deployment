@@ -13,7 +13,7 @@ var amount: int = 0
 @export var rotation_angle: float = 15.0
 
 @export var negative_color := Color.WHITE_SMOKE
-@export var positive_color := Color.FOREST_GREEN
+@export var positive_color := Color.MEDIUM_TURQUOISE
 
 
 func _ready():
@@ -28,11 +28,12 @@ func _ready():
 	if amount < 0:
 		color = negative_color
 	else:
+		label.text = "+" + label.text 
 		color = positive_color
 	var fade_color: Color = color
 	fade_color.a = 0
 
-	label.set("theme_override_colors/font_color", negative_color)
+	label.set("theme_override_colors/font_color", color)
 	var tween = create_tween()
 	tween.bind_node(self)
 	tween.set_parallel()

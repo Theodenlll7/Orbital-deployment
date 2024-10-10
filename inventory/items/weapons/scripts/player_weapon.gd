@@ -27,7 +27,7 @@ func _process(delta) -> void:
 			attack()
 
 func get_bullet_damage() -> int:
-	return weapon_resource.bullet_damage * PlayerSkillsManager.get_bullet_damage_scaler()
+	return int(weapon_resource.bullet_damage * PlayerSkillsManager.bullet_damage_scaler)
 
 func attack_pressed() -> bool:
 	return (
