@@ -46,6 +46,7 @@ func add_weapon(weapon: WeaponResource):
 			drop_item(weapon_slots[selected_weapon_slot])
 			weapon_slots[selected_weapon_slot] = weapon
 			new_weapon.emit(selected_weapon_slot, weapon)
+			select_weapon_slot(selected_weapon_slot)
 
 
 func add_explosive(explosive):
