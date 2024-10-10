@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="CustomWave" load_steps=3 format=3 uid="uid://dq8owb3cs3n3"]
 
-[ext_resource type="PackedScene" path="res://enemies/mobs/juggernaut.tscn" id="1_8tmla"]
-[ext_resource type="Script" path="res://enemies/waves/coustom_wave.gd" id="1_dya2t"]
+[ext_resource type="PackedScene" uid="uid://dqsn50h508ms6" path="res://enemies/mobs/juggernaut.tscn" id="1_8tmla"]
+[ext_resource type="Script" path="res://enemies/waves/custom_wave.gd" id="1_dya2t"]
 
 [resource]
 script = ExtResource("1_dya2t")
