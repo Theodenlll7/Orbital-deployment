@@ -44,7 +44,7 @@ var skill_layout: Dictionary = {
 			"name": "More bullet damage", 
 			"description": "Lorem ipsum",
 			"action": "set_new_bullet_damage_scaler",
-			"action_value": 1.25,
+			"action_value": 5.0,
 			"img": {
 				"normal": "res://ui/main_menu/assets/bulletdamage.png", 
 				"hover": "res://ui/main_menu/assets/bulletdamageHover.png", 

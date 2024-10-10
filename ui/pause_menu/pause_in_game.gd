@@ -13,14 +13,16 @@ class_name PauseInGame
 func _ready() -> void:
 	handle_connecting_signals()
 	options_menu.visible = false
-
+	
 func on_quit_level_button_pressed() -> void:
 	Engine.time_scale = 1
 	get_tree().change_scene_to_packed(main_menu)
 
 func on_resume_game_button_pressed() -> void:
 	var parent_hud = get_parent() as PlayerHUD  
+	pause_menu.visible = false
 	parent_hud.pauseMenu()
+	
 
 func on_options_button_pressed() -> void:
 	options_menu.visible = true
@@ -40,3 +42,10 @@ func handle_connecting_signals() -> void:
 	restart_mission_button.button_down.connect(on_restart_mission_button_pressed)
 	options_button.button_down.connect(on_options_button_pressed)
 	options_menu.back_to_main_menu.connect(on_back_from_options_button_pressed)
+	
+func _process(delta: float) -> void:
+	if Input.is_action_just_pressed("pause"):
+		pause_menu.visible = true
+		options_menu.visible = false
+		
+	
