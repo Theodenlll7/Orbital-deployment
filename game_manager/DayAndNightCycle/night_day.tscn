@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://bwqebjpl0otwb"]
+[gd_scene load_steps=5 format=3 uid="uid://qr233drv7hwc"]
 
 [ext_resource type="Script" path="res://game_manager/DayAndNightCycle/Scripts/daynightcycle_connect.gd" id="1_katyx"]
 [ext_resource type="PackedScene" uid="uid://ojq878xsw3xy" path="res://game_manager/DayAndNightCycle/day_night_cycle_ui.tscn" id="2_rg3ia"]

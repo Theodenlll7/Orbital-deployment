@@ -2,6 +2,8 @@ extends Control
 
 @onready var mission_1_button: Button = $content/ContentMarginContainer/VBoxContainer/Title/HBoxContainer/Control/HBoxContainer/Buttons/MarginContainer/MarginContainer/ScrollContainer/VBoxContainer/Mission1Button
 @onready var mission_2_button: Button = $content/ContentMarginContainer/VBoxContainer/Title/HBoxContainer/Control/HBoxContainer/Buttons/MarginContainer/MarginContainer/ScrollContainer/VBoxContainer/Mission2Button
+@onready var mission_3_button: Button = $content/ContentMarginContainer/VBoxContainer/Title/HBoxContainer/Control/HBoxContainer/Buttons/MarginContainer/MarginContainer/ScrollContainer/VBoxContainer/Mission3Button
+
 @onready var back_button: Button = $content/ContentMarginContainer/BackButton
 
 @onready var mission_marker: Control = $mission_marker
@@ -25,6 +27,10 @@ func on_mission_1_button_pressed() -> void:
 	
 func on_mission_2_button_pressed() -> void:
 	tab_level_selected.emit("2", marker_position)
+
+func on_mission_3_button_pressed() -> void:
+	tab_level_selected.emit("3", marker_position)
+
 	
 func on_back_pressed() -> void:
 	back_mission_select.emit()
@@ -68,3 +74,6 @@ func handle_connecting_signals() -> void:
 
 	set_button_connection(mission_2_button, "2")
 	mission_2_button.button_down.connect(on_mission_2_button_pressed)
+	
+	set_button_connection(mission_3_button, "3")
+	mission_3_button.button_down.connect(on_mission_3_button_pressed)

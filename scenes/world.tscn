@@ -11,7 +11,7 @@
 [ext_resource type="Script" path="res://game_manager/GameLoop/gameLoop.gd" id="9_53pwr"]
 [ext_resource type="PackedScene" uid="uid://m724oqngam6i" path="res://maps/objects/pods/expl_pod.tscn" id="11_bfcpc"]
 [ext_resource type="PackedScene" uid="uid://6vt8l263l0o7" path="res://player/player.tscn" id="11_rp00p"]
-[ext_resource type="PackedScene" uid="uid://bwqebjpl0otwb" path="res://game_manager/DayAndNightCycle/night_day.tscn" id="12_gnnhm"]
+[ext_resource type="PackedScene" uid="uid://qr233drv7hwc" path="res://game_manager/DayAndNightCycle/night_day.tscn" id="12_gnnhm"]
 [ext_resource type="PackedScene" uid="uid://fwtaakyb0exx" path="res://maps/objects/pods/weapon_pod.tscn" id="12_lo35d"]
 [ext_resource type="PackedScene" uid="uid://dihjqikmheg2n" path="res://enemies/mobs/bosses/heavy_juggernaut.tscn" id="15_4em7c"]
 [ext_resource type="PackedScene" uid="uid://dj36rh4ptga2b" path="res://maps/objects/ship/ship.tscn" id="18_c65v2"]

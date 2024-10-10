@@ -240,6 +240,16 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_8r476")
 theme_override_styles/normal = SubResource("StyleBoxFlat_rq8e6")
 text = " Mission 2 "
 
+[node name="Mission3Button" type="Button" parent="content/ContentMarginContainer/VBoxContainer/Title/HBoxContainer/Control/HBoxContainer/Buttons/MarginContainer/MarginContainer/ScrollContainer/VBoxContainer"]
+clip_contents = true
+custom_minimum_size = Vector2(256, 64)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_2dhbq")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/hover = SubResource("StyleBoxFlat_8r476")
+theme_override_styles/normal = SubResource("StyleBoxFlat_rq8e6")
+text = " Mission 3"
+
 [node name="Control2" type="Control" parent="content/ContentMarginContainer/VBoxContainer/Title/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
