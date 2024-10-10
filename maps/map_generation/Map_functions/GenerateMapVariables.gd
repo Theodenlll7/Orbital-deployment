@@ -2,15 +2,17 @@ extends Node2D
 
 @export var width = 75
 @export var height = 75
-@export var spawnArea_size = 20
-@export var randomObjectChance = 0.1
-@export var randomTreeChance = 0.001
+@export var spawnArea_size = 5
+@export var randomObjectChance = 0.8
+@export var randomTreeChance = 0.01
+
+@export var current_tree_chance = 0.6
 
 @export var treeScale = 1.2
 @export var treeRespawnTime = 25
 
 var center_offset = Vector2(-width / 2.0, -height / 2.0)
-const LAND_CAP = 0.2
+const LAND_CAP = 0.4
 
 #Variables for spawning
 var max_chest_count = 10
@@ -84,11 +86,11 @@ func generate_cells():
 				else:
 					if alt < LAND_CAP:
 						ground_cells.append(Vector2i(map_x, map_y))
-						if randf() < randomObjectChance:
+						if randf() > randomObjectChance:
 							if (
-								checkToCloseToMapEdge(Vector2(map_x, map_y), 10)
-								or isPosCloseToObjects(Vector2(map_x, map_y), random_Object_cells)
-								#or isPosCloseToObjects(Vector2(map_x, map_y), water_is_here)
+								#checkToCloseToMapEdge(Vector2(map_x, map_y), 5)
+								isPosCloseToObjects(Vector2(map_x, map_y), random_Object_cells)
+								or isPosCloseToObjects(Vector2(map_x, map_y), water_is_here)
 								or between(temp, 0.2, 0.6)
 							):
 								pass
@@ -96,8 +98,7 @@ func generate_cells():
 								random_Object_cells.append(Vector2i(map_x, map_y))
 						if (
 							randf() < randomTreeChance
-							and !between(temp, 0.2, 0.6)
-							and !isPosCloseToObjects(Vector2(map_x, map_y), water_is_here)
+				
 						):
 							random_tree_cells.append(Vector2i(map_x, map_y))
 						if between(temp, 0.2, 0.6):
@@ -128,7 +129,7 @@ func generate_cells():
 
 func isPosCloseToObjects(pos, list):
 	for other_pos in list:
-		if Vector2(pos).distance_to(Vector2(other_pos)) < 7:
+		if Vector2(pos).distance_to(Vector2(other_pos)) < 3:
 			return true
 	return false
 
