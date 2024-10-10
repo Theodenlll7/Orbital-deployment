@@ -20,12 +20,6 @@ y_sort_enabled = true
 
 [node name="enemy_spawner" type="Node2D" parent="."]
 script = ExtResource("3_rkl8f")
-spawn_radius_min = 400
-spawn_radius_max = null
-spawn_interval = null
-growth_rate = null
-starting_enemy_count = null
-max_enemy_count = null
 enemy_spawn_pool = Array[PackedScene]([ExtResource("4_v3qcm"), ExtResource("5_r2vmx"), ExtResource("5_rdqq8")])
 initial_mean = null
 initial_std_dev = 0.2

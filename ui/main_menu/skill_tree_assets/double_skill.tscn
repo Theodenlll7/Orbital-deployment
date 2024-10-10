@@ -11,18 +11,18 @@
 [ext_resource type="Texture2D" uid="uid://b1f4tqoqbmpy4" path="res://ui/main_menu/assets/heartDisabled.png" id="7_y73ox"]
 
 [node name="double_skills" type="Control"]
-custom_minimum_size = Vector2(447, 0)
+custom_minimum_size = Vector2(468, 0)
 layout_mode = 3
 anchor_right = 0.233
 anchor_bottom = 1.0
-offset_left = -1.52588e-05
-offset_right = 1.64001
+offset_left = -7.5
+offset_right = 9.14001
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_olt4t")
 
 [node name="VBoxContainerLabel" type="VBoxContainer" parent="."]
-custom_minimum_size = Vector2(448, 0)
+custom_minimum_size = Vector2(464, 0)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -52,21 +52,21 @@ vertical_alignment = 1
 
 [node name="VBoxContainerContent" type="VBoxContainer" parent="."]
 layout_mode = 1
-anchors_preset = 13
-anchor_left = 0.5
-anchor_right = 0.5
+anchors_preset = 15
+anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -225.5
-offset_right = 226.5
+offset_right = 4.0
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainerContent"]
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_constants/separation = 0
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="VBoxContainerContent/HBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 3
 size_flags_vertical = 4
 value = 20.0
 texture_under = ExtResource("1_albpn")
@@ -76,11 +76,27 @@ tint_progress = Color(1, 0.698039, 0.196078, 1)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainerContent/HBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 3
 theme_override_constants/separation = 0
 alignment = 1
 
-[node name="TextureButtonTop" type="TextureButton" parent="VBoxContainerContent/HBoxContainer/VBoxContainer"]
+[node name="PanelTop" type="Panel" parent="VBoxContainerContent/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(208, 208)
 layout_mode = 2
+
+[node name="TextureButtonTop" type="TextureButton" parent="VBoxContainerContent/HBoxContainer/VBoxContainer/PanelTop"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -96.0
+offset_top = -96.0
+offset_right = 96.0
+offset_bottom = 96.0
+grow_horizontal = 2
+grow_vertical = 2
 texture_normal = ExtResource("2_x6jv2")
 texture_hover = ExtResource("3_4kqwn")
 texture_disabled = ExtResource("4_knp15")
@@ -95,8 +111,23 @@ texture_progress = ExtResource("5_r2u1x")
 tint_under = Color(0.329412, 0.32549, 0.392157, 1)
 tint_progress = Color(1, 0.698039, 0.196078, 1)
 
-[node name="TextureButtonBottom" type="TextureButton" parent="VBoxContainerContent/HBoxContainer/VBoxContainer"]
+[node name="PanelBottom" type="Panel" parent="VBoxContainerContent/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(208, 208)
 layout_mode = 2
+
+[node name="TextureButtonBottom" type="TextureButton" parent="VBoxContainerContent/HBoxContainer/VBoxContainer/PanelBottom"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -96.0
+offset_top = -96.0
+offset_right = 96.0
+offset_bottom = 96.0
+grow_horizontal = 2
+grow_vertical = 2
 texture_normal = ExtResource("5_3q3ns")
 texture_hover = ExtResource("6_dgrk3")
 texture_disabled = ExtResource("7_y73ox")

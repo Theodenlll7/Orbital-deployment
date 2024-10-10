@@ -7,17 +7,16 @@
 [ext_resource type="Texture2D" uid="uid://b1f4tqoqbmpy4" path="res://ui/main_menu/assets/heartDisabled.png" id="5_cnb0n"]
 
 [node name="SingleSkill" type="Control"]
-custom_minimum_size = Vector2(448, 0)
+custom_minimum_size = Vector2(464, 0)
 layout_mode = 3
 anchor_right = 0.233
 anchor_bottom = 1.0
-offset_right = 0.639984
+offset_right = 16.64
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_sf8ar")
 
 [node name="VBoxContainerLabel" type="VBoxContainer" parent="."]
-custom_minimum_size = Vector2(448, 0)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -48,12 +47,9 @@ vertical_alignment = 1
 
 [node name="VBoxContainerContent" type="VBoxContainer" parent="."]
 layout_mode = 1
-anchors_preset = 13
-anchor_left = 0.5
-anchor_right = 0.5
+anchors_preset = 15
+anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -224.0
-offset_right = 224.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -72,8 +68,25 @@ texture_progress = ExtResource("1_8ayod")
 tint_under = Color(0.331173, 0.323901, 0.392491, 1)
 tint_progress = Color(1, 0.698039, 0.196078, 1)
 
-[node name="TextureButton" type="TextureButton" parent="VBoxContainerContent/HBoxContainer"]
+[node name="Panel" type="Panel" parent="VBoxContainerContent/HBoxContainer"]
+custom_minimum_size = Vector2(0, 208)
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+
+[node name="TextureButton" type="TextureButton" parent="VBoxContainerContent/HBoxContainer/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -96.0
+offset_top = -96.0
+offset_right = 96.0
+offset_bottom = 96.0
+grow_horizontal = 2
+grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 texture_normal = ExtResource("3_bmect")

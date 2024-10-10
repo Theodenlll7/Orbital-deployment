@@ -8,10 +8,17 @@ extends Control
 const SINGLE_SKILL: String = "res://ui/main_menu/skill_tree_assets/single_skill.tscn"
 const DOUBLE_SKILL: String = "res://ui/main_menu/skill_tree_assets/double_skill.tscn"
 
+
 @onready var popup: MarginContainer = $Popup
 @onready var popup_header: Label = $Popup/Panel/MarginContainer/VBoxContainer/PopupHeader
 @onready var pop_up_texture_rect: TextureRect = $Popup/Panel/MarginContainer/VBoxContainer/HBoxContainer2/PopUpTextureRect
+@onready var popup_description: Label = $Popup/Panel/MarginContainer/VBoxContainer/MarginContainer/Description
 
+@onready var tooltip: MarginContainer = $Tooltip
+@onready var tooltip_header: Label = $Tooltip/Panel/MarginContainer/VBoxContainer/Header
+@onready var tooltip_description: Label = $Tooltip/Panel/MarginContainer/VBoxContainer/Description
+
+var fade_time: float = 0.1
 var player_level: int = 0
 
 var skill_layout: Dictionary = {
@@ -19,8 +26,9 @@ var skill_layout: Dictionary = {
 		"type": "single","level": 5,"skill":{
 		1: {
 			"name": "Health regeneration", 
+			"description": "Lorem ipsum",
 			"action": "set_new_healt_scaler",
-			"action_value": 1.1,
+			"action_value": 1.5,
 			"img": {
 				"normal": "res://ui/main_menu/assets/timeglass.png", 
 				"hover": "res://ui/main_menu/assets/timeglassHover.png", 
@@ -34,8 +42,9 @@ var skill_layout: Dictionary = {
 		"type": "double","level": 10,"skill":{
 		1: {
 			"name": "More bullet damage", 
+			"description": "Lorem ipsum",
 			"action": "set_new_bullet_damage_scaler",
-			"action_value": 1.4,
+			"action_value": 1.25,
 			"img": {
 				"normal": "res://ui/main_menu/assets/bulletdamage.png", 
 				"hover": "res://ui/main_menu/assets/bulletdamageHover.png", 
@@ -45,8 +54,9 @@ var skill_layout: Dictionary = {
 			},
 		2: {
 			"name": "More health",
+			"description": "Lorem ipsum",
 			"action": "set_new_healt_scaler",
-			"action_value": 1.4,
+			"action_value": 2,
 		 	"img": {
 				"normal": "res://ui/main_menu/assets/heart.png", 
 				"hover": "res://ui/main_menu/assets/heartHover.png", 
@@ -60,8 +70,9 @@ var skill_layout: Dictionary = {
 		"type": "single","level": 15,"skill":{
 		1:{
 			"name": "More health",
+			"description": "Lorem ipsum",
 			"action": "set_new_healt_scaler",
-			"action_value": 20.0,
+			"action_value": 10.0,
 		 	"img": {
 				"normal": "res://ui/main_menu/assets/heart.png", 
 				"hover": "res://ui/main_menu/assets/heartHover.png", 
@@ -75,6 +86,7 @@ var skill_layout: Dictionary = {
 
 func _ready() -> void:
 	popup.visible = false
+	tooltip.visible = false
 	ExperiencePoints.connect("experience_updated", Callable(self, "on_experience_updated"))
 	init_skill_tree()
 	handle_connecting_signals()
@@ -112,6 +124,7 @@ func init_skill_tree() -> void:
 		prev_level = dictionary_item["level"]
 	
 		skill_tree_instance.connect("skill_unlocked", Callable(self, "on_skill_unlocked"))
+		skill_tree_instance.connect("show_information", Callable(self, "on_show_information"))
 
 
 func on_skill_unlocked(skill_id: String) -> void:
@@ -138,8 +151,6 @@ func on_skill_activated(skill_id: String) -> void:
 		"set_new_bullet_damage_scaler":
 			PlayerSkillsManager.set_new_bullet_damage_scaler(skill["action_value"])
 
-
-
 func show_skill_information(skill_id: String) -> void:
 	var parts = skill_id.split("_")  # Split the string at the underscore 
 	var id_a = int(parts[0]) 
@@ -147,10 +158,31 @@ func show_skill_information(skill_id: String) -> void:
 	
 	var new_skill = skill_layout[id_a]["skill"][id_b]
 	popup_header.text = str(new_skill["name"])
+	popup_description.text = str(new_skill["description"])
 	popup.visible = true
 
 	var skill_texture: Texture2D = load(new_skill["img"]["hover"])
 	pop_up_texture_rect.texture = skill_texture
+
+func open_information_tab(skill_id: String) -> void:
+	var parts = skill_id.split("_") 
+	var id_a = int(parts[0]) 
+	var id_b = int(parts[1])
+	
+	var skill = skill_layout[id_a]["skill"][id_b]
+	tooltip_header.text = str(skill["name"])
+	tooltip_description.text = str(skill["description"])
+	tooltip.visible = true
+
+func on_show_information(skill_id: String, state: bool) -> void:
+	var tween = create_tween()
+	if !state:
+		tween.tween_property(tooltip, "modulate:a", 0, fade_time)
+		return
+	open_information_tab(skill_id)
+	tween.tween_property(tooltip, "modulate:a", 1, fade_time)
+	
+	
 
 func handle_connecting_signals() -> void:
 	close_popup_button.button_down.connect(on_close_popup_button_pressed)

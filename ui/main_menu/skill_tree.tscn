@@ -43,6 +43,55 @@ size_flags_vertical = 4
 texture = ExtResource("4_mpgbs")
 stretch_mode = 2
 
+[node name="Tooltip" type="MarginContainer" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -245.0
+offset_right = 563.0
+grow_vertical = 0
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="Panel" type="Panel" parent="Tooltip"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Tooltip/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Tooltip/Panel/MarginContainer"]
+layout_mode = 2
+
+[node name="Header" type="Label" parent="Tooltip/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 32
+text = "Text"
+
+[node name="HSeparator" type="HSeparator" parent="Tooltip/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Description" type="Label" parent="Tooltip/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 3.0
+theme_override_font_sizes/font_size = 22
+text = "Text"
+
 [node name="Popup" type="MarginContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
@@ -66,18 +115,18 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 32
 theme_override_constants/margin_top = 32
-theme_override_constants/margin_right = 32
 theme_override_constants/margin_bottom = 32
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Popup/Panel/MarginContainer"]
 layout_mode = 2
+size_flags_horizontal = 4
 theme_override_constants/separation = 16
 
 [node name="PopupHeader" type="Label" parent="Popup/Panel/MarginContainer/VBoxContainer"]
 modulate = Color(1.6, 1.6, 1.6, 1)
 layout_mode = 2
+size_flags_horizontal = 4
 size_flags_vertical = 1
 theme_override_font_sizes/font_size = 48
 text = "Skill header"
@@ -86,6 +135,7 @@ vertical_alignment = 1
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="Popup/Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 4
 size_flags_vertical = 3
 alignment = 1
 
@@ -99,26 +149,19 @@ stretch_mode = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="Popup/Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 4
 size_flags_vertical = 3
-theme_override_constants/margin_left = 128
-theme_override_constants/margin_right = 128
 
-[node name="Label2" type="Label" parent="Popup/Panel/MarginContainer/VBoxContainer/MarginContainer"]
+[node name="Description" type="Label" parent="Popup/Panel/MarginContainer/VBoxContainer/MarginContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-text = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,
-molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum
-numquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium
-optio, eaque rerum! Provident similique accusantium nemo autem. Veritatis
-obcaecati tenetur iure eius earum ut molestias architecto voluptate aliquam
-nihil, eveniet aliquid culpa officia aut! Impedit sit sunt quaerat, odit,
-tenetur error, harum nesciunt ipsum debitis quas aliquid. Reprehenderit,
-quia. Quo neque error repudiandae fuga? Ipsa laudantium molestias eos 
-sapiente officiis modi at sunt excepturi expedita sint?"
+theme_override_font_sizes/font_size = 32
+text = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,"
 horizontal_alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Popup/Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_constants/separation = 64
 alignment = 1
 
 [node name="CloseButton" type="Button" parent="Popup/Panel/MarginContainer/VBoxContainer/HBoxContainer"]

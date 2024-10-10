@@ -19,7 +19,7 @@ extends Control
 
 @onready var target_menu: Control = main_menu
 
-const load_level = preload("res://ui/main_menu/loading_level.tscn")
+const LOAD_LEVEL = preload("res://ui/main_menu/loading_level.tscn")
 var ship_start_position: Vector2
 
 
@@ -136,7 +136,7 @@ func move_ship_to_marker(mission_ID: String, move_to: Vector2) -> void:
 
 
 func on_tween_finished(mission_ID: String) -> void:
-	var next_scene = load_level.instantiate()
+	var next_scene = LOAD_LEVEL.instantiate()
 
 	if next_scene and mission_ID:
 		next_scene.mission_ID = mission_ID        

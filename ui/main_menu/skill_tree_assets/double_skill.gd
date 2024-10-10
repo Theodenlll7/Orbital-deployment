@@ -3,11 +3,15 @@ extends Control
 @onready var label: Label = $VBoxContainerLabel/HBoxContainer/Label
 
 @onready var texture_progress_bar: TextureProgressBar = $VBoxContainerContent/HBoxContainer/TextureProgressBar
-@onready var texture_button_top: TextureButton = $VBoxContainerContent/HBoxContainer/VBoxContainer/TextureButtonTop
-@onready var texture_button_bottom: TextureButton = $VBoxContainerContent/HBoxContainer/VBoxContainer/TextureButtonBottom
 @onready var end_texture_progress_bar: TextureProgressBar = $VBoxContainerContent/HBoxContainer/VBoxContainer/EndTextureProgressBar
 
+@onready var texture_button_top: TextureButton = $VBoxContainerContent/HBoxContainer/VBoxContainer/PanelTop/TextureButtonTop
+@onready var panel_top: Panel = $VBoxContainerContent/HBoxContainer/VBoxContainer/PanelTop
+@onready var texture_button_bottom: TextureButton = $VBoxContainerContent/HBoxContainer/VBoxContainer/PanelBottom/TextureButtonBottom
+@onready var panel_bottom: Panel = $VBoxContainerContent/HBoxContainer/VBoxContainer/PanelBottom
+
 signal skill_unlocked(level_id: String)
+signal show_information(level_id: String, state: bool)
 
 var level: int = 0
 
@@ -62,9 +66,43 @@ func set_level(_id: String, this_level: int, player_level: int, prev_level: int)
 		end_texture_progress_bar.value = 1
 
 	texture_button_top.button_down.connect(Callable(self, "skill_activated").bind(_id + "_1"))
+	texture_button_top.connect("mouse_entered", Callable(self, "_on_control_hover").bind(_id + "_1"))
+	texture_button_top.connect("mouse_exited", Callable(self, "_on_control_hover_exit").bind(_id + "_1"))
+	
 	texture_button_bottom.button_down.connect(Callable(self, "skill_activated").bind(_id + "_2"))
+	texture_button_bottom.connect("mouse_entered", Callable(self, "_on_control_hover").bind(_id + "_2"))
+	texture_button_bottom.connect("mouse_exited", Callable(self, "_on_control_hover_exit").bind(_id + "_2"))
+
+func get_hover_style_box() -> StyleBoxFlat:
+	var outline_style = StyleBoxFlat.new()
+	outline_style.border_width_top = 20
+	outline_style.border_width_bottom = 20
+	outline_style.border_width_left = 20
+	outline_style.border_width_right = 20
+	outline_style.border_color = Color(1, 1, 1)  
+	return outline_style
 
 
+func getIdB(id: String) -> String:
+	return id.split("_")[1]
+
+func _on_control_hover(_id: String) -> void:
+	var outline_style: StyleBoxFlat = get_hover_style_box()
+	
+	if getIdB(_id) == "1":
+		panel_top.add_theme_stylebox_override("panel",outline_style)
+		show_information.emit(_id, true)
+	else:
+		panel_bottom.add_theme_stylebox_override("panel",outline_style)
+		show_information.emit(_id, true)
+
+func _on_control_hover_exit(_id: String) -> void:
+	if getIdB(_id) == "1":
+		panel_top.remove_theme_stylebox_override("panel")
+		show_information.emit(_id, false)
+	else:
+		panel_bottom.remove_theme_stylebox_override("panel")
+		show_information.emit(_id, false)
 
 func skill_activated(_id: String) -> void:
 	skill_unlocked.emit(_id)
