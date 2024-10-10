@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=3 uid="uid://cqqagqvpntumn"]
+[gd_scene load_steps=50 format=3 uid="uid://dsuabe2igmqvf"]
 
 [ext_resource type="Script" path="res://common/components/navigator2d.gd" id="1_alrx4"]
 [ext_resource type="Texture2D" uid="uid://cecqjnwk0gp3p" path="res://enemies/assets/textures/assult.png" id="2_dj2q1"]
@@ -304,7 +304,7 @@ position = Vector2(0, 2)
 [node name="LootSpawner" type="Node2D" parent="."]
 script = ExtResource("17_qnkwj")
 loot_table = ExtResource("18_f8474")
-item_spawn_chanse = 0.4
+item_spawn_chanse = 0.2
 spawn_attempts = 10
 
 [node name="HandleEnemeyDeath" type="Node" parent="."]

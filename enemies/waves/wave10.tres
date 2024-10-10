@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="CustomWave" load_steps=3 format=3 uid="uid://dq8owb3cs3n3"]
+
+[ext_resource type="PackedScene" path="res://enemies/mobs/juggernaut.tscn" id="1_8tmla"]
+[ext_resource type="Script" path="res://enemies/waves/coustom_wave.gd" id="1_dya2t"]
+
+[resource]
+script = ExtResource("1_dya2t")
+wave_number = 10
+enemies = Array[PackedScene]([ExtResource("1_8tmla")])
+extra_mobspawn_count = 0
+base_mobs_mean = 0.5
+base_mobs_std_dev = 0.5

@@ -3,17 +3,25 @@ extends Node2D
 class_name WaveManager
 
 # Exported variables
+@export_category("Mob Spawning")
 @export var spawn_radius_min: int = 500  # Minimum distance from players for spawning
 @export var spawn_radius_max: int = 600  # Maximum distance from players for spawning
 @export var spawn_interval: float = 3.0  # Time between spawns
 
+# Difficulty progression variables
+@export_category("Enemie count progression")
+@export_range(1, 100, 1, "or_greater") var growth_rate: float = 2.0  # Controls how fast the number of enemies increases
+@export_range(1, 100, 1, "or_greater") var starting_enemy_count: int = 5  # Minimum number of enemies at the start
+@export_range(1, 100, 1, "or_greater") var max_enemy_count: int = 50  # Maximum number of enemies as difficulty progresses
+
+# The shift value is hidden and not exposed to the user
+const curve_shift: float = 1.0  # Internal shift to avoid log(0)
+
+@export_category("How enemies are picked in waves")
 @export var enemy_spawn_pool: Array[PackedScene] = []
 
-# Difficulty progression variables
-@export var initial_enemies_to_spawn: int = 10  ## Initial number of enemies
-@export var wave_enemy_increment: int = 1  ## Number of additional enemies each wave
-@export var initial_mean: float = 0.0  ## Mean for normal distribution (index in the array)
-@export var initial_std_dev: float = 0.5  ## Initial standard deviation for normal distribution
+@export_range(0, 1) var initial_mean: float = 0.0  ## Mean for normal distribution (index in the array)
+@export_range(0, 1) var initial_std_dev: float = 0.5  ## Initial standard deviation for normal distribution
 
 @onready var players = get_tree().get_nodes_in_group("players")
 
@@ -42,14 +50,20 @@ var wave_finished := false
 
 var in_between_wave_timer = Timer.new()
 
-var next_custom_wave: int = -1
+var next_custom_wave: int
 var next_custom_wave_index: int = 0
 
 
 func start_next_wave():
 	print("Start Wave")
 	wave += 1
-	enemies_to_spawn = initial_enemies_to_spawn + (wave - 1) * wave_enemy_increment
+	enemies_to_spawn = int(
+		clamp(
+			growth_rate * log(wave + curve_shift) + starting_enemy_count,
+			starting_enemy_count,
+			max_enemy_count
+		)
+	)
 	new_wave_started.emit(wave)
 	wave_finished = false
 	process_wave()
@@ -71,7 +85,7 @@ func _ready() -> void:
 	in_between_wave_timer.one_shot = true
 	in_between_wave_timer.timeout.connect(start_next_wave)
 	in_between_wave_timer.start()
-	enemies_to_spawn = initial_enemies_to_spawn
+	enemies_to_spawn = starting_enemy_count
 
 	if !custom_waves.is_empty():
 		next_custom_wave = custom_waves[next_custom_wave_index].wave_number

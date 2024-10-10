@@ -1,7 +1,7 @@
 [gd_scene load_steps=53 format=3 uid="uid://wsq75v2incod"]
 
 [ext_resource type="PackedScene" uid="uid://dgcxqingnrpqp" path="res://maps/map_generation/MapGeneration.tscn" id="1_huq2t"]
-[ext_resource type="Script" path="res://enemies/scripts/enemy_spawner.gd" id="2_3mje2"]
+[ext_resource type="Script" path="res://enemies/waves/enemy_spawner.gd" id="2_3mje2"]
 [ext_resource type="Texture2D" uid="uid://csjbwptdepd7a" path="res://assets/Tiles/tilemap.png" id="2_31m2w"]
 [ext_resource type="Texture2D" uid="uid://b7bbent6b8pnu" path="res://assets/Tiles/tilemap2.png" id="3_0i8q7"]
 [ext_resource type="PackedScene" uid="uid://bgg2qlsu5f8qd" path="res://enemies/mobs/spider.tscn" id="3_r8gpc"]
@@ -1594,7 +1594,16 @@ script = ExtResource("8_xh3lq")
 
 [node name="WaveManager" type="Node2D" parent="."]
 script = ExtResource("2_3mje2")
+spawn_radius_min = null
+spawn_radius_max = null
+spawn_interval = null
+growth_rate = null
+starting_enemy_count = null
+max_enemy_count = null
 enemy_spawn_pool = Array[PackedScene]([ExtResource("3_r8gpc"), ExtResource("4_6dy7k")])
+initial_mean = null
+initial_std_dev = null
+custom_waves = null
 
 [node name="GameLoop" type="Node2D" parent="."]
 script = ExtResource("9_53pwr")
