@@ -45,7 +45,7 @@ func placeRandomObject(list, pos):
 func connectTiles(tileset):
 	set_cells_terrain_connect(1, GenerateMapVariables.ground_cells, tileset, 0)
 	#set_cells_terrain_connect(2, GenerateMapVariables.dirt_cells,tileset,4)
-	set_cells_terrain_connect(2, GenerateMapVariables.ground2_cells, tileset, 4)
+	set_cells_terrain_connect(2, GenerateMapVariables.ground2_cells, tileset, 5)
 	set_cells_terrain_connect(0, GenerateMapVariables.entire_map_cells, tileset, 2)
 	
 

@@ -73,7 +73,14 @@ func process_wave():
 
 # Spawn an enemy at a random valid position around one of the players
 func spawn_enemy():
-	var spawn_position = get_random_valid_position_around_players()
+	var spawn_position
+	if has_node("../MapGeneration"):
+		var random_index = randi() % GenerateMapVariables.ground_cells.size()
+		spawn_position = GenerateMapVariables.tile_to_world(GenerateMapVariables.ground_cells[random_index]) 
+
+	else:
+		spawn_position = get_random_valid_position_around_players()
+		
 	var enemy = pick_enemy_based_on_difficulty().instantiate()
 	enemy.add_to_group("enemies")
 	enemy.global_position = spawn_position
@@ -122,6 +129,7 @@ func is_valid_distance_from_all_players(pos):
 		var distance_to_player = player_pos.distance_to(pos)
 		if distance_to_player < spawn_radius_min:
 			return false  # Too close to a player
+
 	return true
 
 

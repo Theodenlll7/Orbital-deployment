@@ -3,7 +3,7 @@ extends Node2D
 @export var width = 75
 @export var height = 75
 @export var spawnArea_size = 20
-@export var randomObjectChance = 0.05
+@export var randomObjectChance = 0.08
 @export var randomTreeChance = 0.001
 
 @export var treeScale = 1.2

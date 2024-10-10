@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cc25in05338v8" path="res://maps/objects/pods/store_ui.tscn" id="4_wol54"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k8nvd"]
-size = Vector2(91, 46)
+size = Vector2(43, 27)
 
 [node name="ExplosivePod" type="Node2D"]
 script = ExtResource("1_nafvi")
@@ -18,12 +18,12 @@ monitorable = false
 script = ExtResource("2_k3npk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
-position = Vector2(0.5, 2)
+position = Vector2(0.5, -0.5)
 shape = SubResource("RectangleShape2D_k8nvd")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-0.499997, 0.500002)
-scale = Vector2(1.72917, 1.34375)
+position = Vector2(1.90735e-06, -0.499999)
+scale = Vector2(0.916667, 0.84375)
 texture = ExtResource("3_7ij83")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
