@@ -3,7 +3,7 @@ extends Node2D
 @export var width = 75
 @export var height = 75
 @export var spawnArea_size = 20
-@export var randomObjectChance = 0.08
+@export var randomObjectChance = 0.1
 @export var randomTreeChance = 0.001
 
 @export var treeScale = 1.2
@@ -88,7 +88,7 @@ func generate_cells():
 							if (
 								checkToCloseToMapEdge(Vector2(map_x, map_y), 10)
 								or isPosCloseToObjects(Vector2(map_x, map_y), random_Object_cells)
-								or isPosCloseToObjects(Vector2(map_x, map_y), water_is_here)
+								#or isPosCloseToObjects(Vector2(map_x, map_y), water_is_here)
 								or between(temp, 0.2, 0.6)
 							):
 								pass
@@ -158,7 +158,17 @@ func checkToCloseToMapEdge(pos, maxDistance):
 		return true
 	return false
 
-
+func get_valid_spawn_location(): 
+	var attempts = 0
+	var spawn_position
+	while attempts < 100:
+		var random_index = randi() % ground_cells.size()
+		spawn_position = ground_cells[random_index]
+		if !isPosCloseToObjects(spawn_position, water_is_here):
+			return tile_to_world(spawn_position)
+	
+	return spawn_position
+	
 func Get_pod_locations():
 	var podCount = 0
 	var attempts = 0

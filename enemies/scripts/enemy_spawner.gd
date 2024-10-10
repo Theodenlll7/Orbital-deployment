@@ -75,9 +75,7 @@ func process_wave():
 func spawn_enemy():
 	var spawn_position
 	if has_node("../MapGeneration"):
-		var random_index = randi() % GenerateMapVariables.ground_cells.size()
-		spawn_position = GenerateMapVariables.tile_to_world(GenerateMapVariables.ground_cells[random_index]) 
-
+		spawn_position = GenerateMapVariables.get_valid_spawn_location()
 	else:
 		spawn_position = get_random_valid_position_around_players()
 		

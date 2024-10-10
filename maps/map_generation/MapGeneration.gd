@@ -17,6 +17,7 @@ func generate_tiles():
 		set_cell(2, position, 2, tile_outline)
 	
 	for position in GenerateMapVariables.random_Object_cells:
+		print("wee")
 		var random_number = randi() % 16 + 1
 		place_large_object_from_new_tile(random_number, position)
 		
