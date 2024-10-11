@@ -30,20 +30,10 @@ var skill_layout: Dictionary = {}
 func _ready() -> void:
 	popup.visible = false
 	tooltip.visible = false
-	load_skill_layout()
+	skill_layout = PlayerSkillsManager.get_skill_layout()
 	ExperiencePoints.connect("experience_updated", Callable(self, "on_experience_updated"))
 	init_skill_tree()
 	handle_connecting_signals()
-
-func load_skill_layout() -> void:
-	var file = FileAccess.open(json_url, FileAccess.READ)
-	if file:
-		var json_object = JSON.new()
-		json_object.parse(file.get_as_text())
-		skill_layout = json_object.get_data()
-	else:
-		print("Failed to open json file!")
-		
 
 func on_experience_updated() -> void:
 	init_skill_tree()

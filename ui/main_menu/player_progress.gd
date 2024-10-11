@@ -28,12 +28,13 @@ func on_back_button_pressed() -> void:
 	back_to_main_menu.emit()
 
 func dev() -> void:
-	ExperiencePoints.add_experience(200)
-	SaveData.save_data()
-	SaveData.load_data()
+	ExperiencePoints.add_experience(2000)
+	SaveData.save_player_data()
+	SaveData.load_player_data()
 	
 func dev2() -> void:
 	ExperiencePoints.add_experience(1000)
+	SaveData.reset_player_data()
 
 func handle_connecting_signals() -> void:
 	back_button.button_down.connect(on_back_button_pressed)

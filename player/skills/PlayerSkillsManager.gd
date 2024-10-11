@@ -5,6 +5,23 @@ var bullet_damage_scaler: float = 1.0
 var health_regeneration_scaler: float = 0.0
 var start_money_increase: float = 0.0
 
+var json_url = "res://ui/main_menu/skill_tree_assets/data/skills.json"
+var skill_layout: Dictionary = {}
+
+func get_skill_layout() -> Dictionary:
+	if skill_layout == {}:
+		load_skill_layout()
+	return skill_layout
+
+func load_skill_layout() -> void:
+	var file = FileAccess.open(json_url, FileAccess.READ)
+	if file:
+		var json_object = JSON.new()
+		json_object.parse(file.get_as_text())
+		skill_layout = json_object.get_data()
+	else:
+		print("Failed to open json file!")
+
 func set_new_healt_scaler(new_scale: float) -> void:
 	if(new_scale < healt_scaler || new_scale < 0.0):
 		print("Health alrady have a greater scale")

@@ -14,6 +14,7 @@ var base_xp: float = 10         # A base value used in the experience calculatio
 var curve_steepness: float = 500 # A factor used to determine how much the XP requirement increases with each level, controlling the difficulty curve.
 
 func _ready() -> void:
+	SaveData.load_player_data()
 	experience_needed_level_up = get_experience_needed_for_next_level()
 
 func add_experience(points: int) -> void:
