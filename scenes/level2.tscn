@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://jydedg280lpm"]
+[gd_scene load_steps=13 format=3 uid="uid://jydedg280lpm"]
 
 [ext_resource type="PackedScene" uid="uid://dnhpjca7wh5ew" path="res://scenes/scene2.tscn" id="1_c8gxp"]
 [ext_resource type="PackedScene" uid="uid://6vt8l263l0o7" path="res://player/player.tscn" id="2_ammvo"]
@@ -10,6 +10,8 @@
 [ext_resource type="PackedScene" uid="uid://inymqhajqaf7" path="res://ui/in_game/mission_start_text.tscn" id="6_r6q3o"]
 [ext_resource type="PackedScene" uid="uid://fwtaakyb0exx" path="res://maps/objects/pods/weapon_pod.tscn" id="7_38vkb"]
 [ext_resource type="Resource" uid="uid://dq8owb3cs3n3" path="res://enemies/waves/wave10.tres" id="7_67x7v"]
+[ext_resource type="Script" path="res://common/arrow_indicators/ArrowIndicator.gd" id="11_nka5b"]
+[ext_resource type="Texture2D" uid="uid://bsjfhwk5erona" path="res://assets/TextureIcons/gun_arrow.png" id="12_epn0a"]
 
 [node name="Level2" type="Node2D"]
 y_sort_enabled = true
@@ -18,7 +20,6 @@ y_sort_enabled = true
 
 [node name="enemy_spawner" type="Node2D" parent="."]
 script = ExtResource("3_3263j")
-growth_rate = 0.5
 enemy_spawn_pool = Array[PackedScene]([ExtResource("4_fkjhh"), ExtResource("5_v0ucf"), ExtResource("5_rqgek")])
 initial_std_dev = 0.2
 custom_waves = Array[ExtResource("6_cnvru")]([ExtResource("7_67x7v")])
@@ -36,3 +37,14 @@ position = Vector2(-117, -16)
 [node name="InteractionArea" parent="." instance=ExtResource("7_38vkb")]
 z_index = 1
 position = Vector2(95, -80)
+
+[node name="ArrowIndicator" type="Node2D" parent="." node_paths=PackedStringArray("target", "arrow_sprite", "player")]
+z_index = 100
+z_as_relative = false
+script = ExtResource("11_nka5b")
+target = NodePath("../InteractionArea")
+arrow_sprite = NodePath("Sprite2D")
+player = NodePath("../Player")
+
+[node name="Sprite2D" type="Sprite2D" parent="ArrowIndicator"]
+texture = ExtResource("12_epn0a")

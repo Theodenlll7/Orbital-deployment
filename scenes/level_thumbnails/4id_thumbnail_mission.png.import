@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c03den4ayjr17"
-path="res://.godot/imported/terrain tiles.png-aa707b776378075c9c33537a1ce2ce81.ctex"
+uid="uid://c81nbbovpao8k"
+path="res://.godot/imported/4id_thumbnail_mission.png-28b8ebdab261ab53e3738eb42eeb8f5d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Tiles/terrain tiles.png"
-dest_files=["res://.godot/imported/terrain tiles.png-aa707b776378075c9c33537a1ce2ce81.ctex"]
+source_file="res://scenes/level_thumbnails/4id_thumbnail_mission.png"
+dest_files=["res://.godot/imported/4id_thumbnail_mission.png-28b8ebdab261ab53e3738eb42eeb8f5d.ctex"]
 
 [params]
 

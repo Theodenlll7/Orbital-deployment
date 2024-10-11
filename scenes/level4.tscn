@@ -1,0 +1,51 @@
+[gd_scene load_steps=13 format=3 uid="uid://dqfmu73xm8h3x"]
+
+[ext_resource type="PackedScene" uid="uid://b733h8ldjkhr2" path="res://scenes/scene4.tscn" id="1_jckrp"]
+[ext_resource type="Script" path="res://enemies/waves/enemy_spawner.gd" id="2_rhyrc"]
+[ext_resource type="PackedScene" uid="uid://bgg2qlsu5f8qd" path="res://enemies/mobs/spider.tscn" id="3_l5020"]
+[ext_resource type="PackedScene" uid="uid://kua7fs588s48" path="res://enemies/mobs/ranger.tscn" id="4_oxfh3"]
+[ext_resource type="PackedScene" uid="uid://dsuabe2igmqvf" path="res://enemies/mobs/assult.tscn" id="5_3r45n"]
+[ext_resource type="Script" path="res://enemies/waves/custom_wave.gd" id="6_dmvjh"]
+[ext_resource type="Resource" uid="uid://dq8owb3cs3n3" path="res://enemies/waves/wave10.tres" id="7_57sp4"]
+[ext_resource type="PackedScene" uid="uid://inymqhajqaf7" path="res://ui/in_game/mission_start_text.tscn" id="8_7pocc"]
+[ext_resource type="PackedScene" uid="uid://6vt8l263l0o7" path="res://player/player.tscn" id="9_raoxf"]
+[ext_resource type="PackedScene" uid="uid://fwtaakyb0exx" path="res://maps/objects/pods/weapon_pod.tscn" id="10_1daey"]
+[ext_resource type="Script" path="res://common/arrow_indicators/ArrowIndicator.gd" id="11_a2otf"]
+[ext_resource type="Texture2D" uid="uid://bsjfhwk5erona" path="res://assets/TextureIcons/gun_arrow.png" id="12_u4wn8"]
+
+[node name="Level4" type="Node2D"]
+y_sort_enabled = true
+
+[node name="TileMap" parent="." instance=ExtResource("1_jckrp")]
+
+[node name="enemy_spawner" type="Node2D" parent="."]
+script = ExtResource("2_rhyrc")
+enemy_spawn_pool = Array[PackedScene]([ExtResource("3_l5020"), ExtResource("4_oxfh3"), ExtResource("5_3r45n")])
+initial_std_dev = 0.2
+custom_waves = Array[ExtResource("6_dmvjh")]([ExtResource("7_57sp4")])
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="mission_start_text" parent="CanvasLayer" instance=ExtResource("8_7pocc")]
+size_flags_horizontal = 3
+
+[node name="Player" parent="." instance=ExtResource("9_raoxf")]
+z_index = 3
+y_sort_enabled = true
+position = Vector2(-468, 142)
+
+[node name="InteractionArea" parent="." instance=ExtResource("10_1daey")]
+z_index = 1
+position = Vector2(-330, -296)
+
+[node name="ArrowIndicator" type="Node2D" parent="." node_paths=PackedStringArray("target", "arrow_sprite", "player")]
+z_index = 100
+z_as_relative = false
+position = Vector2(69, -99)
+script = ExtResource("11_a2otf")
+target = NodePath("../InteractionArea")
+arrow_sprite = NodePath("Sprite2D")
+player = NodePath("../Player")
+
+[node name="Sprite2D" type="Sprite2D" parent="ArrowIndicator"]
+texture = ExtResource("12_u4wn8")
