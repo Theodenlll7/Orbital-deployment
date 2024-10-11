@@ -8,7 +8,8 @@ extends Control
 const SINGLE_SKILL: String = "res://ui/main_menu/skill_tree_assets/single_skill.tscn"
 const DOUBLE_SKILL: String = "res://ui/main_menu/skill_tree_assets/double_skill.tscn"
 
-@onready var player_start_texture: TextureRect = $ScrollContainer/SkillContent/TextureRect
+@onready var player_start_texture: TextureRect = $ScrollContainer/SkillContent/Panel/TextureRect
+@onready var player_start_outline: Panel = $ScrollContainer/SkillContent/Panel
 
 @onready var popup: MarginContainer = $Popup
 @onready var popup_header: Label = $Popup/Panel/MarginContainer/VBoxContainer/PopupHeader
@@ -192,12 +193,24 @@ func on_show_information(skill_id: String, state: bool) -> void:
 	open_information_tab(skill_id)
 	tween.tween_property(tooltip, "modulate:a", 1, fade_time)
 	
+func get_hover_style_box() -> StyleBoxFlat:
+	var outline_style = StyleBoxFlat.new()
+	outline_style.border_width_top = 20
+	outline_style.border_width_bottom = 20
+	outline_style.border_width_left = 20
+	outline_style.border_width_right = 20
+	outline_style.border_color = Color(1, 1, 1)  
+	return outline_style
+
+
 func on_show_player(state: bool) -> void:
 	var tween = create_tween()
 	if !state:
+		player_start_outline.remove_theme_stylebox_override("panel")
 		tween.tween_property(tooltip, "modulate:a", 0, fade_time)
 		return
 	
+	player_start_outline.add_theme_stylebox_override("panel",get_hover_style_box())
 	tooltip_header.text = "You"
 	var description = "This is [color=green]you[/color] a breathtaking force of nature, poised to liberate the galaxy from heretics. Admire your sleek design—a true killing machine ready to unleash chaos on your foes. \n\nGet ready to make your mark!"
 	tooltip_description.clear()

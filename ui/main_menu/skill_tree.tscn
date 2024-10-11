@@ -36,18 +36,37 @@ grow_vertical = 2
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+theme_override_constants/separation = 0
 
 [node name="Padding" type="Control" parent="ScrollContainer/SkillContent"]
 custom_minimum_size = Vector2(128, 0)
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="ScrollContainer/SkillContent"]
+[node name="Panel" type="Panel" parent="ScrollContainer/SkillContent"]
+custom_minimum_size = Vector2(208, 208)
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="TextureRect" type="TextureRect" parent="ScrollContainer/SkillContent/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -96.0
+offset_top = -96.0
+offset_right = 96.0
+offset_bottom = 96.0
+grow_horizontal = 2
+grow_vertical = 2
 size_flags_vertical = 4
 texture = ExtResource("4_mpgbs")
 stretch_mode = 2
 
 [node name="Tooltip" type="MarginContainer" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -104,6 +123,7 @@ text = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia
 scroll_active = false
 
 [node name="Popup" type="MarginContainer" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
