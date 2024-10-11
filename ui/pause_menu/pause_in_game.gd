@@ -43,7 +43,7 @@ func handle_connecting_signals() -> void:
 	options_button.button_down.connect(on_options_button_pressed)
 	options_menu.back_to_main_menu.connect(on_back_from_options_button_pressed)
 	
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("pause"):
 		pause_menu.visible = true
 		options_menu.visible = false

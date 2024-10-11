@@ -49,7 +49,7 @@ func _regen():
 	
 	if !player_dead:
 		print("Regen")
-		health_component.heal(PlayerSkillsManager.health_regeneration_scaler)
+		health_component.heal(int(PlayerSkillsManager.health_regeneration_scaler))
 
 func _bind_inventory() -> void:
 	inventory.actor = self
