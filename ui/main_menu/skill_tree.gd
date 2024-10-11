@@ -199,7 +199,7 @@ func on_show_player(state: bool) -> void:
 		return
 	
 	tooltip_header.text = "You"
-	var description = "This is [color=green]you[/color] a breathtaking force of nature, poised to liberate the galaxy from heretics. \nAdmire your sleek design—a true killing machine ready to unleash chaos on your foes. \n\nGet ready to make your mark!"
+	var description = "This is [color=green]you[/color] a breathtaking force of nature, poised to liberate the galaxy from heretics. Admire your sleek design—a true killing machine ready to unleash chaos on your foes. \n\nGet ready to make your mark!"
 	tooltip_description.clear()
 	tooltip_description.append_text(description)
 	tooltip.visible = true
