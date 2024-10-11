@@ -29,6 +29,8 @@ func on_back_button_pressed() -> void:
 
 func dev() -> void:
 	ExperiencePoints.add_experience(200)
+	SaveData.save_data()
+	SaveData.load_data()
 	
 func dev2() -> void:
 	ExperiencePoints.add_experience(1000)

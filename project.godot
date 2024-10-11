@@ -25,6 +25,7 @@ Shop="*res://game_manager/GameVariables/Shop.gd"
 MissionManager="*res://ui/main_menu/mission_manager.gd"
 ExperiencePoints="*res://player/experience_points/ExperiencePointsManager.gd"
 PlayerSkillsManager="*res://player/skills/PlayerSkillsManager.gd"
+SaveData="*res://saved_data/saveData.gd"
 
 [debug]
 
@@ -51,6 +52,7 @@ folder_colors={
 "res://inventory/": "yellow",
 "res://maps/": "gray",
 "res://player/": "green",
+"res://saved_data/": "teal",
 "res://scenes/": "pink",
 "res://ui/": "purple"
 }
