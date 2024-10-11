@@ -26,6 +26,9 @@ enum AttackMode {
 ## Time between shots in seconds
 @export var attack_cooldown: float = 0.2
 
+@export_group("Accessibility")
+@export var weapon_accessibility_wave: int = 0
+
 @export_subgroup("Amunition")
 @export var has_magazine: bool = true
 

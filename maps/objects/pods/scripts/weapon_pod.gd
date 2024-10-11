@@ -14,6 +14,9 @@ var explosives: Array[ExplosiveResource] = []
 
 var pod_type: ShopType = ShopType.weapon
 
+var weapon_path = FilePaths.get_files(weapons_dir, ".tres")
+var explosive_path = FilePaths.get_files(explosive_dir, ".tres")
+
 var costumer: Inventory:
 	set(value):
 		costumer = value
@@ -24,15 +27,24 @@ func _ready():
 	loadResources()
 
 func loadResources():
-	var paths = FilePaths.get_files(weapons_dir, ".tres")
-	for path in paths:
-		weapons.append(ResourceLoader.load(path))
+	for path in weapon_path:
+		var item = ResourceLoader.load(path)
+		if item.weapon_accessibility_wave <= 0:
+			weapons.append(ResourceLoader.load(path))
 
-	paths = FilePaths.get_files(explosive_dir, ".tres")
-	for path in paths:
+	for path in explosive_path:
 		explosives.append(ResourceLoader.load(path))
 
-
+func update_weapons(wave):
+	print("called update weapons with: ", wave)
+	weapons.clear()
+	for path in weapon_path:
+		var item = ResourceLoader.load(path)
+		if item.weapon_accessibility_wave <= wave:
+			weapons.append(ResourceLoader.load(path))
+			
+	setLabelsAndCost(ShopType.weapon)
+	
 func setRefillAmmonition():
 	var buy_btn: Button = $ContentPanelContainer/MarginContainer/VBoxContainer/Panel/RefillAmmonition
 	buy_btn.action_mode = BaseButton.ACTION_MODE_BUTTON_RELEASE
@@ -53,7 +65,10 @@ func setLabelsAndCost(shop_type: ShopType):
 			array_items = explosives
 
 	var shop = $ContentPanelContainer/MarginContainer/VBoxContainer/ScrollContainer/shop
-
+	
+	for existing_child in shop.get_children():
+		existing_child.queue_free()
+		
 	if shop_type != ShopType.weapon:
 		var refil_ammo_shop_slot: Panel = $ContentPanelContainer/MarginContainer/VBoxContainer/Panel
 		refil_ammo_shop_slot.visible = false

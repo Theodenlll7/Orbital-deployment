@@ -1594,16 +1594,7 @@ script = ExtResource("8_xh3lq")
 
 [node name="WaveManager" type="Node2D" parent="."]
 script = ExtResource("2_3mje2")
-spawn_radius_min = null
-spawn_radius_max = null
-spawn_interval = null
-growth_rate = null
-starting_enemy_count = null
-max_enemy_count = null
 enemy_spawn_pool = Array[PackedScene]([ExtResource("3_r8gpc"), ExtResource("4_6dy7k")])
-initial_mean = null
-initial_std_dev = null
-custom_waves = null
 
 [node name="GameLoop" type="Node2D" parent="."]
 script = ExtResource("9_53pwr")

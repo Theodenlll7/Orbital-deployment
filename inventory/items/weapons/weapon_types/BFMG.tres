@@ -14,6 +14,7 @@ muzzel_offset = Vector2(8, 0)
 audio_steam = ExtResource("1_jkf4l")
 attack_mode = 1
 attack_cooldown = 0.05
+weapon_accessibility_wave = 3
 has_magazine = true
 bullet_damage = 100
 bullet_speed = 400.0

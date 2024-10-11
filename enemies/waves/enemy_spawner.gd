@@ -67,7 +67,7 @@ func start_next_wave():
 	new_wave_started.emit(wave)
 	wave_finished = false
 	process_wave()
-
+	update_weapon_pods(wave)
 
 func _enemy_death():
 	enemy_count -= 1
@@ -76,7 +76,14 @@ func _enemy_death():
 		in_between_wave_timer.start()
 		end_of_wave.emit(in_between_wave_time)
 
-
+func update_weapon_pods(_wave):
+	var parent = get_parent()
+	for child in parent.get_children():
+		if child.name == "WeaponPod":
+			var canvas_layer = child.get_node("CanvasLayer")
+			var store_ui = canvas_layer.get_node("StoreUI")
+			store_ui.update_weapons(_wave)
+			
 func _ready() -> void:
 	add_to_group("managers")
 	add_to_group("wave_manager")
