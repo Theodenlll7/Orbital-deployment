@@ -16,6 +16,7 @@ class_name PlayerHUD
 
 @onready var time_h_box_container: HBoxContainer = $MarginContainer/PlayerHUD/WaveHUD/TimeHBoxContainer
 @onready var time_until_next_wave_label: Label = $MarginContainer/PlayerHUD/WaveHUD/TimeHBoxContainer/TimeUntilNextWave
+@onready var wepon_name_label: Label = $MarginContainer/PlayerHUD/GameHUD/HBoxContainer2/WeponNameLabel
 
 @onready var wave_manager = get_tree().get_nodes_in_group("wave_manager")[0] as WaveManager
 @export var ammo_indicator: AmmoIndicator = null
@@ -41,6 +42,9 @@ func _ready() -> void:
 
 	for slot in weapon_slots.size():
 		deselect_weapon_slot(slot)
+
+func set_wepon_name(weapon_name: String) -> void:
+	wepon_name_label.text = str(weapon_name)
 
 func new_wave(wave: int):
 	wave_number.text = str(wave)
@@ -118,3 +122,7 @@ func pauseMenu():
 		pause_in_game_menu.visible = true
 		Engine.time_scale = 0
 	paused = !paused
+
+
+func _on_inventory_weapon_swap(_index: int, weapon: WeaponResource) -> void:
+	set_wepon_name(weapon.item_name)

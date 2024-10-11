@@ -581,5 +581,6 @@ weapon_slots = Array[ExtResource("3_krjvn")]([ExtResource("4_3qvih"), null])
 
 [connection signal="died" from="HealthComponent" to="." method="_on_health_component_died"]
 [connection signal="health_changed" from="HealthComponent" to="." method="_on_health_component_health_changed"]
+[connection signal="weapon_swap" from="Inventory" to="PlayerHUD" method="_on_inventory_weapon_swap"]
 
 [editable path="PlayerHUD"]
