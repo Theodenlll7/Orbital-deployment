@@ -1,4 +1,4 @@
-[gd_scene load_steps=83 format=3 uid="uid://6vt8l263l0o7"]
+[gd_scene load_steps=85 format=3 uid="uid://6vt8l263l0o7"]
 
 [ext_resource type="Script" path="res://player/scripts/player.gd" id="1_gaiyc"]
 [ext_resource type="Texture2D" uid="uid://dcgcly83hxan6" path="res://player/assets/textures/light.png" id="2_8ye7d"]
@@ -11,6 +11,11 @@
 [ext_resource type="PackedScene" uid="uid://bdxxnqyrxk04e" path="res://player/player_hud.tscn" id="6_pjces"]
 [ext_resource type="Script" path="res://ui/pause_menu/death_screen.gd" id="7_il1d8"]
 [ext_resource type="Script" path="res://common/interaction/interactionManager.gd" id="8_o6i1s"]
+[ext_resource type="Script" path="res://common/components/hurtbox.gd" id="12_3cusm"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_p3jle"]
+radius = 1.5
+height = 7.99999
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_8yrgv"]
 light_mode = 1
@@ -524,8 +529,8 @@ animations = [{
 "speed": 8.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_c3fsl"]
-radius = 4.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l6m4a"]
+size = Vector2(6, 12)
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("weapon_orbit_point") groups=["players"]]
 z_index = 1
@@ -543,17 +548,18 @@ shadow_item_cull_mask = 2
 texture = ExtResource("2_8ye7d")
 texture_scale = 0.15
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+z_index = 2
+position = Vector2(0, 5)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_p3jle")
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 z_index = 1
 material = SubResource("CanvasItemMaterial_8yrgv")
 position = Vector2(0, -5)
 sprite_frames = SubResource("SpriteFrames_7t3vk")
 animation = &"idle"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 3)
-rotation = 1.5708
-shape = SubResource("CircleShape2D_c3fsl")
 
 [node name="HealthComponent" type="Node" parent="."]
 script = ExtResource("3_rmoxv")
@@ -578,6 +584,16 @@ script = ExtResource("8_o6i1s")
 [node name="Inventory" type="Node" parent="."]
 script = ExtResource("2_rqocl")
 weapon_slots = Array[ExtResource("3_krjvn")]([ExtResource("4_3qvih"), null])
+
+[node name="Hurtbox" type="Area2D" parent="."]
+collision_mask = 0
+script = ExtResource("12_3cusm")
+is_invulnerable = null
+armor = null
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_l6m4a")
 
 [connection signal="died" from="HealthComponent" to="." method="_on_health_component_died"]
 [connection signal="health_changed" from="HealthComponent" to="." method="_on_health_component_health_changed"]

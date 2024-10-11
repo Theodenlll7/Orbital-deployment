@@ -26,6 +26,10 @@ MissionManager="*res://ui/main_menu/mission_manager.gd"
 ExperiencePoints="*res://player/experience_points/ExperiencePointsManager.gd"
 PlayerSkillsManager="*res://player/skills/PlayerSkillsManager.gd"
 
+[debug]
+
+gdscript/warnings/integer_division=0
+
 [display]
 
 window/size/viewport_width=1920
@@ -161,12 +165,13 @@ pause={
 [layer_names]
 
 2d_physics/layer_1="Player"
-2d_physics/layer_2="Enemys"
+2d_physics/layer_2="characters"
 2d_physics/layer_3="Player Projectiles"
 2d_physics/layer_4="Enemy projectiles"
 2d_physics/layer_5="Collectible objects"
 2d_physics/layer_6="Walls"
 2d_physics/layer_7="Ground"
+2d_physics/layer_8="enemies"
 
 [physics]
 

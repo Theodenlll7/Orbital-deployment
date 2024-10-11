@@ -10,6 +10,7 @@ class_name Player
 @onready var animated_sprite := $AnimatedSprite2D
 @onready var camera := $Camera2D
 @onready var inventory := $Inventory
+@onready var hurtbox := $Hurtbox
 
 @onready var death_screen: DeathScreen = $PlayerHUD/DeathScreen
 @onready var player_hud: PlayerHUD = $PlayerHUD
@@ -35,8 +36,12 @@ var aim_dir: Vector2 = Vector2()
 func _ready() -> void:
 	motion_mode = CharacterBody2D.MOTION_MODE_FLOATING
 	_bind_inventory()
-	health_component.max_health = int(health_component.current_health * PlayerSkillsManager.healt_scaler)
-	health_component.current_health = int(health_component.current_health * PlayerSkillsManager.healt_scaler)
+	health_component.max_health = int(
+		health_component.current_health * PlayerSkillsManager.healt_scaler
+	)
+	health_component.current_health = int(
+		health_component.current_health * PlayerSkillsManager.healt_scaler
+	)
 	if PlayerSkillsManager.health_regeneration_scaler != 0:
 		var timer = Timer.new()
 		timer.wait_time = 1
@@ -45,10 +50,11 @@ func _ready() -> void:
 		timer.timeout.connect(_regen)
 		add_child(timer)
 
+
 func _regen():
-	
 	if !player_dead:
 		health_component.heal(int(PlayerSkillsManager.health_regeneration_scaler))
+
 
 func _bind_inventory() -> void:
 	inventory.actor = self
@@ -56,11 +62,12 @@ func _bind_inventory() -> void:
 	inventory.weapon_swap.connect(equip_weapon)
 	inventory.money_changed.connect(player_hud.update_money_display)
 	player_hud.update_money_display(inventory.money)
-	
+
 	inventory.new_explosive.connect(player_hud.equip_explosive)
 	inventory.new_explosive.connect(equip_explosive)
 	inventory.money += PlayerSkillsManager.start_money_increase
 	inventory.setup()
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -94,6 +101,7 @@ func move_player(delta: float) -> void:
 		in_dodge = true
 		velocity = velocity.normalized() * dodge_speed
 	else:
+		hurtbox.is_invulnerable = false
 		in_dodge = false
 		var input_vector = (
 			Input.get_vector("move_left", "move_right", "move_up", "move_down").normalized()
@@ -105,6 +113,7 @@ func start_dodge() -> void:
 	can_dodge = false
 	dodge_timer = dodge_duration
 	animated_sprite.play("roll_h")
+	hurtbox.is_invulnerable = true
 
 
 func aim() -> void:

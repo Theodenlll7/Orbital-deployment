@@ -9,18 +9,10 @@ var direction: Vector2
 
 
 func _ready() -> void:
-	set_contact_monitor(true)
-	set_max_contacts_reported(1)
-	connect("body_entered", _on_body_entered)
-	#apply_impulse(direction * impulse)
-	#linear_velocity = direction.normalized() * speed
+	#set_contact_monitor(true)
+	#set_max_contacts_reported(1)
+	body_entered.connect(queue_free)
+	$Hitbox.damage = damage
 
 	await get_tree().create_timer(lifetime).timeout
-	queue_free()
-
-
-func _on_body_entered(body):
-	var hp = body.get_node_or_null("HealthComponent") as HealthComponent
-	if hp:
-		hp.damage(damage)
 	queue_free()
