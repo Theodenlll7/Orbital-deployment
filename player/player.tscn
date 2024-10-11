@@ -560,7 +560,7 @@ script = ExtResource("3_rmoxv")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 scale = Vector2(0.62216, 1.02895)
-zoom = Vector2(5, 5)
+zoom = Vector2(4, 4)
 script = ExtResource("4_hh08p")
 snap_distance = 70.0
 

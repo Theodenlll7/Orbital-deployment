@@ -1,10 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://q2v28hdk1005"]
+[gd_scene load_steps=13 format=3 uid="uid://bv5pwn50s168u"]
 
 [ext_resource type="PackedScene" uid="uid://blrbroxse6ckd" path="res://scenes/scene3.tscn" id="1_5ldq5"]
 [ext_resource type="Script" path="res://enemies/waves/enemy_spawner.gd" id="2_q7m4j"]
-[ext_resource type="PackedScene" path="res://enemies/mobs/spider.tscn" id="3_t8j00"]
+[ext_resource type="PackedScene" uid="uid://bgg2qlsu5f8qd" path="res://enemies/mobs/spider.tscn" id="3_t8j00"]
 [ext_resource type="PackedScene" uid="uid://kua7fs588s48" path="res://enemies/mobs/ranger.tscn" id="4_1g6tl"]
-[ext_resource type="PackedScene" uid="uid://cqqagqvpntumn" path="res://enemies/mobs/assult.tscn" id="5_effg1"]
+[ext_resource type="PackedScene" uid="uid://dsuabe2igmqvf" path="res://enemies/mobs/assult.tscn" id="5_effg1"]
 [ext_resource type="PackedScene" uid="uid://inymqhajqaf7" path="res://ui/in_game/mission_start_text.tscn" id="5_modva"]
 [ext_resource type="PackedScene" uid="uid://6vt8l263l0o7" path="res://player/player.tscn" id="6_lbqxr"]
 [ext_resource type="Script" path="res://enemies/waves/custom_wave.gd" id="6_nour8"]
@@ -20,8 +20,8 @@ y_sort_enabled = true
 
 [node name="enemy_spawner" type="Node2D" parent="."]
 script = ExtResource("2_q7m4j")
+growth_rate = 0.5
 enemy_spawn_pool = Array[PackedScene]([ExtResource("3_t8j00"), ExtResource("4_1g6tl"), ExtResource("5_effg1")])
-initial_mean = null
 initial_std_dev = 0.2
 custom_waves = Array[ExtResource("6_nour8")]([ExtResource("7_qexxm")])
 

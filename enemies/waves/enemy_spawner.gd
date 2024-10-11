@@ -10,9 +10,9 @@ class_name WaveManager
 
 # Difficulty progression variables
 @export_category("Enemie count progression")
-@export_range(1, 100, 1, "or_greater") var growth_rate: float = 2.0  # Controls how fast the number of enemies increases
-@export_range(1, 100, 1, "or_greater") var starting_enemy_count: int = 5  # Minimum number of enemies at the start
-@export_range(1, 100, 1, "or_greater") var max_enemy_count: int = 50  # Maximum number of enemies as difficulty progresses
+@export_range(0.1, 1, 0.1) var growth_rate: float = 0.5  # Controls how fast the number of enemies increases
+@export_range(1, 2, 0.1) var power: float = 1.3  # Controls how fast the number of enemies increases
+@export_range(1, 100, 1, "or_greater") var starting_enemy_count: int = 3  # Minimum number of enemies at the start
 
 # The shift value is hidden and not exposed to the user
 const curve_shift: float = 1.0  # Internal shift to avoid log(0)
@@ -57,17 +57,12 @@ var next_custom_wave_index: int = 0
 func start_next_wave():
 	print("Start Wave")
 	wave += 1
-	enemies_to_spawn = int(
-		clamp(
-			growth_rate * log(wave + curve_shift) + starting_enemy_count,
-			starting_enemy_count,
-			max_enemy_count
-		)
-	)
+	enemies_to_spawn = int(pow(wave * growth_rate, power)) + starting_enemy_count
 	new_wave_started.emit(wave)
 	wave_finished = false
 	process_wave()
 	update_weapon_pods(wave)
+
 
 func _enemy_death():
 	enemy_count -= 1
@@ -76,6 +71,7 @@ func _enemy_death():
 		in_between_wave_timer.start()
 		end_of_wave.emit(in_between_wave_time)
 
+
 func update_weapon_pods(_wave):
 	var parent = get_parent()
 	for child in parent.get_children():
@@ -83,7 +79,8 @@ func update_weapon_pods(_wave):
 			var canvas_layer = child.get_node("CanvasLayer")
 			var store_ui = canvas_layer.get_node("StoreUI")
 			store_ui.update_weapons(_wave)
-			
+
+
 func _ready() -> void:
 	add_to_group("managers")
 	add_to_group("wave_manager")
