@@ -16,10 +16,12 @@ signal show_information(level_id: String, state: bool)
 var level: int = 0
 
 func set_texture(_id: String, skill: Dictionary) -> void:
-	var img_dict_top = skill[1]["img"]
-	var img_dict_bottom = skill[2]["img"]
-	var active_top = skill[1]["active"]
-	var active_bottom = skill[2]["active"]
+	var img_dict_top = skill["1"]["img"]
+	var img_dict_bottom = skill["2"]["img"]
+	var active_top = skill["1"]["active"]
+	var active_bottom = skill["2"]["active"]
+	var chosen_not_to_be_active_top = skill["1"]["chosen_not_to_be_active"]
+	var chosen_not_to_be_active_bottom = skill["2"]["chosen_not_to_be_active"]
 
 	var hover_texture_top: Texture2D = load(img_dict_top["hover"])
 	var normal_texture_top: Texture2D = load(img_dict_top["normal"])
@@ -42,6 +44,11 @@ func set_texture(_id: String, skill: Dictionary) -> void:
 		texture_button_bottom.texture_normal = normal_texture_bottom
 	texture_button_bottom.texture_hover = hover_texture_bottom
 	texture_button_bottom.texture_disabled = disabled_texture_bottom
+	
+	if chosen_not_to_be_active_top && !active_top:
+		texture_button_top.disabled = true
+	if chosen_not_to_be_active_bottom && !active_bottom:
+		texture_button_bottom.disabled = true
 	
 func set_level(_id: String, this_level: int, player_level: int, prev_level: int) -> void:
 	level = this_level

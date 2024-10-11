@@ -123,7 +123,6 @@ text = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia
 scroll_active = false
 
 [node name="Popup" type="MarginContainer" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -208,3 +207,9 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "Activate
 "
+
+[node name="DeactivateButton" type="Button" parent="Popup/Panel/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(220, 48)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Deactivat"

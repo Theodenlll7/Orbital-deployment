@@ -13,8 +13,9 @@ var level: int = 0
 var id: String = ""
 
 func set_texture(_id: String, skill: Dictionary) -> void:
-	var img_dict = skill[1]["img"]
-	var active = skill[1]["active"]
+	var img_dict = skill["1"]["img"]
+	var active = skill["1"]["active"]
+	
 	var normal_texture: Texture2D = load(img_dict["normal"])
 	var hover_texture: Texture2D = load(img_dict["hover"])
 	var disabled_texture: Texture2D = load(img_dict["disabled"])

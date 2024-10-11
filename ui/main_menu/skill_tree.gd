@@ -4,6 +4,7 @@ extends Control
 @onready var padding: Control = $ScrollContainer/SkillContent/Padding
 @onready var close_popup_button: Button = $Popup/Panel/MarginContainer/VBoxContainer/HBoxContainer/CloseButton
 @onready var activate_skill_button: Button = $Popup/Panel/MarginContainer/VBoxContainer/HBoxContainer/ActivateButton
+@onready var deactivate_skill_button: Button = $Popup/Panel/MarginContainer/VBoxContainer/HBoxContainer/DeactivateButton
 
 const SINGLE_SKILL: String = "res://ui/main_menu/skill_tree_assets/single_skill.tscn"
 const DOUBLE_SKILL: String = "res://ui/main_menu/skill_tree_assets/double_skill.tscn"
@@ -23,75 +24,26 @@ const DOUBLE_SKILL: String = "res://ui/main_menu/skill_tree_assets/double_skill.
 var fade_time: float = 0.1
 var player_level: int = 0
 
-var skill_layout: Dictionary = {
-	1: {
-		"type": "single","level": 5,"skill":{
-		1: {
-			"name": "Health regeneration", 
-			"description": "Your soldier's veins will be buzzing with Earth's top-tier health nanobots. \n\nThese little guys work around the clock, patching up wounds and restoring [color=green]1 health point every second[/color] just like having a personal medic on speed dial!",
-			"action": "set_new_health_regeneration_scaler",
-			"action_value": 1.0,
-			"img": {
-				"normal": "res://ui/main_menu/assets/timeglass.png", 
-				"hover": "res://ui/main_menu/assets/timeglassHover.png", 
-				"disabled": "res://ui/main_menu/assets/timeglassDisabled.png"
-				},
-			"active": false
-			}
-		},
-	},
-	2: {
-		"type": "double","level": 10,"skill":{
-		1: {
-			"name": "More bullet damage", 
-			"description": "Your soldier's bullets will be crafted from the legendary Lerus scales, harvested from the colony of Epros. \n\nThese ultra-dense scales add brutal stopping power, [color=green]boosting bullet damage by 1.5x[/color]. Each shot now hits harder than ever before—straight from Epros, straight to your enemies!",
-			"action": "set_new_bullet_damage_scaler",
-			"action_value": 5.0,
-			"img": {
-				"normal": "res://ui/main_menu/assets/bulletdamage.png", 
-				"hover": "res://ui/main_menu/assets/bulletdamageHover.png", 
-				"disabled": "res://ui/main_menu/assets/bulletdamageDisabled.png"
-				},
-			"active": false
-			},
-		2: {
-			"name": "More health",
-			"description": "Thanks to the brilliant scientists of Nexus, you're about to double your durability! \n\nTheir cutting-edge bioengineering will [color=green]increase your max health by 2x[/color], making you tougher, stronger, and unstoppable. Nexus tech is about to supercharge you!",
-			"action": "set_new_healt_scaler",
-			"action_value": 2,
-		 	"img": {
-				"normal": "res://ui/main_menu/assets/heart.png", 
-				"hover": "res://ui/main_menu/assets/heartHover.png", 
-				"disabled": "res://ui/main_menu/assets/heartDisabled.png"
-				},
-			"active": false
-			}
-		}
-	},
-	3: {
-		"type": "single","level": 15,"skill":{
-		1:{
-			"name": "More start credits",
-			"description": "Thanks to the Banking Federation’s unwavering support of liberation, you're [color=green]starting with 500 bonus credits[/color]! \n\nThey've got your back, fueling your fight with some extra cash to gear up and get ahead right from the start. Freedom’s never been so well-funded!",
-			"action": "set_new_money_increase",
-			"action_value": 500,
-		 	"img": {
-				"normal": "res://ui/main_menu/assets/moremoney.png", 
-				"hover": "res://ui/main_menu/assets/moremoneyHover.png", 
-				"disabled": "res://ui/main_menu/assets/moremoneyDisabled.png"
-				},
-			"active": false
-			}
-		},
-	},
-}
+var json_url = "res://ui/main_menu/skill_tree_assets/data/skills.json"
+var skill_layout: Dictionary = {}
 
 func _ready() -> void:
 	popup.visible = false
 	tooltip.visible = false
+	load_skill_layout()
 	ExperiencePoints.connect("experience_updated", Callable(self, "on_experience_updated"))
 	init_skill_tree()
 	handle_connecting_signals()
+
+func load_skill_layout() -> void:
+	var file = FileAccess.open(json_url, FileAccess.READ)
+	if file:
+		var json_object = JSON.new()
+		json_object.parse(file.get_as_text())
+		skill_layout = json_object.get_data()
+	else:
+		print("Failed to open json file!")
+		
 
 func on_experience_updated() -> void:
 	init_skill_tree()
@@ -121,32 +73,65 @@ func init_skill_tree() -> void:
 		var skill_tree_instance = load(skill_tree_type).instantiate()
 		skill_content.add_child(skill_tree_instance)
 
-		skill_tree_instance.call_deferred("set_texture", str(id), dictionary_item["skill"])
 		skill_tree_instance.call_deferred("set_level", str(id), dictionary_item["level"], player_level, prev_level)
+		skill_tree_instance.call_deferred("set_texture", str(id), dictionary_item["skill"])
 		prev_level = dictionary_item["level"]
 	
 		skill_tree_instance.connect("skill_unlocked", Callable(self, "on_skill_unlocked"))
 		skill_tree_instance.connect("show_information", Callable(self, "on_show_information"))
 
 
-func on_skill_unlocked(skill_id: String) -> void:
-	print("Skill unlocked with id " + skill_id + "!")
-	
+func on_skill_unlocked(skill_id: String) -> void:	
 	show_skill_information(skill_id)
-	activate_skill_button.button_down.disconnect(on_skill_activated.bind("*"))
+	if activate_skill_button.button_down.is_connected(on_skill_activated):
+		activate_skill_button.button_down.disconnect(on_skill_activated.bind("*"))
 	activate_skill_button.button_down.connect(on_skill_activated.bind(skill_id))
+	
+	if deactivate_skill_button.button_down.is_connected(deactivate_skill):
+		deactivate_skill_button.button_down.disconnect(deactivate_skill.bind("*"))
+	deactivate_skill_button.button_down.connect(deactivate_skill.bind(skill_id))
+
+func deactivate_all_skills_in_column(skill_id_a: String) -> void:
+		var skills: Dictionary = skill_layout[skill_id_a]["skill"]
+		for key: String in skills:
+			skills[key]["active"] = false
+			skills[key]["chosen_not_to_be_active"] = true
+
+func reactivate_all_skills_in_column(skill_id_a: String) -> void:
+		var skills: Dictionary = skill_layout[skill_id_a]["skill"]
+		for key: String in skills:
+			var skill = skills[key]
+			print(skill["active"])
+			if skill["active"]:
+				match skill["action"]:
+					"set_new_healt_scaler":
+						PlayerSkillsManager.remove_from_healt_scaler(skill["action_value"])
+					"set_new_bullet_damage_scaler":
+						PlayerSkillsManager.remove_from_bullet_damage_scaler(skill["action_value"])
+					"set_new_health_regeneration_scaler":
+						PlayerSkillsManager.remove_from_health_regeneration_scaler(skill["action_value"])
+					"set_new_money_increase":
+						PlayerSkillsManager.remove_from_money_increase(skill["action_value"])
+			skill["active"] = false
+			skill["chosen_not_to_be_active"] = false
+			
 
 func on_skill_activated(skill_id: String) -> void:
 	var id_parts = skill_id.split("_")
-	var id_a = int(id_parts[0]) 
-	var id_b = int(id_parts[1])
+	var id_a = id_parts[0]
+	var id_b = id_parts[1]
 	
-	print("Skill active with id " + skill_id + "!")
+	deactivate_skill_button.disabled = false
+
+	var nr_of_skills_in_column: int = skill_layout[id_a]["skill"].size()
+	if nr_of_skills_in_column > 1:
+		deactivate_all_skills_in_column(id_a)
+	
 	skill_layout[id_a]["skill"][id_b]["active"] = true
+	skill_layout[id_a]["skill"][id_b]["chosen_not_to_be_active"] = true
 	init_skill_tree()
-	
+		
 	var skill = skill_layout[id_a]["skill"][id_b]
-	
 	match skill["action"]:
 		"set_new_healt_scaler":
 			PlayerSkillsManager.set_new_healt_scaler(skill["action_value"])
@@ -157,12 +142,25 @@ func on_skill_activated(skill_id: String) -> void:
 		"set_new_money_increase":
 			PlayerSkillsManager.set_new_money_increase(skill["action_value"])
 
+func deactivate_skill(skill_id: String) -> void:
+	var id_parts = skill_id.split("_")
+	var id_a = id_parts[0]
+	var id_b = id_parts[1]
+	var skill = skill_layout[id_a]["skill"][id_b]
+	reactivate_all_skills_in_column(id_a)
+	skill["active"] = false
+	deactivate_skill_button.disabled = true
+	init_skill_tree()
+
 func show_skill_information(skill_id: String) -> void:
 	var parts = skill_id.split("_")  # Split the string at the underscore 
-	var id_a = int(parts[0]) 
-	var id_b = int(parts[1]) # id_b = 1 if single, if double 1 or 2
+	var id_a = parts[0] 
+	var id_b = parts[1] # id_b = 1 if single, if double 1 or 2
 	
 	var new_skill = skill_layout[id_a]["skill"][id_b]
+	
+	deactivate_skill_button.disabled = !new_skill["active"]
+	
 	popup_header.text = str(new_skill["name"])
 	
 	var description = new_skill["description"]
@@ -175,8 +173,8 @@ func show_skill_information(skill_id: String) -> void:
 
 func open_information_tab(skill_id: String) -> void:
 	var parts = skill_id.split("_") 
-	var id_a = int(parts[0]) 
-	var id_b = int(parts[1])
+	var id_a = parts[0]
+	var id_b = parts[1]
 	
 	var skill = skill_layout[id_a]["skill"][id_b]
 	tooltip_header.text = str(skill["name"])
@@ -224,3 +222,4 @@ func handle_connecting_signals() -> void:
 	close_popup_button.button_down.connect(on_close_popup_button_pressed)
 	player_start_texture.connect("mouse_entered", on_show_player.bind(true))
 	player_start_texture.connect("mouse_exited", on_show_player.bind(false))
+	

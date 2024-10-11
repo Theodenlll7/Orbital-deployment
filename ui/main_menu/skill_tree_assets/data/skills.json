@@ -1,0 +1,66 @@
+{
+	"1": {
+		"type": "single","level": 5,"skill":{
+		"1": {
+			"name": "Health regeneration", 
+			"description": "Your soldier's veins will be buzzing with Earth's top-tier health nanobots. \n\nThese little guys work around the clock, patching up wounds and restoring [color=green]1 health point every second[/color] just like having a personal medic on speed dial!",
+			"action": "set_new_health_regeneration_scaler",
+			"action_value": 1.0,
+			"img": {
+				"normal": "res://ui/main_menu/assets/timeglass.png", 
+				"hover": "res://ui/main_menu/assets/timeglassHover.png", 
+				"disabled": "res://ui/main_menu/assets/timeglassDisabled.png"
+				},
+			"active": false,
+			"chosen_not_to_be_active": false
+			}
+		},
+	},
+	"2": {
+		"type": "double","level": 10,"skill":{
+		"1": {
+			"name": "More bullet damage", 
+			"description": "Your soldier's bullets will be crafted from the legendary Lerus scales, harvested from the colony of Epros. \n\nThese ultra-dense scales add brutal stopping power, [color=green]boosting bullet damage by 1.5x[/color]. Each shot now hits harder than ever before—straight from Epros, straight to your enemies!",
+			"action": "set_new_bullet_damage_scaler",
+			"action_value": 1.5,
+			"img": {
+				"normal": "res://ui/main_menu/assets/bulletdamage.png", 
+				"hover": "res://ui/main_menu/assets/bulletdamageHover.png", 
+				"disabled": "res://ui/main_menu/assets/bulletdamageDisabled.png"
+				},
+			"active": false,
+			"chosen_not_to_be_active": false
+			},
+		"2": {
+			"name": "More health",
+			"description": "Thanks to the brilliant scientists of Nexus, you're about to double your durability! \n\nTheir cutting-edge bioengineering will [color=green]increase your max health by 2x[/color], making you tougher, stronger, and unstoppable. Nexus tech is about to supercharge you!",
+			"action": "set_new_healt_scaler",
+			"action_value": 2,
+		 	"img": {
+				"normal": "res://ui/main_menu/assets/heart.png", 
+				"hover": "res://ui/main_menu/assets/heartHover.png", 
+				"disabled": "res://ui/main_menu/assets/heartDisabled.png"
+				},
+			"active": false,
+			"chosen_not_to_be_active": false
+			}
+		}
+	},
+	"3": {
+		"type": "single","level": 15,"skill":{
+		"1":{
+			"name": "More start credits",
+			"description": "Thanks to the Banking Federation’s unwavering support of liberation, you're [color=green]starting with 500 bonus credits[/color]! \n\nThey've got your back, fueling your fight with some extra cash to gear up and get ahead right from the start. Freedom’s never been so well-funded!",
+			"action": "set_new_money_increase",
+			"action_value": 500,
+		 	"img": {
+				"normal": "res://ui/main_menu/assets/moremoney.png", 
+				"hover": "res://ui/main_menu/assets/moremoneyHover.png", 
+				"disabled": "res://ui/main_menu/assets/moremoneyDisabled.png"
+				},
+			"active": false,
+			"chosen_not_to_be_active": false
+			}
+		},
+	},
+}
