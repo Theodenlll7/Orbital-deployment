@@ -29,6 +29,11 @@ func reset_player_data() -> void:
 	file.store_var({})
 	file.close()
 	
+	ExperiencePoints.current_level = 1
+	ExperiencePoints.experience_points = 0
+	ExperiencePoints.total_amount_of_experience_points = 0
+	PlayerSkillsManager.skill_layout = PlayerSkillsManager.get_skill_layout()
+	
 func load_player_data() -> void:
 	if FileAccess.file_exists(save_path_player_data):
 		var file = FileAccess.open(save_path_player_data, FileAccess.READ)
