@@ -21,3 +21,11 @@ func update_ui() -> void:
 
 func on_experience_updated() -> void:
 	update_ui()
+	
+func update_weapon_pods(level):
+	var parent = get_parent().get_parent().get_parent().get_parent().get_parent()
+	for child in parent.get_children():
+		if child.name == "WeaponPod":
+			var canvas_layer = child.get_node("CanvasLayer")
+			var store_ui = canvas_layer.get_node("StoreUI")
+			store_ui.update_weapons(level)

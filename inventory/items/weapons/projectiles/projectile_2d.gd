@@ -12,7 +12,8 @@ func _ready() -> void:
 	#set_contact_monitor(true)
 	#set_max_contacts_reported(1)
 	body_entered.connect(queue_free)
-	$Hitbox.damage = damage
+	if $Hitbox:
+		$Hitbox.damage = damage
 
 	await get_tree().create_timer(lifetime).timeout
 	queue_free()

@@ -25,6 +25,7 @@ func generate_tiles():
 		#place_large_water_object_from_tile(random_number, position)
 	#for position in GenerateMapVariables.random_tree_cells:
 		#place_tree(position)
+		
 func placeRandomObject(list, pos):
 	var random_index = randi() % list.size()
 	set_cell(2, pos, 0, list[random_index])
@@ -47,7 +48,7 @@ func connectTiles(tileset):
 	set_cells_terrain_connect(1, GenerateMapVariables.ground_cells, tileset, 0)
 	#set_cells_terrain_connect(2, GenerateMapVariables.dirt_cells,tileset,4)
 	set_cells_terrain_connect(2, GenerateMapVariables.ground2_cells, tileset, 5)
-	set_cells_terrain_connect(0, GenerateMapVariables.entire_map_cells, tileset, 2)
+	set_cells_terrain_connect(0, GenerateMapVariables.entire_map_cells, tileset, 3)
 	
 
 func place_large_object_from_new_tile(objectID, center):

@@ -61,7 +61,7 @@ func start_next_wave():
 	new_wave_started.emit(wave)
 	wave_finished = false
 	process_wave()
-	update_weapon_pods(wave)
+	#update_weapon_pods(wave)
 
 
 func _enemy_death():
