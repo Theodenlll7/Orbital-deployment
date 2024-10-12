@@ -1,0 +1,67 @@
+[gd_resource type="SpriteFrames" load_steps=10 format=3 uid="uid://ccwn6xigilp8"]
+
+[ext_resource type="Texture2D" uid="uid://bd8kge4465aeq" path="res://enemies/assets/textures/charge_animation.png" id="1_g5txj"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5d1td"]
+atlas = ExtResource("1_g5txj")
+region = Rect2(0, 0, 1, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c1ka6"]
+atlas = ExtResource("1_g5txj")
+region = Rect2(1, 0, 1, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hl11k"]
+atlas = ExtResource("1_g5txj")
+region = Rect2(2, 0, 1, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6ecrh"]
+atlas = ExtResource("1_g5txj")
+region = Rect2(3, 0, 1, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3lnxl"]
+atlas = ExtResource("1_g5txj")
+region = Rect2(4, 0, 1, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wmppn"]
+atlas = ExtResource("1_g5txj")
+region = Rect2(5, 0, 1, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p53vk"]
+atlas = ExtResource("1_g5txj")
+region = Rect2(6, 0, 1, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hosqk"]
+atlas = ExtResource("1_g5txj")
+region = Rect2(7, 0, 1, 16)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5d1td")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c1ka6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hl11k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6ecrh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3lnxl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wmppn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p53vk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hosqk")
+}],
+"loop": false,
+"name": &"charge",
+"speed": 5.0
+}]

@@ -311,7 +311,7 @@ animations = [{
 radius = 4.03113
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gynkl"]
-radius = 18.0
+radius = 11.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_myola"]
 size = Vector2(12, 8)
@@ -344,13 +344,13 @@ position = Vector2(0, -4)
 shape = SubResource("CircleShape2D_lrwo5")
 
 [node name="AttackRange" type="Area2D" parent="."]
-visible = false
 position = Vector2(0, -6)
 collision_layer = 0
 monitorable = false
 script = ExtResource("4_phmkr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackRange"]
+position = Vector2(0, 2)
 shape = SubResource("CircleShape2D_gynkl")
 
 [node name="HandleEnemeyDeath" type="Node" parent="."]
@@ -375,7 +375,7 @@ script = ExtResource("10_ad8k3")
 
 [node name="BullChargeAttack" type="Node" parent="MindTreeRoot/Selector/ChargeAttack"]
 script = ExtResource("11_1oqij")
-charge_speed = 200.0
+charge_speed = 220.0
 charge_duration = 0.4
 windup_time = 0.8
 
@@ -389,7 +389,7 @@ value = "actor.get_tree().get_nodes_in_group(\"players\").pick_random()"
 
 [node name="StartNavgationToTarget" type="Node" parent="MindTreeRoot/Selector/SelectAndWalktToTarget"]
 script = ExtResource("15_q7nvy")
-move_speed = 110.0
+move_speed = 140.0
 
 [node name="ParentMoveAndSlide" type="Node" parent="."]
 script = ExtResource("15_eh0ey")

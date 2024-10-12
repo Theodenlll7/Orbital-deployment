@@ -224,9 +224,6 @@ collision_mask = 39
 [node name="Navigator2D" type="NavigationAgent2D" parent="."]
 process_priority = -100
 process_physics_priority = -100
-path_postprocessing = 1
-simplify_path = true
-simplify_epsilon = 10.0
 avoidance_enabled = true
 radius = 20.0
 script = ExtResource("1_alrx4")
