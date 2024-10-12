@@ -91,7 +91,6 @@ func reactivate_all_skills_in_column(skill_id_a: String) -> void:
 		var skills: Dictionary = skill_layout[skill_id_a]["skill"]
 		for key: String in skills:
 			var skill = skills[key]
-			print(skill["active"])
 			if skill["active"]:
 				match skill["action"]:
 					"set_new_healt_scaler":

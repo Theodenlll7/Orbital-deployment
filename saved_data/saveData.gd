@@ -38,10 +38,12 @@ func load_player_data() -> void:
 		var try_to_read_skill_settings = file.get_var()
 		if try_to_read_skill_settings:
 			skill_settings = try_to_read_skill_settings
+			PlayerSkillsManager.skill_layout = skill_settings
+		else:
+			PlayerSkillsManager.skill_layout = PlayerSkillsManager.get_skill_layout()
 		ExperiencePoints.current_level = player_level
 		ExperiencePoints.experience_points = experience_points
 		ExperiencePoints.total_amount_of_experience_points = tot_experience_points
-		PlayerSkillsManager.skill_layout = skill_settings
 	else:
 		print("could not load data")
 
