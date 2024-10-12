@@ -42,7 +42,6 @@ func level_up() -> void:
 	# Notify that the player leveled up
 	print("Leveled up! New level: ", current_level)
 	print("Experience needed for next level: ", experience_needed_level_up)
-
 	experience_updated.emit()
 
 func get_experience_needed_for_next_level() -> int:
