@@ -33,6 +33,8 @@ func check_level_up() -> void:
 	while experience_points >= experience_needed_level_up:
 		level_up()
 
+func addWaveDoneXP(wave_number: int) -> void:
+	add_experience(200 * min(float(wave_number),1.0))
 
 func level_up() -> void:
 	current_level += 1

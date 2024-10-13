@@ -26,6 +26,7 @@ func _ready() -> void:
 
 
 func fade_in():
+	SaveData.save_player_data()
 	wave_label.text = str(wave_manager.wave)
 	visible = true
 	var fade_time = 2.0

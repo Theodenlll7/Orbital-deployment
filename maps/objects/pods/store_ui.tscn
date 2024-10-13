@@ -13,7 +13,7 @@ border_color = Color(1, 1, 1, 1)
 bg_color = Color(0.203922, 0.203922, 0.317647, 0.501961)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ffyms"]
-bg_color = Color(1, 1, 1, 0.133333)
+bg_color = Color(1, 1, 1, 0.021)
 
 [node name="Control" type="Control"]
 clip_contents = true
@@ -105,8 +105,58 @@ offset_bottom = 36.0
 [node name="Label" parent="ContentPanelContainer/MarginContainer/VBoxContainer/Panel/RefillAmmonition/MarginContainer/HBoxContainer" index="0"]
 text = "Refill ammunition"
 
-[node name="Cost" parent="ContentPanelContainer/MarginContainer/VBoxContainer/Panel/RefillAmmonition/MarginContainer/HBoxContainer" index="2"]
+[node name="Unlock" parent="ContentPanelContainer/MarginContainer/VBoxContainer/Panel/RefillAmmonition/MarginContainer/HBoxContainer" index="1"]
+text = ""
+
+[node name="Cost" parent="ContentPanelContainer/MarginContainer/VBoxContainer/Panel/RefillAmmonition/MarginContainer/HBoxContainer" index="3"]
 text = "50 $"
+
+[node name="HSeparator" type="HSeparator" parent="ContentPanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Panel2" type="Panel" parent="ContentPanelContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="ContentPanelContainer/MarginContainer/VBoxContainer/Panel2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="ContentPanelContainer/MarginContainer/VBoxContainer/Panel2/VBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_right = 16
+
+[node name="VBoxContainer" type="HBoxContainer" parent="ContentPanelContainer/MarginContainer/VBoxContainer/Panel2/VBoxContainer2/MarginContainer"]
+layout_mode = 2
+
+[node name="Names" type="Label" parent="ContentPanelContainer/MarginContainer/VBoxContainer/Panel2/VBoxContainer2/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 4.0
+text = "Name"
+
+[node name="UnlockedAt" type="Label" parent="ContentPanelContainer/MarginContainer/VBoxContainer/Panel2/VBoxContainer2/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+text = "Unlocked at"
+
+[node name="PaddingMid" type="Control" parent="ContentPanelContainer/MarginContainer/VBoxContainer/Panel2/VBoxContainer2/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.5
+
+[node name="Costs" type="Label" parent="ContentPanelContainer/MarginContainer/VBoxContainer/Panel2/VBoxContainer2/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Cost"
+horizontal_alignment = 2
 
 [node name="ScrollContainer" type="ScrollContainer" parent="ContentPanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2

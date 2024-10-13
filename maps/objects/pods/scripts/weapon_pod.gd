@@ -6,6 +6,8 @@ class_name PodShop extends Control
 
 @export_dir var weapons_dir: String = "res://inventory/items/weapons/weapon_types/"
 @export_dir var explosive_dir: String = "res://inventory/items/explosives/explosive_types/"
+@onready var wave_manager = get_tree().get_nodes_in_group("wave_manager")[0] as WaveManager
+
 
 enum ShopType { weapon, explosive }
 
@@ -21,10 +23,14 @@ var costumer: Inventory:
 	set(value):
 		costumer = value
 		updatePlayerMoney()
+		updateCostLabelColor()
 
 func _ready():
 	setRefillAmmonition()
 	loadResources()
+	update_weapons()
+	wave_manager.end_of_wave.connect(update_weapons)
+
 
 func loadResources():
 	for path in weapon_path:
@@ -35,13 +41,12 @@ func loadResources():
 	for path in explosive_path:
 		explosives.append(ResourceLoader.load(path))
 
-func update_weapons(wave):
-	print("called update weapons with: ", wave)
+func update_weapons(_time_until_next_wave: float = 0.0):
 	weapons.clear()
 	for path in weapon_path:
 		var item = ResourceLoader.load(path)
-		if item.weapon_accessibility_wave <= wave:
-			weapons.append(ResourceLoader.load(path))
+		#if item.weapon_accessibility_wave <= wave:
+		weapons.append(ResourceLoader.load(path))
 			
 	setLabelsAndCost(ShopType.weapon)
 	
@@ -79,24 +84,31 @@ func setLabelsAndCost(shop_type: ShopType):
 		
 
 	for item in array_items:
+	
 		var buy_btn: Button = weapon_buy_button.instantiate()
-		var pod_item_container = buy_btn.get_child(0).get_child(0)  # This feels bad :(
+		var pod_item_container = buy_btn.get_child(0).get_child(0)  
 		var label: Label = pod_item_container.get_node_or_null("Label")
+		var label_unlock: Label = pod_item_container.get_node_or_null("Unlock")
 		var cost: Label = pod_item_container.get_node_or_null("Cost")
 		label.text = item.item_name
+		label_unlock.text = "Wave " + str(item.weapon_accessibility_wave)
 		cost.text = "%d $" % item.cost
 		cost.set("theme_override_colors/font_color", Color(0.8, 0.1, 0.1)) 
 		buy_btn.action_mode = BaseButton.ACTION_MODE_BUTTON_RELEASE
 		buy_btn.connect("pressed", _on_button_pressed.bind(item.item_name))
+		if item.weapon_accessibility_wave > wave_manager.wave:
+			buy_btn.disabled = true
+			label.set("theme_override_colors/font_color", Color(0.7, 0.7, 0.7)) 
 		shop.add_child(buy_btn)
 
 
 func updateButtonLabels():
 	#var player_money = $HeaderPanelContainer/MarginContainer/HBoxContainer.get_node("Players_money")
-	updateCostLabelColor()
 	updatePlayerMoney()
+	updateCostLabelColor()
 	
 func updateCostLabelColor() -> void:
+	if !costumer: return
 	var shop = $ContentPanelContainer/MarginContainer/VBoxContainer/ScrollContainer/shop
 	
 	var ammo_cost_label: Label = $ContentPanelContainer/MarginContainer/VBoxContainer/Panel/RefillAmmonition/MarginContainer/HBoxContainer/Cost
@@ -156,4 +168,5 @@ func handleBuy(item, cost: int):
 		costumer.money -= cost
 		costumer.pickup(item)
 	else:
-		print("Not enough money to buy that")
+		#print("Not enough money to buy that")
+		return

@@ -30,6 +30,7 @@ var paused: bool = false
 @onready var death_screen: Control = $DeathScreen
 
 var countdown_time = 0.0
+signal money_updated
 
 func _ready() -> void:
 	wave_manager.new_wave_started.connect(new_wave)
@@ -80,7 +81,7 @@ func deselect_weapon_slot(index: int) -> void:
 
 func update_money_display(new_money_value: int) -> void:
 	money_label.text = str(new_money_value)
-
+	money_updated.emit()
 
 func equip_weapon(slot_index: int, weapon: WeaponResource):
 	var slot = weapon_slots[slot_index]

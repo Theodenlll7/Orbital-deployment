@@ -70,6 +70,7 @@ func _enemy_death():
 	if enemy_count <= 0:
 		in_between_wave_timer.start()
 		end_of_wave.emit(in_between_wave_time)
+		ExperiencePoints.addWaveDoneXP(int(wave))
 
 
 func update_weapon_pods(_wave):

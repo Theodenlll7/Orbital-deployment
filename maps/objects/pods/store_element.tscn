@@ -25,10 +25,18 @@ layout_mode = 2
 [node name="Label" type="Label" parent="MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_stretch_ratio = 2.0
+size_flags_stretch_ratio = 4.0
 theme_override_fonts/font = ExtResource("1_45f8j")
 text = "NAME
 "
+
+[node name="Unlock" type="Label" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+theme_override_colors/font_color = Color(0.674815, 0.674815, 0.674815, 1)
+theme_override_fonts/font = ExtResource("1_45f8j")
+text = "Wave -"
 
 [node name="PaddingMid" type="Control" parent="MarginContainer/HBoxContainer"]
 layout_mode = 2
