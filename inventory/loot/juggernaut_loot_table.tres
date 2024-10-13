@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="LootTable" load_steps=4 format=3 uid="uid://jhcy2um0fjih"]
+
+[ext_resource type="Script" path="res://inventory/items/item.gd" id="1_p5j8r"]
+[ext_resource type="Resource" uid="uid://bkuxnungr36ll" path="res://inventory/loot/droped_items/25$.tres" id="3_5gvjn"]
+[ext_resource type="Script" path="res://inventory/loot/loot_table.gd" id="4_kb8o4"]
+
+[resource]
+script = ExtResource("4_kb8o4")
+loot_table = Array[ExtResource("1_p5j8r")]([ExtResource("3_5gvjn")])

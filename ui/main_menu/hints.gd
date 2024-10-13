@@ -21,6 +21,10 @@ static func set_data() -> void:
 		1: "Use " + move_up_key + ", " + move_left_key + ", " + move_down_key + " and " + move_right_key + " to move around.",
 		2: "If you have two wepons use " + swap_wepon_key + " to swap betwene.",
 		4: "Keep an eye on your health bar!",
+		5: "Use the xp from your fallen enemies to access skills, unlocking new traits for your player",
+		6: "Surviving will only get harder and harder, plan your stratege well!",
+		7: "Different enemies have different traits, plan your actions accordingly for best results",
+		8: "Weapons can be bought in the dropods station, arm yourself to the teeth!"
 	}
 	
 static func get_key(key: String) -> String:

@@ -51,10 +51,10 @@ var noise = FastNoiseLite.new()
 #Objects
 var chest = preload("res://maps/objects/chest/chest.tscn")
 var weapon_pod = preload("res://maps/objects/pods/weapon_pod.tscn")
-var orbital_strike_pod = preload("res://maps/objects/pods/orbital_strike_pod.tscn")
+#var orbital_strike_pod = preload("res://maps/objects/pods/orbital_strike_pod.tscn")
 var explosives_pod = preload("res://maps/objects/pods/explosives_pod.tscn")
 
-var pods = [weapon_pod, explosives_pod, orbital_strike_pod]
+var pods = [weapon_pod, explosives_pod]
 
 
 func _ready():

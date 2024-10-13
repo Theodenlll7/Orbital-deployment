@@ -75,8 +75,8 @@ func setLabelsAndCost(shop_type: ShopType):
 	else:
 		var ammo_cost_label: Label = $ContentPanelContainer/MarginContainer/VBoxContainer/Panel/RefillAmmonition/MarginContainer/HBoxContainer/Cost
 		ammo_cost_label.text = str(ammo_cost) + " $"
+		ammo_cost_label.set("theme_override_colors/font_color", Color(0.8, 0.1, 0.1)) 
 		
-	
 
 	for item in array_items:
 		var buy_btn: Button = weapon_buy_button.instantiate()
@@ -85,6 +85,7 @@ func setLabelsAndCost(shop_type: ShopType):
 		var cost: Label = pod_item_container.get_node_or_null("Cost")
 		label.text = item.item_name
 		cost.text = "%d $" % item.cost
+		cost.set("theme_override_colors/font_color", Color(0.8, 0.1, 0.1)) 
 		buy_btn.action_mode = BaseButton.ACTION_MODE_BUTTON_RELEASE
 		buy_btn.connect("pressed", _on_button_pressed.bind(item.item_name))
 		shop.add_child(buy_btn)

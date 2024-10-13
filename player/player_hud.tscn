@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bdxxnqyrxk04e"]
+[gd_scene load_steps=16 format=3 uid="uid://bdxxnqyrxk04e"]
 
 [ext_resource type="Script" path="res://player/scripts/health_bar.gd" id="1_1fig6"]
 [ext_resource type="Script" path="res://player/scripts/player_hud.gd" id="1_7u87w"]
@@ -28,6 +28,9 @@ bg_color = Color(0.203922, 0.203922, 0.317647, 0.501961)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e4ky8"]
 bg_color = Color(1, 0.698039, 0.196078, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lgw0y"]
+bg_color = Color(0.204, 0.204, 0.318, 0.135)
 
 [node name="PlayerHUD" type="CanvasLayer" node_paths=PackedStringArray("weapon_slots", "ammo_indicator")]
 script = ExtResource("1_7u87w")
@@ -430,6 +433,49 @@ grow_vertical = 0
 [node name="Panel" type="Panel" parent="MarginContainer/PlayerHUD/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+
+[node name="InformationHUD" type="VBoxContainer" parent="MarginContainer/PlayerHUD"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -765.0
+offset_top = -256.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PlayerHUD/InformationHUD"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_right = 36
+theme_override_constants/margin_bottom = 80
+
+[node name="Panel" type="Panel" parent="MarginContainer/PlayerHUD/InformationHUD/MarginContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_lgw0y")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PlayerHUD/InformationHUD/MarginContainer/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PlayerHUD/InformationHUD/MarginContainer/Panel/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/PlayerHUD/InformationHUD/MarginContainer/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 32
+text = "Tip: Use Q to swap wepons"
 
 [node name="DeathScreen" parent="." instance=ExtResource("4_mdrqq")]
 visible = false

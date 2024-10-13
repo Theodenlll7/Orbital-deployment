@@ -17,10 +17,10 @@
 [ext_resource type="Script" path="res://addons/tree_mind/nodes/leafs/blackbord_set.gd" id="13_c5xn1"]
 [ext_resource type="Script" path="res://enemies/mind_tree_components/actions/start_navigation_to_target.gd" id="14_dtibg"]
 [ext_resource type="Script" path="res://inventory/items/weapons/scripts/mob_weapon.gd" id="15_jw6vi"]
-[ext_resource type="Resource" path="res://enemies/wepons/assult_wepon.tres" id="16_jb6jn"]
+[ext_resource type="Resource" uid="uid://bsdhsurnelj7f" path="res://enemies/wepons/assult_wepon.tres" id="16_jb6jn"]
 [ext_resource type="Script" path="res://inventory/loot/loot_spawner.gd" id="17_qnkwj"]
-[ext_resource type="Resource" uid="uid://dwncsm7kwadaj" path="res://inventory/loot/ranger_loot_table.tres" id="18_f8474"]
 [ext_resource type="Script" path="res://enemies/scripts/handle_enemy_death.gd" id="19_8xdvp"]
+[ext_resource type="Resource" uid="uid://csdc3fnnuoxcn" path="res://inventory/loot/assult_loot_table.tres" id="20_f6wej"]
 [ext_resource type="Texture2D" uid="uid://dcgcly83hxan6" path="res://player/assets/textures/light.png" id="20_h5fes"]
 [ext_resource type="Script" path="res://enemies/scripts/parent_move_and_slide.gd" id="21_krtar"]
 [ext_resource type="Script" path="res://common/components/hurtbox.gd" id="24_uhmdv"]
@@ -306,9 +306,9 @@ position = Vector2(0, 2)
 [node name="LootSpawner" type="Node2D" parent="."]
 position = Vector2(0.300001, -8.7)
 script = ExtResource("17_qnkwj")
-loot_table = ExtResource("18_f8474")
-item_spawn_chanse = 0.2
-spawn_attempts = 10
+loot_table = ExtResource("20_f6wej")
+item_spawn_chanse = 0.5
+spawn_attempts = 2
 
 [node name="HandleEnemeyDeath" type="Node" parent="."]
 script = ExtResource("19_8xdvp")

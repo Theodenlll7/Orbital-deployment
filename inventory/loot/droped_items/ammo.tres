@@ -7,5 +7,5 @@
 script = ExtResource("1_33f6v")
 drop_type = 0
 texture = ExtResource("2_487dm")
-drop_weight = 25
+drop_weight = 100
 test = Callable()

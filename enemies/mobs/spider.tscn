@@ -16,7 +16,7 @@
 [ext_resource type="Script" path="res://enemies/mind_tree_components/actions/start_navigation_to_target.gd" id="15_q7nvy"]
 [ext_resource type="Script" path="res://common/components/navigator2d.gd" id="15_xr0je"]
 [ext_resource type="Script" path="res://inventory/loot/loot_spawner.gd" id="16_8b7ue"]
-[ext_resource type="Resource" uid="uid://dwncsm7kwadaj" path="res://inventory/loot/ranger_loot_table.tres" id="17_tcvpw"]
+[ext_resource type="Resource" uid="uid://j1muyacfwphe" path="res://inventory/loot/spider_loot_table.tres" id="17_3fygd"]
 [ext_resource type="Script" path="res://common/components/hurtbox.gd" id="18_b4vkg"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_oqobr"]
@@ -397,7 +397,7 @@ script = ExtResource("15_eh0ey")
 [node name="LootSpawner" type="Node2D" parent="."]
 position = Vector2(0, -6)
 script = ExtResource("16_8b7ue")
-loot_table = ExtResource("17_tcvpw")
+loot_table = ExtResource("17_3fygd")
 item_spawn_chanse = 0.25
 spawn_attempts = 2
 
