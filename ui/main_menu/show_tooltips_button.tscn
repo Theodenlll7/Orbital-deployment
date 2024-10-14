@@ -1,0 +1,34 @@
+[gd_scene load_steps=2 format=3 uid="uid://b4dpywdqbp5hd"]
+
+[ext_resource type="Script" path="res://ui/main_menu/show_tooltips_button.gd" id="1_n4vij"]
+
+[node name="ShowTooltipsButton" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_n4vij")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="HBoxContainer"]
+custom_minimum_size = Vector2(384, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Show tooltips"
+vertical_alignment = 1
+
+[node name="VSeparator" type="VSeparator" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 256
+
+[node name="ToggleButton" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 32
+text = " On  "
