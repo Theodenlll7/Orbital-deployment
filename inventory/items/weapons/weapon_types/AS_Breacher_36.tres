@@ -8,13 +8,13 @@
 [resource]
 script = ExtResource("3_4j6gg")
 projectile_scene = ExtResource("2_ua4wu")
-item_name = &"Breacher"
+item_name = &"AS Breacher 36"
 cost = 100
 muzzel_offset = Vector2(8, 0)
 audio_steam = ExtResource("1_17qg4")
 attack_mode = 0
 attack_cooldown = 0.6
-weapon_accessibility_wave = 4
+weapon_accessibility_player_level = 1
 has_magazine = true
 bullet_damage = 25
 bullet_speed = 300.0

@@ -1,0 +1,33 @@
+[gd_resource type="Resource" script_class="ProjectileWeaponResource" load_steps=5 format=3 uid="uid://bepb4en344yi7"]
+
+[ext_resource type="AudioStream" uid="uid://bx0erxmcc8tb2" path="res://inventory/items/weapons/assets/audio/gun_fire2.mp3" id="1_ynek5"]
+[ext_resource type="PackedScene" uid="uid://b1ahksg20mxej" path="res://inventory/items/weapons/projectiles/basic_projectile.tscn" id="2_5grn5"]
+[ext_resource type="Script" path="res://inventory/items/weapons/scripts/projectile_weapon_resource.gd" id="3_cxbmr"]
+[ext_resource type="Texture2D" uid="uid://clw2afc3cc5dj" path="res://inventory/items/weapons/assets/sprites/HGA_37.png" id="4_enuwr"]
+
+[resource]
+script = ExtResource("3_cxbmr")
+projectile_scene = ExtResource("2_5grn5")
+item_name = &"HGA 37"
+cost = 125
+muzzel_offset = Vector2(8, -2)
+audio_steam = ExtResource("1_ynek5")
+attack_mode = 1
+attack_cooldown = 0.01
+weapon_accessibility_player_level = 5
+has_magazine = true
+bullet_damage = 12
+bullet_speed = 500.0
+bullet_spread = 4.0
+bullet_lifetime = 2.0
+bullets_per_shot = 1
+magazine_size = 24
+reload_time = 1.5
+has_ammo = true
+ammo = 72
+ammo_cap = 96
+ammo_crate_value = 12
+drop_type = 0
+texture = ExtResource("4_enuwr")
+drop_weight = 100
+test = Callable()
