@@ -301,7 +301,7 @@ script = ExtResource("15_jw6vi")
 weapon_resource = ExtResource("16_jb6jn")
 
 [node name="WeaponOrbitPoint" type="Marker2D" parent="MobWeapon"]
-position = Vector2(0, 2)
+position = Vector2(-0.300001, -3.3)
 
 [node name="LootSpawner" type="Node2D" parent="."]
 position = Vector2(0.300001, -8.7)

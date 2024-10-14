@@ -3,7 +3,7 @@
 [ext_resource type="AudioStream" uid="uid://bx0erxmcc8tb2" path="res://inventory/items/weapons/assets/audio/gun_fire2.mp3" id="1_iwdrh"]
 [ext_resource type="PackedScene" uid="uid://delp5066b08hb" path="res://enemies/wepons/projectiles/basic_enemy_projectile.tscn" id="2_8cuuw"]
 [ext_resource type="Script" path="res://inventory/items/weapons/scripts/projectile_weapon_resource.gd" id="3_c1mnf"]
-[ext_resource type="Texture2D" uid="uid://fynhjhvwfvw2" path="res://inventory/items/weapons/assets/sprites/AS_12.png" id="4_0tgi8"]
+[ext_resource type="Texture2D" uid="uid://e5d1n0bf7l7l" path="res://inventory/items/weapons/assets/sprites/ASSULT_SR.png" id="4_jmveh"]
 
 [resource]
 script = ExtResource("3_c1mnf")
@@ -28,6 +28,6 @@ ammo = 50
 ammo_cap = 200
 ammo_crate_value = 50
 drop_type = 0
-texture = ExtResource("4_0tgi8")
+texture = ExtResource("4_jmveh")
 drop_weight = 100
 test = Callable()

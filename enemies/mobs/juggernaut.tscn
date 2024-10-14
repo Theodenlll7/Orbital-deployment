@@ -291,7 +291,7 @@ position_lerp_speed = 0.5
 weapon_resource = ExtResource("16_rrqjo")
 
 [node name="WeaponOrbitPoint" type="Marker2D" parent="MobWeapon"]
-position = Vector2(0, -1)
+position = Vector2(-0.300001, -8.3)
 
 [node name="LootSpawner" type="Node2D" parent="."]
 position = Vector2(0.300001, -10.7)
