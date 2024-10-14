@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=3 uid="uid://dqfmu73xm8h3x"]
 
-[ext_resource type="PackedScene" uid="uid://b733h8ldjkhr2" path="res://scenes/scene4.tscn" id="1_jckrp"]
+[ext_resource type="PackedScene" uid="uid://c8jevyf6a3do5" path="res://scenes/scene4.tscn" id="1_jckrp"]
 [ext_resource type="Script" path="res://enemies/waves/enemy_spawner.gd" id="2_rhyrc"]
 [ext_resource type="PackedScene" uid="uid://bgg2qlsu5f8qd" path="res://enemies/mobs/spider.tscn" id="3_l5020"]
 [ext_resource type="PackedScene" uid="uid://kua7fs588s48" path="res://enemies/mobs/ranger.tscn" id="4_oxfh3"]

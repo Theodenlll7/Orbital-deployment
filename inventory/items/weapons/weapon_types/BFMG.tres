@@ -9,12 +9,12 @@
 script = ExtResource("3_xyils")
 projectile_scene = ExtResource("2_qdavh")
 item_name = &"BFMG"
-cost = 125
+cost = 100
 muzzel_offset = Vector2(8, 0)
 audio_steam = ExtResource("1_jkf4l")
 attack_mode = 1
 attack_cooldown = 0.05
-weapon_accessibility_wave = 1
+weapon_accessibility_player_level = 2
 has_magazine = true
 bullet_damage = 100
 bullet_speed = 400.0

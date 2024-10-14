@@ -35,8 +35,7 @@ func _ready():
 func loadResources():
 	for path in weapon_path:
 		var item = ResourceLoader.load(path)
-		if item.weapon_accessibility_wave <= 0:
-			weapons.append(ResourceLoader.load(path))
+		weapons.append(ResourceLoader.load(path))
 
 	for path in explosive_path:
 		explosives.append(ResourceLoader.load(path))
@@ -60,6 +59,9 @@ func updatePlayerMoney() -> void:
 			var player_money = $HeaderPanelContainer/MarginContainer/HBoxContainer.get_node("Players_money")	
 			player_money.text = str(costumer.money) + "$"
 
+func compare_items_by_accessibility(item1, item2) -> int:
+	return item1.weapon_accessibility_player_level < item2.weapon_accessibility_player_level
+
 func setLabelsAndCost(shop_type: ShopType):
 	var array_items: Array
 	pod_type = shop_type
@@ -82,23 +84,28 @@ func setLabelsAndCost(shop_type: ShopType):
 		ammo_cost_label.text = str(ammo_cost) + " $"
 		ammo_cost_label.set("theme_override_colors/font_color", Color(0.8, 0.1, 0.1)) 
 		
-
-	for item in array_items:
 	
+	array_items.sort_custom(compare_items_by_accessibility)
+	for item in array_items:
 		var buy_btn: Button = weapon_buy_button.instantiate()
 		var pod_item_container = buy_btn.get_child(0).get_child(0)  
 		var label: Label = pod_item_container.get_node_or_null("Label")
 		var label_unlock: Label = pod_item_container.get_node_or_null("Unlock")
 		var cost: Label = pod_item_container.get_node_or_null("Cost")
+		
 		label.text = item.item_name
-		label_unlock.text = "Wave " + str(item.weapon_accessibility_wave)
+		label_unlock.text = "Level " + str(item.weapon_accessibility_player_level)
+		
 		cost.text = "%d $" % item.cost
 		cost.set("theme_override_colors/font_color", Color(0.8, 0.1, 0.1)) 
+		
 		buy_btn.action_mode = BaseButton.ACTION_MODE_BUTTON_RELEASE
 		buy_btn.connect("pressed", _on_button_pressed.bind(item.item_name))
-		if item.weapon_accessibility_wave > wave_manager.wave:
+		
+		if item.weapon_accessibility_player_level > ExperiencePoints.current_level:
 			buy_btn.disabled = true
 			label.set("theme_override_colors/font_color", Color(0.7, 0.7, 0.7)) 
+		
 		shop.add_child(buy_btn)
 
 
