@@ -16,6 +16,8 @@ gravity_scale = 0.0
 can_sleep = false
 lock_rotation = true
 continuous_cd = 1
+contact_monitor = true
+max_contacts_reported = 1
 script = ExtResource("1_4fb8d")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

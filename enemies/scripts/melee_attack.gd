@@ -2,7 +2,7 @@ extends Area2D
 class_name MeleeAttack
 @export var target_group: String = "players"
 @export var damage: int = 10
-var target: HealthComponent
+var target: Hurtbox
 
 @export var attack_cooldown: float = 1
 
@@ -13,7 +13,8 @@ var can_attack = true
 
 func _ready() -> void:
 	var hp = get_parent().get_node_or_null("HealthComponent") as HealthComponent
-	hp.died.connect(func(): can_attack = false)
+	if hp:
+		hp.died.connect(func(): can_attack = false)
 
 
 func _process(delta: float) -> void:
@@ -28,10 +29,10 @@ func _process(delta: float) -> void:
 
 
 func _on_body_entered(body: Node2D) -> void:
-	target = body.get_node_or_null("HealthComponent") as HealthComponent
+	target = body.get_node_or_null("Hurtbox") as Hurtbox
 
 
 func _on_body_exited(body: Node2D) -> void:
-	var hp = body.get_node_or_null("HealthComponent") as HealthComponent
-	if target == hp:
+	var hurtbox = body.get_node_or_null("Hurtbox") as Hurtbox
+	if target == hurtbox:
 		target = null

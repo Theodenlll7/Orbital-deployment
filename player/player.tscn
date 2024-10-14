@@ -5,7 +5,7 @@
 [ext_resource type="Script" path="res://inventory/inventory.gd" id="2_rqocl"]
 [ext_resource type="Script" path="res://inventory/items/weapons/scripts/weapon_resource.gd" id="3_krjvn"]
 [ext_resource type="Script" path="res://common/components/HealthComponent.gd" id="3_rmoxv"]
-[ext_resource type="Resource" uid="uid://c1o1e1pct7o7g" path="res://inventory/items/weapons/weapon_types/HG_MARK1.tres" id="4_3qvih"]
+[ext_resource type="Resource" uid="uid://rykg887uq1sm" path="res://inventory/items/weapons/weapon_types/basic_proj_weapon.tres" id="4_3qvih"]
 [ext_resource type="Texture2D" uid="uid://dgfwosrjlow2i" path="res://player/assets/textures/player.png" id="4_arusb"]
 [ext_resource type="Script" path="res://player/scripts/camera_2d.gd" id="4_hh08p"]
 [ext_resource type="PackedScene" uid="uid://bdxxnqyrxk04e" path="res://player/player_hud.tscn" id="6_pjces"]
@@ -534,7 +534,7 @@ size = Vector2(6, 12)
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("weapon_orbit_point") groups=["players"]]
 z_index = 1
-collision_mask = 106
+collision_mask = 98
 script = ExtResource("1_gaiyc")
 weapon_orbit_point = NodePath("WeaponOrbitPoint")
 

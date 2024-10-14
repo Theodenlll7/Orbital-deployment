@@ -19,6 +19,8 @@ gravity_scale = 0.0
 can_sleep = false
 lock_rotation = true
 continuous_cd = 1
+contact_monitor = true
+max_contacts_reported = 1
 script = ExtResource("1_xdkvq")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -38,3 +40,5 @@ script = ExtResource("3_l0khu")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 scale = Vector2(0.09, 0.09)
 shape = SubResource("RectangleShape2D_mhcno")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

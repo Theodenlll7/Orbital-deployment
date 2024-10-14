@@ -20,7 +20,8 @@ class_name Player
 
 @onready var health_component: HealthComponent = $HealthComponent
 
-var dodge_timer := -dodge_cooldown
+var dodge_timer: Timer
+var dodge_cooldown_timer: Timer
 var can_dodge := true
 var in_dodge := false
 var player_dead := false
@@ -42,6 +43,22 @@ func _ready() -> void:
 	health_component.current_health = int(
 		health_component.current_health * PlayerSkillsManager.healt_scaler
 	)
+	_setup_health_regen()
+
+	dodge_timer = Timer.new()
+	add_child(dodge_timer)
+	dodge_timer.wait_time = dodge_duration
+	dodge_timer.one_shot = true
+	dodge_timer.timeout.connect(_on_dodge_ended)
+
+	dodge_cooldown_timer = Timer.new()
+	add_child(dodge_cooldown_timer)
+	dodge_cooldown_timer.wait_time = dodge_cooldown
+	dodge_cooldown_timer.one_shot = true
+	dodge_cooldown_timer.timeout.connect(func(): can_dodge = true)
+
+
+func _setup_health_regen() -> void:
 	if PlayerSkillsManager.health_regeneration_scaler != 0:
 		var timer = Timer.new()
 		timer.wait_time = 1
@@ -70,9 +87,9 @@ func _bind_inventory() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta) -> void:
 	if can_move:
-		move_player(delta)
+		move_player()
 		aim()
 		if not in_dodge:
 			animate()
@@ -87,22 +104,14 @@ func _unhandled_input(event):
 	if event.is_action_pressed("swap_weapon"):
 		inventory.select_next_slot()
 
-
-func move_player(delta: float) -> void:
-	if can_dodge and Input.is_action_just_pressed("dodge"):
+	if can_dodge and event.is_action_pressed("dodge"):
 		start_dodge()
 
-	if dodge_timer > -dodge_cooldown:
-		dodge_timer -= delta
-		if dodge_timer <= -dodge_cooldown:
-			can_dodge = true
 
-	if dodge_timer > 0:
-		in_dodge = true
+func move_player() -> void:
+	if in_dodge:
 		velocity = velocity.normalized() * dodge_speed
 	else:
-		hurtbox.is_invulnerable = false
-		in_dodge = false
 		var input_vector = (
 			Input.get_vector("move_left", "move_right", "move_up", "move_down").normalized()
 		)
@@ -111,9 +120,20 @@ func move_player(delta: float) -> void:
 
 func start_dodge() -> void:
 	can_dodge = false
-	dodge_timer = dodge_duration
+	in_dodge = true
+	dodge_timer.start()
+	set_collision_layer_value(1, false)
+	set_collision_mask_value(2, false)
 	animated_sprite.play("roll_h")
 	hurtbox.is_invulnerable = true
+
+
+func _on_dodge_ended() -> void:
+	in_dodge = false
+	hurtbox.is_invulnerable = false
+	set_collision_layer_value(1, true)
+	set_collision_mask_value(2, true)
+	dodge_cooldown_timer.start()
 
 
 func aim() -> void:
