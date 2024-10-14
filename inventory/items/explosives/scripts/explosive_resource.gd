@@ -34,6 +34,9 @@ var throw_action: Callable = _throw
 
 @export var grenade_scene: PackedScene
 
+@export_subgroup("accessibility")
+@export var weapon_accessibility_wave = 0
+
 func _throw(_explosive: Explosive) -> void:
 	## This method should be overridden to define explosion behavior
 	push_error("The 'explode' is a callable that must be overridden in a subclass")
