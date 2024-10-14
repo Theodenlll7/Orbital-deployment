@@ -1,9 +1,9 @@
-[gd_resource type="Resource" script_class="ProjectileWeaponResource" load_steps=5 format=3 uid="uid://cewsl85y3quq6"]
+[gd_resource type="Resource" script_class="ProjectileWeaponResource" load_steps=5 format=3 uid="uid://ctxd3qqtmeaak"]
 
 [ext_resource type="AudioStream" uid="uid://bx0erxmcc8tb2" path="res://inventory/items/weapons/assets/audio/gun_fire2.mp3" id="1_j4clb"]
 [ext_resource type="PackedScene" uid="uid://delp5066b08hb" path="res://enemies/wepons/projectiles/basic_enemy_projectile.tscn" id="2_j8brr"]
 [ext_resource type="Script" path="res://inventory/items/weapons/scripts/projectile_weapon_resource.gd" id="3_4db67"]
-[ext_resource type="Texture2D" uid="uid://83g4k7b2y2cg" path="res://inventory/items/weapons/assets/sprites/S_Rifle_8.png" id="4_o1bgj"]
+[ext_resource type="Texture2D" uid="uid://cyn1y33p5f64f" path="res://inventory/items/weapons/assets/sprites/Watcher_S_Rifle.png" id="4_rij2y"]
 
 [resource]
 script = ExtResource("3_4db67")
@@ -28,6 +28,6 @@ ammo = 50
 ammo_cap = 200
 ammo_crate_value = 50
 drop_type = 0
-texture = ExtResource("4_o1bgj")
+texture = ExtResource("4_rij2y")
 drop_weight = 100
 test = Callable()
