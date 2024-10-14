@@ -35,7 +35,7 @@ var throw_action: Callable = _throw
 @export var grenade_scene: PackedScene
 
 @export_subgroup("accessibility")
-@export var weapon_accessibility_wave = 0
+@export var weapon_accessibility_player_level = 0
 
 func _throw(_explosive: Explosive) -> void:
 	## This method should be overridden to define explosion behavior

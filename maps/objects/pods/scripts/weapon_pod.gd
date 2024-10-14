@@ -84,8 +84,8 @@ func setLabelsAndCost(shop_type: ShopType):
 		ammo_cost_label.text = str(ammo_cost) + " $"
 		ammo_cost_label.set("theme_override_colors/font_color", Color(0.8, 0.1, 0.1)) 
 		
-	
 	array_items.sort_custom(compare_items_by_accessibility)
+	
 	for item in array_items:
 		var buy_btn: Button = weapon_buy_button.instantiate()
 		var pod_item_container = buy_btn.get_child(0).get_child(0)  

@@ -152,6 +152,7 @@ size_flags_stretch_ratio = 1.26
 
 [node name="Title" type="RichTextLabel" parent="content/ContentMarginContainer/VBoxContainer/Title/HBoxContainer/Control/HBoxContainer/mission_description/MarginContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("1_2dhbq")
 theme_override_font_sizes/normal_font_size = 32
 theme_override_font_sizes/bold_font_size = 32
 text = "Mission"
@@ -164,7 +165,8 @@ theme_override_constants/separation = 8
 [node name="Description" type="RichTextLabel" parent="content/ContentMarginContainer/VBoxContainer/Title/HBoxContainer/Control/HBoxContainer/mission_description/MarginContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_font_sizes/normal_font_size = 24
+theme_override_fonts/normal_font = ExtResource("1_2dhbq")
+theme_override_font_sizes/normal_font_size = 16
 text = "Text text text"
 fit_content = true
 scroll_active = false
