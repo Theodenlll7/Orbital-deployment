@@ -101,6 +101,9 @@ func _physics_process(_delta: float) -> void:
 
 
 func _unhandled_input(event):
+	if player_dead:
+		return
+
 	if event.is_action_pressed("swap_weapon"):
 		inventory.select_next_slot()
 
@@ -208,6 +211,8 @@ func flash_red(sprite: AnimatedSprite2D) -> void:
 
 func _on_health_component_died() -> void:
 	player_dead = true
+	set_process(false)
+	set_physics_process(false)
 	can_move = false
 	held_weapon.queue_free()
 	animated_sprite.play("die")
