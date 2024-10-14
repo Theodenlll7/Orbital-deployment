@@ -22,7 +22,7 @@ func update_ui() -> void:
 func on_experience_updated() -> void:
 	update_ui()
 	
-func update_weapon_pods(level):
+func update_weapon_pods(_level):
 	var parent = get_parent().get_parent().get_parent().get_parent().get_parent()
 	for child in parent.get_children():
 		if child.name == "WeaponPod":

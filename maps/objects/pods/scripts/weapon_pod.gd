@@ -34,7 +34,7 @@ func _ready():
 
 func loadResources():
 	for path in weapon_path:
-		var item = ResourceLoader.load(path)
+		var _item = ResourceLoader.load(path)
 		weapons.append(ResourceLoader.load(path))
 
 	for path in explosive_path:
@@ -43,7 +43,7 @@ func loadResources():
 func update_weapons(_time_until_next_wave: float = 0.0):
 	weapons.clear()
 	for path in weapon_path:
-		var item = ResourceLoader.load(path)
+		var _item = ResourceLoader.load(path)
 		#if item.weapon_accessibility_wave <= wave:
 		weapons.append(ResourceLoader.load(path))
 			

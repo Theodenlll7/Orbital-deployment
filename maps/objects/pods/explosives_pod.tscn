@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://dmuoq60mvsscp"]
+[gd_scene load_steps=9 format=3 uid="uid://dmuoq60mvsscp"]
 
 [ext_resource type="Script" path="res://maps/objects/pods/scripts/pod.gd" id="1_4asqp"]
 [ext_resource type="Script" path="res://common/interaction/Interactionarea/Interactionarea.gd" id="2_70vuy"]
-[ext_resource type="Texture2D" uid="uid://cf1tqraah3nyk" path="res://maps/objects/pods/assets/pod.png" id="3_vunvx"]
+[ext_resource type="TileSet" uid="uid://bsx0avqdj3afs" path="res://assets/Tiles/pods_tileset.tres" id="4_mhlwb"]
+[ext_resource type="Texture2D" uid="uid://dcgcly83hxan6" path="res://player/assets/textures/light.png" id="5_20f3q"]
 [ext_resource type="FontFile" uid="uid://dkg32o3qfh2n7" path="res://assets/Fonts/pixelmix.ttf" id="5_nlw7a"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k8nvd"]
@@ -54,11 +55,6 @@ script = ExtResource("2_70vuy")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
 position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_k8nvd")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, 9.53674e-07)
-scale = Vector2(1.70833, 1.40625)
-texture = ExtResource("3_vunvx")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -282,6 +278,24 @@ offset_bottom = 27.0
 theme_override_colors/font_color = Color(0.762676, 0.655324, 0.283658, 1)
 theme_override_fonts/font = ExtResource("5_nlw7a")
 text = "1 $"
+
+[node name="PodTileMapActive" type="TileMapLayer" parent="."]
+z_index = 3
+y_sort_enabled = true
+position = Vector2(-18, 2)
+scale = Vector2(1.72917, 1.34375)
+tile_map_data = PackedByteArray(0, 0, 255, 255, 0, 0, 1, 0, 1, 0, 1, 0, 0, 0, 254, 255, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 3, 0, 1, 0, 0, 0, 0, 0, 255, 255, 1, 0, 3, 0, 0, 0, 0, 0)
+tile_set = ExtResource("4_mhlwb")
+
+[node name="Node2D" type="Node2D" parent="PodTileMapActive"]
+position = Vector2(-2.02409, -1.86047)
+
+[node name="PointLight2D" type="PointLight2D" parent="PodTileMapActive/Node2D"]
+position = Vector2(10.1205, 0.372095)
+color = Color(1, 0.698039, 0.196078, 1)
+energy = 2.0
+texture = ExtResource("5_20f3q")
+texture_scale = 0.2
 
 [connection signal="body_entered" from="InteractionArea" to="InteractionArea" method="_on_body_entered"]
 [connection signal="body_exited" from="InteractionArea" to="InteractionArea" method="_on_body_exited"]
