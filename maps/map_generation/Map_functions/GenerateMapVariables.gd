@@ -1,22 +1,20 @@
 extends Node2D
 
+@export_subgroup("Map Size")
 @export var width = 75
 @export var height = 75
 @export var spawnArea_size = 5
-@export var randomObjectChance = 0.8
-@export var randomTreeChance = 0.01
 
+@export_subgroup("Object Odds")
+@export var randomObjectChance = 0.8
 @export var current_tree_chance = 0.6
 
-@export var treeScale = 1.2
-@export var treeRespawnTime = 25
+@export_subgroup("Chest")
+@export var max_chest_count = 10
+var chests = []
 
 var center_offset = Vector2(-width / 2.0, -height / 2.0)
 const LAND_CAP = 0.4
-
-#Variables for spawning
-var max_chest_count = 10
-var chests = []
 
 #Information_Arrays
 var dont_place_here = []
@@ -51,7 +49,6 @@ var noise = FastNoiseLite.new()
 #Objects
 var chest = preload("res://maps/objects/chest/chest.tscn")
 var weapon_pod = preload("res://maps/objects/pods/weapon_pod.tscn")
-#var orbital_strike_pod = preload("res://maps/objects/pods/orbital_strike_pod.tscn")
 var explosives_pod = preload("res://maps/objects/pods/explosives_pod.tscn")
 
 var pods = [weapon_pod, explosives_pod]
@@ -88,37 +85,21 @@ func generate_cells():
 						ground_cells.append(Vector2i(map_x, map_y))
 						if randf() > randomObjectChance:
 							if (
-								#checkToCloseToMapEdge(Vector2(map_x, map_y), 5)
-								isPosCloseToObjects(Vector2(map_x, map_y), random_Object_cells)
+								checkToCloseToMapEdge(Vector2(map_x, map_y), 5)
+								or isPosCloseToObjects(Vector2(map_x, map_y), random_Object_cells)
 								or isPosCloseToObjects(Vector2(map_x, map_y), water_is_here)
 								or between(temp, 0.2, 0.6)
 							):
 								pass
 							else:
 								random_Object_cells.append(Vector2i(map_x, map_y))
-						if (
-							randf() < randomTreeChance
-				
-						):
-							random_tree_cells.append(Vector2i(map_x, map_y))
+		
 						if between(temp, 0.2, 0.6):
 							dont_place_here.append(Vector2i(map_x, map_y))
 							ground2_cells.append(Vector2i(map_x, map_y))
 						elif between(alt, 0.1, 0.9):
 							if between(moist, 0, 0.4) and between(temp, 0.2, 0.6):
 								dirt_cells.append(Vector2i(map_x, map_y))
-
-						elif randf() < randomObjectChance:
-							if (
-								checkToCloseToMapEdge(Vector2(map_x, map_y), 10)
-								or isPosCloseToObjects(
-									Vector2(map_x, map_y), random_WaterObject_cells
-								)
-								or isPosCloseToObjects(Vector2(map_x, map_y), ground_cells)
-							):
-								pass
-							else:
-								random_WaterObject_cells.append(Vector2i(map_x, map_y))
 					else:
 						water_is_here.append(Vector2i(map_x, map_y))
 						water_cells.append(Vector2i(map_x, map_y))
@@ -133,30 +114,18 @@ func isPosCloseToObjects(pos, list):
 			return true
 	return false
 
+func checkToCloseToMapEdge(pos: Vector2, maxDistance: float) -> bool:
+	var left_edge = center_offset.x
+	var right_edge = center_offset.x + width
+	var top_edge = center_offset.y
+	var bottom_edge = center_offset.y + height
 
-func checkToCloseToMapEdge(pos, maxDistance):
-	var edge_min = -width / 2.0
-	var edge_max = width / 2.0
-
-	var y_vectorMax = Vector2(0, edge_max)
-	var y_vectorMin = Vector2(0, edge_min)
-
-	var x_vectorMax = Vector2(edge_max, 0)
-	var x_vectorMin = Vector2(edge_min, 0)
-
-	var tempXVec = Vector2(pos.x, 0)
-	var tempYVec = Vector2(0, pos.y)
-
-	if (
-		tempXVec.distance_to(x_vectorMax) < maxDistance
-		or tempXVec.distance_to(x_vectorMin) < maxDistance
-	):
+	# Check if the position is within the maxDistance of any of the edges
+	if abs(pos.x - left_edge) < maxDistance or abs(pos.x - right_edge) < maxDistance:
 		return true
-	if (
-		tempYVec.distance_to(y_vectorMax) < maxDistance
-		or tempXVec.distance_to(y_vectorMin) < maxDistance
-	):
+	if abs(pos.y - top_edge) < maxDistance or abs(pos.y - bottom_edge) < maxDistance:
 		return true
+	
 	return false
 
 func get_valid_spawn_location(): 
