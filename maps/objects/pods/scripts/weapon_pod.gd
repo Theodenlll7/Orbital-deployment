@@ -47,7 +47,7 @@ func update_weapons(_time_until_next_wave: float = 0.0):
 		#if item.weapon_accessibility_wave <= wave:
 		weapons.append(ResourceLoader.load(path))
 			
-	setLabelsAndCost(ShopType.weapon)
+	setLabelsAndCost(pod_type)
 	
 func setRefillAmmonition():
 	var buy_btn: Button = $ContentPanelContainer/MarginContainer/VBoxContainer/Panel/RefillAmmonition
@@ -68,6 +68,7 @@ func setLabelsAndCost(shop_type: ShopType):
 	match shop_type:
 		ShopType.weapon:
 			array_items = weapons
+			array_items.sort_custom(compare_items_by_accessibility)
 		ShopType.explosive:
 			array_items = explosives
 
@@ -84,7 +85,6 @@ func setLabelsAndCost(shop_type: ShopType):
 		ammo_cost_label.text = str(ammo_cost) + " $"
 		ammo_cost_label.set("theme_override_colors/font_color", Color(0.8, 0.1, 0.1)) 
 		
-	array_items.sort_custom(compare_items_by_accessibility)
 	
 	for item in array_items:
 		var buy_btn: Button = weapon_buy_button.instantiate()

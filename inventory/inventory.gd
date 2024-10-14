@@ -12,8 +12,11 @@ var money: int = 0:
 @export var weapon_slots: Array[WeaponResource] = [null, null]
 @export var explosive_slot = ExplosiveResource
 @export var special_equipment_slot: SpecialEquipment = null
+@export var end_of_wave_money_bonus: int = 75
 
 var actor: Node2D
+
+@onready var wave_manager = get_tree().get_nodes_in_group("wave_manager")[0] as WaveManager
 
 var selected_weapon_slot = -1
 var signal_emitter
@@ -25,6 +28,7 @@ signal new_explosive(explosive: ExplosiveResource)
 
 
 func setup() -> void:
+	wave_manager.end_of_wave.connect(add_wave_money_bonus)
 	for i in range(weapon_slots.size()):
 		if weapon_slots[i]:
 			new_weapon.emit(i, weapon_slots[i])
@@ -34,6 +38,8 @@ func setup() -> void:
 	if explosive_slot:
 		new_explosive.emit(explosive_slot)
 
+func add_wave_money_bonus(_time_until_next_wave: float) -> void:
+	money += money + end_of_wave_money_bonus
 
 func add_weapon(weapon: WeaponResource):
 	if weapon:
