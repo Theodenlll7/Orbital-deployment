@@ -8,7 +8,7 @@
 [resource]
 script = ExtResource("1_dtgsb")
 projectile_scene = ExtResource("1_6hahn")
-item_name = &"HG_MARK1"
+item_name = &"HG MARK I"
 cost = 100
 muzzel_offset = Vector2(0, -2)
 audio_steam = ExtResource("1_b0ttv")

@@ -8,7 +8,7 @@
 [resource]
 script = ExtResource("2_wac4t")
 projectile_scene = ExtResource("1_nhrq8")
-item_name = &"automatic_weapon"
+item_name = &"AR MARK I"
 cost = 100
 muzzel_offset = Vector2(8, 0)
 audio_steam = ExtResource("1_n2xvy")

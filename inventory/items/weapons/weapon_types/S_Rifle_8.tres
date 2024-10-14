@@ -8,12 +8,12 @@
 [resource]
 script = ExtResource("3_rv8uu")
 projectile_scene = ExtResource("2_r5c6p")
-item_name = &"Sniper Rifle"
+item_name = &"S Rifle .50"
 cost = 100
 muzzel_offset = Vector2(0, 0)
 audio_steam = ExtResource("1_k52ua")
 attack_mode = 0
-attack_cooldown = 0.2
+attack_cooldown = 0.8
 weapon_accessibility_player_level = 5
 has_magazine = true
 bullet_damage = 110
@@ -24,8 +24,8 @@ bullets_per_shot = 1
 magazine_size = 9
 reload_time = 1.0
 has_ammo = true
-ammo = 50
-ammo_cap = 50
+ammo = 27
+ammo_cap = 54
 ammo_crate_value = 24
 drop_type = 0
 texture = ExtResource("4_cxvj4")

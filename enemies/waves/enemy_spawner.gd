@@ -71,6 +71,9 @@ func _enemy_death():
 		in_between_wave_timer.start()
 		end_of_wave.emit(in_between_wave_time)
 		ExperiencePoints.addWaveDoneXP(int(wave))
+		if wave == 1:
+			TooltipHud.show_first_wave_over_tip()
+		
 
 
 func update_weapon_pods(_wave):

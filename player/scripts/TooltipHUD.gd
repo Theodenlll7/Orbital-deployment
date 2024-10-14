@@ -7,6 +7,7 @@ var first_time_purchase_of_weapon: bool = true
 var first_time_purchase_of_explosive: bool = true
 var first_time_damage: bool = true
 var second_weapon_bought: bool = false
+var first_wave_over: bool = false
 
 
 var start_text: String = "[color=cyan]Tip: [/color]"
@@ -16,6 +17,7 @@ func init_vars() -> void:
 	first_time_purchase_of_weapon = true
 	first_time_damage = true
 	second_weapon_bought = false
+	first_wave_over = false
 	
 	
 func set_tooltip_HUD_text(text: String) -> void:
@@ -53,6 +55,10 @@ func show_explosive_tip() -> void:
 	var text: String = "Ready to wreak havoc? Press [color=green]" +  swap_wepon_key + "[/color] to toss a grenade and watch the chaos unfold!"
 	set_tooltip_HUD_text(text)
 	pass
+
+func show_first_wave_over_tip() -> void:
+	var text: String = "Wave over! Catch your breath and gear up for the next round! If you've got some credits [color=green]$[/color], now's the time to spend them!"
+	set_tooltip_HUD_text(text)
 
 func get_key(key: String) -> String:
 	var action_events = InputMap.action_get_events(key)

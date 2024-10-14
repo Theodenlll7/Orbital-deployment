@@ -134,7 +134,7 @@ func _on_inventory_weapon_swap(_index: int, weapon: WeaponResource) -> void:
 
 func show_tooltip(tip: String) -> void:
 	var fade_time = 1
-	var visible_time = 5
+	var visible_time = 4
 	var label: RichTextLabel = $MarginContainer/PlayerHUD/InformationHUD/MarginContainer/Panel/MarginContainer/VBoxContainer/Text
 	var tween = create_tween()
 
