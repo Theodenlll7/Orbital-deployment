@@ -4,11 +4,8 @@ class_name MobWeapon extends Weapon
 @export var weapon_orbit_distance: float = 8.0  # Distance from the orbit point at which the weapon orbits
 @export var position_lerp_speed: float = 1
 
-var can_attack: bool = true  # Used to manage cooldowns
-
 @onready var target = null
 
-@onready var cooldown_timer = Timer.new()
 @onready var orbit_position: Vector2 = $WeaponOrbitPoint.position
 
 var attack_enabled := false
@@ -18,9 +15,6 @@ var attack_enabled := false
 func _ready():
 	super()
 	assert(orbit_position, "Mob Weapon has no orbit point")
-	add_child(cooldown_timer)
-	cooldown_timer.wait_time = weapon_resource.attack_cooldown
-	cooldown_timer.timeout.connect(_on_cooldown_timeout)
 	var hp = get_parent().get_node_or_null("HealthComponent") as HealthComponent
 	hp.died.connect(func(): stop_attacking())
 
@@ -42,16 +36,17 @@ func stop_attacking():
 	scale.y = abs(scale.y)
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if attack_enabled:
-		aim(delta)
+		aim(target)
+	if target and can_attack and attack_enabled:
 		attack()
 
 
-func aim(_delta: float) -> void:
+func aim(target: Node2D) -> void:
 	if !target:
 		return
-	var aim_dir = aim_direction()
+	var aim_dir = (target.global_position - to_global(orbit_position)).normalized()
 	# Keep the weapon at a constant distance from the orbit point (circular orbit)
 	position = orbit_position + aim_dir * weapon_orbit_distance
 
@@ -69,24 +64,3 @@ func aim(_delta: float) -> void:
 		z_index = -1  # Render behind the player when aiming upwards
 	else:
 		z_index = 1  # Render in front of the player when aiming downwards
-
-
-# Function to handle aiming at the player with accuracy tweaks
-func aim_direction() -> Vector2:
-	return (target.global_position - to_global(orbit_position)).normalized()
-
-
-# Function to trigger an attack
-func attack():
-	if !target or !can_attack or !attack_enabled:
-		return
-
-	weapon_resource.attack(self)
-
-	can_attack = false
-	cooldown_timer.start()
-
-
-# Cooldown timer finished
-func _on_cooldown_timeout():
-	can_attack = true

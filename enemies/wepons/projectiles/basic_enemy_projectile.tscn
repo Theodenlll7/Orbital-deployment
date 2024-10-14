@@ -1,16 +1,20 @@
-[gd_scene load_steps=5 format=3 uid="uid://delp5066b08hb"]
+[gd_scene load_steps=6 format=3 uid="uid://delp5066b08hb"]
 
 [ext_resource type="Script" path="res://inventory/items/weapons/projectiles/projectile_2d.gd" id="1_4fb8d"]
-[ext_resource type="Texture2D" uid="uid://b5303f7vfendw" path="res://inventory/items/weapons/projectiles/sprites/bullet.png" id="2_i3rxq"]
+[ext_resource type="Texture2D" uid="uid://bgk1v3n2o3dgv" path="res://inventory/items/weapons/assets/sprites/enemy_bullet.png" id="2_aoorw"]
 [ext_resource type="Script" path="res://common/components/hitbox.gd" id="3_5g32d"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ifh57"]
-size = Vector2(5.106, 1.367)
+[sub_resource type="CircleShape2D" id="CircleShape2D_cg7db"]
+radius = 3.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_j8apt"]
+radius = 3.0
 
 [node name="BasicProjectile" type="RigidBody2D"]
-z_index = 1
+z_index = 4
+y_sort_enabled = true
 collision_layer = 8
-collision_mask = 32
+collision_mask = 33
 mass = 0.001
 gravity_scale = 0.0
 can_sleep = false
@@ -21,17 +25,15 @@ max_contacts_reported = 1
 script = ExtResource("1_4fb8d")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(0.772549, 0, 0.0627451, 1)
-self_modulate = Color(0.772735, 0, 0.0635086, 1)
 scale = Vector2(0.9, 0.9)
-texture = ExtResource("2_i3rxq")
+texture = ExtResource("2_aoorw")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_ifh57")
+shape = SubResource("CircleShape2D_cg7db")
 
 [node name="Hitbox" type="Area2D" parent="."]
 collision_layer = 8
 script = ExtResource("3_5g32d")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
-shape = SubResource("RectangleShape2D_ifh57")
+shape = SubResource("CircleShape2D_j8apt")

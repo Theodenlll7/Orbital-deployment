@@ -9,6 +9,8 @@ var audio_player: AudioStreamPlayer
 
 var sprite: Sprite2D
 
+@onready var cooldown_timer = Timer.new()
+
 
 func _init(data: WeaponResource = null):
 	if !data:
@@ -26,9 +28,12 @@ func _ready() -> void:
 	audio_player.stream = weapon_resource.audio_steam
 	add_child(audio_player)
 
+	add_child(cooldown_timer)
+	cooldown_timer.wait_time = weapon_resource.attack_cooldown
+	cooldown_timer.timeout.connect(_on_cooldown_timeout)
 
-var canAttack: bool = true
-var cooldown: float = 0
+
+var can_attack: bool = true
 var reloading: bool = false
 var reload_time = 0
 
@@ -36,8 +41,8 @@ var reload_time = 0
 func attack() -> void:
 	weapon_resource.attack(self)
 	audio_player.play()
-	cooldown = weapon_resource.attack_cooldown
-	canAttack = false
+	cooldown_timer.start()
+	can_attack = false
 
 
 func get_bullet_damage() -> int:
@@ -96,3 +101,8 @@ func _on_reload_complete() -> void:
 
 	weapon_resource.ammo_changed.emit(weapon_resource.ammo)
 	weapon_resource.magazine_changed.emit(weapon_resource.ammo_in_magazine)
+
+
+# Cooldown timer finished
+func _on_cooldown_timeout():
+	can_attack = true

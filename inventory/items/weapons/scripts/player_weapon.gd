@@ -6,12 +6,7 @@ func _process(delta) -> void:
 		if !reloading and Input.is_action_just_pressed("reload"):
 			reload()
 
-	if !canAttack:
-		cooldown -= delta
-		if cooldown <= 0:
-			canAttack = true
-
-	elif !reloading and attack_pressed():
+	if can_attack and !reloading and attack_pressed():
 		if weapon_resource.has_magazine:
 			if weapon_resource.ammo_in_magazine > 0:
 				weapon_resource.ammo_in_magazine -= 1
@@ -26,8 +21,10 @@ func _process(delta) -> void:
 		else:
 			attack()
 
+
 func get_bullet_damage() -> int:
 	return int(weapon_resource.bullet_damage * PlayerSkillsManager.bullet_damage_scaler)
+
 
 func attack_pressed() -> bool:
 	return (
