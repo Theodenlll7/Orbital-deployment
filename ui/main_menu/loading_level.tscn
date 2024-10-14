@@ -314,9 +314,11 @@ theme_override_constants/separation = 16
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 3.0
+theme_override_constants/line_separation = 8
 theme_override_fonts/normal_font = ExtResource("8_6wc2l")
 theme_override_font_sizes/normal_font_size = 40
-text = "Lorem ipsum"
+text = "Lorem 
+ipsum"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

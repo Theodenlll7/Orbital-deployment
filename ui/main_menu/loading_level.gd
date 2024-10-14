@@ -11,7 +11,7 @@ var sinTime: float = 0.0
 var speed: float = 2.0
 var minOpacity = 0.2
 
-var min_loading_time: float = 3.0
+var min_loading_time: float = 4.0
 var load_started_time: float = 0.0
 var loading_complete: bool = false
 
@@ -36,7 +36,8 @@ func flashLoadingText() -> void:
 	loading_text.modulate.a = sinTime
 	
 func set_random_hint() -> void:
-	rich_text_label.text =  hints.get_random_hint()
+	rich_text_label.clear()
+	rich_text_label.append_text(loading_hints.get_random_hint())
 
 func _process(delta: float) -> void:
 	var progress = []
