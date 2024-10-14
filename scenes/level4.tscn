@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dqfmu73xm8h3x"]
+[gd_scene load_steps=14 format=3 uid="uid://dqfmu73xm8h3x"]
 
 [ext_resource type="PackedScene" uid="uid://c8jevyf6a3do5" path="res://scenes/scene4.tscn" id="1_jckrp"]
 [ext_resource type="Script" path="res://enemies/waves/enemy_spawner.gd" id="2_rhyrc"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://kua7fs588s48" path="res://enemies/mobs/ranger.tscn" id="4_oxfh3"]
 [ext_resource type="PackedScene" uid="uid://dsuabe2igmqvf" path="res://enemies/mobs/assult.tscn" id="5_3r45n"]
 [ext_resource type="Script" path="res://enemies/waves/custom_wave.gd" id="6_dmvjh"]
+[ext_resource type="PackedScene" uid="uid://boa23xke4oiwg" path="res://enemies/mobs/sniper.tscn" id="6_kmlh2"]
 [ext_resource type="Resource" uid="uid://dq8owb3cs3n3" path="res://enemies/waves/wave10.tres" id="7_57sp4"]
 [ext_resource type="PackedScene" uid="uid://inymqhajqaf7" path="res://ui/in_game/mission_start_text.tscn" id="8_7pocc"]
 [ext_resource type="PackedScene" uid="uid://6vt8l263l0o7" path="res://player/player.tscn" id="9_raoxf"]
@@ -20,7 +21,7 @@ y_sort_enabled = true
 
 [node name="enemy_spawner" type="Node2D" parent="."]
 script = ExtResource("2_rhyrc")
-enemy_spawn_pool = Array[PackedScene]([ExtResource("3_l5020"), ExtResource("4_oxfh3"), ExtResource("5_3r45n")])
+enemy_spawn_pool = Array[PackedScene]([ExtResource("3_l5020"), ExtResource("4_oxfh3"), ExtResource("5_3r45n"), ExtResource("6_kmlh2")])
 initial_std_dev = 0.2
 custom_waves = Array[ExtResource("6_dmvjh")]([ExtResource("7_57sp4")])
 
