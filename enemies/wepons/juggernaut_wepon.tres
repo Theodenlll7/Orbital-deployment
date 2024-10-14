@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="ProjectileWeaponResource" load_steps=5 format=3 uid="uid://u3ncsq33mjru"]
+[gd_resource type="Resource" script_class="ProjectileWeaponResource" load_steps=5 format=3 uid="uid://db45qyhpdakjq"]
 
 [ext_resource type="AudioStream" uid="uid://bx0erxmcc8tb2" path="res://inventory/items/weapons/assets/audio/gun_fire2.mp3" id="1_6mccq"]
 [ext_resource type="PackedScene" uid="uid://delp5066b08hb" path="res://enemies/wepons/projectiles/basic_enemy_projectile.tscn" id="2_ioa51"]
@@ -14,7 +14,7 @@ muzzel_offset = Vector2(0, 10)
 audio_steam = ExtResource("1_6mccq")
 attack_mode = 1
 attack_cooldown = 0.2
-weapon_accessibility_wave = 0
+weapon_accessibility_player_level = 1
 has_magazine = true
 bullet_damage = 25
 bullet_speed = 300.0

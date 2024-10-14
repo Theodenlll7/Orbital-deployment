@@ -27,6 +27,7 @@ func _ready() -> void:
 
 func fade_in():
 	SaveData.save_player_data()
+	TooltipHud.init_vars()
 	wave_label.text = str(wave_manager.wave)
 	visible = true
 	var fade_time = 2.0

@@ -174,6 +174,8 @@ func handleBuy(item, cost: int):
 	if costumer.money >= cost:
 		costumer.money -= cost
 		costumer.pickup(item)
+		TooltipHud.show_diffrent_wepons_tips()
+		TooltipHud.show_wepon_tip()
 	else:
 		#print("Not enough money to buy that")
 		return

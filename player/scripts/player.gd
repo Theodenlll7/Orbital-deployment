@@ -128,6 +128,7 @@ func start_dodge() -> void:
 	hurtbox.is_invulnerable = true
 
 
+
 func _on_dodge_ended() -> void:
 	in_dodge = false
 	hurtbox.is_invulnerable = false
@@ -196,7 +197,7 @@ func _on_health_component_health_changed(amount: Variant) -> void:
 	if !player_dead:
 		flash_red(animated_sprite)
 		camera.screen_shake()
-
+		TooltipHud.show_dodge_tip()
 
 func flash_red(sprite: AnimatedSprite2D) -> void:
 	var tween = create_tween()

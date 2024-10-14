@@ -18,6 +18,8 @@ class_name PlayerHUD
 @onready var time_until_next_wave_label: Label = $MarginContainer/PlayerHUD/WaveHUD/TimeHBoxContainer/TimeUntilNextWave
 @onready var wepon_name_label: Label = $MarginContainer/PlayerHUD/GameHUD/HBoxContainer2/WeponNameLabel
 
+@onready var information_hud: VBoxContainer = $MarginContainer/PlayerHUD/InformationHUD
+
 @onready var wave_manager = get_tree().get_nodes_in_group("wave_manager")[0] as WaveManager
 @export var ammo_indicator: AmmoIndicator = null
 
@@ -36,6 +38,8 @@ func _ready() -> void:
 	wave_manager.new_wave_started.connect(new_wave)
 	wave_manager.end_of_wave.connect(between_waves)
 	wave_manager.nr_of_enemies.connect(set_hostiles)
+	
+	TooltipHud.show_tip.connect(show_tooltip)
 	
 	between_waves(wave_manager.in_between_wave_time)
 	wave_number.text = str(wave_manager.wave)
@@ -127,3 +131,16 @@ func pauseMenu():
 
 func _on_inventory_weapon_swap(_index: int, weapon: WeaponResource) -> void:
 	set_wepon_name(weapon.item_name)
+
+func show_tooltip(tip: String) -> void:
+	var fade_time = 1
+	var visible_time = 5
+	var label: RichTextLabel = $MarginContainer/PlayerHUD/InformationHUD/MarginContainer/Panel/MarginContainer/VBoxContainer/Text
+	var tween = create_tween()
+
+	label.clear()
+	label.append_text(tip)
+	
+	tween.tween_property(information_hud, "modulate:a", 1.0, fade_time)
+	tween.chain().tween_property(information_hud, "modulate:a", 1.0, visible_time)
+	tween.chain().tween_property(information_hud, "modulate:a", 0.0, fade_time)

@@ -26,6 +26,7 @@ MissionManager="*res://ui/main_menu/mission_manager.gd"
 ExperiencePoints="*res://player/experience_points/ExperiencePointsManager.gd"
 PlayerSkillsManager="*res://player/skills/PlayerSkillsManager.gd"
 SaveData="*res://saved_data/saveData.gd"
+TooltipHud="*res://player/scripts/TooltipHUD.gd"
 
 [debug]
 

@@ -4,7 +4,6 @@ extends Node2D
 @onready var store := $CanvasLayer/StoreUI as PodShop
 
 @export var pod_type = ""
-		
 
 func _ready() -> void:
 	interaction_area.interact = _on_interact

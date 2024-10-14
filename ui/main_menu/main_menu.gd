@@ -28,6 +28,7 @@ func _ready() -> void:
 	first_btn_focus_grab()
 	ship_start_position = ship.global_position
 	SaveData.save_player_data()
+	TooltipHud.init_vars()
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_cancel") and target_menu != main_menu:
