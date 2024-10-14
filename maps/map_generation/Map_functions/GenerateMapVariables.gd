@@ -34,6 +34,7 @@ var random_WaterObject_cells = []
 var random_tree_cells = []
 
 var pod_positions = []
+@export_subgroup("Pods")
 @export var numberOfPods = 3
 @export var podDistanceBetween = 30
 
