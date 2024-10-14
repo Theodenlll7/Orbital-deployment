@@ -3,10 +3,10 @@ extends Control
 @onready var option_button: OptionButton = $HBoxContainer/OptionButton
 
 const WINDOW_MODE_ARRAY: Array[String] = [
-	"Window mode",
-	"Full-screen",
-	"Borderless window",
-	"Borderless full-screen"
+	" Window mode",
+	" Full-screen",
+	" Borderless window",
+	" Borderless full-screen"
 ]
 
 # Called when the node enters the scene tree for the first time.

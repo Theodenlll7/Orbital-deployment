@@ -1,10 +1,11 @@
 [gd_scene load_steps=8 format=3 uid="uid://twbag55wnin1"]
 
-[ext_resource type="Theme" uid="uid://dvraluy0ogo1l" path="res://ui/main_menu/skill_tree_theme.tres" id="1_icgfo"]
 [ext_resource type="Script" path="res://ui/main_menu/skill_tree.gd" id="2_c7w71"]
 [ext_resource type="Texture2D" uid="uid://een41g7xxesw" path="res://ui/main_menu/assets/heartHover.png" id="4_7h1d6"]
 [ext_resource type="FontFile" uid="uid://dkg32o3qfh2n7" path="res://assets/Fonts/pixelmix.ttf" id="4_j40hk"]
 [ext_resource type="Texture2D" uid="uid://crrqlvf66f3u3" path="res://ui/main_menu/assets/player.png" id="4_mpgbs"]
+
+[sub_resource type="Theme" id="Theme_ow61i"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r0q7g"]
 bg_color = Color(0.117647, 0.117647, 0.168627, 1)
@@ -21,7 +22,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-theme = ExtResource("1_icgfo")
+theme = SubResource("Theme_ow61i")
 script = ExtResource("2_c7w71")
 
 [node name="ScrollContainer" type="ScrollContainer" parent="."]

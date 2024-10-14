@@ -49,6 +49,7 @@ theme_override_constants/separation = 256
 clip_contents = true
 custom_minimum_size = Vector2(256, 64)
 layout_mode = 2
+theme_override_colors/font_color = Color(0.731081, 0.887407, 0.976942, 1)
 theme_override_fonts/font = ExtResource("2_lvwex")
 theme_override_font_sizes/font_size = 32
 theme_override_styles/hover = SubResource("StyleBoxFlat_epv57")
