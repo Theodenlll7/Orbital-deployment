@@ -1,4 +1,4 @@
-[gd_scene load_steps=64 format=3 uid="uid://wsq75v2incod"]
+[gd_scene load_steps=65 format=3 uid="uid://wsq75v2incod"]
 
 [ext_resource type="PackedScene" uid="uid://dgcxqingnrpqp" path="res://maps/map_generation/MapGeneration.tscn" id="1_huq2t"]
 [ext_resource type="Script" path="res://enemies/waves/enemy_spawner.gd" id="2_3mje2"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://qr233drv7hwc" path="res://game_manager/DayAndNightCycle/night_day.tscn" id="12_gnnhm"]
 [ext_resource type="PackedScene" uid="uid://fwtaakyb0exx" path="res://maps/objects/pods/weapon_pod.tscn" id="12_lo35d"]
 [ext_resource type="PackedScene" uid="uid://dihjqikmheg2n" path="res://enemies/mobs/bosses/heavy_juggernaut.tscn" id="15_4em7c"]
+[ext_resource type="Texture2D" uid="uid://ndy3bp8m8o7y" path="res://ui/main_menu/assets/textures/loading/landingcraft_space.png" id="15_8dj2m"]
 [ext_resource type="PackedScene" uid="uid://dj36rh4ptga2b" path="res://maps/objects/ship/ship.tscn" id="18_c65v2"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_dornl"]
@@ -1388,15 +1389,16 @@ sources/2 = SubResource("TileSetAtlasSource_rgo0j")
 rotation = 3.14159
 scale = Vector2(31.9724, 26.7973)
 
+[node name="WaveManager" type="Node2D" parent="."]
+script = ExtResource("2_3mje2")
+enemy_spawn_pool = Array[PackedScene]([ExtResource("3_r8gpc"), ExtResource("4_6dy7k")])
+
 [node name="MapGeneration" parent="." instance=ExtResource("1_huq2t")]
+z_index = -1
 tile_set = SubResource("TileSet_6altl")
 layer_1/name = "Layer1"
 layer_2/name = "Layer2"
 script = ExtResource("8_xh3lq")
-
-[node name="WaveManager" type="Node2D" parent="."]
-script = ExtResource("2_3mje2")
-enemy_spawn_pool = Array[PackedScene]([ExtResource("3_r8gpc"), ExtResource("4_6dy7k")])
 
 [node name="GameLoop" type="Node2D" parent="."]
 script = ExtResource("9_53pwr")
@@ -1414,3 +1416,19 @@ position = Vector2(-32, 81)
 
 [node name="Heavy_juggernaut" parent="." instance=ExtResource("15_4em7c")]
 position = Vector2(-127, 160)
+
+[node name="Background" type="Control" parent="."]
+z_index = -1
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureRect" type="TextureRect" parent="Background"]
+z_index = -1
+layout_mode = 0
+offset_left = -1321.0
+offset_top = -1102.0
+offset_right = 1341.0
+offset_bottom = 1095.0
+texture = ExtResource("15_8dj2m")
