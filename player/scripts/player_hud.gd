@@ -96,7 +96,9 @@ func equip_weapon(slot_index: int, weapon: WeaponResource):
 func equip_explosive(explosive: ExplosiveResource):
 	var slot = $MarginContainer/PlayerHUD/GameHUD/HBoxContainer/HBoxContainer2/AspectRatioContainer2/AspectRatioContainer
 	var icon: TextureRect = slot.get_node("Icon")
-	icon.texture = explosive.texture
+	if explosive:
+		icon.texture = explosive.texture
+	else: icon.texture = null
 
 func update_timer_display(newValue: float) -> void:
 	if newValue < 4.0:

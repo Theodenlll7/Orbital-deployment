@@ -8,24 +8,15 @@ class_name ThrowableExplosiveResource
 var audio_player: AudioStreamPlayer
 var audio_stream: AudioStream
 
-func _throw(explosive: Explosive):
-	explosive_grenade = explosive.get_grenade()
+func _throw(explosive: HeldExplosive):
 	if not explosive_grenade:
 		return
-	var _explosive_instance = explosive_grenade.instantiate()
-	var position = explosive.to_global(muzzel_offset)
 
 	var grenade = explosive_grenade.instantiate()
 	grenade.global_rotation = explosive.global_rotation
-	grenade.global_position = position
+	grenade.global_position = explosive.global_position
 	var mouse_position = explosive.get_viewport().get_camera_2d().get_global_mouse_position()
-	var direction = (mouse_position - position).normalized()
-
-	#var direction = Vector2.RIGHT.rotated(explosive.global_rotation)
-	
-	#Collision
-	grenade.collision_layer = 2  
-	grenade.collision_mask = 3  
+	var direction = (mouse_position - grenade.global_position).normalized()
 	
 	#Throwing
 	grenade.direction = direction
@@ -42,8 +33,3 @@ func _throw(explosive: Explosive):
 	grenade.set_fuse_time(explosive.get_fuse_time())
 	
 	explosive.get_tree().current_scene.add_child(grenade)
-	
-	print("Mouse Position: ", mouse_position)
-	print("Grenade Position: ", position)
-	print("Direction: ", direction)
-	

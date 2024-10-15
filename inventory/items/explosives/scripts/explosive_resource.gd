@@ -8,19 +8,19 @@ class_name ExplosiveResource
 
 ## How the explosive looks and sounds
 @export_group("Explosive Setup")
-@export var throw_offset: Vector2 = Vector2(0, 0)  
 @export var audio_stream_throw: AudioStream
 @export var audio_stream_explode: AudioStream
 
 ## How the explosive acts
 @export_group("Explosive throw")
 @export var throw_speed: float = 2.0
-@export var muzzel_offset: Vector2 = Vector2(0, 0)
+@export var throw_cooldown: float = 0.5
 @export var grenade_weight: float = 0.2
 
 @export_subgroup("Explosion Details")
 @export var explosion_damage: int = 100
 @export var explosion_radius: float = 200.0
+@export var exposion_collision_mask : int = 129
 @export var fuse_time: float = 3.0
 
 ## Whether the explosive has a limited quantity
@@ -30,13 +30,16 @@ class_name ExplosiveResource
 
 @export var explosive_count: int = 3
 
-var throw_action: Callable = _throw
-
-@export var grenade_scene: PackedScene
-
 @export_subgroup("accessibility")
 @export var weapon_accessibility_player_level = 0
 
-func _throw(_explosive: Explosive) -> void:
+signal explosive_thrown(explosive : ExplosiveResource)
+
+func throw(explosive: HeldExplosive) -> void:
+	explosive_count -= 1
+	explosive_thrown.emit(self)
+	_throw(explosive)
+
+func _throw(_explosive: HeldExplosive) -> void:
 	## This method should be overridden to define explosion behavior
 	push_error("The 'explode' is a callable that must be overridden in a subclass")

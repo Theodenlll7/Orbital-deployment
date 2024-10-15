@@ -19,13 +19,14 @@ func _ready() -> void:
 	circle_shape.radius = explosion_radius
 	collision_shape.shape = circle_shape
 	explosion_area.add_child(collision_shape)
-	explosion_area.monitorable = true
+	explosion_area.monitorable = false
 	explosion_area.monitoring = false
+	explosion_area.collision_mask = 129
 	add_child(explosion_area)
 	
 	scale_explosion_sprite()
 	
-	explosion_area.connect("body_entered", _on_body_entered)
+	explosion_area.area_entered.connect(_on_area_entered)
 	
 	var timer = Timer.new()
 	timer.wait_time = fuse_time
@@ -50,10 +51,9 @@ func _explode() -> void:
 	explosion_area.monitoring = true
 	
 
-func _on_body_entered(body) -> void:
-	var hp = body.get_node_or_null("HealthComponent") as HealthComponent
-	if hp:
-		hp.damage(explosion_damage)
+func _on_area_entered(hurtbox : Hurtbox) -> void:
+	if hurtbox:
+		hurtbox.damage(explosion_damage)
 	
 	
 

@@ -29,7 +29,7 @@ var player_dead := false
 var can_move := true
 
 var held_weapon: PlayerWeapon = null
-var held_explosive: Explosive = null
+var held_explosive: HeldExplosive = null
 
 var aim_dir: Vector2 = Vector2()
 
@@ -172,12 +172,14 @@ func equip_weapon(index: int, weapon: WeaponResource) -> Weapon:
 	return held_weapon
 
 
-func equip_explosive(explosive: ExplosiveResource) -> Explosive:
+func equip_explosive(explosive: ExplosiveResource) -> HeldExplosive:
 	if held_explosive:
 		held_explosive.queue_free()
-	held_explosive = Explosive.new(explosive)
-	held_explosive.scale = Vector2(0.01, 0.01)
-	weapon_orbit_point.add_child(held_explosive)
+		held_explosive = null
+	if explosive:
+		held_explosive = HeldExplosive.new(explosive)
+		held_explosive.scale = Vector2(0.01, 0.01)
+		weapon_orbit_point.add_child(held_explosive)
 	return held_explosive
 
 

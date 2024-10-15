@@ -16,6 +16,7 @@ polygon = PackedVector2Array(-6, -2, 6, -2, 6, 6, -6, 6)
 load_path = "res://.godot/imported/tilemap_pods.png-3bdfde3b4bf4001d0c8bf8d40a5736a4.ctex"
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_q8pm5"]
+
 texture = SubResource("CompressedTexture2D_vvaee")
 0:1/0 = 0
 0:1/0/y_sort_origin = 8
@@ -27,7 +28,6 @@ texture = SubResource("CompressedTexture2D_vvaee")
 2:0/0/y_sort_origin = -8
 2:0/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_ptwlx")
 2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(6, -2, 6, 6, -6, 6, -6, -2)
-3:0/size_in_atlas = Vector2i(1, 2)
 3:0/0 = 0
 3:0/0/texture_origin = Vector2i(0, 8)
 3:0/0/y_sort_origin = -8

@@ -7,7 +7,6 @@ var money: int = 500:
 	set(value):
 		money = value
 		money_changed.emit(money)
-		print("Player money has been updated: ", money)
 
 @export var weapon_slots: Array[WeaponResource] = [null, null]
 @export var explosive_slot = ExplosiveResource
@@ -37,6 +36,7 @@ func setup() -> void:
 
 	if explosive_slot:
 		new_explosive.emit(explosive_slot)
+	new_explosive.connect(_new_explosive)
 
 func add_wave_money_bonus(_time_until_next_wave: float) -> void:
 	money += money + end_of_wave_money_bonus
@@ -54,15 +54,21 @@ func add_weapon(weapon: WeaponResource):
 			new_weapon.emit(selected_weapon_slot, weapon)
 			select_weapon_slot(selected_weapon_slot)
 
+func _new_explosive(explosive : ExplosiveResource) -> void:
+	if explosive:
+		explosive.explosive_thrown.connect(_explosive_thrown)
+	
+func _explosive_thrown(explosive: ExplosiveResource) -> void:
+	if explosive == explosive_slot:
+		if explosive.explosive_count <= 0:
+			set_explosive(null)
 
-func add_explosive(explosive):
+func set_explosive(explosive : ExplosiveResource):
 	explosive_slot = explosive
 	new_explosive.emit(explosive)
 
-
 func add_special_equipment(special_equipment):
 	special_equipment_slot = special_equipment
-
 
 func drop_item(_item):
 	pass
@@ -78,8 +84,7 @@ func pickup(item):
 	if item is WeaponResource:
 		add_weapon(item)
 	elif item is ExplosiveResource:
-		add_explosive(item)
-		new_explosive.emit(item)
+		set_explosive(item)
 	elif item is SpecialEquipment:
 		print(
 			"Purchased Special Equipment: ",

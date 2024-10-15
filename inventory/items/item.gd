@@ -9,9 +9,6 @@ enum DropType { MAGNETIC, INTERACTABLE }  # Fixed the spelling and enum declarat
 @export var texture: Texture2D = null
 @export var drop_weight: int = 100
 
-@export var test: Callable
-
-
 func drop_on_ground(node: Node2D):
 	var item: Node2D
 	match drop_type:
