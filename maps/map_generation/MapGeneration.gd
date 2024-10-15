@@ -48,7 +48,7 @@ func place_large_object_from_new_tile(objectID, center):
 	else:
 		match objectID:
 			1:
-				start = Vector2(0, 0)
+				start = Vector2(0, 2)
 				columns = 2
 				rows = 2
 			2:  
@@ -97,7 +97,7 @@ func place_large_object_from_new_tile(objectID, center):
 				rows = 1
 			13:
 				start = Vector2(10, 7)  
-				columns = 4 
+				columns = 1 
 				rows = 1
 			14:
 				start = Vector2(13, 8)  

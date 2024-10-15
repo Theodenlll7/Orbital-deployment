@@ -1,6 +1,4 @@
-[gd_resource type="TileSet" load_steps=7 format=3 uid="uid://bsx0avqdj3afs"]
-
-[ext_resource type="Texture2D" uid="uid://cd5bkn3b6t5f8" path="res://assets/Tiles/tilemap_pods.png" id="1_da18k"]
+[gd_resource type="TileSet" load_steps=6 format=3 uid="uid://bsx0avqdj3afs"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_x46yb"]
 tile_data = PackedInt32Array(65536, 1, 1, 1, 196609, 0, 65537, 196609, 1)
@@ -15,7 +13,6 @@ polygon = PackedVector2Array(-7, -2, 8, -2, 7, 7, -7, 7)
 polygon = PackedVector2Array(-7, -2, 8, -2, 7, 7, -7, 7)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yulnx"]
-texture = ExtResource("1_da18k")
 2:0/0 = 0
 2:0/0/y_sort_origin = 7
 0:1/0 = 0
