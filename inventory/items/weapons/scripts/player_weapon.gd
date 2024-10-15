@@ -1,7 +1,7 @@
 class_name PlayerWeapon extends Weapon
 
 
-func _process(delta) -> void:
+func _process(_delta) -> void:
 	if weapon_resource.has_magazine:
 		if !reloading and Input.is_action_just_pressed("reload"):
 			reload()
