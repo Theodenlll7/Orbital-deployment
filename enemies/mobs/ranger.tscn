@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=3 uid="uid://kua7fs588s48"]
+[gd_scene load_steps=53 format=3 uid="uid://kua7fs588s48"]
 
 [ext_resource type="Texture2D" uid="uid://bp5yo3btc8723" path="res://enemies/assets/textures/ranger_sprite.png" id="1_pe8ap"]
 [ext_resource type="Script" path="res://addons/tree_mind/nodes/mind_tree.gd" id="2_ao7rd"]
@@ -24,7 +24,7 @@
 [ext_resource type="Texture2D" uid="uid://dcgcly83hxan6" path="res://player/assets/textures/light.png" id="20_pui2m"]
 [ext_resource type="Script" path="res://enemies/scripts/parent_move_and_slide.gd" id="21_2i7xj"]
 [ext_resource type="Script" path="res://common/components/hurtbox.gd" id="24_pnmy5"]
-
+[ext_resource type="Texture2D" uid="uid://bmg7yghvbq8g7" path="res://inventory/items/weapons/assets/sprites/heads_up.png" id="25_blvbg"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ni7c6"]
 atlas = ExtResource("1_pe8ap")
@@ -338,3 +338,10 @@ armor = null
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
 position = Vector2(-0.300001, 1.7)
 shape = SubResource("RectangleShape2D_5evb7")
+
+[node name="AttackIconSprite" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="AttackIconSprite"]
+position = Vector2(0, -13)
+scale = Vector2(0.029811, 0.029811)
+texture = ExtResource("25_blvbg")
