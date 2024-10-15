@@ -366,8 +366,6 @@ libraries = {
 "": SubResource("AnimationLibrary_t0w68")
 }
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="transistion_content"]
-
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_pbfcc")
 

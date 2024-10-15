@@ -16,6 +16,8 @@ extends Control
 @onready var main_menu: MarginContainer = $ContentMarginContainer
 
 @onready var animation_player: AnimationPlayer = $transistion_content/AnimationPlayer
+@onready var audio_stream_player_astroids: AudioStreamPlayer = $transistion_content/AudioStreamPlayer
+const ASTROID_PASS = preload("res://assets/Sound/UI/astroid_pass.ogg")
 
 @onready var target_menu: Control = main_menu
 
@@ -29,6 +31,8 @@ func _ready() -> void:
 	ship_start_position = ship.global_position
 	SaveData.save_player_data()
 	TooltipHud.init_vars()
+	audio_stream_player_astroids.stream = ASTROID_PASS
+	audio_stream_player_astroids.bus = "Transition"
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_cancel") and target_menu != main_menu:
@@ -53,11 +57,14 @@ func on_animation_finished(animation_name: String) -> void:
 func on_select_mission_button_pressed() -> void:
 	target_menu = mission_select_menu
 	animation_player.play("to_new_scene")
+	audio_stream_player_astroids.play()
+	
 
 
 func on_exit_mission_select_menu() -> void:
 	target_menu = main_menu
 	animation_player.play("to_new_scene")
+	audio_stream_player_astroids.play()
 
 func on_player_progress_button_pressed() -> void:
 	target_menu = player_progress_menu
