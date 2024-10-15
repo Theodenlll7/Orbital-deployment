@@ -1,160 +1,160 @@
 [gd_scene load_steps=60 format=3 uid="uid://boa23xke4oiwg"]
 
-[ext_resource type="Script" path="res://common/components/navigator2d.gd" id="1_4hpmu"]
-[ext_resource type="Texture2D" uid="uid://bp5yo3btc8723" path="res://enemies/assets/textures/ranger_sprite.png" id="2_o7bhm"]
-[ext_resource type="Script" path="res://common/components/character_animated_sprite_2d.gd" id="3_krh50"]
-[ext_resource type="Script" path="res://common/components/HealthComponent.gd" id="4_pkmu1"]
-[ext_resource type="Script" path="res://addons/tree_mind/nodes/mind_tree.gd" id="5_s05mi"]
-[ext_resource type="Script" path="res://addons/tree_mind/nodes/composites/selector.gd" id="6_2djgr"]
-[ext_resource type="Script" path="res://addons/tree_mind/nodes/composites/sequence.gd" id="7_kajr8"]
-[ext_resource type="Script" path="res://enemies/mind_tree_components/conditions/target_in_range.gd.gd" id="8_5g6no"]
-[ext_resource type="Script" path="res://enemies/mind_tree_components/actions/has_los.gd" id="9_d2ho8"]
-[ext_resource type="Script" path="res://enemies/mind_tree_components/actions/stop_navigation.gd" id="10_7e6nc"]
-[ext_resource type="Script" path="res://enemies/mind_tree_components/actions/aim_weapon.gd" id="11_i52hv"]
-[ext_resource type="Script" path="res://addons/tree_mind/nodes/composites/repeting_sequence.gd" id="11_nxwbr"]
-[ext_resource type="Script" path="res://addons/tree_mind/nodes/decorators/delayer.gd" id="11_rc1s8"]
-[ext_resource type="Script" path="res://enemies/mind_tree_components/actions/charge_towards_target.gd" id="12_uxjyi"]
-[ext_resource type="Script" path="res://addons/tree_mind/nodes/decorators/inverter.gd" id="13_mpjid"]
-[ext_resource type="Script" path="res://enemies/mind_tree_components/actions/fire_weapon.gd" id="13_njirl"]
-[ext_resource type="Script" path="res://addons/tree_mind/nodes/leafs/blackbord_set.gd" id="15_5n0ec"]
-[ext_resource type="Script" path="res://enemies/mind_tree_components/actions/start_navigation_to_target.gd" id="16_ahnxo"]
-[ext_resource type="Script" path="res://inventory/items/weapons/scripts/mob_weapon.gd" id="17_cm10s"]
-[ext_resource type="Script" path="res://inventory/loot/loot_spawner.gd" id="19_wi4bj"]
-[ext_resource type="Resource" uid="uid://cewsl85y3quq6" path="res://enemies/wepons/sniper_wepon.tres" id="20_0lluw"]
-[ext_resource type="Resource" uid="uid://dwncsm7kwadaj" path="res://inventory/loot/ranger_loot_table.tres" id="20_y3sdx"]
-[ext_resource type="Script" path="res://enemies/scripts/handle_enemy_death.gd" id="21_qaerl"]
-[ext_resource type="Texture2D" uid="uid://dcgcly83hxan6" path="res://player/assets/textures/light.png" id="22_6fl7y"]
-[ext_resource type="Script" path="res://enemies/scripts/parent_move_and_slide.gd" id="23_w7jfr"]
-[ext_resource type="Script" path="res://common/components/hurtbox.gd" id="24_f7ca2"]
-[ext_resource type="Texture2D" uid="uid://gewjitwavga" path="res://inventory/items/weapons/assets/sprites/laser_charge.png" id="25_djuaf"]
+[ext_resource type="Script" path="res://common/components/navigator2d.gd" id="1_f05u1"]
+[ext_resource type="Texture2D" uid="uid://bgv3sav6h5h14" path="res://enemies/assets/textures/watcher.png" id="2_rwvmc"]
+[ext_resource type="Script" path="res://common/components/character_animated_sprite_2d.gd" id="3_5mgsi"]
+[ext_resource type="Script" path="res://common/components/HealthComponent.gd" id="4_m8eia"]
+[ext_resource type="Script" path="res://addons/tree_mind/nodes/mind_tree.gd" id="5_ymlqc"]
+[ext_resource type="Script" path="res://addons/tree_mind/nodes/composites/selector.gd" id="6_udmf3"]
+[ext_resource type="Script" path="res://addons/tree_mind/nodes/composites/sequence.gd" id="7_qcw5w"]
+[ext_resource type="Script" path="res://enemies/mind_tree_components/conditions/target_in_range.gd.gd" id="8_ty7uw"]
+[ext_resource type="Script" path="res://enemies/mind_tree_components/actions/has_los.gd" id="9_m7d42"]
+[ext_resource type="Script" path="res://enemies/mind_tree_components/actions/stop_navigation.gd" id="10_k6ix7"]
+[ext_resource type="Script" path="res://addons/tree_mind/nodes/decorators/delayer.gd" id="11_fffom"]
+[ext_resource type="Script" path="res://addons/tree_mind/nodes/composites/repeting_sequence.gd" id="12_ry3go"]
+[ext_resource type="Script" path="res://enemies/mind_tree_components/actions/aim_weapon.gd" id="13_8xlqn"]
+[ext_resource type="Script" path="res://enemies/mind_tree_components/actions/charge_towards_target.gd" id="14_3daj2"]
+[ext_resource type="Script" path="res://enemies/mind_tree_components/actions/fire_weapon.gd" id="15_7ub7j"]
+[ext_resource type="Script" path="res://addons/tree_mind/nodes/decorators/inverter.gd" id="16_58k2w"]
+[ext_resource type="Script" path="res://addons/tree_mind/nodes/leafs/blackbord_set.gd" id="17_m07ff"]
+[ext_resource type="Script" path="res://enemies/mind_tree_components/actions/start_navigation_to_target.gd" id="18_eed5s"]
+[ext_resource type="Script" path="res://inventory/items/weapons/scripts/mob_weapon.gd" id="19_6hbn2"]
+[ext_resource type="Resource" uid="uid://ctxd3qqtmeaak" path="res://enemies/wepons/sniper_wepon.tres" id="20_0qlhk"]
+[ext_resource type="Script" path="res://inventory/loot/loot_spawner.gd" id="21_m5f5n"]
+[ext_resource type="Resource" uid="uid://dwncsm7kwadaj" path="res://inventory/loot/ranger_loot_table.tres" id="22_mmwlf"]
+[ext_resource type="Script" path="res://enemies/scripts/handle_enemy_death.gd" id="23_05ir7"]
+[ext_resource type="Texture2D" uid="uid://dcgcly83hxan6" path="res://player/assets/textures/light.png" id="24_2jjnn"]
+[ext_resource type="Script" path="res://enemies/scripts/parent_move_and_slide.gd" id="25_0jmtg"]
+[ext_resource type="Script" path="res://common/components/hurtbox.gd" id="26_pv7i4"]
+[ext_resource type="Texture2D" uid="uid://gewjitwavga" path="res://inventory/items/weapons/assets/sprites/laser_charge.png" id="27_7n21k"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ni7c6"]
-atlas = ExtResource("2_o7bhm")
+[sub_resource type="AtlasTexture" id="AtlasTexture_kwite"]
+atlas = ExtResource("2_rwvmc")
 region = Rect2(0, 96, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_awgrr"]
-atlas = ExtResource("2_o7bhm")
+[sub_resource type="AtlasTexture" id="AtlasTexture_urkl1"]
+atlas = ExtResource("2_rwvmc")
 region = Rect2(32, 96, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_2iuxk"]
-atlas = ExtResource("2_o7bhm")
+[sub_resource type="AtlasTexture" id="AtlasTexture_7fnai"]
+atlas = ExtResource("2_rwvmc")
 region = Rect2(64, 96, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_kekw0"]
-atlas = ExtResource("2_o7bhm")
+[sub_resource type="AtlasTexture" id="AtlasTexture_umg65"]
+atlas = ExtResource("2_rwvmc")
 region = Rect2(96, 96, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_1gu7q"]
-atlas = ExtResource("2_o7bhm")
+[sub_resource type="AtlasTexture" id="AtlasTexture_pw5oo"]
+atlas = ExtResource("2_rwvmc")
 region = Rect2(0, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_hqmxw"]
-atlas = ExtResource("2_o7bhm")
+[sub_resource type="AtlasTexture" id="AtlasTexture_g1u40"]
+atlas = ExtResource("2_rwvmc")
 region = Rect2(32, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_w3gi6"]
-atlas = ExtResource("2_o7bhm")
+[sub_resource type="AtlasTexture" id="AtlasTexture_yq1ca"]
+atlas = ExtResource("2_rwvmc")
 region = Rect2(64, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_808ky"]
-atlas = ExtResource("2_o7bhm")
+[sub_resource type="AtlasTexture" id="AtlasTexture_23suw"]
+atlas = ExtResource("2_rwvmc")
 region = Rect2(96, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_gc08b"]
-atlas = ExtResource("2_o7bhm")
+[sub_resource type="AtlasTexture" id="AtlasTexture_l73ff"]
+atlas = ExtResource("2_rwvmc")
 region = Rect2(0, 32, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_mq776"]
-atlas = ExtResource("2_o7bhm")
+[sub_resource type="AtlasTexture" id="AtlasTexture_t1hfv"]
+atlas = ExtResource("2_rwvmc")
 region = Rect2(32, 32, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_d7ihy"]
-atlas = ExtResource("2_o7bhm")
+[sub_resource type="AtlasTexture" id="AtlasTexture_lfl0r"]
+atlas = ExtResource("2_rwvmc")
 region = Rect2(64, 32, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_grwg1"]
-atlas = ExtResource("2_o7bhm")
+[sub_resource type="AtlasTexture" id="AtlasTexture_wf8yd"]
+atlas = ExtResource("2_rwvmc")
 region = Rect2(96, 32, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_edt3d"]
-atlas = ExtResource("2_o7bhm")
+[sub_resource type="AtlasTexture" id="AtlasTexture_c4ux2"]
+atlas = ExtResource("2_rwvmc")
 region = Rect2(128, 32, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_1qnek"]
-atlas = ExtResource("2_o7bhm")
+[sub_resource type="AtlasTexture" id="AtlasTexture_e1p7e"]
+atlas = ExtResource("2_rwvmc")
 region = Rect2(160, 32, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_bbo72"]
-atlas = ExtResource("2_o7bhm")
+[sub_resource type="AtlasTexture" id="AtlasTexture_p5xbf"]
+atlas = ExtResource("2_rwvmc")
 region = Rect2(192, 32, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_1thk8"]
-atlas = ExtResource("2_o7bhm")
+[sub_resource type="AtlasTexture" id="AtlasTexture_g7jfo"]
+atlas = ExtResource("2_rwvmc")
 region = Rect2(224, 32, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_vusoy"]
-atlas = ExtResource("2_o7bhm")
+[sub_resource type="AtlasTexture" id="AtlasTexture_hho2m"]
+atlas = ExtResource("2_rwvmc")
 region = Rect2(0, 64, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_dqivv"]
-atlas = ExtResource("2_o7bhm")
+[sub_resource type="AtlasTexture" id="AtlasTexture_spjkv"]
+atlas = ExtResource("2_rwvmc")
 region = Rect2(32, 64, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_q1aga"]
-atlas = ExtResource("2_o7bhm")
+[sub_resource type="AtlasTexture" id="AtlasTexture_aja2t"]
+atlas = ExtResource("2_rwvmc")
 region = Rect2(64, 64, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_jmuce"]
-atlas = ExtResource("2_o7bhm")
+[sub_resource type="AtlasTexture" id="AtlasTexture_gpo63"]
+atlas = ExtResource("2_rwvmc")
 region = Rect2(96, 64, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_crcug"]
-atlas = ExtResource("2_o7bhm")
+[sub_resource type="AtlasTexture" id="AtlasTexture_aa3bc"]
+atlas = ExtResource("2_rwvmc")
 region = Rect2(128, 64, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_2u7ib"]
-atlas = ExtResource("2_o7bhm")
+[sub_resource type="AtlasTexture" id="AtlasTexture_gtt5d"]
+atlas = ExtResource("2_rwvmc")
 region = Rect2(160, 64, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_bkrd6"]
-atlas = ExtResource("2_o7bhm")
+[sub_resource type="AtlasTexture" id="AtlasTexture_1e48f"]
+atlas = ExtResource("2_rwvmc")
 region = Rect2(192, 64, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_vasdu"]
-atlas = ExtResource("2_o7bhm")
+[sub_resource type="AtlasTexture" id="AtlasTexture_di2mu"]
+atlas = ExtResource("2_rwvmc")
 region = Rect2(224, 64, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_bagim"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ni7c6")
+"texture": SubResource("AtlasTexture_kwite")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_awgrr")
+"texture": SubResource("AtlasTexture_urkl1")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_2iuxk")
+"texture": SubResource("AtlasTexture_7fnai")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_kekw0")
+"texture": SubResource("AtlasTexture_umg65")
 }],
-"loop": false,
+"loop": true,
 "name": &"die",
 "speed": 6.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_1gu7q")
+"texture": SubResource("AtlasTexture_pw5oo")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_hqmxw")
+"texture": SubResource("AtlasTexture_g1u40")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_w3gi6")
+"texture": SubResource("AtlasTexture_yq1ca")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_808ky")
+"texture": SubResource("AtlasTexture_23suw")
 }],
 "loop": true,
 "name": &"idle",
@@ -162,52 +162,52 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_gc08b")
+"texture": SubResource("AtlasTexture_l73ff")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_mq776")
+"texture": SubResource("AtlasTexture_t1hfv")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_d7ihy")
+"texture": SubResource("AtlasTexture_lfl0r")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_grwg1")
+"texture": SubResource("AtlasTexture_wf8yd")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_edt3d")
+"texture": SubResource("AtlasTexture_c4ux2")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_1qnek")
+"texture": SubResource("AtlasTexture_e1p7e")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_bbo72")
+"texture": SubResource("AtlasTexture_p5xbf")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_1thk8")
+"texture": SubResource("AtlasTexture_g7jfo")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_vusoy")
+"texture": SubResource("AtlasTexture_hho2m")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_dqivv")
+"texture": SubResource("AtlasTexture_spjkv")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_q1aga")
+"texture": SubResource("AtlasTexture_aja2t")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_jmuce")
+"texture": SubResource("AtlasTexture_gpo63")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_crcug")
+"texture": SubResource("AtlasTexture_aa3bc")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_2u7ib")
+"texture": SubResource("AtlasTexture_gtt5d")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_bkrd6")
+"texture": SubResource("AtlasTexture_1e48f")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_vasdu")
+"texture": SubResource("AtlasTexture_di2mu")
 }],
 "loop": true,
 "name": &"run_h",
@@ -221,19 +221,19 @@ radius = 2.23607
 size = Vector2(10, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fcydr"]
-atlas = ExtResource("25_djuaf")
+atlas = ExtResource("27_7n21k")
 region = Rect2(0, 0, 1, 9)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nvfro"]
-atlas = ExtResource("25_djuaf")
+atlas = ExtResource("27_7n21k")
 region = Rect2(1, 0, 1, 9)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fo2tu"]
-atlas = ExtResource("25_djuaf")
+atlas = ExtResource("27_7n21k")
 region = Rect2(2, 0, 1, 9)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5pred"]
-atlas = ExtResource("25_djuaf")
+atlas = ExtResource("27_7n21k")
 region = Rect2(3, 0, 1, 9)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_23xkh"]
@@ -266,73 +266,73 @@ process_priority = -100
 process_physics_priority = -100
 avoidance_enabled = true
 radius = 20.0
-script = ExtResource("1_4hpmu")
+script = ExtResource("1_f05u1")
 
 [node name="CharacterAnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -3)
 sprite_frames = SubResource("SpriteFrames_bagim")
 animation = &"die"
-script = ExtResource("3_krh50")
+script = ExtResource("3_5mgsi")
 
 [node name="HealthComponent" type="Node" parent="."]
-script = ExtResource("4_pkmu1")
+script = ExtResource("4_m8eia")
 
 [node name="MindTreeRoot" type="Node" parent="."]
-script = ExtResource("5_s05mi")
+script = ExtResource("5_ymlqc")
 process_thread = 0
 
 [node name="Selector" type="Node" parent="MindTreeRoot"]
-script = ExtResource("6_2djgr")
+script = ExtResource("6_udmf3")
 
 [node name="StopAtTheInneBorderOfWeaponRange" type="Node" parent="MindTreeRoot/Selector"]
-script = ExtResource("7_kajr8")
+script = ExtResource("7_qcw5w")
 
 [node name="TargetInRange" type="Node" parent="MindTreeRoot/Selector/StopAtTheInneBorderOfWeaponRange"]
-script = ExtResource("8_5g6no")
+script = ExtResource("8_ty7uw")
 reach_distance = 200
 
 [node name="HasLoS" type="Node" parent="MindTreeRoot/Selector/StopAtTheInneBorderOfWeaponRange"]
-script = ExtResource("9_d2ho8")
+script = ExtResource("9_m7d42")
 
 [node name="StopNavgation" type="Node" parent="MindTreeRoot/Selector/StopAtTheInneBorderOfWeaponRange"]
-script = ExtResource("10_7e6nc")
+script = ExtResource("10_k6ix7")
 
 [node name="Delayer" type="Node" parent="MindTreeRoot/Selector/StopAtTheInneBorderOfWeaponRange"]
-script = ExtResource("11_rc1s8")
+script = ExtResource("11_fffom")
 wait_time = 0.7
 
 [node name="AimCharge" type="Node" parent="MindTreeRoot/Selector/StopAtTheInneBorderOfWeaponRange/Delayer"]
-script = ExtResource("11_nxwbr")
+script = ExtResource("12_ry3go")
 
 [node name="AimWeapon" type="Node" parent="MindTreeRoot/Selector/StopAtTheInneBorderOfWeaponRange/Delayer/AimCharge" node_paths=PackedStringArray("weapon")]
-script = ExtResource("11_i52hv")
+script = ExtResource("13_8xlqn")
 weapon = NodePath("../../../../../../MobWeapon")
 
 [node name="ChargeTowardsTarget" type="Node" parent="MindTreeRoot/Selector/StopAtTheInneBorderOfWeaponRange/Delayer/AimCharge" node_paths=PackedStringArray("charge_animated_sprite")]
-script = ExtResource("12_uxjyi")
+script = ExtResource("14_3daj2")
 charge_animated_sprite = NodePath("../../../../../../WeaponChargeAnimation")
 
 [node name="AttackWithWeapon" type="Node" parent="MindTreeRoot/Selector/StopAtTheInneBorderOfWeaponRange" node_paths=PackedStringArray("weapon")]
-script = ExtResource("13_njirl")
+script = ExtResource("15_7ub7j")
 weapon = NodePath("../../../../MobWeapon")
 
 [node name="SelectAndWalktToTarget" type="Node" parent="MindTreeRoot/Selector"]
-script = ExtResource("7_kajr8")
+script = ExtResource("7_qcw5w")
 
 [node name="TargetOutOfRange" type="Node" parent="MindTreeRoot/Selector/SelectAndWalktToTarget"]
-script = ExtResource("13_mpjid")
+script = ExtResource("16_58k2w")
 
 [node name="TargetInRange" type="Node" parent="MindTreeRoot/Selector/SelectAndWalktToTarget/TargetOutOfRange"]
-script = ExtResource("8_5g6no")
+script = ExtResource("8_ty7uw")
 reach_distance = 250
 
 [node name="BlackboardSet" type="Node" parent="MindTreeRoot/Selector/SelectAndWalktToTarget"]
-script = ExtResource("15_5n0ec")
+script = ExtResource("17_m07ff")
 key = "\"target\""
 value = "actor.get_tree().get_nodes_in_group(\"players\").pick_random()"
 
 [node name="StartNavgationToTarget" type="Node" parent="MindTreeRoot/Selector/SelectAndWalktToTarget"]
-script = ExtResource("16_ahnxo")
+script = ExtResource("18_eed5s")
 move_speed = 80.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -340,40 +340,40 @@ position = Vector2(0, 7)
 shape = SubResource("CircleShape2D_gl22l")
 
 [node name="MobWeapon" type="Node2D" parent="."]
-script = ExtResource("17_cm10s")
+script = ExtResource("19_6hbn2")
 accuracy = null
 weapon_orbit_distance = null
 position_lerp_speed = null
-weapon_resource = ExtResource("20_0lluw")
+weapon_resource = ExtResource("20_0qlhk")
 
 [node name="WeaponOrbitPoint" type="Marker2D" parent="MobWeapon"]
 position = Vector2(0, 2)
 
 [node name="LootSpawner" type="Node2D" parent="."]
-script = ExtResource("19_wi4bj")
-loot_table = ExtResource("20_y3sdx")
+script = ExtResource("21_m5f5n")
+loot_table = ExtResource("22_mmwlf")
 item_spawn_chanse = 0.3
 spawn_attempts = 10
 
 [node name="HandleEnemeyDeath" type="Node" parent="."]
-script = ExtResource("21_qaerl")
+script = ExtResource("23_05ir7")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 position = Vector2(1, -3)
 color = Color(1, 0, 0.0352941, 1)
 energy = 0.4
-texture = ExtResource("22_6fl7y")
+texture = ExtResource("24_2jjnn")
 texture_scale = 0.05
 
 [node name="ParentMoveAndSlide" type="Node" parent="."]
 process_physics_priority = 10
-script = ExtResource("23_w7jfr")
+script = ExtResource("25_0jmtg")
 
 [node name="Hurtbox" type="Area2D" parent="."]
 position = Vector2(0, -1)
 collision_layer = 128
 collision_mask = 0
-script = ExtResource("24_f7ca2")
+script = ExtResource("26_pv7i4")
 is_invulnerable = null
 armor = null
 
