@@ -9,7 +9,7 @@ extends Node
 
 @onready var sound_paths: Dictionary = { 
 	"hover": preload("res://assets/Sound/UI/UI_btn_hover.ogg"),
-	"click": preload("res://assets/Sound/UI/UI_btn_hover.ogg")
+	"click": preload("res://assets/Sound/UI/UI_btn_click.ogg")
 }
 
 
@@ -31,7 +31,7 @@ func init_sounds(node: Node) -> void:
 	for child in node.get_children():
 		if child is Button:
 			child.mouse_entered.connect(play_sfx.bind("UI_btn_hover"))
-			#child.focus_exited.connect(play_sfx.bind("UI_btn_hover"))
+			child.button_down.connect(play_sfx.bind("UI_btn_click"))
 			
 		# recursion
 		init_sounds(child)

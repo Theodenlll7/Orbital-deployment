@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://cffw36sg62gs0"]
+[gd_scene load_steps=9 format=3 uid="uid://cffw36sg62gs0"]
 
 [ext_resource type="FontFile" uid="uid://dkg32o3qfh2n7" path="res://assets/Fonts/pixelmix.ttf" id="1_pcg1f"]
 [ext_resource type="Script" path="res://ui/pause_menu/pause_in_game.gd" id="1_q0268"]
 [ext_resource type="PackedScene" uid="uid://bkr08nyqjnpg5" path="res://ui/main_menu/options_menu.tscn" id="3_huiwn"]
+[ext_resource type="PackedScene" uid="uid://ck8goydb0ke1" path="res://assets/Sound/UISounds.tscn" id="4_746cj"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hsoft"]
 bg_color = Color(0.6, 0.6, 0.6, 0.333333)
@@ -163,3 +164,6 @@ text = "Quit level"
 
 [node name="options_menu" parent="." instance=ExtResource("3_huiwn")]
 layout_mode = 1
+
+[node name="UiSounds" parent="." instance=ExtResource("4_746cj")]
+root_path = NodePath("..")

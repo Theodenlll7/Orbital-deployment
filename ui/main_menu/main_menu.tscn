@@ -367,5 +367,5 @@ libraries = {
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_pbfcc")
 
-[node name="UiSounds" parent="." instance=ExtResource("12_ul0e8")]
+[node name="UISounds" parent="." instance=ExtResource("12_ul0e8")]
 root_path = NodePath("..")
