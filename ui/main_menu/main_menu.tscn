@@ -373,3 +373,5 @@ environment = SubResource("Environment_pbfcc")
 
 [node name="UISounds" parent="." instance=ExtResource("12_ul0e8")]
 root_path = NodePath("..")
+
+[node name="MainMenuMusicAudioStreamPlayer" type="AudioStreamPlayer" parent="."]

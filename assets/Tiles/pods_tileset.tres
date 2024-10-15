@@ -1,7 +1,5 @@
 [gd_resource type="TileSet" load_steps=7 format=3 uid="uid://bsx0avqdj3afs"]
 
-[ext_resource type="Texture2D" uid="uid://cd5bkn3b6t5f8" path="res://assets/Tiles/tilemap_pods.png" id="1_vq7ro"]
-
 [sub_resource type="TileMapPattern" id="TileMapPattern_x46yb"]
 tile_data = PackedInt32Array(65536, 1, 1, 1, 196609, 0, 65537, 196609, 1)
 
@@ -14,12 +12,15 @@ polygon = PackedVector2Array(-6, -2, 6, -2, 6, 6, -6, 6)
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_pxt6l"]
 polygon = PackedVector2Array(-6, -2, 6, -2, 6, 6, -6, 6)
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_vvaee"]
+load_path = "res://.godot/imported/tilemap_pods.png-3bdfde3b4bf4001d0c8bf8d40a5736a4.ctex"
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_q8pm5"]
-texture = ExtResource("1_vq7ro")
+texture = SubResource("CompressedTexture2D_vvaee")
 0:1/0 = 0
-0:1/0/y_sort_origin = -8
+0:1/0/y_sort_origin = 8
 1:1/0 = 0
-1:1/0/y_sort_origin = -8
+1:1/0/y_sort_origin = 8
 2:0/size_in_atlas = Vector2i(1, 2)
 2:0/0 = 0
 2:0/0/texture_origin = Vector2i(0, 8)

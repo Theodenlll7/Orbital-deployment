@@ -21,6 +21,8 @@ const DOUBLE_SKILL: String = "res://ui/main_menu/skill_tree_assets/double_skill.
 @onready var tooltip_header: Label = $Tooltip/Panel/MarginContainer/VBoxContainer/Header
 @onready var tooltip_description: RichTextLabel = $Tooltip/Panel/MarginContainer/VBoxContainer/Description
 
+const SKILL_ACTIVE = preload("res://assets/Sound/UI/skill_active.ogg")
+
 var fade_time: float = 0.1
 var player_level: int = 0
 
@@ -106,12 +108,22 @@ func reactivate_all_skills_in_column(skill_id_a: String) -> void:
 			
 
 func on_skill_activated(skill_id: String) -> void:
+	var player = AudioStreamPlayer.new()
+	player.stream = SKILL_ACTIVE
+	player.bus = "UI"
+	
+	add_child(player)
+	
+	player.play()
+	player.connect("finished", Callable(player, "queue_free"))
+	
 	var id_parts = skill_id.split("_")
 	var id_a = id_parts[0]
 	var id_b = id_parts[1]
 	
 	deactivate_skill_button.disabled = false
-
+	activate_skill_button.disabled = true
+	
 	var nr_of_skills_in_column: int = skill_layout[id_a]["skill"].size()
 	if nr_of_skills_in_column > 1:
 		deactivate_all_skills_in_column(id_a)
@@ -139,6 +151,7 @@ func deactivate_skill(skill_id: String) -> void:
 	reactivate_all_skills_in_column(id_a)
 	skill["active"] = false
 	deactivate_skill_button.disabled = true
+	activate_skill_button.disabled = false
 	init_skill_tree()
 
 func show_skill_information(skill_id: String) -> void:
@@ -149,6 +162,8 @@ func show_skill_information(skill_id: String) -> void:
 	var new_skill = skill_layout[id_a]["skill"][id_b]
 	
 	deactivate_skill_button.disabled = !new_skill["active"]
+	activate_skill_button.disabled = new_skill["active"]
+
 	
 	popup_header.text = str(new_skill["name"])
 	

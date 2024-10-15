@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="ProjectileWeaponResource" load_steps=5 format=3 uid="uid://cm5am7x8d6kav"]
 
-[ext_resource type="AudioStream" uid="uid://bx0erxmcc8tb2" path="res://inventory/items/weapons/assets/audio/gun_fire2.mp3" id="1_4ltvm"]
+[ext_resource type="AudioStream" uid="uid://cnfk4pqkjrvok" path="res://inventory/items/weapons/assets/audio/gun.ogg" id="1_xy6cm"]
 [ext_resource type="PackedScene" uid="uid://b1ahksg20mxej" path="res://inventory/items/weapons/projectiles/basic_projectile.tscn" id="2_joyfi"]
 [ext_resource type="Script" path="res://inventory/items/weapons/scripts/projectile_weapon_resource.gd" id="3_7q36s"]
 [ext_resource type="Texture2D" uid="uid://cl5qwpevj30pp" path="res://inventory/items/weapons/assets/sprites/HMG32.png" id="4_8qkk7"]
@@ -11,7 +11,7 @@ projectile_scene = ExtResource("2_joyfi")
 item_name = &"HMG 32"
 cost = 100
 muzzel_offset = Vector2(8, 0)
-audio_steam = ExtResource("1_4ltvm")
+audio_steam = ExtResource("1_xy6cm")
 attack_mode = 1
 attack_cooldown = 0.2
 weapon_accessibility_player_level = 2

@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://d146je42kx5wl" path="res://maps/objects/chest/chest.png" id="2_2v3e0"]
 [ext_resource type="Script" path="res://common/interaction/Interactionarea/Interactionarea.gd" id="3_lomhk"]
 
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_401qq"]
 radius = 12.0416
 

@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bgk1v3n2o3dgv" path="res://inventory/items/weapons/assets/sprites/enemy_bullet.png" id="2_aoorw"]
 [ext_resource type="Script" path="res://common/components/hitbox.gd" id="3_5g32d"]
 
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_cg7db"]
 radius = 3.0
 

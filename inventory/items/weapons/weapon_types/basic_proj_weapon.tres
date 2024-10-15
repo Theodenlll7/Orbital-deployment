@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="ProjectileWeaponResource" load_steps=5 format=3 uid="uid://rykg887uq1sm"]
 
 [ext_resource type="PackedScene" uid="uid://b1ahksg20mxej" path="res://inventory/items/weapons/projectiles/basic_projectile.tscn" id="1_6hahn"]
-[ext_resource type="AudioStream" uid="uid://bswtowqo0jjtx" path="res://inventory/items/weapons/assets/audio/gun_fire.mp3" id="1_b0ttv"]
+[ext_resource type="AudioStream" uid="uid://cnfk4pqkjrvok" path="res://inventory/items/weapons/assets/audio/gun.ogg" id="1_80qxq"]
 [ext_resource type="Script" path="res://inventory/items/weapons/scripts/projectile_weapon_resource.gd" id="1_dtgsb"]
 [ext_resource type="Texture2D" uid="uid://c5c84xutfwu1y" path="res://inventory/items/weapons/assets/sprites/pistol.png" id="4_avs3j"]
 
@@ -11,7 +11,7 @@ projectile_scene = ExtResource("1_6hahn")
 item_name = &"HG MARK I"
 cost = 100
 muzzel_offset = Vector2(0, -2)
-audio_steam = ExtResource("1_b0ttv")
+audio_steam = ExtResource("1_80qxq")
 attack_mode = 0
 attack_cooldown = 0.2
 weapon_accessibility_player_level = 1

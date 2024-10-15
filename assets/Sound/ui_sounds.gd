@@ -32,7 +32,11 @@ func init_sounds(node: Node) -> void:
 		if child is Button:
 			child.mouse_entered.connect(play_sfx.bind("UI_btn_hover"))
 			child.button_down.connect(play_sfx.bind("UI_btn_click"))
-			
+		if child is TabContainer:
+			child.tab_button_pressed.connect(play_sfx.bind("UI_btn_click"))
+		if child is TextureButton:
+			child.mouse_entered.connect(play_sfx.bind("UI_btn_hover"))
+			child.button_down.connect(play_sfx.bind("UI_btn_click"))
 		# recursion
 		init_sounds(child)
 

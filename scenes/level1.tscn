@@ -14,7 +14,8 @@
 [ext_resource type="Texture2D" uid="uid://bsjfhwk5erona" path="res://assets/TextureIcons/gun_arrow.png" id="9_7mvpw"]
 [ext_resource type="Texture2D" uid="uid://cxvra6n76180k" path="res://assets/TextureIcons/grenade_arrow.png" id="13_co0e7"]
 [ext_resource type="PackedScene" uid="uid://m724oqngam6i" path="res://maps/objects/pods/expl_pod.tscn" id="13_h2npq"]
-[ext_resource type="PackedScene" uid="uid://boa23xke4oiwg" path="res://enemies/mobs/sniper.tscn" id="14_xdfnt"]
+[ext_resource type="PackedScene" uid="uid://boa23xke4oiwg" path="res://enemies/mobs/watcher.tscn" id="14_xdfnt"]
+
 
 [node name="Level1" type="Node2D"]
 y_sort_enabled = true

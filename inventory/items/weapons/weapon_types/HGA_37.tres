@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="ProjectileWeaponResource" load_steps=5 format=3 uid="uid://bepb4en344yi7"]
 
-[ext_resource type="AudioStream" uid="uid://bx0erxmcc8tb2" path="res://inventory/items/weapons/assets/audio/gun_fire2.mp3" id="1_ynek5"]
+[ext_resource type="AudioStream" uid="uid://cnfk4pqkjrvok" path="res://inventory/items/weapons/assets/audio/gun.ogg" id="1_cy4rs"]
 [ext_resource type="PackedScene" uid="uid://b1ahksg20mxej" path="res://inventory/items/weapons/projectiles/basic_projectile.tscn" id="2_5grn5"]
 [ext_resource type="Script" path="res://inventory/items/weapons/scripts/projectile_weapon_resource.gd" id="3_cxbmr"]
 [ext_resource type="Texture2D" uid="uid://clw2afc3cc5dj" path="res://inventory/items/weapons/assets/sprites/HGA_37.png" id="4_enuwr"]
@@ -11,7 +11,7 @@ projectile_scene = ExtResource("2_5grn5")
 item_name = &"HGA 37"
 cost = 125
 muzzel_offset = Vector2(8, -2)
-audio_steam = ExtResource("1_ynek5")
+audio_steam = ExtResource("1_cy4rs")
 attack_mode = 1
 attack_cooldown = 0.01
 weapon_accessibility_player_level = 5

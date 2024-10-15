@@ -341,9 +341,6 @@ shape = SubResource("CircleShape2D_gl22l")
 
 [node name="MobWeapon" type="Node2D" parent="."]
 script = ExtResource("19_6hbn2")
-accuracy = null
-weapon_orbit_distance = null
-position_lerp_speed = null
 weapon_resource = ExtResource("20_0qlhk")
 
 [node name="WeaponOrbitPoint" type="Marker2D" parent="MobWeapon"]

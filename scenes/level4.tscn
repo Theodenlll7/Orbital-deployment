@@ -6,13 +6,14 @@
 [ext_resource type="PackedScene" uid="uid://kua7fs588s48" path="res://enemies/mobs/ranger.tscn" id="4_oxfh3"]
 [ext_resource type="PackedScene" uid="uid://dsuabe2igmqvf" path="res://enemies/mobs/assult.tscn" id="5_3r45n"]
 [ext_resource type="Script" path="res://enemies/waves/custom_wave.gd" id="6_dmvjh"]
-[ext_resource type="PackedScene" uid="uid://boa23xke4oiwg" path="res://enemies/mobs/sniper.tscn" id="6_kmlh2"]
+[ext_resource type="PackedScene" uid="uid://boa23xke4oiwg" path="res://enemies/mobs/watcher.tscn" id="6_kmlh2"]
 [ext_resource type="Resource" uid="uid://dq8owb3cs3n3" path="res://enemies/waves/wave10.tres" id="7_57sp4"]
 [ext_resource type="PackedScene" uid="uid://inymqhajqaf7" path="res://ui/in_game/mission_start_text.tscn" id="8_7pocc"]
 [ext_resource type="PackedScene" uid="uid://6vt8l263l0o7" path="res://player/player.tscn" id="9_raoxf"]
 [ext_resource type="PackedScene" uid="uid://fwtaakyb0exx" path="res://maps/objects/pods/weapon_pod.tscn" id="10_1daey"]
 [ext_resource type="Script" path="res://common/arrow_indicators/ArrowIndicator.gd" id="11_a2otf"]
 [ext_resource type="Texture2D" uid="uid://bsjfhwk5erona" path="res://assets/TextureIcons/gun_arrow.png" id="12_u4wn8"]
+
 
 [node name="Level4" type="Node2D"]
 y_sort_enabled = true

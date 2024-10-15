@@ -24,6 +24,8 @@ const ASTROID_PASS = preload("res://assets/Sound/UI/astroid_pass.ogg")
 const LOAD_LEVEL = preload("res://ui/main_menu/loading_level.tscn")
 var ship_start_position: Vector2
 
+@onready var main_menu_music_audio_stream_player: AudioStreamPlayer = $MainMenuMusicAudioStreamPlayer
+const MAIN_MENU_MUSIC = preload("res://assets/Sound/UI/main_menu_music.ogg")
 
 func _ready() -> void:
 	handle_connecting_signals()
@@ -33,6 +35,10 @@ func _ready() -> void:
 	TooltipHud.init_vars()
 	audio_stream_player_astroids.stream = ASTROID_PASS
 	audio_stream_player_astroids.bus = "Transition"
+	main_menu_music_audio_stream_player.stream = MAIN_MENU_MUSIC
+	main_menu_music_audio_stream_player.bus = "Music"
+	main_menu_music_audio_stream_player.stream.loop = true
+	main_menu_music_audio_stream_player.play()
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_cancel") and target_menu != main_menu:

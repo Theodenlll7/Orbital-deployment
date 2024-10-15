@@ -25,6 +25,7 @@
 [ext_resource type="Script" path="res://enemies/scripts/parent_move_and_slide.gd" id="21_2i7xj"]
 [ext_resource type="Script" path="res://common/components/hurtbox.gd" id="24_pnmy5"]
 
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_ni7c6"]
 atlas = ExtResource("1_pe8ap")
 region = Rect2(0, 96, 32, 32)

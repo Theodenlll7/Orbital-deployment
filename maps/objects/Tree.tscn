@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://common/interaction/Interactionarea/Interactionarea.gd" id="1_kkht2"]
 [ext_resource type="Texture2D" uid="uid://ccoe78uc8jt31" path="res://assets/icon.svg" id="2_varjc"]
 
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1gab2"]
 size = Vector2(74, 88)
 

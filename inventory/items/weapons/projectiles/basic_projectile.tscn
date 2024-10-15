@@ -41,5 +41,3 @@ script = ExtResource("3_l0khu")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 scale = Vector2(0.09, 0.09)
 shape = SubResource("RectangleShape2D_mhcno")
-
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]

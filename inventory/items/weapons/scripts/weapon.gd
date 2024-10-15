@@ -24,10 +24,6 @@ func _ready() -> void:
 	sprite.texture = weapon_resource.texture
 	add_child(sprite)
 
-	audio_player = AudioStreamPlayer.new()
-	audio_player.stream = weapon_resource.audio_steam
-	add_child(audio_player)
-
 	add_child(cooldown_timer)
 	cooldown_timer.wait_time = weapon_resource.attack_cooldown
 	cooldown_timer.timeout.connect(_on_cooldown_timeout)
@@ -40,9 +36,16 @@ var reload_time = 0
 
 func attack() -> void:
 	weapon_resource.attack(self)
-	audio_player.play()
 	cooldown_timer.start()
 	can_attack = false
+	
+	audio_player = AudioStreamPlayer.new()
+	audio_player.stream = weapon_resource.audio_steam
+	audio_player.bus = "Wepon"
+	add_child(audio_player)
+
+	audio_player.play()
+	audio_player.connect("finished", Callable(audio_player, "queue_free"))
 
 
 func get_bullet_damage() -> int:
