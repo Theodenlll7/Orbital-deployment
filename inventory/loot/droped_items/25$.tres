@@ -9,4 +9,3 @@ money_amount = 125
 drop_type = 0
 texture = ExtResource("2_1wm7v")
 drop_weight = 400
-test = Callable()

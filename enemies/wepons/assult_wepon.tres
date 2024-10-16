@@ -30,4 +30,3 @@ ammo_crate_value = 50
 drop_type = 0
 texture = ExtResource("4_jmveh")
 drop_weight = 100
-test = Callable()

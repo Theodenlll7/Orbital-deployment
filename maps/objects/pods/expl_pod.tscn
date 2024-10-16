@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://maps/objects/pods/scripts/pod.gd" id="1_nafvi"]
 [ext_resource type="Script" path="res://common/interaction/Interactionarea/Interactionarea.gd" id="2_k3npk"]
-[ext_resource type="TileSet" uid="uid://bsx0avqdj3afs" path="res://assets/Tiles/pods_tileset.tres" id="4_lf2bj"]
+[ext_resource type="TileSet" uid="uid://cm6ruv57grjxt" path="res://assets/Tiles/obsticles_tilsets.tres" id="4_5ijqi"]
 [ext_resource type="PackedScene" uid="uid://cc25in05338v8" path="res://maps/objects/pods/store_ui.tscn" id="4_wol54"]
 [ext_resource type="Texture2D" uid="uid://dcgcly83hxan6" path="res://player/assets/textures/light.png" id="5_r5fr7"]
 
@@ -32,8 +32,8 @@ z_index = 3
 y_sort_enabled = true
 position = Vector2(-18, 2)
 scale = Vector2(1.72917, 1.34375)
-tile_map_data = PackedByteArray(0, 0, 255, 255, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 254, 255, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0)
-tile_set = ExtResource("4_lf2bj")
+tile_map_data = PackedByteArray(0, 0, 255, 255, 0, 0, 0, 0, 5, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 0, 0, 0, 0, 0)
+tile_set = ExtResource("4_5ijqi")
 
 [node name="Node2D" type="Node2D" parent="PodTileMapActive"]
 position = Vector2(-2.02409, -1.86047)
