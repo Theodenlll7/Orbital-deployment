@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=3 uid="uid://boa23xke4oiwg"]
+[gd_scene load_steps=61 format=3 uid="uid://boa23xke4oiwg"]
 
 [ext_resource type="Script" path="res://common/components/navigator2d.gd" id="1_f05u1"]
 [ext_resource type="Texture2D" uid="uid://bgv3sav6h5h14" path="res://enemies/assets/textures/watcher.png" id="2_rwvmc"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" path="res://enemies/mind_tree_components/conditions/target_in_range.gd.gd" id="8_ty7uw"]
 [ext_resource type="Script" path="res://enemies/mind_tree_components/actions/has_los.gd" id="9_m7d42"]
 [ext_resource type="Script" path="res://enemies/mind_tree_components/actions/stop_navigation.gd" id="10_k6ix7"]
+[ext_resource type="Script" path="res://enemies/mind_tree_components/actions/action_alert.gd" id="11_avdil"]
 [ext_resource type="Script" path="res://addons/tree_mind/nodes/decorators/delayer.gd" id="11_fffom"]
 [ext_resource type="Script" path="res://addons/tree_mind/nodes/composites/repeting_sequence.gd" id="12_ry3go"]
 [ext_resource type="Script" path="res://enemies/mind_tree_components/actions/aim_weapon.gd" id="13_8xlqn"]
@@ -296,6 +297,9 @@ script = ExtResource("9_m7d42")
 
 [node name="StopNavgation" type="Node" parent="MindTreeRoot/Selector/StopAtTheInneBorderOfWeaponRange"]
 script = ExtResource("10_k6ix7")
+
+[node name="ActionAlert" type="Node" parent="MindTreeRoot/Selector/StopAtTheInneBorderOfWeaponRange"]
+script = ExtResource("11_avdil")
 
 [node name="Delayer" type="Node" parent="MindTreeRoot/Selector/StopAtTheInneBorderOfWeaponRange"]
 script = ExtResource("11_fffom")
