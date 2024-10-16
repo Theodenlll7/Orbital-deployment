@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="ProjectileWeaponResource" load_steps=5 format=3 uid="uid://c0dk306ncnke"]
 
-[ext_resource type="AudioStream" uid="uid://bx0erxmcc8tb2" path="res://inventory/items/weapons/assets/audio/gun_fire2.mp3" id="1_iwdrh"]
+[ext_resource type="AudioStream" uid="uid://bkwoqms25s1bp" path="res://inventory/items/weapons/assets/audio/laser_gun.ogg" id="1_cj5hq"]
 [ext_resource type="PackedScene" uid="uid://delp5066b08hb" path="res://enemies/wepons/projectiles/basic_enemy_projectile.tscn" id="2_8cuuw"]
 [ext_resource type="Script" path="res://inventory/items/weapons/scripts/projectile_weapon_resource.gd" id="3_c1mnf"]
 [ext_resource type="Texture2D" uid="uid://e5d1n0bf7l7l" path="res://inventory/items/weapons/assets/sprites/ASSULT_SR.png" id="4_jmveh"]
@@ -11,7 +11,7 @@ projectile_scene = ExtResource("2_8cuuw")
 item_name = &"Weapon"
 cost = 0
 muzzel_offset = Vector2(0, 0)
-audio_steam = ExtResource("1_iwdrh")
+audio_steam = ExtResource("1_cj5hq")
 attack_mode = 0
 attack_cooldown = 0.8
 weapon_accessibility_player_level = 1

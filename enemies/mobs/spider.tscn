@@ -19,7 +19,6 @@
 [ext_resource type="Resource" uid="uid://j1muyacfwphe" path="res://inventory/loot/spider_loot_table.tres" id="17_3fygd"]
 [ext_resource type="Script" path="res://common/components/hurtbox.gd" id="18_b4vkg"]
 
-
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_oqobr"]
 light_mode = 1
 
@@ -376,7 +375,6 @@ script = ExtResource("10_ad8k3")
 
 [node name="BullChargeAttack" type="Node" parent="MindTreeRoot/Selector/ChargeAttack"]
 script = ExtResource("11_1oqij")
-charge_speed = 220.0
 charge_duration = 0.4
 windup_time = 0.8
 
@@ -390,7 +388,7 @@ value = "actor.get_tree().get_nodes_in_group(\"players\").pick_random()"
 
 [node name="StartNavgationToTarget" type="Node" parent="MindTreeRoot/Selector/SelectAndWalktToTarget"]
 script = ExtResource("15_q7nvy")
-move_speed = 140.0
+move_speed = 145.0
 
 [node name="ParentMoveAndSlide" type="Node" parent="."]
 script = ExtResource("15_eh0ey")

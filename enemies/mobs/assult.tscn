@@ -208,7 +208,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"run_h",
-"speed": 5.0
+"speed": 7.5
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_nd7u1"]
@@ -231,7 +231,7 @@ script = ExtResource("1_alrx4")
 [node name="CharacterAnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0.300001, -11.7)
 sprite_frames = SubResource("SpriteFrames_bagim")
-animation = &"die"
+animation = &"run_h"
 script = ExtResource("3_1pf4o")
 
 [node name="HealthComponent" type="Node" parent="."]
@@ -249,7 +249,7 @@ script = ExtResource("7_jlj26")
 
 [node name="TargetInRange" type="Node" parent="MindTreeRoot/Selector/StopAtTheInneBorderOfWeaponRange"]
 script = ExtResource("8_ihojf")
-reach_distance = 50
+reach_distance = 40
 
 [node name="HasLoS" type="Node" parent="MindTreeRoot/Selector/StopAtTheInneBorderOfWeaponRange"]
 script = ExtResource("9_53l6g")
@@ -271,7 +271,7 @@ script = ExtResource("11_s2yth")
 
 [node name="TargetInRange" type="Node" parent="MindTreeRoot/Selector/SelectAndWalktToTarget/AnySuccess/TargetOutOfRange"]
 script = ExtResource("8_ihojf")
-reach_distance = 50
+reach_distance = 40
 
 [node name="NoLoS" type="Node" parent="MindTreeRoot/Selector/SelectAndWalktToTarget/AnySuccess"]
 script = ExtResource("11_s2yth")
@@ -289,7 +289,7 @@ value = "actor.get_tree().get_nodes_in_group(\"players\").pick_random()"
 
 [node name="StartNavgationToTarget" type="Node" parent="MindTreeRoot/Selector/SelectAndWalktToTarget"]
 script = ExtResource("14_dtibg")
-move_speed = 80.0
+move_speed = 120.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.300001, -2.7)
