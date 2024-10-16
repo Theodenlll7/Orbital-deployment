@@ -1,14 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://b1ahksg20mxej"]
+[gd_scene load_steps=4 format=3 uid="uid://b1ahksg20mxej"]
 
 [ext_resource type="Script" path="res://inventory/items/weapons/projectiles/projectile_2d.gd" id="1_xdkvq"]
 [ext_resource type="Texture2D" uid="uid://b5303f7vfendw" path="res://inventory/items/weapons/projectiles/sprites/bullet.png" id="2_bl6gy"]
-[ext_resource type="Script" path="res://common/components/hitbox.gd" id="3_l0khu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ifh57"]
 size = Vector2(7.975, 3.327)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_mhcno"]
-size = Vector2(66.6667, 66.6667)
 
 [node name="BasicProjectile" type="RigidBody2D"]
 z_index = 4
@@ -32,12 +28,3 @@ texture = ExtResource("2_bl6gy")
 position = Vector2(0, 3.57628e-08)
 scale = Vector2(0.3, 0.3)
 shape = SubResource("RectangleShape2D_ifh57")
-
-[node name="Hitbox" type="Area2D" parent="."]
-collision_layer = 4
-collision_mask = 128
-script = ExtResource("3_l0khu")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
-scale = Vector2(0.09, 0.09)
-shape = SubResource("RectangleShape2D_mhcno")

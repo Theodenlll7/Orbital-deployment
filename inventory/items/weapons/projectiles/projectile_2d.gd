@@ -7,16 +7,14 @@ class_name Projectile2D
 
 var direction: Vector2
 
+@export var hit_collision_mask : int = 128
+
 @onready var last_position : Vector2 = global_position
 
 func _ready() -> void:
 	set_contact_monitor(true)
 	set_max_contacts_reported(1)
 	body_entered.connect(_on_body_entered)
-
-	if $Hitbox:
-		$Hitbox.damage = damage
-		$Hitbox.hit.connect(_on_body_entered)
 
 	await get_tree().create_timer(lifetime).timeout
 	queue_free()
@@ -33,7 +31,7 @@ func ray_cast_to_current_position() -> void:
 	var space_state = get_world_2d().direct_space_state
 
 	var query = PhysicsRayQueryParameters2D.create(
-		global_position, last_position, collision_mask, [self]
+		global_position, last_position, hit_collision_mask, [self]
 	)
 	query.collide_with_areas = true
 	query.collide_with_bodies = false
