@@ -1,10 +1,9 @@
-[gd_resource type="Resource" script_class="ThrowableExplosiveResource" load_steps=7 format=3 uid="uid://dw13wgg7th4k3"]
+[gd_resource type="Resource" script_class="ThrowableExplosiveResource" load_steps=6 format=3 uid="uid://dw13wgg7th4k3"]
 
 [ext_resource type="PackedScene" uid="uid://yob22fwt8ode" path="res://inventory/items/explosives/grenades/basic_grenade.tscn" id="1_5n057"]
 [ext_resource type="AudioStream" uid="uid://bna2iogcabulc" path="res://inventory/items/explosives/assets/audio/star-wars-seismic-charge.mp3" id="1_dtxth"]
 [ext_resource type="Script" path="res://inventory/items/explosives/scripts/grenade_proj_resource.gd" id="2_hxfa2"]
 [ext_resource type="AudioStream" uid="uid://d324ebeg1mwuj" path="res://inventory/items/explosives/assets/audio/bomb-dropping-101151.mp3" id="2_uiglq"]
-[ext_resource type="PackedScene" uid="uid://cruxtuhj25kr6" path="res://inventory/items/explosives/grenades/sesmic_bomb_grenade.tscn" id="4_exqa0"]
 [ext_resource type="Texture2D" uid="uid://b58sxmu0csydj" path="res://inventory/items/explosives/assets/sprites/vecteezy_pixel-art-bomb-dynamite(1).png" id="5_s0d03"]
 
 [resource]
@@ -12,16 +11,18 @@ script = ExtResource("2_hxfa2")
 explosive_grenade = ExtResource("1_5n057")
 item_name = &"Sesmic Bomb"
 cost = 150
-texture = ExtResource("5_s0d03")
-throw_offset = Vector2(0, 0)
 audio_stream_throw = ExtResource("2_uiglq")
 audio_stream_explode = ExtResource("1_dtxth")
 throw_speed = 30.0
-muzzel_offset = Vector2(0, 0)
+throw_cooldown = 0.5
 grenade_weight = 0.2
 explosion_damage = 1000
 explosion_radius = 200.0
+exposion_collision_mask = 129
 fuse_time = 5.0
 has_explosive_quantity = true
 explosive_count = 10
-grenade_scene = ExtResource("4_exqa0")
+weapon_accessibility_player_level = 0
+drop_type = 0
+texture = ExtResource("5_s0d03")
+drop_weight = 100

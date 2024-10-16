@@ -14,6 +14,7 @@ func _ready() -> void:
 	in_between_waves_audio_stream_player_2d_2.bus = "Music"
 
 	ongoing_wave_audio_stream_player_2d.stream = FIRST_ONGOING_WAVE_MUSIC
+	ongoing_wave_audio_stream_player_2d.stream.loop = true
 	ongoing_wave_audio_stream_player_2d.play()
 	wave_manager.end_of_wave.connect(play_between_waves)
 	wave_manager.new_wave_started.connect(play_ongoing_wave)
@@ -21,12 +22,14 @@ func _ready() -> void:
 func play_ongoing_wave(wave: int) -> void:
 	if wave == 1: return
 	ongoing_wave_audio_stream_player_2d.stream = ONGOING_WAVE_MUSIC
+	ongoing_wave_audio_stream_player_2d.stream.loop = true
 	ongoing_wave_audio_stream_player_2d.play()
 	in_between_waves_audio_stream_player_2d_2.stop()
 
 	
 func play_between_waves(_time_until_next_wave: float) -> void:
 	in_between_waves_audio_stream_player_2d_2.stream = BETWEEN_WAVES
+	in_between_waves_audio_stream_player_2d_2.stream.loop = true
 	in_between_waves_audio_stream_player_2d_2.play()
 	ongoing_wave_audio_stream_player_2d.stop()
 	

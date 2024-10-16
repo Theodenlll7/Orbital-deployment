@@ -7,7 +7,7 @@
 [resource]
 script = ExtResource("3_vqdyc")
 projectile_scene = ExtResource("2_4smc3")
-item_name = &"MR S5"
+item_name = &"M Rifle S5"
 cost = 100
 muzzel_offset = Vector2(0, 0)
 attack_mode = 0
@@ -28,4 +28,3 @@ ammo_crate_value = 20
 drop_type = 0
 texture = ExtResource("4_558er")
 drop_weight = 100
-test = Callable()

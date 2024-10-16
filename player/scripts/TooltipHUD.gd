@@ -30,21 +30,21 @@ func show_wepon_tip() -> void:
 	second_weapon_bought = true
 	
 	var swap_wepon_key: String = get_key("swap_weapon") 
-	var text: String = "Ready to unleash chaos? Press [color=green]" + swap_wepon_key + "[/color] to swap to your brand-new weapon and feel the power surge through your hands."
+	var text: String = "Ready to unleash chaos? Press [color=green]" + swap_wepon_key + "[/color] to swap to your brand-new weapon."
 	set_tooltip_HUD_text(text)
 	
 func show_dodge_tip() -> void:
 	if !first_time_damage: return
 	first_time_damage = false
 	var dodge_key: String = get_key("dodge") 
-	var text = "Ouch! You've been hit! Quick, press [color=green]" + dodge_key + "[/color] to dodge and weave out of your enemies' clutches. Stay nimble, stay alive!"
+	var text = "You've been hit! Quick, press [color=green]" + dodge_key + "[/color] to dodge and weave out of your enemies' clutches!"
 	set_tooltip_HUD_text(text)
 
 func show_diffrent_wepons_tips() -> void:
 	if !second_weapon_bought: return
 	second_weapon_bought = false
 	
-	var text = "Heavy-duty firepower! Snipers for precision, shotguns for close blasts, and assault rifles for all-around mayhem. Pick your weapon, rule the fight!"
+	var text = "Heavy-duty firepower! A variety of weapon, choose the right one for the job!"
 	set_tooltip_HUD_text(text)
 
 func show_explosive_tip() -> void:
@@ -52,12 +52,12 @@ func show_explosive_tip() -> void:
 	first_time_purchase_of_explosive = false
 	
 	var swap_wepon_key: String = get_key("throw_action") 
-	var text: String = "Ready to wreak havoc? Press [color=green]" +  swap_wepon_key + "[/color] to toss a grenade and watch the chaos unfold!"
+	var text: String = "Ready to wreak havoc? Press [color=green]" +  swap_wepon_key + "[/color] to toss a grenade!"
 	set_tooltip_HUD_text(text)
 	pass
 
 func show_first_wave_over_tip() -> void:
-	var text: String = "Wave over! Catch your breath and gear up for the next round! If you've got some credits [color=green]$[/color], now's the time to spend them!"
+	var text: String = "Wave over! If you've got some credits [color=green]$[/color], now's the time to spend them!"
 	set_tooltip_HUD_text(text)
 
 func get_key(key: String) -> String:

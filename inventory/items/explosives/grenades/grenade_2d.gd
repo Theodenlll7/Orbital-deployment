@@ -3,11 +3,13 @@ class_name Grenade_2D
 
 var throw_speed: float = 600.0
 var explosion_damage: int = 100
-var explosion_radius: float = 200.0
+var explosion_radius: float = 160.0
 var fuse_time: float = 2.0
 
 var direction: Vector2 = Vector2(1,1)
 var explosion_area: Area2D
+
+var explosive_resource : ExplosiveResource
 
 @onready var animated_sprite_explosion = $AnimatedSprite2D
 
@@ -29,13 +31,14 @@ func _ready() -> void:
 	explosion_area.area_entered.connect(_on_area_entered)
 	
 	var timer = Timer.new()
-	timer.wait_time = fuse_time
+	timer.wait_time = explosive_resource.fuse_time
 	timer.one_shot = true
 	timer.timeout.connect(_on_fuse_time_end)
 	add_child(timer)
 	timer.start()
 
 func _on_fuse_time_end() -> void:
+
 	_explode()
 	
 func scale_explosion_sprite():
@@ -43,8 +46,20 @@ func scale_explosion_sprite():
 	animated_sprite_explosion.scale = Vector2(explosion_scale_factor, explosion_scale_factor)
 	
 func _explode() -> void:
+	var player = AudioStreamPlayer.new()
+	player.stream = explosive_resource.audio_stream_explode
+	player.bus = "Explosive"
+	get_tree().current_scene.add_child(player)
+	player.play()
+	player.connect("finished", Callable(player, "queue_free"))
+	
 	var sprite_frames = animated_sprite_explosion.get_sprite_frames()
 	sprite_frames.set_animation_loop("explode", false)
+	
+	#var texture_size = animated_sprite_explosion.texture
+	#var scale_factor = 2.0 * animated_sprite_explosion / texture_size.x
+	#animated_sprite_explosion.scale = Vector2(scale_factor, scale_factor)
+	animated_sprite_explosion.scale = Vector2(0.5, 0.5)
 	animated_sprite_explosion.visible = true
 	animated_sprite_explosion.play("explode")
 

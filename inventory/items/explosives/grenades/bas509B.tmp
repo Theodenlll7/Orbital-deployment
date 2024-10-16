@@ -153,6 +153,7 @@ scale = Vector2(1.71562, 1.28704)
 texture = ExtResource("2_iood8")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+visible = false
 sprite_frames = SubResource("SpriteFrames_nnglh")
 animation = &"explode"
 

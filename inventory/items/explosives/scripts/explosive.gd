@@ -1,4 +1,4 @@
-extends RigidBody2D
+extends Node2D
 class_name HeldExplosive
 
 var explosive_resource: ExplosiveResource
@@ -18,7 +18,6 @@ func _ready() -> void:
 	audio_player = AudioStreamPlayer.new()
 	audio_player.stream = explosive_resource.audio_stream_throw
 	add_child(audio_player)
-	
 	cooldown_timer = Timer.new()
 	add_child(cooldown_timer)
 	cooldown_timer.wait_time = explosive_resource.throw_cooldown
@@ -48,7 +47,7 @@ func get_explosion_radius() -> float:
 	return explosive_resource.explosion_radius
 
 func get_fuse_time() -> float:
-	return fuse_time
+	return explosive_resource.fuse_time
 	
 func get_grenade_weight() -> float:
 	return explosive_resource.grenade_weight

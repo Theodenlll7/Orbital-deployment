@@ -8,7 +8,7 @@
 [resource]
 script = ExtResource("3_cxbmr")
 projectile_scene = ExtResource("2_5grn5")
-item_name = &"HGA 37"
+item_name = &"HG 18"
 cost = 125
 muzzel_offset = Vector2(8, -2)
 audio_steam = ExtResource("1_cy4rs")
@@ -30,4 +30,3 @@ ammo_crate_value = 12
 drop_type = 0
 texture = ExtResource("4_enuwr")
 drop_weight = 100
-test = Callable()

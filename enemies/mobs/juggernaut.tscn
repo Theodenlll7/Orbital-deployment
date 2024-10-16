@@ -322,5 +322,5 @@ is_invulnerable = null
 armor = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
-position = Vector2(-1, 0.5)
+position = Vector2(-1, 1)
 shape = SubResource("RectangleShape2D_jxel0")

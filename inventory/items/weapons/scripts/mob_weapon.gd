@@ -43,10 +43,10 @@ func _process(_delta: float) -> void:
 		attack()
 
 
-func aim(target: Node2D) -> void:
-	if !target:
+func aim(the_target: Node2D) -> void:
+	if !the_target:
 		return
-	var aim_dir = (target.global_position - to_global(orbit_position)).normalized()
+	var aim_dir = (the_target.global_position - to_global(orbit_position)).normalized()
 	# Keep the weapon at a constant distance from the orbit point (circular orbit)
 	position = orbit_position + aim_dir * weapon_orbit_distance
 
