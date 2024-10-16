@@ -73,16 +73,6 @@ func _enemy_death():
 		ExperiencePoints.addWaveDoneXP(int(wave))
 		if wave == 1:
 			TooltipHud.show_first_wave_over_tip()
-		
-
-
-func update_weapon_pods(_wave):
-	var parent = get_parent()
-	for child in parent.get_children():
-		if child.name == "WeaponPod":
-			var canvas_layer = child.get_node("CanvasLayer")
-			var store_ui = canvas_layer.get_node("StoreUI")
-			store_ui.update_weapons(_wave)
 
 
 func _ready() -> void:
@@ -116,7 +106,9 @@ func process_wave():
 func _spawn_custom_wave(custom_wave: CustomWave) -> void:
 	for enemy in custom_wave.enemies:
 		spawn_enemy(enemy.instantiate())
-	pass
+	for i in range(custom_wave.extra_mobspawn_count):
+		var enemy = pick_enemy_normal_disp(custom_wave.base_mobs_mean, custom_wave.base_mobs_std_dev)
+		spawn_enemy(enemy)
 
 
 # Spawn an enemy at a random valid position around one of the players
@@ -149,6 +141,10 @@ func pick_enemy_based_on_difficulty() -> Node:
 	var index = int(clamp(randfn(mean, std_dev), 0, pool_size - 1))
 	return enemy_spawn_pool[index].instantiate()
 
+func pick_enemy_normal_disp(mean : float, std_dev : float) -> Node:
+	var pool_size = enemy_spawn_pool.size()
+	var index = int(clamp(randfn(mean, std_dev), 0, pool_size - 1))
+	return enemy_spawn_pool[index].instantiate()
 
 # Find a random valid tile position that is at a valid distance from all players
 func get_random_valid_position_around_players():

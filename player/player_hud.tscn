@@ -4,14 +4,11 @@
 [ext_resource type="Script" path="res://player/scripts/player_hud.gd" id="1_7u87w"]
 [ext_resource type="Texture2D" uid="uid://dkr0pw0btoksp" path="res://inventory/sprites/inventory_slot.png" id="2_idg8k"]
 [ext_resource type="Script" path="res://player/scripts/ammo_indicator.gd" id="4_8psay"]
+[ext_resource type="Script" path="res://player/scripts/explosive_container.gd" id="4_gpt5n"]
 [ext_resource type="PackedScene" uid="uid://dcm0rxa7wl85t" path="res://ui/pause_menu/death_screen.tscn" id="4_mdrqq"]
 [ext_resource type="Script" path="res://player/level_bar.gd" id="5_07hhj"]
 [ext_resource type="FontFile" uid="uid://dkg32o3qfh2n7" path="res://assets/Fonts/pixelmix.ttf" id="5_sur6r"]
 [ext_resource type="PackedScene" uid="uid://cffw36sg62gs0" path="res://ui/pause_menu/pause_in_game.tscn" id="7_krje1"]
-
-[sub_resource type="GDScript" id="GDScript_wbga3"]
-script/source = "extends HBoxContainer
-"
 
 [sub_resource type="LabelSettings" id="LabelSettings_sc3hn"]
 font_size = 32
@@ -85,7 +82,6 @@ theme_override_constants/separation = 0
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 0
-script = SubResource("GDScript_wbga3")
 metadata/_edit_group_ = true
 
 [node name="AspectRatioContainer2" type="Control" parent="MarginContainer/PlayerHUD/GameHUD/HBoxContainer/HBoxContainer"]
@@ -181,19 +177,19 @@ layout_mode = 2
 text = "-"
 label_settings = SubResource("LabelSettings_sc3hn")
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/PlayerHUD/GameHUD/HBoxContainer"]
+[node name="ExplosiveContainer" type="HBoxContainer" parent="MarginContainer/PlayerHUD/GameHUD/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-script = SubResource("GDScript_wbga3")
+script = ExtResource("4_gpt5n")
 metadata/_edit_group_ = true
 
-[node name="AspectRatioContainer2" type="Control" parent="MarginContainer/PlayerHUD/GameHUD/HBoxContainer/HBoxContainer2"]
+[node name="AspectRatioContainer2" type="Control" parent="MarginContainer/PlayerHUD/GameHUD/HBoxContainer/ExplosiveContainer"]
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 4
 metadata/_edit_group_ = true
 
-[node name="AspectRatioContainer" type="AspectRatioContainer" parent="MarginContainer/PlayerHUD/GameHUD/HBoxContainer/HBoxContainer2/AspectRatioContainer2"]
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="MarginContainer/PlayerHUD/GameHUD/HBoxContainer/ExplosiveContainer/AspectRatioContainer2"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -208,22 +204,22 @@ grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(50, 50)
 
-[node name="TextureRect2" type="TextureRect" parent="MarginContainer/PlayerHUD/GameHUD/HBoxContainer/HBoxContainer2/AspectRatioContainer2/AspectRatioContainer"]
+[node name="TextureRect2" type="TextureRect" parent="MarginContainer/PlayerHUD/GameHUD/HBoxContainer/ExplosiveContainer/AspectRatioContainer2/AspectRatioContainer"]
 layout_mode = 2
 texture = ExtResource("2_idg8k")
 
-[node name="Icon" type="TextureRect" parent="MarginContainer/PlayerHUD/GameHUD/HBoxContainer/HBoxContainer2/AspectRatioContainer2/AspectRatioContainer"]
+[node name="Icon" type="TextureRect" parent="MarginContainer/PlayerHUD/GameHUD/HBoxContainer/ExplosiveContainer/AspectRatioContainer2/AspectRatioContainer"]
 layout_mode = 2
 
-[node name="MarginContainer" type="HBoxContainer" parent="MarginContainer/PlayerHUD/GameHUD/HBoxContainer/HBoxContainer2"]
+[node name="MarginContainer" type="HBoxContainer" parent="MarginContainer/PlayerHUD/GameHUD/HBoxContainer/ExplosiveContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 16
 
-[node name="Control" type="Control" parent="MarginContainer/PlayerHUD/GameHUD/HBoxContainer/HBoxContainer2/MarginContainer"]
+[node name="Control" type="Control" parent="MarginContainer/PlayerHUD/GameHUD/HBoxContainer/ExplosiveContainer/MarginContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="MarginContainer/PlayerHUD/GameHUD/HBoxContainer/HBoxContainer2/MarginContainer"]
+[node name="Label" type="Label" parent="MarginContainer/PlayerHUD/GameHUD/HBoxContainer/ExplosiveContainer/MarginContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "-"

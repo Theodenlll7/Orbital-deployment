@@ -20,6 +20,8 @@ class_name PlayerHUD
 
 @onready var information_hud: VBoxContainer = $MarginContainer/PlayerHUD/InformationHUD
 
+@onready var explosive_container : ExplosiveContainer = $MarginContainer/PlayerHUD/GameHUD/HBoxContainer/ExplosiveContainer
+
 @onready var wave_manager = get_tree().get_nodes_in_group("wave_manager")[0] as WaveManager
 @export var ammo_indicator: AmmoIndicator = null
 
@@ -94,11 +96,11 @@ func equip_weapon(slot_index: int, weapon: WeaponResource):
 
 
 func equip_explosive(explosive: ExplosiveResource):
-	var slot = $MarginContainer/PlayerHUD/GameHUD/HBoxContainer/HBoxContainer2/AspectRatioContainer2/AspectRatioContainer
-	var icon: TextureRect = slot.get_node("Icon")
 	if explosive:
-		icon.texture = explosive.texture
-	else: icon.texture = null
+		explosive_container.set_icon(explosive.texture)
+		explosive_container._count_changed(explosive.explosive_count)
+		explosive.count_changed.connect(explosive_container._count_changed)
+	else: explosive_container.set_icon(null)
 
 func update_timer_display(newValue: float) -> void:
 	if newValue < 4.0:

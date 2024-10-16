@@ -34,9 +34,11 @@ class_name ExplosiveResource
 @export var weapon_accessibility_player_level = 0
 
 signal explosive_thrown(explosive : ExplosiveResource)
+signal count_changed(new_count : int)
 
 func throw(explosive: HeldExplosive) -> void:
 	explosive_count -= 1
+	count_changed.emit(explosive_count)
 	explosive_thrown.emit(self)
 	_throw(explosive)
 
