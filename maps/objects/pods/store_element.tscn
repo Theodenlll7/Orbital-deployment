@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://bnnxham1qo2uu"]
+[gd_scene load_steps=3 format=3 uid="uid://bnnxham1qo2uu"]
 
 [ext_resource type="FontFile" uid="uid://dkg32o3qfh2n7" path="res://assets/Fonts/pixelmix.ttf" id="1_45f8j"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_oxnui"]
 
 [node name="pistol_upg_1" type="Button"]
 custom_minimum_size = Vector2(450, 32)
@@ -8,6 +10,15 @@ offset_left = 59.0
 offset_top = 112.0
 offset_right = 509.0
 offset_bottom = 144.0
+
+[node name="Background" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_oxnui")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1

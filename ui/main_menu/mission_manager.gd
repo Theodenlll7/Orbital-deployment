@@ -21,8 +21,8 @@ func _ready() -> void:
 
 # Function to get a mission by ID
 func get_mission_by_id(id: String) -> MissionData:
-	return missions.get(id, null)  # Returns null if the mission doesn't exist
+	return missions.get(id, "")  # Returns "" if the mission doesn't exist
 
 func get_mission_path_by_id(id: String) -> String:
-	return missions_paths.get(id, null)
+	return missions_paths.get(id, "")
 	

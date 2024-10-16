@@ -88,7 +88,8 @@ func setLabelsAndCost(shop_type: ShopType):
 	
 	for item in array_items:
 		var buy_btn: Button = weapon_buy_button.instantiate()
-		var pod_item_container = buy_btn.get_child(0).get_child(0)  
+		var background: Panel = buy_btn.get_child(0)
+		var pod_item_container = buy_btn.get_child(1).get_child(0)  
 		var label: Label = pod_item_container.get_node_or_null("Label")
 		var label_unlock: Label = pod_item_container.get_node_or_null("Unlock")
 		var cost: Label = pod_item_container.get_node_or_null("Cost")
@@ -105,7 +106,9 @@ func setLabelsAndCost(shop_type: ShopType):
 		if item.weapon_accessibility_player_level > ExperiencePoints.current_level:
 			buy_btn.disabled = true
 			label.set("theme_override_colors/font_color", Color(0.7, 0.7, 0.7)) 
-		
+			var stylebox = StyleBoxFlat.new()
+			stylebox.bg_color = Color(0.2, 0.2, 0.2, 0.4)
+			background.add_theme_stylebox_override("panel", stylebox)						
 		shop.add_child(buy_btn)
 
 
@@ -125,7 +128,7 @@ func updateCostLabelColor() -> void:
 		ammo_cost_label.set("theme_override_colors/font_color", Color(0.8, 0.1, 0.1)) 
 	
 	for buy_btn in shop.get_children():
-		var pod_item_container = buy_btn.get_child(0).get_child(0) 
+		var pod_item_container = buy_btn.get_child(1).get_child(0) 
 		var cost: Label = pod_item_container.get_node_or_null("Cost")
 		if cost:
 			if costumer.money >= int(cost.text.split(" ")[0]): 

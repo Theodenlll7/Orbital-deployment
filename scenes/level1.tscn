@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dsad6qof6xa7f"]
+[gd_scene load_steps=17 format=3 uid="uid://dsad6qof6xa7f"]
 
 [ext_resource type="PackedScene" uid="uid://o3dndqv0yf5s" path="res://scenes/scene1.tscn" id="1_wr805"]
 [ext_resource type="PackedScene" uid="uid://6vt8l263l0o7" path="res://player/player.tscn" id="2_5ihlw"]
@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://cxvra6n76180k" path="res://assets/TextureIcons/grenade_arrow.png" id="13_co0e7"]
 [ext_resource type="PackedScene" uid="uid://m724oqngam6i" path="res://maps/objects/pods/expl_pod.tscn" id="13_h2npq"]
 [ext_resource type="PackedScene" uid="uid://boa23xke4oiwg" path="res://enemies/mobs/watcher.tscn" id="14_xdfnt"]
+[ext_resource type="PackedScene" uid="uid://cc5khdljmvf1j" path="res://scenes/in_game_music.tscn" id="16_yj8jw"]
 
 [node name="Level1" type="Node2D"]
 y_sort_enabled = true
@@ -38,6 +39,13 @@ position = Vector2(123, 110)
 [node name="mission_start_text" parent="CanvasLayer" instance=ExtResource("8_lbulo")]
 size_flags_horizontal = 3
 
+[node name="InteractionArea" parent="." instance=ExtResource("5_cpg73")]
+z_index = 1
+position = Vector2(239, -34)
+
+[node name="ExplosivePod" parent="." instance=ExtResource("13_h2npq")]
+position = Vector2(-150, -444)
+
 [node name="ArrowIndicator" type="Node2D" parent="." node_paths=PackedStringArray("target", "arrow_sprite", "player")]
 z_index = 100
 z_as_relative = false
@@ -60,9 +68,4 @@ player = NodePath("../Player")
 [node name="Sprite2D" type="Sprite2D" parent="ArrowIndicator2"]
 texture = ExtResource("13_co0e7")
 
-[node name="InteractionArea" parent="." instance=ExtResource("5_cpg73")]
-z_index = 1
-position = Vector2(239, -34)
-
-[node name="ExplosivePod" parent="." instance=ExtResource("13_h2npq")]
-position = Vector2(-150, -444)
+[node name="InGameMusic" parent="." instance=ExtResource("16_yj8jw")]

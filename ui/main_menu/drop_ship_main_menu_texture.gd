@@ -1,7 +1,9 @@
 extends TextureRect
 @onready var animation_player_dropship: AnimationPlayer = $"../AnimationPlayer"
 @onready var ship_audio_stream_player: AudioStreamPlayer = $"../ShipAudioStreamPlayer"
+@onready var hover_audio_stream_player: AudioStreamPlayer = $"../HoverAudioStreamPlayer"
 const SHIP_MOVMENT = preload("res://assets/Sound/UI/ship_movment.ogg")
+const SHIP_HOVER = preload("res://assets/Sound/UI/ship_hover.ogg")
 
 # Variables to control the motion
 var amplitude  = 50.0  
@@ -17,6 +19,11 @@ func _ready() -> void:
 	animation_player_dropship.play("init_dropship")
 	ship_audio_stream_player.stream = SHIP_MOVMENT
 	ship_audio_stream_player.bus = "Ship"
+	
+	hover_audio_stream_player.stream = SHIP_HOVER
+	hover_audio_stream_player.bus = "Ship_hover"
+	hover_audio_stream_player.stream.loop = true
+	hover_audio_stream_player.play()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

@@ -324,3 +324,7 @@ ipsum"
 libraries = {
 "": SubResource("AnimationLibrary_l6umx")
 }
+
+[node name="AmbientAudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
+[node name="MusicAudioStreamPlayer" type="AudioStreamPlayer" parent="."]

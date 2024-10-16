@@ -238,6 +238,8 @@ libraries = {
 
 [node name="ShipAudioStreamPlayer" type="AudioStreamPlayer" parent="ship"]
 
+[node name="HoverAudioStreamPlayer" type="AudioStreamPlayer" parent="ship"]
+
 [node name="ContentMarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15

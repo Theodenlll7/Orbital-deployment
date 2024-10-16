@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://cc5khdljmvf1j"]
+
+[ext_resource type="Script" path="res://scenes/in_game_music.gd" id="1_1rpxp"]
+
+[node name="InGameMusic" type="Node"]
+script = ExtResource("1_1rpxp")
+
+[node name="OngoingWaveAudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+
+[node name="InBetweenWavesAudioStreamPlayer2D2" type="AudioStreamPlayer2D" parent="."]
