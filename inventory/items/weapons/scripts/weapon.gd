@@ -3,6 +3,8 @@ class_name Weapon
 
 @warning_ignore("unused_signal")
 
+const RELOAD = preload("res://inventory/items/weapons/assets/audio/reload.ogg")
+
 @export var weapon_resource: WeaponResource = null
 
 var audio_player: AudioStreamPlayer
@@ -19,6 +21,7 @@ func _init(data: WeaponResource = null):
 
 
 func _ready() -> void:
+
 	sprite = Sprite2D.new()
 	sprite.scale = Vector2(0.8, 0.8)
 	sprite.texture = weapon_resource.texture
@@ -81,10 +84,18 @@ func reload() -> void:
 	var tween = create_tween()
 
 	tween.tween_property(sprite, "rotation_degrees", sprite.rotation_degrees + 360, reload_time)
-
 	tween.finished.connect(_on_reload_complete)
-
 	tween.play()
+	var sound: AudioStream = RELOAD
+	var player = AudioStreamPlayer.new()
+	
+	player.stream = sound
+	player.bus = "Wepon"
+	
+	add_child(player)
+	
+	player.play()
+	player.connect("finished", Callable(player, "queue_free"))
 
 
 func _on_reload_complete() -> void:

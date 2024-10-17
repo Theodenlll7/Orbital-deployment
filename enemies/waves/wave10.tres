@@ -1,12 +1,13 @@
-[gd_resource type="Resource" script_class="CustomWave" load_steps=3 format=3 uid="uid://dq8owb3cs3n3"]
+[gd_resource type="Resource" script_class="CustomWave" load_steps=4 format=3 uid="uid://dq8owb3cs3n3"]
 
 [ext_resource type="PackedScene" uid="uid://cghr73j5lb1ba" path="res://enemies/mobs/juggernaut.tscn" id="1_8tmla"]
 [ext_resource type="Script" path="res://enemies/waves/custom_wave.gd" id="1_dya2t"]
+[ext_resource type="PackedScene" uid="uid://kua7fs588s48" path="res://enemies/mobs/ranger.tscn" id="2_7p84b"]
 
 [resource]
 script = ExtResource("1_dya2t")
 wave_number = 1
-enemies = Array[PackedScene]([ExtResource("1_8tmla")])
+enemies = Array[PackedScene]([ExtResource("1_8tmla"), ExtResource("2_7p84b"), ExtResource("2_7p84b"), ExtResource("2_7p84b")])
 extra_mobspawn_count = 0
 base_mobs_mean = 0.5
 base_mobs_std_dev = 0.5

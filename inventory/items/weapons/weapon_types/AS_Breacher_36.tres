@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="ProjectileWeaponResource" load_steps=5 format=3 uid="uid://bneblifmj71ng"]
 
-[ext_resource type="AudioStream" uid="uid://bcqxb1lhluf3y" path="res://inventory/items/weapons/assets/audio/Breacher_36.ogg" id="1_17qg4"]
+[ext_resource type="AudioStream" uid="uid://cqwehoi5slqap" path="res://inventory/items/weapons/assets/audio/shotgun_pump.ogg" id="1_ntd66"]
 [ext_resource type="PackedScene" uid="uid://b1ahksg20mxej" path="res://inventory/items/weapons/projectiles/basic_projectile.tscn" id="2_ua4wu"]
 [ext_resource type="Script" path="res://inventory/items/weapons/scripts/projectile_weapon_resource.gd" id="3_4j6gg"]
 [ext_resource type="Texture2D" uid="uid://bs0r2twce1cg3" path="res://inventory/items/weapons/assets/sprites/Breacher_36.png" id="4_emy27"]
@@ -11,7 +11,7 @@ projectile_scene = ExtResource("2_ua4wu")
 item_name = &"AS Breacher 36"
 cost = 100
 muzzel_offset = Vector2(8, 0)
-audio_steam = ExtResource("1_17qg4")
+audio_steam = ExtResource("1_ntd66")
 attack_mode = 0
 attack_cooldown = 0.6
 weapon_accessibility_player_level = 1

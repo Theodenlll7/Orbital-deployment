@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="ProjectileWeaponResource" load_steps=5 format=3 uid="uid://df470b6ubcsns"]
 
-[ext_resource type="AudioStream" uid="uid://bctsd45rk8cit" path="res://inventory/items/weapons/assets/audio/S_Rifle_8_fire.ogg" id="1_k52ua"]
+[ext_resource type="AudioStream" uid="uid://2fxs3855eop5" path="res://inventory/items/weapons/assets/audio/sniper_singel_action.ogg" id="1_0ya5b"]
 [ext_resource type="PackedScene" uid="uid://b1ahksg20mxej" path="res://inventory/items/weapons/projectiles/basic_projectile.tscn" id="2_r5c6p"]
 [ext_resource type="Script" path="res://inventory/items/weapons/scripts/projectile_weapon_resource.gd" id="3_rv8uu"]
 [ext_resource type="Texture2D" uid="uid://83g4k7b2y2cg" path="res://inventory/items/weapons/assets/sprites/S_Rifle_8.png" id="4_cxvj4"]
@@ -11,7 +11,7 @@ projectile_scene = ExtResource("2_r5c6p")
 item_name = &"S Rifle .50"
 cost = 100
 muzzel_offset = Vector2(0, 0)
-audio_steam = ExtResource("1_k52ua")
+audio_steam = ExtResource("1_0ya5b")
 attack_mode = 0
 attack_cooldown = 0.8
 weapon_accessibility_player_level = 5

@@ -1,5 +1,6 @@
-[gd_resource type="Resource" script_class="ProjectileWeaponResource" load_steps=4 format=3 uid="uid://bnac6v17omsei"]
+[gd_resource type="Resource" script_class="ProjectileWeaponResource" load_steps=5 format=3 uid="uid://bnac6v17omsei"]
 
+[ext_resource type="AudioStream" uid="uid://8tg01p1kwsc" path="res://inventory/items/weapons/assets/audio/sniper.ogg" id="1_ts61n"]
 [ext_resource type="PackedScene" uid="uid://b1ahksg20mxej" path="res://inventory/items/weapons/projectiles/basic_projectile.tscn" id="2_4smc3"]
 [ext_resource type="Script" path="res://inventory/items/weapons/scripts/projectile_weapon_resource.gd" id="3_vqdyc"]
 [ext_resource type="Texture2D" uid="uid://dboamah0mox3j" path="res://inventory/items/weapons/assets/sprites/MR_S5.png" id="4_558er"]
@@ -10,6 +11,7 @@ projectile_scene = ExtResource("2_4smc3")
 item_name = &"M Rifle S5"
 cost = 100
 muzzel_offset = Vector2(0, 0)
+audio_steam = ExtResource("1_ts61n")
 attack_mode = 0
 attack_cooldown = 0.2
 weapon_accessibility_player_level = 3

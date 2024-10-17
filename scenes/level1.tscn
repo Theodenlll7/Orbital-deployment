@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://dsad6qof6xa7f"]
+[gd_scene load_steps=18 format=3 uid="uid://dsad6qof6xa7f"]
 
 [ext_resource type="PackedScene" uid="uid://o3dndqv0yf5s" path="res://scenes/scene1.tscn" id="1_wr805"]
 [ext_resource type="PackedScene" uid="uid://6vt8l263l0o7" path="res://player/player.tscn" id="2_5ihlw"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://dsuabe2igmqvf" path="res://enemies/mobs/assult.tscn" id="5_rdqq8"]
 [ext_resource type="Script" path="res://enemies/waves/custom_wave.gd" id="7_akywf"]
 [ext_resource type="Script" path="res://common/arrow_indicators/ArrowIndicator.gd" id="8_btq2v"]
+[ext_resource type="Resource" uid="uid://u1rcmagvcui5" path="res://enemies/waves/wave7.tres" id="8_dq6hp"]
 [ext_resource type="PackedScene" uid="uid://inymqhajqaf7" path="res://ui/in_game/mission_start_text.tscn" id="8_lbulo"]
 [ext_resource type="Resource" uid="uid://dq8owb3cs3n3" path="res://enemies/waves/wave10.tres" id="8_q1mwx"]
 [ext_resource type="Texture2D" uid="uid://bsjfhwk5erona" path="res://assets/TextureIcons/gun_arrow.png" id="9_7mvpw"]
@@ -27,7 +28,7 @@ z_index = -3
 script = ExtResource("3_rkl8f")
 enemy_spawn_pool = Array[PackedScene]([ExtResource("5_r2vmx"), ExtResource("4_v3qcm"), ExtResource("5_rdqq8"), ExtResource("14_xdfnt")])
 initial_std_dev = 0.2
-custom_waves = Array[ExtResource("7_akywf")]([ExtResource("8_q1mwx")])
+custom_waves = Array[ExtResource("7_akywf")]([ExtResource("8_dq6hp"), ExtResource("8_q1mwx")])
 
 [node name="Player" parent="." instance=ExtResource("2_5ihlw")]
 z_index = 0

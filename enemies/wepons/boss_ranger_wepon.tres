@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="ProjectileWeaponResource" load_steps=5 format=3 uid="uid://brpyd72u83607"]
 
-[ext_resource type="AudioStream" uid="uid://bx0erxmcc8tb2" path="res://inventory/items/weapons/assets/audio/gun_fire2.mp3" id="1_khm2r"]
+[ext_resource type="AudioStream" uid="uid://bkwoqms25s1bp" path="res://inventory/items/weapons/assets/audio/laser_gun.ogg" id="1_f64fr"]
 [ext_resource type="PackedScene" uid="uid://osyv1bssggkt" path="res://enemies/wepons/projectiles/lightning_ball_projectile.tscn" id="2_upk4r"]
 [ext_resource type="Script" path="res://inventory/items/weapons/scripts/projectile_weapon_resource.gd" id="3_bwu3c"]
 [ext_resource type="Texture2D" uid="uid://dqn8fd4nfppxd" path="res://enemies/assets/textures/juggernaut_wepon.png" id="4_rg20l"]
@@ -11,7 +11,7 @@ projectile_scene = ExtResource("2_upk4r")
 item_name = &"Weapon"
 cost = 0
 muzzel_offset = Vector2(0, 0)
-audio_steam = ExtResource("1_khm2r")
+audio_steam = ExtResource("1_f64fr")
 attack_mode = 1
 attack_cooldown = 1.5
 weapon_accessibility_player_level = 1
@@ -30,4 +30,3 @@ ammo_crate_value = 50
 drop_type = 0
 texture = ExtResource("4_rg20l")
 drop_weight = 100
-test = Callable()

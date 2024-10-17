@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="ProjectileWeaponResource" load_steps=5 format=3 uid="uid://owcd3a8fujm2"]
 
-[ext_resource type="AudioStream" uid="uid://bcqxb1lhluf3y" path="res://inventory/items/weapons/assets/audio/Breacher_36.ogg" id="1_4v7hj"]
+[ext_resource type="AudioStream" uid="uid://bvgh7scnwv3md" path="res://inventory/items/weapons/assets/audio/shotgun.ogg" id="1_i25cb"]
 [ext_resource type="PackedScene" uid="uid://b1ahksg20mxej" path="res://inventory/items/weapons/projectiles/basic_projectile.tscn" id="2_m4vi2"]
 [ext_resource type="Script" path="res://inventory/items/weapons/scripts/projectile_weapon_resource.gd" id="3_5mh75"]
 [ext_resource type="Texture2D" uid="uid://fynhjhvwfvw2" path="res://inventory/items/weapons/assets/sprites/AS_12.png" id="4_0v8x3"]
@@ -11,7 +11,7 @@ projectile_scene = ExtResource("2_m4vi2")
 item_name = &"AS 12"
 cost = 100
 muzzel_offset = Vector2(8, 0)
-audio_steam = ExtResource("1_4v7hj")
+audio_steam = ExtResource("1_i25cb")
 attack_mode = 1
 attack_cooldown = 0.2
 weapon_accessibility_player_level = 3
