@@ -11,9 +11,10 @@ config_version=5
 [application]
 
 config/name="Orbital deployment"
-run/main_scene="res://ui/main_menu/main_menu.tscn"
+run/main_scene="res://ui/splash_screen/splash_screen_screen.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
-config/icon="res://assets/icon.svg"
+boot_splash/image="res://ui/splash_screen/splash_screen.png"
+config/icon="res://assets/TextureIcons/icon.png"
 
 [autoload]
 

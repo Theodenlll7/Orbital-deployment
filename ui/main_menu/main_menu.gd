@@ -33,12 +33,15 @@ func _ready() -> void:
 	ship_start_position = ship.global_position
 	SaveData.save_player_data()
 	TooltipHud.init_vars()
+	
 	audio_stream_player_astroids.stream = ASTROID_PASS
 	audio_stream_player_astroids.bus = "Transition"
+	
 	main_menu_music_audio_stream_player.stream = MAIN_MENU_MUSIC
 	main_menu_music_audio_stream_player.bus = "Music"
 	main_menu_music_audio_stream_player.stream.loop = true
 	main_menu_music_audio_stream_player.play()
+	reset_ship()
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_cancel") and target_menu != main_menu:
