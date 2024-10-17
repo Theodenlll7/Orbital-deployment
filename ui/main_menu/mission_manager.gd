@@ -17,7 +17,12 @@ func _ready() -> void:
 	missions_paths["3"] = "res://scenes/level3.tscn"
 	missions_paths["4"] = "res://scenes/level4.tscn"
 
-	
+func getMissionName(id: String) -> String:
+	var mission = missions.get(id, null)
+	if !mission:
+		return "";
+		
+	return mission.title
 
 # Function to get a mission by ID
 func get_mission_by_id(id: String) -> MissionData:

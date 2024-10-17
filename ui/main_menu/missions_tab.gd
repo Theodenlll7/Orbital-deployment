@@ -70,16 +70,21 @@ func set_button_connection(mission_button: Button, mission_index: String) -> voi
 	mission_button.connect("focus_exited", Callable(self, "on_mission_button_hover_exit"))
 
 func handle_connecting_signals() -> void:
+	
 	back_button.button_down.connect(on_back_pressed)
 	
 	set_button_connection(mission_1_button, "1")
 	mission_1_button.button_down.connect(on_mission_1_button_pressed)
+	mission_1_button.text = MissionManager.getMissionName("1")
 
 	set_button_connection(mission_2_button, "2")
 	mission_2_button.button_down.connect(on_mission_2_button_pressed)
-	
+	mission_2_button.text = MissionManager.getMissionName("2")
+
 	set_button_connection(mission_3_button, "3")
 	mission_3_button.button_down.connect(on_mission_3_button_pressed)
+	mission_3_button.text = MissionManager.getMissionName("3")
 
 	set_button_connection(mission_4_button, "4")
 	mission_4_button.button_down.connect(on_mission_4_button_pressed)
+	mission_4_button.text = MissionManager.getMissionName("4")
