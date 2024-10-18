@@ -34,7 +34,7 @@ custom_waves = Array[ExtResource("7_akywf")]([ExtResource("8_dq6hp"), ExtResourc
 [node name="Player" parent="." instance=ExtResource("2_5ihlw")]
 z_index = 0
 y_sort_enabled = true
-position = Vector2(134, 103)
+position = Vector2(134, 94)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -66,9 +66,11 @@ player = NodePath("../Player")
 texture = ExtResource("13_co0e7")
 
 [node name="WeponPod" parent="." instance=ExtResource("5_cpg73")]
+z_index = 1
 position = Vector2(239, -34)
 
 [node name="ExplosivePod" parent="." instance=ExtResource("13_h2npq")]
+z_index = 1
 position = Vector2(-150, -444)
 
 [node name="InGameMusic" parent="." instance=ExtResource("16_ajudy")]

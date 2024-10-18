@@ -8,8 +8,8 @@
 [resource]
 script = ExtResource("3_xqhrw")
 projectile_scene = ExtResource("2_shnfv")
-item_name = &"SG Breacher"
-cost = 300
+item_name = &"SG 2B"
+cost = 500
 muzzle_offset = Vector2(8, 0)
 audio_steam = ExtResource("1_j2ert")
 attack_mode = 0

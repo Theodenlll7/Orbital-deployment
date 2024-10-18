@@ -13,7 +13,6 @@ extends Node
 }
 
 
-# See YT Liblast for code
 func _ready() -> void:
 	if root_path == null:
 		print("Empty root path for UI sounds!")

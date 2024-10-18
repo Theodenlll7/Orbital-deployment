@@ -63,12 +63,14 @@ player = NodePath("../Player")
 [node name="Sprite2D" type="Sprite2D" parent="ArrowIndicator"]
 texture = ExtResource("9_y7ffo")
 
-[node name="ArrowIndicator2" type="Node2D" parent="." node_paths=PackedStringArray("arrow_sprite")]
+[node name="ArrowIndicator2" type="Node2D" parent="." node_paths=PackedStringArray("target", "arrow_sprite", "player")]
 z_index = 100
 z_as_relative = false
 position = Vector2(-23, -57)
 script = ExtResource("8_ge0qu")
+target = NodePath("../ExplosivePod")
 arrow_sprite = NodePath("Sprite2D")
+player = NodePath("../Player")
 
 [node name="Sprite2D" type="Sprite2D" parent="ArrowIndicator2"]
 texture = ExtResource("14_hmhp4")

@@ -31,6 +31,7 @@ func tick(blackboard: Blackboard) -> int:
 			# After windup, start charging
 			is_charging = true
 			charge_timer = 0.0
+			emit_sound()
 
 	# Perform the charging action
 	if is_charging:
@@ -46,3 +47,15 @@ func tick(blackboard: Blackboard) -> int:
 			return SUCCESS
 
 	return FAILURE
+
+func emit_sound() -> void:
+	var sound: AudioStream = preload("res://enemies/assets/audio/spider/spider_attack.ogg")
+	var player = AudioStreamPlayer.new()
+	
+	player.stream = sound
+	player.bus = "Weapon"
+	
+	add_child(player)
+	
+	player.play()
+	player.connect("finished", Callable(player, "queue_free"))

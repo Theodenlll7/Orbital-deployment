@@ -33,15 +33,15 @@ initial_mean = 0.3
 initial_std_dev = 0.3
 custom_waves = Array[ExtResource("6_dmvjh")]([ExtResource("7_57sp4")])
 
+[node name="Player" parent="." instance=ExtResource("9_raoxf")]
+z_index = 0
+y_sort_enabled = true
+position = Vector2(-446, 143)
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="mission_start_text" parent="CanvasLayer" instance=ExtResource("8_7pocc")]
 size_flags_horizontal = 3
-
-[node name="Player" parent="." instance=ExtResource("9_raoxf")]
-z_index = 0
-y_sort_enabled = true
-position = Vector2(-468, 142)
 
 [node name="WeponPod" parent="." instance=ExtResource("10_1daey")]
 z_index = 1
@@ -63,13 +63,14 @@ player = NodePath("../Player")
 [node name="Sprite2D" type="Sprite2D" parent="ArrowIndicator"]
 texture = ExtResource("12_u4wn8")
 
-[node name="ArrowIndicator2" type="Node2D" parent="." node_paths=PackedStringArray("target", "arrow_sprite")]
+[node name="ArrowIndicator2" type="Node2D" parent="." node_paths=PackedStringArray("target", "arrow_sprite", "player")]
 z_index = 100
 z_as_relative = false
 position = Vector2(71, -157)
 script = ExtResource("11_a2otf")
 target = NodePath("../ExplosivePod")
 arrow_sprite = NodePath("Sprite2D")
+player = NodePath("../Player")
 
 [node name="Sprite2D" type="Sprite2D" parent="ArrowIndicator2"]
 texture = ExtResource("14_d7lvy")
