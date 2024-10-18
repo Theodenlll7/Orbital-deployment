@@ -19,7 +19,7 @@ script = ExtResource("1_twbr8")
 [node name="StreamLabel" type="Label" parent="."]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
-text = "Master Volume"
+text = "Master"
 
 [node name="VSeparator" type="VSeparator" parent="."]
 layout_mode = 2
@@ -30,7 +30,7 @@ custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
-value = 1.0
+value = 100.0
 
 [node name="VSeparator2" type="VSeparator" parent="."]
 layout_mode = 2
@@ -39,4 +39,4 @@ size_flags_horizontal = 3
 [node name="ValueLabel" type="Label" parent="."]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
-text = "1 %"
+text = "100 %"

@@ -7,17 +7,8 @@
 [ext_resource type="PackedScene" path="res://ui/main_menu/show_tooltips_button.tscn" id="4_lsf4r"]
 [ext_resource type="PackedScene" uid="uid://i0wwtqhqa0vo" path="res://ui/settings/audio_slider_setting.tscn" id="5_2v8io"]
 
-[node name="settings_tab_container" type="Control"]
-layout_mode = 3
+[node name="settings_tab_container" type="TabContainer"]
 anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="TabContainer" type="TabContainer" parent="."]
-layout_mode = 1
-anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 128.0
@@ -26,15 +17,18 @@ offset_right = -128.0
 offset_bottom = -128.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 theme_override_fonts/font = ExtResource("1_o800a")
 current_tab = 1
+all_tabs_in_front = true
 
-[node name="Video" type="TabBar" parent="TabContainer"]
+[node name="Video" type="TabBar" parent="."]
 visible = false
 layout_mode = 2
 metadata/_tab_index = 0
 
-[node name="MarginContainer" type="MarginContainer" parent="TabContainer/Video"]
+[node name="MarginContainer" type="MarginContainer" parent="Video"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -46,33 +40,37 @@ theme_override_constants/margin_top = 0
 theme_override_constants/margin_right = 64
 theme_override_constants/margin_bottom = 32
 
-[node name="ScrollContainer" type="ScrollContainer" parent="TabContainer/Video/MarginContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="Video/MarginContainer"]
 layout_mode = 2
+follow_focus = true
 
-[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Video/MarginContainer/ScrollContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Video/MarginContainer/ScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/separation = 128
 
-[node name="HSeparator" type="HSeparator" parent="TabContainer/Video/MarginContainer/ScrollContainer/VBoxContainer"]
+[node name="HSeparator" type="HSeparator" parent="Video/MarginContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/separation = 64
 
-[node name="window_mode_button" parent="TabContainer/Video/MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource("2_6vogm")]
+[node name="window_mode_button" parent="Video/MarginContainer/ScrollContainer/VBoxContainer" node_paths=PackedStringArray("shortcut_context") instance=ExtResource("2_6vogm")]
 layout_mode = 2
+shortcut_context = NodePath("../../../..")
 
-[node name="resolution_button" parent="TabContainer/Video/MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource("3_881lw")]
+[node name="resolution_button" parent="Video/MarginContainer/ScrollContainer/VBoxContainer" node_paths=PackedStringArray("shortcut_context") instance=ExtResource("3_881lw")]
 layout_mode = 2
+shortcut_context = NodePath("../../../..")
 
-[node name="ShowTooltipsButton" parent="TabContainer/Video/MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource("4_lsf4r")]
+[node name="ShowTooltipsButton" parent="Video/MarginContainer/ScrollContainer/VBoxContainer" node_paths=PackedStringArray("shortcut_context") instance=ExtResource("4_lsf4r")]
 layout_mode = 2
+shortcut_context = NodePath("../../../..")
 
-[node name="Control" type="Control" parent="TabContainer/Video/MarginContainer/ScrollContainer/VBoxContainer"]
+[node name="Control" type="Control" parent="Video/MarginContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="HSeparator2" type="HSeparator" parent="TabContainer/Video/MarginContainer/ScrollContainer/VBoxContainer/Control"]
+[node name="HSeparator2" type="HSeparator" parent="Video/MarginContainer/ScrollContainer/VBoxContainer/Control"]
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
@@ -83,11 +81,11 @@ grow_horizontal = 2
 grow_vertical = 0
 theme_override_constants/separation = 64
 
-[node name="Sound" type="TabBar" parent="TabContainer"]
+[node name="Sound" type="TabBar" parent="."]
 layout_mode = 2
 metadata/_tab_index = 1
 
-[node name="MarginContainer" type="MarginContainer" parent="TabContainer/Sound"]
+[node name="MarginContainer" type="MarginContainer" parent="Sound"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -99,45 +97,50 @@ theme_override_constants/margin_top = 0
 theme_override_constants/margin_right = 64
 theme_override_constants/margin_bottom = 32
 
-[node name="ScrollContainer" type="ScrollContainer" parent="TabContainer/Sound/MarginContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="Sound/MarginContainer"]
 layout_mode = 2
+follow_focus = true
 
-[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Sound/MarginContainer/ScrollContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Sound/MarginContainer/ScrollContainer"]
 custom_minimum_size = Vector2(49.94, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/separation = 92
 
-[node name="HSeparator" type="HSeparator" parent="TabContainer/Sound/MarginContainer/ScrollContainer/VBoxContainer"]
+[node name="HSeparator" type="HSeparator" parent="Sound/MarginContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/separation = 64
 
-[node name="Master" parent="TabContainer/Sound/MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource("5_2v8io")]
+[node name="Master" parent="Sound/MarginContainer/ScrollContainer/VBoxContainer" node_paths=PackedStringArray("shortcut_context") instance=ExtResource("5_2v8io")]
 layout_mode = 2
+shortcut_context = NodePath("../../../..")
 
-[node name="Music" parent="TabContainer/Sound/MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource("5_2v8io")]
+[node name="Music" parent="Sound/MarginContainer/ScrollContainer/VBoxContainer" node_paths=PackedStringArray("shortcut_context") instance=ExtResource("5_2v8io")]
 layout_mode = 2
+shortcut_context = NodePath("../../../..")
 audio_bus = 4
 
-[node name="Weapon" parent="TabContainer/Sound/MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource("5_2v8io")]
+[node name="Weapon" parent="Sound/MarginContainer/ScrollContainer/VBoxContainer" node_paths=PackedStringArray("shortcut_context") instance=ExtResource("5_2v8io")]
 layout_mode = 2
+shortcut_context = NodePath("../../../..")
 audio_bus = 5
 
-[node name="Explosive" parent="TabContainer/Sound/MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource("5_2v8io")]
+[node name="Explosive" parent="Sound/MarginContainer/ScrollContainer/VBoxContainer" node_paths=PackedStringArray("shortcut_context") instance=ExtResource("5_2v8io")]
 layout_mode = 2
+shortcut_context = NodePath("../../../..")
 audio_bus = 8
 
-[node name="HSeparator2" type="HSeparator" parent="TabContainer/Sound/MarginContainer/ScrollContainer/VBoxContainer"]
+[node name="HSeparator2" type="HSeparator" parent="Sound/MarginContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/separation = 0
 
-[node name="Controls" type="TabBar" parent="TabContainer"]
+[node name="Controls" type="TabBar" parent="."]
 visible = false
 layout_mode = 2
 metadata/_tab_index = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="TabContainer/Controls"]
+[node name="MarginContainer" type="MarginContainer" parent="Controls"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -149,58 +152,67 @@ theme_override_constants/margin_top = 0
 theme_override_constants/margin_right = 64
 theme_override_constants/margin_bottom = 32
 
-[node name="ScrollContainer" type="ScrollContainer" parent="TabContainer/Controls/MarginContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="Controls/MarginContainer"]
 layout_mode = 2
+follow_focus = true
 
-[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Controls/MarginContainer/ScrollContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Controls/MarginContainer/ScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/separation = 92
 
-[node name="HSeparator" type="HSeparator" parent="TabContainer/Controls/MarginContainer/ScrollContainer/VBoxContainer"]
+[node name="HSeparator" type="HSeparator" parent="Controls/MarginContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/separation = 64
 
-[node name="hotkey_rebind__button_move_left" parent="TabContainer/Controls/MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource("2_3olww")]
+[node name="hotkey_rebind__button_move_left" parent="Controls/MarginContainer/ScrollContainer/VBoxContainer" node_paths=PackedStringArray("shortcut_context") instance=ExtResource("2_3olww")]
 layout_mode = 2
 size_flags_vertical = 1
+shortcut_context = NodePath("../../../..")
 
-[node name="hotkey_rebind_button_move_right" parent="TabContainer/Controls/MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource("2_3olww")]
+[node name="hotkey_rebind_button_move_right" parent="Controls/MarginContainer/ScrollContainer/VBoxContainer" node_paths=PackedStringArray("shortcut_context") instance=ExtResource("2_3olww")]
 layout_mode = 2
 size_flags_vertical = 1
+shortcut_context = NodePath("../../../..")
 action_name = "move_right"
 
-[node name="hotkey_rebind_button_move_up" parent="TabContainer/Controls/MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource("2_3olww")]
+[node name="hotkey_rebind_button_move_up" parent="Controls/MarginContainer/ScrollContainer/VBoxContainer" node_paths=PackedStringArray("shortcut_context") instance=ExtResource("2_3olww")]
 layout_mode = 2
 size_flags_vertical = 1
+shortcut_context = NodePath("../../../..")
 action_name = "move_up"
 
-[node name="hotkey_rebind_button_move_down" parent="TabContainer/Controls/MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource("2_3olww")]
+[node name="hotkey_rebind_button_move_down" parent="Controls/MarginContainer/ScrollContainer/VBoxContainer" node_paths=PackedStringArray("shortcut_context") instance=ExtResource("2_3olww")]
 layout_mode = 2
 size_flags_vertical = 1
+shortcut_context = NodePath("../../../..")
 action_name = "move_down"
 
-[node name="hotkey_rebind_button_dodge" parent="TabContainer/Controls/MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource("2_3olww")]
+[node name="hotkey_rebind_button_dodge" parent="Controls/MarginContainer/ScrollContainer/VBoxContainer" node_paths=PackedStringArray("shortcut_context") instance=ExtResource("2_3olww")]
 layout_mode = 2
 size_flags_vertical = 1
+shortcut_context = NodePath("../../../..")
 action_name = "dodge"
 
-[node name="hotkey_rebind_button_interact" parent="TabContainer/Controls/MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource("2_3olww")]
+[node name="hotkey_rebind_button_interact" parent="Controls/MarginContainer/ScrollContainer/VBoxContainer" node_paths=PackedStringArray("shortcut_context") instance=ExtResource("2_3olww")]
 layout_mode = 2
 size_flags_vertical = 1
+shortcut_context = NodePath("../../../..")
 action_name = "interact"
 
-[node name="hotkey_rebind_button_swap_wepon" parent="TabContainer/Controls/MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource("2_3olww")]
+[node name="hotkey_rebind_button_swap_wepon" parent="Controls/MarginContainer/ScrollContainer/VBoxContainer" node_paths=PackedStringArray("shortcut_context") instance=ExtResource("2_3olww")]
 layout_mode = 2
 size_flags_vertical = 1
+shortcut_context = NodePath("../../../..")
 action_name = "interact"
 
-[node name="hotkey_rebind_button_reload" parent="TabContainer/Controls/MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource("2_3olww")]
+[node name="hotkey_rebind_button_reload" parent="Controls/MarginContainer/ScrollContainer/VBoxContainer" node_paths=PackedStringArray("shortcut_context") instance=ExtResource("2_3olww")]
 layout_mode = 2
 size_flags_vertical = 1
+shortcut_context = NodePath("../../../..")
 action_name = "reload"
 
-[node name="HSeparator2" type="HSeparator" parent="TabContainer/Controls/MarginContainer/ScrollContainer/VBoxContainer"]
+[node name="HSeparator2" type="HSeparator" parent="Controls/MarginContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/separation = 0
