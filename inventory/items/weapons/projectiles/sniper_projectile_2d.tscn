@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://c83wkso7k0yy7"]
+
+[ext_resource type="Script" path="res://inventory/items/weapons/projectiles/sniper_projectile_2d.gd" id="1_3s71w"]
+[ext_resource type="Texture2D" uid="uid://b5303f7vfendw" path="res://inventory/items/weapons/projectiles/sprites/bullet.png" id="2_ukxl0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ifh57"]
+size = Vector2(7.975, 3.327)
+
+[node name="SniperProjectile2D" type="RigidBody2D"]
+z_index = 4
+y_sort_enabled = true
+collision_layer = 4
+collision_mask = 32
+mass = 0.001
+gravity_scale = 0.0
+can_sleep = false
+lock_rotation = true
+continuous_cd = 1
+contact_monitor = true
+max_contacts_reported = 1
+script = ExtResource("1_3s71w")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("2_ukxl0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 3.57628e-08)
+scale = Vector2(0.3, 0.3)
+shape = SubResource("RectangleShape2D_ifh57")

@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://dknh2f8ikygt6"]
+
+[ext_resource type="Script" path="res://inventory/items/weapons/projectiles/sniper_projectile_2d.gd" id="1_nh6kp"]
+[ext_resource type="Texture2D" uid="uid://bgk1v3n2o3dgv" path="res://inventory/items/weapons/assets/sprites/enemy_bullet.png" id="2_gcqna"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cg7db"]
+radius = 3.0
+
+[node name="BasicProjectile2" type="RigidBody2D"]
+z_index = 4
+y_sort_enabled = true
+collision_layer = 8
+collision_mask = 32
+mass = 0.001
+gravity_scale = 0.0
+can_sleep = false
+lock_rotation = true
+continuous_cd = 1
+contact_monitor = true
+max_contacts_reported = 1
+script = ExtResource("1_nh6kp")
+hit_collision_mask = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("2_gcqna")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_cg7db")

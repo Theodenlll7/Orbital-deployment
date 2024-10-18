@@ -10,6 +10,7 @@ class_name MobWeapon extends Weapon
 
 var attack_enabled := false
 
+
 # Ready function
 func _ready():
 	super()
@@ -45,7 +46,8 @@ func _process(_delta: float) -> void:
 func aim(the_target: Node2D) -> void:
 	if !the_target:
 		return
-	var aim_dir = (the_target.global_position - to_global(orbit_position)).normalized()
+	var global_muzzle_position = to_global(position + weapon_resource.muzzle_offset)
+	var aim_dir = (the_target.global_position - global_muzzle_position).normalized()
 	# Keep the weapon at a constant distance from the orbit point (circular orbit)
 	position = orbit_position + aim_dir * weapon_orbit_distance
 

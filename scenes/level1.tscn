@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://cghr73j5lb1ba" path="res://enemies/mobs/juggernaut.tscn" id="7_38af1"]
 [ext_resource type="Script" path="res://enemies/waves/custom_wave.gd" id="7_akywf"]
 [ext_resource type="Script" path="res://common/arrow_indicators/ArrowIndicator.gd" id="8_btq2v"]
-[ext_resource type="Resource" uid="uid://cs64bt3v0a1ij" path="res://enemies/waves/wave7.tres" id="8_dq6hp"]
+[ext_resource type="Resource" uid="uid://u1rcmagvcui5" path="res://enemies/waves/wave7.tres" id="8_dq6hp"]
 [ext_resource type="PackedScene" uid="uid://inymqhajqaf7" path="res://ui/in_game/mission_start_text.tscn" id="8_lbulo"]
 [ext_resource type="Resource" uid="uid://dq8owb3cs3n3" path="res://enemies/waves/wave10.tres" id="8_q1mwx"]
 [ext_resource type="Texture2D" uid="uid://bsjfhwk5erona" path="res://assets/TextureIcons/gun_arrow.png" id="9_7mvpw"]

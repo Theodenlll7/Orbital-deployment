@@ -1,9 +1,10 @@
-[gd_scene load_steps=29 format=3 uid="uid://osyv1bssggkt"]
+[gd_scene load_steps=30 format=3 uid="uid://osyv1bssggkt"]
 
 [ext_resource type="Script" path="res://inventory/items/weapons/projectiles/projectile_2d.gd" id="1_epss2"]
 [ext_resource type="Script" path="res://enemies/wepons/projectiles/lighting_projectile.gd" id="2_rpe1f"]
 [ext_resource type="Texture2D" uid="uid://urf4beemi3e3" path="res://assets/animated_sprites/GlowingBall Blue 22frames RPG.png" id="2_trr3v"]
 [ext_resource type="AudioStream" uid="uid://bnpymfipss83n" path="res://assets/Sound/mob_sound/guns/lightning_ball.mp3" id="3_thtdh"]
+[ext_resource type="Script" path="res://common/components/hitbox.gd" id="5_qye2b"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ifh57"]
 size = Vector2(22, 21)
@@ -195,3 +196,12 @@ stream = ExtResource("3_thtdh")
 position = Vector2(1.54972e-06, 0)
 scale = Vector2(0.1875, 0.177083)
 sprite_frames = SubResource("SpriteFrames_ankfl")
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 8
+monitorable = false
+script = ExtResource("5_qye2b")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_ifh57")

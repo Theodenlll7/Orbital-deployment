@@ -1,12 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://delp5066b08hb"]
+[gd_scene load_steps=5 format=3 uid="uid://delp5066b08hb"]
 
 [ext_resource type="Script" path="res://inventory/items/weapons/projectiles/projectile_2d.gd" id="1_4fb8d"]
 [ext_resource type="Texture2D" uid="uid://bgk1v3n2o3dgv" path="res://inventory/items/weapons/assets/sprites/enemy_bullet.png" id="2_aoorw"]
+[ext_resource type="Script" path="res://common/components/hitbox.gd" id="3_88wcg"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cg7db"]
 radius = 3.0
 
-[node name="BasicProjectile" type="RigidBody2D"]
+[node name="BasicProjectile2" type="RigidBody2D"]
 z_index = 4
 y_sort_enabled = true
 collision_layer = 8
@@ -26,4 +27,12 @@ scale = Vector2(0.9, 0.9)
 texture = ExtResource("2_aoorw")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_cg7db")
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 8
+monitorable = false
+script = ExtResource("3_88wcg")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Hitbox"]
 shape = SubResource("CircleShape2D_cg7db")

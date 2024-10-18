@@ -259,7 +259,7 @@ animations = [{
 [node name="Sniper" type="CharacterBody2D"]
 position = Vector2(0, -9)
 collision_layer = 2
-collision_mask = 39
+collision_mask = 98
 
 [node name="Navigator2D" type="NavigationAgent2D" parent="."]
 process_priority = -100

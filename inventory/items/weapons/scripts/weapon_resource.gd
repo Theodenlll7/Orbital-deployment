@@ -13,7 +13,7 @@ signal magazine_changed(new_magazine_count: int)
 
 ## How the weapon looks and sounds
 @export_group("Weapon Setup")
-@export var muzzel_offset: Vector2 = Vector2(0, 0)
+@export var muzzle_offset: Vector2 = Vector2(0, 0)
 @export var audio_steam: AudioStream
 
 ## How the weapon acts

@@ -11,7 +11,7 @@ func attack(weapon: Weapon):
 		return
 
 	for i in range(weapon.get_bullets_per_shot()):
-		var position = weapon.to_global(muzzel_offset)
+		var position = weapon.to_global(muzzle_offset)
 		var projectile = projectile_scene.instantiate()
 		projectile.global_rotation = weapon.global_rotation
 		projectile.global_position = position

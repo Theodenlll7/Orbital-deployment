@@ -7,43 +7,29 @@ class_name Projectile2D
 
 var direction: Vector2
 
-@export var hit_collision_mask : int = 128
+@export var hit_collision_mask: int = 128
 
-@onready var last_position : Vector2 = global_position
+@onready var last_position: Vector2 = global_position
+
 
 func _ready() -> void:
 	set_contact_monitor(true)
 	set_max_contacts_reported(1)
 	body_entered.connect(_on_body_entered)
 
+	var hitbox = $Hitbox as Hitbox
+	if hitbox:
+		hitbox.damage = damage
+		hitbox.area_entered.connect(_on_area_entered)
+
 	await get_tree().create_timer(lifetime).timeout
 	queue_free()
 
-func _physics_process(_delta: float) -> void:
-	# Perform shape casting from the last position to the current position
-	ray_cast_to_current_position()
-	# Update last position to the current position
-	last_position = global_position
 
-# Function to perform the shape cast from last_position to the current global position
-func ray_cast_to_current_position() -> void:
-	# Get the space state (physics world)
-	var space_state = get_world_2d().direct_space_state
+func _on_area_entered(hurtbox: Hurtbox) -> void:
+	if !hurtbox.is_invulnerable:
+		queue_free()
 
-	var query = PhysicsRayQueryParameters2D.create(
-		global_position, last_position, hit_collision_mask, [self]
-	)
-	query.collide_with_areas = true
-	query.collide_with_bodies = false
-
-	# Cast the shape from last_position to the current global position
-	var result = space_state.intersect_ray(query)
-
-	if result:
-		var collider = result["collider"]
-		if collider is Hurtbox and not collider.is_invulnerable:
-			collider.damage(damage)
-			queue_free()
 
 func _on_body_entered(_body: Node) -> void:
 	queue_free()
