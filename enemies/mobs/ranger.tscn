@@ -339,7 +339,7 @@ position = Vector2(0, 2)
 [node name="LootSpawner" type="Node2D" parent="."]
 script = ExtResource("17_4v7s2")
 loot_table = ExtResource("17_4165f")
-item_spawn_chanse = 0.1
+item_spawn_chanse = 0.2
 spawn_attempts = 5
 
 [node name="HandleEnemeyDeath" type="Node" parent="."]

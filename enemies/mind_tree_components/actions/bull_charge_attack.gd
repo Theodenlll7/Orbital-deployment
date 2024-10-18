@@ -49,7 +49,8 @@ func tick(blackboard: Blackboard) -> int:
 	return FAILURE
 
 func emit_sound() -> void:
-	var sound: AudioStream = preload("res://enemies/assets/audio/spider/spider_attack.ogg")
+	var random_value = randi_range(1,2)
+	var sound: AudioStream = load("res://enemies/assets/audio/spider/spider_attack_" + str(random_value) + ".ogg")
 	var player = AudioStreamPlayer.new()
 	
 	player.stream = sound

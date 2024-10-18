@@ -129,8 +129,20 @@ func start_dodge() -> void:
 	set_collision_mask_value(2, false)
 	animated_sprite.play("roll_h")
 	hurtbox.is_invulnerable = true
+	play_dodge_sound()
 
-
+func play_dodge_sound() -> void:
+	var random_number = randi_range(1, 3)
+	var sound: AudioStream = load("res://player/assets/sounds/dodge_" + str(random_number) + ".ogg")
+	var player = AudioStreamPlayer.new()
+	
+	player.stream = sound
+	player.bus = "UI"
+	
+	add_child(player)
+	
+	player.play()
+	player.connect("finished", Callable(player, "queue_free"))
 
 func _on_dodge_ended() -> void:
 	in_dodge = false

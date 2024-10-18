@@ -1,6 +1,6 @@
 class_name PodShop extends Control
 
-@export var ammo_cost: int = 225
+@export var ammo_cost: int = 50
 
 @export var weapon_buy_button: PackedScene
 
