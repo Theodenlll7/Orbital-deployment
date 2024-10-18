@@ -295,7 +295,7 @@ theme_override_fonts/font = ExtResource("2_t4ix4")
 theme_override_font_sizes/font_size = 32
 theme_override_styles/hover = SubResource("StyleBoxFlat_8ioed")
 theme_override_styles/normal = SubResource("StyleBoxFlat_1p2d2")
-text = " Select mission "
+text = " Play "
 
 [node name="PlayerProgressButton" type="Button" parent="ContentMarginContainer/HBoxContainer/VBoxContainer"]
 clip_contents = true

@@ -144,7 +144,7 @@ theme_override_fonts/font = ExtResource("1_btar0")
 theme_override_font_sizes/font_size = 32
 theme_override_styles/hover = SubResource("StyleBoxFlat_o7efk")
 theme_override_styles/normal = SubResource("StyleBoxFlat_ub2bo")
-text = " Missions "
+text = " Levels "
 
 [node name="InfiniteSurvivalButton" type="Button" parent="Content/ContentMarginContainer/VBoxContainer/Buttons/MarginContainer/HBoxContainer/Control/VBoxContainer"]
 clip_contents = true
@@ -154,7 +154,7 @@ theme_override_fonts/font = ExtResource("1_btar0")
 theme_override_font_sizes/font_size = 32
 theme_override_styles/hover = SubResource("StyleBoxFlat_o7efk")
 theme_override_styles/normal = SubResource("StyleBoxFlat_ub2bo")
-text = " Infinite survival "
+text = " Chaos survival "
 
 [node name="Control2" type="Control" parent="Content/ContentMarginContainer/VBoxContainer/Buttons/MarginContainer/HBoxContainer"]
 layout_mode = 2
