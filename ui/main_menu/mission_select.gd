@@ -15,6 +15,7 @@ extends Control
 signal back_to_main_menu
 signal level_selected(mission_ID, mission_position)
 
+var infinite_hover_text = "Coming soon!" # "You will not survive..."
 var planet_center = Vector2()
 var marker_position = Vector2()
 
@@ -31,6 +32,8 @@ func _ready() -> void:
 	missions_tab.visible = false;
 	
 	infinite_survival_texture_rect.visible = false
+	infinite_survival_button.disabled = true
+	
 
 func on_missions_button_pressed() -> void:
 	content.visible = false
@@ -65,7 +68,7 @@ func on_infinite_survival_button_hover() -> void:
 	infinite_survival_texture_rect.modulate.a = 0.0
 	mission_label.modulate.a = 0.0
 
-	mission_label.text = "You will not survive..."
+	mission_label.text = infinite_hover_text
 	
 	var tween = create_tween()
 	tween.tween_property(mission_label, "modulate:a", opacity, fade_time)
