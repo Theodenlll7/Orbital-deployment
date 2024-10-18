@@ -12,6 +12,7 @@ var explosion_area: Area2D
 var explosive_resource : ExplosiveResource
 
 @onready var animated_sprite_explosion = $AnimatedSprite2D
+@onready var pointlight = $PointLight2D
 
 
 func _ready() -> void:
@@ -26,9 +27,7 @@ func _ready() -> void:
 	explosion_area.monitoring = false
 	explosion_area.collision_mask = 129
 	add_child(explosion_area)
-	
-	scale_explosion_sprite()
-	
+		
 	explosion_area.area_entered.connect(_on_area_entered)
 	
 	var timer = Timer.new()
@@ -41,9 +40,6 @@ func _ready() -> void:
 func _on_fuse_time_end() -> void:
 	_explode()
 	
-func scale_explosion_sprite():
-	var explosion_scale_factor = explosion_radius / 38
-	animated_sprite_explosion.scale = Vector2(explosion_scale_factor, explosion_scale_factor)
 	
 func _explode() -> void:
 	var player = AudioStreamPlayer.new()
@@ -57,10 +53,7 @@ func _explode() -> void:
 	var sprite_frames = animated_sprite_explosion.get_sprite_frames()
 	sprite_frames.set_animation_loop("explode", false)
 	
-	#var texture_size = animated_sprite_explosion.texture
-	#var scale_factor = 2.0 * animated_sprite_explosion / texture_size.x
-	#animated_sprite_explosion.scale = Vector2(scale_factor, scale_factor)
-	animated_sprite_explosion.scale = Vector2(0.5, 0.5)
+	animated_sprite_explosion.scale = explosive_resource.explosion_radius * 2.0 / 80.0 * Vector2(0.5, 0.5)
 	animated_sprite_explosion.visible = true
 	animated_sprite_explosion.play("explode")
 
@@ -70,8 +63,6 @@ func _explode() -> void:
 func _on_area_entered(hurtbox : Hurtbox) -> void:
 	if hurtbox:
 		hurtbox.damage(explosion_damage)
-	
-	
 
 func set_fuse_time(time: float):
 	fuse_time = time

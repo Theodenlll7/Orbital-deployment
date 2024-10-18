@@ -1,28 +1,31 @@
 [gd_resource type="Resource" script_class="ThrowableExplosiveResource" load_steps=6 format=3 uid="uid://dw13wgg7th4k3"]
 
-[ext_resource type="PackedScene" uid="uid://yob22fwt8ode" path="res://inventory/items/explosives/grenades/basic_grenade.tscn" id="1_5n057"]
-[ext_resource type="AudioStream" uid="uid://bna2iogcabulc" path="res://inventory/items/explosives/assets/audio/star-wars-seismic-charge.mp3" id="1_dtxth"]
+[ext_resource type="AudioStream" uid="uid://dudrlp4fhtss2" path="res://inventory/items/explosives/assets/audio/mega_explosion.ogg" id="1_mq82h"]
 [ext_resource type="Script" path="res://inventory/items/explosives/scripts/grenade_proj_resource.gd" id="2_hxfa2"]
-[ext_resource type="AudioStream" uid="uid://d324ebeg1mwuj" path="res://inventory/items/explosives/assets/audio/bomb-dropping-101151.mp3" id="2_uiglq"]
-[ext_resource type="Texture2D" uid="uid://b58sxmu0csydj" path="res://inventory/items/explosives/assets/sprites/vecteezy_pixel-art-bomb-dynamite(1).png" id="5_s0d03"]
+[ext_resource type="AudioStream" uid="uid://criwch41e6rjl" path="res://inventory/items/explosives/assets/audio/throw.ogg" id="2_rdegu"]
+[ext_resource type="PackedScene" uid="uid://cruxtuhj25kr6" path="res://inventory/items/explosives/grenades/sesmic_bomb_grenade.tscn" id="3_xnpij"]
+
+[sub_resource type="Resource" id="Resource_ovd6s"]
+metadata/__load_path__ = "res://inventory/items/explosives/assets/sprites/vecteezy_pixel-art-bomb-dynamite(1).png"
 
 [resource]
 script = ExtResource("2_hxfa2")
-explosive_grenade = ExtResource("1_5n057")
+explosive_grenade = ExtResource("3_xnpij")
 item_name = &"Sesmic Bomb"
 cost = 150
-audio_stream_throw = ExtResource("2_uiglq")
-audio_stream_explode = ExtResource("1_dtxth")
+audio_stream_throw = ExtResource("2_rdegu")
+audio_stream_explode = ExtResource("1_mq82h")
 throw_speed = 30.0
 throw_cooldown = 0.5
 grenade_weight = 0.2
-explosion_damage = 1000
-explosion_radius = 200.0
+sprite_scale = 2.0
+explosion_damage = 100
+explosion_radius = 80.0
 exposion_collision_mask = 129
-fuse_time = 5.0
+fuse_time = 3.0
 has_explosive_quantity = true
-explosive_count = 10
+explosive_count = 2
 weapon_accessibility_player_level = 0
 drop_type = 0
-texture = ExtResource("5_s0d03")
+texture = SubResource("Resource_ovd6s")
 drop_weight = 100

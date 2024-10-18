@@ -153,12 +153,13 @@ scale = Vector2(1.71562, 1.28704)
 texture = ExtResource("2_iood8")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+visible = false
 sprite_frames = SubResource("SpriteFrames_nnglh")
 animation = &"explode"
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 position = Vector2(-2, 0)
-scale = Vector2(0.0422535, 0.0446009)
+scale = Vector2(0.064937, 0.0685446)
 color = Color(0.675247, 0.325752, 0.418605, 1)
 energy = 2.0
 texture = ExtResource("4_d2f1a")

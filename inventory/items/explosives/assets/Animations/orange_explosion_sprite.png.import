@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b58sxmu0csydj"
-path="res://.godot/imported/vecteezy_pixel-art-bomb-dynamite(1).png-b57be12e3b85ec96386564449bbdac8c.ctex"
+uid="uid://d2gkue400pbac"
+path="res://.godot/imported/orange_explosion_sprite.png-58c2c9809a4fcadc2f0716af358e2248.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://inventory/items/explosives/assets/sprites/vecteezy_pixel-art-bomb-dynamite(1).png"
-dest_files=["res://.godot/imported/vecteezy_pixel-art-bomb-dynamite(1).png-b57be12e3b85ec96386564449bbdac8c.ctex"]
+source_file="res://inventory/items/explosives/assets/Animations/orange_explosion_sprite.png"
+dest_files=["res://.godot/imported/orange_explosion_sprite.png-58c2c9809a4fcadc2f0716af358e2248.ctex"]
 
 [params]
 

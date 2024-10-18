@@ -2,13 +2,13 @@
 
 [ext_resource type="AudioStream" uid="uid://rd3loiltqlsd" path="res://inventory/items/explosives/assets/audio/explosion.ogg" id="1_xboaw"]
 [ext_resource type="AudioStream" uid="uid://criwch41e6rjl" path="res://inventory/items/explosives/assets/audio/throw.ogg" id="2_nx4js"]
-[ext_resource type="PackedScene" uid="uid://yob22fwt8ode" path="res://inventory/items/explosives/grenades/basic_grenade.tscn" id="3_cp6oi"]
+[ext_resource type="PackedScene" uid="uid://cruxtuhj25kr6" path="res://inventory/items/explosives/grenades/sesmic_bomb_grenade.tscn" id="3_64odj"]
 [ext_resource type="Script" path="res://inventory/items/explosives/scripts/grenade_proj_resource.gd" id="4_8lmc5"]
 [ext_resource type="Texture2D" uid="uid://0c5nerdqv44n" path="res://inventory/items/explosives/assets/sprites/grenade.png" id="5_b5ss7"]
 
 [resource]
 script = ExtResource("4_8lmc5")
-explosive_grenade = ExtResource("3_cp6oi")
+explosive_grenade = ExtResource("3_64odj")
 item_name = &"Grenades"
 cost = 150
 audio_stream_throw = ExtResource("2_nx4js")
@@ -21,7 +21,7 @@ explosion_radius = 40.0
 exposion_collision_mask = 129
 fuse_time = 1.0
 has_explosive_quantity = true
-explosive_count = 3
+explosive_count = 1
 weapon_accessibility_player_level = 0
 drop_type = 0
 texture = ExtResource("5_b5ss7")
