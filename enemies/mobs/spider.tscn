@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=3 uid="uid://bgg2qlsu5f8qd"]
+[gd_scene load_steps=62 format=3 uid="uid://bgg2qlsu5f8qd"]
 
 [ext_resource type="Texture2D" uid="uid://ck8r1ebnncxpg" path="res://enemies/assets/textures/spider_sprite.png" id="2_wlcod"]
 [ext_resource type="Script" path="res://common/components/HealthComponent.gd" id="3_1r3kr"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" path="res://enemies/mind_tree_components/conditions/target_in_range.gd.gd" id="9_sn4u0"]
 [ext_resource type="Script" path="res://enemies/mind_tree_components/actions/stop_navigation.gd" id="10_ad8k3"]
 [ext_resource type="Script" path="res://enemies/mind_tree_components/actions/bull_charge_attack.gd" id="11_1oqij"]
+[ext_resource type="Script" path="res://enemies/mind_tree_components/actions/action_alert.gd" id="12_pqgk6"]
 [ext_resource type="Script" path="res://addons/tree_mind/nodes/leafs/blackbord_set.gd" id="14_vquxb"]
 [ext_resource type="Script" path="res://enemies/scripts/parent_move_and_slide.gd" id="15_eh0ey"]
 [ext_resource type="Script" path="res://enemies/mind_tree_components/actions/start_navigation_to_target.gd" id="15_q7nvy"]
@@ -18,6 +19,7 @@
 [ext_resource type="Script" path="res://inventory/loot/loot_spawner.gd" id="16_8b7ue"]
 [ext_resource type="Resource" uid="uid://j1muyacfwphe" path="res://inventory/loot/spider_loot_table.tres" id="17_3fygd"]
 [ext_resource type="Script" path="res://common/components/hurtbox.gd" id="18_b4vkg"]
+[ext_resource type="Texture2D" uid="uid://bmg7yghvbq8g7" path="res://inventory/items/weapons/assets/sprites/heads_up.png" id="19_b8ard"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_oqobr"]
 light_mode = 1
@@ -325,6 +327,8 @@ wall_min_slide_angle = 0.0
 [node name="Navigator2D" type="NavigationAgent2D" parent="."]
 process_priority = -100
 process_physics_priority = -100
+avoidance_enabled = true
+radius = 5.0
 script = ExtResource("15_xr0je")
 
 [node name="CharacterAnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -336,8 +340,8 @@ script = ExtResource("3_ihi3d")
 
 [node name="HealthComponent" type="Node" parent="."]
 script = ExtResource("3_1r3kr")
-max_health = 50
-current_health = 50
+max_health = 30
+current_health = 30
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -4)
@@ -373,10 +377,16 @@ reach_distance = 60
 [node name="StopNavgation" type="Node" parent="MindTreeRoot/Selector/ChargeAttack"]
 script = ExtResource("10_ad8k3")
 
+[node name="ActionAlert" type="Node" parent="MindTreeRoot/Selector/ChargeAttack" node_paths=PackedStringArray("alert")]
+script = ExtResource("12_pqgk6")
+alert = NodePath("../../../../ActionSprite")
+alert_time = 0.4
+
 [node name="BullChargeAttack" type="Node" parent="MindTreeRoot/Selector/ChargeAttack"]
 script = ExtResource("11_1oqij")
+charge_speed = 265.0
 charge_duration = 0.4
-windup_time = 0.8
+windup_time = 0.4
 
 [node name="SelectAndWalktToTarget" type="Node" parent="MindTreeRoot/Selector"]
 script = ExtResource("8_r68s8")
@@ -388,7 +398,6 @@ value = "actor.get_tree().get_nodes_in_group(\"players\").pick_random()"
 
 [node name="StartNavgationToTarget" type="Node" parent="MindTreeRoot/Selector/SelectAndWalktToTarget"]
 script = ExtResource("15_q7nvy")
-move_speed = 145.0
 
 [node name="ParentMoveAndSlide" type="Node" parent="."]
 script = ExtResource("15_eh0ey")
@@ -412,6 +421,12 @@ armor = null
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
 position = Vector2(0, 2)
 shape = SubResource("RectangleShape2D_myola")
+
+[node name="ActionSprite" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, -13)
+scale = Vector2(0.029811, 0.029811)
+texture = ExtResource("19_b8ard")
 
 [connection signal="died" from="HealthComponent" to="." method="_on_health_component_died"]
 [connection signal="body_entered" from="AttackRange" to="AttackRange" method="_on_body_entered"]

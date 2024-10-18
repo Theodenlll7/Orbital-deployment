@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="CustomWave" load_steps=4 format=3 uid="uid://u1rcmagvcui5"]
+[gd_resource type="Resource" script_class="CustomWave" load_steps=4 format=3 uid="uid://cs64bt3v0a1ij"]
 
 [ext_resource type="PackedScene" uid="uid://dsuabe2igmqvf" path="res://enemies/mobs/assult.tscn" id="2_82l30"]
 [ext_resource type="PackedScene" uid="uid://boa23xke4oiwg" path="res://enemies/mobs/watcher.tscn" id="2_x0ipo"]
@@ -8,6 +8,6 @@
 script = ExtResource("3_e0rx5")
 wave_number = 7
 enemies = Array[PackedScene]([ExtResource("2_x0ipo"), ExtResource("2_x0ipo"), ExtResource("2_82l30")])
-extra_mobspawn_count = 6
+extra_mobspawn_count = 1
 base_mobs_mean = 0.5
 base_mobs_std_dev = 0.5

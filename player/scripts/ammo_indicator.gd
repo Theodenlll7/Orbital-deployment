@@ -12,6 +12,10 @@ func equip_weapon(weapon: WeaponResource):
 	if weapon.has_magazine:
 		magazin_ammo.text = "%d" % weapon.ammo_in_magazine
 		magazin_ammo.visible = true
+		if !weapon.has_ammo:
+			devider.visible = true
+			extra_ammo.visible = true
+			extra_ammo.text = "∞"
 	elif weapon.ammo:
 		magazin_ammo.text = "%d" % weapon.ammo
 		magazin_ammo.visible = true
@@ -21,9 +25,6 @@ func equip_weapon(weapon: WeaponResource):
 		extra_ammo.text = "%d" % weapon.ammo
 		devider.visible = true
 		extra_ammo.visible = true
-	else:
-		devider.visible = false
-		extra_ammo.visible = false
 
 
 func _on_magazine_changed(new_magazine_amount: int):

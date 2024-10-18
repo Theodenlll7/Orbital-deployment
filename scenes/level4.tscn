@@ -24,8 +24,12 @@ y_sort_enabled = true
 
 [node name="enemy_spawner" type="Node2D" parent="."]
 script = ExtResource("2_rhyrc")
+growth_rate = 0.7
+power = 1.4
+starting_enemy_count = 5
 enemy_spawn_pool = Array[PackedScene]([ExtResource("3_l5020"), ExtResource("4_oxfh3"), ExtResource("5_3r45n"), ExtResource("6_kmlh2")])
-initial_std_dev = 0.2
+initial_mean = 0.3
+initial_std_dev = 0.3
 custom_waves = Array[ExtResource("6_dmvjh")]([ExtResource("7_57sp4")])
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]

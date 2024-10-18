@@ -232,7 +232,7 @@ collision_mask = 39
 process_priority = -100
 process_physics_priority = -100
 avoidance_enabled = true
-radius = 20.0
+radius = 8.0
 script = ExtResource("9_rvix5")
 
 [node name="CharacterAnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -311,10 +311,11 @@ weapon = NodePath("../../../../../MobWeapon")
 [node name="ActionAlert" type="Node" parent="MindTreeRoot/Selector/Sequance/Sequance" node_paths=PackedStringArray("alert")]
 script = ExtResource("11_q5wn6")
 alert = NodePath("../../../../../ActionSprite")
+alert_time = 0.2
 
 [node name="ForTime" type="Node" parent="MindTreeRoot/Selector/Sequance/Sequance"]
 script = ExtResource("12_aufsd")
-run_time = 0.4
+run_time = 0.2
 
 [node name="AimWeapon" type="Node" parent="MindTreeRoot/Selector/Sequance/Sequance/ForTime" node_paths=PackedStringArray("weapon")]
 script = ExtResource("12_krf88")

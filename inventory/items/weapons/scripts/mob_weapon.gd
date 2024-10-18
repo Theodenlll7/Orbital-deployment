@@ -10,11 +10,10 @@ class_name MobWeapon extends Weapon
 
 var attack_enabled := false
 
-
 # Ready function
 func _ready():
 	super()
-	assert(orbit_position, "Mob Weapon has no orbit point")
+	assert($WeaponOrbitPoint, "Mob Weapon has no orbit point")
 	var hp = get_parent().get_node_or_null("HealthComponent") as HealthComponent
 	hp.died.connect(func(): stop_attacking())
 

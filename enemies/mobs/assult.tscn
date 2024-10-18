@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=3 uid="uid://dsuabe2igmqvf"]
+[gd_scene load_steps=58 format=3 uid="uid://dsuabe2igmqvf"]
 
 [ext_resource type="Script" path="res://common/components/navigator2d.gd" id="1_alrx4"]
 [ext_resource type="Texture2D" uid="uid://cecqjnwk0gp3p" path="res://enemies/assets/textures/assult.png" id="2_dj2q1"]
@@ -10,7 +10,6 @@
 [ext_resource type="Script" path="res://enemies/mind_tree_components/conditions/target_in_range.gd.gd" id="8_ihojf"]
 [ext_resource type="Script" path="res://enemies/mind_tree_components/actions/has_los.gd" id="9_53l6g"]
 [ext_resource type="Script" path="res://enemies/mind_tree_components/actions/stop_navigation.gd" id="9_q26r8"]
-[ext_resource type="Script" path="res://enemies/mind_tree_components/actions/start_attacking_target.gd" id="10_3v7bl"]
 [ext_resource type="Script" path="res://addons/tree_mind/nodes/decorators/inverter.gd" id="11_s2yth"]
 [ext_resource type="Script" path="res://addons/tree_mind/nodes/decorators/any_success.gd" id="12_orif8"]
 [ext_resource type="Script" path="res://enemies/mind_tree_components/actions/stop_attacking_target.gd" id="12_pvii6"]
@@ -18,12 +17,19 @@
 [ext_resource type="Script" path="res://enemies/mind_tree_components/actions/start_navigation_to_target.gd" id="14_dtibg"]
 [ext_resource type="Script" path="res://inventory/items/weapons/scripts/mob_weapon.gd" id="15_jw6vi"]
 [ext_resource type="Resource" uid="uid://c0dk306ncnke" path="res://enemies/wepons/assult_wepon.tres" id="16_jb6jn"]
+[ext_resource type="Script" path="res://addons/tree_mind/nodes/decorators/force_success.gd" id="17_ld3ln"]
 [ext_resource type="Script" path="res://inventory/loot/loot_spawner.gd" id="17_qnkwj"]
+[ext_resource type="Script" path="res://enemies/mind_tree_components/actions/weapon_ready.gd" id="18_0o8fi"]
 [ext_resource type="Script" path="res://enemies/scripts/handle_enemy_death.gd" id="19_8xdvp"]
+[ext_resource type="Script" path="res://enemies/mind_tree_components/actions/action_alert.gd" id="19_fktyo"]
 [ext_resource type="Resource" uid="uid://csdc3fnnuoxcn" path="res://inventory/loot/assult_loot_table.tres" id="20_f6wej"]
 [ext_resource type="Texture2D" uid="uid://dcgcly83hxan6" path="res://player/assets/textures/light.png" id="20_h5fes"]
+[ext_resource type="Script" path="res://addons/tree_mind/nodes/decorators/for_time.gd" id="20_hf3o1"]
 [ext_resource type="Script" path="res://enemies/scripts/parent_move_and_slide.gd" id="21_krtar"]
+[ext_resource type="Script" path="res://enemies/mind_tree_components/actions/aim_weapon.gd" id="21_tli4m"]
+[ext_resource type="Script" path="res://enemies/mind_tree_components/actions/fire_weapon.gd" id="22_8xkil"]
 [ext_resource type="Script" path="res://common/components/hurtbox.gd" id="24_uhmdv"]
+[ext_resource type="Texture2D" uid="uid://bmg7yghvbq8g7" path="res://inventory/items/weapons/assets/sprites/heads_up.png" id="26_ipn4m"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0miiq"]
 atlas = ExtResource("2_dj2q1")
@@ -225,7 +231,7 @@ collision_mask = 39
 process_priority = -100
 process_physics_priority = -100
 avoidance_enabled = true
-radius = 20.0
+radius = 8.0
 script = ExtResource("1_alrx4")
 
 [node name="CharacterAnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -244,22 +250,6 @@ process_thread = 0
 [node name="Selector" type="Node" parent="MindTreeRoot"]
 script = ExtResource("6_13jdy")
 
-[node name="StopAtTheInneBorderOfWeaponRange" type="Node" parent="MindTreeRoot/Selector"]
-script = ExtResource("7_jlj26")
-
-[node name="TargetInRange" type="Node" parent="MindTreeRoot/Selector/StopAtTheInneBorderOfWeaponRange"]
-script = ExtResource("8_ihojf")
-reach_distance = 40
-
-[node name="HasLoS" type="Node" parent="MindTreeRoot/Selector/StopAtTheInneBorderOfWeaponRange"]
-script = ExtResource("9_53l6g")
-
-[node name="StopNavgation" type="Node" parent="MindTreeRoot/Selector/StopAtTheInneBorderOfWeaponRange"]
-script = ExtResource("9_q26r8")
-
-[node name="StartAttackingTarget" type="Node" parent="MindTreeRoot/Selector/StopAtTheInneBorderOfWeaponRange"]
-script = ExtResource("10_3v7bl")
-
 [node name="SelectAndWalktToTarget" type="Node" parent="MindTreeRoot/Selector"]
 script = ExtResource("7_jlj26")
 
@@ -271,7 +261,7 @@ script = ExtResource("11_s2yth")
 
 [node name="TargetInRange" type="Node" parent="MindTreeRoot/Selector/SelectAndWalktToTarget/AnySuccess/TargetOutOfRange"]
 script = ExtResource("8_ihojf")
-reach_distance = 40
+reach_distance = 50
 
 [node name="NoLoS" type="Node" parent="MindTreeRoot/Selector/SelectAndWalktToTarget/AnySuccess"]
 script = ExtResource("11_s2yth")
@@ -289,7 +279,50 @@ value = "actor.get_tree().get_nodes_in_group(\"players\").pick_random()"
 
 [node name="StartNavgationToTarget" type="Node" parent="MindTreeRoot/Selector/SelectAndWalktToTarget"]
 script = ExtResource("14_dtibg")
-move_speed = 120.0
+move_speed = 80.0
+
+[node name="Sequance" type="Node" parent="MindTreeRoot/Selector"]
+script = ExtResource("7_jlj26")
+
+[node name="ForceSuccess" type="Node" parent="MindTreeRoot/Selector/Sequance"]
+script = ExtResource("17_ld3ln")
+
+[node name="StopWhenCloseToTarget" type="Node" parent="MindTreeRoot/Selector/Sequance/ForceSuccess"]
+script = ExtResource("7_jlj26")
+
+[node name="TargetInRange" type="Node" parent="MindTreeRoot/Selector/Sequance/ForceSuccess/StopWhenCloseToTarget"]
+script = ExtResource("8_ihojf")
+reach_distance = 40
+
+[node name="HasLoS" type="Node" parent="MindTreeRoot/Selector/Sequance/ForceSuccess/StopWhenCloseToTarget"]
+script = ExtResource("9_53l6g")
+
+[node name="StopNavgation" type="Node" parent="MindTreeRoot/Selector/Sequance/ForceSuccess/StopWhenCloseToTarget"]
+script = ExtResource("9_q26r8")
+
+[node name="Sequance" type="Node" parent="MindTreeRoot/Selector/Sequance"]
+script = ExtResource("7_jlj26")
+
+[node name="WeaponReady" type="Node" parent="MindTreeRoot/Selector/Sequance/Sequance" node_paths=PackedStringArray("weapon")]
+script = ExtResource("18_0o8fi")
+weapon = NodePath("../../../../../MobWeapon")
+
+[node name="ActionAlert" type="Node" parent="MindTreeRoot/Selector/Sequance/Sequance" node_paths=PackedStringArray("alert")]
+script = ExtResource("19_fktyo")
+alert = NodePath("../../../../../ActionSprite")
+alert_time = 0.2
+
+[node name="ForTime" type="Node" parent="MindTreeRoot/Selector/Sequance/Sequance"]
+script = ExtResource("20_hf3o1")
+run_time = 0.2
+
+[node name="AimWeapon" type="Node" parent="MindTreeRoot/Selector/Sequance/Sequance/ForTime" node_paths=PackedStringArray("weapon")]
+script = ExtResource("21_tli4m")
+weapon = NodePath("../../../../../../MobWeapon")
+
+[node name="AttackWithWeapon" type="Node" parent="MindTreeRoot/Selector/Sequance/Sequance" node_paths=PackedStringArray("weapon")]
+script = ExtResource("22_8xkil")
+weapon = NodePath("../../../../../MobWeapon")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.300001, -2.7)
@@ -307,8 +340,8 @@ position = Vector2(-0.300001, -3.3)
 position = Vector2(0.300001, -8.7)
 script = ExtResource("17_qnkwj")
 loot_table = ExtResource("20_f6wej")
-item_spawn_chanse = 0.5
-spawn_attempts = 2
+item_spawn_chanse = 0.2
+spawn_attempts = 4
 
 [node name="HandleEnemeyDeath" type="Node" parent="."]
 script = ExtResource("19_8xdvp")
@@ -335,3 +368,9 @@ armor = null
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
 position = Vector2(-0.300001, 1.7)
 shape = SubResource("RectangleShape2D_eiuoe")
+
+[node name="ActionSprite" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, -13)
+scale = Vector2(0.029811, 0.029811)
+texture = ExtResource("26_ipn4m")

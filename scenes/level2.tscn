@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://enemies/waves/custom_wave.gd" id="6_cnvru"]
 [ext_resource type="PackedScene" uid="uid://boa23xke4oiwg" path="res://enemies/mobs/watcher.tscn" id="6_ec7jh"]
 [ext_resource type="PackedScene" uid="uid://inymqhajqaf7" path="res://ui/in_game/mission_start_text.tscn" id="6_r6q3o"]
+[ext_resource type="PackedScene" uid="uid://cghr73j5lb1ba" path="res://enemies/mobs/juggernaut.tscn" id="7_6tvew"]
 [ext_resource type="PackedScene" uid="uid://fwtaakyb0exx" path="res://maps/objects/pods/weapon_pod.tscn" id="7_38vkb"]
 [ext_resource type="Resource" uid="uid://dq8owb3cs3n3" path="res://enemies/waves/wave10.tres" id="7_67x7v"]
 [ext_resource type="Script" path="res://common/arrow_indicators/ArrowIndicator.gd" id="11_nka5b"]
@@ -24,7 +25,9 @@ y_sort_enabled = true
 
 [node name="enemy_spawner" type="Node2D" parent="."]
 script = ExtResource("3_3263j")
-enemy_spawn_pool = Array[PackedScene]([ExtResource("4_fkjhh"), ExtResource("5_v0ucf"), ExtResource("5_rqgek"), ExtResource("6_ec7jh")])
+growth_rate = 0.6
+enemy_spawn_pool = Array[PackedScene]([ExtResource("4_fkjhh"), ExtResource("5_v0ucf"), ExtResource("5_rqgek"), ExtResource("6_ec7jh"), ExtResource("7_6tvew")])
+initial_mean = 0.1
 initial_std_dev = 0.2
 custom_waves = Array[ExtResource("6_cnvru")]([ExtResource("7_67x7v")])
 

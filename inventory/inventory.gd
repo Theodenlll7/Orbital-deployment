@@ -1,7 +1,7 @@
 class_name Inventory extends Node
 
 signal money_changed(new_money_amount: int)
-var money: int = 500:
+var money: int = 0:
 	get:
 		return money
 	set(value):

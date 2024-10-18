@@ -223,11 +223,10 @@ collision_mask = 35
 process_priority = -100
 process_physics_priority = -100
 avoidance_enabled = true
-radius = 20.0
 script = ExtResource("1_alrx4")
 
 [node name="CharacterAnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(2.3, -13.7)
+position = Vector2(2.3, -9.7)
 sprite_frames = SubResource("SpriteFrames_bagim")
 animation = &"run_h"
 script = ExtResource("3_1pf4o")
@@ -280,30 +279,31 @@ script = ExtResource("14_dtibg")
 move_speed = 50.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -4)
+position = Vector2(1.90735e-06, 0)
 shape = SubResource("CircleShape2D_aqtri")
 
 [node name="MobWeapon" type="Node2D" parent="."]
-position = Vector2(0.300001, -11.7)
+position = Vector2(1.90735e-06, 4)
 script = ExtResource("15_jw6vi")
-weapon_orbit_distance = 12.0
+weapon_orbit_distance = 10.0
 position_lerp_speed = 0.5
 weapon_resource = ExtResource("16_rrqjo")
 
 [node name="WeaponOrbitPoint" type="Marker2D" parent="MobWeapon"]
-position = Vector2(-0.300001, -8.3)
+position = Vector2(0.82, -11.84)
 
 [node name="LootSpawner" type="Node2D" parent="."]
-position = Vector2(0.300001, -10.7)
+position = Vector2(0.300003, -6.7)
 script = ExtResource("17_qnkwj")
 loot_table = ExtResource("18_h0cwc")
+item_spawn_chanse = 0.7
 spawn_attempts = 10
 
 [node name="HandleEnemeyDeath" type="Node" parent="."]
 script = ExtResource("19_8xdvp")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
-position = Vector2(2.3, -21.7)
+position = Vector2(2.3, -17.7)
 color = Color(0.753217, 0, 0.0179021, 1)
 energy = 0.8
 texture = ExtResource("20_h5fes")
@@ -314,7 +314,7 @@ process_physics_priority = 10
 script = ExtResource("21_krtar")
 
 [node name="Hurtbox" type="Area2D" parent="."]
-position = Vector2(1, -14)
+position = Vector2(1, -10)
 collision_layer = 128
 collision_mask = 0
 script = ExtResource("22_iqtaa")
