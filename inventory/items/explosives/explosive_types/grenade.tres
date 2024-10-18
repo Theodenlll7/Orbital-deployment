@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="ThrowableExplosiveResource" load_steps=6 format=3 uid="uid://cdd7r7fg3e8te"]
 
 [ext_resource type="AudioStream" uid="uid://rd3loiltqlsd" path="res://inventory/items/explosives/assets/audio/explosion.ogg" id="1_xboaw"]
-[ext_resource type="AudioStream" uid="uid://sqacyxqd4be5" path="res://inventory/items/explosives/assets/audio/throw_object-97796.mp3" id="2_kyl4x"]
+[ext_resource type="AudioStream" uid="uid://criwch41e6rjl" path="res://inventory/items/explosives/assets/audio/throw.ogg" id="2_nx4js"]
 [ext_resource type="PackedScene" uid="uid://yob22fwt8ode" path="res://inventory/items/explosives/grenades/basic_grenade.tscn" id="3_cp6oi"]
 [ext_resource type="Script" path="res://inventory/items/explosives/scripts/grenade_proj_resource.gd" id="4_8lmc5"]
 [ext_resource type="Texture2D" uid="uid://0c5nerdqv44n" path="res://inventory/items/explosives/assets/sprites/grenade.png" id="5_b5ss7"]
@@ -11,12 +11,12 @@ script = ExtResource("4_8lmc5")
 explosive_grenade = ExtResource("3_cp6oi")
 item_name = &"Grenades"
 cost = 150
-audio_stream_throw = ExtResource("2_kyl4x")
+audio_stream_throw = ExtResource("2_nx4js")
 audio_stream_explode = ExtResource("1_xboaw")
 throw_speed = 100.0
 throw_cooldown = 0.5
 grenade_weight = 0.5
-explosion_damage = 100
+explosion_damage = 54
 explosion_radius = 40.0
 exposion_collision_mask = 129
 fuse_time = 1.0

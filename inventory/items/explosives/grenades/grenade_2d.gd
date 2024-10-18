@@ -15,6 +15,7 @@ var explosive_resource : ExplosiveResource
 
 
 func _ready() -> void:
+	animated_sprite_explosion.visible = false
 	explosion_area = Area2D.new()
 	var collision_shape = CollisionShape2D.new()
 	var circle_shape = CircleShape2D.new()
@@ -38,7 +39,6 @@ func _ready() -> void:
 	timer.start()
 
 func _on_fuse_time_end() -> void:
-
 	_explode()
 	
 func scale_explosion_sprite():
@@ -53,6 +53,7 @@ func _explode() -> void:
 	player.play()
 	player.connect("finished", Callable(player, "queue_free"))
 	
+	animated_sprite_explosion.visible= true
 	var sprite_frames = animated_sprite_explosion.get_sprite_frames()
 	sprite_frames.set_animation_loop("explode", false)
 	

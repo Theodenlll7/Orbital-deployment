@@ -6,7 +6,7 @@
 
 [resource]
 script = ExtResource("1_dya2t")
-wave_number = 1
+wave_number = 10
 enemies = Array[PackedScene]([ExtResource("1_8tmla"), ExtResource("2_7p84b"), ExtResource("2_7p84b"), ExtResource("2_7p84b")])
 extra_mobspawn_count = 0
 base_mobs_mean = 0.5

@@ -43,6 +43,7 @@ size_flags_horizontal = 3
 [node name="ArrowIndicator" type="Node2D" parent="." node_paths=PackedStringArray("target", "arrow_sprite", "player")]
 z_index = 100
 z_as_relative = false
+position = Vector2(-104, -133)
 script = ExtResource("8_btq2v")
 target = NodePath("../InteractionArea")
 arrow_sprite = NodePath("Sprite2D")
@@ -58,6 +59,7 @@ position = Vector2(239, -34)
 [node name="ArrowIndicator2" type="Node2D" parent="." node_paths=PackedStringArray("target", "arrow_sprite", "player")]
 z_index = 100
 z_as_relative = false
+position = Vector2(-136, -147)
 script = ExtResource("8_btq2v")
 target = NodePath("../ExplosivePod")
 arrow_sprite = NodePath("Sprite2D")

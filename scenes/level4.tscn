@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dqfmu73xm8h3x"]
+[gd_scene load_steps=17 format=3 uid="uid://dqfmu73xm8h3x"]
 
 [ext_resource type="PackedScene" uid="uid://c8jevyf6a3do5" path="res://scenes/scene4.tscn" id="1_jckrp"]
 [ext_resource type="Script" path="res://enemies/waves/enemy_spawner.gd" id="2_rhyrc"]
@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://bsjfhwk5erona" path="res://assets/TextureIcons/gun_arrow.png" id="12_u4wn8"]
 [ext_resource type="Texture2D" uid="uid://cxvra6n76180k" path="res://assets/TextureIcons/grenade_arrow.png" id="14_d7lvy"]
 [ext_resource type="PackedScene" uid="uid://m724oqngam6i" path="res://maps/objects/pods/expl_pod.tscn" id="15_n73yi"]
+[ext_resource type="PackedScene" uid="uid://cc5khdljmvf1j" path="res://scenes/in_game_music.tscn" id="16_yu0qr"]
 
 [node name="Level4" type="Node2D"]
 y_sort_enabled = true
@@ -53,17 +54,18 @@ player = NodePath("../Player")
 [node name="Sprite2D" type="Sprite2D" parent="ArrowIndicator"]
 texture = ExtResource("12_u4wn8")
 
-[node name="ArrowIndicator2" type="Node2D" parent="." node_paths=PackedStringArray("target", "arrow_sprite", "player")]
+[node name="ArrowIndicator2" type="Node2D" parent="." node_paths=PackedStringArray("target", "arrow_sprite")]
 z_index = 100
 z_as_relative = false
 position = Vector2(71, -157)
 script = ExtResource("11_a2otf")
-target = NodePath("")
+target = NodePath("../ExplosivePod")
 arrow_sprite = NodePath("Sprite2D")
-player = NodePath("")
 
 [node name="Sprite2D" type="Sprite2D" parent="ArrowIndicator2"]
 texture = ExtResource("14_d7lvy")
 
 [node name="ExplosivePod" parent="." instance=ExtResource("15_n73yi")]
 position = Vector2(-216, 212)
+
+[node name="InGameMusic" parent="." instance=ExtResource("16_yu0qr")]
