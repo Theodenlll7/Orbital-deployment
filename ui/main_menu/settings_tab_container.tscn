@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://ci8invl6x652e"]
+[gd_scene load_steps=7 format=3 uid="uid://ci8invl6x652e"]
 
 [ext_resource type="FontFile" uid="uid://dkg32o3qfh2n7" path="res://assets/Fonts/pixelmix.ttf" id="1_o800a"]
-[ext_resource type="PackedScene" uid="uid://by4ifx4e5aepa" path="res://ui/main_menu/hotkey_rebind_button.tscn" id="2_3olww"]
-[ext_resource type="PackedScene" uid="uid://claampkolyi3x" path="res://ui/main_menu/window_mode_button.tscn" id="2_6vogm"]
-[ext_resource type="PackedScene" uid="uid://b85bvo6avv0ya" path="res://ui/main_menu/resolution_button.tscn" id="3_881lw"]
-[ext_resource type="PackedScene" uid="uid://b4dpywdqbp5hd" path="res://ui/main_menu/show_tooltips_button.tscn" id="4_lsf4r"]
+[ext_resource type="PackedScene" path="res://ui/main_menu/hotkey_rebind_button.tscn" id="2_3olww"]
+[ext_resource type="PackedScene" uid="uid://pxrv3vlgod28" path="res://ui/main_menu/window_mode_button.tscn" id="2_6vogm"]
+[ext_resource type="PackedScene" path="res://ui/main_menu/resolution_button.tscn" id="3_881lw"]
+[ext_resource type="PackedScene" path="res://ui/main_menu/show_tooltips_button.tscn" id="4_lsf4r"]
+[ext_resource type="PackedScene" uid="uid://i0wwtqhqa0vo" path="res://ui/settings/audio_slider_setting.tscn" id="5_2v8io"]
 
 [node name="settings_tab_container" type="Control"]
 layout_mode = 3
@@ -26,9 +27,10 @@ offset_bottom = -128.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("1_o800a")
-current_tab = 0
+current_tab = 1
 
 [node name="Video" type="TabBar" parent="TabContainer"]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 0
 
@@ -81,10 +83,59 @@ grow_horizontal = 2
 grow_vertical = 0
 theme_override_constants/separation = 64
 
+[node name="Sound" type="TabBar" parent="TabContainer"]
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="TabContainer/Sound"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 64
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 64
+theme_override_constants/margin_bottom = 32
+
+[node name="ScrollContainer" type="ScrollContainer" parent="TabContainer/Sound/MarginContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Sound/MarginContainer/ScrollContainer"]
+custom_minimum_size = Vector2(49.94, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 92
+
+[node name="HSeparator" type="HSeparator" parent="TabContainer/Sound/MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 64
+
+[node name="Master" parent="TabContainer/Sound/MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource("5_2v8io")]
+layout_mode = 2
+
+[node name="Music" parent="TabContainer/Sound/MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource("5_2v8io")]
+layout_mode = 2
+audio_bus = 4
+
+[node name="Weapon" parent="TabContainer/Sound/MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource("5_2v8io")]
+layout_mode = 2
+audio_bus = 5
+
+[node name="Explosive" parent="TabContainer/Sound/MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource("5_2v8io")]
+layout_mode = 2
+audio_bus = 8
+
+[node name="HSeparator2" type="HSeparator" parent="TabContainer/Sound/MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
 [node name="Controls" type="TabBar" parent="TabContainer"]
 visible = false
 layout_mode = 2
-metadata/_tab_index = 1
+metadata/_tab_index = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="TabContainer/Controls"]
 layout_mode = 1
