@@ -1,8 +1,6 @@
 extends Node2D
 class_name Weapon
 
-@warning_ignore("unused_signal")
-
 const RELOAD = preload("res://inventory/items/weapons/assets/audio/reload.ogg")
 
 @export var weapon_resource: WeaponResource = null
@@ -21,7 +19,6 @@ func _init(data: WeaponResource = null):
 
 
 func _ready() -> void:
-
 	sprite = Sprite2D.new()
 	sprite.scale = Vector2(0.8, 0.8)
 	sprite.texture = weapon_resource.texture
@@ -41,7 +38,7 @@ func attack() -> void:
 	weapon_resource.attack(self)
 	cooldown_timer.start()
 	can_attack = false
-	
+
 	audio_player = AudioStreamPlayer.new()
 	audio_player.stream = weapon_resource.audio_steam
 	audio_player.bus = "Wepon"
@@ -88,12 +85,12 @@ func reload() -> void:
 	tween.play()
 	var sound: AudioStream = RELOAD
 	var player = AudioStreamPlayer.new()
-	
+
 	player.stream = sound
 	player.bus = "Wepon"
-	
+
 	add_child(player)
-	
+
 	player.play()
 	player.connect("finished", Callable(player, "queue_free"))
 
@@ -103,17 +100,20 @@ func _on_reload_complete() -> void:
 	reloading = false
 	var missing_ammo_in_magazine = weapon_resource.magazine_size - weapon_resource.ammo_in_magazine
 	if missing_ammo_in_magazine > 0:
-		if weapon_resource.ammo >= missing_ammo_in_magazine:
-			# If enough ammo is available to fully reload
-			weapon_resource.ammo_in_magazine = weapon_resource.magazine_size
-			weapon_resource.ammo -= missing_ammo_in_magazine
+		if weapon_resource.has_ammo:
+			if weapon_resource.ammo >= missing_ammo_in_magazine:
+				# If enough ammo is available to fully reload
+				weapon_resource.ammo_in_magazine = weapon_resource.magazine_size
+				weapon_resource.ammo -= missing_ammo_in_magazine
 
+			else:
+				# Partially reload if there's not enough ammo
+				weapon_resource.ammo_in_magazine += weapon_resource.ammo
+				weapon_resource.ammo = 0
+			weapon_resource.ammo_changed.emit(weapon_resource.ammo)
 		else:
-			# Partially reload if there's not enough ammo
-			weapon_resource.ammo_in_magazine += weapon_resource.ammo
-			weapon_resource.ammo = 0
+			weapon_resource.ammo_in_magazine = weapon_resource.magazine_size
 
-	weapon_resource.ammo_changed.emit(weapon_resource.ammo)
 	weapon_resource.magazine_changed.emit(weapon_resource.ammo_in_magazine)
 
 

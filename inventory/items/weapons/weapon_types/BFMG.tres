@@ -9,7 +9,7 @@
 script = ExtResource("3_xyils")
 projectile_scene = ExtResource("2_qdavh")
 item_name = &"BFMG"
-cost = 100
+cost = 2000
 muzzel_offset = Vector2(8, 0)
 audio_steam = ExtResource("1_0u510")
 attack_mode = 1

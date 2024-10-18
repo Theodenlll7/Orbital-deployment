@@ -8,7 +8,6 @@ class_name PodShop extends Control
 @export_dir var explosive_dir: String = "res://inventory/items/explosives/explosive_types/"
 @onready var wave_manager = get_tree().get_nodes_in_group("wave_manager")[0] as WaveManager
 
-
 enum ShopType { weapon, explosive }
 
 var weapons: Array[WeaponResource] = []
@@ -25,6 +24,7 @@ var costumer: Inventory:
 		updatePlayerMoney()
 		updateCostLabelColor()
 
+
 func _ready():
 	setRefillAmmonition()
 	loadResources()
@@ -40,27 +40,39 @@ func loadResources():
 	for path in explosive_path:
 		explosives.append(ResourceLoader.load(path))
 
+
 func update_weapons(_time_until_next_wave: float = 0.0):
 	weapons.clear()
 	for path in weapon_path:
 		var _item = ResourceLoader.load(path)
 		#if item.weapon_accessibility_wave <= wave:
 		weapons.append(ResourceLoader.load(path))
-			
+
 	setLabelsAndCost(pod_type)
-	
+
+
 func setRefillAmmonition():
 	var buy_btn: Button = $ContentPanelContainer/MarginContainer/VBoxContainer/Panel/RefillAmmonition
 	buy_btn.action_mode = BaseButton.ACTION_MODE_BUTTON_RELEASE
 	buy_btn.connect("pressed", _on_refill_ammonition_button_pressed.bind(ammo_cost))
 
+
 func updatePlayerMoney() -> void:
-		if costumer:
-			var player_money = $HeaderPanelContainer/MarginContainer/HBoxContainer.get_node("Players_money")	
-			player_money.text = str(costumer.money) + "$"
+	if costumer:
+		var player_money = $HeaderPanelContainer/MarginContainer/HBoxContainer.get_node(
+			"Players_money"
+		)
+		player_money.text = str(costumer.money) + "$"
+
 
 func compare_items_by_accessibility(item1, item2) -> int:
-	return item1.weapon_accessibility_player_level < item2.weapon_accessibility_player_level
+	if item1.weapon_accessibility_player_level == item2.weapon_accessibility_player_level:
+		# If accessibility levels are the same, compare by cost
+		return item1.cost < item2.cost
+	else:
+		# Otherwise, compare by accessibility level
+		return item1.weapon_accessibility_player_level < item2.weapon_accessibility_player_level
+
 
 func setLabelsAndCost(shop_type: ShopType):
 	var array_items: Array
@@ -73,42 +85,41 @@ func setLabelsAndCost(shop_type: ShopType):
 			array_items = explosives
 
 	var shop = $ContentPanelContainer/MarginContainer/VBoxContainer/ScrollContainer/shop
-	
+
 	for existing_child in shop.get_children():
 		existing_child.queue_free()
-		
+
 	if shop_type != ShopType.weapon:
 		var refil_ammo_shop_slot: Panel = $ContentPanelContainer/MarginContainer/VBoxContainer/Panel
 		refil_ammo_shop_slot.visible = false
 	else:
 		var ammo_cost_label: Label = $ContentPanelContainer/MarginContainer/VBoxContainer/Panel/RefillAmmonition/MarginContainer/HBoxContainer/Cost
 		ammo_cost_label.text = str(ammo_cost) + " $"
-		ammo_cost_label.set("theme_override_colors/font_color", Color(0.8, 0.1, 0.1)) 
-		
-	
+		ammo_cost_label.set("theme_override_colors/font_color", Color(0.8, 0.1, 0.1))
+
 	for item in array_items:
 		var buy_btn: Button = weapon_buy_button.instantiate()
 		var background: Panel = buy_btn.get_child(0)
-		var pod_item_container = buy_btn.get_child(1).get_child(0)  
+		var pod_item_container = buy_btn.get_child(1).get_child(0)
 		var label: Label = pod_item_container.get_node_or_null("Label")
 		var label_unlock: Label = pod_item_container.get_node_or_null("Unlock")
 		var cost: Label = pod_item_container.get_node_or_null("Cost")
-		
+
 		label.text = item.item_name
 		label_unlock.text = "Level " + str(item.weapon_accessibility_player_level)
-		
+
 		cost.text = "%d $" % item.cost
-		cost.set("theme_override_colors/font_color", Color(0.8, 0.1, 0.1)) 
-		
+		cost.set("theme_override_colors/font_color", Color(0.8, 0.1, 0.1))
+
 		buy_btn.action_mode = BaseButton.ACTION_MODE_BUTTON_RELEASE
 		buy_btn.connect("pressed", _on_button_pressed.bind(item.item_name))
-		
+
 		if item.weapon_accessibility_player_level > ExperiencePoints.current_level:
 			buy_btn.disabled = true
-			label.set("theme_override_colors/font_color", Color(0.7, 0.7, 0.7)) 
+			label.set("theme_override_colors/font_color", Color(0.7, 0.7, 0.7))
 			var stylebox = StyleBoxFlat.new()
 			stylebox.bg_color = Color(0.2, 0.2, 0.2, 0.4)
-			background.add_theme_stylebox_override("panel", stylebox)						
+			background.add_theme_stylebox_override("panel", stylebox)
 		shop.add_child(buy_btn)
 
 
@@ -116,25 +127,33 @@ func updateButtonLabels():
 	#var player_money = $HeaderPanelContainer/MarginContainer/HBoxContainer.get_node("Players_money")
 	updatePlayerMoney()
 	updateCostLabelColor()
-	
+
+
 func updateCostLabelColor() -> void:
-	if !costumer: return
+	if !costumer:
+		return
 	var shop = $ContentPanelContainer/MarginContainer/VBoxContainer/ScrollContainer/shop
-	
+
 	var ammo_cost_label: Label = $ContentPanelContainer/MarginContainer/VBoxContainer/Panel/RefillAmmonition/MarginContainer/HBoxContainer/Cost
-	if costumer.money >= int(ammo_cost_label.text.split(" ")[0]): 
-		ammo_cost_label.set("theme_override_colors/font_color", Color(31.0/255.0, 186.0/255.0, 79.0/255.0)) 
+	if costumer.money >= int(ammo_cost_label.text.split(" ")[0]):
+		ammo_cost_label.set(
+			"theme_override_colors/font_color", Color(31.0 / 255.0, 186.0 / 255.0, 79.0 / 255.0)
+		)
 	else:
-		ammo_cost_label.set("theme_override_colors/font_color", Color(0.8, 0.1, 0.1)) 
-	
+		ammo_cost_label.set("theme_override_colors/font_color", Color(0.8, 0.1, 0.1))
+
 	for buy_btn in shop.get_children():
-		var pod_item_container = buy_btn.get_child(1).get_child(0) 
+		var pod_item_container = buy_btn.get_child(1).get_child(0)
 		var cost: Label = pod_item_container.get_node_or_null("Cost")
 		if cost:
-			if costumer.money >= int(cost.text.split(" ")[0]): 
-				cost.set("theme_override_colors/font_color", Color(31.0/255.0, 186.0/255.0, 79.0/255.0)) 
+			if costumer.money >= int(cost.text.split(" ")[0]):
+				cost.set(
+					"theme_override_colors/font_color",
+					Color(31.0 / 255.0, 186.0 / 255.0, 79.0 / 255.0)
+				)
 			else:
-				cost.set("theme_override_colors/font_color", Color(0.8, 0.1, 0.1)) 
+				cost.set("theme_override_colors/font_color", Color(0.8, 0.1, 0.1))
+
 
 func _on_refill_ammonition_button_pressed(cost: int) -> void:
 	if costumer.money >= cost:

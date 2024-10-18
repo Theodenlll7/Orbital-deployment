@@ -17,7 +17,7 @@
 [ext_resource type="Script" path="res://inventory/items/weapons/scripts/mob_weapon.gd" id="15_jw6vi"]
 [ext_resource type="Resource" uid="uid://db45qyhpdakjq" path="res://enemies/wepons/juggernaut_wepon.tres" id="16_rrqjo"]
 [ext_resource type="Script" path="res://inventory/loot/loot_spawner.gd" id="17_qnkwj"]
-[ext_resource type="Resource" uid="uid://jhcy2um0fjih" path="res://inventory/loot/juggernaut_loot_table.tres" id="18_h0cwc"]
+[ext_resource type="Resource" uid="uid://dqsageu05c1q6" path="res://inventory/loot/juggernaut_loot_table.tres" id="18_h0cwc"]
 [ext_resource type="Script" path="res://enemies/scripts/handle_enemy_death.gd" id="19_8xdvp"]
 [ext_resource type="Texture2D" uid="uid://dcgcly83hxan6" path="res://player/assets/textures/light.png" id="20_h5fes"]
 [ext_resource type="Script" path="res://enemies/scripts/parent_move_and_slide.gd" id="21_krtar"]

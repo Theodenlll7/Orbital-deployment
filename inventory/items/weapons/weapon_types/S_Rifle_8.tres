@@ -9,7 +9,7 @@
 script = ExtResource("3_rv8uu")
 projectile_scene = ExtResource("2_r5c6p")
 item_name = &"S Rifle .50"
-cost = 100
+cost = 2000
 muzzel_offset = Vector2(0, 0)
 audio_steam = ExtResource("1_0ya5b")
 attack_mode = 0

@@ -9,7 +9,7 @@
 script = ExtResource("3_4j6gg")
 projectile_scene = ExtResource("2_ua4wu")
 item_name = &"AS Breacher 36"
-cost = 100
+cost = 600
 muzzel_offset = Vector2(8, 0)
 audio_steam = ExtResource("1_ntd66")
 attack_mode = 0

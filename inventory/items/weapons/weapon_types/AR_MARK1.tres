@@ -9,12 +9,12 @@
 script = ExtResource("2_wac4t")
 projectile_scene = ExtResource("1_nhrq8")
 item_name = &"AR MARK I"
-cost = 100
+cost = 200
 muzzel_offset = Vector2(8, 0)
 audio_steam = ExtResource("1_y72ib")
 attack_mode = 1
 attack_cooldown = 0.2
-weapon_accessibility_player_level = 0
+weapon_accessibility_player_level = 1
 has_magazine = true
 bullet_damage = 5
 bullet_speed = 500.0

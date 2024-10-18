@@ -7,24 +7,34 @@ class_name AmmoIndicator
 
 
 func equip_weapon(weapon: WeaponResource):
-	weapon.ammo_changed.connect(_on_ammo_changed)
-	weapon.magazine_changed.connect(_on_magazine_changed)
+	reset_indicators()
+
 	if weapon.has_magazine:
+		# Show magazine ammo count
 		magazin_ammo.text = "%d" % weapon.ammo_in_magazine
 		magazin_ammo.visible = true
-		if !weapon.has_ammo:
-			devider.visible = true
-			extra_ammo.visible = true
-			extra_ammo.text = "∞"
-	elif weapon.ammo:
+		weapon.magazine_changed.connect(_on_magazine_changed)
+
+		extra_ammo.visible = true
+		devider.visible = true
+
+		if weapon.has_ammo:
+			extra_ammo.text = "%d" % weapon.ammo
+			weapon.ammo_changed.connect(_on_ammo_changed)
+		else:
+			# No extra ammo, show infinity for extra ammo
+			extra_ammo.text = "Ꝏ"
+	else:
+		# If no magazine, show ammo only
 		magazin_ammo.text = "%d" % weapon.ammo
 		magazin_ammo.visible = true
-	else:
-		magazin_ammo.visible = false
-	if weapon.has_magazine and weapon.has_ammo:
-		extra_ammo.text = "%d" % weapon.ammo
-		devider.visible = true
-		extra_ammo.visible = true
+		weapon.ammo_changed.connect(_on_magazine_changed)
+
+
+func reset_indicators():
+	magazin_ammo.visible = false
+	extra_ammo.visible = false
+	devider.visible = false
 
 
 func _on_magazine_changed(new_magazine_amount: int):

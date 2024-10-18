@@ -17,7 +17,7 @@
 [ext_resource type="Script" path="res://enemies/mind_tree_components/actions/start_navigation_to_target.gd" id="15_q7nvy"]
 [ext_resource type="Script" path="res://common/components/navigator2d.gd" id="15_xr0je"]
 [ext_resource type="Script" path="res://inventory/loot/loot_spawner.gd" id="16_8b7ue"]
-[ext_resource type="Resource" uid="uid://j1muyacfwphe" path="res://inventory/loot/spider_loot_table.tres" id="17_3fygd"]
+[ext_resource type="Resource" path="res://inventory/loot/spider_loot_table.tres" id="17_3fygd"]
 [ext_resource type="Script" path="res://common/components/hurtbox.gd" id="18_b4vkg"]
 [ext_resource type="Texture2D" uid="uid://bmg7yghvbq8g7" path="res://inventory/items/weapons/assets/sprites/heads_up.png" id="19_b8ard"]
 
@@ -406,7 +406,7 @@ script = ExtResource("15_eh0ey")
 position = Vector2(0, -6)
 script = ExtResource("16_8b7ue")
 loot_table = ExtResource("17_3fygd")
-item_spawn_chanse = 0.25
+item_spawn_chanse = 0.1
 spawn_attempts = 2
 
 [node name="Hurtbox" type="Area2D" parent="."]

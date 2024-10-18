@@ -27,7 +27,7 @@ signal new_explosive(explosive: ExplosiveResource)
 
 
 func setup() -> void:
-	wave_manager.end_of_wave.connect(add_wave_money_bonus)
+	#wave_manager.end_of_wave.connect(add_wave_money_bonus)
 	for i in range(weapon_slots.size()):
 		if weapon_slots[i]:
 			new_weapon.emit(i, weapon_slots[i])
@@ -38,8 +38,10 @@ func setup() -> void:
 		new_explosive.emit(explosive_slot)
 	new_explosive.connect(_new_explosive)
 
+
 func add_wave_money_bonus(_time_until_next_wave: float) -> void:
 	money += money + end_of_wave_money_bonus
+
 
 func add_weapon(weapon: WeaponResource):
 	if weapon:
@@ -54,21 +56,26 @@ func add_weapon(weapon: WeaponResource):
 			new_weapon.emit(selected_weapon_slot, weapon)
 			select_weapon_slot(selected_weapon_slot)
 
-func _new_explosive(explosive : ExplosiveResource) -> void:
+
+func _new_explosive(explosive: ExplosiveResource) -> void:
 	if explosive:
 		explosive.explosive_thrown.connect(_explosive_thrown)
-	
+
+
 func _explosive_thrown(explosive: ExplosiveResource) -> void:
 	if explosive == explosive_slot:
 		if explosive.explosive_count <= 0:
 			set_explosive(null)
 
-func set_explosive(explosive : ExplosiveResource):
+
+func set_explosive(explosive: ExplosiveResource):
 	explosive_slot = explosive
 	new_explosive.emit(explosive)
 
+
 func add_special_equipment(special_equipment):
 	special_equipment_slot = special_equipment
+
 
 func drop_item(_item):
 	pass
