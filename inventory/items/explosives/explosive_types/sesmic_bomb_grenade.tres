@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="ThrowableExplosiveResource" load_steps=6 format=3 uid="uid://dw13wgg7th4k3"]
+
+[ext_resource type="AudioStream" uid="uid://dudrlp4fhtss2" path="res://inventory/items/explosives/assets/audio/mega_explosion.ogg" id="1_3mgjl"]
+[ext_resource type="AudioStream" uid="uid://criwch41e6rjl" path="res://inventory/items/explosives/assets/audio/throw.ogg" id="2_qh2h0"]
+[ext_resource type="PackedScene" uid="uid://cruxtuhj25kr6" path="res://inventory/items/explosives/grenades/sesmic_bomb_grenade.tscn" id="3_1asyk"]
+[ext_resource type="Script" path="res://inventory/items/explosives/scripts/grenade_proj_resource.gd" id="4_6mff3"]
+[ext_resource type="Texture2D" uid="uid://bbbpbq7rov8jd" path="res://inventory/items/explosives/assets/sprites/sesmic_bomb.png" id="5_i4oj3"]
+
+[resource]
+script = ExtResource("4_6mff3")
+explosive_grenade = ExtResource("3_1asyk")
+item_name = &"Sesmic Bomb"
+cost = 300
+audio_stream_throw = ExtResource("2_qh2h0")
+audio_stream_explode = ExtResource("1_3mgjl")
+throw_speed = 30.0
+throw_cooldown = 0.5
+grenade_weight = 0.2
+explosion_damage = 100
+explosion_radius = 80.0
+exposion_collision_mask = 129
+fuse_time = 3.0
+has_explosive_quantity = true
+explosive_count = 2
+weapon_accessibility_player_level = 0
+drop_type = 0
+texture = ExtResource("5_i4oj3")
+drop_weight = 100

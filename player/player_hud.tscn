@@ -71,7 +71,6 @@ text = "Wepon name"
 [node name="WeponNameLabel2" type="Label" parent="MarginContainer/PlayerHUD/GameHUD/HBoxContainer2"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
-text = "Grenade name"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/PlayerHUD/GameHUD"]
 layout_mode = 2

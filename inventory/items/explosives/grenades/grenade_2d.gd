@@ -13,7 +13,7 @@ var explosive_resource : ExplosiveResource
 
 @onready var animated_sprite_explosion = $AnimatedSprite2D
 @onready var pointlight = $PointLight2D
-
+@onready var sprite_2d: Sprite2D = $CollisionShape2D/Sprite2D
 
 func _ready() -> void:
 	animated_sprite_explosion.visible = false
@@ -26,6 +26,7 @@ func _ready() -> void:
 	explosion_area.monitorable = false
 	explosion_area.monitoring = false
 	explosion_area.collision_mask = 129
+	sprite_2d.texture = explosive_resource.texture
 	add_child(explosion_area)
 		
 	explosion_area.area_entered.connect(_on_area_entered)

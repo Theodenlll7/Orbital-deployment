@@ -13,6 +13,7 @@ extends Control
 
 @onready var mission_title_label: RichTextLabel = $content/ContentMarginContainer/VBoxContainer/Title/HBoxContainer/Control/HBoxContainer/mission_description/MarginContainer/MarginContainer/VBoxContainer/Title
 @onready var mission_description_label: RichTextLabel = $content/ContentMarginContainer/VBoxContainer/Title/HBoxContainer/Control/HBoxContainer/mission_description/MarginContainer/MarginContainer/VBoxContainer/Description
+@onready var difficulty_label: RichTextLabel = $content/ContentMarginContainer/VBoxContainer/Title/HBoxContainer/Control/HBoxContainer/mission_description/MarginContainer/MarginContainer/VBoxContainer/Difficulty
 @onready var texture_rect: TextureRect = $content/ContentMarginContainer/VBoxContainer/Title/HBoxContainer/Control/HBoxContainer/mission_description/MarginContainer/MarginContainer/VBoxContainer/MarginContainer/Thumbnail
 
 signal back_mission_select
@@ -43,8 +44,15 @@ func on_mission_button_hover(mission_number: String) -> void:
 	mission_marker.visible = true;
 	mission_marker.set_global_position(marker_position)
 	
-	mission_title_label.text = mission.title
-	mission_description_label.text = mission.description
+	mission_title_label.clear()
+	mission_title_label.append_text(mission.title)
+	
+	mission_description_label.clear()
+	mission_description_label.append_text(mission.description)
+	
+	difficulty_label.clear()
+	difficulty_label.append_text("[color=red]Difficulty[/color]: " + mission.difficulty)
+	
 	var new_texture = load(mission.image_path) as Texture2D
 	texture_rect.texture = new_texture
 	

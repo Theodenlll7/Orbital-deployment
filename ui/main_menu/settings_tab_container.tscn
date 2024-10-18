@@ -1,10 +1,10 @@
 [gd_scene load_steps=7 format=3 uid="uid://ci8invl6x652e"]
 
 [ext_resource type="FontFile" uid="uid://dkg32o3qfh2n7" path="res://assets/Fonts/pixelmix.ttf" id="1_o800a"]
-[ext_resource type="PackedScene" path="res://ui/main_menu/hotkey_rebind_button.tscn" id="2_3olww"]
+[ext_resource type="PackedScene" uid="uid://by4ifx4e5aepa" path="res://ui/main_menu/hotkey_rebind_button.tscn" id="2_3olww"]
 [ext_resource type="PackedScene" uid="uid://pxrv3vlgod28" path="res://ui/main_menu/window_mode_button.tscn" id="2_6vogm"]
-[ext_resource type="PackedScene" path="res://ui/main_menu/resolution_button.tscn" id="3_881lw"]
-[ext_resource type="PackedScene" path="res://ui/main_menu/show_tooltips_button.tscn" id="4_lsf4r"]
+[ext_resource type="PackedScene" uid="uid://b85bvo6avv0ya" path="res://ui/main_menu/resolution_button.tscn" id="3_881lw"]
+[ext_resource type="PackedScene" uid="uid://b4dpywdqbp5hd" path="res://ui/main_menu/show_tooltips_button.tscn" id="4_lsf4r"]
 [ext_resource type="PackedScene" uid="uid://i0wwtqhqa0vo" path="res://ui/settings/audio_slider_setting.tscn" id="5_2v8io"]
 
 [node name="settings_tab_container" type="TabContainer"]

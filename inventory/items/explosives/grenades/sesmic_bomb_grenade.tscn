@@ -132,7 +132,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"explode",
-"speed": 10.0
+"speed": 17.0
 }]
 
 [node name="SesmicBombGrenade" type="RigidBody2D"]
@@ -161,7 +161,7 @@ animation = &"explode"
 position = Vector2(-2, 0)
 scale = Vector2(0.064937, 0.0685446)
 color = Color(0.675247, 0.325752, 0.418605, 1)
-energy = 2.0
+energy = 3.0
 texture = ExtResource("4_hwwp5")
 texture_scale = 3.0
 

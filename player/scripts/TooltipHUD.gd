@@ -10,7 +10,7 @@ var second_weapon_bought: bool = false
 var first_wave_over: bool = false
 
 
-var start_text: String = "[color=cyan]Tip: [/color]"
+var start_text: String = "[color=cyan]Tip[/color]: "
 
 
 func init_vars() -> void:
