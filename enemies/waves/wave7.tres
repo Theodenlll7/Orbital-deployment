@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="CustomWave" load_steps=4 format=3 uid="uid://cs64bt3v0a1ij"]
+[gd_resource type="Resource" script_class="CustomWave" load_steps=4 format=3 uid="uid://u1rcmagvcui5"]
 
 [ext_resource type="PackedScene" uid="uid://dsuabe2igmqvf" path="res://enemies/mobs/assult.tscn" id="2_82l30"]
 [ext_resource type="PackedScene" uid="uid://boa23xke4oiwg" path="res://enemies/mobs/watcher.tscn" id="2_x0ipo"]

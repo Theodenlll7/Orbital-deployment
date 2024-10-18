@@ -4,6 +4,8 @@ extends Control
 @onready var mission_2_button: Button = $content/ContentMarginContainer/VBoxContainer/Title/HBoxContainer/Control/HBoxContainer/Buttons/MarginContainer/MarginContainer/ScrollContainer/VBoxContainer/Mission2Button
 @onready var mission_3_button: Button = $content/ContentMarginContainer/VBoxContainer/Title/HBoxContainer/Control/HBoxContainer/Buttons/MarginContainer/MarginContainer/ScrollContainer/VBoxContainer/Mission3Button
 @onready var mission_4_button: Button = $content/ContentMarginContainer/VBoxContainer/Title/HBoxContainer/Control/HBoxContainer/Buttons/MarginContainer/MarginContainer/ScrollContainer/VBoxContainer/Mission4Button
+@onready var mission_5_button: Button = $content/ContentMarginContainer/VBoxContainer/Title/HBoxContainer/Control/HBoxContainer/Buttons/MarginContainer/MarginContainer/ScrollContainer/VBoxContainer/Mission5Button
+
 
 @onready var back_button: Button = $content/ContentMarginContainer/BackButton
 
@@ -23,18 +25,9 @@ func _ready() -> void:
 	handle_connecting_signals()
 	mission_marker.visible = false
 
-func on_mission_1_button_pressed() -> void:
-	tab_level_selected.emit("1", marker_position)
-	
-func on_mission_2_button_pressed() -> void:
-	tab_level_selected.emit("2", marker_position)
+func on_mission_button_pressed(id: String) -> void:
+	tab_level_selected.emit(id, marker_position)
 
-func on_mission_3_button_pressed() -> void:
-	tab_level_selected.emit("3", marker_position)
-
-func on_mission_4_button_pressed() -> void:
-	tab_level_selected.emit("4", marker_position)
-	
 func on_back_pressed() -> void:
 	back_mission_select.emit()
 	
@@ -74,17 +67,22 @@ func handle_connecting_signals() -> void:
 	back_button.button_down.connect(on_back_pressed)
 	
 	set_button_connection(mission_1_button, "1")
-	mission_1_button.button_down.connect(on_mission_1_button_pressed)
+	mission_1_button.button_down.connect(on_mission_button_pressed.bind("1"))
 	mission_1_button.text = MissionManager.getMissionName("1")
 
 	set_button_connection(mission_2_button, "2")
-	mission_2_button.button_down.connect(on_mission_2_button_pressed)
+	mission_2_button.button_down.connect(on_mission_button_pressed.bind("2"))
 	mission_2_button.text = MissionManager.getMissionName("2")
 
 	set_button_connection(mission_3_button, "3")
-	mission_3_button.button_down.connect(on_mission_3_button_pressed)
+	mission_3_button.button_down.connect(on_mission_button_pressed.bind("3"))
 	mission_3_button.text = MissionManager.getMissionName("3")
 
 	set_button_connection(mission_4_button, "4")
-	mission_4_button.button_down.connect(on_mission_4_button_pressed)
+	mission_4_button.button_down.connect(on_mission_button_pressed.bind("4"))
 	mission_4_button.text = MissionManager.getMissionName("4")
+	
+	set_button_connection(mission_5_button, "5")
+	mission_5_button.button_down.connect(on_mission_button_pressed.bind("5"))
+	mission_5_button.text = MissionManager.getMissionName("5")
+	print("Name: ", mission_5_button.text)

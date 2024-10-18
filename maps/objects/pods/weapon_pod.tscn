@@ -30,7 +30,6 @@ shape = SubResource("RectangleShape2D_k8nvd")
 [node name="StoreUI" parent="CanvasLayer" instance=ExtResource("4_5te7r")]
 
 [node name="PodTileMapActive" type="TileMapLayer" parent="."]
-z_index = 3
 y_sort_enabled = true
 position = Vector2(-18, 2)
 scale = Vector2(1.72917, 1.34375)

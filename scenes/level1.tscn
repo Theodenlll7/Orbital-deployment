@@ -34,7 +34,7 @@ custom_waves = Array[ExtResource("7_akywf")]([ExtResource("8_dq6hp"), ExtResourc
 [node name="Player" parent="." instance=ExtResource("2_5ihlw")]
 z_index = 0
 y_sort_enabled = true
-position = Vector2(123, 110)
+position = Vector2(134, 103)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -46,16 +46,12 @@ z_index = 100
 z_as_relative = false
 position = Vector2(-104, -133)
 script = ExtResource("8_btq2v")
-target = NodePath("../InteractionArea")
+target = NodePath("../WeponPod")
 arrow_sprite = NodePath("Sprite2D")
 player = NodePath("../Player")
 
 [node name="Sprite2D" type="Sprite2D" parent="ArrowIndicator"]
 texture = ExtResource("9_7mvpw")
-
-[node name="InteractionArea" parent="." instance=ExtResource("5_cpg73")]
-z_index = 1
-position = Vector2(239, -34)
 
 [node name="ArrowIndicator2" type="Node2D" parent="." node_paths=PackedStringArray("target", "arrow_sprite", "player")]
 z_index = 100
@@ -68,6 +64,9 @@ player = NodePath("../Player")
 
 [node name="Sprite2D" type="Sprite2D" parent="ArrowIndicator2"]
 texture = ExtResource("13_co0e7")
+
+[node name="WeponPod" parent="." instance=ExtResource("5_cpg73")]
+position = Vector2(239, -34)
 
 [node name="ExplosivePod" parent="." instance=ExtResource("13_h2npq")]
 position = Vector2(-150, -444)

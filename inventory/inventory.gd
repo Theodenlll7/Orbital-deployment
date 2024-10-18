@@ -1,7 +1,7 @@
 class_name Inventory extends Node
 
 signal money_changed(new_money_amount: int)
-var money: int = 0:
+var money: int = 500:
 	get:
 		return money
 	set(value):
@@ -27,7 +27,7 @@ signal new_explosive(explosive: ExplosiveResource)
 
 
 func setup() -> void:
-	#wave_manager.end_of_wave.connect(add_wave_money_bonus)
+	wave_manager.end_of_wave.connect(add_wave_money_bonus)
 	for i in range(weapon_slots.size()):
 		if weapon_slots[i]:
 			new_weapon.emit(i, weapon_slots[i])

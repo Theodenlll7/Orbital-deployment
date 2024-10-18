@@ -22,7 +22,7 @@
 [ext_resource type="Script" path="res://enemies/mind_tree_components/actions/weapon_ready.gd" id="18_0o8fi"]
 [ext_resource type="Script" path="res://enemies/scripts/handle_enemy_death.gd" id="19_8xdvp"]
 [ext_resource type="Script" path="res://enemies/mind_tree_components/actions/action_alert.gd" id="19_fktyo"]
-[ext_resource type="Resource" uid="uid://ccbxrfkn8i623" path="res://inventory/loot/assult_loot_table.tres" id="20_f6wej"]
+[ext_resource type="Resource" uid="uid://csdc3fnnuoxcn" path="res://inventory/loot/assult_loot_table.tres" id="20_f6wej"]
 [ext_resource type="Texture2D" uid="uid://dcgcly83hxan6" path="res://player/assets/textures/light.png" id="20_h5fes"]
 [ext_resource type="Script" path="res://addons/tree_mind/nodes/decorators/for_time.gd" id="20_hf3o1"]
 [ext_resource type="Script" path="res://enemies/scripts/parent_move_and_slide.gd" id="21_krtar"]
@@ -371,6 +371,6 @@ shape = SubResource("RectangleShape2D_eiuoe")
 
 [node name="ActionSprite" type="Sprite2D" parent="."]
 visible = false
-position = Vector2(0, -13)
+position = Vector2(0, -20)
 scale = Vector2(0.029811, 0.029811)
 texture = ExtResource("26_ipn4m")

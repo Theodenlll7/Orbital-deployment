@@ -22,6 +22,7 @@
 y_sort_enabled = true
 
 [node name="TileMap" parent="." instance=ExtResource("1_20b3o")]
+z_index = -3
 
 [node name="enemy_spawner" type="Node2D" parent="."]
 script = ExtResource("2_ur11m")
@@ -39,20 +40,24 @@ position = Vector2(-727, -873)
 [node name="mission_start_text" parent="CanvasLayer" instance=ExtResource("11_ss6od")]
 size_flags_horizontal = 3
 
+[node name="WeponPod" parent="." instance=ExtResource("14_4tu3f")]
+z_index = 1
+position = Vector2(-388, -140)
+
+[node name="ExplosivePod" parent="." instance=ExtResource("16_qlnk2")]
+z_index = 1
+position = Vector2(323, -799)
+
 [node name="ArrowIndicator" type="Node2D" parent="." node_paths=PackedStringArray("target", "arrow_sprite", "player")]
 z_index = 100
 z_as_relative = false
 script = ExtResource("12_o5lsw")
-target = NodePath("../InteractionArea")
+target = NodePath("../WeponPod")
 arrow_sprite = NodePath("Sprite2D")
 player = NodePath("../Player")
 
 [node name="Sprite2D" type="Sprite2D" parent="ArrowIndicator"]
 texture = ExtResource("13_fugsk")
-
-[node name="InteractionArea" parent="." instance=ExtResource("14_4tu3f")]
-z_index = 1
-position = Vector2(-388, -140)
 
 [node name="ArrowIndicator2" type="Node2D" parent="." node_paths=PackedStringArray("target", "arrow_sprite", "player")]
 z_index = 100
@@ -64,8 +69,5 @@ player = NodePath("../Player")
 
 [node name="Sprite2D" type="Sprite2D" parent="ArrowIndicator2"]
 texture = ExtResource("15_ud1y0")
-
-[node name="ExplosivePod" parent="." instance=ExtResource("16_qlnk2")]
-position = Vector2(323, -799)
 
 [node name="InGameMusic" parent="." instance=ExtResource("17_ctdls")]

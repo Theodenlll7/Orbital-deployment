@@ -22,6 +22,7 @@
 y_sort_enabled = true
 
 [node name="TileMap2" parent="." instance=ExtResource("1_c8gxp")]
+z_index = -3
 
 [node name="enemy_spawner" type="Node2D" parent="."]
 script = ExtResource("3_3263j")
@@ -37,23 +38,24 @@ custom_waves = Array[ExtResource("6_cnvru")]([ExtResource("7_67x7v")])
 size_flags_horizontal = 3
 
 [node name="Player" parent="." instance=ExtResource("2_ammvo")]
-z_index = 3
+z_index = 0
 y_sort_enabled = true
-position = Vector2(-97, -5)
+position = Vector2(93, -81)
 
-[node name="InteractionArea" parent="." instance=ExtResource("7_38vkb")]
+[node name="WeponPod" parent="." instance=ExtResource("7_38vkb")]
 z_index = 1
 position = Vector2(95, -80)
 
 [node name="ExplosivePod" parent="." instance=ExtResource("12_qrav4")]
-position = Vector2(112, -672)
+z_index = 1
+position = Vector2(116, -679)
 
 [node name="ArrowIndicator" type="Node2D" parent="." node_paths=PackedStringArray("target", "arrow_sprite", "player")]
 z_index = 100
 z_as_relative = false
 position = Vector2(251, -153)
 script = ExtResource("11_nka5b")
-target = NodePath("../InteractionArea")
+target = NodePath("../WeponPod")
 arrow_sprite = NodePath("Sprite2D")
 player = NodePath("../Player")
 
