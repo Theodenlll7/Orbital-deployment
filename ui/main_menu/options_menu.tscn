@@ -56,14 +56,16 @@ text = "Options"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="settings_tab_container" parent="ContentMarginContainer" instance=ExtResource("3_va5lm")]
+[node name="settings_tab_container" parent="ContentMarginContainer/MarginContainer/VBoxContainer" instance=ExtResource("3_va5lm")]
 layout_mode = 2
+current_tab = 0
 
-[node name="BackButton" type="Button" parent="ContentMarginContainer"]
+[node name="BackButton" type="Button" parent="ContentMarginContainer/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(256, 64)
 layout_mode = 2
 size_flags_horizontal = 0
-size_flags_vertical = 10
+size_flags_vertical = 8
+focus_neighbor_top = NodePath("../settings_tab_container/Video")
 theme_override_fonts/font = ExtResource("3_1353u")
 theme_override_font_sizes/font_size = 32
 theme_override_styles/hover = SubResource("StyleBoxFlat_l1xn0")
