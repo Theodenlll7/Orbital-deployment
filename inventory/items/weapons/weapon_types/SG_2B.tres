@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="ProjectileWeaponResource" load_steps=5 format=3 uid="uid://qfeg068cs2y5"]
+
+[ext_resource type="AudioStream" uid="uid://cqwehoi5slqap" path="res://inventory/items/weapons/assets/audio/shotgun_pump.ogg" id="1_j2ert"]
+[ext_resource type="PackedScene" uid="uid://b1ahksg20mxej" path="res://inventory/items/weapons/projectiles/basic_projectile.tscn" id="2_shnfv"]
+[ext_resource type="Script" path="res://inventory/items/weapons/scripts/projectile_weapon_resource.gd" id="3_xqhrw"]
+[ext_resource type="Texture2D" uid="uid://0li83n46rryx" path="res://inventory/items/weapons/assets/sprites/SG_2B.png" id="4_llpwr"]
+
+[resource]
+script = ExtResource("3_xqhrw")
+projectile_scene = ExtResource("2_shnfv")
+item_name = &"SG Breacher"
+cost = 300
+muzzle_offset = Vector2(8, 0)
+audio_steam = ExtResource("1_j2ert")
+attack_mode = 0
+attack_cooldown = 0.6
+weapon_accessibility_player_level = 8
+has_magazine = true
+bullet_damage = 25
+bullet_speed = 300.0
+bullet_spread = 10.0
+bullet_lifetime = 0.4
+bullets_per_shot = 6
+magazine_size = 2
+reload_time = 0.5
+has_ammo = true
+ammo = 18
+ammo_cap = 36
+ammo_crate_value = 8
+drop_type = 0
+texture = ExtResource("4_llpwr")
+drop_weight = 100

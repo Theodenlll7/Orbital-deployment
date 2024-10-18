@@ -8,7 +8,7 @@
 [resource]
 script = ExtResource("3_5mh75")
 projectile_scene = ExtResource("2_m4vi2")
-item_name = &"AS 12"
+item_name = &"SG 12"
 cost = 350
 muzzle_offset = Vector2(8, 0)
 audio_steam = ExtResource("1_i25cb")

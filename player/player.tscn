@@ -5,7 +5,7 @@
 [ext_resource type="Script" path="res://inventory/inventory.gd" id="2_rqocl"]
 [ext_resource type="Script" path="res://inventory/items/weapons/scripts/weapon_resource.gd" id="3_krjvn"]
 [ext_resource type="Script" path="res://common/components/HealthComponent.gd" id="3_rmoxv"]
-[ext_resource type="Resource" uid="uid://rykg887uq1sm" path="res://inventory/items/weapons/weapon_types/HG MARK I.tres" id="4_3qvih"]
+[ext_resource type="Resource" uid="uid://rykg887uq1sm" path="res://inventory/items/weapons/weapon_types/P_MARK_I.tres" id="4_3qvih"]
 [ext_resource type="Texture2D" uid="uid://dgfwosrjlow2i" path="res://player/assets/textures/player.png" id="4_arusb"]
 [ext_resource type="Script" path="res://player/scripts/camera_2d.gd" id="4_hh08p"]
 [ext_resource type="PackedScene" uid="uid://bdxxnqyrxk04e" path="res://player/player_hud.tscn" id="6_pjces"]
