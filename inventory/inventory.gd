@@ -9,7 +9,7 @@ var money: int = 0:
 		money_changed.emit(money)
 
 @export var weapon_slots: Array[WeaponResource] = [null, null]
-@export var explosive_slot = ExplosiveResource
+@export var explosive_slot: ExplosiveResource = null
 @export var special_equipment_slot: SpecialEquipment = null
 @export var end_of_wave_money_bonus: int = 75
 
