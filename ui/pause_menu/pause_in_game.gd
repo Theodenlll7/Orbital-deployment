@@ -9,6 +9,7 @@ class_name PauseInGame
 @onready var quit_level_button: Button = $MarginContainer/TextureRect/MarginContainer/VBoxContainer/Buttons/MarginContainer/HBoxContainer/VBoxContainer/QuitLevelButton
 @onready var options_menu: OptionsMenu = $options_menu
 @onready var pause_menu: MarginContainer = $MarginContainer
+@onready var button_menu: VBoxContainer = $MarginContainer/TextureRect/MarginContainer/VBoxContainer/Buttons/MarginContainer/HBoxContainer/VBoxContainer
 
 func _ready() -> void:
 	handle_connecting_signals()
@@ -22,11 +23,13 @@ func on_resume_game_button_pressed() -> void:
 	var parent_hud = get_parent() as PlayerHUD  
 	pause_menu.visible = false
 	parent_hud.pauseMenu()
-	
 
 func on_options_button_pressed() -> void:
 	options_menu.visible = true
 	pause_menu.visible = false
+	var first_btn = options_menu.find_child("*Button", true) as Button
+	if first_btn:
+		first_btn.grab_focus()
 
 func on_restart_mission_button_pressed() -> void:
 	Engine.time_scale = 1
@@ -35,6 +38,12 @@ func on_restart_mission_button_pressed() -> void:
 func on_back_from_options_button_pressed() -> void:
 	options_menu.visible = false
 	pause_menu.visible = true
+	first_btn_focus_grab()
+	
+func first_btn_focus_grab() -> void:
+	var first_btn = button_menu.find_child("*Button", true) as Button
+	if first_btn:
+		first_btn.grab_focus()
 
 func handle_connecting_signals() -> void:
 	quit_level_button.button_down.connect(on_quit_level_button_pressed)
@@ -47,5 +56,7 @@ func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("pause"):
 		pause_menu.visible = true
 		options_menu.visible = false
+		first_btn_focus_grab()
+
 		
 	

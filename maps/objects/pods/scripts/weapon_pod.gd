@@ -7,12 +7,14 @@ class_name PodShop extends Control
 @export_dir var weapons_dir: String = "res://inventory/items/weapons/weapon_types/"
 @export_dir var explosive_dir: String = "res://inventory/items/explosives/explosive_types/"
 @onready var wave_manager = get_tree().get_nodes_in_group("wave_manager")[0] as WaveManager
+@onready var button_menu: VBoxContainer = $ContentPanelContainer/MarginContainer/VBoxContainer/ScrollContainer/shop
 
 enum ShopType { weapon, explosive }
 
 var weapons: Array[WeaponResource] = []
 var explosives: Array[ExplosiveResource] = []
 
+var isVisible: bool = false
 var pod_type: ShopType = ShopType.weapon
 
 var weapon_path = FilePaths.get_files(weapons_dir, ".tres")
@@ -23,6 +25,7 @@ var costumer: Inventory:
 		costumer = value
 		updatePlayerMoney()
 		updateCostLabelColor()
+
 
 
 func _ready():
@@ -204,3 +207,15 @@ func handleBuy(item, cost: int):
 	else:
 		#print("Not enough money to buy that")
 		return
+
+func _process(delta: float) -> void:
+	if visible and !isVisible:
+		first_btn_focus_grab()
+		isVisible = true
+	if !visible and isVisible:
+		isVisible = false
+
+func first_btn_focus_grab() -> void:
+	var first_btn = button_menu.find_child("*Button", true) as Button
+	if first_btn:
+		first_btn.grab_focus()

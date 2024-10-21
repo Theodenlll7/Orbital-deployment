@@ -12,6 +12,7 @@ class_name DeathScreen
 
 @onready var wave_label: Label = $TextureRect/MarginContainer/VBoxContentContainer/Text/MarginContainer/HBoxContainer/Control/VBoxContainer/ColorRect/MarginContainer/ProgressLabels/Wave
 @onready var wave_manager = get_tree().get_nodes_in_group("wave_manager")[0] as WaveManager
+@onready var button_menu: VBoxContainer = $TextureRect/MarginContainer/VBoxContentContainer/Buttons/MarginContainer/HBoxContainer/VBoxContainer
 
 
 # Called when the node enters the scene tree for the first time.
@@ -30,6 +31,8 @@ func fade_in():
 	TooltipHud.init_vars()
 	wave_label.text = str(wave_manager.wave)
 	visible = true
+	first_btn_focus_grab()
+	
 	var fade_time = 2.0
 	var fade_time_slow = 4.0
 	var opacity = 1.0
@@ -46,6 +49,10 @@ func on_try_again_button_pressed() -> void:
 func on_back_to_menu_button_pressed() -> void:
 	get_tree().change_scene_to_packed(main_menu)
 
+func first_btn_focus_grab() -> void:
+	var first_btn = button_menu.find_child("*Button", true) as Button
+	if first_btn:
+		first_btn.grab_focus()
 
 func handle_connecting_signals() -> void:
 	try_again_button.button_down.connect(on_try_again_button_pressed)

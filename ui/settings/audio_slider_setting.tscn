@@ -28,7 +28,7 @@ custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
-value = 61.0
+value = 51.0
 
 [node name="VSeparator2" type="VSeparator" parent="."]
 layout_mode = 2
@@ -38,4 +38,4 @@ size_flags_horizontal = 3
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 32
-text = "61 %"
+text = "51 %"
