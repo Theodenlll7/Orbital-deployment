@@ -14,7 +14,8 @@ config/name="Orbital deployment"
 run/main_scene="res://ui/splash_screen/splash_screen_screen.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 boot_splash/image="res://ui/splash_screen/splash_screen.png"
-config/icon="res://assets/TextureIcons/icon.png"
+config/icon="res://assets/TextureIcons/tray_icon.png"
+config/windows_native_icon="res://assets/TextureIcons/icon.ico"
 
 [autoload]
 

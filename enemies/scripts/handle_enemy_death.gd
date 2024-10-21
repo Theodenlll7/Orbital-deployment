@@ -4,6 +4,7 @@ signal died
 
 @onready var animated_sprite := $"../CharacterAnimatedSprite2D"
 
+@export var hide_elements : Array[Node2D] = []
 
 func _ready() -> void:
 	var hp = get_parent().get_node("HealthComponent") as HealthComponent
@@ -15,6 +16,9 @@ func _on_death() -> void:
 	var lp = get_parent().get_node_or_null("LootSpawner") as LootSpawner
 	if lp:
 		lp.spawn_loot()
+	
+	for node in hide_elements:
+		node.visible = false
 
 	var collider = get_parent().get_node_or_null("CollisionShape2D") as CollisionShape2D
 	if collider:

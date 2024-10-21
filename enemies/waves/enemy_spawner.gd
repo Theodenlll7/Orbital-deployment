@@ -134,7 +134,7 @@ func pick_enemy_based_on_difficulty() -> Node:
 
 	# Shift the mean toward the harder enemies as waves progress
 	var mean = initial_mean + wave_progression * (pool_size - 1)
-	var std_dev = initial_std_dev  #+ wave_progression * 2.0  # Increase variance as waves go on
+	var std_dev = initial_std_dev + wave_progression * 2.0  # Increase variance as waves go on
 
 	# Generate an index using randfn
 	var index = int(clamp(randfn(mean, std_dev), 0, pool_size - 1))

@@ -139,7 +139,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_umg65")
 }],
-"loop": true,
+"loop": false,
 "name": &"die",
 "speed": 6.0
 }, {
@@ -352,8 +352,9 @@ loot_table = ExtResource("22_mmwlf")
 item_spawn_chanse = 0.3
 spawn_attempts = 10
 
-[node name="HandleEnemeyDeath" type="Node" parent="."]
+[node name="HandleEnemeyDeath" type="Node" parent="." node_paths=PackedStringArray("hide_elements")]
 script = ExtResource("23_05ir7")
+hide_elements = [NodePath("../WeaponChargeAnimation")]
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 position = Vector2(1, -3)
