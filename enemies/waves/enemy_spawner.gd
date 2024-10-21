@@ -10,8 +10,8 @@ class_name WaveManager
 
 # Difficulty progression variables
 @export_category("Enemie count progression")
-@export_range(0.1, 1, 0.1) var growth_rate: float = 0.5  # Controls how fast the number of enemies increases
-@export_range(1, 2, 0.1) var power: float = 1.3  # Controls how fast the number of enemies increases
+@export_range(0.1, 1, 0.1) var growth_rate: float = 0.35  # Controls how fast the number of enemies increases
+@export_range(1, 2, 0.1) var power: float = 1.2  # Controls how fast the number of enemies increases
 @export_range(1, 100, 1, "or_greater") var starting_enemy_count: int = 3  # Minimum number of enemies at the start
 
 # The shift value is hidden and not exposed to the user
@@ -55,7 +55,6 @@ var next_custom_wave_index: int = 0
 
 
 func start_next_wave():
-	print("Start Wave")
 	wave += 1
 	enemies_to_spawn = int(pow(wave * growth_rate, power)) + starting_enemy_count
 	new_wave_started.emit(wave)

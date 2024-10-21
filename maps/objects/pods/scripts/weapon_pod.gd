@@ -208,7 +208,7 @@ func handleBuy(item, cost: int):
 		#print("Not enough money to buy that")
 		return
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if visible and !isVisible:
 		first_btn_focus_grab()
 		isVisible = true
