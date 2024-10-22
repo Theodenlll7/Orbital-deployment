@@ -11,7 +11,7 @@ var money: int = 0:
 @export var weapon_slots: Array[WeaponResource] = [null, null]
 @export var explosive_slot: ExplosiveResource = null
 @export var special_equipment_slot: SpecialEquipment = null
-@export var end_of_wave_money_bonus: int = 75
+@export var end_of_wave_money_bonus: int = 0
 
 var actor: Node2D
 
@@ -40,7 +40,7 @@ func setup() -> void:
 
 
 func add_wave_money_bonus(_time_until_next_wave: float) -> void:
-	money += money + end_of_wave_money_bonus
+	money += end_of_wave_money_bonus
 
 
 func add_weapon(weapon: WeaponResource):
