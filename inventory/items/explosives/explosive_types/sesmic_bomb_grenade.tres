@@ -10,13 +10,13 @@
 script = ExtResource("4_6mff3")
 explosive_grenade = ExtResource("3_1asyk")
 item_name = &"Sesmic Bomb"
-cost = 300
+cost = 150
 audio_stream_throw = ExtResource("2_qh2h0")
 audio_stream_explode = ExtResource("1_3mgjl")
 throw_speed = 30.0
 throw_cooldown = 0.5
 grenade_weight = 0.2
-explosion_damage = 100
+explosion_damage = 125
 explosion_radius = 80.0
 exposion_collision_mask = 129
 fuse_time = 3.0

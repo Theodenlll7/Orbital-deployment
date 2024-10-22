@@ -14,6 +14,8 @@ var explosive_resource : ExplosiveResource
 @onready var animated_sprite_explosion = $AnimatedSprite2D
 @onready var pointlight = $PointLight2D
 @onready var sprite_2d: Sprite2D = $CollisionShape2D/Sprite2D
+@onready var grenade_radius: Sprite2D = $GrenadeRadius
+var explosion_scale: Vector2
 
 func _ready() -> void:
 	animated_sprite_explosion.visible = false
@@ -30,7 +32,9 @@ func _ready() -> void:
 	add_child(explosion_area)
 		
 	explosion_area.area_entered.connect(_on_area_entered)
-	
+	explosion_scale = explosive_resource.explosion_radius * 2.0 / 80.0 * Vector2(0.5, 0.5)
+	grenade_radius.scale = explosion_scale
+
 	var timer = Timer.new()
 	timer.wait_time = explosive_resource.fuse_time
 	timer.one_shot = true
@@ -54,7 +58,7 @@ func _explode() -> void:
 	var sprite_frames = animated_sprite_explosion.get_sprite_frames()
 	sprite_frames.set_animation_loop("explode", false)
 	
-	animated_sprite_explosion.scale = explosive_resource.explosion_radius * 2.0 / 80.0 * Vector2(0.5, 0.5)
+	animated_sprite_explosion.scale = explosion_scale
 	animated_sprite_explosion.visible = true
 	animated_sprite_explosion.play("explode")
 

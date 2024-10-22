@@ -49,6 +49,7 @@ position = Vector2(-330, -296)
 
 [node name="ExplosivePod" parent="." instance=ExtResource("15_n73yi")]
 z_index = 1
+y_sort_enabled = true
 position = Vector2(-216, 212)
 
 [node name="ArrowIndicator" type="Node2D" parent="." node_paths=PackedStringArray("target", "arrow_sprite", "player")]

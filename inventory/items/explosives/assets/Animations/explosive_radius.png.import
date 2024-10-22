@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bcm74veeo8qja"
-path="res://.godot/imported/2012.i518.014.bomb explosion fire bang design concept.jpg-5389e1cb679cb6e3c06e64eb7cada572.ctex"
+uid="uid://c7xj7v2ef6swx"
+path="res://.godot/imported/explosive_radius.png-10a72d2c2f0627ce9ce53bdc5d4ed6e3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://inventory/items/explosives/assets/Animations/2012.i518.014.bomb explosion fire bang design concept.jpg"
-dest_files=["res://.godot/imported/2012.i518.014.bomb explosion fire bang design concept.jpg-5389e1cb679cb6e3c06e64eb7cada572.ctex"]
+source_file="res://inventory/items/explosives/assets/Animations/explosive_radius.png"
+dest_files=["res://.godot/imported/explosive_radius.png-10a72d2c2f0627ce9ce53bdc5d4ed6e3.ctex"]
 
 [params]
 

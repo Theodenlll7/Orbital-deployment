@@ -1,6 +1,7 @@
-[gd_scene load_steps=24 format=3 uid="uid://cruxtuhj25kr6"]
+[gd_scene load_steps=25 format=3 uid="uid://cruxtuhj25kr6"]
 
 [ext_resource type="Script" path="res://inventory/items/explosives/grenades/grenade_2d.gd" id="1_8b1j6"]
+[ext_resource type="Texture2D" uid="uid://c7xj7v2ef6swx" path="res://inventory/items/explosives/assets/Animations/explosive_radius.png" id="2_3ohw5"]
 [ext_resource type="Texture2D" uid="uid://bbbpbq7rov8jd" path="res://inventory/items/explosives/assets/sprites/sesmic_bomb.png" id="2_fm0oh"]
 [ext_resource type="Texture2D" uid="uid://d2gkue400pbac" path="res://inventory/items/explosives/assets/Animations/orange_explosion_sprite.png" id="3_b242b"]
 [ext_resource type="Texture2D" uid="uid://dcgcly83hxan6" path="res://player/assets/textures/light.png" id="4_hwwp5"]
@@ -144,6 +145,9 @@ can_sleep = false
 lock_rotation = true
 continuous_cd = 1
 script = ExtResource("1_8b1j6")
+
+[node name="GrenadeRadius" type="Sprite2D" parent="."]
+texture = ExtResource("2_3ohw5")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(0.3, 0.3)
