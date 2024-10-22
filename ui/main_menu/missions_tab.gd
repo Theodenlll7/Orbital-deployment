@@ -51,7 +51,18 @@ func on_mission_button_hover(mission_number: String) -> void:
 	mission_description_label.append_text(mission.description)
 	
 	difficulty_label.clear()
-	difficulty_label.append_text("[color=red]Difficulty[/color]: " + mission.difficulty)
+	
+	var difficulty_color: String = ""
+	var difficulty: String = mission.difficulty
+	match difficulty:
+		"Easy":
+			difficulty_color = "green"
+		"Medium":
+			difficulty_color = "yellow"
+		"Hard":
+			difficulty_color = "red"
+
+	difficulty_label.append_text("Difficulty: [color= " + difficulty_color + "]" + difficulty + "[/color]")
 	
 	var new_texture = load(mission.image_path) as Texture2D
 	texture_rect.texture = new_texture
@@ -93,4 +104,3 @@ func handle_connecting_signals() -> void:
 	set_button_connection(mission_5_button, "5")
 	mission_5_button.button_down.connect(on_mission_button_pressed.bind("5"))
 	mission_5_button.text = MissionManager.getMissionName("5")
-	print("Name: ", mission_5_button.text)

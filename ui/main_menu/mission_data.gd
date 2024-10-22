@@ -14,4 +14,10 @@ func _init(new_id: int,new_title: String, new_description: String, new_image_pat
 	description = new_description
 	image_path = new_image_path
 	marker_offset = new_marker_offset
-	difficulty = str(new_id)
+	
+	if id < 3:
+		difficulty = "Easy"
+	elif id < 5:
+		difficulty = "Medium"
+	else:
+		difficulty = "Hard"
