@@ -63,10 +63,15 @@ func _explode() -> void:
 	animated_sprite_explosion.play("explode")
 
 	explosion_area.monitoring = true
-	
+	await get_tree().physics_frame
+	await get_tree().physics_frame
+	explosion_area.monitoring = false
+	grenade_radius.visible = false
 
-func _on_area_entered(hurtbox : Hurtbox) -> void:
+func _on_area_entered(area : Area2D) -> void:
+	var hurtbox = area as Hurtbox
 	if hurtbox:
+		print(hurtbox.get_parent())
 		hurtbox.damage(explosion_damage)
 
 func set_fuse_time(time: float):
