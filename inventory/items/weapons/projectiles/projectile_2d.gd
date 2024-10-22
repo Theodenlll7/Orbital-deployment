@@ -26,8 +26,9 @@ func _ready() -> void:
 	queue_free()
 
 
-func _on_area_entered(hurtbox: Hurtbox) -> void:
-	if !hurtbox.is_invulnerable:
+func _on_area_entered(area: Area2D) -> void:
+	var hurtbox = area as Hurtbox
+	if hurtbox and !hurtbox.is_invulnerable:
 		queue_free()
 
 
