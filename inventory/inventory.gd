@@ -86,7 +86,6 @@ func add_ammo():
 	weapon.ammo_create_picked_up()
 
 
-
 #Coming from shop with the help of a signal
 func pickup(item):
 	if item is WeaponResource:

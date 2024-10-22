@@ -3,23 +3,18 @@ extends Node2D
 @onready var interaction_area := $InteractionArea
 @onready var store := $CanvasLayer/StoreUI as PodShop
 
-@export var pod_type = ""
+@export var pod_type : PodShop.ShopType
 
 func _ready() -> void:
 	interaction_area.interact = _on_interact
 	store.hide()
-	set_pod_type(pod_type)
+	store.pod_type = pod_type
+	store.setLabelsAndCost(pod_type)
 
-func set_pod_type(new_pod_type):
-	match new_pod_type:
-		"weapon":
-			store.setLabelsAndCost(PodShop.ShopType.weapon)
-		"explosive":
-			store.setLabelsAndCost(PodShop.ShopType.explosive)
-			
-			
+
 func _on_interact(player : Player):
 	showUI(player)
+
 
 func showUI(player : Player):
 	store.show()

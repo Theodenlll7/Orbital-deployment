@@ -21,6 +21,7 @@ var pod_type: ShopType = ShopType.weapon
 var weapon_path = FilePaths.get_files(weapons_dir, ".tres")
 var explosive_path = FilePaths.get_files(explosive_dir, ".tres")
 
+
 var costumer: Inventory:
 	set(value):
 		costumer = value
@@ -57,7 +58,7 @@ func update_weapons(_time_until_next_wave: float = 0.0):
 	
 
 func setRefillAmmonition():
-	var buy_btn: Button = $ContentPanelContainer/MarginContainer/VBoxContainer/Panel/RefillAmmonition
+	var buy_btn: Button = $ContentPanelContainer/MarginContainer/VBoxContainer/RefillAmmonitionPanel/RefillAmmonition
 	buy_btn.action_mode = BaseButton.ACTION_MODE_BUTTON_RELEASE
 	buy_btn.connect("pressed", _on_refill_ammonition_button_pressed.bind(ammo_cost))
 
@@ -86,28 +87,40 @@ func compare_items_by_accessibility(item1, item2) -> int:
 
 
 func setLabelsAndCost(shop_type: ShopType):
+	print("Shop is ", shop_type)
 	var array_items: Array
 	pod_type = shop_type
+	
+	var refil_ammo_shop_slot: Panel = $ContentPanelContainer/MarginContainer/VBoxContainer/RefillAmmonitionPanel
+	var refill_health_shop_slot: Panel = $ContentPanelContainer/MarginContainer/VBoxContainer/RefillHealthPanel
+
 	match shop_type:
 		ShopType.weapon:
 			array_items = weapons
 			array_items.sort_custom(compare_items_by_accessibility)
+			
+			var ammo_cost_label: Label = $ContentPanelContainer/MarginContainer/VBoxContainer/RefillAmmonitionPanel/RefillAmmonition/MarginContainer/HBoxContainer/Cost
+			ammo_cost_label.text = str(ammo_cost) + " $"
+			ammo_cost_label.set("theme_override_colors/font_color", Color(0.8, 0.1, 0.1))
+			
+			refil_ammo_shop_slot.visible = true
+			refill_health_shop_slot.visible = false
+			
 		ShopType.explosive:
 			array_items = explosives
+			
+			var health_cost_label: Label = $ContentPanelContainer/MarginContainer/VBoxContainer/RefillHealthPanel/RefillHealth/MarginContainer/HBoxContainer/Cost
+			health_cost_label.text = str(health_cost) + " $"
+			health_cost_label.set("theme_override_colors/font_color", Color(0.8, 0.1, 0.1))
+			
+			refill_health_shop_slot.visible = true
+			refil_ammo_shop_slot.visible = false
 
 	var shop = $ContentPanelContainer/MarginContainer/VBoxContainer/ScrollContainer/shop
 
 	for existing_child in shop.get_children():
 		existing_child.queue_free()
-
-	if shop_type != ShopType.weapon:
-		var refil_ammo_shop_slot: Panel = $ContentPanelContainer/MarginContainer/VBoxContainer/Panel
-		refil_ammo_shop_slot.visible = false
-	else:
-		var ammo_cost_label: Label = $ContentPanelContainer/MarginContainer/VBoxContainer/Panel/RefillAmmonition/MarginContainer/HBoxContainer/Cost
-		ammo_cost_label.text = str(ammo_cost) + " $"
-		ammo_cost_label.set("theme_override_colors/font_color", Color(0.8, 0.1, 0.1))
-
+		
 	for item in array_items:
 		var buy_btn: Button = weapon_buy_button.instantiate()
 		var background: Panel = buy_btn.get_child(0)
@@ -145,13 +158,21 @@ func updateCostLabelColor() -> void:
 		return
 	var shop = $ContentPanelContainer/MarginContainer/VBoxContainer/ScrollContainer/shop
 
-	var ammo_cost_label: Label = $ContentPanelContainer/MarginContainer/VBoxContainer/Panel/RefillAmmonition/MarginContainer/HBoxContainer/Cost
-	if costumer.money >= int(ammo_cost_label.text.split(" ")[0]):
+	var ammo_cost_label: Label = $ContentPanelContainer/MarginContainer/VBoxContainer/RefillAmmonitionPanel/RefillAmmonition/MarginContainer/HBoxContainer/Cost
+	if costumer.money >= ammo_cost:
 		ammo_cost_label.set(
 			"theme_override_colors/font_color", Color(31.0 / 255.0, 186.0 / 255.0, 79.0 / 255.0)
 		)
 	else:
 		ammo_cost_label.set("theme_override_colors/font_color", Color(0.8, 0.1, 0.1))
+
+	var ammo_health_label: Label = $ContentPanelContainer/MarginContainer/VBoxContainer/RefillHealthPanel/RefillHealth/MarginContainer/HBoxContainer/Cost
+	if costumer.money >= health_cost:
+		ammo_health_label.set(
+			"theme_override_colors/font_color", Color(31.0 / 255.0, 186.0 / 255.0, 79.0 / 255.0)
+		)
+	else:
+		ammo_health_label.set("theme_override_colors/font_color", Color(0.8, 0.1, 0.1))
 
 	for buy_btn in shop.get_children():
 		var pod_item_container = buy_btn.get_child(1).get_child(0)

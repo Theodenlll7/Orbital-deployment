@@ -406,7 +406,7 @@ script = ExtResource("15_eh0ey")
 position = Vector2(0, -6)
 script = ExtResource("16_8b7ue")
 loot_table = ExtResource("17_3fygd")
-item_spawn_chanse = 0.1
+item_spawn_chanse = 0.4
 spawn_attempts = 2
 
 [node name="Hurtbox" type="Area2D" parent="."]

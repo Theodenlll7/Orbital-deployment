@@ -14,7 +14,7 @@
 [ext_resource type="Script" path="res://common/arrow_indicators/ArrowIndicator.gd" id="8_ge0qu"]
 [ext_resource type="Texture2D" uid="uid://bsjfhwk5erona" path="res://assets/TextureIcons/gun_arrow.png" id="9_y7ffo"]
 [ext_resource type="Texture2D" uid="uid://cxvra6n76180k" path="res://assets/TextureIcons/grenade_arrow.png" id="14_hmhp4"]
-[ext_resource type="PackedScene" uid="uid://m724oqngam6i" path="res://maps/objects/pods/expl_pod.tscn" id="15_m6nmv"]
+[ext_resource type="PackedScene" uid="uid://m724oqngam6i" path="res://maps/objects/pods/explosives_pod.tscn" id="15_m6nmv"]
 [ext_resource type="PackedScene" uid="uid://cc5khdljmvf1j" path="res://scenes/in_game_music.tscn" id="16_usmyj"]
 
 [node name="Level3" type="Node2D"]
@@ -45,10 +45,12 @@ position = Vector2(314, 63)
 [node name="WeponPod" parent="." instance=ExtResource("7_15rgk")]
 z_index = 1
 position = Vector2(-100, -111)
+pod_type = 0
 
 [node name="ExplosivePod" parent="." instance=ExtResource("15_m6nmv")]
 z_index = 1
 position = Vector2(-278, -46)
+pod_type = 0
 
 [node name="ArrowIndicator" type="Node2D" parent="." node_paths=PackedStringArray("target", "arrow_sprite", "player")]
 z_index = 100
