@@ -2,7 +2,7 @@
 
 [ext_resource type="FontFile" uid="uid://dkg32o3qfh2n7" path="res://assets/Fonts/pixelmix.ttf" id="1_o800a"]
 [ext_resource type="PackedScene" uid="uid://by4ifx4e5aepa" path="res://ui/main_menu/hotkey_rebind_button.tscn" id="2_3olww"]
-[ext_resource type="PackedScene" uid="uid://pxrv3vlgod28" path="res://ui/main_menu/window_mode_button.tscn" id="2_6vogm"]
+[ext_resource type="PackedScene" uid="uid://claampkolyi3x" path="res://ui/main_menu/window_mode_button.tscn" id="2_6vogm"]
 [ext_resource type="PackedScene" uid="uid://b85bvo6avv0ya" path="res://ui/main_menu/resolution_button.tscn" id="3_881lw"]
 [ext_resource type="PackedScene" uid="uid://b4dpywdqbp5hd" path="res://ui/main_menu/show_tooltips_button.tscn" id="4_lsf4r"]
 [ext_resource type="PackedScene" uid="uid://i0wwtqhqa0vo" path="res://ui/settings/audio_slider_setting.tscn" id="5_2v8io"]
@@ -205,7 +205,7 @@ action_name = "interact"
 layout_mode = 2
 size_flags_vertical = 1
 shortcut_context = NodePath("../../../..")
-action_name = "interact"
+action_name = "swap_weapon"
 
 [node name="hotkey_rebind_button_reload" parent="Controls/MarginContainer/ScrollContainer/VBoxContainer" node_paths=PackedStringArray("shortcut_context") instance=ExtResource("2_3olww")]
 layout_mode = 2

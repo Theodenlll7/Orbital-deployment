@@ -13,8 +13,8 @@ func _ready() -> void:
 	visibility_changed.connect(_on_visibility_changed)
 
 
-func _on_visibility_changed(p_visible: bool) -> void:
-	if p_visible:
+func _on_visibility_changed() -> void:
+	if visible:
 		(
 			$ContentMarginContainer/MarginContainer/VBoxContainer/settings_tab_container
 			. get_tab_bar()
