@@ -1,6 +1,7 @@
 class_name PodShop extends Control
 
 @export var ammo_cost: int = 50
+@export var health_cost: int = 50
 
 @export var weapon_buy_button: PackedScene
 
@@ -27,9 +28,10 @@ var costumer: Inventory:
 		updateCostLabelColor()
 
 
-
 func _ready():
 	setRefillAmmonition()
+	setRefillHealth()
+	
 	loadResources()
 	update_weapons()
 	wave_manager.end_of_wave.connect(update_weapons)
@@ -52,12 +54,18 @@ func update_weapons(_time_until_next_wave: float = 0.0):
 		weapons.append(ResourceLoader.load(path))
 
 	setLabelsAndCost(pod_type)
-
+	
 
 func setRefillAmmonition():
 	var buy_btn: Button = $ContentPanelContainer/MarginContainer/VBoxContainer/Panel/RefillAmmonition
 	buy_btn.action_mode = BaseButton.ACTION_MODE_BUTTON_RELEASE
 	buy_btn.connect("pressed", _on_refill_ammonition_button_pressed.bind(ammo_cost))
+
+
+func setRefillHealth():
+	var buy_btn: Button = $ContentPanelContainer/MarginContainer/VBoxContainer/RefillHealthPanel/RefillHealth
+	buy_btn.action_mode = BaseButton.ACTION_MODE_BUTTON_RELEASE
+	buy_btn.connect("pressed", _on_refill_health_button_pressed.bind(health_cost))
 
 
 func updatePlayerMoney() -> void:
@@ -162,6 +170,12 @@ func _on_refill_ammonition_button_pressed(cost: int) -> void:
 	if costumer.money >= cost:
 		costumer.money -= cost
 		costumer.add_ammo()
+	updateButtonLabels()
+
+func _on_refill_health_button_pressed(cost: int) -> void:
+	if costumer.money >= cost:
+		costumer.money -= cost
+		costumer.actor.health_component.heal(25) 
 	updateButtonLabels()
 
 

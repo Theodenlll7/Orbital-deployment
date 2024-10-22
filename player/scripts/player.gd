@@ -61,7 +61,7 @@ func _ready() -> void:
 func _setup_health_regen() -> void:
 	if PlayerSkillsManager.health_regeneration_scaler != 0:
 		var timer = Timer.new()
-		timer.wait_time = 1
+		timer.wait_time = 5
 		timer.one_shot = false
 		timer.autostart = true
 		timer.timeout.connect(_regen)

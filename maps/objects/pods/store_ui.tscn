@@ -111,6 +111,27 @@ text = ""
 [node name="Cost" parent="ContentPanelContainer/MarginContainer/VBoxContainer/Panel/RefillAmmonition/MarginContainer/HBoxContainer" index="3"]
 text = "50 $"
 
+[node name="RefillHealthPanel" type="Panel" parent="ContentPanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_ffyms")
+
+[node name="RefillHealth" parent="ContentPanelContainer/MarginContainer/VBoxContainer/RefillHealthPanel" instance=ExtResource("2_socjt")]
+layout_mode = 2
+offset_left = 0.0
+offset_top = 4.0
+offset_right = 573.0
+offset_bottom = 36.0
+
+[node name="Label" parent="ContentPanelContainer/MarginContainer/VBoxContainer/RefillHealthPanel/RefillHealth/MarginContainer/HBoxContainer" index="0"]
+text = "Refill health"
+
+[node name="Unlock" parent="ContentPanelContainer/MarginContainer/VBoxContainer/RefillHealthPanel/RefillHealth/MarginContainer/HBoxContainer" index="1"]
+text = ""
+
+[node name="Cost" parent="ContentPanelContainer/MarginContainer/VBoxContainer/RefillHealthPanel/RefillHealth/MarginContainer/HBoxContainer" index="3"]
+text = "50 $"
+
 [node name="HSeparator" type="HSeparator" parent="ContentPanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
@@ -171,3 +192,4 @@ size_flags_horizontal = 3
 theme_override_constants/separation = 10
 
 [editable path="ContentPanelContainer/MarginContainer/VBoxContainer/Panel/RefillAmmonition"]
+[editable path="ContentPanelContainer/MarginContainer/VBoxContainer/RefillHealthPanel/RefillHealth"]

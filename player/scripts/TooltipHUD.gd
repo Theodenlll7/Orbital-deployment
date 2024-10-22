@@ -37,14 +37,14 @@ func show_dodge_tip() -> void:
 	if !first_time_damage: return
 	first_time_damage = false
 	var dodge_key: String = get_key("dodge") 
-	var text = "You've been hit! Quick, press [color=green]" + dodge_key + "[/color] to dodge and weave out of your enemies' clutches!"
+	var text = "You've been hit! Quick, press [color=green]" + dodge_key + "[/color] to dodge out of your enemies' clutches!"
 	set_tooltip_HUD_text(text)
 
 func show_diffrent_wepons_tips() -> void:
 	if !second_weapon_bought: return
 	second_weapon_bought = false
 	
-	var text = "Heavy-duty firepower! A variety of weapon, choose the right one for the job!"
+	var text = "A variety of weapon, choose the right one for the job!"
 	set_tooltip_HUD_text(text)
 
 func show_explosive_tip() -> void:

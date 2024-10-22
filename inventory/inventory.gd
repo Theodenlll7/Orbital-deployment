@@ -13,7 +13,7 @@ var money: int = 0:
 @export var special_equipment_slot: SpecialEquipment = null
 @export var end_of_wave_money_bonus: int = 75
 
-var actor: Node2D
+var actor: Player
 
 @onready var wave_manager = get_tree().get_nodes_in_group("wave_manager")[0] as WaveManager
 
@@ -84,6 +84,7 @@ func drop_item(_item):
 func add_ammo():
 	var weapon = weapon_slots[selected_weapon_slot]
 	weapon.ammo_create_picked_up()
+
 
 
 #Coming from shop with the help of a signal
