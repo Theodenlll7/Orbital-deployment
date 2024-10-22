@@ -233,8 +233,8 @@ script = ExtResource("3_1pf4o")
 
 [node name="HealthComponent" type="Node" parent="."]
 script = ExtResource("4_wu2ns")
-max_health = 5000
-current_health = 5000
+max_health = 1000
+current_health = 1000
 
 [node name="MindTreeRoot" type="Node" parent="."]
 script = ExtResource("5_mr2et")

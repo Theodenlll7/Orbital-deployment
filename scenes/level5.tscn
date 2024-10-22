@@ -1,6 +1,6 @@
 [gd_scene load_steps=18 format=3 uid="uid://bikhsakr57ksl"]
 
-[ext_resource type="PackedScene" path="res://scenes/scene5.tscn" id="1_20b3o"]
+[ext_resource type="PackedScene" uid="uid://btocldpw20n8k" path="res://scenes/scene5.tscn" id="1_20b3o"]
 [ext_resource type="Script" path="res://enemies/waves/enemy_spawner.gd" id="2_ur11m"]
 [ext_resource type="PackedScene" uid="uid://kua7fs588s48" path="res://enemies/mobs/ranger.tscn" id="3_786pu"]
 [ext_resource type="PackedScene" uid="uid://bgg2qlsu5f8qd" path="res://enemies/mobs/spider.tscn" id="4_bek4y"]
@@ -15,8 +15,8 @@
 [ext_resource type="Texture2D" uid="uid://bsjfhwk5erona" path="res://assets/TextureIcons/gun_arrow.png" id="13_fugsk"]
 [ext_resource type="PackedScene" uid="uid://fwtaakyb0exx" path="res://maps/objects/pods/weapon_pod.tscn" id="14_4tu3f"]
 [ext_resource type="Texture2D" uid="uid://cxvra6n76180k" path="res://assets/TextureIcons/grenade_arrow.png" id="15_ud1y0"]
-[ext_resource type="PackedScene" uid="uid://dmuoq60mvsscp" path="res://maps/objects/pods/explosives_pod.tscn" id="16_qlnk2"]
-[ext_resource type="PackedScene" path="res://scenes/in_game_music.tscn" id="17_ctdls"]
+[ext_resource type="PackedScene" uid="uid://m724oqngam6i" path="res://maps/objects/pods/explosives_pod.tscn" id="16_qlnk2"]
+[ext_resource type="PackedScene" uid="uid://cc5khdljmvf1j" path="res://scenes/in_game_music.tscn" id="17_ctdls"]
 
 [node name="Level5" type="Node2D"]
 y_sort_enabled = true
@@ -43,7 +43,6 @@ size_flags_horizontal = 3
 [node name="WeponPod" parent="." instance=ExtResource("14_4tu3f")]
 z_index = 1
 position = Vector2(-388, -140)
-pod_type = 0
 
 [node name="ExplosivePod" parent="." instance=ExtResource("16_qlnk2")]
 z_index = 1
