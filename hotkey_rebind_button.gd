@@ -4,7 +4,7 @@ extends Control
 @onready var label: Label = $HBoxContainer/Label
 @onready var button: Button = $HBoxContainer/Button
 
-@export var action_name: String = "move_left"
+@export_enum("move_left", "move_right", "move_up", "move_down", "dodge", "interact", "swap_weapon", "reload") var action_name: String = "move_left"
 
 func _ready() -> void:
 	set_process_unhandled_key_input(false)
