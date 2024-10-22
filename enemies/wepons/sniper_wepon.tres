@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="ProjectileWeaponResource" load_steps=5 format=3 uid="uid://ctxd3qqtmeaak"]
 
 [ext_resource type="AudioStream" uid="uid://2fxs3855eop5" path="res://inventory/items/weapons/assets/audio/sniper_singel_action.ogg" id="1_hrqjp"]
-[ext_resource type="PackedScene" uid="uid://dknh2f8ikygt6" path="res://enemies/wepons/projectiles/sniper_enemy_projectile.tscn" id="2_uusuc"]
+[ext_resource type="PackedScene" path="res://enemies/wepons/projectiles/sniper_enemy_projectile.tscn" id="2_uusuc"]
 [ext_resource type="Script" path="res://inventory/items/weapons/scripts/projectile_weapon_resource.gd" id="3_4db67"]
 [ext_resource type="Texture2D" uid="uid://cyn1y33p5f64f" path="res://inventory/items/weapons/assets/sprites/Watcher_S_Rifle.png" id="4_rij2y"]
 
