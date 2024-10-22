@@ -58,13 +58,24 @@ func init_skill_tree() -> void:
 		
 		match dictionary_item["type"]:
 			"single":
+				var skill = dictionary_item["skill"]["1"]
+				if skill["active"]:
+					activate_skill(skill)
 				skill_tree_type = SINGLE_SKILL
 			"double":
+				var skill = dictionary_item["skill"]["1"]
+				if skill["active"]:
+					activate_skill(skill)
+				skill = dictionary_item["skill"]["2"]
+				if skill["active"]:
+					activate_skill(skill)
 				skill_tree_type = DOUBLE_SKILL
 								
 		var skill_tree_instance = load(skill_tree_type).instantiate()
 		skill_content.add_child(skill_tree_instance)
 
+		
+		
 		skill_tree_instance.call_deferred("set_level", str(id), dictionary_item["level"], player_level, prev_level)
 		skill_tree_instance.call_deferred("set_texture", str(id), dictionary_item["skill"])
 		prev_level = dictionary_item["level"]
@@ -133,6 +144,9 @@ func on_skill_activated(skill_id: String) -> void:
 	init_skill_tree()
 		
 	var skill = skill_layout[id_a]["skill"][id_b]
+	activate_skill(skill)
+			
+func activate_skill(skill : Dictionary) -> void:
 	match skill["action"]:
 		"set_new_healt_scaler":
 			PlayerSkillsManager.set_new_healt_scaler(skill["action_value"])

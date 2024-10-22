@@ -15,7 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://bsjfhwk5erona" path="res://assets/TextureIcons/gun_arrow.png" id="9_y7ffo"]
 [ext_resource type="Texture2D" uid="uid://cxvra6n76180k" path="res://assets/TextureIcons/grenade_arrow.png" id="14_hmhp4"]
 [ext_resource type="PackedScene" uid="uid://m724oqngam6i" path="res://maps/objects/pods/explosives_pod.tscn" id="15_m6nmv"]
-[ext_resource type="PackedScene" uid="uid://cc5khdljmvf1j" path="res://scenes/in_game_music.tscn" id="16_usmyj"]
+[ext_resource type="PackedScene" path="res://scenes/in_game_music.tscn" id="16_usmyj"]
 
 [node name="Level3" type="Node2D"]
 y_sort_enabled = true
@@ -45,7 +45,6 @@ position = Vector2(314, 63)
 [node name="WeponPod" parent="." instance=ExtResource("7_15rgk")]
 z_index = 1
 position = Vector2(-100, -111)
-pod_type = 0
 
 [node name="ExplosivePod" parent="." instance=ExtResource("15_m6nmv")]
 z_index = 1
