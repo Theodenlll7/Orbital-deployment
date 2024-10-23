@@ -1,6 +1,7 @@
 [gd_resource type="AudioBusLayout" format=3 uid="uid://b7jpbntj4li7e"]
 
 [resource]
+bus/0/volume_db = -5.8486
 bus/1/name = &"Ship"
 bus/1/solo = false
 bus/1/mute = false
@@ -23,13 +24,13 @@ bus/4/name = &"Music"
 bus/4/solo = false
 bus/4/mute = false
 bus/4/bypass_fx = false
-bus/4/volume_db = -9.62972
+bus/4/volume_db = -7.53501
 bus/4/send = &"Master"
 bus/5/name = &"Wepon"
 bus/5/solo = false
 bus/5/mute = false
 bus/5/bypass_fx = false
-bus/5/volume_db = -3.34982
+bus/5/volume_db = -6.74484
 bus/5/send = &"Master"
 bus/6/name = &"Ship_hover"
 bus/6/solo = false
@@ -47,5 +48,5 @@ bus/8/name = &"Explosive"
 bus/8/solo = false
 bus/8/mute = false
 bus/8/bypass_fx = false
-bus/8/volume_db = -9.11864
+bus/8/volume_db = -5.03624
 bus/8/send = &"Master"
