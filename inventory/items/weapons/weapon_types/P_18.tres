@@ -9,7 +9,7 @@
 script = ExtResource("3_cxbmr")
 projectile_scene = ExtResource("2_5grn5")
 item_name = &"P 18"
-cost = 550
+cost = 400
 muzzle_offset = Vector2(8, -2)
 audio_steam = ExtResource("1_cy4rs")
 attack_mode = 1

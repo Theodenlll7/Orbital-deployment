@@ -15,7 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://bsjfhwk5erona" path="res://assets/TextureIcons/gun_arrow.png" id="12_epn0a"]
 [ext_resource type="PackedScene" uid="uid://m724oqngam6i" path="res://maps/objects/pods/explosives_pod.tscn" id="12_qrav4"]
 [ext_resource type="Texture2D" uid="uid://cxvra6n76180k" path="res://assets/TextureIcons/grenade_arrow.png" id="14_rm5no"]
-[ext_resource type="PackedScene" path="res://scenes/in_game_music.tscn" id="16_56pbf"]
+[ext_resource type="PackedScene" uid="uid://cc5khdljmvf1j" path="res://scenes/in_game_music.tscn" id="16_56pbf"]
 
 [node name="Level2" type="Node2D"]
 y_sort_enabled = true
@@ -36,11 +36,6 @@ custom_waves = Array[ExtResource("6_cnvru")]([ExtResource("7_67x7v")])
 [node name="mission_start_text" parent="CanvasLayer" instance=ExtResource("6_r6q3o")]
 size_flags_horizontal = 3
 
-[node name="Player" parent="." instance=ExtResource("2_ammvo")]
-z_index = 0
-y_sort_enabled = true
-position = Vector2(-92, -9)
-
 [node name="WeponPod" parent="." instance=ExtResource("7_38vkb")]
 z_index = 1
 position = Vector2(95, -80)
@@ -48,6 +43,11 @@ position = Vector2(95, -80)
 [node name="ExplosivePod" parent="." instance=ExtResource("12_qrav4")]
 z_index = 1
 position = Vector2(116, -679)
+
+[node name="Player" parent="." instance=ExtResource("2_ammvo")]
+z_index = 0
+y_sort_enabled = true
+position = Vector2(-92, -9)
 
 [node name="ArrowIndicator" type="Node2D" parent="." node_paths=PackedStringArray("target", "arrow_sprite", "player")]
 z_index = 100

@@ -9,7 +9,7 @@
 script = ExtResource("3_vqdyc")
 projectile_scene = ExtResource("2_4smc3")
 item_name = &"MR S5"
-cost = 750
+cost = 300
 muzzle_offset = Vector2(0, 0)
 audio_steam = ExtResource("1_ts61n")
 attack_mode = 0

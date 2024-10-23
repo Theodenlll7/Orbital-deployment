@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="ProjectileWeaponResource" load_steps=5 format=3 uid="uid://de7wj8q81edhc"]
+
+[ext_resource type="AudioStream" uid="uid://cnfk4pqkjrvok" path="res://inventory/items/weapons/assets/audio/gun.ogg" id="1_hpcea"]
+[ext_resource type="PackedScene" uid="uid://b1ahksg20mxej" path="res://inventory/items/weapons/projectiles/basic_projectile.tscn" id="2_o8f50"]
+[ext_resource type="Script" path="res://inventory/items/weapons/scripts/projectile_weapon_resource.gd" id="3_iotak"]
+[ext_resource type="Texture2D" uid="uid://ckvv48gsx0cgv" path="res://inventory/items/weapons/assets/sprites/AR_OSC.png" id="4_nwkde"]
+
+[resource]
+script = ExtResource("3_iotak")
+projectile_scene = ExtResource("2_o8f50")
+item_name = &"AR OSC"
+cost = 250
+muzzle_offset = Vector2(8, 0)
+audio_steam = ExtResource("1_hpcea")
+attack_mode = 1
+attack_cooldown = 0.1
+weapon_accessibility_player_level = 3
+has_magazine = true
+bullet_damage = 12
+bullet_speed = 400.0
+bullet_spread = 0.25
+bullet_lifetime = 2.0
+bullets_per_shot = 1
+magazine_size = 16
+reload_time = 0.6
+has_ammo = true
+ammo = 112
+ammo_cap = 224
+ammo_crate_value = 48
+drop_type = 0
+texture = ExtResource("4_nwkde")
+drop_weight = 100

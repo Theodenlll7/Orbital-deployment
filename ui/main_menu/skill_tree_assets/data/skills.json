@@ -33,9 +33,9 @@
 			},
 		"2": {
 			"name": "More health",
-			"description": "Thanks to the brilliant scientists of Nexus, you're about to double your durability! \n\nTheir cutting-edge bioengineering will [color=green]increase your max health by 2x[/color], making you tougher, stronger, and unstoppable. Nexus tech is about to supercharge you!",
+			"description": "Thanks to the brilliant scientists of Nexus, you're about to double your durability! \n\nTheir cutting-edge bioengineering will [color=green]increase your max health by 1.5x[/color], making you tougher, stronger, and unstoppable. Nexus tech is about to supercharge you!",
 			"action": "set_new_healt_scaler",
-			"action_value": 2,
+			"action_value": 1.5,
 		 	"img": {
 				"normal": "res://ui/main_menu/assets/heart.png", 
 				"hover": "res://ui/main_menu/assets/heartHover.png", 

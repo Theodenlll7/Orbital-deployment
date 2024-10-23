@@ -18,7 +18,6 @@ func _ready() -> void:
 		print("Empty root path for UI sounds!")
 		return 
 	for key in sounds.keys():
-		print(key)
 		var sound_type = sounds[key]["type"]
 		sounds[key]["player"].stream = sound_paths[sound_type]
 		sounds[key]["player"].bus = "UI"

@@ -30,11 +30,6 @@ enemy_spawn_pool = Array[PackedScene]([ExtResource("3_786pu"), ExtResource("4_be
 initial_std_dev = 0.2
 custom_waves = Array[ExtResource("7_lqkn3")]([ExtResource("8_suph7"), ExtResource("9_86s1t")])
 
-[node name="Player" parent="." instance=ExtResource("10_8h8nh")]
-z_index = 0
-y_sort_enabled = true
-position = Vector2(-727, -873)
-
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="mission_start_text" parent="CanvasLayer" instance=ExtResource("11_ss6od")]
@@ -48,6 +43,11 @@ position = Vector2(-388, -140)
 z_index = 1
 position = Vector2(323, -799)
 pod_type = 0
+
+[node name="Player" parent="." instance=ExtResource("10_8h8nh")]
+z_index = 0
+y_sort_enabled = true
+position = Vector2(-727, -873)
 
 [node name="ArrowIndicator" type="Node2D" parent="." node_paths=PackedStringArray("target", "arrow_sprite", "player")]
 z_index = 100

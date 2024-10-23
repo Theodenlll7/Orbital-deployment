@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="ProjectileWeaponResource" load_steps=5 format=3 uid="uid://dvsq0s2i1om5u"]
+
+[ext_resource type="AudioStream" uid="uid://2fxs3855eop5" path="res://inventory/items/weapons/assets/audio/sniper_singel_action.ogg" id="1_w6bwm"]
+[ext_resource type="PackedScene" uid="uid://c83wkso7k0yy7" path="res://inventory/items/weapons/projectiles/sniper_projectile_2d.tscn" id="2_knwuk"]
+[ext_resource type="Script" path="res://inventory/items/weapons/scripts/projectile_weapon_resource.gd" id="3_1f1x1"]
+[ext_resource type="Texture2D" uid="uid://crneg6cy7cmoa" path="res://inventory/items/weapons/assets/sprites/SR_LOCK.png" id="4_6dd6u"]
+
+[resource]
+script = ExtResource("3_1f1x1")
+projectile_scene = ExtResource("2_knwuk")
+item_name = &"S Rifle Lock"
+cost = 500
+muzzle_offset = Vector2(0, 0)
+audio_steam = ExtResource("1_w6bwm")
+attack_mode = 0
+attack_cooldown = 0.7
+weapon_accessibility_player_level = 5
+has_magazine = true
+bullet_damage = 80
+bullet_speed = 1000.0
+bullet_spread = 0.0
+bullet_lifetime = 2.0
+bullets_per_shot = 1
+magazine_size = 7
+reload_time = 0.8
+has_ammo = true
+ammo = 35
+ammo_cap = 70
+ammo_crate_value = 21
+drop_type = 0
+texture = ExtResource("4_6dd6u")
+drop_weight = 100
