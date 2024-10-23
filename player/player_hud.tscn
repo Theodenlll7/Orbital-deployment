@@ -468,8 +468,10 @@ text"
 
 [node name="DeathScreen" parent="." instance=ExtResource("4_mdrqq")]
 visible = false
+z_index = 2
 script = null
 
 [node name="PauseInGameMenu" parent="." instance=ExtResource("7_krje1")]
 visible = false
+z_index = 2
 z_as_relative = false

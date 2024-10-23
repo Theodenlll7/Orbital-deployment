@@ -35,6 +35,11 @@ custom_waves = Array[ExtResource("7_lqkn3")]([ExtResource("8_suph7"), ExtResourc
 [node name="mission_start_text" parent="CanvasLayer" instance=ExtResource("11_ss6od")]
 size_flags_horizontal = 3
 
+[node name="Player" parent="." instance=ExtResource("10_8h8nh")]
+z_index = 0
+y_sort_enabled = true
+position = Vector2(-727, -873)
+
 [node name="WeponPod" parent="." instance=ExtResource("14_4tu3f")]
 z_index = 1
 position = Vector2(-388, -140)
@@ -43,11 +48,6 @@ position = Vector2(-388, -140)
 z_index = 1
 position = Vector2(323, -799)
 pod_type = 0
-
-[node name="Player" parent="." instance=ExtResource("10_8h8nh")]
-z_index = 0
-y_sort_enabled = true
-position = Vector2(-727, -873)
 
 [node name="ArrowIndicator" type="Node2D" parent="." node_paths=PackedStringArray("target", "arrow_sprite", "player")]
 z_index = 100
