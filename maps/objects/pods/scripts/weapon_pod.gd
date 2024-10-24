@@ -1,7 +1,7 @@
 class_name PodShop extends Control
 
 @export var ammo_cost: int = 50
-@export var health_cost: int = 50
+@export var health_cost: int = 25
 
 @export var weapon_buy_button: PackedScene
 

@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="ProjectileWeaponResource" load_steps=5 format=3 uid="uid://cuo0nrh374nt0"]
+
+[ext_resource type="AudioStream" uid="uid://cnfk4pqkjrvok" path="res://inventory/items/weapons/assets/audio/gun.ogg" id="1_d4e04"]
+[ext_resource type="PackedScene" uid="uid://b1ahksg20mxej" path="res://inventory/items/weapons/projectiles/basic_projectile.tscn" id="2_sdwmi"]
+[ext_resource type="Script" path="res://inventory/items/weapons/scripts/projectile_weapon_resource.gd" id="3_h1icf"]
+[ext_resource type="Texture2D" uid="uid://niywgnkkju7m" path="res://inventory/items/weapons/assets/sprites/AR_ASR.png" id="4_yddla"]
+
+[resource]
+script = ExtResource("3_h1icf")
+projectile_scene = ExtResource("2_sdwmi")
+item_name = &"AR ASR"
+cost = 250
+muzzle_offset = Vector2(8, 0)
+audio_steam = ExtResource("1_d4e04")
+attack_mode = 1
+attack_cooldown = 0.14
+weapon_accessibility_player_level = 2
+has_magazine = true
+bullet_damage = 22
+bullet_speed = 500.0
+bullet_spread = 0.05
+bullet_lifetime = 2.0
+bullets_per_shot = 1
+magazine_size = 28
+reload_time = 0.4
+has_ammo = true
+ammo = 196
+ammo_cap = 280
+ammo_crate_value = 56
+drop_type = 0
+texture = ExtResource("4_yddla")
+drop_weight = 100
