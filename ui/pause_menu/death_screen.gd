@@ -13,7 +13,8 @@ class_name DeathScreen
 @onready var wave_label: Label = $TextureRect/MarginContainer/VBoxContentContainer/Text/MarginContainer/HBoxContainer/Control/VBoxContainer/ColorRect/MarginContainer/ProgressLabels/Wave
 @onready var wave_manager = get_tree().get_nodes_in_group("wave_manager")[0] as WaveManager
 @onready var button_menu: VBoxContainer = $TextureRect/MarginContainer/VBoxContentContainer/Buttons/MarginContainer/HBoxContainer/VBoxContainer
-
+@onready var xp_gained: Label = $TextureRect/MarginContainer/VBoxContentContainer/Text/MarginContainer/HBoxContainer/Control/VBoxContainer/ColorRect/MarginContainer/ProgressLabels/XPGained
+@onready var xp_at_start: int = ExperiencePoints.get_total_amount_of_experience_points()
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -30,6 +31,7 @@ func fade_in():
 	SaveData.save_player_data()
 	TooltipHud.init_vars()
 	wave_label.text = str(wave_manager.wave)
+	xp_gained.text = str(ExperiencePoints.get_total_amount_of_experience_points() - xp_at_start)
 	visible = true
 	first_btn_focus_grab()
 	
