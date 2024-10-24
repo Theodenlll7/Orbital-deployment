@@ -1,4 +1,6 @@
-[gd_scene format=3 uid="uid://3jbebqan860d"]
+[gd_scene load_steps=2 format=3 uid="uid://bd3aqgeijyy0o"]
+
+[ext_resource type="Theme" uid="uid://c3a3bfndbpf03" path="res://ui/main_menu/UI_theme.tres" id="1_dpquu"]
 
 [node name="options_dsiplay_button" type="Control"]
 layout_mode = 3
@@ -16,15 +18,16 @@ offset_bottom = 40.0
 [node name="Label" type="Label" parent="HBoxContainer"]
 custom_minimum_size = Vector2(384, 0)
 layout_mode = 2
-theme_override_font_sizes/font_size = 32
+theme = ExtResource("1_dpquu")
 text = "BASE_LABEL"
 vertical_alignment = 1
 
 [node name="VSeparator" type="VSeparator" parent="HBoxContainer"]
 layout_mode = 2
+theme = ExtResource("1_dpquu")
 theme_override_constants/separation = 256
 
 [node name="OptionButton" type="OptionButton" parent="HBoxContainer"]
-custom_minimum_size = Vector2(512, 64)
+custom_minimum_size = Vector2(512, 0)
 layout_mode = 2
-theme_override_font_sizes/font_size = 32
+theme = ExtResource("1_dpquu")

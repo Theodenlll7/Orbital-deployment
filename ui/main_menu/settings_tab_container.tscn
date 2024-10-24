@@ -1,10 +1,10 @@
 [gd_scene load_steps=7 format=3 uid="uid://ci8invl6x652e"]
 
 [ext_resource type="FontFile" uid="uid://dkg32o3qfh2n7" path="res://assets/Fonts/pixelmix.ttf" id="1_o800a"]
-[ext_resource type="PackedScene" uid="uid://by4ifx4e5aepa" path="res://ui/main_menu/hotkey_rebind_button.tscn" id="2_3olww"]
-[ext_resource type="PackedScene" uid="uid://claampkolyi3x" path="res://ui/main_menu/window_mode_button.tscn" id="2_6vogm"]
-[ext_resource type="PackedScene" uid="uid://b85bvo6avv0ya" path="res://ui/main_menu/resolution_button.tscn" id="3_881lw"]
-[ext_resource type="PackedScene" uid="uid://b4dpywdqbp5hd" path="res://ui/main_menu/show_tooltips_button.tscn" id="4_lsf4r"]
+[ext_resource type="PackedScene" uid="uid://bi1v0oxw83dft" path="res://ui/main_menu/hotkey_rebind_button.tscn" id="2_3olww"]
+[ext_resource type="PackedScene" uid="uid://pxrv3vlgod28" path="res://ui/main_menu/window_mode_button.tscn" id="2_6vogm"]
+[ext_resource type="PackedScene" uid="uid://c3a3imq0nwkkg" path="res://ui/main_menu/resolution_button.tscn" id="3_881lw"]
+[ext_resource type="PackedScene" uid="uid://cfmb1yuel4wy7" path="res://ui/main_menu/show_tooltips_button.tscn" id="4_lsf4r"]
 [ext_resource type="PackedScene" uid="uid://i0wwtqhqa0vo" path="res://ui/settings/audio_slider_setting.tscn" id="5_2v8io"]
 
 [node name="settings_tab_container" type="TabContainer"]
@@ -36,7 +36,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/margin_left = 64
-theme_override_constants/margin_top = 0
+theme_override_constants/margin_top = 32
 theme_override_constants/margin_right = 64
 theme_override_constants/margin_bottom = 32
 
@@ -47,12 +47,11 @@ follow_focus = true
 [node name="VBoxContainer" type="VBoxContainer" parent="Video/MarginContainer/ScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_constants/separation = 128
+size_flags_vertical = 6
+theme_override_constants/separation = 96
 
 [node name="HSeparator" type="HSeparator" parent="Video/MarginContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_constants/separation = 64
 
 [node name="window_mode_button" parent="Video/MarginContainer/ScrollContainer/VBoxContainer" node_paths=PackedStringArray("shortcut_context") instance=ExtResource("2_6vogm")]
 layout_mode = 2
@@ -66,20 +65,8 @@ shortcut_context = NodePath("../../../..")
 layout_mode = 2
 shortcut_context = NodePath("../../../..")
 
-[node name="Control" type="Control" parent="Video/MarginContainer/ScrollContainer/VBoxContainer"]
+[node name="HSeparator2" type="HSeparator" parent="Video/MarginContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
-size_flags_vertical = 3
-
-[node name="HSeparator2" type="HSeparator" parent="Video/MarginContainer/ScrollContainer/VBoxContainer/Control"]
-layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -64.0
-grow_horizontal = 2
-grow_vertical = 0
-theme_override_constants/separation = 64
 
 [node name="Sound" type="TabBar" parent="."]
 layout_mode = 2
@@ -105,12 +92,11 @@ follow_focus = true
 custom_minimum_size = Vector2(49.94, 0)
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_constants/separation = 92
+size_flags_vertical = 6
+theme_override_constants/separation = 48
 
 [node name="HSeparator" type="HSeparator" parent="Sound/MarginContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_constants/separation = 64
 
 [node name="Master" parent="Sound/MarginContainer/ScrollContainer/VBoxContainer" node_paths=PackedStringArray("shortcut_context") instance=ExtResource("5_2v8io")]
 layout_mode = 2
@@ -148,23 +134,21 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/margin_left = 64
-theme_override_constants/margin_top = 0
+theme_override_constants/margin_top = 32
 theme_override_constants/margin_right = 64
 theme_override_constants/margin_bottom = 32
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Controls/MarginContainer"]
 layout_mode = 2
-follow_focus = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Controls/MarginContainer/ScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_constants/separation = 92
+size_flags_vertical = 6
+theme_override_constants/separation = 58
 
 [node name="HSeparator" type="HSeparator" parent="Controls/MarginContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_constants/separation = 64
 
 [node name="hotkey_rebind__button_move_left" parent="Controls/MarginContainer/ScrollContainer/VBoxContainer" node_paths=PackedStringArray("shortcut_context") instance=ExtResource("2_3olww")]
 layout_mode = 2
@@ -215,4 +199,3 @@ action_name = "reload"
 
 [node name="HSeparator2" type="HSeparator" parent="Controls/MarginContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_constants/separation = 0

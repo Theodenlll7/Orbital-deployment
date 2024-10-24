@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://by4ifx4e5aepa"]
+[gd_scene load_steps=5 format=3 uid="uid://bi1v0oxw83dft"]
 
 [ext_resource type="Script" path="res://hotkey_rebind_button.gd" id="1_4o7i3"]
 [ext_resource type="FontFile" uid="uid://dkg32o3qfh2n7" path="res://assets/Fonts/pixelmix.ttf" id="2_lvwex"]
@@ -36,7 +36,6 @@ alignment = 1
 [node name="Label" type="Label" parent="HBoxContainer"]
 custom_minimum_size = Vector2(384, 32)
 layout_mode = 2
-theme_override_font_sizes/font_size = 32
 text = "Action"
 vertical_alignment = 1
 
@@ -47,11 +46,10 @@ theme_override_constants/separation = 256
 
 [node name="Button" type="Button" parent="HBoxContainer"]
 clip_contents = true
-custom_minimum_size = Vector2(256, 64)
+custom_minimum_size = Vector2(256, 0)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.731081, 0.887407, 0.976942, 1)
 theme_override_fonts/font = ExtResource("2_lvwex")
-theme_override_font_sizes/font_size = 32
 theme_override_styles/hover = SubResource("StyleBoxFlat_epv57")
 theme_override_styles/normal = SubResource("StyleBoxFlat_nf7lb")
 toggle_mode = true
