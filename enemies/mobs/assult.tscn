@@ -368,6 +368,6 @@ shape = SubResource("RectangleShape2D_eiuoe")
 
 [node name="ActionSprite" type="Sprite2D" parent="."]
 visible = false
-position = Vector2(0, -20)
+position = Vector2(0, -13)
 scale = Vector2(0.029811, 0.029811)
 texture = ExtResource("26_ipn4m")
