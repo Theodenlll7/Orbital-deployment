@@ -11,7 +11,7 @@ var money: int = 0:
 @export var weapon_slots: Array[WeaponResource] = [null, null]
 @export var explosive_slot: ExplosiveResource = null
 @export var special_equipment_slot: SpecialEquipment = null
-@export var end_of_wave_money_bonus: int = 0
+@export var end_of_wave_money_bonus: int = 50
 
 var actor: Player
 
