@@ -9,6 +9,7 @@ class_name PodShop extends Control
 @export_dir var explosive_dir: String = "res://inventory/items/explosives/explosive_types/"
 @onready var wave_manager = get_tree().get_nodes_in_group("wave_manager")[0] as WaveManager
 @onready var button_menu: VBoxContainer = $ContentPanelContainer/MarginContainer/VBoxContainer/ScrollContainer/shop
+@onready var header_text: Label = $HeaderPanelContainer/MarginContainer/HBoxContainer/Header_Text
 
 enum ShopType { weapon, explosive }
 
@@ -87,7 +88,6 @@ func compare_items_by_accessibility(item1, item2) -> int:
 
 
 func setLabelsAndCost(shop_type: ShopType):
-	print("Shop is ", shop_type)
 	var array_items: Array
 	pod_type = shop_type
 	
@@ -105,6 +105,7 @@ func setLabelsAndCost(shop_type: ShopType):
 			
 			refil_ammo_shop_slot.visible = true
 			refill_health_shop_slot.visible = false
+			header_text.text = "Weapon Pod Station"
 			
 		ShopType.explosive:
 			array_items = explosives
@@ -115,6 +116,8 @@ func setLabelsAndCost(shop_type: ShopType):
 			
 			refill_health_shop_slot.visible = true
 			refil_ammo_shop_slot.visible = false
+			header_text.text = "Explosive Pod Station"
+
 
 	var shop = $ContentPanelContainer/MarginContainer/VBoxContainer/ScrollContainer/shop
 
@@ -240,7 +243,6 @@ func handleBuy(item, cost: int):
 		if pod_type == ShopType.explosive:
 			TooltipHud.show_explosive_tip()
 	else:
-		#print("Not enough money to buy that")
 		return
 
 func _process(_delta: float) -> void:
