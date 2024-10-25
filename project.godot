@@ -29,6 +29,7 @@ ExperiencePoints="*res://player/experience_points/ExperiencePointsManager.gd"
 PlayerSkillsManager="*res://player/skills/PlayerSkillsManager.gd"
 SaveData="*res://saved_data/saveData.gd"
 TooltipHud="*res://player/scripts/TooltipHUD.gd"
+Settings="*res://settings/settings.gd"
 
 [debug]
 
