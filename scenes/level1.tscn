@@ -25,6 +25,7 @@ y_sort_enabled = true
 z_index = -3
 
 [node name="enemy_spawner" type="Node2D" parent="."]
+y_sort_enabled = true
 script = ExtResource("3_rkl8f")
 enemy_spawn_pool = Array[PackedScene]([ExtResource("5_r2vmx"), ExtResource("4_v3qcm"), ExtResource("5_rdqq8"), ExtResource("14_xdfnt")])
 initial_std_dev = 0.2

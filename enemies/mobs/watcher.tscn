@@ -257,7 +257,6 @@ animations = [{
 }]
 
 [node name="Sniper" type="CharacterBody2D"]
-position = Vector2(0, -9)
 collision_layer = 2
 collision_mask = 98
 
@@ -269,7 +268,8 @@ radius = 8.0
 script = ExtResource("1_f05u1")
 
 [node name="CharacterAnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, -3)
+z_index = 1
+position = Vector2(0.300003, -4.7)
 sprite_frames = SubResource("SpriteFrames_bagim")
 animation = &"die"
 script = ExtResource("3_5mgsi")
@@ -336,7 +336,7 @@ script = ExtResource("18_eed5s")
 move_speed = 80.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 7)
+position = Vector2(0.300003, 5.3)
 shape = SubResource("CircleShape2D_gl22l")
 
 [node name="MobWeapon" type="Node2D" parent="."]
@@ -344,9 +344,10 @@ script = ExtResource("19_6hbn2")
 weapon_resource = ExtResource("20_0qlhk")
 
 [node name="WeaponOrbitPoint" type="Marker2D" parent="MobWeapon"]
-position = Vector2(0, 2)
+position = Vector2(0, 1.45)
 
 [node name="LootSpawner" type="Node2D" parent="."]
+position = Vector2(0.300003, -1.7)
 script = ExtResource("21_m5f5n")
 loot_table = ExtResource("22_mmwlf")
 item_spawn_chanse = 0.3
@@ -357,7 +358,7 @@ script = ExtResource("23_05ir7")
 hide_elements = [NodePath("../WeaponChargeAnimation")]
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
-position = Vector2(1, -3)
+position = Vector2(1.3, -4.7)
 color = Color(1, 0, 0.0352941, 1)
 energy = 0.4
 texture = ExtResource("24_2jjnn")
@@ -368,7 +369,7 @@ process_physics_priority = 10
 script = ExtResource("25_0jmtg")
 
 [node name="Hurtbox" type="Area2D" parent="."]
-position = Vector2(0, -1)
+position = Vector2(0.300003, -2.7)
 collision_layer = 128
 collision_mask = 0
 script = ExtResource("26_pv7i4")

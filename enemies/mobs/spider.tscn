@@ -332,8 +332,9 @@ radius = 5.0
 script = ExtResource("15_xr0je")
 
 [node name="CharacterAnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = 1
 material = SubResource("CanvasItemMaterial_oqobr")
-position = Vector2(0, -6)
+position = Vector2(0, -2)
 sprite_frames = SubResource("SpriteFrames_xao01")
 animation = &"charge"
 script = ExtResource("3_ihi3d")
@@ -344,11 +345,10 @@ max_health = 30
 current_health = 30
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -4)
 shape = SubResource("CircleShape2D_lrwo5")
 
 [node name="AttackRange" type="Area2D" parent="."]
-position = Vector2(0, -6)
+position = Vector2(0, -2)
 collision_layer = 0
 monitorable = false
 script = ExtResource("4_phmkr")
@@ -403,14 +403,14 @@ script = ExtResource("15_q7nvy")
 script = ExtResource("15_eh0ey")
 
 [node name="LootSpawner" type="Node2D" parent="."]
-position = Vector2(0, -6)
+position = Vector2(0, -2)
 script = ExtResource("16_8b7ue")
 loot_table = ExtResource("17_3fygd")
 item_spawn_chanse = 0.4
 spawn_attempts = 2
 
 [node name="Hurtbox" type="Area2D" parent="."]
-position = Vector2(0, -6)
+position = Vector2(0, -2)
 collision_layer = 128
 collision_mask = 0
 monitoring = false
