@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="CustomWave" load_steps=4 format=3 uid="uid://u1rcmagvcui5"]
 
-[ext_resource type="PackedScene" uid="uid://dsuabe2igmqvf" path="res://enemies/mobs/assult.tscn" id="2_82l30"]
+[ext_resource type="PackedScene" uid="uid://b15bh0a8ecxpq" path="res://enemies/mobs/assult.tscn" id="2_82l30"]
 [ext_resource type="PackedScene" uid="uid://boa23xke4oiwg" path="res://enemies/mobs/watcher.tscn" id="2_x0ipo"]
 [ext_resource type="Script" path="res://enemies/waves/custom_wave.gd" id="3_e0rx5"]
 
