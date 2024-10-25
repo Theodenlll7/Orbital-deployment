@@ -12,7 +12,6 @@ const config_file_path = "user://audio_settings.cfg"
 
 
 func _ready() -> void:
-	_load_audio_setting(audio_bus)
 	stream_label.text = AudioServer.get_bus_name(audio_bus)
 	slider.value_changed.connect(_on_value_changed)
 	slider.value = db_to_linear(AudioServer.get_bus_volume_db(audio_bus)) * slider.max_value
@@ -20,35 +19,12 @@ func _ready() -> void:
 
 func _on_value_changed(value: float) -> void:
 	var new_volume = min(value / slider.max_value, 1)
-	AudioServer.set_bus_volume_db(audio_bus, linear_to_db(new_volume))
-	_save_audio_setting(audio_bus, new_volume)
+	Settings.set_audio_bus_volume(audio_bus, new_volume)
 	_update_value_label()
 
 
 func _update_value_label() -> void:
 	value_label.text = str(slider.value) + " %"
-
-
-static func _load_audio_setting(bus: AudioBus) -> void:
-	var config = ConfigFile.new()
-	var err = config.load(config_file_path)
-
-	if err == OK:
-		var saved_volume = config.get_value("AudioBuses", AudioServer.get_bus_name(bus), null)
-		if saved_volume != null:
-			# Apply the saved volume level to the audio bus
-			AudioServer.set_bus_volume_db(bus, linear_to_db(min(saved_volume, 1)))
-	else:
-		print("No previous audio settings found.")
-
-
-static func _save_audio_setting(bus: AudioBus, volume: float) -> void:
-	var config = ConfigFile.new()
-	config.load(config_file_path)  # Load existing settings if any
-
-	# Save the slider value (linear volume) under the bus name
-	config.set_value("AudioBuses", AudioServer.get_bus_name(bus), volume)
-	config.save(config_file_path)
 
 
 func _validate_property(property: Dictionary):
