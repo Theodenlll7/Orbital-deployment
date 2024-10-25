@@ -26,7 +26,7 @@ z_index = -3
 [node name="enemy_spawner" type="Node2D" parent="."]
 script = ExtResource("3_3263j")
 growth_rate = 0.6
-enemy_spawn_pool = Array[PackedScene]([ExtResource("4_fkjhh"), ExtResource("5_v0ucf"), ExtResource("5_rqgek"), ExtResource("6_ec7jh")])
+enemy_spawn_pool = Array[PackedScene]([ExtResource("5_v0ucf"), ExtResource("4_fkjhh"), ExtResource("5_rqgek"), ExtResource("6_ec7jh")])
 initial_mean = 0.1
 initial_std_dev = 0.2
 custom_waves = Array[ExtResource("6_cnvru")]([ExtResource("7_67x7v")])
