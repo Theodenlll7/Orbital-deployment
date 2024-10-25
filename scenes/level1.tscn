@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://dsad6qof6xa7f"]
+[gd_scene load_steps=18 format=3 uid="uid://hv1v676c0qne"]
 
 [ext_resource type="PackedScene" uid="uid://o3dndqv0yf5s" path="res://scenes/scene1.tscn" id="1_wr805"]
 [ext_resource type="PackedScene" uid="uid://6vt8l263l0o7" path="res://player/player.tscn" id="2_5ihlw"]
@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bgg2qlsu5f8qd" path="res://enemies/mobs/spider.tscn" id="4_v3qcm"]
 [ext_resource type="PackedScene" uid="uid://fwtaakyb0exx" path="res://maps/objects/pods/weapon_pod.tscn" id="5_cpg73"]
 [ext_resource type="PackedScene" uid="uid://kua7fs588s48" path="res://enemies/mobs/ranger.tscn" id="5_r2vmx"]
-[ext_resource type="PackedScene" uid="uid://dsuabe2igmqvf" path="res://enemies/mobs/assult.tscn" id="5_rdqq8"]
+[ext_resource type="PackedScene" uid="uid://b15bh0a8ecxpq" path="res://enemies/mobs/assult.tscn" id="5_rdqq8"]
 [ext_resource type="Script" path="res://enemies/waves/custom_wave.gd" id="7_akywf"]
 [ext_resource type="Script" path="res://common/arrow_indicators/ArrowIndicator.gd" id="8_btq2v"]
 [ext_resource type="Resource" uid="uid://u1rcmagvcui5" path="res://enemies/waves/wave7.tres" id="8_dq6hp"]
@@ -17,7 +17,6 @@
 [ext_resource type="PackedScene" uid="uid://m724oqngam6i" path="res://maps/objects/pods/explosives_pod.tscn" id="13_h2npq"]
 [ext_resource type="PackedScene" uid="uid://boa23xke4oiwg" path="res://enemies/mobs/watcher.tscn" id="14_xdfnt"]
 [ext_resource type="PackedScene" uid="uid://cc5khdljmvf1j" path="res://scenes/in_game_music.tscn" id="16_ajudy"]
-[ext_resource type="PackedScene" uid="uid://cghr73j5lb1ba" path="res://enemies/mobs/juggernaut.tscn" id="18_kg82b"]
 
 [node name="Level1" type="Node2D"]
 y_sort_enabled = true
@@ -74,5 +73,3 @@ player = NodePath("../Player")
 texture = ExtResource("13_co0e7")
 
 [node name="InGameMusic" parent="." instance=ExtResource("16_ajudy")]
-
-[node name="Juggernaut" parent="." instance=ExtResource("18_kg82b")]

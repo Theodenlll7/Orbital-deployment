@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=3 uid="uid://dsuabe2igmqvf"]
+[gd_scene load_steps=57 format=3 uid="uid://b15bh0a8ecxpq"]
 
 [ext_resource type="Script" path="res://common/components/navigator2d.gd" id="1_alrx4"]
 [ext_resource type="Texture2D" uid="uid://cecqjnwk0gp3p" path="res://enemies/assets/textures/assult.png" id="2_dj2q1"]
@@ -21,7 +21,7 @@
 [ext_resource type="Script" path="res://enemies/mind_tree_components/actions/weapon_ready.gd" id="18_0o8fi"]
 [ext_resource type="Script" path="res://enemies/scripts/handle_enemy_death.gd" id="19_8xdvp"]
 [ext_resource type="Script" path="res://enemies/mind_tree_components/actions/action_alert.gd" id="19_fktyo"]
-[ext_resource type="Resource" uid="uid://ccbxrfkn8i623" path="res://inventory/loot/assult_loot_table.tres" id="20_f6wej"]
+[ext_resource type="Resource" uid="uid://csdc3fnnuoxcn" path="res://inventory/loot/assult_loot_table.tres" id="20_f6wej"]
 [ext_resource type="Texture2D" uid="uid://dcgcly83hxan6" path="res://player/assets/textures/light.png" id="20_h5fes"]
 [ext_resource type="Script" path="res://addons/tree_mind/nodes/decorators/for_time.gd" id="20_hf3o1"]
 [ext_resource type="Script" path="res://enemies/scripts/parent_move_and_slide.gd" id="21_krtar"]

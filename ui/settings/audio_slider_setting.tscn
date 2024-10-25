@@ -27,7 +27,7 @@ custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
-value = 73.0
+value = 51.0
 
 [node name="VSeparator2" type="VSeparator" parent="."]
 layout_mode = 2
@@ -36,4 +36,4 @@ size_flags_horizontal = 3
 [node name="ValueLabel" type="Label" parent="."]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "73 %"
+text = "51 %"

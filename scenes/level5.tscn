@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://enemies/waves/enemy_spawner.gd" id="2_ur11m"]
 [ext_resource type="PackedScene" uid="uid://kua7fs588s48" path="res://enemies/mobs/ranger.tscn" id="3_786pu"]
 [ext_resource type="PackedScene" uid="uid://bgg2qlsu5f8qd" path="res://enemies/mobs/spider.tscn" id="4_bek4y"]
-[ext_resource type="PackedScene" uid="uid://dsuabe2igmqvf" path="res://enemies/mobs/assult.tscn" id="5_dtth6"]
+[ext_resource type="PackedScene" uid="uid://b15bh0a8ecxpq" path="res://enemies/mobs/assult.tscn" id="5_dtth6"]
 [ext_resource type="PackedScene" uid="uid://boa23xke4oiwg" path="res://enemies/mobs/watcher.tscn" id="6_yj21a"]
 [ext_resource type="Script" path="res://enemies/waves/custom_wave.gd" id="7_lqkn3"]
 [ext_resource type="Resource" uid="uid://u1rcmagvcui5" path="res://enemies/waves/wave7.tres" id="8_suph7"]
