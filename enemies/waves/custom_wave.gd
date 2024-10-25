@@ -8,4 +8,4 @@ class_name CustomWave extends Resource
 
 @export_range(0, 1) var base_mobs_mean: float = 0.5
 
-@export_range(0, 1) var base_mobs_std_dev: float = 0.5
+@export_range(0, 100) var base_mobs_std_dev: float = 0.5

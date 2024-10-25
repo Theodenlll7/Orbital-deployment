@@ -36,7 +36,7 @@ signal nr_of_enemies(nr: int)
 
 var spawn_timer = spawn_interval  # Timer for controlling spawn intervals
 
-var wave = 0
+@export var wave: int = 0
 
 const in_between_wave_time = 10.0
 
@@ -84,8 +84,12 @@ func _ready() -> void:
 	in_between_wave_timer.start()
 	enemies_to_spawn = starting_enemy_count
 
-	if !custom_waves.is_empty():
-		next_custom_wave = custom_waves[next_custom_wave_index].wave_number
+	next_custom_wave = -1
+	for i in custom_waves.size():
+		if wave <= custom_waves[i].wave_number:
+			next_custom_wave = custom_waves[i].wave_number
+			next_custom_wave_index = i
+			break
 
 
 func process_wave():
@@ -103,10 +107,13 @@ func process_wave():
 
 
 func _spawn_custom_wave(custom_wave: CustomWave) -> void:
+	print("Custom wave spawned ", custom_wave.extra_mobspawn_count)
 	for enemy in custom_wave.enemies:
 		spawn_enemy(enemy.instantiate())
 	for i in range(custom_wave.extra_mobspawn_count):
-		var enemy = pick_enemy_normal_disp(custom_wave.base_mobs_mean, custom_wave.base_mobs_std_dev)
+		var enemy = pick_enemy_normal_disp(
+			custom_wave.base_mobs_mean, custom_wave.base_mobs_std_dev
+		)
 		spawn_enemy(enemy)
 
 
@@ -135,16 +142,18 @@ func pick_enemy_based_on_difficulty() -> Node:
 	# Shift the mean toward the harder enemies as waves progress
 	var mean = initial_mean + wave_progression * (pool_size - 1)
 	mean = min(mean, max_mean)
-	var std_dev = initial_std_dev + wave / 5 # Increase variance as waves go on
+	var std_dev = initial_std_dev + wave / 5  # Increase variance as waves go on
 
 	# Generate an index using randfn
 	var index = int(clamp(randfn(mean, std_dev), 0, pool_size - 1))
 	return enemy_spawn_pool[index].instantiate()
 
-func pick_enemy_normal_disp(mean : float, std_dev : float) -> Node:
+
+func pick_enemy_normal_disp(mean: float, std_dev: float) -> Node:
 	var pool_size = enemy_spawn_pool.size()
 	var index = int(clamp(randfn(mean, std_dev), 0, pool_size - 1))
 	return enemy_spawn_pool[index].instantiate()
+
 
 # Find a random valid tile position that is at a valid distance from all players
 func get_random_valid_position_around_players():
