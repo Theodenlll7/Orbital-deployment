@@ -358,7 +358,6 @@ texture = ExtResource("4_v4ya4")
 texture_scale = 0.2
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-visible = false
 light_mask = 0
 visibility_layer = 0
 position = Vector2(111, -1712)
