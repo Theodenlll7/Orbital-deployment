@@ -1,10 +1,10 @@
 class_name MainMenu
 extends Control
 
-@onready var select_mission_button: Button = $ContentMarginContainer/HBoxContainer/VBoxContainer/SelectMissionButton
-@onready var player_progress_button: Button = $ContentMarginContainer/HBoxContainer/VBoxContainer/PlayerProgressButton
-@onready var options_button: Button = $ContentMarginContainer/HBoxContainer/VBoxContainer/OptionsButton
-@onready var exit_button: Button = $ContentMarginContainer/HBoxContainer/VBoxContainer/ExitButton
+@onready var select_mission_button: Button = $ContentMarginContainer/MarginContainer/VBoxContainer/NavigationButtons/SelectMissionButton
+@onready var player_progress_button: Button = $ContentMarginContainer/MarginContainer/VBoxContainer/NavigationButtons/PlayerProgressButton
+@onready var options_button: Button = $ContentMarginContainer/MarginContainer/VBoxContainer/NavigationButtons/OptionsButton
+@onready var exit_button: Button = $ContentMarginContainer/MarginContainer/VBoxContainer/NavigationButtons/ExitButton
 
 @onready var ship: Control = $ship
 @onready var ship_texture: TextureRect = $ship/DropShipTextureRect
