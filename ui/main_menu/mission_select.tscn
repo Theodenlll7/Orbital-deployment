@@ -1,11 +1,14 @@
-[gd_scene load_steps=11 format=3 uid="uid://b7bby50sr8bfd"]
+[gd_scene load_steps=15 format=3 uid="uid://b7bby50sr8bfd"]
 
 [ext_resource type="Theme" uid="uid://c3a3bfndbpf03" path="res://ui/main_menu/UI_theme.tres" id="1_aij7t"]
 [ext_resource type="FontFile" uid="uid://dkg32o3qfh2n7" path="res://assets/Fonts/pixelmix.ttf" id="1_btar0"]
 [ext_resource type="Script" path="res://ui/main_menu/mission_select.gd" id="1_r3fi7"]
 [ext_resource type="Texture2D" uid="uid://btq7kpwl38qu2" path="res://ui/main_menu/assets/textures/planet.png" id="2_u4ul3"]
+[ext_resource type="Script" path="res://ui/main_menu/missions_tab.gd" id="4_aot18"]
 [ext_resource type="Texture2D" uid="uid://dibhga4ndblxk" path="res://ui/main_menu/assets/textures/planet_marker_inf.png" id="4_b6rgk"]
-[ext_resource type="PackedScene" uid="uid://bmymcla08yo51" path="res://ui/main_menu/missions_tab.tscn" id="4_m46ts"]
+[ext_resource type="Texture2D" uid="uid://bribge1j87rai" path="res://scenes/level_thumbnails/1id_thumbnail_mission.png" id="5_dygn6"]
+[ext_resource type="Script" path="res://ui/main_menu/mission_info_panel.gd" id="5_layk8"]
+[ext_resource type="Texture2D" uid="uid://dd2vfdo18d4tf" path="res://ui/main_menu/assets/textures/planet_marker.png" id="6_vbr5h"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o7efk"]
 bg_color = Color(0.6, 0.6, 0.6, 0.333333)
@@ -17,18 +20,20 @@ bg_color = Color(0.6, 0.6, 0.6, 0)
 border_width_bottom = 4
 corner_detail = 1
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xdokf"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1f5mx"]
+bg_color = Color(0.203922, 0.203922, 0.317647, 0.501961)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nvoic"]
 bg_color = Color(0.6, 0.6, 0.6, 0.333333)
 border_width_bottom = 4
 corner_detail = 1
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yj7p8"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hsf3s"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
 border_width_bottom = 4
 corner_detail = 1
 
-[node name="mission_select" type="Control"]
-layout_mode = 3
+[node name="mission_select" type="VBoxContainer"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -37,56 +42,9 @@ grow_vertical = 2
 theme = ExtResource("1_aij7t")
 script = ExtResource("1_r3fi7")
 
-[node name="Planet" type="Control" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="TextureRect" type="TextureRect" parent="Planet"]
-modulate = Color(1, 1.1, 1.1, 1)
-layout_mode = 2
-offset_left = 787.0
-offset_top = -50.0
-offset_right = 2085.0
-offset_bottom = 1237.0
-texture = ExtResource("2_u4ul3")
-
-[node name="Content" type="Control" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="ContentMarginContainer" type="MarginContainer" parent="Content"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 64
-theme_override_constants/margin_top = 64
-theme_override_constants/margin_right = 64
-theme_override_constants/margin_bottom = 64
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Content/ContentMarginContainer"]
-layout_mode = 2
-theme_override_constants/separation = 64
-
-[node name="Title" type="Control" parent="Content/ContentMarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 64)
-layout_mode = 2
-
-[node name="Label" type="Label" parent="Content/ContentMarginContainer/VBoxContainer/Title"]
+[node name="Label" type="Label" parent="."]
 modulate = Color(1, 1, 1.3, 1)
 layout_mode = 2
-offset_right = 1792.0
-offset_bottom = 64.0
 theme_override_colors/font_shadow_color = Color(0.219608, 0.4, 0.745098, 1)
 theme_override_constants/shadow_offset_x = 0
 theme_override_constants/shadow_offset_y = 4
@@ -97,46 +55,25 @@ text = "Select mission"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Buttons" type="Control" parent="Content/ContentMarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 256)
+[node name="HSplitContainer" type="HSplitContainer" parent="."]
 layout_mode = 2
+size_flags_vertical = 3
 
-[node name="MarginContainer" type="MarginContainer" parent="Content/ContentMarginContainer/VBoxContainer/Buttons"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 64
-theme_override_constants/margin_top = 128
-theme_override_constants/margin_right = 64
-theme_override_constants/margin_bottom = 64
-
-[node name="HBoxContainer" type="HBoxContainer" parent="Content/ContentMarginContainer/VBoxContainer/Buttons/MarginContainer"]
+[node name="ModeTabe" type="MarginContainer" parent="HSplitContainer"]
+visible = false
 layout_mode = 2
-alignment = 1
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 250
+theme_override_constants/margin_bottom = 100
 
-[node name="Control" type="Control" parent="Content/ContentMarginContainer/VBoxContainer/Buttons/MarginContainer/HBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="HSplitContainer/ModeTabe"]
 layout_mode = 2
-size_flags_horizontal = 6
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_constants/separation = 35
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Content/ContentMarginContainer/VBoxContainer/Buttons/MarginContainer/HBoxContainer/Control"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -182.0
-offset_top = -96.0
-offset_right = 182.0
-offset_bottom = 96.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/separation = 32
-
-[node name="MissionsButton" type="Button" parent="Content/ContentMarginContainer/VBoxContainer/Buttons/MarginContainer/HBoxContainer/Control/VBoxContainer"]
+[node name="MissionsButton" type="Button" parent="HSplitContainer/ModeTabe/VBoxContainer"]
 clip_contents = true
 custom_minimum_size = Vector2(256, 64)
 layout_mode = 2
@@ -146,7 +83,7 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_o7efk")
 theme_override_styles/normal = SubResource("StyleBoxFlat_ub2bo")
 text = " Levels "
 
-[node name="InfiniteSurvivalButton" type="Button" parent="Content/ContentMarginContainer/VBoxContainer/Buttons/MarginContainer/HBoxContainer/Control/VBoxContainer"]
+[node name="InfiniteSurvivalButton" type="Button" parent="HSplitContainer/ModeTabe/VBoxContainer"]
 clip_contents = true
 custom_minimum_size = Vector2(256, 64)
 layout_mode = 2
@@ -156,87 +93,144 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_o7efk")
 theme_override_styles/normal = SubResource("StyleBoxFlat_ub2bo")
 text = " Chaos survival "
 
-[node name="Control2" type="Control" parent="Content/ContentMarginContainer/VBoxContainer/Buttons/MarginContainer/HBoxContainer"]
+[node name="Label" type="Label" parent="HSplitContainer/ModeTabe/VBoxContainer"]
+layout_mode = 2
+
+[node name="BackButton" type="Button" parent="HSplitContainer/ModeTabe"]
+custom_minimum_size = Vector2(256, 64)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 10
+text = " Main menu "
+
+[node name="missions_tab" type="MarginContainer" parent="HSplitContainer" node_paths=PackedStringArray("mission_container", "mission_info_panel")]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_stretch_ratio = 0.75
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 250
+theme_override_constants/margin_bottom = 100
+script = ExtResource("4_aot18")
+mission_container = NodePath("VBoxContainer/HBoxContainer/MissionList/ScrollContainer/MissionButtonContainer")
+mission_info_panel = NodePath("VBoxContainer/HBoxContainer/MissionInfoPanel")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Content/ContentMarginContainer/VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="HSplitContainer/missions_tab"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HSplitContainer/missions_tab/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_constants/separation = 25
 
-[node name="mission_description" type="Control" parent="Content/ContentMarginContainer/VBoxContainer/HBoxContainer"]
+[node name="MissionInfoPanel" type="PanelContainer" parent="HSplitContainer/missions_tab/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_vertical = 3
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_1f5mx")
+script = ExtResource("5_layk8")
 
-[node name="MarginContainer" type="MarginContainer" parent="Content/ContentMarginContainer/VBoxContainer/HBoxContainer/mission_description"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 3
-theme_override_constants/margin_bottom = 96
-
-[node name="MarginContainer" type="MarginContainer" parent="Content/ContentMarginContainer/VBoxContainer/HBoxContainer/mission_description/MarginContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="HSplitContainer/missions_tab/VBoxContainer/HBoxContainer/MissionInfoPanel"]
 layout_mode = 2
 theme_override_constants/margin_left = 16
 theme_override_constants/margin_top = 16
 theme_override_constants/margin_right = 16
 theme_override_constants/margin_bottom = 16
 
-[node name="mission_label" type="Label" parent="Content/ContentMarginContainer/VBoxContainer/HBoxContainer/mission_description/MarginContainer/MarginContainer"]
-modulate = Color(3, 3, 3, 1)
-custom_minimum_size = Vector2(800, 400)
+[node name="VBoxContainer" type="VBoxContainer" parent="HSplitContainer/missions_tab/VBoxContainer/HBoxContainer/MissionInfoPanel/MarginContainer"]
 layout_mode = 2
-size_flags_vertical = 1
-theme_override_colors/font_color = Color(0.545098, 0.0941176, 0.12549, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 1
-theme_override_font_sizes/font_size = 48
-horizontal_alignment = 1
-vertical_alignment = 1
-autowrap_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 1.26
 
-[node name="Control2" type="Control" parent="Content/ContentMarginContainer/VBoxContainer/HBoxContainer"]
+[node name="Title" type="RichTextLabel" parent="HSplitContainer/missions_tab/VBoxContainer/HBoxContainer/MissionInfoPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("1_btar0")
+theme_override_font_sizes/normal_font_size = 32
+theme_override_font_sizes/bold_font_size = 32
+text = "Mission"
+fit_content = true
+
+[node name="HSeparator" type="HSeparator" parent="HSplitContainer/missions_tab/VBoxContainer/HBoxContainer/MissionInfoPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Description" type="RichTextLabel" parent="HSplitContainer/missions_tab/VBoxContainer/HBoxContainer/MissionInfoPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_fonts/normal_font = ExtResource("1_btar0")
+theme_override_font_sizes/normal_font_size = 16
+text = "Text text text"
+fit_content = true
+scroll_active = false
+
+[node name="Difficulty" type="RichTextLabel" parent="HSplitContainer/missions_tab/VBoxContainer/HBoxContainer/MissionInfoPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.5
+theme_override_fonts/normal_font = ExtResource("1_btar0")
+theme_override_font_sizes/normal_font_size = 16
+bbcode_enabled = true
+text = "Difficulty: "
+fit_content = true
+scroll_active = false
+
+[node name="MarginContainer" type="MarginContainer" parent="HSplitContainer/missions_tab/VBoxContainer/HBoxContainer/MissionInfoPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Thumbnail" type="TextureRect" parent="HSplitContainer/missions_tab/VBoxContainer/HBoxContainer/MissionInfoPanel/MarginContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+texture = ExtResource("5_dygn6")
+expand_mode = 5
+stretch_mode = 5
+
+[node name="MissionList" type="VBoxContainer" parent="HSplitContainer/missions_tab/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HSeparator" type="HSeparator" parent="HSplitContainer/missions_tab/VBoxContainer/HBoxContainer/MissionList"]
+custom_minimum_size = Vector2(256, 0)
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="HSplitContainer/missions_tab/VBoxContainer/HBoxContainer/MissionList"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MissionButtonContainer" type="VBoxContainer" parent="HSplitContainer/missions_tab/VBoxContainer/HBoxContainer/MissionList/ScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+theme_override_constants/separation = 32
 
-[node name="BackButton" type="Button" parent="Content/ContentMarginContainer"]
+[node name="HSeparator2" type="HSeparator" parent="HSplitContainer/missions_tab/VBoxContainer/HBoxContainer/MissionList"]
+custom_minimum_size = Vector2(256, 0)
+layout_mode = 2
+
+[node name="BackButton" type="Button" parent="HSplitContainer/missions_tab/VBoxContainer"]
 custom_minimum_size = Vector2(256, 64)
 layout_mode = 2
 size_flags_horizontal = 0
-size_flags_vertical = 10
+size_flags_vertical = 8
 theme_override_fonts/font = ExtResource("1_btar0")
 theme_override_font_sizes/font_size = 32
-theme_override_styles/hover = SubResource("StyleBoxFlat_xdokf")
-theme_override_styles/normal = SubResource("StyleBoxFlat_yj7p8")
-text = " Main menu "
+theme_override_styles/hover = SubResource("StyleBoxFlat_nvoic")
+theme_override_styles/normal = SubResource("StyleBoxFlat_hsf3s")
+text = " Back "
 
-[node name="missions_tab" parent="." instance=ExtResource("4_m46ts")]
-visible = false
-layout_mode = 1
+[node name="mission_marker" type="Control" parent="HSplitContainer/missions_tab"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 
-[node name="infinit_marker" type="Control" parent="."]
-anchors_preset = 0
-offset_left = 1178.0
-offset_top = 527.0
-offset_right = 1589.0
-offset_bottom = 769.0
-
-[node name="InfiniteSurvivalTextureRect" type="TextureRect" parent="infinit_marker"]
+[node name="MissionTextureRect" type="TextureRect" parent="HSplitContainer/missions_tab/mission_marker"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("4_b6rgk")
+texture = ExtResource("6_vbr5h")
+stretch_mode = 5
 
-[node name="InfiniteLandingPosition" type="Control" parent="infinit_marker"]
+[node name="InfiniteLandingPosition" type="Control" parent="HSplitContainer/missions_tab/mission_marker"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -247,3 +241,29 @@ offset_right = -269.0
 offset_bottom = -3.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="Planet" type="TextureRect" parent="HSplitContainer"]
+modulate = Color(1, 1.1, 1.1, 1)
+layout_mode = 2
+size_flags_horizontal = 10
+texture = ExtResource("2_u4ul3")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="infinit_marker" type="Control" parent="HSplitContainer/Planet"]
+layout_mode = 2
+anchors_preset = 0
+offset_left = -772.0
+offset_top = 64.0
+offset_right = -68.0
+offset_bottom = 1016.0
+
+[node name="InfiniteSurvivalTextureRect" type="TextureRect" parent="HSplitContainer/Planet/infinit_marker"]
+layout_mode = 0
+offset_right = 211.82
+offset_bottom = 155.09
+texture = ExtResource("4_b6rgk")
+stretch_mode = 5
+
+[node name="InfiniteLandingPosition" type="Control" parent="HSplitContainer/Planet/infinit_marker"]
+anchors_preset = 0

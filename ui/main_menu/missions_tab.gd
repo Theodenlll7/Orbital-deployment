@@ -1,20 +1,12 @@
 extends Control
 
-@onready var mission_1_button: Button = $content/ContentMarginContainer/VBoxContainer/Title/HBoxContainer/Control/HBoxContainer/Buttons/MarginContainer/MarginContainer/ScrollContainer/VBoxContainer/Mission1Button
-@onready var mission_2_button: Button = $content/ContentMarginContainer/VBoxContainer/Title/HBoxContainer/Control/HBoxContainer/Buttons/MarginContainer/MarginContainer/ScrollContainer/VBoxContainer/Mission2Button
-@onready var mission_3_button: Button = $content/ContentMarginContainer/VBoxContainer/Title/HBoxContainer/Control/HBoxContainer/Buttons/MarginContainer/MarginContainer/ScrollContainer/VBoxContainer/Mission3Button
-@onready var mission_4_button: Button = $content/ContentMarginContainer/VBoxContainer/Title/HBoxContainer/Control/HBoxContainer/Buttons/MarginContainer/MarginContainer/ScrollContainer/VBoxContainer/Mission4Button
-@onready var mission_5_button: Button = $content/ContentMarginContainer/VBoxContainer/Title/HBoxContainer/Control/HBoxContainer/Buttons/MarginContainer/MarginContainer/ScrollContainer/VBoxContainer/Mission5Button
+@export var mission_container : Container
 
-
-@onready var back_button: Button = $content/ContentMarginContainer/BackButton
+@onready var back_button: Button = $VBoxContainer/BackButton
 
 @onready var mission_marker: Control = $mission_marker
 
-@onready var mission_title_label: RichTextLabel = $content/ContentMarginContainer/VBoxContainer/Title/HBoxContainer/Control/HBoxContainer/mission_description/MarginContainer/MarginContainer/VBoxContainer/Title
-@onready var mission_description_label: RichTextLabel = $content/ContentMarginContainer/VBoxContainer/Title/HBoxContainer/Control/HBoxContainer/mission_description/MarginContainer/MarginContainer/VBoxContainer/Description
-@onready var difficulty_label: RichTextLabel = $content/ContentMarginContainer/VBoxContainer/Title/HBoxContainer/Control/HBoxContainer/mission_description/MarginContainer/MarginContainer/VBoxContainer/Difficulty
-@onready var texture_rect: TextureRect = $content/ContentMarginContainer/VBoxContainer/Title/HBoxContainer/Control/HBoxContainer/mission_description/MarginContainer/MarginContainer/VBoxContainer/MarginContainer/Thumbnail
+@export var mission_info_panel : MissionInfoPanel
 
 signal back_mission_select
 signal tab_level_selected(mission_ID, mission_position)
@@ -38,39 +30,16 @@ func set_planet_center(new_center: Vector2) -> void:
 func on_mission_button_hover(mission_number: String) -> void:
 	var mission = MissionManager.get_mission_by_id(mission_number)
 	
+	mission_info_panel.set_mission(mission)
+	
 	var marker_offset = mission.marker_offset
 	marker_position = planet_center + marker_offset
 	
 	mission_marker.visible = true;
 	mission_marker.set_global_position(marker_position)
 	
-	mission_title_label.clear()
-	mission_title_label.append_text(mission.title)
-	
-	mission_description_label.clear()
-	mission_description_label.append_text(mission.description)
-	
-	difficulty_label.clear()
-	
-	var difficulty_color: String = ""
-	var difficulty: String = mission.difficulty
-	match difficulty:
-		"Easy":
-			difficulty_color = "green"
-		"Medium":
-			difficulty_color = "yellow"
-		"Hard":
-			difficulty_color = "red"
-
-	difficulty_label.append_text("Difficulty: [color= " + difficulty_color + "]" + difficulty + "[/color]")
-	
-	var new_texture = load(mission.image_path) as Texture2D
-	texture_rect.texture = new_texture
-	
-	
 	var fade_time = 0.2 
 	var opacity = 1.0
-	
 	var tween = create_tween()
 	mission_marker.modulate.a = 0.0
 	tween.tween_property(mission_marker, "modulate:a", opacity, fade_time)
@@ -80,27 +49,17 @@ func set_button_connection(mission_button: Button, mission_index: String) -> voi
 	mission_button.connect("mouse_exited", Callable(self, "on_mission_button_hover_exit"))
 	mission_button.connect("focus_entered", Callable(self, "on_mission_button_hover").bind(mission_index))
 	mission_button.connect("focus_exited", Callable(self, "on_mission_button_hover_exit"))
+	mission_button.button_down.connect(on_mission_button_pressed.bind(mission_index))
 
 func handle_connecting_signals() -> void:
-	
+	for mission in MissionManager.missions:
+		var button = Button.new()
+		mission_container.add_child(button)
+		button.text = MissionManager.getMissionName(mission)
+		set_button_connection(button, mission)
+		button.custom_minimum_size = Vector2(256, 64)
+		button.update_minimum_size()
+		
+		
 	back_button.button_down.connect(on_back_pressed)
-	
-	set_button_connection(mission_1_button, "1")
-	mission_1_button.button_down.connect(on_mission_button_pressed.bind("1"))
-	mission_1_button.text = MissionManager.getMissionName("1")
-
-	set_button_connection(mission_2_button, "2")
-	mission_2_button.button_down.connect(on_mission_button_pressed.bind("2"))
-	mission_2_button.text = MissionManager.getMissionName("2")
-
-	set_button_connection(mission_3_button, "3")
-	mission_3_button.button_down.connect(on_mission_button_pressed.bind("3"))
-	mission_3_button.text = MissionManager.getMissionName("3")
-
-	set_button_connection(mission_4_button, "4")
-	mission_4_button.button_down.connect(on_mission_button_pressed.bind("4"))
-	mission_4_button.text = MissionManager.getMissionName("4")
-	
-	set_button_connection(mission_5_button, "5")
-	mission_5_button.button_down.connect(on_mission_button_pressed.bind("5"))
-	mission_5_button.text = MissionManager.getMissionName("5")
+	return

@@ -1,10 +1,9 @@
-class_name OptionsMenu
+class_name OptionMenu
 extends Control
 
-@onready var back_button: Button = $ContentMarginContainer/MarginContainer/VBoxContainer/BackButton
+@onready var back_button: Button = $BackButton
 
 signal back_to_main_menu
-
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -16,7 +15,7 @@ func _ready() -> void:
 func _on_visibility_changed() -> void:
 	if visible:
 		(
-			$ContentMarginContainer/MarginContainer/VBoxContainer/settings_tab_container
+			$settings_tab_container
 			. get_tab_bar()
 			. grab_focus()
 		)

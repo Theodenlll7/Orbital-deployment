@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://dxk7c6wikv43p"]
+[gd_scene load_steps=19 format=3 uid="uid://dxk7c6wikv43p"]
 
 [ext_resource type="Theme" uid="uid://c3a3bfndbpf03" path="res://ui/main_menu/UI_theme.tres" id="1_7cya5"]
 [ext_resource type="Script" path="res://ui/main_menu/main_menu.gd" id="1_sgu6m"]
@@ -7,7 +7,7 @@
 [ext_resource type="FontFile" uid="uid://dkg32o3qfh2n7" path="res://assets/Fonts/pixelmix.ttf" id="2_t4ix4"]
 [ext_resource type="Texture2D" uid="uid://ckvltbyqf3xwo" path="res://maps/objects/ship/drop_ship_large.png" id="5_h2a75"]
 [ext_resource type="Script" path="res://ui/main_menu/drop_ship_main_menu_texture.gd" id="6_g3xgq"]
-[ext_resource type="PackedScene" uid="uid://bkr08nyqjnpg5" path="res://ui/main_menu/options_menu.tscn" id="7_x8lvi"]
+[ext_resource type="PackedScene" uid="uid://bkr08nyqjnpg5" path="res://ui/main_menu/OptionMenu.tscn" id="7_x8lvi"]
 [ext_resource type="PackedScene" uid="uid://b7bby50sr8bfd" path="res://ui/main_menu/mission_select.tscn" id="8_cavjr"]
 [ext_resource type="Texture2D" uid="uid://r032l1xiye2a" path="res://ui/main_menu/assets/textures/astroid_rocks.png" id="9_bh1l6"]
 [ext_resource type="PackedScene" uid="uid://cissp82tlrhpu" path="res://ui/main_menu/player_progress.tscn" id="11_4ytoj"]
@@ -19,92 +19,6 @@ shader_parameter/speed_x = 0.1
 shader_parameter/speed_y = 0.1
 shader_parameter/frequency_y = 2.0
 shader_parameter/amplitude_y = 0.05
-
-[sub_resource type="Animation" id="Animation_dk7bx"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(-412, -26)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:size")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(412, 412)]
-}
-
-[sub_resource type="Animation" id="Animation_vlrxt"]
-resource_name = "init_dropship"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.333333, 0.5, 1),
-"transitions": PackedFloat32Array(1.6818, 1, 0.466516, 200),
-"update": 0,
-"values": [Vector2(-2287, -431), Vector2(-1587, -240), Vector2(-907.142, -132.951), Vector2(-412, -26)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:size")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0.0333333, 0.333333, 1),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(673, 531), Vector2(412, 412), Vector2(412, 412)]
-}
-
-[sub_resource type="Animation" id="Animation_y7nxd"]
-resource_name = "select_mission_ship_position"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(0.277393, 0.8),
-"update": 0,
-"values": [Vector2(-2151, 563), Vector2(-1882.94, -440)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_eesv0"]
-_data = {
-"RESET": SubResource("Animation_dk7bx"),
-"init_dropship": SubResource("Animation_vlrxt"),
-"select_mission_ship_position": SubResource("Animation_y7nxd")
-}
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8ioed"]
-bg_color = Color(0.6, 0.6, 0.6, 0.333333)
-border_width_bottom = 4
-corner_detail = 1
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1p2d2"]
-bg_color = Color(0.6, 0.6, 0.6, 0)
-border_width_bottom = 4
-corner_detail = 1
 
 [sub_resource type="Animation" id="Animation_enoc0"]
 length = 0.001
@@ -203,45 +117,6 @@ texture = ExtResource("1_w5je3")
 visible = false
 layout_mode = 1
 
-[node name="ship" type="Control" parent="."]
-layout_mode = 2
-anchors_preset = 0
-offset_left = 1856.0
-offset_top = 540.0
-offset_right = 1856.0
-offset_bottom = 540.0
-size_flags_horizontal = 8
-size_flags_vertical = 4
-
-[node name="DropShipTextureRect" type="TextureRect" parent="ship"]
-modulate = Color(1.4, 1.2, 1.2, 1)
-layout_mode = 1
-anchors_preset = 6
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = -412.0
-offset_top = -26.0
-offset_bottom = 386.0
-grow_horizontal = 0
-grow_vertical = 2
-texture = ExtResource("5_h2a75")
-expand_mode = 2
-stretch_mode = 4
-flip_h = true
-script = ExtResource("6_g3xgq")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="ship"]
-root_node = NodePath("../DropShipTextureRect")
-libraries = {
-"": SubResource("AnimationLibrary_eesv0")
-}
-
-[node name="ShipAudioStreamPlayer" type="AudioStreamPlayer" parent="ship"]
-
-[node name="HoverAudioStreamPlayer" type="AudioStreamPlayer" parent="ship"]
-
 [node name="ContentMarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
@@ -254,16 +129,13 @@ theme_override_constants/margin_top = 64
 theme_override_constants/margin_right = 64
 theme_override_constants/margin_bottom = 64
 
-[node name="MarginContainer" type="MarginContainer" parent="ContentMarginContainer"]
+[node name="MainMenu" type="VBoxContainer" parent="ContentMarginContainer"]
 layout_mode = 2
-theme_override_constants/margin_top = 64
-
-[node name="VBoxContainer" type="VBoxContainer" parent="ContentMarginContainer/MarginContainer"]
-layout_mode = 2
+mouse_filter = 2
 theme_override_constants/separation = 64
 alignment = 1
 
-[node name="Label" type="Label" parent="ContentMarginContainer/MarginContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="ContentMarginContainer/MainMenu"]
 modulate = Color(1, 1, 1.3, 1)
 layout_mode = 2
 theme_override_colors/font_shadow_color = Color(0.221264, 0.399307, 0.745747, 1)
@@ -276,83 +148,90 @@ text = "Orbital deployment"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TopSeperatorPadding" type="Control" parent="ContentMarginContainer/MarginContainer/VBoxContainer"]
+[node name="TopSeperatorPadding" type="Control" parent="ContentMarginContainer/MainMenu"]
 layout_mode = 2
 
-[node name="NavigationButtons" type="VBoxContainer" parent="ContentMarginContainer/MarginContainer/VBoxContainer"]
+[node name="NavigationButtons" type="VBoxContainer" parent="ContentMarginContainer/MainMenu"]
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_constants/separation = 32
 alignment = 1
 
-[node name="SelectMissionButton" type="Button" parent="ContentMarginContainer/MarginContainer/VBoxContainer/NavigationButtons"]
+[node name="SelectMissionButton" type="Button" parent="ContentMarginContainer/MainMenu/NavigationButtons"]
 clip_contents = true
 custom_minimum_size = Vector2(256, 64)
 layout_mode = 2
-theme_override_fonts/font = ExtResource("2_t4ix4")
-theme_override_font_sizes/font_size = 32
-theme_override_styles/hover = SubResource("StyleBoxFlat_8ioed")
-theme_override_styles/normal = SubResource("StyleBoxFlat_1p2d2")
 text = " Play "
 
-[node name="PlayerProgressButton" type="Button" parent="ContentMarginContainer/MarginContainer/VBoxContainer/NavigationButtons"]
+[node name="PlayerProgressButton" type="Button" parent="ContentMarginContainer/MainMenu/NavigationButtons"]
 clip_contents = true
 custom_minimum_size = Vector2(256, 64)
 layout_mode = 2
-theme_override_fonts/font = ExtResource("2_t4ix4")
-theme_override_font_sizes/font_size = 32
-theme_override_styles/hover = SubResource("StyleBoxFlat_8ioed")
-theme_override_styles/normal = SubResource("StyleBoxFlat_1p2d2")
 text = "Player progress"
 
-[node name="OptionsButton" type="Button" parent="ContentMarginContainer/MarginContainer/VBoxContainer/NavigationButtons"]
+[node name="OptionsButton" type="Button" parent="ContentMarginContainer/MainMenu/NavigationButtons"]
 clip_contents = true
 custom_minimum_size = Vector2(256, 64)
 layout_mode = 2
-theme_override_fonts/font = ExtResource("2_t4ix4")
-theme_override_font_sizes/font_size = 32
-theme_override_styles/hover = SubResource("StyleBoxFlat_8ioed")
-theme_override_styles/normal = SubResource("StyleBoxFlat_1p2d2")
 text = " Options "
 
-[node name="ExitButton" type="Button" parent="ContentMarginContainer/MarginContainer/VBoxContainer/NavigationButtons"]
+[node name="ExitButton" type="Button" parent="ContentMarginContainer/MainMenu/NavigationButtons"]
 clip_contents = true
 custom_minimum_size = Vector2(256, 64)
 layout_mode = 2
-theme_override_fonts/font = ExtResource("2_t4ix4")
-theme_override_font_sizes/font_size = 32
-theme_override_styles/hover = SubResource("StyleBoxFlat_8ioed")
-theme_override_styles/normal = SubResource("StyleBoxFlat_1p2d2")
 text = " Exit game "
 
-[node name="HBoxContainer" type="HBoxContainer" parent="ContentMarginContainer/MarginContainer/VBoxContainer"]
+[node name="OptionMenu" parent="ContentMarginContainer" instance=ExtResource("7_x8lvi")]
+visible = false
+layout_mode = 2
+
+[node name="Footer" type="HBoxContainer" parent="ContentMarginContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+mouse_filter = 2
 alignment = 2
 
-[node name="Credits" type="Button" parent="ContentMarginContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="ContentMarginContainer/Footer"]
+layout_mode = 2
+size_flags_vertical = 8
+
+[node name="ShipAnchor" type="Control" parent="ContentMarginContainer/Footer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 273.935)
+layout_mode = 2
+
+[node name="Spaceship" type="TextureRect" parent="ContentMarginContainer/Footer/VBoxContainer/ShipAnchor"]
+modulate = Color(1.4, 1.2, 1.2, 1)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -206.0
+offset_top = -412.0
+offset_right = 206.0
+grow_horizontal = 2
+grow_vertical = 0
+pivot_offset = Vector2(206, 206)
+texture = ExtResource("5_h2a75")
+stretch_mode = 4
+flip_h = true
+script = ExtResource("6_g3xgq")
+
+[node name="ShipAudioStreamPlayer" type="AudioStreamPlayer" parent="ContentMarginContainer/Footer/VBoxContainer/ShipAnchor/Spaceship"]
+
+[node name="HoverAudioStreamPlayer" type="AudioStreamPlayer" parent="ContentMarginContainer/Footer/VBoxContainer/ShipAnchor/Spaceship"]
+
+[node name="Credits" type="Button" parent="ContentMarginContainer/Footer/VBoxContainer"]
 clip_contents = true
 custom_minimum_size = Vector2(256, 64)
 layout_mode = 2
 size_flags_vertical = 8
-theme_override_fonts/font = ExtResource("2_t4ix4")
-theme_override_font_sizes/font_size = 32
-theme_override_styles/hover = SubResource("StyleBoxFlat_8ioed")
-theme_override_styles/normal = SubResource("StyleBoxFlat_1p2d2")
 text = "Credits"
-
-[node name="options_menu" parent="." instance=ExtResource("7_x8lvi")]
-visible = false
-layout_mode = 1
 
 [node name="player_progress" parent="." instance=ExtResource("11_4ytoj")]
 visible = false
 layout_mode = 1
-
-[node name="Credits" type="Control" parent="."]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
 
 [node name="transistion_content" type="Control" parent="."]
 layout_mode = 1

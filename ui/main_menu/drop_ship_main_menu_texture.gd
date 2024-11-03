@@ -1,39 +1,67 @@
 extends TextureRect
-@onready var animation_player_dropship: AnimationPlayer = $"../AnimationPlayer"
-@onready var ship_audio_stream_player: AudioStreamPlayer = $"../ShipAudioStreamPlayer"
-@onready var hover_audio_stream_player: AudioStreamPlayer = $"../HoverAudioStreamPlayer"
+
+@onready var ship_audio_stream_player: AudioStreamPlayer = $ShipAudioStreamPlayer
+@onready var hover_audio_stream_player: AudioStreamPlayer = $HoverAudioStreamPlayer
+
 const SHIP_MOVMENT = preload("res://assets/Sound/UI/ship_movment.ogg")
 const SHIP_HOVER = preload("res://assets/Sound/UI/ship_hover.ogg")
 
 # Variables to control the motion
-var amplitude  = 50.0  
-var speed = 2.0     
-var start_position = Vector2()  
+var amplitude = 50.0
+var speed = 2.0
+var start_position = Vector2()
 var time_elapsed = 0.0
-var get_new_start_position = false
 
 var animation_played: bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	animation_player_dropship.play("init_dropship")
+	setup_audio()
+	set_process(false)
+	start_position = position
+	start_entrance_animation()
+
+# Sets up audio streams and starts the hover sound loop
+func setup_audio() -> void:
 	ship_audio_stream_player.stream = SHIP_MOVMENT
 	ship_audio_stream_player.bus = "Ship"
-	
 	hover_audio_stream_player.stream = SHIP_HOVER
 	hover_audio_stream_player.bus = "Ship_hover"
 	hover_audio_stream_player.stream.loop = true
 	hover_audio_stream_player.play()
 
+# Function to animate the entrance of the dropship with a curve motion
+func start_entrance_animation() -> void:
+	time_elapsed = 0
+	# Get viewport size to calculate an off-screen starting position
+	var viewport_size = get_viewport_rect().size
+	var offscreen_start_position = Vector2(viewport_size.x * -1, viewport_size.y * -0.8)
+	
+	# Create a tween and apply entrance animation with easing
+	var tween = create_tween()
+	
+	# Animate the ship from offscreen_start_position to the start position with easing
+	(
+	tween.tween_property(self, "position", start_position, 1.2)
+	.from(offscreen_start_position).set_trans(Tween.TRANS_SINE)
+	.set_ease(Tween.EASE_OUT)
+	)
+	tween.play()
+	ship_audio_stream_player.play()
+	tween.finished.connect(func(): set_process(true))
+	
+
+# Handles playing the ship movement sound
+func play_sound() -> void:
+	ship_audio_stream_player.play()
+
+
+# Applies the hover motion effect to the dropship after the entrance animation is complete
+func apply_hover_motion(delta: float) -> void:
+	time_elapsed += delta
+	position.y = start_position.y + amplitude * -sin(time_elapsed * speed)
+
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if animation_player_dropship.current_animation != "":
-		if !animation_played:
-			ship_audio_stream_player.play()
-			animation_played = true
-		start_position = position
-		time_elapsed = 0.0
-	else:
-		animation_played = false
-	time_elapsed += delta
-	position.y = start_position.y + amplitude * sin(time_elapsed * speed) 
+	apply_hover_motion(delta)

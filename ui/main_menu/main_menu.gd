@@ -1,19 +1,18 @@
 class_name MainMenu
 extends Control
 
-@onready var select_mission_button: Button = $ContentMarginContainer/MarginContainer/VBoxContainer/NavigationButtons/SelectMissionButton
-@onready var player_progress_button: Button = $ContentMarginContainer/MarginContainer/VBoxContainer/NavigationButtons/PlayerProgressButton
-@onready var options_button: Button = $ContentMarginContainer/MarginContainer/VBoxContainer/NavigationButtons/OptionsButton
-@onready var exit_button: Button = $ContentMarginContainer/MarginContainer/VBoxContainer/NavigationButtons/ExitButton
+@onready var select_mission_button: Button = $ContentMarginContainer/MainMenu/NavigationButtons/SelectMissionButton
+@onready var player_progress_button: Button = $ContentMarginContainer/MainMenu/NavigationButtons/PlayerProgressButton
+@onready var options_button: Button = $ContentMarginContainer/MainMenu/NavigationButtons/OptionsButton
+@onready var exit_button: Button = $ContentMarginContainer/MainMenu/NavigationButtons/ExitButton
 
-@onready var ship: Control = $ship
-@onready var ship_texture: TextureRect = $ship/DropShipTextureRect
-@onready var animation_player_ship: AnimationPlayer = $ship/AnimationPlayer
+@onready var ship: Control = $ContentMarginContainer/MarginContainer/HBoxContainer/VBoxContainer/ship
+@onready var spaceship := $ContentMarginContainer/Footer/VBoxContainer/ShipAnchor/Spaceship
 
 @onready var mission_select_menu: MissionSelect = $mission_select
 @onready var player_progress_menu: Control = $player_progress
-@onready var options_menu: OptionsMenu = $options_menu
-@onready var main_menu: MarginContainer = $ContentMarginContainer
+@onready var options_menu: OptionMenu = $ContentMarginContainer/OptionMenu
+@onready var main_menu := $ContentMarginContainer/MainMenu
 
 @onready var animation_player: AnimationPlayer = $transistion_content/AnimationPlayer
 @onready var audio_stream_player_astroids: AudioStreamPlayer = $transistion_content/AudioStreamPlayer
@@ -22,15 +21,13 @@ const ASTROID_PASS = preload("res://assets/Sound/UI/astroid_pass.ogg")
 @onready var target_menu: Control = main_menu
 
 const LOAD_LEVEL = preload("res://ui/main_menu/loading_level.tscn")
-var ship_start_position: Vector2
 
 @onready var main_menu_music_audio_stream_player: AudioStreamPlayer = $MainMenuMusicAudioStreamPlayer
 const MAIN_MENU_MUSIC = preload("res://assets/Sound/UI/main_menu_music.ogg")
-
+@onready var footer := $ContentMarginContainer/Footer
 func _ready() -> void:
 	handle_connecting_signals()
 	first_btn_focus_grab()
-	ship_start_position = ship.global_position
 	SaveData.save_player_data()
 	TooltipHud.init_vars()
 	
@@ -41,7 +38,6 @@ func _ready() -> void:
 	main_menu_music_audio_stream_player.bus = "Music"
 	main_menu_music_audio_stream_player.stream.loop = true
 	main_menu_music_audio_stream_player.play()
-	reset_ship()
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_cancel") and target_menu != main_menu:
@@ -105,7 +101,6 @@ func change_menu(show_animation: bool = false) -> void:
 		animation_player.play("in_new_scene")
 
 	first_btn_focus_grab()
-	reset_ship()
 
 	if target_menu == options_menu:
 		main_menu.visible = false
@@ -113,7 +108,7 @@ func change_menu(show_animation: bool = false) -> void:
 		player_progress_menu.visible = false
 		options_menu.visible = true
 	elif target_menu == mission_select_menu:
-		animation_player_ship.play("select_mission_ship_position")
+		#animation_player_ship.play("select_mission_ship_position")
 		main_menu.visible = false
 		mission_select_menu.visible = true
 		player_progress_menu.visible = false
@@ -124,7 +119,7 @@ func change_menu(show_animation: bool = false) -> void:
 		player_progress_menu.visible = true
 		options_menu.visible = false
 	else:
-		animation_player_ship.play("init_dropship")
+		spaceship.start_entrance_animation()
 		main_menu.visible = true
 		mission_select_menu.visible = false
 		player_progress_menu.visible = false
@@ -136,17 +131,17 @@ func start_mission(mission_ID: String, marker_position: Vector2) -> void:
 
 
 func move_ship_to_marker(mission_ID: String, move_to: Vector2) -> void:
-	move_to = ship.global_position + move_to - Vector2(80.0, 80.0)
+	move_to =- Vector2(80.0, 80.0)
 
 	var move_time = 0.5
 	var scale_to = 0.6
 
 	var tween = create_tween()
-	tween.tween_property(ship, "global_position", move_to, move_time).set_ease(Tween.EASE_OUT)
+	tween.tween_property(spaceship, "global_position", move_to, move_time).set_ease(Tween.EASE_OUT)
 	(
 		tween
 		. parallel()
-		. tween_property(ship_texture, "scale", Vector2(scale_to, scale_to), move_time)
+		. tween_property(spaceship, "scale", Vector2(scale_to, scale_to), move_time)
 		. set_ease(Tween.EASE_OUT)
 	)
 	tween.connect("finished", Callable(self, "on_tween_finished").bind(mission_ID))
@@ -161,11 +156,6 @@ func on_tween_finished(mission_ID: String) -> void:
 		get_tree().unload_current_scene()
 	else:
 		print("Failed to load the level")
-
-func reset_ship() -> void:
-	ship_texture.scale = Vector2(1.0, 1.0)
-	ship.global_position = ship_start_position
-	ship_texture.visible = true
 
 func handle_connecting_signals() -> void:
 	select_mission_button.button_down.connect(on_select_mission_button_pressed)
