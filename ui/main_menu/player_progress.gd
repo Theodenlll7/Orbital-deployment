@@ -1,9 +1,9 @@
 extends Control
 
-@onready var level_label: Label = $LevelMarginContainer/Panel/MarginContainer/VBoxContainer/HBoxContainer/LevelLabel
-@onready var progress_label: Label = $LevelMarginContainer/Panel/MarginContainer/VBoxContainer/ProgressBarMain/ProgressLabel
-@onready var back_button: Button = $ContentMarginContainer/BackButton
-@onready var progress_bar: ProgressBar = $LevelMarginContainer/Panel/MarginContainer/VBoxContainer/ProgressBarMain
+@onready var level_label: Label = $HBoxContainer/LevelMarginContainer/Panel/MarginContainer/VBoxContainer/HBoxContainer/LevelLabel
+@onready var progress_label: Label = $HBoxContainer/LevelMarginContainer/Panel/MarginContainer/VBoxContainer/ProgressBarMain/ProgressLabel
+@onready var back_button: Button = $HBoxContainer/BackButton
+@onready var progress_bar: ProgressBar = $HBoxContainer/LevelMarginContainer/Panel/MarginContainer/VBoxContainer/ProgressBarMain
 @onready var content_margin_container: MarginContainer = $ContentMarginContainer
 
 signal back_to_main_menu

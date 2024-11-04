@@ -23,37 +23,28 @@ bg_color = Color(0.203922, 0.203922, 0.317647, 0.501961)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_digek"]
 bg_color = Color(1, 0.698039, 0.196078, 1)
 
-[node name="player_progress" type="Control"]
-layout_mode = 3
+[node name="player_progress" type="VBoxContainer"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 script = ExtResource("1_5up80")
 
 [node name="ContentMarginContainer" type="MarginContainer" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+layout_mode = 2
+size_flags_vertical = 3
 theme_override_constants/margin_left = 64
 theme_override_constants/margin_top = 16
 theme_override_constants/margin_right = 64
 theme_override_constants/margin_bottom = 64
 
-[node name="MarginContainer" type="MarginContainer" parent="ContentMarginContainer"]
-layout_mode = 2
-theme_override_constants/margin_top = 64
-theme_override_constants/margin_bottom = 160
-
-[node name="VBoxContainer" type="VBoxContainer" parent="ContentMarginContainer/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="ContentMarginContainer"]
 layout_mode = 2
 theme_override_constants/separation = 32
 
-[node name="Label" type="Label" parent="ContentMarginContainer/MarginContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="ContentMarginContainer/VBoxContainer"]
 modulate = Color(1, 1, 1.3, 1)
 layout_mode = 2
 theme_override_colors/font_shadow_color = Color(0.219608, 0.4, 0.745098, 1)
@@ -66,15 +57,20 @@ text = "Player progress"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Panel" type="Panel" parent="ContentMarginContainer/MarginContainer/VBoxContainer"]
+[node name="Panel" type="Panel" parent="ContentMarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_kkny7")
 
-[node name="skill_tree" parent="ContentMarginContainer/MarginContainer/VBoxContainer/Panel" instance=ExtResource("3_mhmia")]
+[node name="skill_tree" parent="ContentMarginContainer/VBoxContainer/Panel" instance=ExtResource("3_mhmia")]
 layout_mode = 1
 
-[node name="BackButton" type="Button" parent="ContentMarginContainer"]
+[node name="HBoxContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+size_flags_stretch_ratio = 0.65
+mouse_filter = 2
+
+[node name="BackButton" type="Button" parent="HBoxContainer"]
 custom_minimum_size = Vector2(256, 64)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -85,43 +81,30 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_4uwop")
 theme_override_styles/normal = SubResource("StyleBoxFlat_0ngwi")
 text = "Back"
 
-[node name="LevelMarginContainer" type="MarginContainer" parent="."]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -824.0
-offset_top = -201.0
-grow_horizontal = 0
-grow_vertical = 0
-theme_override_constants/margin_right = 64
-theme_override_constants/margin_bottom = 64
+[node name="LevelMarginContainer" type="MarginContainer" parent="HBoxContainer"]
+custom_minimum_size = Vector2(1000, 0)
+layout_mode = 2
+size_flags_horizontal = 6
 
-[node name="Panel" type="Panel" parent="LevelMarginContainer"]
+[node name="Panel" type="PanelContainer" parent="HBoxContainer/LevelMarginContainer"]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_hrsb2")
 
-[node name="MarginContainer" type="MarginContainer" parent="LevelMarginContainer/Panel"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/LevelMarginContainer/Panel"]
+layout_mode = 2
 theme_override_constants/margin_left = 32
 theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 5
 
-[node name="VBoxContainer" type="VBoxContainer" parent="LevelMarginContainer/Panel/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/LevelMarginContainer/Panel/MarginContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="LevelMarginContainer/Panel/MarginContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/LevelMarginContainer/Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="LevelTextLabel" type="Label" parent="LevelMarginContainer/Panel/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="LevelTextLabel" type="Label" parent="HBoxContainer/LevelMarginContainer/Panel/MarginContainer/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(0, 52)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -131,23 +114,23 @@ text = "You are level "
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="LevelLabel" type="Label" parent="LevelMarginContainer/Panel/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="LevelLabel" type="Label" parent="HBoxContainer/LevelMarginContainer/Panel/MarginContainer/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(0, 52)
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_colors/font_color = Color(1, 0.698039, 0.196078, 1)
 theme_override_font_sizes/font_size = 28
-text = "-"
+text = "1"
 vertical_alignment = 1
 
-[node name="ProgressBarMain" type="ProgressBar" parent="LevelMarginContainer/Panel/MarginContainer/VBoxContainer"]
+[node name="ProgressBarMain" type="ProgressBar" parent="HBoxContainer/LevelMarginContainer/Panel/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(400, 52)
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_colors/font_color = Color(0, 0, 0, 0)
 theme_override_styles/fill = SubResource("StyleBoxFlat_digek")
 
-[node name="ProgressLabel" type="Label" parent="LevelMarginContainer/Panel/MarginContainer/VBoxContainer/ProgressBarMain"]
+[node name="ProgressLabel" type="Label" parent="HBoxContainer/LevelMarginContainer/Panel/MarginContainer/VBoxContainer/ProgressBarMain"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -155,6 +138,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 28
-text = "-/-"
+text = "9/9"
 horizontal_alignment = 1
 vertical_alignment = 1

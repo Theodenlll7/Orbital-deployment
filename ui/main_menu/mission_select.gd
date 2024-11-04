@@ -8,6 +8,7 @@ extends Control
 
 @onready var planet_texture_rect := $HSplitContainer/Planet
 @onready var infinite_survival_texture_rect: Control = $HSplitContainer/Planet/InfiniteSurvivalTextureRect
+@export var mission_indicator : Control
 @onready var mission_label: Label = $HSplitContainer/MarginContainer/ModeTabe/VBoxContainer/Label
 
 @onready var missions_tab := $HSplitContainer/MarginContainer/missions_tab
@@ -27,6 +28,7 @@ func _ready() -> void:
 	set_process(true)
 	
 	missions_tab.visible = false;
+	mission_indicator.visible = false
 	
 	infinite_survival_texture_rect.visible = false
 	infinite_survival_button.disabled = true
@@ -38,6 +40,7 @@ func on_missions_button_pressed() -> void:
 
 func on_exit_mission_tab() -> void:
 	missions_tab.visible = false
+	mission_indicator.visible = false
 	mode_tab.visible = true
 	var first_btn = mode_tab.find_child("*Button", true) as Button
 	if first_btn:

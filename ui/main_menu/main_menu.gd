@@ -9,7 +9,7 @@ extends Control
 @onready var spaceship := $ContentMarginContainer/Footer/VBoxContainer/ShipAnchor1/Spaceship
 
 @onready var mission_select_menu: MissionSelect = $ContentMarginContainer/mission_select
-@onready var player_progress_menu: Control = $player_progress
+@onready var player_progress_menu: Control = $ContentMarginContainer/player_progress
 @onready var options_menu: OptionMenu = $ContentMarginContainer/OptionMenu
 @onready var main_menu := $ContentMarginContainer/MainMenu
 
