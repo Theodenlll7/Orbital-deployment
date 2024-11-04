@@ -3,13 +3,13 @@ class_name PauseInGame
 
 @onready var main_menu = load("res://ui/main_menu/main_menu.tscn")
 
-@onready var options_button: Button = $MarginContainer/TextureRect/MarginContainer/VBoxContainer/Buttons/MarginContainer/HBoxContainer/VBoxContainer/OptionsButton
-@onready var resume_game_button: Button = $MarginContainer/TextureRect/MarginContainer/VBoxContainer/Buttons/MarginContainer/HBoxContainer/VBoxContainer/ResumeGameButton
-@onready var restart_mission_button: Button = $MarginContainer/TextureRect/MarginContainer/VBoxContainer/Buttons/MarginContainer/HBoxContainer/VBoxContainer/RestartMissionButton
-@onready var quit_level_button: Button = $MarginContainer/TextureRect/MarginContainer/VBoxContainer/Buttons/MarginContainer/HBoxContainer/VBoxContainer/QuitLevelButton
-@onready var options_menu: OptionsMenu = $options_menu
-@onready var pause_menu: MarginContainer = $MarginContainer
-@onready var button_menu: VBoxContainer = $MarginContainer/TextureRect/MarginContainer/VBoxContainer/Buttons/MarginContainer/HBoxContainer/VBoxContainer
+@onready var resume_game_button: Button = $MarginContainer/VBoxContainer/MarginContainer/PauseMenu/ResumeGameButton
+@onready var options_button: Button = $MarginContainer/VBoxContainer/MarginContainer/PauseMenu/OptionsButton
+@onready var restart_mission_button: Button = $MarginContainer/VBoxContainer/MarginContainer/PauseMenu/RestartMissionButton
+@onready var quit_level_button: Button = $MarginContainer/VBoxContainer/MarginContainer/PauseMenu/QuitLevelButton
+
+@onready var pause_menu := $MarginContainer/VBoxContainer/MarginContainer/PauseMenu
+@onready var options_menu: OptionMenu = $MarginContainer/VBoxContainer/MarginContainer/options_menu
 
 func _ready() -> void:
 	handle_connecting_signals()
@@ -41,7 +41,7 @@ func on_back_from_options_button_pressed() -> void:
 	first_btn_focus_grab()
 	
 func first_btn_focus_grab() -> void:
-	var first_btn = button_menu.find_child("*Button", true) as Button
+	var first_btn = pause_menu.find_child("*Button", true) as Button
 	if first_btn:
 		first_btn.grab_focus()
 
