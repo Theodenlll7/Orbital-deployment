@@ -6,11 +6,44 @@ var missions_paths: Dictionary = {}
 
 func _ready() -> void:
 	# Initialize missions
-	missions["2"] = MissionData.new(2, "Lost signal", "An isolated island, plagued by failed experiments and strange, hostile creatures.", "res://scenes/level_thumbnails/1id_thumbnail_mission.png", Vector2(-20, -200))
-	missions["3"] = MissionData.new(1, "Road of sacrifice", "A haunting landscape of ancient sacrifices and weathered stone pillars draped in sea mist.", "res://scenes/level_thumbnails/2id_thumbnail_mission.png", Vector2(100, 80))
-	missions["5"] = MissionData.new(3, "Walls in darkness", "A foreboding castle labyrinth shrouded in darkness and mystery.", "res://scenes/level_thumbnails/3id_thumbnail_mission.png", Vector2(-280, 20))
-	missions["4"] = MissionData.new(4, "Neptune", "Vast waters conceal secrets of the past and echoes of combat.", "res://scenes/level_thumbnails/4id_thumbnail_mission.png", Vector2(-380, -50))
-	missions["1"] = MissionData.new(1, "Unknown regions", "The Unknown Regions are a dense, mysterious forest filled with shadowy paths and hidden dangers.", "res://scenes/level_thumbnails/5id_thumbnail_mission.png", Vector2(80, -60))
+	missions["1"] = MissionData.new(
+		1, 
+		"Unknown regions", 
+		"The Unknown Regions are a dense, mysterious forest filled with shadowy paths and hidden dangers.", 
+		"res://scenes/level_thumbnails/5id_thumbnail_mission.png", 
+		Vector2(0.2, -0.3)
+		)
+	
+	missions["2"] = MissionData.new(
+		2, 
+		"Lost signal", 
+		"An isolated island, plagued by failed experiments and strange, hostile creatures.",
+		"res://scenes/level_thumbnails/1id_thumbnail_mission.png",
+		Vector2(-0.3, -0.4)
+	)
+	
+	missions["3"] = MissionData.new(
+		1,
+		"Road of sacrifice",
+		"A haunting landscape of ancient sacrifices and weathered stone pillars draped in sea mist.",
+		"res://scenes/level_thumbnails/2id_thumbnail_mission.png",
+		Vector2(0.3, 0.1)
+		)
+	missions["4"] = MissionData.new(
+		4, 
+		"Neptune", 
+		"Vast waters conceal secrets of the past and echoes of combat.", 
+		"res://scenes/level_thumbnails/4id_thumbnail_mission.png", 
+		Vector2(-0.1, -0.5)
+		)
+	missions["5"] = MissionData.new(
+		3, 
+		"Walls in darkness", 
+		"A foreboding castle labyrinth shrouded in darkness and mystery.", 
+		"res://scenes/level_thumbnails/3id_thumbnail_mission.png", 
+		Vector2(-0.3, 0.35)
+		)
+	
 
 
 	missions_paths["infinite"] = "res://scenes/world.tscn"

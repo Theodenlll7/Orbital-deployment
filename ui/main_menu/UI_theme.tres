@@ -42,7 +42,7 @@ border_color = Color(1, 1, 1, 1)
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gu5n4"]
 
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_r4nii"]
-color = Color(1, 1, 1, 1)
+color = Color(0.712129, 0.712129, 0.712129, 1)
 thickness = 2
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v2w4b"]
@@ -129,7 +129,7 @@ Button/colors/font_color = Color(1, 1, 1, 1)
 Button/colors/font_focus_color = Color(1, 1, 1, 1)
 Button/colors/font_hover_pressed_color = Color(0, 0, 0, 1)
 Button/colors/font_pressed_color = Color(0, 0, 0, 1)
-Button/font_sizes/font_size = 24
+Button/font_sizes/font_size = 32
 Button/fonts/font = ExtResource("1_jyk5g")
 Button/styles/focus = SubResource("StyleBoxFlat_s783n")
 Button/styles/hover = SubResource("StyleBoxFlat_6wg4l")

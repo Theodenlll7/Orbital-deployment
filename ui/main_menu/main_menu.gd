@@ -6,13 +6,15 @@ extends Control
 @onready var options_button: Button = $ContentMarginContainer/MainMenu/NavigationButtons/OptionsButton
 @onready var exit_button: Button = $ContentMarginContainer/MainMenu/NavigationButtons/ExitButton
 
-@onready var ship: Control = $ContentMarginContainer/MarginContainer/HBoxContainer/VBoxContainer/ship
-@onready var spaceship := $ContentMarginContainer/Footer/VBoxContainer/ShipAnchor/Spaceship
+@onready var spaceship := $ContentMarginContainer/Footer/VBoxContainer/ShipAnchor1/Spaceship
 
-@onready var mission_select_menu: MissionSelect = $mission_select
+@onready var mission_select_menu: MissionSelect = $ContentMarginContainer/mission_select
 @onready var player_progress_menu: Control = $player_progress
 @onready var options_menu: OptionMenu = $ContentMarginContainer/OptionMenu
 @onready var main_menu := $ContentMarginContainer/MainMenu
+
+@export var main_menu_spaceship_anchor : Control
+@export var mission_spaceship_anchor : Control
 
 @onready var animation_player: AnimationPlayer = $transistion_content/AnimationPlayer
 @onready var audio_stream_player_astroids: AudioStreamPlayer = $transistion_content/AudioStreamPlayer
@@ -45,8 +47,7 @@ func _unhandled_input(event: InputEvent) -> void:
 			if mission_select_menu.missions_tab.visible:
 				mission_select_menu.on_exit_mission_tab()
 			else:
-				target_menu = main_menu
-				change_menu()
+				on_exit_mission_select_menu()
 		elif target_menu == options_menu:
 			on_exit_options_menu()
 		else:
@@ -63,13 +64,16 @@ func on_select_mission_button_pressed() -> void:
 	target_menu = mission_select_menu
 	animation_player.play("to_new_scene")
 	audio_stream_player_astroids.play()
-	
-
+	spaceship.reparent(mission_spaceship_anchor)
+	spaceship.start_mission_animation()
 
 func on_exit_mission_select_menu() -> void:
 	target_menu = main_menu
 	animation_player.play("to_new_scene")
 	audio_stream_player_astroids.play()
+	print(spaceship)
+	spaceship.reparent(main_menu_spaceship_anchor)
+	spaceship.start_entrance_animation()
 
 func on_player_progress_button_pressed() -> void:
 	target_menu = player_progress_menu
@@ -108,7 +112,6 @@ func change_menu(show_animation: bool = false) -> void:
 		player_progress_menu.visible = false
 		options_menu.visible = true
 	elif target_menu == mission_select_menu:
-		#animation_player_ship.play("select_mission_ship_position")
 		main_menu.visible = false
 		mission_select_menu.visible = true
 		player_progress_menu.visible = false
@@ -119,7 +122,6 @@ func change_menu(show_animation: bool = false) -> void:
 		player_progress_menu.visible = true
 		options_menu.visible = false
 	else:
-		spaceship.start_entrance_animation()
 		main_menu.visible = true
 		mission_select_menu.visible = false
 		player_progress_menu.visible = false
@@ -131,10 +133,10 @@ func start_mission(mission_ID: String, marker_position: Vector2) -> void:
 
 
 func move_ship_to_marker(mission_ID: String, move_to: Vector2) -> void:
-	move_to =- Vector2(80.0, 80.0)
+	#move_to += spaceship.size / 2
 
 	var move_time = 0.5
-	var scale_to = 0.6
+	var scale_to = 0.1
 
 	var tween = create_tween()
 	tween.tween_property(spaceship, "global_position", move_to, move_time).set_ease(Tween.EASE_OUT)

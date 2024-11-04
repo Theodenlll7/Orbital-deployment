@@ -1,30 +1,27 @@
 class_name MissionSelect
 extends Control
 
-@onready var missions_button: Button = $HSplitContainer/ModeTabe/VBoxContainer/MissionsButton
-@onready var infinite_survival_button: Button = $HSplitContainer/ModeTabe/VBoxContainer/InfiniteSurvivalButton
-@onready var back_button: Button = $HSplitContainer/ModeTabe/BackButton
-@onready var mode_tab := $HSplitContainer/ModeTabe
+@onready var missions_button: Button = $HSplitContainer/MarginContainer/ModeTabe/VBoxContainer/MissionsButton
+@onready var infinite_survival_button: Button = $HSplitContainer/MarginContainer/ModeTabe/VBoxContainer/InfiniteSurvivalButton
+@onready var back_button: Button = $HSplitContainer/MarginContainer/ModeTabe/BackButton
+@onready var mode_tab := $HSplitContainer/MarginContainer/ModeTabe
 
 @onready var planet_texture_rect := $HSplitContainer/Planet
-@onready var infinite_survival_texture_rect: Control = $HSplitContainer/Planet/infinit_marker
-@onready var mission_label: Label = $HSplitContainer/ModeTabe/VBoxContainer/Label
+@onready var infinite_survival_texture_rect: Control = $HSplitContainer/Planet/InfiniteSurvivalTextureRect
+@onready var mission_label: Label = $HSplitContainer/MarginContainer/ModeTabe/VBoxContainer/Label
 
-@onready var missions_tab := $HSplitContainer/missions_tab
+@onready var missions_tab := $HSplitContainer/MarginContainer/missions_tab
 
 signal back_to_main_menu
 signal level_selected(mission_ID, mission_position)
 
 var infinite_hover_text = "Coming soon!" # "You will not survive..."
-var planet_center = Vector2()
 var marker_position = Vector2()
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	handle_connecting_signals()
-
-	planet_center = planet_texture_rect.global_position + planet_texture_rect.size / 2
-	missions_tab.set_planet_center(planet_center)
+	missions_tab.planet_texture = planet_texture_rect
 
 	visible = false
 	set_process(true)
@@ -38,9 +35,6 @@ func _ready() -> void:
 func on_missions_button_pressed() -> void:
 	missions_tab.visible = true
 	mode_tab.visible = false
-	var first_btn = missions_tab.find_child("*Button", true) as Button
-	if first_btn:
-		first_btn.grab_focus()
 
 func on_exit_mission_tab() -> void:
 	missions_tab.visible = false
@@ -57,6 +51,7 @@ func on_mission_selected_from_tab(mission_ID: String, current_marker_position: V
 
 func on_infinite_survival_button_hover() -> void:
 	var marker_offset = Vector2(-300, -200)
+	var planet_center = planet_texture_rect.global_position + planet_texture_rect.size / 2
 	marker_position = planet_center + marker_offset
 	
 	infinite_survival_texture_rect.visible = true;

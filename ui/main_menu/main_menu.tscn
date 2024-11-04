@@ -80,7 +80,7 @@ glow_enabled = true
 glow_intensity = 1.0
 glow_blend_mode = 0
 
-[node name="main_menu" type="Control"]
+[node name="main_menu" type="Control" node_paths=PackedStringArray("main_menu_spaceship_anchor", "mission_spaceship_anchor")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -91,6 +91,8 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_7cya5")
 script = ExtResource("1_sgu6m")
+main_menu_spaceship_anchor = NodePath("ContentMarginContainer/Footer/VBoxContainer/ShipAnchor1")
+mission_spaceship_anchor = NodePath("ContentMarginContainer/ShipAnchor2")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -112,10 +114,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_w5je3")
-
-[node name="mission_select" parent="." instance=ExtResource("8_cavjr")]
-visible = false
-layout_mode = 1
 
 [node name="ContentMarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -154,35 +152,35 @@ layout_mode = 2
 [node name="NavigationButtons" type="VBoxContainer" parent="ContentMarginContainer/MainMenu"]
 layout_mode = 2
 size_flags_horizontal = 4
-theme_override_constants/separation = 32
+theme_override_constants/separation = 48
 alignment = 1
 
 [node name="SelectMissionButton" type="Button" parent="ContentMarginContainer/MainMenu/NavigationButtons"]
-clip_contents = true
 custom_minimum_size = Vector2(256, 64)
 layout_mode = 2
 text = " Play "
 
 [node name="PlayerProgressButton" type="Button" parent="ContentMarginContainer/MainMenu/NavigationButtons"]
-clip_contents = true
 custom_minimum_size = Vector2(256, 64)
 layout_mode = 2
 text = "Player progress"
 
 [node name="OptionsButton" type="Button" parent="ContentMarginContainer/MainMenu/NavigationButtons"]
-clip_contents = true
 custom_minimum_size = Vector2(256, 64)
 layout_mode = 2
 text = " Options "
 
 [node name="ExitButton" type="Button" parent="ContentMarginContainer/MainMenu/NavigationButtons"]
-clip_contents = true
 custom_minimum_size = Vector2(256, 64)
 layout_mode = 2
 text = " Exit game "
 
 [node name="OptionMenu" parent="ContentMarginContainer" instance=ExtResource("7_x8lvi")]
 visible = false
+z_index = 2
+layout_mode = 2
+
+[node name="mission_select" parent="ContentMarginContainer" instance=ExtResource("8_cavjr")]
 layout_mode = 2
 
 [node name="Footer" type="HBoxContainer" parent="ContentMarginContainer"]
@@ -195,11 +193,11 @@ alignment = 2
 layout_mode = 2
 size_flags_vertical = 8
 
-[node name="ShipAnchor" type="Control" parent="ContentMarginContainer/Footer/VBoxContainer"]
+[node name="ShipAnchor1" type="Control" parent="ContentMarginContainer/Footer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 273.935)
 layout_mode = 2
 
-[node name="Spaceship" type="TextureRect" parent="ContentMarginContainer/Footer/VBoxContainer/ShipAnchor"]
+[node name="Spaceship" type="TextureRect" parent="ContentMarginContainer/Footer/VBoxContainer/ShipAnchor1"]
 modulate = Color(1.4, 1.2, 1.2, 1)
 layout_mode = 1
 anchors_preset = 7
@@ -218,16 +216,20 @@ stretch_mode = 4
 flip_h = true
 script = ExtResource("6_g3xgq")
 
-[node name="ShipAudioStreamPlayer" type="AudioStreamPlayer" parent="ContentMarginContainer/Footer/VBoxContainer/ShipAnchor/Spaceship"]
+[node name="ShipAudioStreamPlayer" type="AudioStreamPlayer" parent="ContentMarginContainer/Footer/VBoxContainer/ShipAnchor1/Spaceship"]
 
-[node name="HoverAudioStreamPlayer" type="AudioStreamPlayer" parent="ContentMarginContainer/Footer/VBoxContainer/ShipAnchor/Spaceship"]
+[node name="HoverAudioStreamPlayer" type="AudioStreamPlayer" parent="ContentMarginContainer/Footer/VBoxContainer/ShipAnchor1/Spaceship"]
 
 [node name="Credits" type="Button" parent="ContentMarginContainer/Footer/VBoxContainer"]
-clip_contents = true
 custom_minimum_size = Vector2(256, 64)
 layout_mode = 2
 size_flags_vertical = 8
 text = "Credits"
+
+[node name="ShipAnchor2" type="Control" parent="ContentMarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_vertical = 0
 
 [node name="player_progress" parent="." instance=ExtResource("11_4ytoj")]
 visible = false

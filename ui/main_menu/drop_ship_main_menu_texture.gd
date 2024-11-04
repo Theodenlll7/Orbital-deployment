@@ -37,23 +37,27 @@ func start_entrance_animation() -> void:
 	var viewport_size = get_viewport_rect().size
 	var offscreen_start_position = Vector2(viewport_size.x * -1, viewport_size.y * -0.8)
 	
+	fly(offscreen_start_position, start_position)
+
+func start_mission_animation() -> void:
+	time_elapsed = 0
+	# Get viewport size to calculate an off-screen starting position
+	var viewport_size = get_viewport_rect().size
+	var offscreen_start_position = Vector2(viewport_size.x * -0.9, viewport_size.y * 1.2)
+	fly(offscreen_start_position, Vector2.ZERO)
+
+func fly(start_pos: Vector2, end_pos : Vector2) -> void:
 	# Create a tween and apply entrance animation with easing
 	var tween = create_tween()
-	
 	# Animate the ship from offscreen_start_position to the start position with easing
 	(
-	tween.tween_property(self, "position", start_position, 1.2)
-	.from(offscreen_start_position).set_trans(Tween.TRANS_SINE)
+	tween.tween_property(self, "position", end_pos, 1.2)
+	.from(start_pos).set_trans(Tween.TRANS_SINE)
 	.set_ease(Tween.EASE_OUT)
 	)
 	tween.play()
 	ship_audio_stream_player.play()
 	tween.finished.connect(func(): set_process(true))
-	
-
-# Handles playing the ship movement sound
-func play_sound() -> void:
-	ship_audio_stream_player.play()
 
 
 # Applies the hover motion effect to the dropship after the entrance animation is complete
