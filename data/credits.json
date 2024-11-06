@@ -1,0 +1,28 @@
+{
+	"credits": [
+		{
+			"category": "Directors",
+			"members": [
+				{ "name": "Jane Doe", "role": "Director", "url": "https://github.com/janedoe" }
+			]
+		},
+		{
+			"category": "Producers",
+			"members": [
+				{ "name": "John Smith", "role": "Producer", "url": "https://portfolio.johnsmith.com" }
+			]
+		},
+		{
+			"category": "Animators",
+			"members": [
+				{ "name": "Alice Johnson", "role": "Animator" }
+			]
+		},
+		{
+			"category": "Sound Designers",
+			"members": [
+				{ "name": "Bob Lee", "role": "Sound Designer", "url": "https://www.linkedin.com/in/boblee" }
+			]
+		}
+	]
+}
