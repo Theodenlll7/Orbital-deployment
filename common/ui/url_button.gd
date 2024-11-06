@@ -4,6 +4,9 @@ extends Button
 # Exported variable to set the URL in the editor
 @export var url: String = "https://example.com"
 
+func _init(url) -> void:
+	self.url = url
+
 # Called when the button is pressed
 func _on_button_pressed() -> void:
 	if url:
