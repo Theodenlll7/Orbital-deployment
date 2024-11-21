@@ -75,6 +75,7 @@ func _enemy_death():
 
 
 func _ready() -> void:
+	y_sort_enabled = true
 	add_to_group("managers")
 	add_to_group("wave_manager")
 	add_child(in_between_wave_timer)
@@ -187,6 +188,7 @@ func is_valid_distance_from_all_players(pos):
 func get_point_on_map(target_point: Vector2, min_dist_from_edge: float) -> Vector2:
 	var map := get_world_2d().navigation_map
 	var closest_point := NavigationServer2D.map_get_closest_point(map, target_point)
+	return closest_point
 	var delta := closest_point - target_point
 	var is_on_map = delta.is_zero_approx()  # Answer to original question!
 	if not is_on_map and min_dist_from_edge > 0:
